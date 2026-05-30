@@ -1,0 +1,51 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}O Problema da Circularidade em Domínios sem Ground Truth Externo}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}A Lacuna: O que o Split Temporal \emph {Não} Detecta}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}O Cenário Crítico: Corpus Multi-Institucional com Entrada de Novas Fontes}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Objetivos e Contribuições}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Estrutura do Documento}{5}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Formalização Matemática do Problema}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Notação}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}O Split Temporal Cego (Camada 1 Original)}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}O Confundimento Temporal-Institucional}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}A Decomposição em Três Deltas}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}A Distribuição Nula e o Teste de Hipótese}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}A Regra de Decisão Operacional}{7}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Jaccard Similarity: Definição Formal e Análise de Limiares}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Definição}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Por que Jaccard e não Cosine ou Overlap?}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}O Problema do Limiar Fixo}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Limiares Heurísticos como Referência Inicial}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Calibração de Limiares via Bootstrap}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fundamento Estatístico}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Algoritmo}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Intuição: Por que o Bootstrap?}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Resultados da Calibração no Corpus Simulado}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Comparação com o Limiar Heurístico de 0,70}{11}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Corpus Simulado: Descrição e Propriedades}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Justificativa para Simulação}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Instituições e Templates}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Estrutura do Corpus}{12}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Ground Truth Conhecido}{13}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Resultados Experimentais}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Matrizes de Jaccard}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Decomposição em Três Deltas}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Comparação entre Deltas: O Teste Definitivo}{15}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}O Caso da TRF-6: Falso Domain Shift}{15}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Resultado da Regra de Decisão}{16}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Discussão}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Interpretação dos Resultados}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Limiares de Jaccard: Resposta Definitiva}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Limitações do Método}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Trabalhos Relacionados}{18}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Proposta de Integração: Camada 1B da SPEC-008}{19}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Posição no Pipeline}{19}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Especificação Formal (SPEC-008-B)}{19}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Entradas}{19}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Processamento}{19}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Critérios de Teste (CTs)}{20}{subsubsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.4}Relatório de Transparência (extensão)}{20}{subsubsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.3}Exemplo de Redação Transparente com Camada 1B}{20}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Conclusão}{22}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Trabalho Futuro}{22}{subsection.9.1}%

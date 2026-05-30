@@ -1,0 +1,38 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}O Que E Arbitragem?}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}O Conceito Mais Simples Possivel}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Por Que a Arbitragem e Tao Importante?}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Um Exemplo Concreto: Opcao de Compra}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}O Modelo Classico de Mercado}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Modelando a Incerteza}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}A Filtracao: O Fluxo de Informacao}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Ativos, Precos e a Conta Caixa}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Estrategias de Negociacao}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}A Condicao de Autofinanciamento}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Integral de Ito vs. Stratonovich}{6}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Arbitragem Formalizada}{6}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}NFLVR: O Refinamento Topologico}{6}{subsection.2.8}%
+\contentsline {section}{\numberline {3}A Linguagem Geometrica: Gauges}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Por Que Geometria?}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Deflatores e Estruturas a Termo}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}A Taxa Forward Instantanea}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Transformacoes de Gauge}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}O Grupo das Transformacoes Invertiveis}{8}{subsection.3.5}%
+\contentsline {section}{\numberline {4}O Fibrado Principal do Mercado}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fibrados: A Ideia Intuitiva}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Construcao do Fibrado do Mercado}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}O Numerario como Secao Global}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Conexao, Transporte Paralelo e Curvatura}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}A Conexao de Mercado}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Transporte Paralelo: Cambio e Desconto}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Curvatura = Arbitragem}{10}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Holonomia: O Grupo das Estrategias de Arbitragem}{11}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Hidrodinamica e Equilibrio}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}A Equacao de Continuidade do Valor}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}O Lagrangiano do Mercado}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Teorema de Noether Estocastico}{12}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Solucoes de Equilibrio}{12}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Topologia Diferencial e o FTAP Homotopico}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Homotopia de Estrategias}{12}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Os Cinco Principios da GAT}{13}{section.8}%
+\contentsline {section}{\numberline {9}Exercicios Propostos}{14}{section.9}%

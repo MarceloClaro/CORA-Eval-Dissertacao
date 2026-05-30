@@ -41,7 +41,7 @@ A \textbf{derivada antissimétrica} (osmótica) é a semidiferença:
 Esta quantidade está associada à \textbf{velocidade osmótica} (osmotic velocity), que no contexto da GAT mede o grau de ``difusividade pura'' do mercado, distinguindo a componente reversível (corrente) da irreversível (ruído) na dinâmica de preços.
 \end{defi}
 
-\begin{proposicao}[Propriedades Básicas]
+\begin{prop}[Propriedades Básicas]
 Para processos $X_t, Y_t$ nas condições acima e $f\in C^2(\R)$:
 \begin{enumerate}
   \item \textbf{Linearidade}: $D(aX_t + bY_t) = a\,DX_t + b\,DY_t$ para $a,b\in\R$, e analogamente para $D_*$, $\bar{D}$, $D_A$.
@@ -49,7 +49,7 @@ Para processos $X_t, Y_t$ nas condições acima e $f\in C^2(\R)$:
   \item \textbf{Martingais}: Se $X_t$ é um $\mathcal{F}_t$-martingal, então $DX_t = 0$ (a tendência futura condicional é nula).
   \item \textbf{Processos reversíveis}: Se $X_t$ tem a mesma lei sob reversão temporal, então $DX_t = -D_*X_t$ e portanto $\bar{D}X_t = 0$.
 \end{enumerate}
-\end{proposicao}
+\end{prop}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conexão com Itô e Stratonovich}
@@ -84,9 +84,9 @@ Stratonovich          & $\circ dX_t$& $(b - \frac{1}{2}\partial_j\nu^{ij})\,dt +
 \end{tabular}
 \end{table}
 
-\begin{observacao}
+\begin{obs}
 A derivada simétrica $\bar{D}$ coincide precisamente com o \textbf{drift de Stratonovich}: $\bar{D}X_t = b(t,X_t) - \frac{1}{2}(\nabla\cdot\nu)(t,X_t)$. Esta identidade é fundamental na GAT, pois a formulação de Stratonovich respeita a regra da cadeia usual (Leibniz não graduada), permitindo tratar a geometria diferencial do espaço de ativos sem correções de Itô adicionais. A curvatura do fibrado, expressa em termos de $\bar{D}$, adquire assim interpretação financeira direta.
-\end{observacao}
+\end{obs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fórmula de Leibniz Estocástica}
@@ -111,9 +111,9 @@ A identidade~\eqref{eq:leibniz_D} decorre da decomposição:
 Dividindo por $h$, tomando $h\downarrow 0$, e notando que o termo cruzado converge para a derivada da covariação quadrática, obtém-se~\eqref{eq:leibniz_D}. A equação~\eqref{eq:leibniz_Dstar} segue por simetria temporal. A equação~\eqref{eq:leibniz_bar} resulta de somar~\eqref{eq:leibniz_D} e~\eqref{eq:leibniz_Dstar}: os termos de covariação se cancelam, pois $D[X,Y]_t = D_*[X,Y]_t$ para processos com difusão simétrica. Isto implica que a derivada simétrica satisfaz a \textbf{regra de Leibniz clássica}, sem termo de segunda ordem --- propriedade que a torna a ferramenta natural para o cálculo geométrico em variedades com ruído.
 \end{proof}
 
-\begin{corolario}
+\begin{coro}
 A derivada simétrica $\bar{D}$ é uma \textbf{derivação} na álgebra de processos estocásticos (com respeito ao produto pontual), no sentido da geometria diferencial. Este fato permite definir o \textbf{transporte geométrico} como o fluxo de $\bar{D}$ ao longo do fibrado de preços, unificando a cinemática de Nelson com a estrutura de conexão de Koszul.
-\end{corolario}
+\end{coro}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exemplos Calculados}
