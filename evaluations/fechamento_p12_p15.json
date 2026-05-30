@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-30T02:13:30.663515",
+  "timestamp": "2026-05-30T09:57:41.124947",
   "P12_baseline": {
     "P12_resolvido": true,
     "project_euler": {
@@ -23,7 +23,7 @@
       "LIMITACAO: um baseline mais sofisticado (ex: heuristica simples por problema) seria mais informativo.",
       "Este baseline documenta o pior caso. Baselines intermediarios pendentes."
     ],
-    "timestamp": "2026-05-30T02:12:49.118880"
+    "timestamp": "2026-05-30T09:56:37.042439"
   },
   "P15_temporal": {
     "P15_resolvido": true,
@@ -38,10 +38,10 @@
       "consistente": true,
       "timestamp": "2026-05-29 18:18:38"
     },
-    "timestamp_reteste": "2026-05-30T02:13:30.663515",
+    "timestamp_reteste": "2026-05-30T09:57:41.124433",
     "timestamp_original": "2026-05-29",
     "interpretacao": [
-      "Reteste executado em 30/05/2026 02:13.",
+      "Reteste executado em 30/05/2026 09:57.",
       "Resultados originais (29/05/2026): todos PASS.",
       "CORA-Score atual: 3.04.",
       "CONCLUSAO: resultados consistentes entre medicoes — sem degradacao temporal detectada.",
