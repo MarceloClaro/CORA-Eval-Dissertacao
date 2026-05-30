@@ -1,0 +1,91 @@
+{
+  "timestamp": "2026-05-30T00:47:31.168828",
+  "perfil": {
+    "nome": "Revisor Senior — Perfil Metodologista",
+    "caracteristicas": [
+      "Le metadados antes do conteudo",
+      "Le rodapes — encontra a verdade nos detalhes",
+      "Reconhece padroes metodologicos (circularidade, assimetria, n<p)",
+      "Conhece a literatura (cita 'desde 2022')",
+      "Nao se impressiona com numeros grandes (reduz a significado real)",
+      "Nao se impressiona com matematica avancada (questiona viabilidade)",
+      "Faz a pergunta fundamental: quem validou?",
+      "Nao e hostil — e rigoroso (reconhece esforco real)"
+    ],
+    "padroes_de_ataque": [
+      {
+        "nome": "Reducao de claims infladas",
+        "regex": "(\\d+[\\.,]?\\d*\\s*(milhoes|mil|milhao|M|K)\\s*de)",
+        "acao": "Verificar se o numero se refere a usuarios cadastrados, nao revisores",
+        "contra_evidencia": "Substituir por contagem exata de problemas resolvidos"
+      },
+      {
+        "nome": "Deteccao de circularidade",
+        "regex": "(validacao interna|proprio sistema|auto-avaliacao)",
+        "acao": "Verificar quantas dimensoes dependem de validacao interna",
+        "contra_evidencia": "Adicionar coluna de confianca (Alta/Media/Baixa)"
+      },
+      {
+        "nome": "Comparacao assimetrica",
+        "regex": "(vs|comparado|superior).*(bare.metal|sem verificador|modelo local)",
+        "acao": "Verificar se a comparacao usa mesmo modelo base e arquiteturas equivalentes",
+        "contra_evidencia": "Design experimental 1x3 com mesmo modelo base"
+      },
+      {
+        "nome": "Matematica inviavel",
+        "regex": "(\\d+)\\s*(dimensoes|variaveis|parametros).*(\\d+)\\s*(observacoes|pontos|amostras)",
+        "acao": "Verificar n >= p para estimacao de covariancia",
+        "contra_evidencia": "Implementar Ledoit-Wolf ou outra regularizacao"
+      },
+      {
+        "nome": "Nomenclatura inflada",
+        "regex": "(dissertacao|tese|artigo\\s*Qualis\\s*A1)",
+        "acao": "Verificar se ha banca, orientador, instituicao, defesa",
+        "contra_evidencia": "Substituir por 'Relatorio Tecnico' ou termo equivalente"
+      }
+    ]
+  },
+  "perguntas_futuras": [
+    {
+      "id": "P6",
+      "pergunta": "Os resultados se mantem em ciencias humanas? Economia? Linguistica?",
+      "padrao": "Escopo limitado a ciencias exatas",
+      "evidencia_necessaria": "Testar CORA-Eval em 2+ dominios nao-EXATAS",
+      "prioridade": "Alta",
+      "impacto": "Bloqueia claims de generalizacao"
+    },
+    {
+      "id": "P7",
+      "pergunta": "Alguem que nao seja o autor ja rodou o CORA-Eval e obteve os mesmos scores?",
+      "padrao": "Reprodutibilidade apenas pelo autor",
+      "evidencia_necessaria": "Relatorio de 2+ pesquisadores independentes reproduzindo",
+      "prioridade": "Alta",
+      "impacto": "Essencial para publicacao"
+    },
+    {
+      "id": "P8",
+      "pergunta": "O CV de 2.2% e estatisticamente significativo? Qual o p-value? Qual o tamanho do efeito?",
+      "padrao": "Metricas descritivas sem inferencia",
+      "evidencia_necessaria": "Teste t, ANOVA, bootstrap CI para o CORA-Score",
+      "prioridade": "Media",
+      "impacto": "Fortalece claims de robustez"
+    },
+    {
+      "id": "P9",
+      "pergunta": "Como voce sabe que V1 (dimensional) detecta 92% dos erros? Qual a taxa de falsos positivos?",
+      "padrao": "Verificadores sem calibracao formal",
+      "evidencia_necessaria": "Matriz de confusao para cada verificador contra ground truth",
+      "prioridade": "Media",
+      "impacto": "Essencial para confianca nos verificadores"
+    },
+    {
+      "id": "P10",
+      "pergunta": "As 150 tarefas foram selecionadas aleatoriamente? Ou por conveniencia?",
+      "padrao": "Selecao por conveniencia (disponibilidade de ground truth)",
+      "evidencia_necessaria": "Documentar criterio de selecao; testar vies com amostra aleatoria",
+      "prioridade": "Alta",
+      "impacto": "Afeta validade externa de todas as conclusoes"
+    }
+  ],
+  "testes": "4/4 PASS"
+}

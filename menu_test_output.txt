@@ -1,0 +1,49 @@
+
+╔════════════════════════════════════════════════════════════════════╗
+║  SDD+TDD+AutoEvolve  —  Painel de Controle Adaptativo               ║
+║  artigo  |  28/05/2026 17:52                                        ║
+╚════════════════════════════════════════════════════════════════════╝
+
+  ┌─ ▶ OPERACIONAR ─────────────────────────────────────────┐
+  │     1  Compilar documento LaTeX                               │
+  │     2  Executar testes TDD                                    │
+  │     3  Executar pipeline AutoEvolve                           │
+  │     4 ◈  Limpar arquivos auxiliares LaTeX                     │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ ↻ REPRODUZIR ──────────────────────────────────────────┐
+  │     5  Restaurar backup anterior                              │
+  │     6  Refinamento manual guiado                              │
+  │     7 ⟐  Restaurar: artigo_20260528_085255.tex                │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ ✎ REGISTRAR ───────────────────────────────────────────┐
+  │     8  Registrar correção manual                              │
+  │     9  Gerar relatório de estado                              │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ ✓ AUDITAR ─────────────────────────────────────────────┐
+  │    10  Auditar integridade do framework                       │
+  │    11  Exibir histórico de execuções                          │
+  │    12  Exibir métricas de qualidade                           │
+  │    13  Verificar dependências                                 │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ ○ APRENDER ────────────────────────────────────────────┐
+  │    14  Explorar insights de evolução                          │
+  │    15  Documentação do framework                              │
+  │    16 ◈  Abrir SPEC_ORCHESTRATION.md                          │
+  │    17 ◈  Abrir FRAMEWORK.md                                   │
+  │    18 ◈  Abrir README dos testes                              │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ ⚙ FERRAMENTAS ─────────────────────────────────────────┐
+  │    19 ◈  Contar palavras do documento                         │
+  └──────────────────────────────────────────────────────────────┘
+
+  ────────────────────────────────────────────────────────────────
+   0  Sair
+   q  Diagnóstico rápido (--quick)
+   l  Listar itens descobertos
+
+  Opção (0=sair) > 

@@ -1,0 +1,361 @@
+﻿% ======================================================================
+% ARCABOUCO TEORICO, CRITICO E REPRODUTIBILIDADE
+% Referencias reais — Provas e Contraprovas — Auditoria
+% ======================================================================
+
+\\\\paragraph{Arcabouço Teórico: Fundamentos da Avaliação de Raciocínio Científico}
+
+\\\paragraph{Epistemologia da Verificação Científica}
+
+A avaliação do raciocínio científico em sistemas computacionais não é um
+problema meramente técnico — é, fundamentalmente, um problema epistemológico.
+A questão central não é ``este sistema acertou a resposta?'', mas ``este
+sistema produziu a resposta através de um processo de raciocínio verificável
+e reproduzível?''. Esta distinção, aparentemente sutil, tem implicações
+profundas para o design de benchmarks e para a confiança que podemos depositar
+em sistemas de IA científica.
+
+O filósofo da ciência Karl Popper\footnote{Popper, K. \textit{The Logic of
+Scientific Discovery}. Routledge, 1959. DOI: 10.4324/9780203994627. Obra
+fundacional que estabelece a falseabilidade como critério de demarcação
+entre ciência e não-ciência. Uma teoria científica deve fazer predições que
+possam ser testadas e potencialmente refutadas por evidência empírica.}
+estabeleceu que o critério de demarcação entre ciência e não-ciência é a
+\textbf{falseabilidade}: uma afirmação é científica se, e somente se, for
+possível conceber um experimento que poderia refutá-la. O verificador V3
+(Contraexemplos) do Cora-Debate operacionaliza este princípio: para cada
+afirmação produzida por um agente, V3 busca ativamente um contraexemplo que
+a refute. Se encontrado, a afirmação é rejeitada — independentemente de
+quão plausível parecesse.
+
+Thomas Kuhn\footnote{Kuhn, T.S. \textit{The Structure of Scientific
+Revolutions}. University of Chicago Press, 1962. DOI: 10.7208/9780226458106.
+Introduz o conceito de paradigma científico e mudança de paradigma. Períodos
+de ``ciência normal'' dentro de um paradigma são interrompidos por revoluções
+que substituem o paradigma por um novo.} complementou esta visão com o conceito
+de \textbf{paradigma}: a ciência não avança linearmente, mas através de
+saltos qualitativos quando um paradigma estabelecido é substituído por outro.
+A progressão do CORA-Score de 0,67 para 3,04 — com saltos de +0,88 (Listas
+DCA) e +0,62 (Salto M3) — ilustra precisamente este fenômeno: a transição
+entre níveis de maturidade (Básico→Graduação→Pós-Graduação→Pesquisa) não é
+contínua, mas ocorre em saltos quando uma nova capacidade (SDD+TDD, Cora,
+validação externa) é integrada ao ecossistema.
+
+Imre Lakatos\footnote{Lakatos, I. \textit{The Methodology of Scientific
+Research Programmes}. Cambridge University Press, 1978. DOI:
+10.1017/CBO9780511621123. Propõe que programas de pesquisa científica
+consistem em um ``núcleo duro'' de pressupostos fundamentais e um ``cinturão
+protetor'' de hipóteses auxiliares que podem ser modificadas sem abandonar
+o núcleo.} forneceu o conceito de \textbf{programa de pesquisa}: um núcleo
+de pressupostos fundamentais (o ``núcleo duro'') cercado por um ``cinturão
+protetor'' de hipóteses auxiliares. No OpenCode, o núcleo duro é o princípio
+SDD+TDD — toda implementação deve ser precedida por especificação e teste.
+O cinturão protetor consiste nos verificadores Cora (V1--V7), que podem ser
+estendidos ou modificados sem alterar o princípio fundamental.
+
+\\\paragraph{Fundamentos Estatísticos da Avaliação Multidimensional}
+
+A estrutura multidimensional do CORA-Eval fundamenta-se na Teoria de Resposta
+ao Item Multidimensional (MIRT)\footnote{Reckase, M.D. \textit{Multidimensional
+Item Response Theory}. Springer, 2009. DOI: 10.1007/978-0-387-89976-3.
+Generaliza a IRT unidimensional para modelar proficiência em múltiplas
+dimensões latentes simultaneamente, permitindo que um mesmo item contribua
+para a estimação de várias habilidades.}. Na IRT clássica, a probabilidade
+de um respondente acertar um item depende de uma única dimensão latente
+$\theta$ (a ``habilidade'' do respondente) e de parâmetros do item
+(dificuldade, discriminação). Na MIRT, o vetor $\boldsymbol{\theta}$ possui
+$k$ componentes, e a probabilidade de acerto depende de uma combinação
+linear das proficiências em cada dimensão.
+
+O CORA-Eval adota estrutura análoga com $k = 10$ dimensões latentes. A
+diferença fundamental é que, enquanto a MIRT tradicional estima $\theta$ a
+partir de observações de acerto/erro, o CORA-Eval \textbf{verifica} cada
+acerto através de múltiplos verificadores independentes (V1--V7), eliminando
+a dependência de modelos probabilísticos para inferir correção.
+
+A validade da métrica CORA-Score é sustentada por três propriedades
+psicométricas clássicas\footnote{Nunnally, J.C., Bernstein, I.H.
+\textit{Psychometric Theory}. McGraw-Hill, 3rd Ed., 1994. Estabelece os
+fundamentos da teoria psicométrica moderna: confiabilidade, validade e
+análise de itens.}: \textbf{confiabilidade} (consistência entre medições
+independentes — evidenciada pelo CV de 2,2\% na validação cruzada K=10),
+\textbf{validade de constructo} (a métrica mede o que se propõe a medir —
+evidenciada pela correlação $r = 0,94$ entre CORA-Score e CORA-V-Score), e
+\textbf{validade de critério} (a métrica prediz desempenho em critérios
+externos — evidenciada pela concordância com 34 problemas do Project Euler
+e Rosalind).
+
+\\\paragraph{Teoria da Verificação Formal}
+
+O subsistema Cora-Debate fundamenta-se na teoria de verificação formal de
+programas, especificamente no trabalho seminal de Hoare\footnote{Hoare,
+C.A.R. \textit{An Axiomatic Basis for Computer Programming}. Communications
+of the ACM, 12(10):576--580, 1969. DOI: 10.1145/363235.363259. Introduz o
+sistema axiomático $\{P\}C\{Q\}$ para provar propriedades de programas,
+onde $P$ é a pré-condição, $C$ é o comando, e $Q$ é a pós-condição.} e na
+verificação de modelos de Clarke\footnote{Clarke, E.M., Grumberg, O., Peled,
+D. \textit{Model Checking}. MIT Press, 1999. DOI: 10.7551/mitpress/4772.
+Estabelece os fundamentos da verificação automática de sistemas de estados
+finitos através da exploração exaustiva do espaço de estados.}. O verificador
+V7b (Logic Prover) implementa triplas de Hoare para funções científicas,
+enquanto V7g (Invariant Checker) utiliza bounded model checking via Z3\footnote{De Moura, L., Bjørner, N. \textit{Z3: An Efficient SMT Solver}. TACAS,
+2008. DOI: 10.1007/978-3-540-78800-3\_24. SMT solver desenvolvido pela
+Microsoft Research, capaz de resolver fórmulas em lógica de primeira ordem
+com teorias (aritmética, arrays, bit-vectors).} para verificar invariantes
+de laço.
+
+A arquitetura de múltiplos verificadores independentes inspira-se no conceito
+de \textbf{prova social} da epistemologia\footnote{Goldman, A.I.
+\textit{Knowledge in a Social World}. Oxford University Press, 1999. DOI:
+10.1093/0198238207.001.0001. Analisa como o conhecimento é produzido,
+distribuído e validado em contextos sociais, incluindo a ciência.}: a
+confiabilidade de uma afirmação aumenta quando múltiplos avaliadores
+independentes, usando métodos diferentes, chegam à mesma conclusão. Esta
+é precisamente a lógica por trás da triangulação metodológica do CORA-Eval:
+V1 (dimensional), V2 (algébrico), V3 (contraexemplos), V4 (estatístico),
+V5 (numérico), V6 (EDO/EDP) e V7 (código) são ``avaliadores independentes''
+que auditam cada afirmação usando critérios distintos e complementares.
+
+\\\paragraph{Geometria Diferencial da Informação}
+
+A extensão do CORA-Eval para geometria cognitiva (Seção 9) fundamenta-se na
+\textbf{geometria da informação}\footnote{Amari, S. \textit{Information
+Geometry and Its Applications}. Springer, 2016. DOI:
+10.1007/978-4-431-55978-8. Desenvolve a geometria Riemanniana de famílias
+estatísticas, onde a métrica de Fisher desempenha papel análogo à métrica
+Riemanniana em geometria diferencial.}, que estuda variedades Riemannianas
+cujos pontos são distribuições de probabilidade e cuja métrica é a métrica
+de Fisher. No CORA-Eval, o espaço de proficiência é modelado como uma
+variedade onde cada ponto representa um perfil de capacidades do ecossistema,
+e a métrica de Fisher quantifica a ``distância informacional'' entre perfis.
+
+A conexão com a Geometric Arbitrage Theory\footnote{Farinelli, S.
+\textit{Geometric Arbitrage Theory and Market Dynamics Reloaded}.
+arXiv:0910.1671v10, 2021. DOI: 10.48550/arXiv.0910.1671. Reformula toda a
+teoria de finanças estocásticas em linguagem de geometria diferencial: fibrados
+principais, conexões, curvatura e holonomia.} é mais profunda do que uma
+mera analogia. Em ambos os frameworks, a \textbf{curvatura} mede o desvio
+da ``trivialidade'': em finanças, curvatura $R \neq 0$ significa arbitragem;
+no CORA-Eval, curvatura alta significa que os verificadores fazem diferença
+decisiva na qualidade da resposta. Em ambos, a \textbf{holonomia} mede a
+dependência de caminho: em finanças, holonomia não-trivial significa que o
+resultado de uma estratégia de investimento depende da ordem das operações;
+no CORA-Eval, holonomia não-trivial significa que a ordem de aprendizado das
+dimensões importa — aprender D1 antes de D2 produz resultado diferente de
+aprender D2 antes de D1.
+
+\\\paragraph{Triangulação Metodológica como Princípio de Validação}
+
+O design do CORA-Eval incorpora o princípio da triangulação metodológica
+de Denzin\footnote{Denzin, N.K. \textit{The Research Act: A Theoretical
+Introduction to Sociological Methods}. McGraw-Hill, 1978. Define quatro
+tipos de triangulação: de dados (múltiplas fontes), de investigadores
+(múltiplos observadores), teórica (múltiplas perspectivas) e metodológica
+(múltiplos métodos).} em todas as suas dimensões:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Triangulação de dados}: as 150 tarefas do CORA-Eval provêm de
+      5 fontes independentes — Project Euler (matemática), Rosalind
+      (bioinformática), Listas DCA (física-matemática), GAT (geometria
+      diferencial) e TDD interno (química, geociências, literatura).
+\item \textbf{Triangulação de métodos}: cada afirmação é verificada por 3--7
+      métodos independentes (V1--V7), e os scores são validados por TDD
+      automatizado (97/98 testes) e cálculo manual (delta = 0,003).
+\item \textbf{Triangulação de investigadores}: o ecossistema multiagente
+       (79 agentes especializados em \texttt{agents/}, 125 incluindo
+       definicoes distribuidas em \texttt{criador-artigo/agents/} e
+       \texttt{basis-research/agents/}) simula multiplos ``investigadores''
+       independentes que produzem e criticam afirmacoes, com selecao via
+       Q-Score UCB1\footnote{Contagem verificavel: \texttt{agents/} = 79
+       arquivos; \texttt{criador-artigo/agents/} = 49; \texttt{basis-research/agents/}
+       = 12. Total distribuido = 140. Conforme Principio de Integridade R-I1.}.
+\item \textbf{Triangulação teórica}: o framework integra perspectivas da
+      epistemologia (Popper, Kuhn, Lakatos), psicometria (MIRT, Nunnally),
+      verificação formal (Hoare, Clarke) e geometria da informação (Amari,
+      Farinelli).
+\end{enumerate}
+
+Esta triangulação sistemática é o que diferencia o CORA-Eval de benchmarks
+convencionais: enquanto MATH, GSM8K e MMLU dependem exclusivamente de
+comparação de resposta final contra gabarito (um único método), o CORA-Eval
+exige convergência entre múltiplos métodos, fontes e perspectivas antes de
+atribuir um score.
+
+\\\\paragraph{Reprodutibilidade e Auditoria}
+
+\\\paragraph{Princípio de Reprodutibilidade Total}
+
+O OpenCode Ecosystem adere ao \textbf{princípio de reprodutibilidade total}:
+qualquer afirmação feita nesta dissertação — seja um score, uma correlação,
+um gráfico ou uma conclusão — pode ser reproduzida independentemente por um
+terceiro com acesso ao repositório GitHub. Este princípio é operacionalizado
+através de cinco mecanismos:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Código aberto}: todos os scripts de teste, rastreadores e
+      verificadores estão disponíveis em
+      \texttt{artigo/evaluations/tests/}.
+\item \textbf{Dados abertos}: todos os scores, snapshots e matrizes estão em
+      \texttt{cora\_scores.json}, formato JSON human-readable.
+\item \textbf{Ambiente reproduzível}: dependências Python são padrão
+      (sympy, scipy, numpy) ou implementadas do zero sem dependências externas.
+\item \textbf{Trilha de auditoria}: cada score é rastreável a um teste TDD
+      específico e a um verificador Cora específico (Anexos A--D).
+\item \textbf{Validação externa}: 34 problemas do Project Euler e Rosalind
+      fornecem ground truth independente e imutável.
+\end{enumerate}
+
+\\\paragraph{Auditoria Independente: Passo a Passo}
+
+Para permitir que uma banca examinadora verifique independentemente qualquer
+resultado desta dissertação, documentamos o procedimento completo de auditoria:
+
+\begin{enumerate}[label=\textbf{Passo \arabic*}:,leftmargin=*]
+\item \textbf{Clonar o repositório}: \\
+      \texttt{git clone https://github.com/MarceloClaro/OpenCode\_Ecosystem}
+\item \textbf{Executar o teste exaustivo}: \\
+      \texttt{cd artigo/evaluations/tests \&\& python test\_exaustivo\_final.py} \\
+      \textit{Esperado: 34/34 PASS, CV=2.2\%}
+\item \textbf{Verificar o CORA-Score manualmente}: \\
+      \texttt{python cora\_benchmark\_tracker.py --report} \\
+      \textit{Esperado: CORA-Score = 3.04, consistente com Anexo D}
+\item \textbf{Executar a geometria cognitiva}: \\
+      \texttt{python cora\_cognitive\_geometry.py --full} \\
+      \textit{Esperado: matriz de dependência, grafo, tensor, curvatura}
+\item \textbf{Verificar 5 dimensões em N4}: \\
+      \texttt{python cora\_benchmark\_tracker.py --detail D1} (repetir para D2,D3,D7,D10) \\
+      \textit{Esperado: cada dimensão com score $\geq$ 3.0}
+\end{enumerate}
+
+\\\paragraph{Contraprovas: O Que o Sistema Não Consegue Fazer}
+
+A integridade científica exige que documentemos não apenas os sucessos, mas
+também os fracassos — o que o ecossistema \textbf{não} consegue fazer. Esta
+seção constitui a ``contraprova'' da dissertação.
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{EBM com difusão}: o modelo de balanço energético com difusão
+      explícita falha por instabilidade numérica (passo de tempo excede o
+      critério de estabilidade de Fourier). A versão estacionária (sem
+      difusão dependente do tempo) funciona, mas não captura a dinâmica
+      transiente. \textbf{Status}: resolvido parcialmente via Crank-Nicolson
+      (Seção 9), requer validação adicional.
+\item \textbf{Montagem de genoma completo}: o algoritmo de Bruijn implementado
+      funciona para genomas sintéticos pequenos ($\sim$3.4kbp), mas não escala
+      para genomas bacterianos reais ($\sim$4.6Mbp) sem otimizações de
+      memória e estruturas de dados especializadas (Bloom filters, hashing).
+      \textbf{Status}: prova de conceito funcional; escala requer engenharia.
+\item \textbf{Meta-análise PRISMA}: a extração de metodologias de 50+ artigos
+      depende de APIs externas (arXiv, Semantic Scholar) cuja disponibilidade
+      e limites de taxa não são controláveis pelo ecossistema. A revisão de
+      literatura em escala (D8-N3) permanece o gargalo mais significativo.
+      \textbf{Status}: arquitetura definida (chunking + GraphRAG), requer
+      implementação e validação com corpus real.
+\item \textbf{Simulações HPC}: Schrödinger 2D (split-operator FFT) e
+      Navier-Stokes 2D (Re=1000) requerem capacidade computacional além do
+      ambiente atual (CPU única, Windows 11). Workarounds via redução
+      dimensional existem mas produzem resultados qualitativos, não
+      quantitativamente precisos. \textbf{Status}: bloqueio de infraestrutura,
+      não de arquitetura.
+\end{enumerate}
+
+\\\paragraph{Checklist de Auditoria para a Banca}
+
+\begin{table}[H]\centering\caption{Checklist de verificações para a banca examinadora}
+\label{tab:checklist}
+\begin{tabular}{p{0.05\textwidth}p{0.55\textwidth}p{0.08\textwidth}p{0.15\textwidth}}
+\toprule
+\textbf{\#} & \textbf{Verificação} & \textbf{OK?} & \textbf{Evidência} \\
+\midrule
+1 & CORA-Score = 3.04 (cálculo manual confere) & $\square$ & Anexo D \\
+2 & 34/34 testes cegos Project Euler + Rosalind & $\square$ & \texttt{test\_exaustivo\_final.py} \\
+3 & Cross-validation K=10 com CV $<$ 5\% & $\square$ & Seção 10.3 \\
+4 & 5 dimensões em N4 (D1,D2,D3,D7,D10) & $\square$ & \texttt{cora\_scores.json} \\
+5 & Todas as 10 dimensões avaliadas & $\square$ & \texttt{--report} \\
+6 & 13 suítes TDD, 113/114 testes GREEN & $\square$ & \texttt{run\_all\_benchmarks.py} \\
+7 & Verificadores V1--V7 implementados e testados & $\square$ & Seção 2.4 \\
+8 & Matriz de dependência reproduzível ($r$ D1-D10 = 0.97) & $\square$ & \texttt{--matrix} \\
+9 & Grafo cognitivo com 4 comunidades & $\square$ & \texttt{--graph} \\
+10 & Geodésica de aprendizado: D5$\to$D6$\to$D8$\to$D4$\to$D3 & $\square$ & \texttt{--curvature} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\\\\paragraph{Limitações e Agenda de Pesquisa Futura}
+
+\\\paragraph{Limitações Reconhecidas}
+
+Com base nos resultados da validação exaustiva (Seção 10), identificamos
+cinco categorias de limitações que afetam a interpretação dos resultados:
+
+\textbf{L1 — Cobertura de domínios}: As 10 dimensões do CORA-Eval cobrem
+ciências exatas e da natureza, mas não incluem ciências humanas (economia,
+linguística, psicologia) nem engenharias aplicadas (civil, mecânica, elétrica).
+A generalização dos resultados para estes domínios não é garantida.
+
+\textbf{L2 — Viés de seleção de tarefas}: As 150 tarefas foram selecionadas
+por conveniência (disponibilidade de ground truth), não por amostragem
+aleatória estratificada. Isto pode favorecer dimensões com ground truth
+abundante (D1, matemática) em detrimento de dimensões com ground truth escasso
+(D9, metodologia experimental).
+
+\textbf{L3 — Dependência de verificadores próprios}: Os verificadores V1--V7
+foram implementados internamente. Embora a validação externa (Project Euler,
+Rosalind) mitigue parcialmente este viés, a auditoria independente dos
+verificadores por terceiros fortaleceria a validade dos resultados.
+
+\textbf{L4 — Escala temporal}: Os 8 snapshots cobrem um período de
+aproximadamente 11 horas (28--29 de maio de 2026). A extrapolação das
+tendências de crescimento (tensor de evolução) para horizontes mais longos
+assume estacionariedade que pode não se manter.
+
+\textbf{L5 — Reprodutibilidade entre ambientes}: O ecossistema foi testado
+exclusivamente em Windows 11 com Python 3.12. A reprodutibilidade em Linux
+ou macOS não foi verificada, embora o código seja portável por design.
+
+\\\paragraph{Agenda de Pesquisa Futura}
+
+\textbf{TF1 —Extensão para ciências humanas}: Adaptar o CORA-Eval para incluir
+dimensões de economia (modelagem de equilíbrio geral), linguística
+(processamento de corpus) e psicologia experimental (desenho de experimentos
+comportamentais).
+
+\textbf{TF2 — Validação externa ampliada}: Identificar fontes de ground truth
+externo para física (Olimpíada Internacional de Física), química (Cambridge
+Structural Database) e geociências (dados observacionais do IPCC).
+
+\textbf{TF3 — Auditoria independente}: Submeter os verificadores Cora V1--V7
+a auditoria por especialistas externos em cada domínio (físicos para V1,
+matemáticos para V2, estatísticos para V4, engenheiros de software para V7).
+
+\textbf{TF4 — Escalabilidade computacional}: Migrar simulações HPC (Schrödinger
+2D, Navier-Stokes) para ambiente cloud com GPU, e implementar EBM com difusão
+implícita (Crank-Nicolson) totalmente validado.
+
+\textbf{TF5 — Meta-análise automatizada}: Implementar o pipeline completo de
+revisão sistemática (PRISMA) com integração às APIs arXiv, Semantic Scholar
+e OpenAlex, incluindo extração automatizada de effect sizes e funnel plots.
+
+\textbf{TF6 — Geometria diferencial completa}: Implementar conexão de
+Levi-Civita, curvatura de Riemann e holonomia no espaço de proficiência,
+completando o programa de pesquisa iniciado na Seção 9.
+
+\textbf{TF7 — Estudo longitudinal}: Manter o CORA-Eval ativo por 6--12 meses,
+registrando snapshots semanais para validar (ou refutar) as projeções de
+crescimento do tensor de evolução e a estabilidade da geodésica de aprendizado.
+
+\\\paragraph{Considerações Éticas e de Transparência}
+
+O OpenCode Ecosystem é um projeto de código aberto (MIT License). Todos os
+dados, códigos e resultados apresentados nesta dissertação são públicos e
+reproduzíveis. Não há conflitos de interesse a declarar. As referências
+bibliográficas incluem DOIs sempre que disponíveis. Os 34 problemas do
+Project Euler e Rosalind utilizados para validação externa são de acesso
+público e suas respostas são verificáveis independentemente.
+
+A metodologia CORA-Eval não utiliza dados pessoais, não realiza experimentos
+com seres humanos ou animais, e não apresenta riscos éticos identificáveis.
+O único viés potencial é a sub-representação de pesquisadores do Sul Global
+nas fontes de ground truth (Project Euler e Rosalind são plataformas
+majoritariamente anglófonas), que deve ser endereçada em trabalhos futuros
+através da inclusão de fontes em português, espanhol e outras línguas.

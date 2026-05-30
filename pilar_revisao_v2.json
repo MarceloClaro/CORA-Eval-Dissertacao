@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-05-30T01:57:36.281058",
+  "padroes": 10,
+  "defesas": {
+    "total_padroes": 10,
+    "resolvido": 5,
+    "parcial": 2,
+    "pendente": 2,
+    "atencao": 1,
+    "nota_defesa": 65,
+    "nota_maxima": 100,
+    "pct": 65.0,
+    "detalhes": {
+      "P1": {
+        "status": "RESOLVIDO",
+        "acao_tomada": "Substituido '4.3 milhoes de verificacoes' por '42 problemas com verificacao automatica'",
+        "evidencia": "Resumo do relatorio tecnico (linha 56-57). Nota: verificacao e binaria (correto/erro), nao por revisores.",
+        "auto_resposta": "O numero de 4.3 milhoes referia-se a usuarios cadastrados nas plataformas, nao a revisores. Corrigido para contagem exata de 42 problemas resolvidos."
+      },
+      "P2": {
+        "status": "RESOLVIDO",
+        "acao_tomada": "Adicionada coluna de confianca (Alta/Media/Baixa). Score bruto 3.04 complementado por ajustado 2.59.",
+        "evidencia": "Tabela de scores com coluna Conf. (Secao 5.1). CORA-Score ajustado = 2.59.",
+        "auto_resposta": "Reconhecemos que 8/10 dimensoes dependem de validacao interna. O score ajustado (2.59) penaliza essa circularidade. D1 e D5 tem validacao externa via Project Euler e Rosalind."
+      },
+      "P3": {
+        "status": "RESOLVIDO PARCIALMENTE",
+        "acao_tomada": "Comparacao qualificada como 'modelos bare-metal'. Design 1x3 documentado mas NAO EXECUTADO.",
+        "evidencia": "Secao 8 do relatorio. test_comparacao_justa.py.",
+        "auto_resposta": "A comparacao original era assimetrica (multiagente+verificadores vs bare-metal). O design 1x3 corrige isso mas ainda nao foi executado. Efeito estimado: verificadores +18.5%, multiagente +31.6%."
+      },
+      "P4": {
+        "status": "RESOLVIDO",
+        "acao_tomada": "Ledoit-Wolf implementado. Shrinkage=7.7% para n=150, p=10. Documentada limitacao para p>n.",
+        "evidencia": "test_melhorias_defesa.py (TDD-4). Secao 11 do relatorio.",
+        "auto_resposta": "Para n=150 e p=10, a matriz e bem-condicionada (shrinkage=7.7%). Para 38 dimensoes, seria necessario shrinkage ~30-50%. A implementacao de Ledoit-Wolf (2004) resolve o problema de regularizacao."
+      },
+      "P5": {
+        "status": "RESOLVIDO",
+        "acao_tomada": "Termo 'Dissertacao' substituido por 'Relatorio Tecnico' em todo o documento. Metadados: 'auto-publicado, sem revisao por pares'.",
+        "evidencia": "Metadados do PDF. Cabecalho do documento.",
+        "auto_resposta": "Este documento e um relatorio tecnico auto-publicado, nao uma dissertacao defendida. Nao ha banca, orientador ou instituicao. A formatacao ABNT e uma escolha de estilo, nao uma reivindicacao de status academico."
+      },
+      "P11": {
+        "status": "RESOLVIDO PARCIALMENTE",
+        "acao_tomada": "Design 1x3 (bare vs +Cora vs OpenCode) documentado. Efeitos estimados a partir de dados disponiveis.",
+        "evidencia": "test_comparacao_justa.py. Efeito verificadores: +0.36. Efeito multiagente: +0.73.",
+        "auto_resposta": "O estudo de ablacao foi projetado (3 condicoes, mesmo modelo base) mas nao executado com todos os sistemas. As estimativas baseiam-se em dados reais do Ollama e do OpenCode. Execucao completa requer acesso aos 3 sistemas."
+      },
+      "P12": {
+        "status": "PENDENTE",
+        "acao_tomada": "Nenhum baseline trivial foi implementado.",
+        "evidencia": "Pendente. Sugestao: testar respostas sem prompt engineering (zero-shot) nos 42 problemas.",
+        "auto_resposta": "Reconhecemos a ausencia de baseline trivial. Um baseline zero-shot (modelo respondendo sem instrucoes especificas) seria informativo para quantificar o efeito do prompt engineering e da arquitetura. Pendente de implementacao."
+      },
+      "P13": {
+        "status": "RESOLVIDO",
+        "acao_tomada": "Bootstrap IC 95% implementado para CORA-Score. IC = [2.65, 3.39], t=198.6, p<0.001.",
+        "evidencia": "test_evolucao_pilar.py (P8). Secao 12.3 do relatorio.",
+        "auto_resposta": "O CORA-Score de 3.04 e reportado com IC 95% via bootstrap (5000 replicacoes): [2.65, 3.39]. A classificacao como superior a M3 (2.50) e estatisticamente significativa (t=198.6, p<0.001)."
+      },
+      "P14": {
+        "status": "ATENCAO",
+        "acao_tomada": "42 problemas testados incrementalmente. Rodadas documentadas por timestamp. Porem, nao ha garantia formal de nao-contaminacao.",
+        "evidencia": "Snapshots no cora_scores.json mostram quando cada dimensao foi avaliada pela primeira vez.",
+        "auto_resposta": "Os 42 problemas foram testados em 4 rodadas incrementais. Os snapshots temporais no cora_scores.json registram quando cada score foi atribuido. Nao ha como provar ausencia de contaminacao sem um conjunto de teste completamente isolado desde o inicio — limitacao reconhecida."
+      },
+      "P15": {
+        "status": "PENDENTE",
+        "acao_tomada": "Nenhuma reavaliacao temporal foi realizada.",
+        "evidencia": "Todos os snapshots sao de 28-29/maio/2026. Sem dados posteriores.",
+        "auto_resposta": "Os resultados refletem o estado do ecossistema em 29/maio/2026. Nao ha garantia de que se mantenham em avaliacoes futuras. Uma reavaliacao periodica (semanal ou mensal) esta planejada mas nao executada."
+      }
+    }
+  }
+}

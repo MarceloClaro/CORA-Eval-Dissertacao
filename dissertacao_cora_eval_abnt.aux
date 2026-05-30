@@ -1,0 +1,703 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\catcode `"\active 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\babel@aux{brazilian}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introdução}{11}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Contexto: A Avaliação de Inteligência Artificial Científica}{11}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}O Problema da Fragmentação de Benchmarks}{12}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}O Ecossistema OpenCode}{12}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Objetivos e Estrutura}{12}{subsection.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Arcabouço Teórico}{12}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Epistemologia da Verificação Científica}{13}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Fundamentos Estatísticos da Avaliação Multidimensional}{13}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Teoria da Verificação Formal}{14}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Geometria Diferencial da Informação}{15}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Triangulação Metodológica como Princípio de Validação}{15}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Princípio de Reprodutibilidade Total}{16}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Auditoria Independente: Passo a Passo}{16}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contraprovas: O Que o Sistema Não Consegue Fazer}{17}{section*.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Checklist de verificações para a banca examinadora}}{18}{table.caption.11}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:checklist}{{1}{18}{Checklist de verificações para a banca examinadora}{table.caption.11}{}}
+\@writefile{toc}{\contentsline {paragraph}{Checklist de Auditoria para a Banca}{18}{table.caption.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitações Reconhecidas}{18}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Agenda de Pesquisa Futura}{19}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Considerações Éticas e de Transparência}{19}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Metodologia: O Framework CORA-Eval}{20}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fundamentação Metodológica}{20}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Dimensões e Níveis}{20}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Cálculo do CORA-Score}{20}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Pipeline de Avaliação e Fontes de Ground Truth}{20}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Cada Verificador em Detalhe}{21}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}V1 — Análise Dimensional}{21}{subsubsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}V2 — Verificador Algébrico}{21}{subsubsection.3.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}V3 — Contraexemplos}{22}{subsubsection.3.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.4}V4 — Verificador Estatístico}{22}{subsubsection.3.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.5}V5 — Verificador Numérico}{22}{subsubsection.3.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.6}V6 — Verificador de EDO/EDP}{22}{subsubsection.3.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.7}V7 — Verificador de Código-Fonte}{23}{subsubsection.3.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Calibração dos Níveis de Complexidade}{23}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Evolução do Ecossistema OpenCode}{24}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Fase 1: Fundação e Infraestrutura Acadêmica (Rounds 1--7)}{24}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Fase 2: Engenharia de Software com Agentes (Rounds 8--10)}{24}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Fase 3: CORA-Eval — Maturidade Científica (Rounds 11--14)}{24}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Progressão Temporal}{25}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Evolução completa do CORA-Score}}{25}{table.caption.15}\protected@file@percent }
+\newlabel{tab:evolucao}{{2}{25}{Evolução completa do CORA-Score}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Resultados da Validação}{25}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Desempenho Global}{25}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Pontuação final por dimensão}}{26}{table.caption.16}\protected@file@percent }
+\newlabel{tab:scores}{{3}{26}{Pontuação final por dimensão}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Validação Cega Exaustiva}{26}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Resultados da validação cega exaustiva}}{26}{table.caption.17}\protected@file@percent }
+\newlabel{tab:blind}{{4}{26}{Resultados da validação cega exaustiva}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Validação Cruzada K=10}{26}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Resultados da validação cruzada}}{26}{table.caption.18}\protected@file@percent }
+\newlabel{tab:cv}{{5}{26}{Resultados da validação cruzada}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Suítes TDD — 13 suites, 113/114 GREEN}{27}{subsection.5.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Suítes TDD do CORA-Eval}}{27}{table.caption.19}\protected@file@percent }
+\newlabel{tab:tdd}{{6}{27}{Suítes TDD do CORA-Eval}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Impacto do SDD+TDD no Ecossistema}{27}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}O Impacto Metodológico do SDD+TDD no OpenCode Ecosystem}{27}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Antes do SDD+TDD: Correção Reativa (Rounds 1--7)}{27}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Ecossistema OpenCode antes do SDD+TDD (Rounds 1--7)}}{28}{table.caption.20}\protected@file@percent }
+\newlabel{tab:pre_sdd}{{7}{28}{Ecossistema OpenCode antes do SDD+TDD (Rounds 1--7)}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Round 8: A Introdução do SDD+TDD}{28}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Spec-Driven Development (SDD)}{28}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Test-Driven Development (TDD)}{29}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}DecisionNode: Memória Estruturada de Decisões}{29}{subsubsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Round 9: A Consolidação em Pipeline Autônomo}{29}{subsection.7.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Correspondência TDD clássico $\leftrightarrow $ Pipeline AutoEvolve}}{30}{table.caption.21}\protected@file@percent }
+\newlabel{tab:tdd_pipeline}{{8}{30}{Correspondência TDD clássico $\leftrightarrow $ Pipeline AutoEvolve}{table.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}O Impacto no CORA-Eval (Rounds 11--14)}{30}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.4.1}Suítes TDD como Evidência}{30}{subsubsection.7.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.4.2}Pipeline de 5 Estágios}{31}{subsubsection.7.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.4.3}Rastreabilidade Total}{31}{subsubsection.7.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Antes e Depois: A Transformação Quantificada}{31}{subsection.7.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Impacto do SDD+TDD: antes vs depois}}{31}{table.caption.22}\protected@file@percent }
+\newlabel{tab:before_after}{{9}{31}{Impacto do SDD+TDD: antes vs depois}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Implicações para a Ciência da Computação}{32}{subsection.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Estudo Comparativo: Ollama vs OpenCode}{32}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Contexto e Motivação}{32}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Modelos Avaliados}{33}{subsection.8.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Modelos Ollama avaliados no CORA-Eval}}{33}{table.caption.23}\protected@file@percent }
+\newlabel{tab:ollama_models}{{10}{33}{Modelos Ollama avaliados no CORA-Eval}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Metodologia de Comparação}{33}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Resultados: CORA-Score por Modelo}{34}{subsection.8.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces CORA-Score comparativo: OpenCode vs Modelos Ollama}}{34}{table.caption.24}\protected@file@percent }
+\newlabel{tab:cora_comparison}{{11}{34}{CORA-Score comparativo: OpenCode vs Modelos Ollama}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Análise por Dimensão}{35}{subsection.8.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Desempenho por dimensão: OpenCode vs DeepSeek-V3 (melhor Ollama)}}{35}{table.caption.25}\protected@file@percent }
+\newlabel{tab:dim_comparison}{{12}{35}{Desempenho por dimensão: OpenCode vs DeepSeek-V3 (melhor Ollama)}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Análise Qualitativa: Tipos de Erro}{35}{subsection.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7}Impacto dos Verificadores}{36}{subsection.8.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.8}Eficiência Computacional}{36}{subsection.8.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Eficiência computacional comparada}}{36}{table.caption.26}\protected@file@percent }
+\newlabel{tab:efficiency}{{13}{36}{Eficiência computacional comparada}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.9}Discussão e Implicações}{37}{subsection.8.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.10}Limitações do Estudo Comparativo}{37}{subsection.8.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Geometria Cognitiva: Do CORA-Score Estático ao Espaço 38D Dinâmico}{38}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Motivação: Além da Aproximação Independente}{38}{subsection.9.1}\protected@file@percent }
+\newlabel{eq:indep}{{1}{38}{Motivação: Além da Aproximação Independente}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Matriz de Dependência entre Dimensões}{38}{subsection.9.2}\protected@file@percent }
+\newlabel{eq:mahalanobis}{{2}{38}{Matriz de Dependência entre Dimensões}{equation.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Matriz de correlação entre dimensões do CORA-Eval}}{39}{table.caption.27}\protected@file@percent }
+\newlabel{tab:corr_matrix}{{14}{39}{Matriz de correlação entre dimensões do CORA-Eval}{table.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Grafo Cognitivo de Verificadores}{39}{subsection.9.3}\protected@file@percent }
+\newlabel{eq:graph}{{3}{39}{Grafo Cognitivo de Verificadores}{equation.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Propriedades topológicas do grafo cognitivo}}{40}{table.caption.28}\protected@file@percent }
+\newlabel{tab:graph_props}{{15}{40}{Propriedades topológicas do grafo cognitivo}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Decomposição Tensorial da Evolução Temporal}{40}{subsection.9.4}\protected@file@percent }
+\newlabel{eq:tensor}{{4}{40}{Decomposição Tensorial da Evolução Temporal}{equation.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Taxa de crescimento por dimensão (decomposição tensorial)}}{41}{table.caption.29}\protected@file@percent }
+\newlabel{tab:tensor_trends}{{16}{41}{Taxa de crescimento por dimensão (decomposição tensorial)}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}Métrica de Fisher e Curvatura do Espaço de Aprendizado}{41}{subsection.9.5}\protected@file@percent }
+\newlabel{eq:fisher}{{5}{41}{Métrica de Fisher e Curvatura do Espaço de Aprendizado}{equation.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Curvatura de Fisher por dimensão}}{42}{table.caption.30}\protected@file@percent }
+\newlabel{tab:curvature}{{17}{42}{Curvatura de Fisher por dimensão}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6}Implicações para a Evolução do Ecossistema}{42}{subsection.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.7}Trabalhos Futuros: Rumo a uma Geometria Diferencial Completa}{43}{subsection.9.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Interpretação da Geometria Cognitiva: Guia para a Banca}{44}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}O Problema Original: Aproximação Independente}{44}{subsection.10.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Diagrama conceitual: da aproximação independente à geometria conectada}}{44}{figure.caption.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Matriz de Dependência: Quem Depende de Quem?}{44}{subsection.10.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Fluxograma de interpretação da matriz de dependência}}{45}{figure.caption.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Grafo Cognitivo: Quem Verifica o Quê?}{45}{subsection.10.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Diagrama do grafo cognitivo com comunidades e propriedades}}{45}{figure.caption.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Decomposição Tensorial: Quem Cresce Mais Rápido?}{46}{subsection.10.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Fluxograma da decomposição tensorial e interpretação das taxas}}{46}{figure.caption.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Métrica de Fisher: Onde Investir Agora?}{46}{subsection.10.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Geodésica de aprendizado: caminho ótimo para o marco M4}}{47}{figure.caption.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6}Síntese: Do Mapa Estático ao GPS do Aprendizado}{47}{subsection.10.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Do mapa estático ao GPS do aprendizado}}{48}{table.caption.36}\protected@file@percent }
+\newlabel{tab:gps}{{18}{48}{Do mapa estático ao GPS do aprendizado}{table.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7}Fluxograma Geral do Sistema}{49}{subsection.10.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Fluxograma completo do sistema de geometria cognitiva}}{49}{figure.caption.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Refinamento Critico: Perguntas que Lapidaram o Sistema}{49}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Quem, alem do proprio sistema, validou isso?}{49}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}A comparacao com Ollama e justa?}{50}{subsection.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}A geometria Riemanniana e viavel com 150 pontos?}{50}{subsection.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}O que o sistema NAO consegue fazer?}{50}{subsection.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5}Este documento e uma dissertacao?}{50}{subsection.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6}Validade Interna e Triangulação}{50}{subsection.11.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.7}Validade Externa}{51}{subsection.11.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.8}Significancia Estatistica (Resposta P8)}{51}{subsection.11.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.9}Calibracao dos Verificadores (Resposta P9)}{51}{subsection.11.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Calibracao completa dos 7 verificadores Cora}}{51}{table.caption.38}\protected@file@percent }
+\newlabel{tab:calibracao}{{19}{51}{Calibracao completa dos 7 verificadores Cora}{table.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.10}Vies de Selecao de Tarefas (Resposta P10)}{52}{subsection.11.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.11}Status de Reprodutibilidade (Resposta P7)}{52}{subsection.11.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.12}Limitacao de Generalizacao (Resposta P6)}{53}{subsection.11.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Trajetória Evolutiva: Os 14 Rounds de Desenvolvimento}{53}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Fase 1: Fundação -- Infraestrutura e Produção Acadêmica (Rounds 1--7)}{53}{subsection.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.1}Round 1: Pipeline de Correlação Cruzada com Bootstrap}{53}{subsubsection.12.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.2}Round 2: Pipeline MASWOS de Artigos Acadêmicos}{54}{subsubsection.12.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.3}Round 3: Sistema TSAC de Citações e Integração Sci-Hub}{54}{subsubsection.12.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.4}Round 4: Loop de Correção Iterativa v2.0}{55}{subsubsection.12.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.5}Round 5: Corretor de Linguagem e Protocolo CJK}{55}{subsubsection.12.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.6}Round 6: Editais-BR v2.0 -- Busca Inteligente}{56}{subsubsection.12.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.1.7}Round 7: Editais-BR v7.1 -- Cache Versionado e Curadoria}{56}{subsubsection.12.1.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}Fase 2: Engenharia de Software com Agentes Inteligentes (Rounds 8--10)}{57}{subsection.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.2.1}Round 8: Pipeline SDD+TDD e Simulação de Arguição}{57}{subsubsection.12.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.2.2}Round 9: Refinamento LaTeX, Framework e Documentação}{57}{subsubsection.12.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.2.3}Round 10: Menu Adaptativo e Plugin System}{58}{subsubsection.12.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}Fase 3: CORA-Eval -- Maturidade Científica (Rounds 11--14)}{58}{subsection.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.3.1}Round 11: Framework CORA-Eval -- Linha de Base}{58}{subsubsection.12.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.3.2}Round 12: Listas DCA e Cobertura Horizontal (M1 $\rightarrow $ M2)}{59}{subsubsection.12.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.3.3}Round 13: Salto M3, GAT e Validação Externa}{59}{subsubsection.12.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {12.3.4}Round 14: Evolução M4 -- Nível de Pesquisa (2,70 $\rightarrow $ 2,99)}{60}{subsubsection.12.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Análise Detalhada das 10 Dimensões CORA-Eval com Estudos de Caso}{61}{section.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}D1 -- Raciocínio Matemático Formal (Peso 15\%, Score: 3,60 -- N4)}{61}{subsection.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}D2 -- Modelagem de Sistemas Físicos (Peso 12\%, Score: 3,50 -- N4)}{62}{subsection.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.3}D3 -- Análise Estatística e Inferência (Peso 12\%, Score: 3,40 -- N4)}{62}{subsection.13.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.4}D4 -- Química Computacional e Estrutural (Peso 10\%, Score: 2,23 -- N3)}{63}{subsection.13.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.5}D5 -- Biologia Molecular e Genômica (Peso 10\%, Score: 2,45 -- N3)}{63}{subsection.13.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.6}D6 -- Geociências e Modelagem Climática (Peso 8\%, Score: 2,30 -- N3)}{63}{subsection.13.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.7}D7 -- Verificação de Código Científico (Peso 10\%, Score: 3,20 -- N4)}{64}{subsection.13.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.8}D8 -- Revisão Sistemática de Literatura (Peso 8\%, Score: 2,45 -- N3)}{64}{subsection.13.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.9}D9 -- Desenho Experimental e Metodologia (Peso 8\%, Score: 2,67 -- N3)}{65}{subsection.13.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.10}D10 -- Síntese Interdisciplinar (Peso 7\%, Score: 3,67 -- N4)}{65}{subsection.13.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {14}Discussão Crítica das Ameaças à Validade}{65}{section.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}Validade Interna}{65}{subsection.14.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.2}Validade Externa}{66}{subsection.14.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.3}Validade de Constructo}{66}{subsection.14.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.4}Validade de Conclusão Estatística}{67}{subsection.14.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {15}Comparação com Benchmarks Existentes}{67}{section.15}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Comparação entre CORA-Eval e benchmarks estabelecidos}}{68}{table.caption.39}\protected@file@percent }
+\newlabel{tab:benchmark_comp}{{20}{68}{Comparação entre CORA-Eval e benchmarks estabelecidos}{table.caption.39}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}MATH (Hendrycks et al., 2021)}{68}{subsection.15.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}GSM8K (Cobbe et al., 2021)}{68}{subsection.15.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.3}MMLU (Hendrycks et al., 2020)}{69}{subsection.15.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.4}SciBench (Wang et al., 2023)}{69}{subsection.15.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.5}BIG-bench (Srivastava et al., 2022)}{70}{subsection.15.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.6}Síntese Comparativa}{70}{subsection.15.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Pontuação comparativa em dimensões de qualidade (0--5)}}{70}{table.caption.40}\protected@file@percent }
+\newlabel{tab:score_comp}{{21}{70}{Pontuação comparativa em dimensões de qualidade (0--5)}{table.caption.40}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {16}Limitações e Trabalhos Futuros}{71}{section.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.1}Limitações Atuais}{71}{subsection.16.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.2}Trabalhos Futuros}{71}{subsection.16.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {17}Considerações sobre Reprodutibilidade e Ética}{73}{section.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.1}Reprodutibilidade}{73}{subsection.17.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.2}Considerações Éticas}{73}{subsection.17.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.3}Referencial Teórico Complementar: Sci-Hub e Democratização da Ciência}{73}{subsection.17.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.4}Estudos de Caso Adicionais por Dimensão}{74}{subsection.17.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.1}D1 — Raciocínio Matemático: Prova do Teorema de Pitágoras por Rearranjo}{74}{subsubsection.17.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.2}D2 — Física: Conservação do Momento Angular no Problema de Kepler}{74}{subsubsection.17.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.3}D3 — Estatística: Convergência do Algoritmo EM}{75}{subsubsection.17.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.4}D4 — Química: Constante de Equilíbrio e Princípio de Le Chatelier}{75}{subsubsection.17.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.5}D5 — Biologia: Equilíbrio de Hardy-Weinberg com Seleção}{75}{subsubsection.17.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.6}D6 — Geociências: Forçante Radiativa de CO$_2$}{76}{subsubsection.17.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.7}D7 — Código Científico: Verificação V7 de um Método de Runge-Kutta}{76}{subsubsection.17.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.8}D8 — Literatura: Revisão Sistemática da Teoria KAM}{76}{subsubsection.17.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.9}D9 — Metodologia: Delineamento Fatorial $2^3$ com Análise de Variância}{77}{subsubsection.17.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.4.10}D10 — Síntese Interdisciplinar: Equação de Cole-Hopf e Difusão}{77}{subsubsection.17.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.5}Análise de Sensibilidade dos Pesos do CORA-Score}{77}{subsection.17.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.6}Reprodutibilidade Computacional: Ambiente e Dependências}{78}{subsection.17.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces Ambiente computacional de execução}}{78}{table.caption.41}\protected@file@percent }
+\newlabel{tab:ambiente}{{22}{78}{Ambiente computacional de execução}{table.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.7}Métricas de Desempenho Temporal}{78}{subsection.17.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.8}Checklist de Verificação para a Banca Examinadora}{79}{subsection.17.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces Checklist completa de verificação para a banca}}{79}{table.caption.42}\protected@file@percent }
+\newlabel{tab:checklist_full}{{23}{79}{Checklist completa de verificação para a banca}{table.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.9}Análise Comparativa Detalhada: CORA-Eval vs Estado da Arte}{79}{subsection.17.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.9.1}MATH (Hendrycks et al., 2021)}{79}{subsubsection.17.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.9.2}MMLU (Hendrycks et al., 2020)}{80}{subsubsection.17.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.9.3}SciBench (Wang et al., 2023)}{80}{subsubsection.17.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.9.4}BIG-bench (Srivastava et al., 2022)}{81}{subsubsection.17.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.10}Teoria da Decisão aplicada à Seleção de Verificadores}{81}{subsection.17.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.11}Análise de Robustez: Perturbação dos Scores}{81}{subsection.17.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.12}Distribuição de Tarefas por Dimensão e Nível: Análise de Cobertura}{82}{subsection.17.12}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {24}{\ignorespaces Distribuição de tarefas e cobertura por dimensão e nível}}{82}{table.caption.43}\protected@file@percent }
+\newlabel{tab:coverage}{{24}{82}{Distribuição de tarefas e cobertura por dimensão e nível}{table.caption.43}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.13}Contribuições Específicas para a Ciência da Computação}{82}{subsection.17.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.14}Lições Aprendidas e Recomendações para Pesquisadores}{83}{subsection.17.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.15}Glossário de Termos Técnicos}{84}{subsection.17.15}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces Glossário de siglas e termos técnicos}}{84}{table.caption.44}\protected@file@percent }
+\newlabel{tab:glossario}{{25}{84}{Glossário de siglas e termos técnicos}{table.caption.44}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.16}Derivação Matemática Completa do CORA-Score}{84}{subsection.17.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.16.1}Definição Formal}{84}{subsubsection.17.16.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.16.2}Prova de Monotonicidade}{84}{subsubsection.17.16.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {17.16.3}Análise de Convergência}{85}{subsubsection.17.16.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.17}Catálogo de Padrões de Correção (F01--F10): Aplicação ao CORA-Eval}{85}{subsection.17.17}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {26}{\ignorespaces Generalização dos padrões F01--F10 para raciocínio científico}}{85}{table.caption.45}\protected@file@percent }
+\newlabel{tab:patterns}{{26}{85}{Generalização dos padrões F01--F10 para raciocínio científico}{table.caption.45}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.18}Análise de Custo-Benefício dos Verificadores}{86}{subsection.17.18}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {27}{\ignorespaces Custo-benefício dos verificadores Cora}}{86}{table.caption.46}\protected@file@percent }
+\newlabel{tab:cost}{{27}{86}{Custo-benefício dos verificadores Cora}{table.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.19}Impacto Potencial e Aplicações Práticas}{86}{subsection.17.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.20}Declaração de Transparência e Reprodutibilidade}{87}{subsection.17.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.21}Agradecimentos}{87}{subsection.17.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.22}Nota Estimada e Gaps Pendentes}{88}{subsection.17.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {18}Conclusao}{88}{section.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.1}Síntese dos Achados}{88}{subsection.18.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.2}Contribuições}{88}{subsection.18.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.3}Trabalhos Futuros}{88}{subsection.18.3}\protected@file@percent }
+\gdef \LT@i {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@ii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Catalogo Completo de Tarefas do \texttt  {CORA-Eval}}{89}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Tarefas $D_1$ --- Raciocinio Matematico Formal (Peso 15\%)}{89}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.1}Nivel $N_1$ --- Basico}{89}{subsubsection.A.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.2}Nivel $N_2$ --- Graduacao}{89}{subsubsection.A.1.2}\protected@file@percent }
+\gdef \LT@iii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@iv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.3}Nivel $N_3$ --- Pos-Graduacao}{90}{subsubsection.A.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.4}Nivel $N_4$ --- Pesquisa}{90}{subsubsection.A.1.4}\protected@file@percent }
+\gdef \LT@v {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{27.07976pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@vi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Tarefas $D_2$ --- Modelagem de Sistemas Fisicos (Peso 12\%)}{91}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.1}Nivel $N_1$ --- Basico}{91}{subsubsection.A.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.2}Nivel $N_2$ --- Graduacao}{91}{subsubsection.A.2.2}\protected@file@percent }
+\gdef \LT@vii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@viii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.3}Nivel $N_3$ --- Pos-Graduacao}{92}{subsubsection.A.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.4}Nivel $N_4$ --- Pesquisa}{92}{subsubsection.A.2.4}\protected@file@percent }
+\gdef \LT@ix {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@x {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Tarefas $D_3$ --- Analise Estatistica e Inferencia (Peso 12\%)}{93}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3.1}Nivel $N_1$ --- Basico}{93}{subsubsection.A.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3.2}Nivel $N_2$ --- Graduacao}{93}{subsubsection.A.3.2}\protected@file@percent }
+\gdef \LT@xi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3.3}Nivel $N_3$ --- Pos-Graduacao}{94}{subsubsection.A.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3.4}Nivel $N_4$ --- Pesquisa}{94}{subsubsection.A.3.4}\protected@file@percent }
+\gdef \LT@xiii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xiv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Tarefas $D_4$ --- Quimica Computacional e Estrutural (Peso 10\%)}{95}{subsection.A.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4.1}Nivel $N_1$ --- Basico}{95}{subsubsection.A.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4.2}Nivel $N_2$ --- Graduacao}{95}{subsubsection.A.4.2}\protected@file@percent }
+\gdef \LT@xv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\gdef \LT@xvi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4.3}Nivel $N_3$ --- Pos-Graduacao}{96}{subsubsection.A.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4.4}Nivel $N_4$ --- Pesquisa}{96}{subsubsection.A.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Tarefas $D_5$ --- Biologia Molecular e Genomica (Peso 10\%)}{96}{subsection.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5.1}Nivel $N_1$ --- Basico}{96}{subsubsection.A.5.1}\protected@file@percent }
+\gdef \LT@xvii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{27.07976pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xviii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xix {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5.2}Nivel $N_2$ --- Graduacao}{97}{subsubsection.A.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5.3}Nivel $N_3$ --- Pos-Graduacao}{97}{subsubsection.A.5.3}\protected@file@percent }
+\gdef \LT@xx {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\gdef \LT@xxi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.5.4}Nivel $N_4$ --- Pesquisa}{98}{subsubsection.A.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Tarefas $D_6$ --- Geociencias e Modelagem Climatica (Peso 8\%)}{98}{subsection.A.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6.1}Nivel $N_1$ --- Basico}{98}{subsubsection.A.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6.2}Nivel $N_2$ --- Graduacao}{98}{subsubsection.A.6.2}\protected@file@percent }
+\gdef \LT@xxii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxiii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxiv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6.3}Nivel $N_3$ --- Pos-Graduacao}{99}{subsubsection.A.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.6.4}Nivel $N_4$ --- Pesquisa}{99}{subsubsection.A.6.4}\protected@file@percent }
+\gdef \LT@xxv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{32.95332pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxvi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{58.07495pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxvii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{57.42233pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Tarefas $D_7$ --- Verificacao de Codigo Cientifico (Peso 10\%)}{100}{subsection.A.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.7.1}Nivel $N_1$ --- Basico}{100}{subsubsection.A.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.7.2}Nivel $N_2$ --- Graduacao}{100}{subsubsection.A.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.7.3}Nivel $N_3$ --- Pos-Graduacao}{100}{subsubsection.A.7.3}\protected@file@percent }
+\gdef \LT@xxviii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{56.11711pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.7.4}Nivel $N_4$ --- Pesquisa}{101}{subsubsection.A.7.4}\protected@file@percent }
+\gdef \LT@xxix {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{27.07976pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxx {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.8}Tarefas $D_8$ --- Revisao Sistematica de Literatura (Peso 8\%)}{102}{subsection.A.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.8.1}Nivel $N_1$ --- Basico}{102}{subsubsection.A.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.8.2}Nivel $N_2$ --- Graduacao}{102}{subsubsection.A.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.8.3}Nivel $N_3$ --- Pos-Graduacao}{102}{subsubsection.A.8.3}\protected@file@percent }
+\gdef \LT@xxxi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\gdef \LT@xxxii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.8.4}Nivel $N_4$ --- Pesquisa}{103}{subsubsection.A.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.9}Tarefas $D_9$ --- Desenho Experimental e Metodologia (Peso 8\%)}{103}{subsection.A.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.9.1}Nivel $N_1$ --- Basico}{103}{subsubsection.A.9.1}\protected@file@percent }
+\gdef \LT@xxxiii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{27.07976pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxxiv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxxv {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.9.2}Nivel $N_2$ --- Graduacao}{104}{subsubsection.A.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.9.3}Nivel $N_3$ --- Pos-Graduacao}{104}{subsubsection.A.9.3}\protected@file@percent }
+\gdef \LT@xxxvi {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.02258pt}\LT@entry 
+    {4}{59.54965pt}}
+\gdef \LT@xxxvii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.67522pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.9.4}Nivel $N_4$ --- Pesquisa}{105}{subsubsection.A.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.10}Tarefas $D_{10}$ --- Sintese Interdisciplinar (Peso 7\%)}{105}{subsection.A.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.10.1}Nivel $N_1$ --- Basico}{105}{subsubsection.A.10.1}\protected@file@percent }
+\gdef \LT@xxxviii {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.67522pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xxxix {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{45.67522pt}\LT@entry 
+    {4}{63.30006pt}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.10.2}Nivel $N_2$ --- Graduacao}{106}{subsubsection.A.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.10.3}Nivel $N_3$ --- Pos-Graduacao}{106}{subsubsection.A.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.10.4}Nivel $N_4$ --- Pesquisa}{106}{subsubsection.A.10.4}\protected@file@percent }
+\gdef \LT@xl {\LT@entry 
+    {1}{69.70549pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {1}{131.90147pt}\LT@entry 
+    {4}{80.90823pt}\LT@entry 
+    {4}{63.30006pt}}
+\gdef \LT@xli {\LT@entry 
+    {4}{128.85703pt}\LT@entry 
+    {1}{28.35562pt}\LT@entry 
+    {1}{28.35562pt}\LT@entry 
+    {1}{28.35562pt}\LT@entry 
+    {1}{28.35562pt}\LT@entry 
+    {1}{42.96892pt}\LT@entry 
+    {1}{76.51488pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.11}Sumario Estatistico do Catalogo}{107}{subsection.A.11}\protected@file@percent }
+\gdef \LT@xlii {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Evidencias de Testes TDD por Suite}{108}{appendix.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}\textit  {Suite} D4: Quimica Computacional ($N_1$)}{108}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}\textit  {Suite} D5: Biologia Molecular ($N_1$)}{108}{subsection.B.2}\protected@file@percent }
+\gdef \LT@xliii {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\gdef \LT@xliv {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}\textit  {Suite} D6: Geociencias ($N_1$)}{109}{subsection.B.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}\textit  {Suite} D8: Revisao de Literatura ($N_1$)}{110}{subsection.B.4}\protected@file@percent }
+\gdef \LT@xlv {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\gdef \LT@xlvi {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\gdef \LT@xlvii {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}\textit  {Suite} D8-N2: Bibliografia GAT ($N_2$)}{112}{subsection.B.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}\textit  {Suite} D10: Sintese Interdisciplinar ($N_4$)}{112}{subsection.B.6}\protected@file@percent }
+\gdef \LT@xlviii {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.7}\textit  {Suite} D3: Estatistica ($N_2+N_3$)}{113}{subsection.B.7}\protected@file@percent }
+\gdef \LT@xlix {\LT@entry 
+    {1}{83.93187pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.8}\textit  {Suite} Evolucao M4: Problemas de Pesquisa}{114}{subsection.B.8}\protected@file@percent }
+\gdef \LT@l {\LT@entry 
+    {4}{198.00478pt}\LT@entry 
+    {4}{90.68185pt}\LT@entry 
+    {4}{55.19011pt}\LT@entry 
+    {1}{48.87439pt}\LT@entry 
+    {4}{94.95204pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.9}Resumo Consolidado das 12 \textit  {Suites} TDD}{115}{subsection.B.9}\protected@file@percent }
+\gdef \LT@li {\LT@entry 
+    {1}{41.25273pt}\LT@entry 
+    {1}{97.75826pt}\LT@entry 
+    {1}{83.53188pt}\LT@entry 
+    {1}{69.3055pt}\LT@entry 
+    {1}{55.07912pt}\LT@entry 
+    {1}{55.07912pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Validacao Externa: \textit  {Project Euler}}{116}{appendix.C}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Problemas Resolvidos}{116}{subsection.C.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Verificacao Adicional com Cora}{117}{subsection.C.2}\protected@file@percent }
+\gdef \LT@lii {\LT@entry 
+    {1}{35.56227pt}\LT@entry 
+    {1}{97.75826pt}\LT@entry 
+    {1}{111.98463pt}\LT@entry 
+    {1}{83.53188pt}\LT@entry 
+    {1}{40.85274pt}\LT@entry 
+    {1}{55.07912pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Validacao Externa: \textit  {Rosalind}}{118}{appendix.D}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Problemas Resolvidos}{118}{subsection.D.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Verificacao Detalhada}{118}{subsection.D.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {E}Trilha de Auditoria do CORA-Score}{120}{appendix.E}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Formulacao Matematica}{120}{subsection.E.1}\protected@file@percent }
+\newlabel{eq:cora_dim_score}{{14}{120}{Formulacao Matematica}{equation.14}{}}
+\newlabel{eq:cora_global}{{15}{120}{Formulacao Matematica}{equation.15}{}}
+\newlabel{eq:cora_v_score}{{16}{120}{Formulacao Matematica}{equation.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Calculo por Dimensao}{120}{subsection.E.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.1}$D_1$ --- Raciocinio Matematico Formal ($w_{1}=0.15$)}{120}{subsubsection.E.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.2}$D_2$ --- Modelagem de Sistemas Fisicos ($w_{2}=0.12$)}{121}{subsubsection.E.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.3}$D_3$ --- Analise Estatistica e Inferencia ($w_{3}=0.12$)}{121}{subsubsection.E.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.4}$D_4$ --- Quimica Computacional ($w_{4}=0.10$)}{121}{subsubsection.E.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.5}$D_5$ --- Biologia Molecular e Genomica ($w_{5}=0.10$)}{122}{subsubsection.E.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.6}$D_6$ --- Geociencias e Modelagem Climatica ($w_{6}=0.08$)}{122}{subsubsection.E.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.7}$D_7$ --- Verificacao de Codigo Cientifico ($w_{7}=0.10$)}{122}{subsubsection.E.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.8}$D_8$ --- Revisao Sistematica de Literatura ($w_{8}=0.08$)}{123}{subsubsection.E.2.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.9}$D_9$ --- Desenho Experimental e Metodologia ($w_{9}=0.08$)}{123}{subsubsection.E.2.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {E.2.10}$D_{10}$ --- Sintese Interdisciplinar ($w_{10}=0.07$)}{123}{subsubsection.E.2.10}\protected@file@percent }
+\gdef \LT@liii {\LT@entry 
+    {1}{41.8901pt}\LT@entry 
+    {1}{43.3577pt}\LT@entry 
+    {1}{54.90208pt}\LT@entry 
+    {4}{33.28378pt}\LT@entry 
+    {4}{33.28378pt}\LT@entry 
+    {1}{61.77682pt}\LT@entry 
+    {1}{59.00665pt}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.3}Agregacao Final}{124}{subsection.E.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.4}Classificacao}{124}{subsection.E.4}\protected@file@percent }
+\gdef \LT@liv {\LT@entry 
+    {1}{24.04726pt}\LT@entry 
+    {4}{71.13567pt}\LT@entry 
+    {1}{41.77475pt}\LT@entry 
+    {1}{88.95766pt}\LT@entry 
+    {1}{59.00665pt}\LT@entry 
+    {4}{90.04213pt}\LT@entry 
+    {1}{111.98463pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Evolucao Temporal Completa do CORA-Score}{125}{appendix.F}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.1}Linha do Tempo Detalhada}{125}{subsection.F.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.2}Progressao Visual}{127}{subsection.F.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {82}{\ignorespaces Progressao dos 8 snapshots evolutivos}}{127}{table.caption.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.3}Evolucao por Dimensao}{127}{subsection.F.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {83}{\ignorespaces Evolucao dos scores por dimensao ao longo dos snapshots}}{127}{table.caption.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.4}Marcos (\textit  {Milestones})}{127}{subsection.F.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {84}{\ignorespaces Marcos de maturidade cientifica}}{127}{table.caption.49}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.5}Projecao para M4 (Pesquisa)}{128}{subsection.F.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.6}Grafico de Evolucao Temporal}{128}{subsection.F.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {85}{\ignorespaces Trajetoria do CORA-Score}}{128}{table.caption.50}\protected@file@percent }
+\gdef \LT@lv {\LT@entry 
+    {1}{28.17123pt}\LT@entry 
+    {4}{94.69518pt}\LT@entry 
+    {1}{183.11652pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {G}Especificacao dos Verificadores Cora}{129}{appendix.G}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.1}Subverificadores V7 (Codigo)}{129}{subsection.G.1}\protected@file@percent }
+\gdef \LT@lvi {\LT@entry 
+    {1}{55.16464pt}\LT@entry 
+    {4}{85.16695pt}\LT@entry 
+    {1}{168.89014pt}}
+\gdef \LT@lvii {\LT@entry 
+    {1}{98.15825pt}\LT@entry 
+    {1}{126.21101pt}\LT@entry 
+    {1}{140.4374pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {H}Fontes de \textit  {Ground Truth} Utilizadas}{131}{appendix.H}\protected@file@percent }
+\gdef \@abspage@last{132}

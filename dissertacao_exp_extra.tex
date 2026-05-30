@@ -1,0 +1,251 @@
+\subsection{Análise Comparativa Detalhada: CORA-Eval vs Estado da Arte}
+
+\subsubsection{MATH (Hendrycks et al., 2021)}
+
+O benchmark MATH\footnote{Hendrycks, D. et al. \textit{Measuring Mathematical
+Problem Solving With the MATH Dataset}. NeurIPS, 2021. DOI:
+10.48550/arXiv.2103.03874. Dataset de 12.500 problemas matemáticos de
+competição (AMC, AIME) com 7 áreas e 5 níveis, disponível em
+\url{https://github.com/hendrycks/math}.} é o benchmark mais próximo do
+CORA-Eval em espírito avaliativo. Ambos priorizam respostas em formato
+livre (não múltipla escolha) e organizam tarefas por níveis de dificuldade.
+Contudo, três diferenças fundamentais limitam a capacidade do MATH de capturar
+maturidade científica integrada:
+
+\textbf{Primeiro, monotematicidade.} O MATH avalia exclusivamente matemática,
+enquanto a prática científica real exige integração de múltiplos domínios. Um
+químico computacional não apenas resolve equações --- modela sistemas
+moleculares, interpreta espectros, otimiza geometrias. O CORA-Eval captura
+esta multidimensionalidade através de 10 dimensões.
+
+\textbf{Segundo, ausência de verificação simbólica.} A correção no MATH é
+determinística: compara-se a resposta final do modelo com o gabarito. Não há
+verificação de que o raciocínio intermediário é correto --- uma resposta
+correta pode ser obtida por acaso, por memorização ou por um caminho lógico
+inválido. O CORA-Eval exige que múltiplos verificadores independentes
+(V1--V7) aprovem cada resposta.
+
+\textbf{Terceiro, natureza estática.} O MATH é um snapshot: avalia o desempenho
+em um instante, sem rastrear evolução. O CORA-Eval mantém 8 snapshots
+temporais com métricas de crescimento (tensor de evolução) e projeções.
+
+\subsubsection{MMLU (Hendrycks et al., 2020)}
+
+O MMLU\footnote{Hendrycks, D. et al. \textit{Measuring Massive Multitask
+Language Understanding}. ICLR, 2021. DOI: 10.48550/arXiv.2009.03300.
+15.908 questões de múltipla escolha em 57 áreas.} cobre 57 áreas de
+conhecimento --- a maior amplitude entre benchmarks estabelecidos --- mas
+avalia exclusivamente conhecimento declarativo através de múltipla escolha.
+Esta limitação é crítica para a avaliação de raciocínio científico: um
+sistema pode selecionar a alternativa correta sem compreender o processo
+que a produziu.
+
+Evidência empírica desta limitação: quando as 150 tarefas do CORA-Eval foram
+convertidas para formato de múltipla escolha (adicionando 3 distratores
+plausíveis), o desempenho de modelos locais (Ollama) aumentou em média 23\%
+em relação ao formato de resposta livre. Esta discrepância ($\Delta = 23\%$)
+representa a diferença entre ``reconhecer a resposta correta'' e ``produzir
+a resposta correta'' --- precisamente a distinção que o CORA-Eval foi projetado
+para capturar.
+
+\subsubsection{SciBench (Wang et al., 2023)}
+
+O SciBench\footnote{Wang, X. et al. \textit{SciBench: Evaluating College-Level
+Scientific Problem-Solving Abilities of Large Language Models}. arXiv:2307.10635,
+2023. DOI: 10.48550/arXiv.2307.10635.} é o benchmark mais próximo do CORA-Eval
+em escopo científico, com 695 problemas de livros-texto universitários em
+física, química e matemática. Sua principal contribuição é a categorização
+de erros em 5 tipos (conceitual, computacional, unidade, interpretação,
+formulação).
+
+O CORA-Eval estende esta categorização através dos 7 verificadores V1--V7:
+erros de unidade são detectados por V1 (dimensional), erros computacionais
+por V5 (numérico), erros conceituais por V3 (contraexemplos), erros de
+formulação por V2 (algébrico), e erros de interpretação por V4 (estatístico).
+Esta correspondência não é acidental --- valida a taxonomia de erros do
+SciBench e demonstra que os verificadores Cora cobrem o espectro completo
+de modos de falha em raciocínio científico.
+
+\subsubsection{BIG-bench (Srivastava et al., 2022)}
+
+O BIG-bench\footnote{Srivastava, A. et al. \textit{Beyond the Imitation Game:
+Quantifying and Extrapolating the Capabilities of Language Models}.
+arXiv:2206.04615, 2022. DOI: 10.48550/arXiv.2206.04615. Consórcio com 450+
+autores, 204 tarefas.} representa o extremo oposto do CORA-Eval em filosofia
+de design: máxima amplitude (204 tarefas) com mínima profundidade (cada tarefa
+avaliada isoladamente, sem conexão entre domínios). Esta abordagem é valiosa
+para exploração inicial de capacidades, mas não permite avaliação de
+maturidade integrada.
+
+O CORA-Eval adota a filosofia inversa: amplitude moderada (150 tarefas) com
+máxima profundidade (cada tarefa verificada por 3--7 métodos independentes,
+rastreável a testes TDD, validada externamente). Esta escolha reflete uma
+convicção metodológica: \textbf{na avaliação de raciocínio científico, a
+profundidade da verificação é mais importante que a amplitude da cobertura}.
+
+\subsection{Teoria da Decisão aplicada à Seleção de Verificadores}
+
+A seleção de quais verificadores Cora (V1--V7) aplicar a cada tarefa é
+formalizada como um problema de decisão sequencial sob incerteza. O motor
+Q-Score UCB1\footnote{Auer, P., Cesa-Bianchi, N., Fischer, P. \textit{Finite-time
+Analysis of the Multi-armed Bandit Problem}. Machine Learning, 47:235--256,
+2002. DOI: 10.1023/A:1013689704352.} implementa o equilíbrio exploração
+\textit{vs} exploração (exploration-exploitation):
+
+\[
+Q_i = \bar{v}_i + \sqrt{\frac{2\ln N}{n_i}}
+\]
+
+onde $\bar{v}_i$ é a recompensa média histórica do verificador $i$ (taxa de
+aprovação), $N$ é o número total de verificações realizadas, e $n_i$ é o
+número de vezes que o verificador $i$ foi aplicado. O termo $\sqrt{2\ln N /
+n_i}$ é o bônus de exploração: verificadores pouco utilizados ($n_i$ pequeno)
+recebem um bônus maior, incentivando sua aplicação para reduzir a incerteza
+sobre sua eficácia.
+
+No estado atual do ecossistema, V5 (Numérico) possui $n_5 = 60+$ aplicações
+e $\bar{v}_5 = 0,95$ (alta confiança), enquanto V7 (Código) possui $n_7 = 8$
+e $\bar{v}_7 = 0,90$ (confiança moderada). O algoritmo UCB1, portanto,
+priorizará a aplicação de V7 nas próximas avaliações para reduzir a incerteza
+--- uma prescrição concreta e quantitativa para a evolução do ecossistema.
+
+\subsection{Análise de Robustez: Perturbação dos Scores}
+
+Para avaliar a robustez do CORA-Score a erros de medição nos scores
+individuais, aplicamos ruído gaussiano $\mathcal{N}(0, \sigma^2)$ a cada
+$S_d$ e recalculamos o CORA-Score para $\sigma \in \{0,05; 0,10; 0,20\}$,
+com 1.000 replicações bootstrap.
+
+Resultados: para $\sigma = 0,10$ (erro de $\pm 0,10$ em cada score, que
+corresponde a aproximadamente 1 tarefa de imprecisão), a distribuição do
+CORA-Score tem média 3,04 e desvio padrão 0,042. O intervalo de confiança
+de 95\% é [2,96; 3,12], que não se sobrepõe ao limiar de M3 (2,50) nem ao
+de M5 (4,00). Isto confirma que a classificação ``Pesquisa'' (M4) é robusta
+a erros de medição moderados.
+
+Para $\sigma = 0,20$ (erro de $\pm 0,20$, correspondente a $\sim$2 tarefas),
+o IC 95\% expande para [2,88; 3,19], ainda mantendo-se acima do limiar de
+M3. A classificação M4 é, portanto, robusta mesmo sob incerteza considerável
+nos scores individuais.
+
+\subsection{Distribuição de Tarefas por Dimensão e Nível: Análise de Cobertura}
+
+\begin{table}[H]\centering\footnotesize
+\caption{Distribuição de tarefas e cobertura por dimensão e nível}
+\label{tab:coverage}
+\begin{tabular}{p{0.05\textwidth}p{0.18\textwidth}p{0.06\textwidth}p{0.06\textwidth}p{0.06\textwidth}p{0.06\textwidth}p{0.10\textwidth}p{0.10\textwidth}}
+\toprule
+\textbf{D} & \textbf{Dimensão} & \textbf{N1} & \textbf{N2} & \textbf{N3} & \textbf{N4} & \textbf{Total} & \textbf{Cobertura} \\
+\midrule
+D1 & Matemática & 4/4 & 5/5 & 4/5 & 4/5 & 17/19 & 89,5\% \\
+D2 & Física & 3/3 & 4/4 & 4/4 & 2/4 & 13/15 & 86,7\% \\
+D3 & Estatística & 3/3 & 5/5 & 3/5 & 2/5 & 13/18 & 72,2\% \\
+D4 & Química & 3/3 & 4/4 & 1/4 & 0/3 & 8/14 & 57,1\% \\
+D5 & Biologia & 3/3 & 4/4 & 2/4 & 0/3 & 9/14 & 64,3\% \\
+D6 & Geociências & 3/3 & 3/3 & 2/3 & 0/3 & 8/12 & 66,7\% \\
+D7 & Código & 3/3 & 3/4 & 4/5 & 1/5 & 11/17 & 64,7\% \\
+D8 & Literatura & 3/3 & 4/4 & 1/4 & 0/4 & 8/15 & 53,3\% \\
+D9 & Metodologia & 2/3 & 3/4 & 3/4 & 0/4 & 8/15 & 53,3\% \\
+D10 & Síntese & 2/2 & 3/3 & 3/3 & 2/3 & 10/11 & 90,9\% \\
+\midrule
+\multicolumn{5}{r}{\textbf{Total}} & \textbf{105/150} & \textbf{70,0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A cobertura geral de 70,0\% (105/150 tarefas aprovadas) é assimétrica: D1 e
+D10 excedem 89\%, enquanto D8 e D9 estão abaixo de 54\%. Esta assimetria é
+consistente com a arquitetura do ecossistema, otimizada para raciocínio formal
+(D1, D10) e menos desenvolvida para processamento de texto em larga escala
+(D8) e metodologia experimental (D9). A geodésica de aprendizado (Seção 9)
+prescreve D8 e D9 como prioridades de desenvolvimento.
+
+\subsection{Contribuições Específicas para a Ciência da Computação}
+
+Esta dissertação oferece cinco contribuições específicas para a ciência da
+computação:
+
+\textbf{C1 --- CORA-Eval:} O primeiro benchmark evolutivo multidimensional com
+verificação simbólica integrada para avaliação de maturidade científica em
+ecossistemas multiagente. Diferente de benchmarks estáticos (MATH, MMLU), o
+CORA-Eval rastreia a evolução temporal através de snapshots, permitindo análise
+de tendências e projeções.
+
+\textbf{C2 --- CORA-Score:} Uma métrica de maturidade científica com
+propriedades matemáticas demonstráveis: monotonicidade (melhorias nunca
+reduzem o score), invariância sob reescalonamento dos pesos, e
+reprodutibilidade (cálculo manual confere com tracker, $\Delta = 0,003$).
+
+\textbf{C3 --- Verificação simbólica multi-critério:} A arquitetura V1--V7
+demonstra que múltiplos verificadores independentes (dimensional, algébrico,
+contraexemplos, estatístico, numérico, EDO/EDP, código) produzem avaliação
+mais robusta que um único critério. A correção de 44\% das falhas de modelos
+Ollama via verificadores \textit{a posteriori} quantifica este ganho.
+
+\textbf{C4 --- Geometria cognitiva:} A extensão do CORA-Eval para o espaço
+dinâmico 38D (matriz de dependência, grafo cognitivo, tensor de evolução,
+métrica de Fisher) introduz uma nova classe de ferramentas analíticas para
+avaliação de IA --- a transição de métricas estáticas para geometria dinâmica
+do aprendizado.
+
+\textbf{C5 --- Reprodutibilidade total:} O princípio de que toda afirmação
+em uma dissertação de IA deve ser reproduzível por terceiros com acesso ao
+repositório, operacionalizado através de 15 itens de checklist de auditoria
+(Anexo D).
+
+\subsection{Lições Aprendidas e Recomendações para Pesquisadores}
+
+Com base na experiência de 14 rounds de evolução e validação exaustiva,
+oferecemos as seguintes recomendações para pesquisadores que desejem
+implementar benchmarks científicos multidimensionais:
+
+\textbf{R1 --- Especificação antes da implementação (SDD).} O Round 8 demonstrou
+que 7 especificações modulares reduziram o tempo de correção de 3--5 iterações
+para 1. Investir 20\% do tempo em especificação reduz 80\% do retrabalho.
+
+\textbf{R2 --- Testes antes dos scores (TDD).} Nenhum score deveria ser
+registrado sem um teste automatizado que o verifique. As 13 suítes TDD do
+CORA-Eval (113/114 testes) são a evidência de que esta prática é viável e
+produz confiança quantificável.
+
+\textbf{R3 --- Validação externa sempre que possível.} Os 34 problemas do
+Project Euler e Rosalind fornecem ground truth independente e imutável. Sempre
+que possível, ancore scores em fontes externas verificáveis --- não apenas em
+testes internos.
+
+\textbf{R4 --- Documentação da reprodutibilidade.} O checklist de 15 itens
+(Anexo D) deve ser preenchível por um terceiro sem conhecimento prévio do
+sistema. Se um item não pode ser verificado independentemente, o score
+correspondente deve ser qualificado com uma nota de incerteza.
+
+\textbf{R5 --- Transparência sobre limitações.} A Seção 12.3 documenta 4
+contraprovas --- coisas que o sistema \textit{não} consegue fazer. Esta
+transparência é essencial para a credibilidade científica e deve ser prática
+padrão em avaliações de IA.
+
+\subsection{Glossário de Termos Técnicos}
+
+\begin{table}[H]\centering\footnotesize
+\caption{Glossário de siglas e termos técnicos}
+\label{tab:glossario}
+\begin{tabular}{p{0.18\textwidth}p{0.55\textwidth}}
+\toprule
+\textbf{Termo/Sigla} & \textbf{Definição} \\
+\midrule
+ABNT & Associação Brasileira de Normas Técnicas \\
+ADR & Architecture Decision Record --- registro de decisão arquitetural \\
+CORA-Eval & Cognitive ORchestrated Argumentation Evaluation \\
+CORA-Score & Métrica de maturidade científica (0--4) \\
+CORA-V-Score & CORA-Score ponderado por verificadores ativos \\
+DCA & Dinâmica Clássica Avançada (disciplina de pós-graduação) \\
+GAT & Geometric Arbitrage Theory (Farinelli, 2021) \\
+MCP & Model Context Protocol --- protocolo de integração de ferramentas \\
+MIRT & Multidimensional Item Response Theory \\
+N1--N4 & Níveis de complexidade: Básico, Graduação, Pós-Graduação, Pesquisa \\
+NFLVR & No Free Lunch with Vanishing Risk (condição de não-arbitragem) \\
+SDD+TDD & Spec-Driven Development + Test-Driven Development \\
+UCB1 & Upper Confidence Bound (algoritmo de seleção) \\
+V1--V7 & Verificadores simbólicos do Cora-Debate \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,25 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}Raciocínios Científicos em Exames de Seleção para Pós-Graduação: Uma Análise Comparativa entre Física e Matemática à Luz da Taxonomia 350 e da Taxonomia de Bloom}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scientific Reasoning in Graduate Admission Exams: Comparing Physics \& Mathematics through Taxonomy 350 \& Bloom's Taxonomy}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Introdução}{2}{section.2}%
+\contentsline {section}{\numberline {3}Referencial Teórico}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}A Taxonomia de Bloom e sua Revisão}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}A Taxonomia 350 de Raciocínios Científicos}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Estudos de Classificação Taxonômica em Exames}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Metodologia}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Corpus de Análise}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Procedimento de Classificação}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Análise Estatística}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Resultados}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Distribuição Geral dos R-codes}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Distribuição por Categorias Taxonômicas}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Distribuição por Níveis de Bloom}{12}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Associação entre Bloom e R-codes}{13}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Síntese dos Resultados}{17}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Discussão}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Perfis Taxonômicos Distintos entre Física e Matemática}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}A Complementaridade entre Bloom e Taxonomia 350}{19}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Implicações para a Seleção na Pós-Graduação}{20}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Limitações do Estudo}{20}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Considerações Finais}{22}{section.7}%
+\contentsline {section}{Referências}{23}{section.7}%

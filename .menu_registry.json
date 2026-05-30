@@ -1,0 +1,49 @@
+{
+  "commands": [
+    {
+      "id": "abrir-spec",
+      "name": "Abrir SPEC_ORCHESTRATION.md",
+      "description": "Exibe a especificação técnica do pipeline",
+      "category": "APRENDER",
+      "command": ["cmd", "/c", "type", "orchestration\\SPEC_ORCHESTRATION.md"],
+      "cwd": ".",
+      "timeout": 30
+    },
+    {
+      "id": "abrir-framework",
+      "name": "Abrir FRAMEWORK.md",
+      "description": "Exibe o framework conceitual SDD+TDD+AutoEvolve",
+      "category": "APRENDER",
+      "command": ["cmd", "/c", "type", "orchestration\\FRAMEWORK.md"],
+      "cwd": ".",
+      "timeout": 30
+    },
+    {
+      "id": "abrir-readme-testes",
+      "name": "Abrir README dos testes",
+      "description": "Guia de execução e extensão dos testes TDD",
+      "category": "APRENDER",
+      "command": ["cmd", "/c", "type", "tests\\README.md"],
+      "cwd": ".",
+      "timeout": 30
+    },
+    {
+      "id": "contar-palavras",
+      "name": "Contar palavras do documento",
+      "description": "Estimativa rápida de palavras no .tex principal",
+      "category": "FERRAMENTAS",
+      "command": ["powershell", "-Command", "Get-ChildItem *.tex | ForEach-Object { $c = (Get-Content $_ | Measure-Object -Word).Words; Write-Host (\"$($_.Name): $c palavras\") }"],
+      "cwd": ".",
+      "timeout": 30
+    },
+    {
+      "id": "limpar-auxiliares",
+      "name": "Limpar arquivos auxiliares LaTeX",
+      "description": "Remove .aux, .log, .toc, .out, .bbl, .blg",
+      "category": "OPERACIONAR",
+      "command": ["powershell", "-Command", "Get-ChildItem *.aux,*.log,*.toc,*.out,*.bbl,*.blg,*.lof,*.lot,*.synctex.gz -ErrorAction SilentlyContinue | Remove-Item -Force -ErrorAction SilentlyContinue; Write-Host 'Arquivos auxiliares removidos.'"],
+      "cwd": ".",
+      "timeout": 30
+    }
+  ]
+}

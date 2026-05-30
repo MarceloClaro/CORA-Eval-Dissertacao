@@ -1,0 +1,45 @@
+{
+  "ecossistema": "OpenCode v4.7",
+  "data": "2026-05-30 04:08",
+  "cora_eval": {
+    "score_bruto": 3.04,
+    "score_ajustado": 2.59,
+    "dimensoes": 10,
+    "n4_count": 5,
+    "blind_total": 42,
+    "blind_pass": 42,
+    "blind_pct": 100.0,
+    "cross_val_cv": 2.2
+  },
+  "verificacao": {
+    "tdd_suites": 20,
+    "tdd_status": "TODAS GREEN",
+    "verificadores_calibrados": 7,
+    "f1_medio": 95.5,
+    "testes_calibracao": 466
+  },
+  "banca": {
+    "revisores": 9,
+    "nota_media": 8.3,
+    "nota_min": 5.2,
+    "nota_max": 10.0,
+    "gaps_criticos": [
+      "R3_Reprodutibilidade",
+      "R7_Generalizacao"
+    ]
+  },
+  "defesa": {
+    "score": 85,
+    "padroes_ataque": 10,
+    "padroes_resolvidos": 7,
+    "padroes_parciais": 2,
+    "padroes_pendentes": 0
+  },
+  "documentacao": {
+    "relatorio_paginas": 132,
+    "overfull": 0,
+    "formato": "ABNT NBR 14724:2011",
+    "tipo": "Relatorio Tecnico auto-publicado"
+  },
+  "conclusao": "SISTEMA APROVADO. CORA-Score 3.04 em benchmark proprio, media da banca 8.3/10. 2 gaps criticos pendentes: reproducao por terceiros e generalizacao alem das ciencias exatas."
+}

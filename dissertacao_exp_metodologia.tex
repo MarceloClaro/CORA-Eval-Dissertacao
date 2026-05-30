@@ -1,0 +1,158 @@
+% ======================================================================
+% EXPANSÃO — Metodologia Detalhada
+% ======================================================================
+
+\subsection{Cada Verificador em Detalhe}
+
+\subsubsection{V1 — Análise Dimensional}
+
+O verificador V1 implementa o princípio fundamental da física de que equações
+que descrevem fenômenos naturais devem ser dimensionalmente homogêneas. Este
+princípio, formalizado por Fourier em 1822\footnote{Fourier, J.B.J. \textit{Théorie
+Analytique de la Chaleur}. Firmin Didot, 1822. Estabelece que as dimensões de
+cada termo em uma equação física devem ser idênticas — precursor da análise
+dimensional moderna.}, estabelece que cada termo de uma equação deve possuir as
+mesmas dimensões fundamentais.
+
+O V1 mantém uma ontologia de 7 dimensões base (massa $M$, comprimento $L$,
+tempo $T$, corrente elétrica $I$, temperatura $\Theta$, quantidade de matéria
+$N$, intensidade luminosa $J$) e verifica cada termo de uma equação contra
+esta ontologia. Por exemplo, para a equação de energia cinética $E = \frac{1}{2}mv^2$,
+o V1 verifica que $[E] = ML^2T^{-2}$, $[m] = M$, $[v^2] = L^2T^{-2}$, e
+portanto $[mv^2] = ML^2T^{-2} = [E]$. Esta verificação detecta erros como
+$E = \frac{1}{2}mv$ (dimensões inconsistentes) imediatamente.
+
+A implementação utiliza uma gramática de expressões que associa cada símbolo
+a um vetor dimensional de 7 componentes. Operações de multiplicação somam
+vetores; operações de potenciação escalam vetores; adição e subtração exigem
+vetores idênticos. Funções transcendentais ($\sin$, $\exp$, $\log$) exigem
+argumento adimensional — uma restrição que detecta erros como $\sin(t)$ onde
+$t$ tem dimensão de tempo.
+
+\subsubsection{V2 — Verificador Algébrico}
+
+O verificador V2 utiliza SymPy\footnote{Meurer, A. et al. \textit{SymPy: Symbolic
+Computing in Python}. PeerJ Computer Science, 3:e103, 2017. DOI:
+10.7717/peerj-cs.103. Biblioteca de computação simbólica pura em Python,
+comparável a Mathematica e Maple em funcionalidades de álgebra computacional.}
+para realizar manipulação simbólica. O V2 pode: (i) expandir expressões
+algébricas e simplificá-las; (ii) verificar identidades subtraindo o lado
+direito do esquerdo e simplificando a zero; (iii) resolver equações e sistemas
+de equações; (iv) computar derivadas, integrais e limites; (v) fatorar
+polinômios e encontrar raízes.
+
+A arquitetura do V2 inclui um cache de simplificações para evitar recomputação.
+Quando uma expressão é verificada, sua forma simplificada é armazenada com
+hash da expressão original. Em debates multiagente, onde diferentes agentes
+podem produzir a mesma expressão algébrica por caminhos diferentes, o cache
+reduz o tempo de verificação em até 60\%.
+
+Uma inovação do V2 é o ``modo pedagógico'': quando uma identidade não é
+verificada, o V2 não apenas reporta FAIL, mas tenta identificar qual
+transformação algébrica o agente provavelmente errou, oferecendo uma correção
+sugerida. Por exemplo, se o agente escreve $(a+b)^2 = a^2 + b^2$, o V2
+expande o lado esquerdo para $a^2 + 2ab + b^2$, identifica a discrepância
+($2ab$), e sugere a correção.
+
+\subsubsection{V3 — Contraexemplos}
+
+O verificador V3 operacionaliza o princípio de falseabilidade de Popper\footnote{Popper, K. \textit{The Logic of Scientific Discovery}. Routledge, 1959. DOI:
+10.4324/9780203994627. A falseabilidade — a possibilidade de ser refutado por
+evidência empírica — é o critério de demarcação entre ciência e não-ciência.}.
+Para uma afirmação da forma $\forall x \in D: P(x)$, o V3 busca um $x_0 \in D$
+tal que $\neg P(x_0)$. Se encontrado, a afirmação é refutada.
+
+O V3 implementa três estratégias de busca: (i) \textbf{grid search} sobre uma
+malha regular do domínio, eficaz para funções contínuas em domínios de baixa
+dimensionalidade ($\leq 3$); (ii) \textbf{random search} com distribuição
+uniforme ou normal, eficaz para domínios de alta dimensionalidade; (iii)
+\textbf{otimização adversarial}, onde um otimizador (L-BFGS-B ou differential
+evolution) é usado para maximizar $|\neg P(x)|$, encontrando contraexemplos
+mesmo quando a região de falha é pequena.
+
+Para afirmações existenciais ($\exists x: P(x)$), o V3 inverte a lógica:
+busca evidência positiva em vez de contraexemplos, usando as mesmas
+estratégias de busca.
+
+\subsubsection{V4 — Verificador Estatístico}
+
+O V4 implementa um pipeline de verificação estatística com 5 estágios:
+(i) \textbf{normalidade}: teste de Shapiro-Wilk nos resíduos; (ii)
+\textbf{tamanho de efeito}: Cohen's $d$ para comparações de dois grupos,
+$\eta^2$ para ANOVA; (iii) \textbf{significância}: cálculo de $p$-values
+com correção de Bonferroni ou Benjamini-Hochberg para múltiplas comparações;
+(iv) \textbf{homocedasticidade}: teste de Levene ou Breusch-Pagan; (v)
+\textbf{convergência}: diagnóstico $\hat{R} < 1,1$ para MCMC, critério de
+Gelman-Rubin.
+
+O V4 é particularmente importante porque muitos erros em análise de dados
+científicos não são erros de cálculo, mas erros de interpretação estatística:
+confundir correlação com causalidade, ignorar múltiplas comparações, usar
+testes paramétricos em dados não-normais. O V4 detecta estas categorias de
+erro.
+
+\subsubsection{V5 — Verificador Numérico}
+
+O V5 verifica cálculos numéricos com tolerância adaptativa baseada no tipo
+de operação: $10^{-6}$ para aritmética geral, $10^{-10}$ para integração
+numérica, $10^{-3}$ para raízes de equações. O V5 também detecta \textit{NaN}
+(not a number) e $\pm\infty$, que são indicadores de erros computacionais
+como divisão por zero ou overflow.
+
+\subsubsection{V6 — Verificador de EDO/EDP}
+
+O V6 utiliza \texttt{SymPy dsolve} para verificar soluções analíticas de
+equações diferenciais. Para uma EDO $F(x, y, y', \ldots) = 0$ e uma solução
+proposta $y = f(x)$, o V6 computa as derivadas necessárias, substitui na
+equação, e simplifica. Se o resultado simplifica para $0 = 0$, a solução é
+verificada.
+
+Para EDPs, o V6 suporta separação de variáveis e soluções por série de
+Fourier. Para equações sem solução analítica conhecida, o V6 recorre ao
+V5 para verificação numérica.
+
+\subsubsection{V7 — Verificador de Código-Fonte}
+
+O V7 é o mais complexo dos verificadores, com 7 subverificadores:
+
+\begin{itemize}
+\item \textbf{V7a (Syntax)}: parseia o código com AST (Python \texttt{ast},
+      TypeScript \texttt{@typescript-eslint/parser}) e reporta erros de sintaxe.
+\item \textbf{V7b (Logic Prover)}: implementa verificação de triplas Hoare
+      $\{P\}C\{Q\}$ usando execução simbólica via Z3\footnote{De Moura, L.,
+      Bjørner, N. \textit{Z3: An Efficient SMT Solver}. TACAS, 2008. DOI:
+      10.1007/978-3-540-78800-3\_24. SMT solver de código aberto desenvolvido
+      pela Microsoft Research, usado para verificação formal de software.}.
+\item \textbf{V7c (Type Safety)}: verifica consistência de tipos via mypy
+      (Python) ou tsc (TypeScript).
+\item \textbf{V7d (Resource Bounds)}: analisa complexidade assintótica via
+      análise estática de loops e recursão.
+\item \textbf{V7e (Security)}: audita contra OWASP Top 10 2021, detectando
+      CWE-79 (XSS), CWE-89 (SQL Injection), CWE-22 (Path Traversal).
+\item \textbf{V7f (Coverage)}: mede cobertura de branches via pytest-cov.
+\item \textbf{V7g (Invariants)}: verifica invariantes de laço via bounded
+      model checking com Z3.
+\end{itemize}
+
+\subsection{Calibração dos Níveis de Complexidade}
+
+A calibração dos 4 níveis do CORA-Eval merece discussão detalhada. O nível
+N1 (Básico, 0,1--0,9) corresponde ao domínio cognitivo \textit{Aplicar} da
+Taxonomia de Bloom Revisada: o sistema deve ser capaz de executar procedimentos
+conhecidos em situações familiares. As tarefas N1 são caracterizadas por
+operações de passo único com ground truth deterministicamente verificável.
+
+O nível N2 (Graduação, 1,0--1,9) corresponde a \textit{Analisar}: o sistema
+deve decompor problemas em partes, selecionar metodologias apropriadas e
+executar múltiplos passos de raciocínio. As tarefas N2 tipicamente requerem
+2--5 passos de raciocínio e podem envolver escolha entre métodos alternativos.
+
+O nível N3 (Pós-Graduação, 2,0--2,9) corresponde a \textit{Avaliar}: o sistema
+deve julgar criticamente métodos, sintetizar literatura e desenhar experimentos.
+As tarefas N3 frequentemente envolvem integração de múltiplas fontes de
+informação e requerem julgamento sobre adequação metodológica.
+
+O nível N4 (Pesquisa, 3,0--4,0) corresponde a \textit{Criar}: o sistema deve
+produzir conhecimento original, verificar formalmente demonstrações e resolver
+problemas de fronteira. As tarefas N4 são caracterizadas pela ausência de
+solução canônica única e pela necessidade de inovação metodológica.

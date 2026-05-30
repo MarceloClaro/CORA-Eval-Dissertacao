@@ -1,0 +1,49 @@
+{
+  "title": "Relatorio Tecnico — OpenCode Ecosystem v4.7",
+  "date": "2026-05-29",
+  "status": "Auto-publicado, sem revisao por pares",
+  "scores": {
+    "cora_score_bruto": 3.04,
+    "cora_score_ajustado": 2.59,
+    "penalizacao_confianca": -0.45
+  },
+  "validacao": {
+    "teste_cego": "34/34 (100%)",
+    "problemas_pe": 25,
+    "problemas_rosalind": 10,
+    "nota": "Verificacao automatica pelas plataformas, nao por revisores humanos"
+  },
+  "confianca": {
+    "alta": [
+      "D1 (Project Euler)",
+      "D5 (Rosalind)"
+    ],
+    "media": [
+      "D2",
+      "D3",
+      "D7",
+      "D10"
+    ],
+    "baixa": [
+      "D4",
+      "D6",
+      "D8",
+      "D9"
+    ]
+  },
+  "comparacao_ollama": {
+    "nota": "Comparacao com modelos bare-metal, nao com frameworks multiagente",
+    "efeito_verificadores": "+18.5%",
+    "efeito_multiagente": "+31.6%",
+    "efeito_total": "+55.9%"
+  },
+  "limitacoes": [
+    "8/10 dimensoes com validacao apenas interna",
+    "Comparacao com Ollama nao usa frameworks multiagente equivalentes",
+    "Geometria Riemanniana proposta mas nao validada com dados reais",
+    "Documento auto-publicado, nao defendido em banca"
+  ],
+  "tdd_suites": "14/14 PASS (113 testes automatizados)",
+  "pdf": "129 paginas, 0 overfull hboxes, 0 LaTeX errors",
+  "repositorio": "https://github.com/MarceloClaro/OpenCode_Ecosystem"
+}

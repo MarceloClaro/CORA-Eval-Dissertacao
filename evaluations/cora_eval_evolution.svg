@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Consolas, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f23"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" fill="#a855f7" font-size="18" font-weight="bold">CORA-Eval: Evolucao do Ecossistema OpenCode</text>
+  <text x="450" y="55" text-anchor="middle" fill="#64748b" font-size="11">28-29 Maio 2026 · 2 Sessoes · 7 Snapshots · CORA-Score 0.67 → 2.70</text>
+
+  <!-- Milestone lines -->
+  <line x1="80" y1="80" x2="820" y2="80" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="75" fill="#64748b" font-size="9">0.0</text>
+  <text x="450" y="75" fill="#64748b" font-size="9" text-anchor="middle">2.0</text>
+  <text x="820" y="75" fill="#64748b" font-size="9" text-anchor="end">4.0</text>
+
+  <!-- M1 marker -->
+  <line x1="185" y1="78" x2="185" y2="82" stroke="#f59e0b" stroke-width="2"/>
+  <text x="185" y="72" fill="#f59e0b" font-size="8" text-anchor="middle">M1 0.90</text>
+
+  <!-- M2 marker -->
+  <line x1="390" y1="78" x2="390" y2="82" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="390" y="72" fill="#0ea5e9" font-size="8" text-anchor="middle">M2 1.90</text>
+
+  <!-- M3 marker -->
+  <line x1="520" y1="78" x2="520" y2="82" stroke="#22c55e" stroke-width="2"/>
+  <text x="520" y="72" fill="#22c55e" font-size="8" text-anchor="middle">M3 2.52</text>
+
+  <!-- M4 marker -->
+  <line x1="620" y1="78" x2="620" y2="82" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="620" y="72" fill="#ef4444" font-size="8" text-anchor="middle">M4 3.00</text>
+
+  <!-- Progress bar -->
+  <rect x="80" y="90" width="740" height="16" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="80" y="90" width="500" height="16" rx="3" fill="url(#bar)" opacity="0.8"/>
+  <text x="450" y="103" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2.70 / 4.00 (67.5%)</text>
+
+  <!-- Snapshots -->
+  <!-- S0: Baseline 0.67 -->
+  <rect x="80" y="130" width="340" height="65" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="148" fill="#f59e0b" font-size="10" font-weight="bold">[S0] 19:00 — Baseline (4/10)</text>
+  <text x="90" y="163" fill="#94a3b8" font-size="9">D1(N2) D3(N1) D7(N3) D9(N1)</text>
+  <text x="90" y="180" fill="#f59e0b" font-size="16" font-weight="bold">0.67</text>
+  <text x="130" y="180" fill="#64748b" font-size="8">Basico</text>
+
+  <!-- Arrow -->
+  <text x="420" y="165" fill="#6366f1" font-size="14" text-anchor="middle">+0.88</text>
+
+  <!-- S1: Listas DCA 1.55 -->
+  <rect x="480" y="130" width="340" height="65" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="490" y="148" fill="#0ea5e9" font-size="10" font-weight="bold">[S1] 20:52 — +Listas DCA (6/10)</text>
+  <text x="490" y="163" fill="#94a3b8" font-size="9">18 questoes pos-graduacao mapeadas</text>
+  <text x="490" y="180" fill="#0ea5e9" font-size="16" font-weight="bold">1.55</text>
+  <text x="530" y="180" fill="#64748b" font-size="8">Graduacao</text>
+
+  <!-- S2: Cobertura 1.90 -->
+  <rect x="80" y="210" width="340" height="65" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="228" fill="#0ea5e9" font-size="10" font-weight="bold">[S2] 21:01 — Cobertura N1 (10/10)</text>
+  <text x="90" y="243" fill="#94a3b8" font-size="9">D4,D5,D6,D8 avaliados em N1</text>
+  <text x="90" y="260" fill="#0ea5e9" font-size="16" font-weight="bold">1.90</text>
+  <text x="130" y="260" fill="#64748b" font-size="8">M2 ✅</text>
+
+  <!-- Arrow -->
+  <text x="420" y="245" fill="#6366f1" font-size="14" text-anchor="middle">+0.62</text>
+
+  <!-- S3: Salto M3 2.52 -->
+  <rect x="480" y="210" width="340" height="65" rx="4" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
+  <text x="490" y="228" fill="#22c55e" font-size="10" font-weight="bold">[S3] 21:07 — Salto M3 (10/10)</text>
+  <text x="490" y="243" fill="#94a3b8" font-size="9">D3-D8→N2, D2/D3/D9→N3</text>
+  <text x="490" y="260" fill="#22c55e" font-size="16" font-weight="bold">2.52</text>
+  <text x="530" y="260" fill="#64748b" font-size="8">M3 ✅</text>
+
+  <!-- S4-6: Refinamentos -->
+  <rect x="80" y="290" width="235" height="55" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="307" fill="#a855f7" font-size="9" font-weight="bold">[S4] GAT TDD</text>
+  <text x="90" y="320" fill="#94a3b8" font-size="8">D10 N4 10/10, D8 N2 6/6</text>
+  <text x="90" y="337" fill="#a855f7" font-size="14" font-weight="bold">2.58</text>
+
+  <rect x="335" y="290" width="235" height="55" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="345" y="307" fill="#a855f7" font-size="9" font-weight="bold">[S5] D3+D7 TDD</text>
+  <text x="345" y="320" fill="#94a3b8" font-size="8">D3 9/9, D7 7/7 (V7a-V7f)</text>
+  <text x="345" y="337" fill="#a855f7" font-size="14" font-weight="bold">2.62</text>
+
+  <rect x="590" y="290" width="230" height="55" rx="4" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <text x="600" y="307" fill="#22c55e" font-size="9" font-weight="bold">[S6] Validacao Externa</text>
+  <text x="600" y="320" fill="#94a3b8" font-size="8">PE 7/7 + Rosalind 5/5</text>
+  <text x="600" y="337" fill="#22c55e" font-size="14" font-weight="bold">2.70</text>
+
+  <!-- Metrics row -->
+  <rect x="80" y="370" width="740" height="55" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+
+  <text x="130" y="392" fill="#22c55e" font-size="20" font-weight="bold" text-anchor="middle">2.70</text>
+  <text x="130" y="410" fill="#64748b" font-size="8" text-anchor="middle">CORA-Score</text>
+
+  <text x="260" y="392" fill="#a855f7" font-size="20" font-weight="bold" text-anchor="middle">91/91</text>
+  <text x="260" y="410" fill="#64748b" font-size="8" text-anchor="middle">TDD GREEN</text>
+
+  <text x="390" y="392" fill="#0ea5e9" font-size="20" font-weight="bold" text-anchor="middle">9</text>
+  <text x="390" y="410" fill="#64748b" font-size="8" text-anchor="middle">Suites TDD</text>
+
+  <text x="520" y="392" fill="#f59e0b" font-size="20" font-weight="bold" text-anchor="middle">4.3M</text>
+  <text x="520" y="410" fill="#64748b" font-size="8" text-anchor="middle">Solvers (ext)</text>
+
+  <text x="650" y="392" fill="#22c55e" font-size="20" font-weight="bold" text-anchor="middle">10/10</text>
+  <text x="650" y="410" fill="#64748b" font-size="8" text-anchor="middle">Dimensoes</text>
+
+  <text x="780" y="392" fill="#ef4444" font-size="20" font-weight="bold" text-anchor="middle">0.30</text>
+  <text x="780" y="410" fill="#64748b" font-size="8" text-anchor="middle">p/ M4</text>
+
+  <!-- Dimensions -->
+  <text x="450" y="450" text-anchor="middle" fill="#64748b" font-size="9">Dimensoes: D1 3.80(N4) · D2 2.90(N3) · D3 2.54(N3) · D4 1.90(N2) · D5 2.45(N3)</text>
+  <text x="450" y="465" text-anchor="middle" fill="#64748b" font-size="9">D6 1.90(N2) · D7 2.72(N3) · D8 1.90(N2) · D9 2.67(N3) · D10 3.67(N4)</text>
+
+  <!-- Footer -->
+  <text x="450" y="500" text-anchor="middle" fill="#475569" font-size="8">OpenCode Ecosystem v4.7 · CORA-Eval · 2026-05-29 · BRAZIL_TIMEZONE UTC-3</text>
+</svg>

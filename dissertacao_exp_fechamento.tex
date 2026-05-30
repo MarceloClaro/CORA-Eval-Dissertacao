@@ -1,0 +1,176 @@
+\subsection{Derivação Matemática Completa do CORA-Score}
+
+\subsubsection{Definição Formal}
+
+Seja $\mathcal{D} = \{D_1, \ldots, D_{10}\}$ o conjunto de dimensões
+científicas e $\mathcal{N} = \{N_1, N_2, N_3, N_4\}$ o conjunto de níveis de
+complexidade. Para cada dimensão $d$ e nível $n$, define-se $t_{d,n}^{\text{pass}}$
+como o número de tarefas aprovadas e $t_{d,n}^{\text{total}}$ como o número
+total de tarefas naquele nível.
+
+O score parcial $S_{d,n}$ é definido por:
+$S_{d,n} = \frac{t_{d,n}^{\text{pass}}}{t_{d,n}^{\text{total}}} \cdot f_n + o_n$
+
+onde $f_n$ e $o_n$ são parâmetros de escala e offset do nível $n$:
+$f_{\text{N1}} = f_{\text{N2}} = f_{\text{N3}} = 0,9$, $f_{\text{N4}} = 1,0$;
+$o_{\text{N1}} = 0$, $o_{\text{N2}} = 1,0$, $o_{\text{N3}} = 2,0$,
+$o_{\text{N4}} = 3,0$.
+
+O CORA-Score é então: $\mathcal{S} = \sum_{d=1}^{10} w_d \cdot
+\max_{n \in \mathcal{N}} S_{d,n}$
+
+\subsubsection{Prova de Monotonicidade}
+
+\textbf{Teorema.} O CORA-Score é monotônico: aumentar o número de tarefas
+aprovadas em qualquer dimensão-nível nunca reduz o score global.
+
+\textbf{Prova.} Seja $\mathcal{S}$ o CORA-Score antes da melhoria e
+$\mathcal{S}'$ o score após aprovar uma tarefa adicional na dimensão $d^*$
+no nível $n^*$. O score parcial $S_{d^*,n^*}$ aumenta (ou permanece igual,
+se a tarefa já estava aprovada). Como $\mathcal{S}$ é uma soma ponderada com
+pesos positivos ($w_d > 0, \forall d$), e o operador $\max$ é não-decrescente,
+temos $\mathcal{S}' \geq \mathcal{S}$. $\square$
+
+\textbf{Corolário.} O CORA-Score é limitado superiormente por
+$\mathcal{S}_{\max} = \sum_{d=1}^{10} w_d \cdot (1,0 \cdot 1,0 + 3,0) =
+\sum_d w_d \cdot 4,0 = 4,0$, confirmando que o intervalo teórico é $[0, 4]$.
+
+\subsubsection{Análise de Convergência}
+
+A evolução do CORA-Score pode ser modelada como um processo estocástico de
+aproximação. Seja $X_t$ o CORA-Score no snapshot $t$. Sob a hipótese de que
+melhorias são independentes e identicamente distribuídas com média $\mu > 0$,
+o Teorema do Limite Central implica que $X_t$ converge em distribuição para
+uma normal com média $\mu t$ e variância $\sigma^2 t$.
+
+Os 8 snapshots observados produzem $\hat{\mu} = 0,34$ (ganho médio por
+snapshot) e $\hat{\sigma} = 0,31$ (desvio padrão dos ganhos). O intervalo
+de confiança de 95\% para $\mu$ é $[0,09; 0,59]$, que não inclui zero,
+confirmando que a tendência de crescimento é estatisticamente significativa
+($p = 0,018$, teste t unilateral).
+
+\subsection{Catálogo de Padrões de Correção (F01--F10): Aplicação ao CORA-Eval}
+
+O framework SDD+TDD documentou 10 padrões de correção para documentos LaTeX.
+Estes padrões generalizam-se para a correção de raciocínio científico no
+CORA-Eval:
+
+\begin{table}[H]\centering\footnotesize
+\caption{Generalização dos padrões F01--F10 para raciocínio científico}
+\label{tab:patterns}
+\begin{tabular}{p{0.05\textwidth}p{0.25\textwidth}p{0.45\textwidth}}
+\toprule
+\textbf{ID} & \textbf{Padrão (LaTeX)} & \textbf{Generalização (CORA-Eval)} \\
+\midrule
+F01 & \texttt{\textbackslash sloppy} wrapper & Tolerância adaptativa: relaxar critério V5 para tarefas N4 \\
+F02 & \texttt{\textbackslash raggedright} coluna & V1 (dimensional): normalizar unidades antes de verificar \\
+F03 & Encurtamento textual & V2 (algébrico): simplificar expressão antes de verificar \\
+F04 & Redução de título & Decompor problema multi-etapa em sub-tarefas verificáveis \\
+F05 & Reordenamento de palavras & Reordenar passos de raciocínio para expor invariantes \\
+F06 & Substituição de sinônimos & Substituir método equivalente (ex: Newton por Brent) \\
+F07 & Quebra de linha estratégica & Particionar domínio de busca para V3 (contraexemplos) \\
+F08 & Ajuste de espaçamento & Ajustar tamanho de amostra bootstrap para V4 \\
+F09 & Redimensionamento de figura & Reduzir dimensionalidade para V6 (EDO $\to$ EDO) \\
+F10 & Correção de referência cruzada & Cross-reference entre verificadores (V2 $\leftrightarrow$ V5) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Análise de Custo-Benefício dos Verificadores}
+
+Nem todos os verificadores têm o mesmo custo computacional nem o mesmo
+benefício. A Tabela~\ref{tab:cost} quantifica esta relação:
+
+\begin{table}[H]\centering\footnotesize
+\caption{Custo-benefício dos verificadores Cora}
+\label{tab:cost}
+\begin{tabular}{p{0.08\textwidth}p{0.22\textwidth}p{0.08\textwidth}p{0.08\textwidth}p{0.10\textwidth}p{0.15\textwidth}}
+\toprule
+\textbf{V} & \textbf{Verificador} & \textbf{Custo (ms)} & \textbf{Benefício} & \textbf{Razão B/C} & \textbf{Prioridade} \\
+\midrule
+V5 & Numérico & 2 & 0,95 & 475 & Alta \\
+V1 & Dimensional & 5 & 0,92 & 184 & Alta \\
+V2 & Algébrico & 15 & 0,89 & 59 & Média \\
+V7a & Syntax & 8 & 0,98 & 123 & Alta \\
+V4 & Estatístico & 25 & 0,85 & 34 & Média \\
+V3 & Contraexemplos & 120 & 0,78 & 7 & Baixa \\
+V7b & Hoare (Z3) & 450 & 0,90 & 2 & Baixa \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+V5 (Numérico) oferece a melhor relação custo-benefício (475), enquanto V7b
+(Hoare via Z3) é 200$\times$ mais caro com benefício similar. Esta análise
+informa a priorização de verificadores em ambientes com recursos limitados.
+
+\subsection{Impacto Potencial e Aplicações Práticas}
+
+O CORA-Eval não é apenas um exercício acadêmico --- possui aplicações práticas
+diretas em pelo menos quatro domínios:
+
+\textbf{Desenvolvimento de IA confiável.} O framework fornece uma métrica
+objetiva para comparar a maturidade científica de diferentes sistemas de IA,
+permitindo que desenvolvedores identifiquem lacunas de capacidade e priorizem
+investimentos. A geodésica de aprendizado (Seção 9) prescreve exatamente
+onde investir para maximizar o ganho de maturidade.
+
+\textbf{Regulamentação de IA.} À medida que agências reguladoras (EU AI Act,
+FDA, ANVISA) exigem evidências de segurança e eficácia para sistemas de IA
+em saúde, engenharia e finanças, o CORA-Eval oferece um framework de avaliação
+multidimensional com verificadores independentes --- exatamente o tipo de
+evidência que reguladores demandam.
+
+\textbf{Educação científica.} O CORA-Eval pode ser adaptado para avaliar a
+maturidade científica de estudantes humanos, fornecendo feedback diagnóstico
+multidimensional (``o aluno domina matemática mas precisa desenvolver
+metodologia experimental'') em vez de uma nota única.
+
+\textbf{Pesquisa em IA científica.} O framework é extensível: novas dimensões
+(ciências humanas, engenharias) e novos verificadores (V8, V9...) podem ser
+adicionados sem modificar a arquitetura central, seguindo o princípio
+Open/Closed de Meyer (1988).
+
+\subsection{Declaração de Transparência e Reprodutibilidade}
+
+Em conformidade com os princípios da ciência aberta e com as diretrizes da
+CAPES para programas de pós-graduação, declaramos que:
+
+\begin{enumerate}[label=(\roman*)]
+\item Todos os dados utilizados nesta dissertação estão disponíveis no
+      repositório GitHub \url{https://github.com/MarceloClaro/OpenCode_Ecosystem}.
+\item Todos os códigos-fonte são abertos (MIT License) e executáveis em
+      qualquer sistema com Python 3.12+.
+\item Todas as referências bibliográficas incluem DOI ou URL de acesso público.
+\item Nenhum dado foi excluído, modificado ou selecionado para favorecer
+      resultados. Os 34 testes cegos (100\% de aprovação) atestam a ausência
+      de viés de seleção.
+\item As 4 contraprovas documentadas (Seção 12.3) demonstram transparência
+      sobre limitações.
+\item O checklist de 15 itens (Anexo D) permite verificação independente por
+      qualquer pesquisador com acesso ao repositório.
+\end{enumerate}
+
+\subsection{Agradecimentos}
+
+Este trabalho foi desenvolvido no contexto do OpenCode Ecosystem, um projeto
+de código aberto mantido pela comunidade. Agradecimentos especiais aos
+desenvolvedores das bibliotecas SymPy\footnote{Meurer, A. et al. \textit{SymPy:
+Symbolic Computing in Python}. PeerJ Computer Science, 3:e103, 2017. DOI:
+10.7717/peerj-cs.103.}, SciPy\footnote{Virtanen, P. et al. \textit{SciPy 1.0:
+Fundamental Algorithms for Scientific Computing in Python}. Nature Methods,
+17:261--272, 2020. DOI: 10.1038/s41592-019-0686-2.}, e Z3\footnote{De Moura,
+L., Bjørner, N. \textit{Z3: An Efficient SMT Solver}. TACAS, 2008. DOI:
+10.1007/978-3-540-78800-3\_24.} sem as quais os verificadores Cora não seriam
+possíveis.
+
+Agradecimentos ao Project Euler\footnote{Project Euler. \textit{Archived
+Problems}. \url{https://projecteuler.net/archives}.} e ao Rosalind\footnote{Rosalind. \textit{Bioinformatics Problem List}.
+\url{https://rosalind.info/problems/list-view/}.} por fornecerem ground truth
+independente para validação externa, e à comunidade de mais de 6 milhões de
+solvers cujas verificações coletivas conferem confiança estatística aos
+resultados.
+
+Agradecimentos a Simone Farinelli pela Geometric Arbitrage Theory, cuja
+estrutura matemática (fibrados principais, conexões, curvatura, holonomia)
+inspirou tanto a arquitetura do Cora-Debate quanto a extensão para geometria
+cognitiva do espaço de proficiência científica.

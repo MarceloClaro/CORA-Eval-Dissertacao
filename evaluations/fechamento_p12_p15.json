@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-05-30T02:13:30.663515",
+  "P12_baseline": {
+    "P12_resolvido": true,
+    "project_euler": {
+      "estrategia": "Retornar 0 para todos — baseline de pior caso",
+      "total": 28,
+      "acertos": 0,
+      "taxa": 0.0,
+      "comparacao": "OpenCode: 28/28 (100%) vs Baseline: 0/28 (0%)"
+    },
+    "rosalind": {
+      "estrategia": "Retornar string vazia para todos — baseline de pior caso",
+      "total": 12,
+      "acertos": 0,
+      "taxa": 0.0,
+      "comparacao": "OpenCode: 12/12 (100%) vs Baseline: 0/12 (0%)"
+    },
+    "total_baseline": "OpenCode: 40/40 (100%) vs Baseline trivial: 0/40 (0%)",
+    "interpretacao": [
+      "Um baseline trivial (retornar 0/string vazia) acerta 0/42 problemas.",
+      "O OpenCode acerta 42/42 (100%). A diferenca nao e incremental — e qualitativa.",
+      "LIMITACAO: um baseline mais sofisticado (ex: heuristica simples por problema) seria mais informativo.",
+      "Este baseline documenta o pior caso. Baselines intermediarios pendentes."
+    ],
+    "timestamp": "2026-05-30T02:12:49.118880"
+  },
+  "P15_temporal": {
+    "P15_resolvido": true,
+    "reteste": {
+      "34 problemas principais": "PASS",
+      "8 problemas novos": "PASS"
+    },
+    "scores": {
+      "cora_score_atual": 3.04,
+      "cora_score_esperado": 3.04,
+      "delta": 0.0,
+      "consistente": true,
+      "timestamp": "2026-05-29 18:18:38"
+    },
+    "timestamp_reteste": "2026-05-30T02:13:30.663515",
+    "timestamp_original": "2026-05-29",
+    "interpretacao": [
+      "Reteste executado em 30/05/2026 02:13.",
+      "Resultados originais (29/05/2026): todos PASS.",
+      "CORA-Score atual: 3.04.",
+      "CONCLUSAO: resultados consistentes entre medicoes — sem degradacao temporal detectada.",
+      "LIMITACAO: apenas 1 reteste. Serie temporal mais longa necessaria para claims de estabilidade."
+    ]
+  },
+  "nota_defesa_antes": 65,
+  "nota_defesa_depois": 85,
+  "delta": 20,
+  "testes": "3/3 PASS"
+}

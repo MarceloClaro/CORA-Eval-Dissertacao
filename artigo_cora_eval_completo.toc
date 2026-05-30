@@ -1,0 +1,67 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto e Motivação}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Objetivos}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Estrutura do Documento}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Metodologia CORA-Eval}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Framework de Avaliação}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Dimensões e Pesos}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Níveis de Complexidade}{4}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Cálculo do CORA-Score}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Verificadores Simbólicos Cora (V1--V7)}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Fontes de Ground Truth}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Evolução do Ecossistema}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fase 1: Fundação (Rounds 1--7)}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Fase 2: Engenharia de Software (Rounds 8--10)}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Fase 3: CORA-Eval — Maturidade Científica (Rounds 11--14)}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Progressão Visual}{7}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Resultados por Dimensão}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Pontuação Final}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Análise Crítica por Dimensão}{8}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}D1 — Raciocínio Matemático Formal (3,80)}{8}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}D2 — Modelagem de Sistemas Físicos (3,50)}{8}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}D3 — Análise Estatística (3,40)}{9}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}D4–D9 — Dimensões Intermediárias}{9}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}D10 — Síntese Interdisciplinar (3,67)}{9}{subsubsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.3}Suítes TDD — Evidências}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Cobertura de Verificadores}{10}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Discussão Crítica}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Validade Interna}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Validade Externa}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Limitações Metodológicas}{10}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Comparação com Benchmarks Existentes}{11}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Conclusão}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Síntese dos Resultados}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Contribuições}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Trabalhos Futuros}{12}{subsection.6.3}%
+\contentsline {section}{\numberline {A}Anexo A — Tarefas do Benchmark CORA-Eval}{14}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}D1 — Raciocínio Matemático Formal}{14}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}N1 — Básico (0,1--0,9)}{14}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.2}N2 — Graduação (1,0--1,9)}{14}{subsubsection.A.1.2}%
+\contentsline {subsubsection}{\numberline {A.1.3}N3 — Pós-Graduação (2,0--2,9)}{15}{subsubsection.A.1.3}%
+\contentsline {subsubsection}{\numberline {A.1.4}N4 — Pesquisa (3,0--4,0)}{15}{subsubsection.A.1.4}%
+\contentsline {subsection}{\numberline {A.2}D2 — Modelagem de Sistemas Físicos}{16}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}N1 — Básico}{16}{subsubsection.A.2.1}%
+\contentsline {subsubsection}{\numberline {A.2.2}N2 — Graduação}{16}{subsubsection.A.2.2}%
+\contentsline {subsubsection}{\numberline {A.2.3}N3 — Pós-Graduação}{16}{subsubsection.A.2.3}%
+\contentsline {subsubsection}{\numberline {A.2.4}N4 — Pesquisa}{17}{subsubsection.A.2.4}%
+\contentsline {subsection}{\numberline {A.3}D3 — Análise Estatística e Inferência}{17}{subsection.A.3}%
+\contentsline {subsubsection}{\numberline {A.3.1}N1 — Básico}{17}{subsubsection.A.3.1}%
+\contentsline {subsubsection}{\numberline {A.3.2}N2 — Graduação}{18}{subsubsection.A.3.2}%
+\contentsline {subsubsection}{\numberline {A.3.3}N3 — Pós-Graduação}{18}{subsubsection.A.3.3}%
+\contentsline {subsubsection}{\numberline {A.3.4}N4 — Pesquisa}{19}{subsubsection.A.3.4}%
+\contentsline {subsection}{\numberline {A.4}D4--D10: Sumário das Demais Dimensões}{19}{subsection.A.4}%
+\contentsline {section}{\numberline {B}Anexo B — Evidências das Suítes TDD}{20}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}B.1 — Suite D3: Estatística (9/9 GREEN)}{20}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}B.2 — Suite D4: Química (9/9 GREEN)}{20}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}B.3 — Suite D5: Biologia (11/11 GREEN)}{21}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}B.4 — Suite D6: Geociências (15/15 GREEN)}{21}{subsection.B.4}%
+\contentsline {subsection}{\numberline {B.5}B.5 — Suites D7, D8, D10 e Evolução (55 testes)}{22}{subsection.B.5}%
+\contentsline {section}{\numberline {C}Anexo C — Validação Externa Completa}{25}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}C.1 — Project Euler (7 problemas, 4.0M solvers)}{25}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}C.2 — Rosalind (5 problemas, 271K solvers)}{25}{subsection.C.2}%
+\contentsline {section}{\numberline {D}Anexo D — Trilha de Auditoria dos Scores}{26}{appendix.D}%
+\contentsline {subsection}{\numberline {D.1}D.1 — Cálculo Manual do CORA-Score}{26}{subsection.D.1}%
+\contentsline {subsection}{\numberline {D.2}D.2 — Snapshots Evolutivos}{26}{subsection.D.2}%
+\contentsline {subsection}{\numberline {D.3}D.3 — Verificação de Consistência}{27}{subsection.D.3}%
+\contentsline {subsection}{\numberline {D.4}D.4 — Arquivos de Evidência}{27}{subsection.D.4}%

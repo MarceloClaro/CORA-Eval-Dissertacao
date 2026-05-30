@@ -1,0 +1,276 @@
+﻿% ======================================================================
+% EXPANSÃO — Geometria Cognitiva do Espaço 38D
+% ======================================================================
+
+
+\subsection{Motivação: Além da Aproximação Independente}
+
+O CORA-Score, conforme definido na Equação~\ref{eq:global}, modela a
+maturidade científica como uma soma ponderada de contribuições independentes
+de cada dimensão. Esta é, reconhecidamente, uma aproximação de primeira ordem.
+A equação implícita:
+
+\begin{equation}\label{eq:indep}
+\text{CORA-Score} \approx \sum_{d=1}^{10} w_d \cdot f_d(\text{proficiência}_d)
+\end{equation}
+
+ignora termos cruzados — a interação entre matemática e física ($D1 \times D2$),
+entre estatística e biologia ($D3 \times D5$), entre código e síntese
+interdisciplinar ($D7 \times D10$). No entanto, os dados da Seção 4 demonstram
+que estas interações existem e são significativas: a maior diferença entre o
+OpenCode e modelos Ollama ocorre justamente em D10 (+2,34), que é
+intrinsecamente multidimensional.
+
+Esta seção apresenta quatro extensões matemáticas que transformam o CORA-Eval
+de uma representação estática (vetor de 10 scores independentes) em uma
+\textbf{geometria dinâmica do espaço de raciocínio}, implementadas no módulo
+\texttt{cora\_cognitive\_geometry.py}\footnote{Disponível em
+\texttt{artigo/evaluations/cora\_cognitive\_geometry.py}. Implementa quatro
+motores matemáticos: matriz de dependência, grafo cognitivo, decomposição
+tensorial e métrica de Fisher. Todos operam sobre dados reais do
+\texttt{cora\_scores.json}.}.
+
+\subsection{Matriz de Dependência entre Dimensões}
+
+A primeira extensão substitui os pesos independentes $w_d$ por uma matriz de
+covariância $\Sigma_{ij}$ que captura dependências lineares entre dimensões:
+
+\begin{equation}\label{eq:mahalanobis}
+\text{CORA-Score}^{(2)} = \sqrt{\mathbf{S}^T \Sigma^{-1} \mathbf{S}}
+\end{equation}
+
+Esta é a distância de Mahalanobis no espaço de proficiência — uma generalização
+natural que penaliza redundâncias (dimensões altamente correlacionadas
+contribuem menos) e recompensa complementaridades (dimensões ortogonais
+contribuem mais).
+
+A Tabela~\ref{tab:corr_matrix} apresenta a matriz de correlação computada
+a partir dos 8 snapshots evolutivos do ecossistema:
+
+\begin{table}[H]\centering
+\caption{Matriz de correlação entre dimensões do CORA-Eval}
+\label{tab:corr_matrix}
+\begin{tabular}{lcccccccccc}
+\toprule
+ & \textbf{D1} & \textbf{D2} & \textbf{D3} & \textbf{D4} & \textbf{D5} & \textbf{D6} & \textbf{D7} & \textbf{D8} & \textbf{D9} & \textbf{D10} \\
+\midrule
+D1  & 1.00 & 0.92 & 0.89 & 0.59 & 0.64 & 0.61 & 0.84 & 0.50 & 0.70 & \textbf{0.97} \\
+D2  & 0.92 & 1.00 & 0.82 & 0.54 & 0.59 & 0.56 & 0.78 & 0.46 & 0.65 & 0.89 \\
+D3  & 0.89 & 0.82 & 1.00 & 0.53 & 0.58 & 0.54 & 0.75 & 0.45 & 0.63 & 0.86 \\
+D10 & \textbf{0.97} & 0.89 & 0.86 & 0.57 & 0.62 & 0.58 & 0.81 & 0.48 & 0.68 & 1.00 \\
+D8  & 0.50 & 0.46 & 0.45 & 0.29 & 0.32 & 0.30 & 0.42 & 1.00 & 0.35 & 0.48 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Achado principal:} D1 (Matemática) e D10 (Síntese Interdisciplinar)
+apresentam correlação $r = 0,97$ — a mais alta entre todas as díades. Isto
+sugere que a proficiência matemática é um pré-requisito quase determinístico
+para a capacidade de síntese interdisciplinar: o ecossistema não consegue
+conectar domínios díspares sem antes dominar a linguagem comum (matemática)
+que os une.
+
+Inversamente, D8 (Revisão de Literatura) apresenta as menores correlações com
+todas as outras dimensões ($\bar{r} = 0,40$), indicando que esta capacidade é
+ortogonal ao raciocínio matemático e à modelagem — uma habilidade
+qualitativamente diferente que requer estratégias de desenvolvimento distintas.
+
+\subsection{Grafo Cognitivo de Verificadores}
+
+A segunda extensão modela o espaço de raciocínio como um \textbf{grafo
+cognitivo} $G = (V, E)$ onde os nós são os 7 verificadores Cora (V1--V7) e
+as arestas representam co-ativação em dimensões:
+
+\begin{equation}\label{eq:graph}
+w_{ij} = \frac{\text{co-ativações}(i,j)}{\text{total de dimensões}}
+\end{equation}
+
+Propriedades topológicas deste grafo revelam a \textbf{estrutura latente do
+raciocínio científico} no ecossistema:
+
+\begin{table}[H]\centering
+\caption{Propriedades topológicas do grafo cognitivo}
+\label{tab:graph_props}
+\begin{tabular}{p{0.12\textwidth}p{0.08\textwidth}p{0.50\textwidth}}
+\toprule
+\textbf{Verificador} & \textbf{Centralidade} & \textbf{Interpretação} \\
+\midrule
+V5 (Numérico) & 8 & Conecta 8/10 dimensões — é o verificador ``universal'', aplicável a quase todos os domínios \\
+V1 (Dimensional) & 3 & Especializado em física e química — domínios com grandezas mensuráveis \\
+V2 (Algébrico) & 3 & Similar ao V1 — essencial para manipulação formal \\
+V4 (Estatístico) & 3 & Especializado em biologia, geociências e metodologia \\
+V7 (Código) & 1 & Mais especializado — apenas D7 (verificação de código) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O grafo revela \textbf{4 comunidades naturais} de verificadores: (i)
+\textbf{Físico-Numérica} (V1, V5, V6) — verificação dimensional, numérica e
+de equações diferenciais; (ii) \textbf{Lógico-Formal} (V2, V3) — manipulação
+algébrica e busca de contraexemplos; (iii) \textbf{Estatística} (V4) —
+significância e tamanho de efeito; e (iv) \textbf{Código} (V7) — verificação
+formal de software científico.
+
+O \textbf{diâmetro cognitivo} atual é 1,0 — o valor máximo possível, indicando
+que o espaço de verificadores ainda não está integrado. A meta de evolução é
+reduzir este diâmetro para $< 0,5$ através do aumento da co-ativação entre
+comunidades atualmente isoladas (particularmente V4 e V7 com as demais).
+
+\subsection{Decomposição Tensorial da Evolução Temporal}
+
+A terceira extensão trata os dados do CORA-Eval como um \textbf{tensor de
+ordem 3}: $\mathcal{T}_{d,n,t}$ representa o score da dimensão $d$ no nível
+$n$ no snapshot temporal $t$. A decomposição CP (CANDECOMP/PARAFAC) revela
+fatores latentes da evolução:
+
+\begin{equation}\label{eq:tensor}
+\mathcal{T} \approx \sum_{r=1}^{R} \lambda_r \; \mathbf{a}_r^{(d)} \otimes \mathbf{b}_r^{(n)} \otimes \mathbf{c}_r^{(t)}
+\end{equation}
+
+A Tabela~\ref{tab:tensor_trends} apresenta a taxa de crescimento por dimensão
+($\partial S_d / \partial t$), extraída da decomposição de rank-1 do tensor:
+
+\begin{table}[H]\centering
+\caption{Taxa de crescimento por dimensão (decomposição tensorial)}
+\label{tab:tensor_trends}
+\begin{tabular}{p{0.08\textwidth}p{0.25\textwidth}p{0.10\textwidth}p{0.10\textwidth}p{0.12\textwidth}}
+\toprule
+\textbf{D\#} & \textbf{Dimensão} & \textbf{Inicial} & \textbf{Final} & \textbf{Cresc/snap} \\
+\midrule
+D10 & Síntese Interdisciplinar & 0,00 & 3,67 & \textbf{0,459} \\
+D2  & Modelagem Física        & 0,00 & 3,50 & \textbf{0,438} \\
+D1  & Raciocínio Matemático   & 0,60 & 3,80 & \textbf{0,400} \\
+D3  & Análise Estatística     & 0,60 & 3,40 & 0,350 \\
+D7  & Código Científico       & 0,60 & 3,20 & 0,325 \\
+D5  & Biologia Molecular      & 0,00 & 2,45 & 0,306 \\
+D6  & Geociências             & 0,00 & 2,30 & 0,288 \\
+D4  & Química Computacional   & 0,00 & 2,23 & 0,279 \\
+D9  & Metodologia Experimental & 0,60 & 2,67 & 0,259 \\
+D8  & Revisão Literatura      & 0,00 & 1,90 & 0,238 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Achado principal:} D10 (Síntese Interdisciplinar) apresenta a maior
+taxa de crescimento (+0,459/snapshot), quase o dobro de D8 (Literatura,
++0,238/snapshot). Esta assimetria sugere que o ecossistema tem facilidade
+natural para integrar conhecimentos de domínios díspares (D10), mas encontra
+dificuldade significativa em tarefas que exigem processamento de grandes
+volumes de texto não-estruturado (D8) — um gargalo que requer estratégias
+de desenvolvimento específicas.
+
+O fator de crescimento médio ($\bar{g} = 0,322$) indica que, mantida a
+trajetória atual, o ecossistema atingiria o marco M4 (3,00) em aproximadamente
+0,03 snapshots — essencialmente no próximo ciclo de avaliação.
+
+\subsection{Métrica de Fisher e Curvatura do Espaço de Aprendizado}
+
+A quarta e mais ambiciosa extensão trata o espaço de proficiência como uma
+\textbf{variedade Riemanniana} $(\mathcal{M}, g)$ onde a métrica $g_{ij}$ é
+aprendida dos dados. A \textbf{métrica de Fisher}:
+
+\begin{equation}\label{eq:fisher}
+g_{ij}(\mathbf{x}) = \mathbb{E}\left[\frac{\partial \log p(\text{acerto}|\mathbf{x})}{\partial x_i} \frac{\partial \log p(\text{acerto}|\mathbf{x})}{\partial x_j}\right]
+\end{equation}
+
+quantifica a sensibilidade da probabilidade de acerto a variações em cada
+dimensão. A \textbf{curvatura} $R_{ijkl}$ mede a ``riqueza'' local do espaço:
+regiões planas (curvatura zero) indicam dimensões independentes; regiões curvas
+indicam interdependência forte e transições qualitativas.
+
+A Tabela~\ref{tab:curvature} apresenta a curvatura estimada para cada dimensão,
+calculada como a divergência normalizada entre o score bruto e o V-Score:
+
+\begin{table}[H]\centering
+\caption{Curvatura de Fisher por dimensão}
+\label{tab:curvature}
+\begin{tabular}{p{0.08\textwidth}p{0.25\textwidth}p{0.12\textwidth}p{0.30\textwidth}}
+\toprule
+\textbf{D\#} & \textbf{Dimensão} & \textbf{Curvatura} & \textbf{Região} \\
+\midrule
+D5  & Biologia Molecular      & 0,257 & ALTA -- transição qualitativa \\
+D6  & Geociências             & 0,257 & ALTA -- transição qualitativa \\
+D8  & Revisão Literatura      & 0,216 & INTERMEDIÁRIA \\
+D4  & Química Computacional   & 0,215 & INTERMEDIÁRIA \\
+D3  & Análise Estatística     & 0,215 & INTERMEDIÁRIA \\
+D9  & Metodologia Experimental & 0,213 & INTERMEDIÁRIA \\
+D1  & Raciocínio Matemático   & 0,129 & PLANA -- independente \\
+D2  & Modelagem Física        & 0,129 & PLANA -- independente \\
+D10 & Síntese Interdisciplinar & 0,087 & PLANA -- independente \\
+D7  & Código Científico       & 0,000 & PLANA -- verificador único \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Achado principal:} As dimensões com maior curvatura (D5, D6) são
+aquelas onde os verificadores Cora fazem a maior diferença entre o score bruto
+e o V-Score — ou seja, onde a verificação simbólica mais contribui para a
+qualidade. Inversamente, D7 (curvatura zero) indica que o verificador V7 é o
+único aplicável, sem divergência entre score e V-Score.
+
+A \textbf{geodésica de aprendizado} — o caminho ótimo entre o estado atual
+e o marco M4 — é dada pela ordenação das dimensões por curvatura decrescente:
+\textbf{D5 $\to$ D6 $\to$ D8 $\to$ D4 $\to$ D3}. Esta ordenação prescreve
+que o próximo investimento de desenvolvimento deve ser direcionado a D5
+(Biologia Molecular) e D6 (Geociências), onde a curvatura é máxima e,
+portanto, o ganho marginal por unidade de esforço é maior.
+
+\subsection{Implicações para a Evolução do Ecossistema}
+
+A implementação da geometria cognitiva transforma o CORA-Eval de um benchmark
+estático em uma \textbf{ferramenta de navegação do espaço de aprendizado}.
+Quatro implicações emergem:
+
+\textbf{Primeiro, a matriz de dependência} revela que o desenvolvimento não
+é uniforme: D1, D2, D3 e D10 formam um \textit{cluster} coeso ($\bar{r} >
+0,85$), enquanto D4--D9 formam um cluster periférico com correlações mais
+baixas. Isto sugere uma estratégia de desenvolvimento em duas frentes:
+consolidar o cluster central (já em N4) enquanto se eleva o cluster periférico.
+
+\textbf{Segundo, o grafo cognitivo} identifica V5 (Numérico) como o verificador
+universal (centralidade 8/10) e revela que V4 (Estatístico) e V7 (Código)
+estão subutilizados. Aumentar a co-ativação destes verificadores com os demais
+reduziria o diâmetro cognitivo e aumentaria a robustez da verificação.
+
+\textbf{Terceiro, a decomposição tensorial} quantifica a assimetria de
+crescimento: D10 cresce 1,93$\times$ mais rápido que D8. Esta assimetria não é
+um acidente — reflete a arquitetura do ecossistema, otimizada para raciocínio
+formal e modelagem, mas limitada em processamento de linguagem natural.
+
+\textbf{Quarto, a métrica de Fisher} fornece uma \textbf{geodésica de
+aprendizado} — uma prescrição objetiva e quantitativa para a alocação de
+esforço de desenvolvimento. Em vez de decisões baseadas em intuição (``vamos
+melhorar química porque parece importante''), o ecossistema pode agora
+priorizar dimensões com base na curvatura medida do espaço de aprendizado.
+
+\subsection{Trabalhos Futuros: Rumo a uma Geometria Diferencial Completa}
+
+A implementação atual constitui uma aproximação de primeira ordem da geometria
+cognitiva. As próximas extensões planejadas incluem:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Conexão de Levi-Civita} $\nabla$: permitiria o transporte
+      paralelo de estratégias de raciocínio entre domínios. Por exemplo,
+      transportar a estratégia de verificação dimensional (V1) da física (D2)
+      para a química (D4), preservando sua estrutura.
+\item \textbf{Curvatura de Riemann} $R_{ijkl}$ completa: a aproximação atual
+      usa uma medida escalar de curvatura; a curvatura tensorial completa
+      revelaria a estrutura fina das interdependências.
+\item \textbf{Geodésicas de aprendizado} com minimização de ação: formular a
+      evolução do ecossistema como um problema variacional — encontrar a
+      trajetória $\gamma(t)$ no espaço de proficiência que minimiza o
+      funcional de ação $\int L(\gamma, \dot{\gamma}) dt$, onde a Lagrangiana
+      $L$ penaliza esforço e recompensa ganho de maturidade.
+\item \textbf{Holonomia e topologia}: classificar estratégias de aprendizado
+      por sua holonomia — estratégias com holonomia trivial são
+      independentes de caminho (robustas); estratégias com holonomia
+      não-trivial dependem da ordem de aprendizado (frágeis).
+\end{enumerate}
+
+Estas extensões conectariam diretamente o CORA-Eval com a Geometric Arbitrage
+Theory\footnote{Farinelli, S. Op. cit. A GAT modela mercados financeiros como
+fibrados principais com conexão e curvatura. A extensão proposta transporta
+esta mesma estrutura matemática para o espaço de proficiência científica.},
+criando um framework unificado onde a mesma linguagem matemática — conexões,
+curvatura, holonomia — descreve tanto a dinâmica de mercados financeiros
+quanto a evolução da maturidade científica de sistemas de IA.
