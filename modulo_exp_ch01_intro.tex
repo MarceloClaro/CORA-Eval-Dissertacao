@@ -7,22 +7,18 @@
 % SPEC DE APRENDIZADO DO CAPITULO
 % ======================================================================
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
-\textbf{SPEC-C1 — O que voce vai aprender neste capitulo:}
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
+\textbf{SPEC-C1 -- O que voce vai aprender neste capitulo:}
 
 \begin{enumerate}[nosep,leftmargin=*]
   \item[\textbf{CT-C1.1}] Definir arbitragem com as 3 condicoes formais
-  \item[\textbf{CT-C1.2}] Explicar por que a ausencia de arbitragem e uma
-        hipotese razoavel (HME)
-  \item[\textbf{CT-C1.3}] Calcular o preco justo de uma opcao pelo metodo
-        da carteira replicante
+  \item[\textbf{CT-C1.2}] Explicar a hipotese do mercado eficiente (HME)
+  \item[\textbf{CT-C1.3}] Calcular o preco de uma opcao via carteira replicante
   \item[\textbf{CT-C1.4}] Enunciar o FTAP em linguagem acessivel
-  \item[\textbf{CT-C1.5}] Identificar como o OpenCode Ecosystem verifica
-        cada um desses conceitos
+  \item[\textbf{CT-C1.5}] Associar cada conceito ao OpenCode Ecosystem
 \end{enumerate}
 
-\textbf{Checkpoint TDD:} Ao final, voce deve passar no mini-teste
-da Secao 1.9 sem consultar o texto.
+\textbf{Checkpoint TDD:} Passe no mini-teste da Secao 1.9 sem consulta.
 \end{minipage}}
 \end{center}
 
@@ -47,7 +43,7 @@ Este e o exemplo mais simples de \textbf{arbitragem}: lucro sem risco obtido
 pela exploracao de uma inconsistencia de precos.
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Associacao com OpenCode:} No OpenCode Ecosystem, o verificador
 \textbf{V3 (Contraexemplos)} do Cora-Debate automatiza exatamente esta
 logica: ele busca ativamente por cenarios onde dois ativos equivalentes
@@ -98,7 +94,7 @@ risco, os proprios agentes que a exploram fariam os precos convergirem ---
 eliminando acaoportunidade.
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Associacao com OpenCode:} O conceito de ``mercado eficiente'' e
 analogo ao \textbf{Ciclo SDD+TDD}: uma inconsistencia (bug/arbitragem) e
 detectada pelo teste (TDD-RED), corrigida pela implementacao (TDD-GREEN),
@@ -138,7 +134,7 @@ O \textbf{Primeiro Teorema Fundamental do Aprecamento de Ativos} (FTAP) e o
 resultado central da teoria de arbitragem. Em sua versao mais intuitiva:
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{FTAP (versao intuitiva):} Em um mercado livre de arbitragem,
 existe uma medida de probabilidade $P^*$ --- chamada \textbf{medida
 martingal equivalente} --- sob a qual o preco descontado de todo ativo
@@ -160,7 +156,7 @@ nao ha arbitragem, entao \textit{existe} uma tal atribuicao de
 probabilidades --- mesmo que ela nao corresponda as probabilidades reais.
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Associacao com OpenCode:} O verificador \textbf{V4 (Estatistico)}
 do Cora-Debate testa automaticamente se uma medida $P^*$ existe para um
 dado conjunto de precos. Se $P^*$ nao existe, o mercado tem arbitragem
@@ -205,7 +201,7 @@ esperado sob $P$. E porque esse e o custo da carteira replicante, que e o
 valor esperado sob a \textbf{medida martingal equivalente} $P^*$.
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Associacao com OpenCode:} O pipeline SDD+TDD do OpenCode
 automatiza exatamente este raciocinio:
 
@@ -266,7 +262,7 @@ arbitragem e equivalente a curvatura de um fibrado. A referencia central
 de todo o curso.}, faz uma pergunta radicalmente diferente:
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{E se pudessemos \textit{ver} a arbitragem como uma propriedade
 geometrica do mercado?} E se a ausencia de arbitragem fosse equivalente
 a ``planicidade'' de um espaco curvo --- como a ausencia de campo
@@ -287,7 +283,7 @@ que:
 \end{itemize}
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Associacao com OpenCode --- o ciclo completo:}
 
 Este modulo inteiro segue o metodo SDD+TDD. Cada capitulo e uma
@@ -319,7 +315,7 @@ conceito, pergunte-se: ``Como eu testaria isso no OpenCode?''
 \section{Checkpoint TDD \^a?? Voce Aprendeu?}
 
 \begin{center}
-\fbox{\begin{minipage}{0.88\textwidth}\small
+\fbox{\begin{minipage}{0.88\textwidth}\footnotesize
 \textbf{Mini-teste do Capitulo 1} (gabarito no Apendice C)
 
 \begin{enumerate}[nosep]

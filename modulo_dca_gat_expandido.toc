@@ -218,7 +218,7 @@
 \contentsline {section}{\numberline {16.1}A Pergunta que Este Capitulo Responde}{144}{section.16.1}%
 \contentsline {section}{\numberline {16.2}SPECs Pedagogicas: O Que o Aluno Deve Aprender}{144}{section.16.2}%
 \contentsline {subsection}{\numberline {16.2.1}SPEC-PED-001: Compreensao Conceitual da Arbitragem}{144}{subsection.16.2.1}%
-\contentsline {subsection}{\numberline {16.2.2}SPEC-PED-002: Traducao Geometrica}{145}{subsection.16.2.2}%
+\contentsline {subsection}{\numberline {16.2.2}SPEC-PED-002: Traducao Geometrica}{144}{subsection.16.2.2}%
 \contentsline {subsection}{\numberline {16.2.3}SPEC-PED-003: Habilidade Computacional}{145}{subsection.16.2.3}%
 \contentsline {section}{\numberline {16.3}Instrumento de Avaliacao (TDD Pedagogico)}{145}{section.16.3}%
 \contentsline {section}{\numberline {16.4}Ciclo de Evolucao do Raciocinio Multiagente}{146}{section.16.4}%
@@ -226,11 +226,11 @@
 \contentsline {subsection}{\numberline {16.4.2}Demonstracao: Ciclo Completo em 15 Minutos}{146}{subsection.16.4.2}%
 \contentsline {section}{\numberline {16.5}Metricas de Eficiencia Pedagogica}{147}{section.16.5}%
 \contentsline {subsection}{\numberline {16.5.1}Taxonomia de Bloom Aplicada a GAT}{147}{subsection.16.5.1}%
-\contentsline {subsection}{\numberline {16.5.2}Indicadores de Eficiencia}{148}{subsection.16.5.2}%
+\contentsline {subsection}{\numberline {16.5.2}Indicadores de Eficiencia}{147}{subsection.16.5.2}%
 \contentsline {section}{\numberline {16.6}Reprodutibilidade: Como Garantir que Funciona}{148}{section.16.6}%
 \contentsline {subsection}{\numberline {16.6.1}Checklist de Reproducao}{148}{subsection.16.6.1}%
 \contentsline {subsection}{\numberline {16.6.2}Principio de Integridade na Pedagogia}{148}{subsection.16.6.2}%
-\contentsline {section}{\numberline {16.7}Exercicios de Metacognicao}{149}{section.16.7}%
+\contentsline {section}{\numberline {16.7}Exercicios de Metacognicao}{148}{section.16.7}%
 \contentsline {section}{\numberline {16.8}Referencias do Capitulo}{149}{section.16.8}%
 \contentsline {chapter}{\numberline {A}Revis o de Geometria Diferencial}{150}{appendix.A}%
 \contentsline {section}{\numberline {A.1}Variedades Diferenci iveis}{150}{section.A.1}%

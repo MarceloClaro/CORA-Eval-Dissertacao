@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 13:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 13:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -704,7 +704,7 @@ Cap\'{\i }tulo 1.
 [10
 
 ]
-Overfull \hbox (1.47374pt too wide) in paragraph at lines 111--111
+Overfull \hbox (1.47374pt too wide) in paragraph at lines 107--107
 []\OT1/cmr/bx/n/17.28 Arbitragem, Quase-Arbitragem e Ar-bi-tra-gem Es-
  []
 
@@ -2349,7 +2349,7 @@ Underfull \hbox (badness 1616) in paragraph at lines 88--88
 []|\OT1/cmr/m/n/12 Explica cada V1--
  []
 
-ignored error: Infinite glue shrinkage found in box being split [145] [146]
+[145] [146]
 Underfull \hbox (badness 10000) in paragraph at lines 170--170
 []|\OT1/cmr/m/n/12 Definir ar-bi-tra-gem,
  []
@@ -2916,16 +2916,16 @@ d.
 (rerunfilecheck)             Checksum: 6C879E87DEDDA21B1561E5B10BBD7969;64235.
  ) 
 Here is how much of TeX's memory you used:
- 18122 strings out of 467871
- 276542 string characters out of 5418376
+ 18121 strings out of 467871
+ 276518 string characters out of 5418376
  1422416 words of memory out of 5000000
- 44531 multiletter control sequences out of 15000+600000
- 656756 words of font info for 150 fonts, out of 8000000 for 9000
+ 44530 multiletter control sequences out of 15000+600000
+ 656582 words of font info for 149 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,91p,1060b,2254s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,91p,1060b,2253s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
 1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tcrm1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+0\tcrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
 /dpi600\tcrm1200.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/Mi
@@ -2938,32 +2938,36 @@ rce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
 s/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/marce/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/marce/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ma
-rce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
-Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.p
-fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/marce/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/marce/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/m
-arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:
-/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt1
-0.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmtt12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/euler/eufm10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/symbols/msam10.pfb><C:/Users/marce/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/marce/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on modulo_dca_gat_expandido.pdf (173 pages, 1559543 bytes).
+fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/marce/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/marce/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ma
+rce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr7.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/marce/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/marce/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/mar
+ce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
+Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12
+.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmti7.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmti8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmtt10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/marce/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/marc
+e/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+<C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pf
+b>
+Output written on modulo_dca_gat_expandido.pdf (173 pages, 1584982 bytes).
 PDF statistics:
- 4579 PDF objects out of 5155 (max. 8388607)
+ 4594 PDF objects out of 5155 (max. 8388607)
  2190 named destinations out of 2487 (max. 500000)
  2265 words of extra memory for PDF output out of 10000 (max. 10000000)
 
