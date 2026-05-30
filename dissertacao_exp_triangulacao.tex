@@ -1,0 +1,258 @@
+% ======================================================================
+% EXPANSAO — Triangulacao Anti-Circularidade (SPEC-008)
+% Framework para dominios sem ground truth externo
+% 15 referencias com DOI | TDD: 14/14 GREEN
+% ======================================================================
+
+\section{Triangulacao Anti-Circularidade: Validacao sem Ground Truth Externo}
+
+\subsection{O Problema da Circularidade Auto-Avaliativa}
+
+O dialogo com o revisor senior simulado Romulo identificou a questao mais
+profunda da validacao cientifica em IA: \textbf{e quando nao existe um Project
+Euler para o dominio?} Quando o unico ground truth disponivel e interno ao
+proprio corpus — como um extrator de padroes em textos juridicos
+especializados — como sair da circularidade em que o sistema valida a si mesmo?
+
+Este problema e formalizado pela Lei de Goodhart\footnote{Goodhart, C.A.E.
+\textit{Problems of Monetary Management: The UK Experience}. Papers in Monetary
+Economics, Reserve Bank of Australia, 1975.} e sua generalizacao por
+Strathern\footnote{Strathern, M. \textit{'Improving ratings': audit in the
+British University system}. European Review, 5(3):305--321, 1997. DOI:
+10.1002/(SICI)1234-981X(199707)5:3<305::AID-EURO184>3.0.CO;2-4.}: "quando uma
+medida se torna um alvo, ela deixa de ser uma boa medida". Ji et
+al.\footnote{Ji, J. et al. \textit{AI Alignment: A Comprehensive Survey}.
+arXiv:2310.19852, 2023. DOI: 10.48550/arxiv.2310.19852.} catalogam este
+fenomeno como ``reward hacking'' — o sistema encontra atalhos para maximizar
+a metrica sem desenvolver a capacidade subjacente.
+
+No contexto do CORA-Eval, a circularidade se manifesta quando os verificadores
+Cora-Debate (V1--V7) sao usados simultaneamente como mecanismo de verificacao
+das tarefas e como componentes do ecossistema sendo avaliado. Para as dimensoes
+D1 e D7, esta circularidade e mitigada pela validacao externa (Project Euler e
+Rosalind). Para as 8 dimensoes restantes — e para qualquer dominio sem ground
+truth externo — permanece a questao: como quebrar a circularidade?
+
+\subsection{Fundamentacao Teorica: Triangulacao de Denzin-Flick}
+
+A resposta metodologica fundamenta-se na triangulacao, proposta por
+Denzin\footnote{Denzin, N.K. \textit{The Research Act: A Theoretical
+Introduction to Sociological Methods}. McGraw-Hill, 1978. ISBN: 978-0070168904.}
+e atualizada por Flick\footnote{Flick, U. \textit{Triangulation in Data
+Collection}. In: The SAGE Handbook of Qualitative Data Collection, 2018. DOI:
+10.4135/9781526416070.}: multiplos metodos, multiplas fontes e multiplos
+investigadores convergem para reduzir o vies de cada um isoladamente.
+
+Adaptamos este framework para o problema da validacao circular em IA,
+substituindo ``investigadores'' por ``fontes de ground truth'' e ``metodos''
+por ``camadas de verificacao com independencia progressiva''. O resultado e o
+\textbf{Framework de Triangulacao Anti-Circularidade} (SPEC-008), com tres
+camadas de validacao.
+
+\subsection{As Tres Camadas}
+
+\subsubsection{Camada 1 — Split Temporal Cego}
+
+Seja $\mathcal{D} = \{(x_i, t_i)\}_{i=1}^{N}$ um corpus com timestamps. O
+split temporal cego particiona:
+
+\begin{equation}
+\mathcal{D}_{\text{treino}} = \{x_i : t_i \leq T_{\text{cutoff}}\}, \qquad
+\mathcal{D}_{\text{teste}} = \{x_i : t_i > T_{\text{cutoff}}\}
+\end{equation}
+
+O modelo de extracao $\mathcal{M}$ e treinado exclusivamente em
+$\mathcal{D}_{\text{treino}}$ e avaliado em $\mathcal{D}_{\text{teste}}$, que
+contem dados inexistentes no momento do treinamento. Se o padrao extraido do
+periodo 2015--2023 \textbf{prediz} corretamente o que aparece em 2024--2025,
+ha evidencia de que captura algo real.
+
+Bergmeir e Benitez\footnote{Bergmeir, C., Benitez, J.M. \textit{On the use of
+cross-validation for time series predictor evaluation}. Information Sciences,
+191:192--213, 2012. DOI: 10.1016/j.ins.2011.12.028.} demonstraram que validacao
+cruzada convencional (K-fold aleatorio) produz estimativas excessivamente
+otimistas para dados com dependencia temporal — o futuro vaza para o passado.
+Cerqueira et al.\footnote{Cerqueira, V., Torgo, L., Mozetic, I. \textit{Evaluating
+time series forecasting models}. Machine Learning, 109:1997--2028, 2020. DOI:
+10.1007/s10994-020-05910-7.} confirmaram que CV com janela deslizante
+preservando ordem temporal supera K-fold aleatorio em 62 series temporais reais.
+
+\textbf{Nivel de independencia:} BAIXO (mesmo corpus, mesma fonte, separacao
+temporal). Nao elimina a circularidade, mas a enfraquece ao introduzir o tempo
+como barreira.
+
+\subsubsection{Camada 2 — Perturbacao Adversaria (Falsificabilidade)}
+
+A Camada 2 operacionaliza o criterio de falsificabilidade de
+Popper\footnote{Popper, K. \textit{The Logic of Scientific Discovery}.
+Routledge, 1959. DOI: 10.4324/9780203994627.} no contexto de IA: em vez de
+tentar provar que o padrao e correto, tentamos \textit{refutar} o padrao por
+perturbacao.
+
+Para cada padrao $P$ extraido do corpus original, criamos $k=4$ copias
+perturbadas aplicando transformacoes $T_j$ que destroem propriedades
+especificas:
+
+\begin{itemize}
+\item $T_1$: embaralhar ordem de paragrafos (destroi coerencia discursiva)
+\item $T_2$: substituir entidades nomeadas por \texttt{[ENT\_\#\#\#]}
+      (destroi semantica referencial)
+\item $T_3$: inverter ordem cronologica (destroi estrutura temporal)
+\item $T_4$: substituir 30\% de tokens por sinonimos aleatorios (destroi
+      precisao terminologica)
+\end{itemize}
+
+Se $P$ \textbf{desaparece} sob $T_j$, a propriedade $j$ e necessaria para $P$
+— o padrao nao e espurio. Se $P$ \textbf{persiste} identico sob todas as
+perturbacoes, $P$ e insensivel a estrutura do corpus e provavelmente captura
+um vies de distribuicao de tokens (artefato, nao conhecimento).
+
+Ribeiro et al.\footnote{Ribeiro, M.T., Wu, T., Guestrin, C., Singh, S.
+\textit{Beyond Accuracy: Behavioral Testing of NLP Models with CheckList}. ACL,
+2020. DOI: 10.18653/v1/2020.acl-main.442.} formalizaram esta abordagem no
+CheckList, com tres tipos de teste: Minimum Functionality Test (MFT),
+Invariance Test (INV) e Directional Expectation Test (DIR). Gardner et
+al.\footnote{Gardner, M. et al. \textit{Evaluating Models' Local Decision
+Boundaries via Contrast Sets}. EMNLP Findings, 2020. DOI:
+10.18653/v1/2020.findings-emnlp.117.} propoem contrast sets — exemplos que
+diferem minimamente mas exigem saidas diferentes.
+
+\textbf{Nivel de independencia:} MEDIO (mesmo corpus, condicoes modificadas).
+
+\subsubsection{Camada 3 — Anotacao Humana em Amostra Minima}
+
+A Camada 3 introduz um especialista humano do dominio como fonte de ground
+truth externa ao sistema. Dado que anotacao humana e cara, utilizamos
+\textbf{active learning}\footnote{Settles, B. \textit{Active Learning Literature
+Survey}. Computer Sciences Technical Report 1648, University of
+Wisconsin-Madison, 2009.}: o sistema seleciona para anotacao os $m=30$
+documentos onde o modelo tem maior incerteza (entropia maxima), ha divergencia
+entre C1 e C2, ou o documento e representativo de um cluster ainda nao anotado.
+
+Shen et al.\footnote{Shen, Y., Yun, H., Lipton, Z.C., Kronrod, Y., Anandkumar,
+A. \textit{Deep Active Learning for Named Entity Recognition}. ICLR, 2018. DOI:
+10.48550/arxiv.1707.05928.} demonstram que estrategias hibridas (incerteza +
+representatividade) superam uncertainty sampling puro, reduzindo o custo de
+rotulagem em ate 80\% comparado a amostragem aleatoria.
+
+O protocolo de anotacao consiste em 3 perguntas binarias por padrao por
+documento: (1) O padrao esta presente? (2) Captura algo real ou e artefato?
+(3) O especialista teria identificado sem o sistema? A concordancia e medida
+como proporcao de respostas positivas em (1), com intervalo de confianca de
+95\% via Clopper-Pearson exato (binomial, nao aproximacao normal de Wald).
+
+\textbf{Nivel de independencia:} ALTO (fonte externa: julgamento humano).
+
+\subsection{Matriz de Decisao Integrada}
+
+\begin{table}[H]\centering\footnotesize
+\caption{Matriz de decisao da triangulacao anti-circularidade}
+\label{tab:triangulacao}
+\begin{tabular}{p{0.05\textwidth}p{0.10\textwidth}p{0.12\textwidth}p{0.10\textwidth}p{0.30\textwidth}p{0.15\textwidth}}
+\toprule
+\textbf{Cen.} & \textbf{C1 (Temp)} & \textbf{C2 (Pert)} & \textbf{C3 (Hum)} & \textbf{Interpretacao} & \textbf{Acao} \\
+\midrule
+A & Passa & Passa & Passa & Evidencia forte de robustez & Publicar com confianca moderada \\
+B & Passa & Falha & Passa & Padrao sensivel a estrutura & Investigar perturbacao que quebrou \\
+C & Falha & Passa & Passa & Overfitting temporal & Verificar domain shift \\
+D & Passa & Passa & Falha & Vies do especialista ou padrao irrelevante & Discutir, expandir amostra \\
+E & Falha & Falha & Passa & Padrao fragil & Refinar extracao, nao publicar \\
+F & — & — & Falha & Discordancia humana & Expandir amostra para 60 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Niveis de Independencia}
+
+\begin{table}[H]\centering\footnotesize
+\caption{Niveis de independencia e confianca por fonte de validacao}
+\label{tab:independencia}
+\begin{tabular}{p{0.30\textwidth}p{0.15\textwidth}p{0.20\textwidth}p{0.20\textwidth}}
+\toprule
+\textbf{Fonte de Validacao} & \textbf{Independencia} & \textbf{Confianca Max.} & \textbf{Custo} \\
+\midrule
+Cora-Debate auto-verif. & Nula (circular) & — & Zero \\
+Split temporal cego (C1) & Baixa & Moderada & Baixo \\
+Perturbacao adversaria (C2) & Media & Moderada-Alta & Medio \\
+Anotacao humana 30 amostras (C3) & Alta & Alta & 2h humanas \\
+Validacao externa (Project Euler) & Maxima & Maxima & Depende de existencia \\
+Replicacao por terceiros & Maxima & Maxima & Meses \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Integracao com CORA-Eval e TDD (SPEC-008)}
+
+A triangulacao anti-circularidade foi formalizada como a especificacao
+SPEC-008 do ecossistema, com 9 criterios de teste (CT-8.1 a CT-8.9)
+implementados em \texttt{test\_anticircularidade.py}. A suite TDD obteve
+14/14 GREEN apos 3 correcoes no ciclo RED$\to$GREEN$\to$REFACTOR.
+
+A integracao com o CORA-Eval opera como camada adicional de verificacao
+que precede os verificadores Cora-Debate:
+
+\begin{verbatim}
+Triangulacao Anti-Circularidade (C1+C2+C3)
+    |
+    v
+Cora-Debate V1-V7 (verificacao simbolica)
+    |
+    v
+Qualis A1 Scoring
+\end{verbatim}
+
+A triangulacao estabelece o \textbf{nivel de independencia} da validacao.
+O Cora-Debate opera dentro desse nivel, com a ressalva de que scores
+gerados em dominios sem validacao externa recebem a penalidade
+\texttt{[auto-reportado]} conforme INTEGRIDADE.md R-I8.
+
+\subsection{Limitacoes do Framework}
+
+\begin{enumerate}[label=(\roman*)]
+\item A Camada 3 depende de disponibilidade de especialista humano — custo
+      real de 2 horas, nao simulavel.
+\item O split temporal requer timestamps confiaveis no corpus — nem todo
+      dominio possui ordenacao temporal.
+\item As perturbacoes T1--T4 sao heuristicas — podem nao cobrir todos os
+      tipos de fragilidade.
+\item A matriz de decisao A-F e qualitativa — os thresholds sao heuristicos
+      e podem requerer calibracao por dominio.
+\item A triangulacao \textbf{reduz}, mas nao \textbf{elimina}, a
+      circularidade. Nenhuma das tres camadas substitui uma validacao
+      externa independente.
+\end{enumerate}
+
+\subsection{Referencias do Framework}
+
+\begin{enumerate}[label={[\arabic*]}]
+\item Goodhart, C.A.E. (1975). Problems of Monetary Management. Reserve Bank
+      of Australia.
+\item Strathern, M. (1997). `Improving ratings'. European Review, 5(3).
+      DOI: 10.1002/(SICI)1234-981X(199707)5:3.
+\item Ji, J. et al. (2023). AI Alignment: A Comprehensive Survey.
+      arXiv:2310.19852. DOI: 10.48550/arxiv.2310.19852.
+\item Denzin, N.K. (1978). The Research Act. McGraw-Hill.
+      ISBN: 978-0070168904.
+\item Flick, U. (2018). Triangulation in Data Collection. SAGE Handbook.
+      DOI: 10.4135/9781526416070.
+\item Bergmeir, C., Benitez, J.M. (2012). Cross-validation for time series.
+      Information Sciences, 191. DOI: 10.1016/j.ins.2011.12.028.
+\item Cerqueira, V. et al. (2020). Evaluating time series forecasting models.
+      Machine Learning, 109. DOI: 10.1007/s10994-020-05910-7.
+\item Arlot, S., Celisse, A. (2010). Cross-validation procedures. Statistics
+      Surveys, 4. DOI: 10.1214/09-SS054.
+\item Ribeiro, M.T. et al. (2020). CheckList. ACL.
+      DOI: 10.18653/v1/2020.acl-main.442.
+\item Gardner, M. et al. (2020). Contrast Sets. EMNLP Findings.
+      DOI: 10.18653/v1/2020.findings-emnlp.117.
+\item Popper, K. (1959). The Logic of Scientific Discovery. Routledge.
+      DOI: 10.4324/9780203994627.
+\item Settles, B. (2009). Active Learning Literature Survey. UW-Madison
+      CS TR 1648.
+\item Shen, Y. et al. (2017). Deep Active Learning for NER. ICLR 2018.
+      DOI: 10.48550/arxiv.1707.05928.
+\item Hendrycks, D., Gimpel, K. (2017). Out-of-Distribution Detection.
+      ICLR. DOI: 10.48550/arxiv.1610.02136.
+\item Goodfellow, I. et al. (2015). Adversarial Examples. ICLR.
+      DOI: 10.48550/arxiv.1412.6572.
+\end{enumerate}

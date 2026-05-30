@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 07:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 09:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -470,24 +470,24 @@ Package babel Info: 'brazilian' activates 'portuges' shorthands.
 )
 \openout1 = `dissertacao_cora_eval_abnt.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -521,7 +521,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 )
-Package hyperref Info: Link coloring ON on input line 38.
+Package hyperref Info: Link coloring ON on input line 44.
  (dissertacao_cora_eval_abnt.out) (dissertacao_cora_eval_abnt.out)
 \@outlinefile=\write3
 \openout3 = `dissertacao_cora_eval_abnt.out'.
@@ -529,13 +529,13 @@ Package hyperref Info: Link coloring ON on input line 38.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
 
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -593,7 +593,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 186.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 207.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -610,7 +610,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[9])
+[9]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10])
 \tf@toc=\write4
 \openout4 = `dissertacao_cora_eval_abnt.toc'.
 
@@ -622,7 +630,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[10]
+[11]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -630,7 +638,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[11] (dissertacao_exp_arcabouco.tex
+[12] (dissertacao_exp_arcabouco.tex
 
 ! LaTeX Error: There's no line here to end.
 
@@ -641,7 +649,10 @@ Type  H <return>  for immediate help.
 l.6 \\\\
         paragraph{Arcabou√ßo Te√≥rico: Fundamentos da Avalia√ß√£o de Racioc√...
 
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -652,7 +663,10 @@ Type  H <return>  for immediate help.
 l.6 \\\\p
          aragraph{Arcabou√ßo Te√≥rico: Fundamentos da Avalia√ß√£o de Racioc√...
 
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -662,25 +676,10 @@ Type  H <return>  for immediate help.
                                                   
 l.8 \\\paragraph
                 {Epistemologia da Verifica√ß√£o Cient√≠fica}
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[12]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.56 \\\paragraph
-                 {Fundamentos Estat√≠sticos da Avalia√ß√£o Multidimensional}
-? 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -696,14 +695,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 \\\paragraph
-                 {Teoria da Verifica√ß√£o Formal}
-? 
-
-Underfull \hbox (badness 2512) in paragraph at lines 111--111
-[][]\T1/cmr/m/n/10 Goldman, A.I. \T1/cmr/m/it/10 Kno-wledge in a So-cial World\
-T1/cmr/m/n/10 . Ox-ford Uni-ver-sity Press, 1999. DOI:
- []
+l.56 \\\paragraph
+                 {Fundamentos Estat√≠sticos da Avalia√ß√£o Multidimensional}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -720,20 +716,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.119 \\\paragraph
-                  {Geometria Diferencial da Informa√ß√£o}
-? 
+l.88 \\\paragraph
+                 {Teoria da Verifica√ß√£o Formal}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-! LaTeX Error: There's no line here to end.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.147 \\\paragraph
-                  {Triangula√ß√£o Metodol√≥gica como Princ√≠pio de Valida√ß√£o}
+Underfull \hbox (badness 2512) in paragraph at lines 111--111
+[][]\T1/cmr/m/n/10 Goldman, A.I. \T1/cmr/m/it/10 Kno-wledge in a So-cial World\
+T1/cmr/m/n/10 . Ox-ford Uni-ver-sity Press, 1999. DOI:
+ []
 
-? 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -749,9 +743,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 \\\\
-          paragraph{Reprodutibilidade e Auditoria}
-? 
+l.119 \\\paragraph
+                  {Geometria Diferencial da Informa√ß√£o}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -759,29 +756,38 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.180 \\\\p
-           aragraph{Reprodutibilidade e Auditoria}
-? 
+l.147 \\\paragraph
+                  {Triangula√ß√£o Metodol√≥gica como Princ√≠pio de Valida√ß√£o}
 
-! LaTeX Error: There's no line here to end.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.182 \\\paragraph
-                  {Princ√≠pio de Reprodutibilidade Total}
-? 
 
-! LaTeX Error: There's no line here to end.
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+[][]\T1/cmr/m/n/10 Contagem ve-ri-fi-ca-vel: \T1/cmtt/m/n/10 agents/ \T1/cmr/m/
+n/10 = 79 ar-qui-vos; \T1/cmtt/m/n/10 criador-artigo/agents/ \T1/cmr/m/n/10 = 4
+9;
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.204 \\\paragraph
-                  {Auditoria Independente: Passo a Passo}
-? 
+
+Underfull \hbox (badness 3343) in paragraph at lines 164--172
+[]\T1/cmr/bx/n/12 TriangulaÁ„o de in-ves-ti-ga-do-res\T1/cmr/m/n/12 : o ecos-si
+s-tema mul-ti-a-gente (79 agen-
+ []
+
+
+Underfull \hbox (badness 4752) in paragraph at lines 164--172
+\T1/cmr/m/n/12 tes es-pe-ci-a-li-za-dos em \T1/cmtt/m/n/12 agents/\T1/cmr/m/n/1
+2 , 125 in-clu-indo de-fi-ni-coes dis-tri-bu-i-das em
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--172
+\T1/cmtt/m/n/12 criador-artigo/agents/ \T1/cmr/m/n/12 e \T1/cmtt/m/n/12 basis-r
+esearch/agents/\T1/cmr/m/n/12 ) si-mula mul-ti-plos
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -790,7 +796,67 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [16]
-Overfull \hbox (12.51804pt too wide) in paragraph at lines 221--224
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.184 \\\\
+          paragraph{Reprodutibilidade e Auditoria}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.184 \\\\p
+           aragraph{Reprodutibilidade e Auditoria}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.186 \\\paragraph
+                  {Princ√≠pio de Reprodutibilidade Total}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.208 \\\paragraph
+                  {Auditoria Independente: Passo a Passo}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[17]
+Overfull \hbox (12.51804pt too wide) in paragraph at lines 225--228
 \T1/cmtt/m/n/12 python cora_benchmark_tracker.py --detail D1 \T1/cmr/m/n/12 (re
 -pe-tir para D2,D3,D7,D10) 
  []
@@ -802,77 +868,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.226 \\\paragraph
+l.230 \\\paragraph
                   {Contraprovas: O Que o Sistema N√£o Consegue Fazer}
-? 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[17]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.258 \\\paragraph
-                  {Checklist de Auditoria para a Banca}
-? 
-
-Overfull \hbox (73.7065pt too wide) in paragraph at lines 267--268
-[]|\T1/cmtt/m/n/12 test_exaustivo_final.py| 
- []
-
-
-Overfull \hbox (30.49205pt too wide) in paragraph at lines 269--270
-[]|\T1/cmtt/m/n/12 cora_scores.json| 
- []
-
-
-Overfull \hbox (61.35951pt too wide) in paragraph at lines 271--272
-[]|\T1/cmtt/m/n/12 run_all_benchmarks.py| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
-[]|\T1/cmr/m/n/12 GeodÈsica de apren-di-zado:
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.280 \\\\
-          paragraph{Limita√ß√µes e Agenda de Pesquisa Futura}
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.280 \\\\p
-           aragraph{Limita√ß√µes e Agenda de Pesquisa Futura}
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.282 \\\paragraph
-                  {Limita√ß√µes Reconhecidas}
-? 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -888,9 +889,32 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.312 \\\paragraph
-                  {Agenda de Pesquisa Futura}
-? 
+l.262 \\\paragraph
+                  {Checklist de Auditoria para a Banca}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (73.7065pt too wide) in paragraph at lines 271--272
+[]|\T1/cmtt/m/n/12 test_exaustivo_final.py| 
+ []
+
+
+Overfull \hbox (30.49205pt too wide) in paragraph at lines 273--274
+[]|\T1/cmtt/m/n/12 cora_scores.json| 
+ []
+
+
+Overfull \hbox (61.35951pt too wide) in paragraph at lines 275--276
+[]|\T1/cmtt/m/n/12 run_all_benchmarks.py| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
+[]|\T1/cmr/m/n/12 GeodÈsica de apren-di-zado:
+ []
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -898,10 +922,38 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.343 \\\paragraph
-                  {Considera√ß√µes √âticas e de Transpar√™ncia}
-? 
-)
+l.284 \\\\
+          paragraph{Limita√ß√µes e Agenda de Pesquisa Futura}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.284 \\\\p
+           aragraph{Limita√ß√µes e Agenda de Pesquisa Futura}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.286 \\\paragraph
+                  {Limita√ß√µes Reconhecidas}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -909,7 +961,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[19] (dissertacao_exp_metodologia.tex
+[19]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.316 \\\paragraph
+                  {Agenda de Pesquisa Futura}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.347 \\\paragraph
+                  {Considera√ß√µes √âticas e de Transpar√™ncia}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -925,7 +1004,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21]
+[21] (dissertacao_exp_metodologia.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -934,6 +1013,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [22]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[23]
 Underfull \hbox (badness 4084) in paragraph at lines 119--121
 []\T1/cmr/bx/n/12 V7a (Syn-tax)\T1/cmr/m/n/12 : par-seia o cÛ-digo com AST (Pyt
 hon \T1/cmtt/m/n/12 ast\T1/cmr/m/n/12 , Ty-peS-cript
@@ -946,69 +1033,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[23])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
-[]|\T1/cmr/m/n/10 N4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--306
-[]|\T1/cmr/m/n/10 N4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--307
-[]|\T1/cmr/m/n/10 N4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 308--308
-[]|\T1/cmr/m/n/10 N4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 309--309
-[]|\T1/cmr/m/n/10 N4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
-[]|\T1/cmr/m/n/10 N3 (PÛs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
-[]|\T1/cmr/m/n/10 N3 (PÛs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--312
-[]|\T1/cmr/m/n/10 N3 (PÛs-
- []
-
-
-Underfull \hbox (badness 4416) in paragraph at lines 313--313
-[]|\T1/cmr/m/n/10 Metodologia Ex-pe-ri-men-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--313
-[]|\T1/cmr/m/n/10 N3 (PÛs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 314--314
-[]|\T1/cmr/m/n/10 N3 (PÛs-
- []
-
+[24])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1017,17 +1042,79 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [25]
-Overfull \hbox (7.40573pt too wide) in paragraph at lines 330--330
+Underfull \hbox (badness 10000) in paragraph at lines 319--319
+[]|\T1/cmr/m/n/10 N4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--320
+[]|\T1/cmr/m/n/10 N4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+[]|\T1/cmr/m/n/10 N4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--322
+[]|\T1/cmr/m/n/10 N4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--323
+[]|\T1/cmr/m/n/10 N4
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
+[]|\T1/cmr/m/n/10 N3 (PÛs-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+[]|\T1/cmr/m/n/10 N3 (PÛs-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--326
+[]|\T1/cmr/m/n/10 N3 (PÛs-
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 327--327
+[]|\T1/cmr/m/n/10 Metodologia Ex-pe-ri-men-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
+[]|\T1/cmr/m/n/10 N3 (PÛs-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
+[]|\T1/cmr/m/n/10 N3 (PÛs-
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[26]
+Overfull \hbox (7.40573pt too wide) in paragraph at lines 344--344
 []|\T1/cmr/bx/n/10 Aprovados| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 []|\T1/cmr/m/n/10 Project Eu-ler (PE#1--
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--374
+Underfull \hbox (badness 10000) in paragraph at lines 388--388
 []|\T1/cmr/m/n/10 EvoluÁ„o M4 (N-
  []
 
@@ -1038,7 +1125,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[26] (dissertacao_exp_sdd_tdd.tex
+[27] (dissertacao_exp_sdd_tdd.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1046,7 +1133,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[27]
+[28]
 Underfull \hbox (badness 1158) in paragraph at lines 38--40
 []\T1/cmr/m/n/12 A Ta-bela [][]7[][] re-sume as ca-rac-te-rÌs-ti-cas do ecos-si
 s-tema an-tes da in-tro-du-Á„o do
@@ -1064,7 +1151,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[28]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []|\T1/cmr/m/n/12 RED (es-cre-ver
  []
@@ -1106,7 +1193,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[29]
+[30]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1114,7 +1201,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[30]
+[31]
 Underfull \hbox (badness 10000) in paragraph at lines 189--189
 []|\T1/cmr/bx/n/12 PrÈ-
  []
@@ -1151,7 +1238,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[31]) (dissertacao_exp_ollama.tex
+[32]) (dissertacao_exp_ollama.tex
 Overfull \hbox (13.09106pt too wide) in paragraph at lines 39--39
 []|\T1/cmr/bx/n/12 Par‚metros| 
  []
@@ -1168,7 +1255,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[32]
+[33]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1176,73 +1263,78 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 91--91
 []|\T1/cmr/bx/n/12 CORA-
  []
 
 
-Overfull \hbox (19.19241pt too wide) in paragraph at lines 87--87
+Overfull \hbox (19.19241pt too wide) in paragraph at lines 91--91
 []|\T1/cmr/bx/n/12 ClassificaÁ„o| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|\T1/cmr/bx/n/12 2,99
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
 []|\T1/cmr/m/n/12 DeepSeek-V3
  []
 
 
-Overfull \hbox (0.92603pt too wide) in paragraph at lines 90--90
+Overfull \hbox (0.92603pt too wide) in paragraph at lines 94--94
 []|\T1/cmr/m/n/12 GraduaÁ„o| 
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 91--91
+Underfull \hbox (badness 1342) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Llama 3.1 70B (Ol-
  []
 
 
-Overfull \hbox (0.92603pt too wide) in paragraph at lines 91--91
+Overfull \hbox (0.92603pt too wide) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 GraduaÁ„o| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
 []|\T1/cmr/m/n/12 Mistral Large
  []
 
 
-Overfull \hbox (0.92603pt too wide) in paragraph at lines 92--92
+Overfull \hbox (0.92603pt too wide) in paragraph at lines 96--96
 []|\T1/cmr/m/n/12 GraduaÁ„o| 
  []
 
 
-Underfull \hbox (badness 2452) in paragraph at lines 93--93
+Underfull \hbox (badness 2452) in paragraph at lines 97--97
 []|\T1/cmr/m/n/12 Qwen 2.5 72B (Ol-
  []
 
 
-Overfull \hbox (0.92603pt too wide) in paragraph at lines 93--93
+Overfull \hbox (0.92603pt too wide) in paragraph at lines 97--97
 []|\T1/cmr/m/n/12 GraduaÁ„o| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--111
+Underfull \hbox (badness 10000) in paragraph at lines 115--115
 []|\T1/cmr/bx/n/12 DeepSeek-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--113
+Underfull \hbox (badness 10000) in paragraph at lines 117--117
 []|\T1/cmr/m/n/12 RaciocÌnio
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
 []|\T1/cmr/m/n/12 Desenho
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
 []|\T1/cmr/m/n/12 SÌntese In-ter-dis-ci-
  []
 
@@ -1253,7 +1345,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[34]
+[35]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1261,53 +1353,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 186--186
 []|\T1/cmr/bx/n/12 Ollama
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 []|\T1/cmr/bx/n/12 Ollama
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
-[]|\T1/cmr/m/n/12 Tempo mÈ-
- []
-
-
-Underfull \hbox (badness 1478) in paragraph at lines 185--185
-[]|\T1/cmr/m/n/12 Tokens/tarefa (en-
- []
-
-
-Underfull \hbox (badness 2941) in paragraph at lines 186--186
-[]|\T1/cmr/m/n/12 Tokens/tarefa (sa-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]|\T1/cmr/m/n/12 MemÛria RAM
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]|\T1/cmr/m/n/12 42,0
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 188--188
+[]|\T1/cmr/m/n/12 Tempo mÈ-
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 189--189
+[]|\T1/cmr/m/n/12 Tokens/tarefa (en-
+ []
+
+
+Underfull \hbox (badness 2941) in paragraph at lines 190--190
+[]|\T1/cmr/m/n/12 Tokens/tarefa (sa-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
+[]|\T1/cmr/m/n/12 MemÛria RAM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
+[]|\T1/cmr/m/n/12 42,0
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []|\T1/cmr/m/n/12 44,0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 []|\T1/cmr/m/n/12 44,0
  []
 
 
-Overfull \hbox (0.73639pt too wide) in paragraph at lines 189--189
+Overfull \hbox (0.73639pt too wide) in paragraph at lines 193--193
 []|\T1/cmr/m/n/12 Verificadores/tarefa
  []
 
@@ -1318,9 +1410,89 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[36]) (dissertacao_exp_geometria.tex
+[37])
+Underfull \hbox (badness 1917) in paragraph at lines 411--411
+[]\T1/cmr/bx/n/17.28 Triangulacao Anti-Circularidade: Va-li-da-cao sem
+ []
 
-LaTeX Warning: Reference `eq:global' on page 37 undefined on input line 8.
+(dissertacao_exp_triangulacao.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[38]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[39]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 153--153
+[]|\T1/cmr/bx/n/10 C1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--153
+[]|\T1/cmr/bx/n/10 C3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+[]|\T1/cmr/m/n/10 Publicar com
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+\T1/cmr/m/n/10 con-fi-anca
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+[]|\T1/cmr/m/n/10 Investigar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+\T1/cmr/m/n/10 per-tur-ba-cao
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+[]|\T1/cmr/m/n/10 Verificar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+[]|\T1/cmr/m/n/10 Discutir,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+\T1/cmr/m/n/10 ex-pan-dir
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+[]|\T1/cmr/m/n/10 Refinar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+\T1/cmr/m/n/10 ex-tra-cao,
+ []
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1329,7 +1501,56 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[37]
+[41]
+Overfull \hbox (4.42064pt too wide) in paragraph at lines 172--172
+[]|\T1/cmr/bx/n/10 Independencia| 
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 186--190
+\T1/cmr/m/n/12 A tri-an-gu-la-cao anti-circularidade foi for-ma-li-zada como a 
+es-pe-ci-fi-ca-cao SPEC-008
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 186--190
+\T1/cmr/m/n/12 do ecos-sis-tema, com 9 cri-te-rios de teste (CT-8.1 a CT-8.9) i
+m-ple-men-ta-dos em
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[42]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[43]
+Underfull \hbox (badness 1454) in paragraph at lines 246--248
+[]\T1/cmr/m/n/12 Gardner, M. et al. (2020). Con-trast Sets. EMNLP Fin-dings. DO
+I:
+ []
+
+) (dissertacao_exp_geometria.tex
+
+LaTeX Warning: Reference `eq:global' on page 44 undefined on input line 8.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[44]
 Underfull \hbox (badness 1117) in paragraph at lines 24--32
 \T1/cmr/m/n/12 Eval de uma re-pre-sen-ta-Á„o es-t·-tica (ve-tor de 10 sco-res i
 n-de-pen-den-tes) em uma
@@ -1348,7 +1569,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[38]
+[45]
 Overfull \hbox (9.67664pt too wide) in paragraph at lines 96--96
 []|\T1/cmr/bx/n/12 Verificador| 
  []
@@ -1395,7 +1616,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[39]
+[46]
 Overfull \hbox (11.74281pt too wide) in paragraph at lines 138--139
 []|\T1/cmr/bx/n/12 Cresc/snap| 
  []
@@ -1422,7 +1643,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[40]
+[47]
 Overfull \hbox (5.88591pt too wide) in paragraph at lines 189--189
 []|\T1/cmr/bx/n/12 Curvatura| 
  []
@@ -1449,7 +1670,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[41]
+[48]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1457,36 +1678,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[42]) (dissertacao_exp_didatica.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[43]
+[49]) (dissertacao_exp_didatica.tex
 ! Missing number, treated as zero.
 <to be read again> 
                    w
 l.49 \end{minipage}}
                     
-? 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    w
 l.49 \end{minipage}}
                     
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
-
- []
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 49--49
@@ -1509,12 +1721,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--49
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
 
  []
 
@@ -1525,7 +1737,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[44]
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 127--127
 
  []
@@ -1547,7 +1769,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[45]
+[51]
 Underfull \hbox (badness 10000) in paragraph at lines 179--179
 
  []
@@ -1564,7 +1786,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[46]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 235--235
 
  []
@@ -1580,6 +1802,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 235--235
  []
 
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[53]
 Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []|\T1/cmr/bx/n/12 Antes (CORA-Score
  []
@@ -1621,7 +1850,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[47]
+[54]
 Underfull \hbox (badness 10000) in paragraph at lines 316--316
 
  []
@@ -1644,77 +1873,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[48]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[49]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
-[]|\T1/cmr/m/n/10 SI-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--507
-[]|\T1/cmr/m/n/10 IEEE
- []
-
-
-Overfull \hbox (30.95209pt too wide) in paragraph at lines 508--509
-[]|\T1/cmr/m/n/10 Hoare/OWASP| 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[51]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[52] (dissertacao_exp_restante.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[53]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[54]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
 [55]
+Overfull \hbox (1.70074pt too wide) in paragraph at lines 456--459
+[]\T1/cmtt/m/n/12 agents/\T1/cmr/m/n/12 : 79 ar-qui-vos (nao 125). Os 46 res-ta
+n-tes es-tao em \T1/cmtt/m/n/12 criador-artigo/agents/
+ []
+
+
+Overfull \hbox (132.25502pt too wide) in paragraph at lines 494--498
+\T1/cmr/m/n/12 tado como fonte con-so-li-dada. Ver \T1/cmtt/m/n/12 github.com/M
+arceloClaro/OpenCode_Ecosystem/blob/main/REFERENCIAS.md\T1/cmr/m/n/12 . 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1723,11 +1893,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [56]
-Overfull \hbox (5.14493pt too wide) in paragraph at lines 249--255
-[]\T1/cmr/m/n/12 A do-cu-men-ta-Á„o do fra-mework foi es-tru-tu-rada em dois nÌ
--veis: \T1/cmtt/m/n/12 SPEC_ORCHESTRATION.md
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1736,9 +1901,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [57]
-Underfull \hbox (badness 1270) in paragraph at lines 300--304
-[]\T1/cmr/m/n/12 O ras-tre-a-dor \T1/cmtt/m/n/12 cora_benchmark_tracker.py \T1/
-cmr/m/n/12 im-ple-menta per-sis-tÍn-cia JSON com
+Underfull \hbox (badness 10000) in paragraph at lines 600--600
+[]|\T1/cmr/m/n/10 Transparencia
+ []
+
+
+Underfull \hbox (badness 6691) in paragraph at lines 602--602
+[]|\T1/cmr/m/n/10 Validacao Ext
  []
 
 
@@ -1750,18 +1919,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [58]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 318.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 318.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 318.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -1769,29 +1926,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [59]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 386.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 386.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 386.
-
-
-Underfull \hbox (badness 6641) in paragraph at lines 406--414
-[]\T1/cmr/m/n/12 D7 atin-giu N4 (3,20) com ve-ri-fi-ca-Á„o for-mal de cÛ-digo v
-ia tri-plas de
+Underfull \hbox (badness 10000) in paragraph at lines 705--706
+[]|\T1/cmr/m/n/10 SI-
  []
 
 
-Underfull \hbox (badness 7925) in paragraph at lines 406--414
-\T1/cmr/m/n/12 Ho-are[][][][][] para o in-te-gra-dor de N-corpos, de-mons-trand
-o que $\OMS/cmsy/m/n/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )
- =
+Underfull \hbox (badness 10000) in paragraph at lines 709--710
+[]|\T1/cmr/m/n/10 IEEE
+ []
+
+
+Overfull \hbox (30.95209pt too wide) in paragraph at lines 711--712
+[]|\T1/cmr/m/n/10 Hoare/OWASP| 
  []
 
 
@@ -1809,7 +1955,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[61]
+[61] (dissertacao_exp_restante.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1850,6 +1996,133 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [66]
+Overfull \hbox (5.14493pt too wide) in paragraph at lines 249--255
+[]\T1/cmr/m/n/12 A do-cu-men-ta-Á„o do fra-mework foi es-tru-tu-rada em dois nÌ
+-veis: \T1/cmtt/m/n/12 SPEC_ORCHESTRATION.md
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[67]
+Underfull \hbox (badness 1270) in paragraph at lines 300--304
+[]\T1/cmr/m/n/12 O ras-tre-a-dor \T1/cmtt/m/n/12 cora_benchmark_tracker.py \T1/
+cmr/m/n/12 im-ple-menta per-sis-tÍn-cia JSON com
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 318.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rightarrow' on input line 318.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 318.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[68]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[69]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 386.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rightarrow' on input line 386.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 386.
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 406--414
+[]\T1/cmr/m/n/12 D7 atin-giu N4 (3,20) com ve-ri-fi-ca-Á„o for-mal de cÛ-digo v
+ia tri-plas de
+ []
+
+
+Underfull \hbox (badness 7925) in paragraph at lines 406--414
+\T1/cmr/m/n/12 Ho-are[][][][][] para o in-te-gra-dor de N-corpos, de-mons-trand
+o que $\OMS/cmsy/m/n/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )
+ =
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[70]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[71]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[72]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[73]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[74]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[75]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[76]
 Underfull \hbox (badness 10000) in paragraph at lines 737--737
 []|\T1/cmr/bx/n/10 BIG-
  []
@@ -1921,114 +2194,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[67]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[68]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[69]
-Overfull \hbox (78.75269pt too wide) in paragraph at lines 852--866
- [][] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[70]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[71]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[72]) (dissertacao_exp_final.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[73]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[74]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 108.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 108.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 108.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[75]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[76]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 157.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 157.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 157.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
 [77]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2038,16 +2203,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [78]
-Overfull \hbox (66.09346pt too wide) in paragraph at lines 267--268
-[]|\T1/cmtt/m/n/10 test_exaustivo_final.py| 
+Overfull \hbox (78.75269pt too wide) in paragraph at lines 852--866
+ [][] 
  []
 
-
-Overfull \hbox (29.35243pt too wide) in paragraph at lines 269--270
-[]|\T1/cmtt/m/n/10 cora_scores.json| 
- []
-
-) (dissertacao_exp_extra.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -2072,6 +2231,112 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [81]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[82]) (dissertacao_exp_final.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[83]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[84]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[85]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 157.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 157.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 157.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[86]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[87]
+Overfull \hbox (66.09346pt too wide) in paragraph at lines 267--268
+[]|\T1/cmtt/m/n/10 test_exaustivo_final.py| 
+ []
+
+
+Overfull \hbox (29.35243pt too wide) in paragraph at lines 269--270
+[]|\T1/cmtt/m/n/10 cora_scores.json| 
+ []
+
+) (dissertacao_exp_extra.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[88]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[89]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[90]
 Overfull \hbox (6.41847pt too wide) in paragraph at lines 138--139
 []|\T1/cmr/bx/n/10 Cobertura| 
  []
@@ -2088,7 +2353,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[82]
+[91]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[92]
 Underfull \hbox (badness 10000) in paragraph at lines 240--241
 []|\T1/cmr/m/n/10 Din‚mica Cl·s-sica Avan-Áada (dis-ci-plina de pÛs-
  []
@@ -2098,7 +2371,7 @@ Underfull \hbox (badness 3179) in paragraph at lines 244--245
 []|\T1/cmr/m/n/10 NÌveis de com-ple-xi-dade: B·-sico, Gra-du-a-Á„o, PÛs-
  []
 
-)
+) (dissertacao_exp_fechamento.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -2106,15 +2379,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[83] (dissertacao_exp_fechamento.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[84]
+[93]
 Underfull \hbox (badness 1038) in paragraph at lines 69--69
 []|\T1/cmr/m/n/10 Reordenamento de pa-la-
  []
@@ -2125,6 +2390,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--74
  []
 
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[94]
 Underfull \hbox (badness 10000) in paragraph at lines 89--89
 []|\T1/cmr/bx/n/10 Custo
  []
@@ -2146,7 +2418,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[85]
+[95]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -2154,7 +2426,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[86])
+[96])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -2162,7 +2434,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[87]
+[97]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -2170,7 +2442,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[88] (dissertacao_exp_anexos.tex
+[98] (dissertacao_exp_anexos.tex
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 7.
 
@@ -2279,7 +2551,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[89]
+[99]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 61.
@@ -2403,7 +2675,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[90]
+[100]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 111.
@@ -2532,7 +2804,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[91]
+[101]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 157.
@@ -2625,7 +2897,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[92]
+[102]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 203.
@@ -2803,7 +3075,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[93]
+[103]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 276.
@@ -2889,7 +3161,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[94]
+[104]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 301.
@@ -2975,7 +3247,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[95]
+[105]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 347.
@@ -3112,7 +3384,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[96]
+[106]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 414.
@@ -3205,7 +3477,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[97]
+[107]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 460.
@@ -3336,7 +3608,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[98]
+[108]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 525.
@@ -3457,7 +3729,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[99]
+[109]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 590.
@@ -3562,7 +3834,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[100]
+[110]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 638.
@@ -3686,7 +3958,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[101]
+[111]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 686.
@@ -3778,7 +4050,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[102]
+[112]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 732.
@@ -3877,7 +4149,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[103]
+[113]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 778.
@@ -3981,7 +4253,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[104]
+[114]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 824.
@@ -4101,7 +4373,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[105]
+[115]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 868.
@@ -4295,7 +4567,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[106]
+[116]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -4303,7 +4575,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[107]
+[117]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 975.
@@ -4400,7 +4672,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[108]
+[118]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1053.
@@ -4451,7 +4723,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[109]
+[119]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1102.
@@ -4541,7 +4813,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[110]
+[120]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1145.
@@ -4606,7 +4878,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[111]
+[121]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1176.
@@ -4708,7 +4980,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[112]
+[122]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1215.
@@ -4794,7 +5066,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[113]
+[123]
 Underfull \hbox (badness 10000) in paragraph at lines 1267--1267
 []|\T1/cmr/m/n/12 D2-N4 N-
  []
@@ -4873,7 +5145,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[114]
+[124]
 Overfull \hbox (32.45909pt too wide) in alignment at lines 1289--1293
  [] [] [] [] [] 
  []
@@ -4900,7 +5172,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[115]
+[125]
 Underfull \hbox (badness 10000) in paragraph at lines 1339--1339
 []|\T1/cmr/bx/n/12 Resp.
  []
@@ -5067,7 +5339,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[116]
+[126]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5075,7 +5347,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[117]
+[127]
 Overfull \hbox (5.9104pt too wide) in paragraph at lines 1399--1399
 []|\T1/cmr/bx/n/12 Exemplo/Entrada| 
  []
@@ -5170,7 +5442,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[118]
+[128]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5178,7 +5450,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[119]
+[129]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1468.
@@ -5234,7 +5506,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[120]
+[130]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1490.
@@ -5314,7 +5586,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[121]
+[131]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1524.
@@ -5394,7 +5666,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[122]
+[132]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1557.
@@ -5450,7 +5722,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[123]
+[133]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5458,7 +5730,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[124]
+[134]
 Overfull \hbox (31.70467pt too wide) in alignment at lines 1633--1637
  [] [] [] [] [] [] [] 
  []
@@ -5666,7 +5938,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[125]
+[135]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5674,7 +5946,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[126]
+[136]
 Underfull \hbox (badness 7012) in paragraph at lines 1713--1713
 []|\T1/cmr/m/n/12 M2 Gra-du-a-
  []
@@ -5691,7 +5963,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[127]
+[137]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5699,7 +5971,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[128]
+[138]
 Underfull \hbox (badness 3826) in paragraph at lines 1776--1777
 []|\T1/cmr/m/n/12 Realiza ma-ni-pu-la-cao sim-bo-lica
  []
@@ -5746,7 +6018,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[129]
+[139]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5754,7 +6026,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[130]
+[140]
 Underfull \hbox (badness 10000) in paragraph at lines 1837--1837
 []|\T1/cmr/m/n/12 Tabela codon-
  []
@@ -5833,7 +6105,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[131]
+[141]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -5841,7 +6113,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[132] (dissertacao_cora_eval_abnt.aux)
+[142] (dissertacao_cora_eval_abnt.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -5850,18 +6122,81 @@ L3 programming layer <2025-12-24>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `dissertacao_cora_eval_abnt.out' has not chan
 ged.
-(rerunfilecheck)             Checksum: AB1B756C3A770A5AA28F6E28EEADC97D;69025.
+(rerunfilecheck)             Checksum: 4C5AAAECCE411B2FCA166D0DC3F52040;74973.
  ) 
 Here is how much of TeX's memory you used:
- 14849 strings out of 467871
- 238362 string characters out of 5418376
- 682830 words of memory out of 5000000
- 42843 multiletter control sequences out of 15000+600000
- 658441 words of font info for 118 fonts, out of 8000000 for 9000
+ 14949 strings out of 467871
+ 239842 string characters out of 5418376
+ 683228 words of memory out of 5000000
+ 42871 multiletter control sequences out of 15000+600000
+ 658100 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,565b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,565b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.95} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.94} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.93} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.92} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.91} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.90} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.89} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.88} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.87} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.86} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.85} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.84} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.83} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.82} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.81} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.80} has been referenced but does not exis
 t, replaced by a fixed one
@@ -6188,50 +6523,49 @@ ecbi1440.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
 pi600\ectt1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
 n/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/j
 knappen/ec/dpi450\ectt0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/lj
-four/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\marce\AppData\Local\MiKTeX
+four/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts
+/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\marce\AppData\Local\MiKTeX
 \fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\marce\AppData\Local\
 MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\marce\AppData\
-Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\marce\Ap
-pData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\ma
-rce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Us
-ers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> 
-<C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi120
+Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\Ap
+pData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\ma
+rce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Us
+ers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> 
+<C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx120
 0.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-cti1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\ectt1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecbx1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
-nappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljf
+cbx1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
+i600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
+/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljf
 our/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/
-pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\
-fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\marce\AppData\Local\M
-iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\marce\AppData\L
-ocal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\marce\App
-Data\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/marc
-e/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/U
-sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.p
-fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/marce/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/marce
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Use
-rs/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb
-><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/marce/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on dissertacao_cora_eval_abnt.pdf (132 pages, 1249088 bytes).
+pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\
+fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\marce\AppData\Local\M
+iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\marce\AppData\L
+ocal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/marce/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/m
+arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
+/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/marce/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/marce/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mar
+ce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
+sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pf
+b><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr7.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/marce/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on dissertacao_cora_eval_abnt.pdf (142 pages, 1310333 bytes).
 PDF statistics:
- 3655 PDF objects out of 4296 (max. 8388607)
- 638 named destinations out of 1000 (max. 500000)
- 2121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3902 PDF objects out of 4296 (max. 8388607)
+ 708 named destinations out of 1000 (max. 500000)
+ 2289 words of extra memory for PDF output out of 10000 (max. 10000000)
 

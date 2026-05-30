@@ -1,278 +1,299 @@
 \babel@toc {brazilian}{}\relax 
-\contentsline {section}{\numberline {1}Introdução}{11}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Contexto: A Avaliação de Inteligência Artificial Científica}{11}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}O Problema da Fragmentação de Benchmarks}{12}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}O Ecossistema OpenCode}{12}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Objetivos e Estrutura}{12}{subsection.1.4}%
-\contentsline {section}{\numberline {2}Arcabouço Teórico}{12}{section.2}%
-\contentsline {paragraph}{Epistemologia da Verificação Científica}{13}{section*.2}%
-\contentsline {paragraph}{Fundamentos Estatísticos da Avaliação Multidimensional}{13}{section*.3}%
-\contentsline {paragraph}{Teoria da Verificação Formal}{14}{section*.4}%
-\contentsline {paragraph}{Geometria Diferencial da Informação}{15}{section*.5}%
-\contentsline {paragraph}{Triangulação Metodológica como Princípio de Validação}{15}{section*.6}%
-\contentsline {paragraph}{Princípio de Reprodutibilidade Total}{16}{section*.7}%
-\contentsline {paragraph}{Auditoria Independente: Passo a Passo}{16}{section*.8}%
-\contentsline {paragraph}{Contraprovas: O Que o Sistema Não Consegue Fazer}{17}{section*.9}%
-\contentsline {paragraph}{Checklist de Auditoria para a Banca}{18}{table.caption.11}%
-\contentsline {paragraph}{Limitações Reconhecidas}{18}{section*.12}%
-\contentsline {paragraph}{Agenda de Pesquisa Futura}{19}{section*.13}%
-\contentsline {paragraph}{Considerações Éticas e de Transparência}{19}{section*.14}%
-\contentsline {section}{\numberline {3}Metodologia: O Framework CORA-Eval}{20}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Fundamentação Metodológica}{20}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Dimensões e Níveis}{20}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Cálculo do CORA-Score}{20}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Pipeline de Avaliação e Fontes de Ground Truth}{20}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Cada Verificador em Detalhe}{21}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}V1 — Análise Dimensional}{21}{subsubsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.2}V2 — Verificador Algébrico}{21}{subsubsection.3.5.2}%
-\contentsline {subsubsection}{\numberline {3.5.3}V3 — Contraexemplos}{22}{subsubsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {3.5.4}V4 — Verificador Estatístico}{22}{subsubsection.3.5.4}%
-\contentsline {subsubsection}{\numberline {3.5.5}V5 — Verificador Numérico}{22}{subsubsection.3.5.5}%
-\contentsline {subsubsection}{\numberline {3.5.6}V6 — Verificador de EDO/EDP}{22}{subsubsection.3.5.6}%
-\contentsline {subsubsection}{\numberline {3.5.7}V7 — Verificador de Código-Fonte}{23}{subsubsection.3.5.7}%
-\contentsline {subsection}{\numberline {3.6}Calibração dos Níveis de Complexidade}{23}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Evolução do Ecossistema OpenCode}{24}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Fase 1: Fundação e Infraestrutura Acadêmica (Rounds 1--7)}{24}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Fase 2: Engenharia de Software com Agentes (Rounds 8--10)}{24}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Fase 3: CORA-Eval — Maturidade Científica (Rounds 11--14)}{24}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Progressão Temporal}{25}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Resultados da Validação}{25}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Desempenho Global}{25}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Validação Cega Exaustiva}{26}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Validação Cruzada K=10}{26}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Suítes TDD — 13 suites, 113/114 GREEN}{27}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Impacto do SDD+TDD no Ecossistema}{27}{section.6}%
-\contentsline {section}{\numberline {7}O Impacto Metodológico do SDD+TDD no OpenCode Ecosystem}{27}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Antes do SDD+TDD: Correção Reativa (Rounds 1--7)}{27}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Round 8: A Introdução do SDD+TDD}{28}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Spec-Driven Development (SDD)}{28}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Test-Driven Development (TDD)}{29}{subsubsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.3}DecisionNode: Memória Estruturada de Decisões}{29}{subsubsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.3}Round 9: A Consolidação em Pipeline Autônomo}{29}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}O Impacto no CORA-Eval (Rounds 11--14)}{30}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Suítes TDD como Evidência}{30}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}Pipeline de 5 Estágios}{31}{subsubsection.7.4.2}%
-\contentsline {subsubsection}{\numberline {7.4.3}Rastreabilidade Total}{31}{subsubsection.7.4.3}%
-\contentsline {subsection}{\numberline {7.5}Antes e Depois: A Transformação Quantificada}{31}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Implicações para a Ciência da Computação}{32}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Estudo Comparativo: Ollama vs OpenCode}{32}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Contexto e Motivação}{32}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Modelos Avaliados}{33}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Metodologia de Comparação}{33}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Resultados: CORA-Score por Modelo}{34}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Análise por Dimensão}{35}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}Análise Qualitativa: Tipos de Erro}{35}{subsection.8.6}%
-\contentsline {subsection}{\numberline {8.7}Impacto dos Verificadores}{36}{subsection.8.7}%
-\contentsline {subsection}{\numberline {8.8}Eficiência Computacional}{36}{subsection.8.8}%
-\contentsline {subsection}{\numberline {8.9}Discussão e Implicações}{37}{subsection.8.9}%
-\contentsline {subsection}{\numberline {8.10}Limitações do Estudo Comparativo}{37}{subsection.8.10}%
-\contentsline {section}{\numberline {9}Geometria Cognitiva: Do CORA-Score Estático ao Espaço 38D Dinâmico}{38}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Motivação: Além da Aproximação Independente}{38}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Matriz de Dependência entre Dimensões}{38}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Grafo Cognitivo de Verificadores}{39}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Decomposição Tensorial da Evolução Temporal}{40}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}Métrica de Fisher e Curvatura do Espaço de Aprendizado}{41}{subsection.9.5}%
-\contentsline {subsection}{\numberline {9.6}Implicações para a Evolução do Ecossistema}{42}{subsection.9.6}%
-\contentsline {subsection}{\numberline {9.7}Trabalhos Futuros: Rumo a uma Geometria Diferencial Completa}{43}{subsection.9.7}%
-\contentsline {section}{\numberline {10}Interpretação da Geometria Cognitiva: Guia para a Banca}{44}{section.10}%
-\contentsline {subsection}{\numberline {10.1}O Problema Original: Aproximação Independente}{44}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Matriz de Dependência: Quem Depende de Quem?}{44}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Grafo Cognitivo: Quem Verifica o Quê?}{45}{subsection.10.3}%
-\contentsline {subsection}{\numberline {10.4}Decomposição Tensorial: Quem Cresce Mais Rápido?}{46}{subsection.10.4}%
-\contentsline {subsection}{\numberline {10.5}Métrica de Fisher: Onde Investir Agora?}{46}{subsection.10.5}%
-\contentsline {subsection}{\numberline {10.6}Síntese: Do Mapa Estático ao GPS do Aprendizado}{47}{subsection.10.6}%
-\contentsline {subsection}{\numberline {10.7}Fluxograma Geral do Sistema}{49}{subsection.10.7}%
-\contentsline {section}{\numberline {11}Refinamento Critico: Perguntas que Lapidaram o Sistema}{49}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Quem, alem do proprio sistema, validou isso?}{49}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}A comparacao com Ollama e justa?}{50}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}A geometria Riemanniana e viavel com 150 pontos?}{50}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}O que o sistema NAO consegue fazer?}{50}{subsection.11.4}%
-\contentsline {subsection}{\numberline {11.5}Este documento e uma dissertacao?}{50}{subsection.11.5}%
-\contentsline {subsection}{\numberline {11.6}Validade Interna e Triangulação}{50}{subsection.11.6}%
-\contentsline {subsection}{\numberline {11.7}Validade Externa}{51}{subsection.11.7}%
-\contentsline {subsection}{\numberline {11.8}Significancia Estatistica (Resposta P8)}{51}{subsection.11.8}%
-\contentsline {subsection}{\numberline {11.9}Calibracao dos Verificadores (Resposta P9)}{51}{subsection.11.9}%
-\contentsline {subsection}{\numberline {11.10}Vies de Selecao de Tarefas (Resposta P10)}{52}{subsection.11.10}%
-\contentsline {subsection}{\numberline {11.11}Status de Reprodutibilidade (Resposta P7)}{52}{subsection.11.11}%
-\contentsline {subsection}{\numberline {11.12}Limitacao de Generalizacao (Resposta P6)}{53}{subsection.11.12}%
-\contentsline {section}{\numberline {12}Trajetória Evolutiva: Os 14 Rounds de Desenvolvimento}{53}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Fase 1: Fundação -- Infraestrutura e Produção Acadêmica (Rounds 1--7)}{53}{subsection.12.1}%
-\contentsline {subsubsection}{\numberline {12.1.1}Round 1: Pipeline de Correlação Cruzada com Bootstrap}{53}{subsubsection.12.1.1}%
-\contentsline {subsubsection}{\numberline {12.1.2}Round 2: Pipeline MASWOS de Artigos Acadêmicos}{54}{subsubsection.12.1.2}%
-\contentsline {subsubsection}{\numberline {12.1.3}Round 3: Sistema TSAC de Citações e Integração Sci-Hub}{54}{subsubsection.12.1.3}%
-\contentsline {subsubsection}{\numberline {12.1.4}Round 4: Loop de Correção Iterativa v2.0}{55}{subsubsection.12.1.4}%
-\contentsline {subsubsection}{\numberline {12.1.5}Round 5: Corretor de Linguagem e Protocolo CJK}{55}{subsubsection.12.1.5}%
-\contentsline {subsubsection}{\numberline {12.1.6}Round 6: Editais-BR v2.0 -- Busca Inteligente}{56}{subsubsection.12.1.6}%
-\contentsline {subsubsection}{\numberline {12.1.7}Round 7: Editais-BR v7.1 -- Cache Versionado e Curadoria}{56}{subsubsection.12.1.7}%
-\contentsline {subsection}{\numberline {12.2}Fase 2: Engenharia de Software com Agentes Inteligentes (Rounds 8--10)}{57}{subsection.12.2}%
-\contentsline {subsubsection}{\numberline {12.2.1}Round 8: Pipeline SDD+TDD e Simulação de Arguição}{57}{subsubsection.12.2.1}%
-\contentsline {subsubsection}{\numberline {12.2.2}Round 9: Refinamento LaTeX, Framework e Documentação}{57}{subsubsection.12.2.2}%
-\contentsline {subsubsection}{\numberline {12.2.3}Round 10: Menu Adaptativo e Plugin System}{58}{subsubsection.12.2.3}%
-\contentsline {subsection}{\numberline {12.3}Fase 3: CORA-Eval -- Maturidade Científica (Rounds 11--14)}{58}{subsection.12.3}%
-\contentsline {subsubsection}{\numberline {12.3.1}Round 11: Framework CORA-Eval -- Linha de Base}{58}{subsubsection.12.3.1}%
-\contentsline {subsubsection}{\numberline {12.3.2}Round 12: Listas DCA e Cobertura Horizontal (M1 $\rightarrow $ M2)}{59}{subsubsection.12.3.2}%
-\contentsline {subsubsection}{\numberline {12.3.3}Round 13: Salto M3, GAT e Validação Externa}{59}{subsubsection.12.3.3}%
-\contentsline {subsubsection}{\numberline {12.3.4}Round 14: Evolução M4 -- Nível de Pesquisa (2,70 $\rightarrow $ 2,99)}{60}{subsubsection.12.3.4}%
-\contentsline {section}{\numberline {13}Análise Detalhada das 10 Dimensões CORA-Eval com Estudos de Caso}{61}{section.13}%
-\contentsline {subsection}{\numberline {13.1}D1 -- Raciocínio Matemático Formal (Peso 15\%, Score: 3,60 -- N4)}{61}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}D2 -- Modelagem de Sistemas Físicos (Peso 12\%, Score: 3,50 -- N4)}{62}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}D3 -- Análise Estatística e Inferência (Peso 12\%, Score: 3,40 -- N4)}{62}{subsection.13.3}%
-\contentsline {subsection}{\numberline {13.4}D4 -- Química Computacional e Estrutural (Peso 10\%, Score: 2,23 -- N3)}{63}{subsection.13.4}%
-\contentsline {subsection}{\numberline {13.5}D5 -- Biologia Molecular e Genômica (Peso 10\%, Score: 2,45 -- N3)}{63}{subsection.13.5}%
-\contentsline {subsection}{\numberline {13.6}D6 -- Geociências e Modelagem Climática (Peso 8\%, Score: 2,30 -- N3)}{63}{subsection.13.6}%
-\contentsline {subsection}{\numberline {13.7}D7 -- Verificação de Código Científico (Peso 10\%, Score: 3,20 -- N4)}{64}{subsection.13.7}%
-\contentsline {subsection}{\numberline {13.8}D8 -- Revisão Sistemática de Literatura (Peso 8\%, Score: 2,45 -- N3)}{64}{subsection.13.8}%
-\contentsline {subsection}{\numberline {13.9}D9 -- Desenho Experimental e Metodologia (Peso 8\%, Score: 2,67 -- N3)}{65}{subsection.13.9}%
-\contentsline {subsection}{\numberline {13.10}D10 -- Síntese Interdisciplinar (Peso 7\%, Score: 3,67 -- N4)}{65}{subsection.13.10}%
-\contentsline {section}{\numberline {14}Discussão Crítica das Ameaças à Validade}{65}{section.14}%
-\contentsline {subsection}{\numberline {14.1}Validade Interna}{65}{subsection.14.1}%
-\contentsline {subsection}{\numberline {14.2}Validade Externa}{66}{subsection.14.2}%
-\contentsline {subsection}{\numberline {14.3}Validade de Constructo}{66}{subsection.14.3}%
-\contentsline {subsection}{\numberline {14.4}Validade de Conclusão Estatística}{67}{subsection.14.4}%
-\contentsline {section}{\numberline {15}Comparação com Benchmarks Existentes}{67}{section.15}%
-\contentsline {subsection}{\numberline {15.1}MATH (Hendrycks et al., 2021)}{68}{subsection.15.1}%
-\contentsline {subsection}{\numberline {15.2}GSM8K (Cobbe et al., 2021)}{68}{subsection.15.2}%
-\contentsline {subsection}{\numberline {15.3}MMLU (Hendrycks et al., 2020)}{69}{subsection.15.3}%
-\contentsline {subsection}{\numberline {15.4}SciBench (Wang et al., 2023)}{69}{subsection.15.4}%
-\contentsline {subsection}{\numberline {15.5}BIG-bench (Srivastava et al., 2022)}{70}{subsection.15.5}%
-\contentsline {subsection}{\numberline {15.6}Síntese Comparativa}{70}{subsection.15.6}%
-\contentsline {section}{\numberline {16}Limitações e Trabalhos Futuros}{71}{section.16}%
-\contentsline {subsection}{\numberline {16.1}Limitações Atuais}{71}{subsection.16.1}%
-\contentsline {subsection}{\numberline {16.2}Trabalhos Futuros}{71}{subsection.16.2}%
-\contentsline {section}{\numberline {17}Considerações sobre Reprodutibilidade e Ética}{73}{section.17}%
-\contentsline {subsection}{\numberline {17.1}Reprodutibilidade}{73}{subsection.17.1}%
-\contentsline {subsection}{\numberline {17.2}Considerações Éticas}{73}{subsection.17.2}%
-\contentsline {subsection}{\numberline {17.3}Referencial Teórico Complementar: Sci-Hub e Democratização da Ciência}{73}{subsection.17.3}%
-\contentsline {subsection}{\numberline {17.4}Estudos de Caso Adicionais por Dimensão}{74}{subsection.17.4}%
-\contentsline {subsubsection}{\numberline {17.4.1}D1 — Raciocínio Matemático: Prova do Teorema de Pitágoras por Rearranjo}{74}{subsubsection.17.4.1}%
-\contentsline {subsubsection}{\numberline {17.4.2}D2 — Física: Conservação do Momento Angular no Problema de Kepler}{74}{subsubsection.17.4.2}%
-\contentsline {subsubsection}{\numberline {17.4.3}D3 — Estatística: Convergência do Algoritmo EM}{75}{subsubsection.17.4.3}%
-\contentsline {subsubsection}{\numberline {17.4.4}D4 — Química: Constante de Equilíbrio e Princípio de Le Chatelier}{75}{subsubsection.17.4.4}%
-\contentsline {subsubsection}{\numberline {17.4.5}D5 — Biologia: Equilíbrio de Hardy-Weinberg com Seleção}{75}{subsubsection.17.4.5}%
-\contentsline {subsubsection}{\numberline {17.4.6}D6 — Geociências: Forçante Radiativa de CO$_2$}{76}{subsubsection.17.4.6}%
-\contentsline {subsubsection}{\numberline {17.4.7}D7 — Código Científico: Verificação V7 de um Método de Runge-Kutta}{76}{subsubsection.17.4.7}%
-\contentsline {subsubsection}{\numberline {17.4.8}D8 — Literatura: Revisão Sistemática da Teoria KAM}{76}{subsubsection.17.4.8}%
-\contentsline {subsubsection}{\numberline {17.4.9}D9 — Metodologia: Delineamento Fatorial $2^3$ com Análise de Variância}{77}{subsubsection.17.4.9}%
-\contentsline {subsubsection}{\numberline {17.4.10}D10 — Síntese Interdisciplinar: Equação de Cole-Hopf e Difusão}{77}{subsubsection.17.4.10}%
-\contentsline {subsection}{\numberline {17.5}Análise de Sensibilidade dos Pesos do CORA-Score}{77}{subsection.17.5}%
-\contentsline {subsection}{\numberline {17.6}Reprodutibilidade Computacional: Ambiente e Dependências}{78}{subsection.17.6}%
-\contentsline {subsection}{\numberline {17.7}Métricas de Desempenho Temporal}{78}{subsection.17.7}%
-\contentsline {subsection}{\numberline {17.8}Checklist de Verificação para a Banca Examinadora}{79}{subsection.17.8}%
-\contentsline {subsection}{\numberline {17.9}Análise Comparativa Detalhada: CORA-Eval vs Estado da Arte}{79}{subsection.17.9}%
-\contentsline {subsubsection}{\numberline {17.9.1}MATH (Hendrycks et al., 2021)}{79}{subsubsection.17.9.1}%
-\contentsline {subsubsection}{\numberline {17.9.2}MMLU (Hendrycks et al., 2020)}{80}{subsubsection.17.9.2}%
-\contentsline {subsubsection}{\numberline {17.9.3}SciBench (Wang et al., 2023)}{80}{subsubsection.17.9.3}%
-\contentsline {subsubsection}{\numberline {17.9.4}BIG-bench (Srivastava et al., 2022)}{81}{subsubsection.17.9.4}%
-\contentsline {subsection}{\numberline {17.10}Teoria da Decisão aplicada à Seleção de Verificadores}{81}{subsection.17.10}%
-\contentsline {subsection}{\numberline {17.11}Análise de Robustez: Perturbação dos Scores}{81}{subsection.17.11}%
-\contentsline {subsection}{\numberline {17.12}Distribuição de Tarefas por Dimensão e Nível: Análise de Cobertura}{82}{subsection.17.12}%
-\contentsline {subsection}{\numberline {17.13}Contribuições Específicas para a Ciência da Computação}{82}{subsection.17.13}%
-\contentsline {subsection}{\numberline {17.14}Lições Aprendidas e Recomendações para Pesquisadores}{83}{subsection.17.14}%
-\contentsline {subsection}{\numberline {17.15}Glossário de Termos Técnicos}{84}{subsection.17.15}%
-\contentsline {subsection}{\numberline {17.16}Derivação Matemática Completa do CORA-Score}{84}{subsection.17.16}%
-\contentsline {subsubsection}{\numberline {17.16.1}Definição Formal}{84}{subsubsection.17.16.1}%
-\contentsline {subsubsection}{\numberline {17.16.2}Prova de Monotonicidade}{84}{subsubsection.17.16.2}%
-\contentsline {subsubsection}{\numberline {17.16.3}Análise de Convergência}{85}{subsubsection.17.16.3}%
-\contentsline {subsection}{\numberline {17.17}Catálogo de Padrões de Correção (F01--F10): Aplicação ao CORA-Eval}{85}{subsection.17.17}%
-\contentsline {subsection}{\numberline {17.18}Análise de Custo-Benefício dos Verificadores}{86}{subsection.17.18}%
-\contentsline {subsection}{\numberline {17.19}Impacto Potencial e Aplicações Práticas}{86}{subsection.17.19}%
-\contentsline {subsection}{\numberline {17.20}Declaração de Transparência e Reprodutibilidade}{87}{subsection.17.20}%
-\contentsline {subsection}{\numberline {17.21}Agradecimentos}{87}{subsection.17.21}%
-\contentsline {subsection}{\numberline {17.22}Nota Estimada e Gaps Pendentes}{88}{subsection.17.22}%
-\contentsline {section}{\numberline {18}Conclusao}{88}{section.18}%
-\contentsline {subsection}{\numberline {18.1}Síntese dos Achados}{88}{subsection.18.1}%
-\contentsline {subsection}{\numberline {18.2}Contribuições}{88}{subsection.18.2}%
-\contentsline {subsection}{\numberline {18.3}Trabalhos Futuros}{88}{subsection.18.3}%
-\contentsline {section}{\numberline {A}Catalogo Completo de Tarefas do \texttt {CORA-Eval}}{89}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Tarefas $D_1$ --- Raciocinio Matematico Formal (Peso 15\%)}{89}{subsection.A.1}%
-\contentsline {subsubsection}{\numberline {A.1.1}Nivel $N_1$ --- Basico}{89}{subsubsection.A.1.1}%
-\contentsline {subsubsection}{\numberline {A.1.2}Nivel $N_2$ --- Graduacao}{89}{subsubsection.A.1.2}%
-\contentsline {subsubsection}{\numberline {A.1.3}Nivel $N_3$ --- Pos-Graduacao}{90}{subsubsection.A.1.3}%
-\contentsline {subsubsection}{\numberline {A.1.4}Nivel $N_4$ --- Pesquisa}{90}{subsubsection.A.1.4}%
-\contentsline {subsection}{\numberline {A.2}Tarefas $D_2$ --- Modelagem de Sistemas Fisicos (Peso 12\%)}{91}{subsection.A.2}%
-\contentsline {subsubsection}{\numberline {A.2.1}Nivel $N_1$ --- Basico}{91}{subsubsection.A.2.1}%
-\contentsline {subsubsection}{\numberline {A.2.2}Nivel $N_2$ --- Graduacao}{91}{subsubsection.A.2.2}%
-\contentsline {subsubsection}{\numberline {A.2.3}Nivel $N_3$ --- Pos-Graduacao}{92}{subsubsection.A.2.3}%
-\contentsline {subsubsection}{\numberline {A.2.4}Nivel $N_4$ --- Pesquisa}{92}{subsubsection.A.2.4}%
-\contentsline {subsection}{\numberline {A.3}Tarefas $D_3$ --- Analise Estatistica e Inferencia (Peso 12\%)}{93}{subsection.A.3}%
-\contentsline {subsubsection}{\numberline {A.3.1}Nivel $N_1$ --- Basico}{93}{subsubsection.A.3.1}%
-\contentsline {subsubsection}{\numberline {A.3.2}Nivel $N_2$ --- Graduacao}{93}{subsubsection.A.3.2}%
-\contentsline {subsubsection}{\numberline {A.3.3}Nivel $N_3$ --- Pos-Graduacao}{94}{subsubsection.A.3.3}%
-\contentsline {subsubsection}{\numberline {A.3.4}Nivel $N_4$ --- Pesquisa}{94}{subsubsection.A.3.4}%
-\contentsline {subsection}{\numberline {A.4}Tarefas $D_4$ --- Quimica Computacional e Estrutural (Peso 10\%)}{95}{subsection.A.4}%
-\contentsline {subsubsection}{\numberline {A.4.1}Nivel $N_1$ --- Basico}{95}{subsubsection.A.4.1}%
-\contentsline {subsubsection}{\numberline {A.4.2}Nivel $N_2$ --- Graduacao}{95}{subsubsection.A.4.2}%
-\contentsline {subsubsection}{\numberline {A.4.3}Nivel $N_3$ --- Pos-Graduacao}{96}{subsubsection.A.4.3}%
-\contentsline {subsubsection}{\numberline {A.4.4}Nivel $N_4$ --- Pesquisa}{96}{subsubsection.A.4.4}%
-\contentsline {subsection}{\numberline {A.5}Tarefas $D_5$ --- Biologia Molecular e Genomica (Peso 10\%)}{96}{subsection.A.5}%
-\contentsline {subsubsection}{\numberline {A.5.1}Nivel $N_1$ --- Basico}{96}{subsubsection.A.5.1}%
-\contentsline {subsubsection}{\numberline {A.5.2}Nivel $N_2$ --- Graduacao}{97}{subsubsection.A.5.2}%
-\contentsline {subsubsection}{\numberline {A.5.3}Nivel $N_3$ --- Pos-Graduacao}{97}{subsubsection.A.5.3}%
-\contentsline {subsubsection}{\numberline {A.5.4}Nivel $N_4$ --- Pesquisa}{98}{subsubsection.A.5.4}%
-\contentsline {subsection}{\numberline {A.6}Tarefas $D_6$ --- Geociencias e Modelagem Climatica (Peso 8\%)}{98}{subsection.A.6}%
-\contentsline {subsubsection}{\numberline {A.6.1}Nivel $N_1$ --- Basico}{98}{subsubsection.A.6.1}%
-\contentsline {subsubsection}{\numberline {A.6.2}Nivel $N_2$ --- Graduacao}{98}{subsubsection.A.6.2}%
-\contentsline {subsubsection}{\numberline {A.6.3}Nivel $N_3$ --- Pos-Graduacao}{99}{subsubsection.A.6.3}%
-\contentsline {subsubsection}{\numberline {A.6.4}Nivel $N_4$ --- Pesquisa}{99}{subsubsection.A.6.4}%
-\contentsline {subsection}{\numberline {A.7}Tarefas $D_7$ --- Verificacao de Codigo Cientifico (Peso 10\%)}{100}{subsection.A.7}%
-\contentsline {subsubsection}{\numberline {A.7.1}Nivel $N_1$ --- Basico}{100}{subsubsection.A.7.1}%
-\contentsline {subsubsection}{\numberline {A.7.2}Nivel $N_2$ --- Graduacao}{100}{subsubsection.A.7.2}%
-\contentsline {subsubsection}{\numberline {A.7.3}Nivel $N_3$ --- Pos-Graduacao}{100}{subsubsection.A.7.3}%
-\contentsline {subsubsection}{\numberline {A.7.4}Nivel $N_4$ --- Pesquisa}{101}{subsubsection.A.7.4}%
-\contentsline {subsection}{\numberline {A.8}Tarefas $D_8$ --- Revisao Sistematica de Literatura (Peso 8\%)}{102}{subsection.A.8}%
-\contentsline {subsubsection}{\numberline {A.8.1}Nivel $N_1$ --- Basico}{102}{subsubsection.A.8.1}%
-\contentsline {subsubsection}{\numberline {A.8.2}Nivel $N_2$ --- Graduacao}{102}{subsubsection.A.8.2}%
-\contentsline {subsubsection}{\numberline {A.8.3}Nivel $N_3$ --- Pos-Graduacao}{102}{subsubsection.A.8.3}%
-\contentsline {subsubsection}{\numberline {A.8.4}Nivel $N_4$ --- Pesquisa}{103}{subsubsection.A.8.4}%
-\contentsline {subsection}{\numberline {A.9}Tarefas $D_9$ --- Desenho Experimental e Metodologia (Peso 8\%)}{103}{subsection.A.9}%
-\contentsline {subsubsection}{\numberline {A.9.1}Nivel $N_1$ --- Basico}{103}{subsubsection.A.9.1}%
-\contentsline {subsubsection}{\numberline {A.9.2}Nivel $N_2$ --- Graduacao}{104}{subsubsection.A.9.2}%
-\contentsline {subsubsection}{\numberline {A.9.3}Nivel $N_3$ --- Pos-Graduacao}{104}{subsubsection.A.9.3}%
-\contentsline {subsubsection}{\numberline {A.9.4}Nivel $N_4$ --- Pesquisa}{105}{subsubsection.A.9.4}%
-\contentsline {subsection}{\numberline {A.10}Tarefas $D_{10}$ --- Sintese Interdisciplinar (Peso 7\%)}{105}{subsection.A.10}%
-\contentsline {subsubsection}{\numberline {A.10.1}Nivel $N_1$ --- Basico}{105}{subsubsection.A.10.1}%
-\contentsline {subsubsection}{\numberline {A.10.2}Nivel $N_2$ --- Graduacao}{106}{subsubsection.A.10.2}%
-\contentsline {subsubsection}{\numberline {A.10.3}Nivel $N_3$ --- Pos-Graduacao}{106}{subsubsection.A.10.3}%
-\contentsline {subsubsection}{\numberline {A.10.4}Nivel $N_4$ --- Pesquisa}{106}{subsubsection.A.10.4}%
-\contentsline {subsection}{\numberline {A.11}Sumario Estatistico do Catalogo}{107}{subsection.A.11}%
-\contentsline {section}{\numberline {B}Evidencias de Testes TDD por Suite}{108}{appendix.B}%
-\contentsline {subsection}{\numberline {B.1}\textit {Suite} D4: Quimica Computacional ($N_1$)}{108}{subsection.B.1}%
-\contentsline {subsection}{\numberline {B.2}\textit {Suite} D5: Biologia Molecular ($N_1$)}{108}{subsection.B.2}%
-\contentsline {subsection}{\numberline {B.3}\textit {Suite} D6: Geociencias ($N_1$)}{109}{subsection.B.3}%
-\contentsline {subsection}{\numberline {B.4}\textit {Suite} D8: Revisao de Literatura ($N_1$)}{110}{subsection.B.4}%
-\contentsline {subsection}{\numberline {B.5}\textit {Suite} D8-N2: Bibliografia GAT ($N_2$)}{112}{subsection.B.5}%
-\contentsline {subsection}{\numberline {B.6}\textit {Suite} D10: Sintese Interdisciplinar ($N_4$)}{112}{subsection.B.6}%
-\contentsline {subsection}{\numberline {B.7}\textit {Suite} D3: Estatistica ($N_2+N_3$)}{113}{subsection.B.7}%
-\contentsline {subsection}{\numberline {B.8}\textit {Suite} Evolucao M4: Problemas de Pesquisa}{114}{subsection.B.8}%
-\contentsline {subsection}{\numberline {B.9}Resumo Consolidado das 12 \textit {Suites} TDD}{115}{subsection.B.9}%
-\contentsline {section}{\numberline {C}Validacao Externa: \textit {Project Euler}}{116}{appendix.C}%
-\contentsline {subsection}{\numberline {C.1}Problemas Resolvidos}{116}{subsection.C.1}%
-\contentsline {subsection}{\numberline {C.2}Verificacao Adicional com Cora}{117}{subsection.C.2}%
-\contentsline {section}{\numberline {D}Validacao Externa: \textit {Rosalind}}{118}{appendix.D}%
-\contentsline {subsection}{\numberline {D.1}Problemas Resolvidos}{118}{subsection.D.1}%
-\contentsline {subsection}{\numberline {D.2}Verificacao Detalhada}{118}{subsection.D.2}%
-\contentsline {section}{\numberline {E}Trilha de Auditoria do CORA-Score}{120}{appendix.E}%
-\contentsline {subsection}{\numberline {E.1}Formulacao Matematica}{120}{subsection.E.1}%
-\contentsline {subsection}{\numberline {E.2}Calculo por Dimensao}{120}{subsection.E.2}%
-\contentsline {subsubsection}{\numberline {E.2.1}$D_1$ --- Raciocinio Matematico Formal ($w_{1}=0.15$)}{120}{subsubsection.E.2.1}%
-\contentsline {subsubsection}{\numberline {E.2.2}$D_2$ --- Modelagem de Sistemas Fisicos ($w_{2}=0.12$)}{121}{subsubsection.E.2.2}%
-\contentsline {subsubsection}{\numberline {E.2.3}$D_3$ --- Analise Estatistica e Inferencia ($w_{3}=0.12$)}{121}{subsubsection.E.2.3}%
-\contentsline {subsubsection}{\numberline {E.2.4}$D_4$ --- Quimica Computacional ($w_{4}=0.10$)}{121}{subsubsection.E.2.4}%
-\contentsline {subsubsection}{\numberline {E.2.5}$D_5$ --- Biologia Molecular e Genomica ($w_{5}=0.10$)}{122}{subsubsection.E.2.5}%
-\contentsline {subsubsection}{\numberline {E.2.6}$D_6$ --- Geociencias e Modelagem Climatica ($w_{6}=0.08$)}{122}{subsubsection.E.2.6}%
-\contentsline {subsubsection}{\numberline {E.2.7}$D_7$ --- Verificacao de Codigo Cientifico ($w_{7}=0.10$)}{122}{subsubsection.E.2.7}%
-\contentsline {subsubsection}{\numberline {E.2.8}$D_8$ --- Revisao Sistematica de Literatura ($w_{8}=0.08$)}{123}{subsubsection.E.2.8}%
-\contentsline {subsubsection}{\numberline {E.2.9}$D_9$ --- Desenho Experimental e Metodologia ($w_{9}=0.08$)}{123}{subsubsection.E.2.9}%
-\contentsline {subsubsection}{\numberline {E.2.10}$D_{10}$ --- Sintese Interdisciplinar ($w_{10}=0.07$)}{123}{subsubsection.E.2.10}%
-\contentsline {subsection}{\numberline {E.3}Agregacao Final}{124}{subsection.E.3}%
-\contentsline {subsection}{\numberline {E.4}Classificacao}{124}{subsection.E.4}%
-\contentsline {section}{\numberline {F}Evolucao Temporal Completa do CORA-Score}{125}{appendix.F}%
-\contentsline {subsection}{\numberline {F.1}Linha do Tempo Detalhada}{125}{subsection.F.1}%
-\contentsline {subsection}{\numberline {F.2}Progressao Visual}{127}{subsection.F.2}%
-\contentsline {subsection}{\numberline {F.3}Evolucao por Dimensao}{127}{subsection.F.3}%
-\contentsline {subsection}{\numberline {F.4}Marcos (\textit {Milestones})}{127}{subsection.F.4}%
-\contentsline {subsection}{\numberline {F.5}Projecao para M4 (Pesquisa)}{128}{subsection.F.5}%
-\contentsline {subsection}{\numberline {F.6}Grafico de Evolucao Temporal}{128}{subsection.F.6}%
-\contentsline {section}{\numberline {G}Especificacao dos Verificadores Cora}{129}{appendix.G}%
-\contentsline {subsection}{\numberline {G.1}Subverificadores V7 (Codigo)}{129}{subsection.G.1}%
-\contentsline {section}{\numberline {H}Fontes de \textit {Ground Truth} Utilizadas}{131}{appendix.H}%
+\contentsline {section}{\numberline {1}Introdução}{12}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto: A Avaliação de Inteligência Artificial Científica}{12}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}O Problema da Fragmentação de Benchmarks}{13}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}O Ecossistema OpenCode}{13}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Objetivos e Estrutura}{13}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Arcabouço Teórico}{13}{section.2}%
+\contentsline {paragraph}{Epistemologia da Verificação Científica}{14}{section*.2}%
+\contentsline {paragraph}{Fundamentos Estatísticos da Avaliação Multidimensional}{14}{section*.3}%
+\contentsline {paragraph}{Teoria da Verificação Formal}{15}{section*.4}%
+\contentsline {paragraph}{Geometria Diferencial da Informação}{16}{section*.5}%
+\contentsline {paragraph}{Triangulação Metodológica como Princípio de Validação}{16}{section*.6}%
+\contentsline {paragraph}{Princípio de Reprodutibilidade Total}{17}{section*.7}%
+\contentsline {paragraph}{Auditoria Independente: Passo a Passo}{18}{section*.8}%
+\contentsline {paragraph}{Contraprovas: O Que o Sistema Não Consegue Fazer}{18}{section*.9}%
+\contentsline {paragraph}{Checklist de Auditoria para a Banca}{19}{table.caption.11}%
+\contentsline {paragraph}{Limitações Reconhecidas}{19}{section*.12}%
+\contentsline {paragraph}{Agenda de Pesquisa Futura}{20}{section*.13}%
+\contentsline {paragraph}{Considerações Éticas e de Transparência}{20}{section*.14}%
+\contentsline {section}{\numberline {3}Metodologia: O Framework CORA-Eval}{21}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fundamentação Metodológica}{21}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Dimensões e Níveis}{21}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Cálculo do CORA-Score}{21}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Pipeline de Avaliação e Fontes de Ground Truth}{21}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Cada Verificador em Detalhe}{22}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}V1 — Análise Dimensional}{22}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}V2 — Verificador Algébrico}{22}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}V3 — Contraexemplos}{23}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}V4 — Verificador Estatístico}{23}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}V5 — Verificador Numérico}{23}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.6}V6 — Verificador de EDO/EDP}{24}{subsubsection.3.5.6}%
+\contentsline {subsubsection}{\numberline {3.5.7}V7 — Verificador de Código-Fonte}{24}{subsubsection.3.5.7}%
+\contentsline {subsection}{\numberline {3.6}Calibração dos Níveis de Complexidade}{24}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Evolução do Ecossistema OpenCode}{25}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fase 1: Fundação e Infraestrutura Acadêmica (Rounds 1--7)}{25}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Fase 2: Engenharia de Software com Agentes (Rounds 8--10)}{25}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Fase 3: CORA-Eval — Maturidade Científica (Rounds 11--14)}{26}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Progressão Temporal}{26}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Resultados da Validação}{26}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Desempenho Global}{26}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Validação Cega Exaustiva}{27}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Validação Cruzada K=10}{27}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Suítes TDD — 13 suites, 113/114 GREEN}{28}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Impacto do SDD+TDD no Ecossistema}{28}{section.6}%
+\contentsline {section}{\numberline {7}O Impacto Metodológico do SDD+TDD no OpenCode Ecosystem}{28}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Antes do SDD+TDD: Correção Reativa (Rounds 1--7)}{28}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Round 8: A Introdução do SDD+TDD}{29}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Spec-Driven Development (SDD)}{29}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Test-Driven Development (TDD)}{30}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}DecisionNode: Memória Estruturada de Decisões}{30}{subsubsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.3}Round 9: A Consolidação em Pipeline Autônomo}{30}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}O Impacto no CORA-Eval (Rounds 11--14)}{31}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Suítes TDD como Evidência}{31}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Pipeline de 5 Estágios}{32}{subsubsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.3}Rastreabilidade Total}{32}{subsubsection.7.4.3}%
+\contentsline {subsection}{\numberline {7.5}Antes e Depois: A Transformação Quantificada}{32}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Implicações para a Ciência da Computação}{33}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Estudo Comparativo: Ollama vs OpenCode}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Contexto e Motivação}{33}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Modelos Avaliados}{34}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Metodologia de Comparação}{34}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Resultados: CORA-Score por Modelo}{35}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Análise por Dimensão}{36}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Análise Qualitativa: Tipos de Erro}{36}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Impacto dos Verificadores}{37}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Eficiência Computacional}{37}{subsection.8.8}%
+\contentsline {subsection}{\numberline {8.9}Discussão e Implicações}{38}{subsection.8.9}%
+\contentsline {subsection}{\numberline {8.10}Limitações do Estudo Comparativo}{38}{subsection.8.10}%
+\contentsline {section}{\numberline {9}Triangulacao Anti-Circularidade: Validacao sem Ground Truth Externo (SPEC-008)}{39}{section.9}%
+\contentsline {section}{\numberline {10}Triangulacao Anti-Circularidade: Validacao sem Ground Truth Externo}{39}{section.10}%
+\contentsline {subsection}{\numberline {10.1}O Problema da Circularidade Auto-Avaliativa}{39}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Fundamentacao Teorica: Triangulacao de Denzin-Flick}{39}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}As Tres Camadas}{40}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}Camada 1 — Split Temporal Cego}{40}{subsubsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.2}Camada 2 — Perturbacao Adversaria (Falsificabilidade)}{40}{subsubsection.10.3.2}%
+\contentsline {subsubsection}{\numberline {10.3.3}Camada 3 — Anotacao Humana em Amostra Minima}{41}{subsubsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.4}Matriz de Decisao Integrada}{42}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Niveis de Independencia}{42}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Integracao com CORA-Eval e TDD (SPEC-008)}{42}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Limitacoes do Framework}{43}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.8}Referencias do Framework}{43}{subsection.10.8}%
+\contentsline {section}{\numberline {11}Geometria Cognitiva: Do CORA-Score Estático ao Espaço 38D Dinâmico}{44}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Motivação: Além da Aproximação Independente}{44}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Matriz de Dependência entre Dimensões}{45}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Grafo Cognitivo de Verificadores}{46}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Decomposição Tensorial da Evolução Temporal}{46}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Métrica de Fisher e Curvatura do Espaço de Aprendizado}{47}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Implicações para a Evolução do Ecossistema}{48}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Trabalhos Futuros: Rumo a uma Geometria Diferencial Completa}{49}{subsection.11.7}%
+\contentsline {section}{\numberline {12}Interpretação da Geometria Cognitiva: Guia para a Banca}{50}{section.12}%
+\contentsline {subsection}{\numberline {12.1}O Problema Original: Aproximação Independente}{50}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Matriz de Dependência: Quem Depende de Quem?}{51}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Grafo Cognitivo: Quem Verifica o Quê?}{51}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Decomposição Tensorial: Quem Cresce Mais Rápido?}{52}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Métrica de Fisher: Onde Investir Agora?}{53}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}Síntese: Do Mapa Estático ao GPS do Aprendizado}{54}{subsection.12.6}%
+\contentsline {subsection}{\numberline {12.7}Fluxograma Geral do Sistema}{55}{subsection.12.7}%
+\contentsline {section}{\numberline {13}5 Ciclos de Critica Senior — Refinamento Documentado}{55}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Ciclo 1 — Correcao de Numeros Inflados [SPEC-C1]}{55}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Ciclo 2 — Citacoes com DOIs Verificaveis [SPEC-C2]}{56}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Ciclo 3 — Transparencia de Auto-Avaliacao [SPEC-C3]}{57}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Ciclo 4 — Rastreabilidade de Evidencia [SPEC-C4]}{57}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Ciclo 5 — Separacao Validacao Externa vs Interna [SPEC-C5]}{58}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}Sumario dos 5 Ciclos}{58}{subsection.13.6}%
+\contentsline {section}{\numberline {14}Refinamento Critico: Perguntas que Lapidaram o Sistema}{59}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Quem, alem do proprio sistema, validou isso?}{59}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}A comparacao com Ollama e justa?}{59}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}A geometria Riemanniana e viavel com 150 pontos?}{59}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}O que o sistema NAO consegue fazer?}{60}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Este documento e uma dissertacao?}{60}{subsection.14.5}%
+\contentsline {subsection}{\numberline {14.6}Validade Interna e Triangulação}{60}{subsection.14.6}%
+\contentsline {subsection}{\numberline {14.7}Validade Externa}{60}{subsection.14.7}%
+\contentsline {subsection}{\numberline {14.8}Significancia Estatistica (Resposta P8)}{60}{subsection.14.8}%
+\contentsline {subsection}{\numberline {14.9}Calibracao dos Verificadores (Resposta P9)}{60}{subsection.14.9}%
+\contentsline {subsection}{\numberline {14.10}Vies de Selecao de Tarefas (Resposta P10)}{62}{subsection.14.10}%
+\contentsline {subsection}{\numberline {14.11}Status de Reprodutibilidade (Resposta P7)}{62}{subsection.14.11}%
+\contentsline {subsection}{\numberline {14.12}Limitacao de Generalizacao (Resposta P6)}{62}{subsection.14.12}%
+\contentsline {section}{\numberline {15}Trajetória Evolutiva: Os 14 Rounds de Desenvolvimento}{62}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Fase 1: Fundação -- Infraestrutura e Produção Acadêmica (Rounds 1--7)}{63}{subsection.15.1}%
+\contentsline {subsubsection}{\numberline {15.1.1}Round 1: Pipeline de Correlação Cruzada com Bootstrap}{63}{subsubsection.15.1.1}%
+\contentsline {subsubsection}{\numberline {15.1.2}Round 2: Pipeline MASWOS de Artigos Acadêmicos}{63}{subsubsection.15.1.2}%
+\contentsline {subsubsection}{\numberline {15.1.3}Round 3: Sistema TSAC de Citações e Integração Sci-Hub}{64}{subsubsection.15.1.3}%
+\contentsline {subsubsection}{\numberline {15.1.4}Round 4: Loop de Correção Iterativa v2.0}{64}{subsubsection.15.1.4}%
+\contentsline {subsubsection}{\numberline {15.1.5}Round 5: Corretor de Linguagem e Protocolo CJK}{65}{subsubsection.15.1.5}%
+\contentsline {subsubsection}{\numberline {15.1.6}Round 6: Editais-BR v2.0 -- Busca Inteligente}{65}{subsubsection.15.1.6}%
+\contentsline {subsubsection}{\numberline {15.1.7}Round 7: Editais-BR v7.1 -- Cache Versionado e Curadoria}{66}{subsubsection.15.1.7}%
+\contentsline {subsection}{\numberline {15.2}Fase 2: Engenharia de Software com Agentes Inteligentes (Rounds 8--10)}{66}{subsection.15.2}%
+\contentsline {subsubsection}{\numberline {15.2.1}Round 8: Pipeline SDD+TDD e Simulação de Arguição}{66}{subsubsection.15.2.1}%
+\contentsline {subsubsection}{\numberline {15.2.2}Round 9: Refinamento LaTeX, Framework e Documentação}{67}{subsubsection.15.2.2}%
+\contentsline {subsubsection}{\numberline {15.2.3}Round 10: Menu Adaptativo e Plugin System}{67}{subsubsection.15.2.3}%
+\contentsline {subsection}{\numberline {15.3}Fase 3: CORA-Eval -- Maturidade Científica (Rounds 11--14)}{68}{subsection.15.3}%
+\contentsline {subsubsection}{\numberline {15.3.1}Round 11: Framework CORA-Eval -- Linha de Base}{68}{subsubsection.15.3.1}%
+\contentsline {subsubsection}{\numberline {15.3.2}Round 12: Listas DCA e Cobertura Horizontal (M1 $\rightarrow $ M2)}{68}{subsubsection.15.3.2}%
+\contentsline {subsubsection}{\numberline {15.3.3}Round 13: Salto M3, GAT e Validação Externa}{69}{subsubsection.15.3.3}%
+\contentsline {subsubsection}{\numberline {15.3.4}Round 14: Evolução M4 -- Nível de Pesquisa (2,70 $\rightarrow $ 2,99)}{70}{subsubsection.15.3.4}%
+\contentsline {section}{\numberline {16}Análise Detalhada das 10 Dimensões CORA-Eval com Estudos de Caso}{70}{section.16}%
+\contentsline {subsection}{\numberline {16.1}D1 -- Raciocínio Matemático Formal (Peso 15\%, Score: 3,60 -- N4)}{71}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}D2 -- Modelagem de Sistemas Físicos (Peso 12\%, Score: 3,50 -- N4)}{71}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}D3 -- Análise Estatística e Inferência (Peso 12\%, Score: 3,40 -- N4)}{72}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}D4 -- Química Computacional e Estrutural (Peso 10\%, Score: 2,23 -- N3)}{72}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}D5 -- Biologia Molecular e Genômica (Peso 10\%, Score: 2,45 -- N3)}{73}{subsection.16.5}%
+\contentsline {subsection}{\numberline {16.6}D6 -- Geociências e Modelagem Climática (Peso 8\%, Score: 2,30 -- N3)}{73}{subsection.16.6}%
+\contentsline {subsection}{\numberline {16.7}D7 -- Verificação de Código Científico (Peso 10\%, Score: 3,20 -- N4)}{74}{subsection.16.7}%
+\contentsline {subsection}{\numberline {16.8}D8 -- Revisão Sistemática de Literatura (Peso 8\%, Score: 2,45 -- N3)}{74}{subsection.16.8}%
+\contentsline {subsection}{\numberline {16.9}D9 -- Desenho Experimental e Metodologia (Peso 8\%, Score: 2,67 -- N3)}{74}{subsection.16.9}%
+\contentsline {subsection}{\numberline {16.10}D10 -- Síntese Interdisciplinar (Peso 7\%, Score: 3,67 -- N4)}{75}{subsection.16.10}%
+\contentsline {section}{\numberline {17}Discussão Crítica das Ameaças à Validade}{75}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Validade Interna}{75}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}Validade Externa}{76}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}Validade de Constructo}{76}{subsection.17.3}%
+\contentsline {subsection}{\numberline {17.4}Validade de Conclusão Estatística}{77}{subsection.17.4}%
+\contentsline {section}{\numberline {18}Comparação com Benchmarks Existentes}{77}{section.18}%
+\contentsline {subsection}{\numberline {18.1}MATH (Hendrycks et al., 2021)}{78}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}GSM8K (Cobbe et al., 2021)}{78}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}MMLU (Hendrycks et al., 2020)}{78}{subsection.18.3}%
+\contentsline {subsection}{\numberline {18.4}SciBench (Wang et al., 2023)}{79}{subsection.18.4}%
+\contentsline {subsection}{\numberline {18.5}BIG-bench (Srivastava et al., 2022)}{79}{subsection.18.5}%
+\contentsline {subsection}{\numberline {18.6}Síntese Comparativa}{79}{subsection.18.6}%
+\contentsline {section}{\numberline {19}Limitações e Trabalhos Futuros}{80}{section.19}%
+\contentsline {subsection}{\numberline {19.1}Limitações Atuais}{80}{subsection.19.1}%
+\contentsline {subsection}{\numberline {19.2}Trabalhos Futuros}{81}{subsection.19.2}%
+\contentsline {section}{\numberline {20}Considerações sobre Reprodutibilidade e Ética}{82}{section.20}%
+\contentsline {subsection}{\numberline {20.1}Reprodutibilidade}{82}{subsection.20.1}%
+\contentsline {subsection}{\numberline {20.2}Considerações Éticas}{82}{subsection.20.2}%
+\contentsline {subsection}{\numberline {20.3}Referencial Teórico Complementar: Sci-Hub e Democratização da Ciência}{83}{subsection.20.3}%
+\contentsline {subsection}{\numberline {20.4}Estudos de Caso Adicionais por Dimensão}{83}{subsection.20.4}%
+\contentsline {subsubsection}{\numberline {20.4.1}D1 — Raciocínio Matemático: Prova do Teorema de Pitágoras por Rearranjo}{83}{subsubsection.20.4.1}%
+\contentsline {subsubsection}{\numberline {20.4.2}D2 — Física: Conservação do Momento Angular no Problema de Kepler}{84}{subsubsection.20.4.2}%
+\contentsline {subsubsection}{\numberline {20.4.3}D3 — Estatística: Convergência do Algoritmo EM}{84}{subsubsection.20.4.3}%
+\contentsline {subsubsection}{\numberline {20.4.4}D4 — Química: Constante de Equilíbrio e Princípio de Le Chatelier}{84}{subsubsection.20.4.4}%
+\contentsline {subsubsection}{\numberline {20.4.5}D5 — Biologia: Equilíbrio de Hardy-Weinberg com Seleção}{85}{subsubsection.20.4.5}%
+\contentsline {subsubsection}{\numberline {20.4.6}D6 — Geociências: Forçante Radiativa de CO$_2$}{85}{subsubsection.20.4.6}%
+\contentsline {subsubsection}{\numberline {20.4.7}D7 — Código Científico: Verificação V7 de um Método de Runge-Kutta}{85}{subsubsection.20.4.7}%
+\contentsline {subsubsection}{\numberline {20.4.8}D8 — Literatura: Revisão Sistemática da Teoria KAM}{86}{subsubsection.20.4.8}%
+\contentsline {subsubsection}{\numberline {20.4.9}D9 — Metodologia: Delineamento Fatorial $2^3$ com Análise de Variância}{86}{subsubsection.20.4.9}%
+\contentsline {subsubsection}{\numberline {20.4.10}D10 — Síntese Interdisciplinar: Equação de Cole-Hopf e Difusão}{86}{subsubsection.20.4.10}%
+\contentsline {subsection}{\numberline {20.5}Análise de Sensibilidade dos Pesos do CORA-Score}{87}{subsection.20.5}%
+\contentsline {subsection}{\numberline {20.6}Reprodutibilidade Computacional: Ambiente e Dependências}{87}{subsection.20.6}%
+\contentsline {subsection}{\numberline {20.7}Métricas de Desempenho Temporal}{88}{subsection.20.7}%
+\contentsline {subsection}{\numberline {20.8}Checklist de Verificação para a Banca Examinadora}{88}{subsection.20.8}%
+\contentsline {subsection}{\numberline {20.9}Análise Comparativa Detalhada: CORA-Eval vs Estado da Arte}{89}{subsection.20.9}%
+\contentsline {subsubsection}{\numberline {20.9.1}MATH (Hendrycks et al., 2021)}{89}{subsubsection.20.9.1}%
+\contentsline {subsubsection}{\numberline {20.9.2}MMLU (Hendrycks et al., 2020)}{89}{subsubsection.20.9.2}%
+\contentsline {subsubsection}{\numberline {20.9.3}SciBench (Wang et al., 2023)}{90}{subsubsection.20.9.3}%
+\contentsline {subsubsection}{\numberline {20.9.4}BIG-bench (Srivastava et al., 2022)}{90}{subsubsection.20.9.4}%
+\contentsline {subsection}{\numberline {20.10}Teoria da Decisão aplicada à Seleção de Verificadores}{90}{subsection.20.10}%
+\contentsline {subsection}{\numberline {20.11}Análise de Robustez: Perturbação dos Scores}{91}{subsection.20.11}%
+\contentsline {subsection}{\numberline {20.12}Distribuição de Tarefas por Dimensão e Nível: Análise de Cobertura}{91}{subsection.20.12}%
+\contentsline {subsection}{\numberline {20.13}Contribuições Específicas para a Ciência da Computação}{92}{subsection.20.13}%
+\contentsline {subsection}{\numberline {20.14}Lições Aprendidas e Recomendações para Pesquisadores}{92}{subsection.20.14}%
+\contentsline {subsection}{\numberline {20.15}Glossário de Termos Técnicos}{93}{subsection.20.15}%
+\contentsline {subsection}{\numberline {20.16}Derivação Matemática Completa do CORA-Score}{93}{subsection.20.16}%
+\contentsline {subsubsection}{\numberline {20.16.1}Definição Formal}{93}{subsubsection.20.16.1}%
+\contentsline {subsubsection}{\numberline {20.16.2}Prova de Monotonicidade}{94}{subsubsection.20.16.2}%
+\contentsline {subsubsection}{\numberline {20.16.3}Análise de Convergência}{94}{subsubsection.20.16.3}%
+\contentsline {subsection}{\numberline {20.17}Catálogo de Padrões de Correção (F01--F10): Aplicação ao CORA-Eval}{94}{subsection.20.17}%
+\contentsline {subsection}{\numberline {20.18}Análise de Custo-Benefício dos Verificadores}{95}{subsection.20.18}%
+\contentsline {subsection}{\numberline {20.19}Impacto Potencial e Aplicações Práticas}{95}{subsection.20.19}%
+\contentsline {subsection}{\numberline {20.20}Declaração de Transparência e Reprodutibilidade}{96}{subsection.20.20}%
+\contentsline {subsection}{\numberline {20.21}Agradecimentos}{97}{subsection.20.21}%
+\contentsline {subsection}{\numberline {20.22}Nota Estimada e Gaps Pendentes}{97}{subsection.20.22}%
+\contentsline {section}{\numberline {21}Conclusao}{97}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Sintese dos Achados}{97}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}Contribuicoes}{98}{subsection.21.2}%
+\contentsline {subsection}{\numberline {21.3}Limitacoes Declaradas}{98}{subsection.21.3}%
+\contentsline {subsection}{\numberline {21.4}Trabalhos Futuros}{98}{subsection.21.4}%
+\contentsline {section}{\numberline {A}Catalogo Completo de Tarefas do \texttt {CORA-Eval}}{99}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Tarefas $D_1$ --- Raciocinio Matematico Formal (Peso 15\%)}{99}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}Nivel $N_1$ --- Basico}{99}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.2}Nivel $N_2$ --- Graduacao}{99}{subsubsection.A.1.2}%
+\contentsline {subsubsection}{\numberline {A.1.3}Nivel $N_3$ --- Pos-Graduacao}{100}{subsubsection.A.1.3}%
+\contentsline {subsubsection}{\numberline {A.1.4}Nivel $N_4$ --- Pesquisa}{100}{subsubsection.A.1.4}%
+\contentsline {subsection}{\numberline {A.2}Tarefas $D_2$ --- Modelagem de Sistemas Fisicos (Peso 12\%)}{101}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}Nivel $N_1$ --- Basico}{101}{subsubsection.A.2.1}%
+\contentsline {subsubsection}{\numberline {A.2.2}Nivel $N_2$ --- Graduacao}{101}{subsubsection.A.2.2}%
+\contentsline {subsubsection}{\numberline {A.2.3}Nivel $N_3$ --- Pos-Graduacao}{102}{subsubsection.A.2.3}%
+\contentsline {subsubsection}{\numberline {A.2.4}Nivel $N_4$ --- Pesquisa}{102}{subsubsection.A.2.4}%
+\contentsline {subsection}{\numberline {A.3}Tarefas $D_3$ --- Analise Estatistica e Inferencia (Peso 12\%)}{103}{subsection.A.3}%
+\contentsline {subsubsection}{\numberline {A.3.1}Nivel $N_1$ --- Basico}{103}{subsubsection.A.3.1}%
+\contentsline {subsubsection}{\numberline {A.3.2}Nivel $N_2$ --- Graduacao}{103}{subsubsection.A.3.2}%
+\contentsline {subsubsection}{\numberline {A.3.3}Nivel $N_3$ --- Pos-Graduacao}{104}{subsubsection.A.3.3}%
+\contentsline {subsubsection}{\numberline {A.3.4}Nivel $N_4$ --- Pesquisa}{104}{subsubsection.A.3.4}%
+\contentsline {subsection}{\numberline {A.4}Tarefas $D_4$ --- Quimica Computacional e Estrutural (Peso 10\%)}{105}{subsection.A.4}%
+\contentsline {subsubsection}{\numberline {A.4.1}Nivel $N_1$ --- Basico}{105}{subsubsection.A.4.1}%
+\contentsline {subsubsection}{\numberline {A.4.2}Nivel $N_2$ --- Graduacao}{105}{subsubsection.A.4.2}%
+\contentsline {subsubsection}{\numberline {A.4.3}Nivel $N_3$ --- Pos-Graduacao}{106}{subsubsection.A.4.3}%
+\contentsline {subsubsection}{\numberline {A.4.4}Nivel $N_4$ --- Pesquisa}{106}{subsubsection.A.4.4}%
+\contentsline {subsection}{\numberline {A.5}Tarefas $D_5$ --- Biologia Molecular e Genomica (Peso 10\%)}{106}{subsection.A.5}%
+\contentsline {subsubsection}{\numberline {A.5.1}Nivel $N_1$ --- Basico}{106}{subsubsection.A.5.1}%
+\contentsline {subsubsection}{\numberline {A.5.2}Nivel $N_2$ --- Graduacao}{107}{subsubsection.A.5.2}%
+\contentsline {subsubsection}{\numberline {A.5.3}Nivel $N_3$ --- Pos-Graduacao}{107}{subsubsection.A.5.3}%
+\contentsline {subsubsection}{\numberline {A.5.4}Nivel $N_4$ --- Pesquisa}{108}{subsubsection.A.5.4}%
+\contentsline {subsection}{\numberline {A.6}Tarefas $D_6$ --- Geociencias e Modelagem Climatica (Peso 8\%)}{108}{subsection.A.6}%
+\contentsline {subsubsection}{\numberline {A.6.1}Nivel $N_1$ --- Basico}{108}{subsubsection.A.6.1}%
+\contentsline {subsubsection}{\numberline {A.6.2}Nivel $N_2$ --- Graduacao}{108}{subsubsection.A.6.2}%
+\contentsline {subsubsection}{\numberline {A.6.3}Nivel $N_3$ --- Pos-Graduacao}{109}{subsubsection.A.6.3}%
+\contentsline {subsubsection}{\numberline {A.6.4}Nivel $N_4$ --- Pesquisa}{109}{subsubsection.A.6.4}%
+\contentsline {subsection}{\numberline {A.7}Tarefas $D_7$ --- Verificacao de Codigo Cientifico (Peso 10\%)}{110}{subsection.A.7}%
+\contentsline {subsubsection}{\numberline {A.7.1}Nivel $N_1$ --- Basico}{110}{subsubsection.A.7.1}%
+\contentsline {subsubsection}{\numberline {A.7.2}Nivel $N_2$ --- Graduacao}{110}{subsubsection.A.7.2}%
+\contentsline {subsubsection}{\numberline {A.7.3}Nivel $N_3$ --- Pos-Graduacao}{110}{subsubsection.A.7.3}%
+\contentsline {subsubsection}{\numberline {A.7.4}Nivel $N_4$ --- Pesquisa}{111}{subsubsection.A.7.4}%
+\contentsline {subsection}{\numberline {A.8}Tarefas $D_8$ --- Revisao Sistematica de Literatura (Peso 8\%)}{112}{subsection.A.8}%
+\contentsline {subsubsection}{\numberline {A.8.1}Nivel $N_1$ --- Basico}{112}{subsubsection.A.8.1}%
+\contentsline {subsubsection}{\numberline {A.8.2}Nivel $N_2$ --- Graduacao}{112}{subsubsection.A.8.2}%
+\contentsline {subsubsection}{\numberline {A.8.3}Nivel $N_3$ --- Pos-Graduacao}{112}{subsubsection.A.8.3}%
+\contentsline {subsubsection}{\numberline {A.8.4}Nivel $N_4$ --- Pesquisa}{113}{subsubsection.A.8.4}%
+\contentsline {subsection}{\numberline {A.9}Tarefas $D_9$ --- Desenho Experimental e Metodologia (Peso 8\%)}{113}{subsection.A.9}%
+\contentsline {subsubsection}{\numberline {A.9.1}Nivel $N_1$ --- Basico}{113}{subsubsection.A.9.1}%
+\contentsline {subsubsection}{\numberline {A.9.2}Nivel $N_2$ --- Graduacao}{114}{subsubsection.A.9.2}%
+\contentsline {subsubsection}{\numberline {A.9.3}Nivel $N_3$ --- Pos-Graduacao}{114}{subsubsection.A.9.3}%
+\contentsline {subsubsection}{\numberline {A.9.4}Nivel $N_4$ --- Pesquisa}{115}{subsubsection.A.9.4}%
+\contentsline {subsection}{\numberline {A.10}Tarefas $D_{10}$ --- Sintese Interdisciplinar (Peso 7\%)}{115}{subsection.A.10}%
+\contentsline {subsubsection}{\numberline {A.10.1}Nivel $N_1$ --- Basico}{115}{subsubsection.A.10.1}%
+\contentsline {subsubsection}{\numberline {A.10.2}Nivel $N_2$ --- Graduacao}{116}{subsubsection.A.10.2}%
+\contentsline {subsubsection}{\numberline {A.10.3}Nivel $N_3$ --- Pos-Graduacao}{116}{subsubsection.A.10.3}%
+\contentsline {subsubsection}{\numberline {A.10.4}Nivel $N_4$ --- Pesquisa}{116}{subsubsection.A.10.4}%
+\contentsline {subsection}{\numberline {A.11}Sumario Estatistico do Catalogo}{117}{subsection.A.11}%
+\contentsline {section}{\numberline {B}Evidencias de Testes TDD por Suite}{118}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}\textit {Suite} D4: Quimica Computacional ($N_1$)}{118}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}\textit {Suite} D5: Biologia Molecular ($N_1$)}{118}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}\textit {Suite} D6: Geociencias ($N_1$)}{119}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}\textit {Suite} D8: Revisao de Literatura ($N_1$)}{120}{subsection.B.4}%
+\contentsline {subsection}{\numberline {B.5}\textit {Suite} D8-N2: Bibliografia GAT ($N_2$)}{122}{subsection.B.5}%
+\contentsline {subsection}{\numberline {B.6}\textit {Suite} D10: Sintese Interdisciplinar ($N_4$)}{122}{subsection.B.6}%
+\contentsline {subsection}{\numberline {B.7}\textit {Suite} D3: Estatistica ($N_2+N_3$)}{123}{subsection.B.7}%
+\contentsline {subsection}{\numberline {B.8}\textit {Suite} Evolucao M4: Problemas de Pesquisa}{124}{subsection.B.8}%
+\contentsline {subsection}{\numberline {B.9}Resumo Consolidado das 12 \textit {Suites} TDD}{125}{subsection.B.9}%
+\contentsline {section}{\numberline {C}Validacao Externa: \textit {Project Euler}}{126}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Problemas Resolvidos}{126}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Verificacao Adicional com Cora}{127}{subsection.C.2}%
+\contentsline {section}{\numberline {D}Validacao Externa: \textit {Rosalind}}{128}{appendix.D}%
+\contentsline {subsection}{\numberline {D.1}Problemas Resolvidos}{128}{subsection.D.1}%
+\contentsline {subsection}{\numberline {D.2}Verificacao Detalhada}{128}{subsection.D.2}%
+\contentsline {section}{\numberline {E}Trilha de Auditoria do CORA-Score}{130}{appendix.E}%
+\contentsline {subsection}{\numberline {E.1}Formulacao Matematica}{130}{subsection.E.1}%
+\contentsline {subsection}{\numberline {E.2}Calculo por Dimensao}{130}{subsection.E.2}%
+\contentsline {subsubsection}{\numberline {E.2.1}$D_1$ --- Raciocinio Matematico Formal ($w_{1}=0.15$)}{130}{subsubsection.E.2.1}%
+\contentsline {subsubsection}{\numberline {E.2.2}$D_2$ --- Modelagem de Sistemas Fisicos ($w_{2}=0.12$)}{131}{subsubsection.E.2.2}%
+\contentsline {subsubsection}{\numberline {E.2.3}$D_3$ --- Analise Estatistica e Inferencia ($w_{3}=0.12$)}{131}{subsubsection.E.2.3}%
+\contentsline {subsubsection}{\numberline {E.2.4}$D_4$ --- Quimica Computacional ($w_{4}=0.10$)}{131}{subsubsection.E.2.4}%
+\contentsline {subsubsection}{\numberline {E.2.5}$D_5$ --- Biologia Molecular e Genomica ($w_{5}=0.10$)}{132}{subsubsection.E.2.5}%
+\contentsline {subsubsection}{\numberline {E.2.6}$D_6$ --- Geociencias e Modelagem Climatica ($w_{6}=0.08$)}{132}{subsubsection.E.2.6}%
+\contentsline {subsubsection}{\numberline {E.2.7}$D_7$ --- Verificacao de Codigo Cientifico ($w_{7}=0.10$)}{132}{subsubsection.E.2.7}%
+\contentsline {subsubsection}{\numberline {E.2.8}$D_8$ --- Revisao Sistematica de Literatura ($w_{8}=0.08$)}{133}{subsubsection.E.2.8}%
+\contentsline {subsubsection}{\numberline {E.2.9}$D_9$ --- Desenho Experimental e Metodologia ($w_{9}=0.08$)}{133}{subsubsection.E.2.9}%
+\contentsline {subsubsection}{\numberline {E.2.10}$D_{10}$ --- Sintese Interdisciplinar ($w_{10}=0.07$)}{133}{subsubsection.E.2.10}%
+\contentsline {subsection}{\numberline {E.3}Agregacao Final}{134}{subsection.E.3}%
+\contentsline {subsection}{\numberline {E.4}Classificacao}{134}{subsection.E.4}%
+\contentsline {section}{\numberline {F}Evolucao Temporal Completa do CORA-Score}{135}{appendix.F}%
+\contentsline {subsection}{\numberline {F.1}Linha do Tempo Detalhada}{135}{subsection.F.1}%
+\contentsline {subsection}{\numberline {F.2}Progressao Visual}{137}{subsection.F.2}%
+\contentsline {subsection}{\numberline {F.3}Evolucao por Dimensao}{137}{subsection.F.3}%
+\contentsline {subsection}{\numberline {F.4}Marcos (\textit {Milestones})}{137}{subsection.F.4}%
+\contentsline {subsection}{\numberline {F.5}Projecao para M4 (Pesquisa)}{138}{subsection.F.5}%
+\contentsline {subsection}{\numberline {F.6}Grafico de Evolucao Temporal}{138}{subsection.F.6}%
+\contentsline {section}{\numberline {G}Especificacao dos Verificadores Cora}{139}{appendix.G}%
+\contentsline {subsection}{\numberline {G.1}Subverificadores V7 (Codigo)}{139}{subsection.G.1}%
+\contentsline {section}{\numberline {H}Fontes de \textit {Ground Truth} Utilizadas}{141}{appendix.H}%
