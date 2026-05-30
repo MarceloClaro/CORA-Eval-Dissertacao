@@ -1,0 +1,322 @@
+% ======================================================================
+% CAPITULO 14 — OpenCode Ecosystem como Laboratorio GAT
+% ======================================================================
+\chapter{OpenCode Ecosystem como Laboratorio GAT}
+
+\section{Por Que um Laboratorio de IA para GAT?}
+
+A Geometric Arbitrage Theory e matematicamente elegante, mas \textbf{validar}
+seus resultados empiricamente requer ferramentas que vao alem do calculo
+manual. O \textbf{OpenCode Ecosystem}\footnote{Claro, M. \textit{OpenCode
+Ecosystem v4.6.1: Arquitetura Multiagente Evolutiva}. GitHub, 2026.
+\url{https://github.com/MarceloClaro/OpenCode\_Ecosystem}. \textbf{Resenha:}
+Plataforma multi-agente de pesquisa cientifica assistida por IA. Integra 79
+agentes especializados, 38 servidores MCP, 104 skills e 7 verificadores
+simbolicos Cora-Debate (V1--V7). Projetada para transformar hipoteses
+cientificas em resultados verificaveis com rastreabilidade completa
+(principio de integridade: INTEGRIDADE.md).} e uma plataforma de 79 agentes
+especializados, 38 servidores MCP e 7 verificadores simbolicos que oferece
+exatamente o ambiente necessario para:
+
+\begin{enumerate}[nosep]
+  \item \textbf{Simular mercados} com precos estocasticos e testar a presenca
+        de arbitragem
+  \item \textbf{Calcular curvatura} do fibrado do mercado automaticamente
+  \item \textbf{Verificar} que condicoes produzem $R=0$ e quais violam NFLVR
+  \item \textbf{Documentar} cada passo com rastreabilidade completa (SDD+TDD)
+  \item \textbf{Evoluir} o raciocinio cientifico a cada ciclo de experimentacao
+\end{enumerate}
+
+\subsection{O Que E o OpenCode Ecosystem?}
+
+Para quem nunca usou, o OpenCode e uma plataforma de \textbf{IA multi-agente}
+--- em vez de um unico modelo de linguagem respondendo perguntas, dezenas de
+agentes especializados colaboram, debatem e verificam o trabalho uns dos
+outros\footnote{Para uma introducao visual ao conceito de agentes de IA, veja
+Wang et al. (2024). \textit{A Survey on Large Language Model based Autonomous
+Agents}. Frontiers of Computer Science. DOI: 10.1007/s11704-024-40231-1.
+\textbf{Resenha para leigos:} Este artigo explica como funciona um ``time''
+de IAs que trabalham juntas --- cada uma com uma especialidade diferente
+(matematica, programacao, revisao critica). E como ter uma banca de
+professores, cada um checando uma parte diferente do seu trabalho.}.
+
+\begin{center}
+\fbox{\begin{minipage}{0.88\textwidth}
+\textbf{Analogia para leigos:} Imagine que voce tem 79 estagiarios muito
+inteligentes. Um busca artigos, outro escreve codigo, outro verifica as contas,
+outro procura erros, outro sugere melhorias. Eles trabalham em paralelo e
+depois debatem entre si. O resultado final passa por 7 verificadores
+automaticos (os ``Cora-Debate'') antes de ser aprovado. Voce, como
+pesquisador, define a pergunta e interpreta os resultados --- mas o trabalho
+braçal de verificacao e feito pelo time de agentes.
+\end{minipage}}
+\end{center}
+
+\section{Instalacao e Primeiro Experimento}
+
+\subsection{Instalacao em 3 Passos}
+
+\begin{lstlisting}[caption={Instalacao do OpenCode Ecosystem}, label=lst:install]
+# Passo 1: Clonar o repositorio
+git clone https://github.com/MarceloClaro/OpenCode_Ecosystem.git
+cd OpenCode_Ecosystem
+
+# Passo 2: Instalar dependencias
+bun install
+pip install -r requirements.txt
+
+# Passo 3: Verificar instalacao
+python -c "from core.container import Container; print('OK')"
+\end{lstlisting}
+
+\subsection{Experimento 1: Simular um Mercado de 2 Ativos}
+
+Nosso primeiro experimento\footnote{Este experimento e uma simplificacao
+didatica. Mercados reais tem milhares de ativos, custos de transacao,
+restricoes regulatorias e latencia de execucao --- nenhum dos quais e
+modelado aqui. O objetivo e ilustrar o conceito, nao construir uma estrategia
+de trading. Conforme principio de integridade R-I3 (INTEGRIDADE.md):
+ distinguimos o que e medido do que e projetado.} e criar um mercado
+sintetico com 2 ativos e verificar se existe arbitragem:
+
+\begin{lstlisting}[caption={Experimento 1: Mercado de 2 ativos com GBM}]
+import numpy as np
+from scipy.stats import norm
+
+# Parametros do mercado
+S0 = np.array([100.0, 100.0])  # precos iniciais
+mu = np.array([0.05, 0.08])    # retornos esperados (diferentes!)
+sigma = np.array([0.20, 0.25]) # volatilidades
+r = 0.03                        # taxa livre de risco
+
+# Simular 1 trajetoria (Euler-Maruyama)
+T, N = 1.0, 252
+dt = T / N
+S = np.zeros((N+1, 2))
+S[0] = S0
+for i in range(N):
+    dW = np.random.normal(0, np.sqrt(dt), 2)
+    S[i+1] = S[i] * (1 + mu*dt + sigma*dW)
+
+# Calcular precos descontados
+discount = np.exp(-r * np.linspace(0, T, N+1))
+S_hat = S * discount.reshape(-1, 1)
+
+# Verificar: se mu != r, entao S_hat nao e martingal
+# → existe arbitragem → curvatura R != 0
+print(f"Retorno esperado anualizado: {mu}")
+print(f"Taxa livre de risco: {r}")
+print(f"Ha arbitragem? {'SIM' if any(mu != r) else 'NAO'}")
+\end{lstlisting}
+
+\textbf{Resultado esperado:} Como $\mu_2 = 0,08 \neq 0,03 = r$, o ativo 2
+oferece retorno esperado acima da taxa livre de risco \textbf{na medida
+fisica} $P$. Isso \textbf{nao} constitui arbitragem --- e apenas um premio
+de risco. A arbitragem so existe se \textbf{nao for possivel} encontrar uma
+medida $P^*$ sob a qual todos os retornos esperados (descontados) sejam iguais
+a $r$.
+
+\subsection{Experimento 2: Construir uma Arbitragem Real}
+
+Para construir uma arbitragem, precisamos de \textbf{inconsistencia de precos}
+--- dois ativos que deveriam ter o mesmo preco (porque sao equivalentes) mas
+nao tem:
+
+\begin{lstlisting}[caption={Experimento 2: Arbitragem por inconsistencia}]
+# Dois ativos identicos precificados diferentemente
+S1 = np.array([100, 102, 101, 103, 105])  # Ativo 1
+S2 = np.array([100, 101, 100, 102, 104])  # Ativo 2 (deveria ser = S1)
+
+# Estrategia: comprar o barato, vender o caro
+diferenca = S1 - S2
+posicao = -np.sign(diferenca)  # -1: vender S1, comprar S2
+pnl = posicao[:-1] * (diferenca[1:] - diferenca[:-1])
+
+print(f"Diferenca maxima de precos: {max(abs(diferenca))}")
+print(f"PnL acumulado: {sum(pnl):.2f}")
+print(f"Sharpe ratio: {np.mean(pnl)/np.std(pnl):.2f}")
+\end{lstlisting}
+
+\section{Usando os Verificadores Cora-Debate (V1-V7)}
+
+O coracao da verificacao no OpenCode sao os 7 verificadores
+Cora-Debate\footnote{O nome ``Cora'' vem de \textit{Cognitive ORchestrated
+Argumentation} --- um sistema que simula o processo de revisao por pares
+cientificos. Cada verificador e como um revisor especializado: um checa a
+matematica (V1), outro a logica (V3), outro a estatistica (V4), e assim por
+diante. Juntos, eles formam uma ``banca'' automatica que audita cada
+afirmacao.}. Cada um audita uma dimensao diferente do raciocinio:
+
+\begin{center}
+\begin{tabular}{p{0.05\textwidth}p{0.20\textwidth}p{0.55\textwidth}}
+\toprule
+\textbf{V} & \textbf{Nome} & \textbf{O que verifica (explicacao para leigos)} \\
+\midrule
+V1 & Dimensional & As unidades de medida batem? (ex: nao se soma kg com metros) \\
+V2 & Algebrico (SymPy) & As equacoes foram derivadas corretamente? \\
+V3 & Contraexemplos & Existe algum caso onde a afirmacao e falsa? (principio de Popper) \\
+V4 & Estatistico & Os p-valores e intervalos de confianca estao corretos? \\
+V5 & Numerico & A precisao dos calculos e suficiente? Ha erros de arredondamento? \\
+V6 & EDO/EDP & Equacoes diferenciais satisfazem condicoes de existencia? \\
+V7 & Codigo-fonte & O codigo que gerou os resultados esta correto? Ha vulnerabilidades? \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Exemplo: Validando o Calculo de Curvatura com V1-V7}
+
+\begin{lstlisting}[caption={Validacao do calculo de curvatura com Cora-Debate}]
+# Script: validar_curvatura_gat.py
+# Executar: opencode run /validar_gat
+
+import sympy as sp
+import numpy as np
+
+# Definir simbolos
+r, t = sp.symbols('r t')
+D1, D2 = sp.symbols('D1 D2', cls=sp.Function)
+x1, x2 = sp.symbols('x1 x2')
+
+# Calcular curvatura para mercado de 2 ativos
+# R = dchi + [chi,chi]  (como G* e abeliano, [chi,chi] = 0)
+# chi = (1/D^x) * sum(D^j dx^j) - r^x dt
+
+D_x = x1*D1(t) + x2*D2(t)
+r_x = (x1*D1(t)*r + x2*D2(t)*r) / D_x  # simplificado: mesma taxa r
+
+# Calcular derivada exterior dchi...
+# (implementacao completa no repositorio)
+
+# Verificacao V1 (dimensional):
+# [r] = 1/T, [D] = valor → [chi] = adimensional? ✓
+# [R] = 1/(valor × tempo)? Verificar.
+
+# Verificacao V2 (algebrico):
+# R == 0 quando D1 e D2 satisfazem dD/D = r dt
+# (movimento Browniano geometrico com drift = r)
+
+# Verificacao V3 (contraexemplo):
+# Se D1 = exp(r t + sigma W_t) e D2 = exp(r t - sigma W_t),
+# entao R != 0 → existe arbitragem
+\end{lstlisting}
+
+\section{SDD+TDD: Desenvolvimento Verificado de Modelos GAT}
+
+O ecossistema aplica \textbf{Spec-Driven Development} e \textbf{Test-Driven
+Development} a modelos financeiros\footnote{Beck, K. \textit{Test-Driven
+Development: By Example}. Addison-Wesley, 2003. ISBN: 978-0321146533.
+\textbf{Resenha para leigos:} TDD e como construir uma casa comecando pelos
+alicerces: voce primeiro escreve o que quer testar (``a parede deve aguentar
+X quilos''), depois constroi a parede, e depois verifica se ela aguenta.
+Na GAT, voce primeiro escreve ``a curvatura deve ser zero quando mu = r'',
+depois implementa o codigo, e depois verifica se o teste passa.}:
+
+\begin{enumerate}[nosep]
+  \item \textbf{SPEC:} Escrever a especificacao do modelo (ex: ``mercado com
+        $N$ ativos de Ito, conexao $\chi$, curvatura $R$ deve satisfazer
+        $R=0 \Leftrightarrow \mu_j = r$ para todo $j$'')
+  \item \textbf{TDD:} Escrever o teste \textbf{antes} do codigo:
+        \texttt{assert calcular\_curvatura(mu=[r,r], sigma=[0.2,0.2]) == 0}
+  \item \textbf{IMPLEMENTAR:} Codigo que calcula $R$ a partir de $\chi$
+  \item \textbf{VERIFICAR:} Executar o teste. Se falhar (RED), corrigir o codigo
+        ate passar (GREEN). Refatorar (REFACTOR).
+  \item \textbf{AUDITAR:} Submeter ao Cora-Debate V1--V7 para verificacao
+        simbolica.
+\end{enumerate}
+
+\subsection{Exemplo de SPEC para um Modelo GAT}
+
+\begin{lstlisting}[caption={SPEC: Modelo GAT de 3 ativos com Ito}]
+"""
+SPEC-GAT-001: Mercado de 3 ativos com precos de Ito
+
+ENTRADAS:
+  - N=3 ativos
+  - precos: dS_t^j/S_t^j = mu_j dt + sigma_j dW_t^j
+  - correlacoes: d[W^i, W^j]_t = rho_ij dt
+  - taxa livre de risco: r
+
+SAIDAS:
+  - R(x,t,g): 2-forma de curvatura
+  - Hol(chi): grupo de holonomia
+
+CRITERIOS DE ACEITACAO (CTs):
+  CT-1: Se mu_j = r para todo j, entao R ≡ 0 (NFLVR)
+  CT-2: Se mu_j != r para algum j, entao R != 0
+  CT-3: dim(Hol(chi)) = numero de mu_j != r (estrat. independentes)
+  CT-4: V1-V7: todos os verificadores passam
+"""
+\end{lstlisting}
+
+\section{Integracao com o Pipeline Academico}
+
+O OpenCode oferece um pipeline completo\footnote{O pipeline academico do
+OpenCode e documentado em \texttt{criador-artigo/} e \texttt{basis-research/}.
+49 agentes MASWOS colaboram na escrita, 12 agentes SEEKER fazem a pesquisa
+bibliografica, e 5 agentes de banca simulam a revisao por pares.}:
+
+\begin{verbatim}
+SEEKER (pesquisa) → MASWOS (escrita, 49 agentes)
+  → Anti-AI (TSAC, 87 palavras banidas)
+  → Banca simulada (5 revisores + 4 orientadores)
+  → Correcao iterativa (loop ate score >= 95/100)
+  → Cora-Debate V1-V7 (verificacao simbolica)
+  → Exportacao LaTeX/PDF
+  → AutoEvolve (aprende com o ciclo e gera novas skills)
+\end{verbatim}
+
+\subsection{Gerando um Artigo sobre GAT com o Pipeline}
+
+\begin{lstlisting}[caption={Gerar artigo GAT via pipeline OpenCode}]
+# Terminal: gerar artigo sobre um experimento GAT
+opencode run /artigo --tema "Geometric Arbitrage Theory:
+  Validacao empirica do Teorema Central em mercados
+  simulados com 3 ativos de Ito" --formato abnt --paginas 15
+
+# O pipeline:
+# 1. SEEKER busca referencias (arXiv, PubMed, OpenAlex)
+# 2. MASWOS (49 agentes) escreve o artigo
+# 3. TSAC verifica citacoes (87 palavras banidas)
+# 4. Banca (5 revisores) avalia
+# 5. Cora-Debate (V1-V7) audita cada afirmacao
+# 6. Loop ate score >= 95/100
+# 7. Exporta PDF (ABNT)
+\end{lstlisting}
+
+\section{Exercicios Praticos}
+
+\begin{exer}[Primeiro Experimento GAT]
+Instale o OpenCode Ecosystem e execute o Experimento 1 (mercado de 2 ativos).
+Responda:
+\begin{enumerate}[(a)]
+  \item Por que $\mu \neq r$ nao constitui arbitragem?
+  \item O que precisa ser verdade para que exista arbitragem?
+  \item Simule 1.000 trajetorias e verifique a distribuicao de $R$ — ela e
+        significativamente diferente de zero?
+\end{enumerate}
+\end{exer}
+
+\begin{exer}[Calibracao dos Verificadores]
+Usando o Cora-Debate, submeta 5 afirmacoes \textbf{deliberadamente falsas}
+sobre um mercado simulado. Registre quais verificadores detectaram cada
+erro e quais nao detectaram. O que isso revela sobre as limitacoes da
+verificacao simbolica?
+\end{exer}
+
+\begin{exer}[Ciclo SDD+TDD Completo]
+Escolha um aspecto da GAT (ex: condicao de Novikov, equacao de continuidade,
+Teorema de Noether) e implemente o ciclo SPEC→TDD→IMPLEMENTAR→VERIFICAR→
+AUDITAR. Documente o processo. Submeta ao Cora-Debate. Publique o resultado.
+\end{exer}
+
+\section{Referencias do Capitulo}
+
+\begin{enumerate}[nosep]
+  \item Farinelli, S. (2021). Geometric Arbitrage Theory and Market Dynamics
+        Reloaded. arXiv:0910.1671v10.
+  \item Claro, M. (2026). OpenCode Ecosystem v4.6.1. GitHub.
+  \item Beck, K. (2003). Test-Driven Development: By Example. Addison-Wesley.
+        ISBN: 978-0321146533.
+  \item Wang, L. et al. (2024). A survey on LLM-based autonomous agents.
+        Frontiers of Computer Science. DOI: 10.1007/s11704-024-40231-1.
+\end{enumerate}

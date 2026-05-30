@@ -1,264 +1,295 @@
 \babel@toc {brazilian}{}\relax 
-\contentsline {part}{I\hspace {1em}Fundamentos}{11}{part.1}%
-\contentsline {chapter}{\numberline {1}Introducao: Por Que Arbitragem?}{13}{chapter.1}%
-\contentsline {section}{\numberline {1.1}O Conceito Mais Simples do Mundo}{13}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Arbitragem no Mundo Real}{13}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Por Que a Ausencia de Arbitragem e uma Hipotese Razoavel?}{14}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Arbitragem, na Arbitragem, e Quase-Arbitragem}{14}{section.1.4}%
-\contentsline {section}{\numberline {1.5}O Primeiro Teorema Fundamental — Versao Intuitiva}{15}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Um Exemplo Concreto: Aprecamento de Opcao}{15}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Black-Scholes-Merton: A Revolucao de 1973}{16}{section.1.7}%
-\contentsline {section}{\numberline {1.8}A Pergunta que a GAT Responde}{17}{section.1.8}%
-\contentsline {section}{\numberline {1.9}Estrutura Deste Modulo}{18}{section.1.9}%
-\contentsline {chapter}{\numberline {2}Probabilidade para Finanças\\ Revisão Rigorosa}{19}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Espaços de Probabilidade}{19}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Variáveis Aleatórias e Esperança}{20}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Distribuições Relevantes}{21}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Probabilidade Condicional e Esperança Condicional}{22}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Martingais}{23}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Movimento Browniano}{25}{section.2.6}%
-\contentsline {chapter}{\numberline {3}C\'alculo Estoc\'astico para Finan\c {c}as}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Motiva\c {c}\~ao: Por que o C\'alculo Usual Falha para Processos Estoc\'asticos?}{29}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Integral de It\^o}{30}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Defini\c {c}\~ao Construtiva}{30}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Propriedades Fundamentais}{31}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Lema de It\^o: A Regra da Cadeia Estoc\'astica}{31}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Fun\c {c}\~oes de uma Vari\'avel}{31}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Fun\c {c}\~oes de $n$ Vari\'aveis}{32}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Integral de Stratonovich}{32}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Derivadas de Nelson}{33}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Equa\c {c}\~oes Diferenciais Estoc\'asticas (SDEs)}{34}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Exist\^encia e Unicidade}{34}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Exemplos Cl\'assicos}{35}{subsection.3.6.2}%
-\contentsline {section}{\numberline {3.7}Teorema de Girsanov}{35}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Mudan\c {c}a de Medida e Derivada de Radon-Nikod\'ym}{35}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Aplica\c {c}\~ao ao Modelo de Black-Scholes}{36}{subsection.3.7.2}%
-\contentsline {section}{\numberline {3.8}Representa\c {c}\~ao de Martingais}{37}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Aplica\c {c}\~ao \`a Teoria de Arbitragem Geom\'etrica}{37}{subsection.3.8.1}%
-\contentsline {chapter}{\numberline {4}O Modelo Clássico de Mercado}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Espaço de Probabilidade Filtrado e Condições Usuais}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Ativos, Preços e a Conta Caixa}{42}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Semimartingales como Modelo de Preços}{42}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Preços Nominais e Descontados}{43}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}O Numerário}{43}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Estratégias de Negociação}{43}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Previsibilidade}{43}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Admissibilidade}{44}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Autofinanciamento: Itô e Stratonovich}{44}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Arbitragem Formalizada}{46}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Condição NA e suas Limitações em Tempo Contínuo}{46}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Condição NFLVR}{47}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Construção dos Cones}{47}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Definição Topológica}{48}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}FTAP em Tempo Contínuo}{48}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Pricing Kernel / State Price Deflator}{49}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Cashflows e Intensidades}{50}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Valor Presente sob NFLVR}{51}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Resumo do Capítulo}{53}{section.4.11}%
-\contentsline {part}{II\hspace {1em}Geometric Arbitrage Theory}{57}{part.2}%
-\contentsline {chapter}{\numberline {5}A Linguagem Geom\'etrica: Gauges e Transforma\c {c}\~oes}{59}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Por que Geometria?}{59}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Deflatores e Estruturas a Termo}{60}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Defini\c {c}\~ao Formal}{60}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Rela\c {c}\~ao com a Abordagem Cl\'assica}{60}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Exemplos Concretos de Gauges}{61}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Taxa Forward Instant\^anea e Taxa Curta}{62}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Condi\c {c}\~ao de Juros Positivos}{63}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Transforma\c {c}\~oes de Gauge}{63}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Motiva\c {c}\~ao}{63}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Representa\c {c}\~ao com Medidas}{64}{subsection.5.6.2}%
-\contentsline {section}{\numberline {5.7}O Semigrupo $G$ e o Grupo $G^*$}{65}{section.5.7}%
-\contentsline {section}{\numberline {5.8}\^Orbitas e Hierarquia de Informa\c {c}\~ao}{65}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Transforma\c {c}\~oes Especiais}{66}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Diagrama de Gauges}{67}{section.5.10}%
-\contentsline {section}{\numberline {5.11}S\'intese e Conex\~ao com os Pr\'oximos Cap\'itulos}{68}{section.5.11}%
-\contentsline {chapter}{\numberline {6}Fibrados Principais: A Estrutura Geom\'etrica do Mercado}{71}{chapter.6}%
-\contentsline {section}{\numberline {6.1}O Que \'E um Fibrado?}{71}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Duas Imagens Mentais}{71}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Defini\c {c}\~ao Formal}{72}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Fibrados Principais}{73}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Se\c {c}\~oes de um Fibrado}{74}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Constru\c {c}\~ao do Fibrado do Mercado}{75}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Os Ingredientes}{75}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}A Base $M$ e o Fibrado $\mathcal {B}$}{76}{subsection.6.4.2}%
-\contentsline {section}{\numberline {6.5}Teorema: $\mathcal {B}$ \'e um $G^*$-Fibrado Principal}{76}{section.6.5}%
-\contentsline {section}{\numberline {6.6}O Numer\'ario como Se\c {c}\~ao Global}{77}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Cashflows como Se\c {c}\~oes do Fibrado Associado}{78}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Automorfismos de Gauge}{79}{section.6.8}%
-\contentsline {section}{\numberline {6.9}Resumo do Cap\'itulo}{80}{section.6.9}%
-\contentsline {chapter}{\numberline {7}Conexão, Transporte Paralelo e Derivadas de Nelson}{85}{chapter.7}%
-\contentsline {section}{\numberline {7.1}O Que É uma Conexão?}{85}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Intuição: Conectando Fibras Vizinhas}{85}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Projeções e a Forma de Conexão}{86}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}A Conexão de Mercado (Ilinski--Farinelli)}{86}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Motivação Financeira}{86}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Definição da Conexão}{86}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Expressão em Coordenadas}{87}{subsection.7.2.3}%
-\contentsline {section}{\numberline {7.3}A Forma de Conexão $\chi $ como 1-Forma com Valores em $\mathfrak {g}$}{88}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Álgebra de Lie do Grupo de Gauge}{88}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Expressão Completa com a Fibra}{88}{subsection.7.3.2}%
-\contentsline {section}{\numberline {7.4}Transporte Paralelo ao Longo de Curvas}{88}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Levantamento Horizontal}{88}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}Definição do Transporte Paralelo}{89}{subsection.7.4.2}%
-\contentsline {section}{\numberline {7.5}Interpretação Financeira do Transporte Paralelo}{89}{section.7.5}%
-\contentsline {section}{\numberline {7.6}O Modelo de Mercado $D$-Diferenciável de Nelson}{91}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}A Derivada Média de Nelson}{91}{subsection.7.6.1}%
-\contentsline {subsection}{\numberline {7.6.2}Covariação de Nelson}{91}{subsection.7.6.2}%
-\contentsline {subsection}{\numberline {7.6.3}O Modelo de Mercado $D$-Diferenciável}{92}{subsection.7.6.3}%
-\contentsline {subsection}{\numberline {7.6.4}Estratégias Fracamente $D$-Diferenciáveis}{92}{subsection.7.6.4}%
-\contentsline {section}{\numberline {7.7}Autofinanciamento em Termos de $D$}{93}{section.7.7}%
-\contentsline {section}{\numberline {7.8}Conexão com Malaney--Weinstein}{94}{section.7.8}%
-\contentsline {subsection}{\numberline {7.8.1}A Conexão de Malaney--Weinstein}{94}{subsection.7.8.1}%
-\contentsline {subsection}{\numberline {7.8.2}Equivalência no Caso Estocástico}{94}{subsection.7.8.2}%
-\contentsline {section}{\numberline {7.9}Resumo do Capítulo}{95}{section.7.9}%
-\contentsline {chapter}{\numberline {8}Curvatura = Arbitragem --- O Teorema Central}{99}{chapter.8}%
-\contentsline {section}{\numberline {8.1}O Que \'E Curvatura?}{99}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Intui\c {c}\~ao Geom\'etrica}{99}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Defini\c {c}\~ao Formal}{99}{subsection.8.1.2}%
-\contentsline {section}{\numberline {8.2}C\'alculo Expl\'icito da Curvatura}{100}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Express\~ao da Conex\~ao}{100}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}C\'alculo de $d\chi $}{100}{subsection.8.2.2}%
-\contentsline {subsection}{\numberline {8.2.3}Simplifica\c {c}\~ao com a Express\~ao de $\chi $}{101}{subsection.8.2.3}%
-\contentsline {subsection}{\numberline {8.2.4}Express\~ao Final da Curvatura}{101}{subsection.8.2.4}%
-\contentsline {section}{\numberline {8.3}Teorema 34 (No Arbitrage)}{102}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Prova Detalhada do Teorema 34}{103}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}(i) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (iii): FTAP}{103}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}(ii) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (iii): Deriva\c {c}\~ao e Integra\c {c}\~ao}{103}{subsection.8.4.2}%
-\contentsline {subsection}{\numberline {8.4.3}(ii) $\DOTSB \Relbar \joinrel \Rightarrow $ (v): Substitui\c {c}\~ao na Express\~ao da Curvatura}{103}{subsection.8.4.3}%
-\contentsline {subsection}{\numberline {8.4.4}(iv) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (v): Teorema de Ambrose--Singer}{104}{subsection.8.4.4}%
-\contentsline {section}{\numberline {8.5}Corol\'ario 36: Implica\c {c}\~oes e Contrapositivas}{104}{section.8.5}%
-\contentsline {section}{\numberline {8.6}O Que a Rec\'iproca Falsa Significa Financeiramente}{105}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Condi\c {c}\~ao de Novikov}{105}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Exemplo Can\^onico: Processo de Bessel em Dimens\~ao 3}{105}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Interpreta\c {c}\~ao Financeira}{105}{subsection.8.6.3}%
-\contentsline {section}{\numberline {8.7}Equa\c {c}\~ao de Continuidade: Vis\~ao Geral}{106}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Corrente de Valor}{106}{subsection.8.7.1}%
-\contentsline {subsection}{\numberline {8.7.2}Teorema da Continuidade}{106}{subsection.8.7.2}%
-\contentsline {subsection}{\numberline {8.7.3}Analogia F\'isica: Fluido Incompress\'ivel}{107}{subsection.8.7.3}%
-\contentsline {subsection}{\numberline {8.7.4}Conex\~ao com a Curvatura}{107}{subsection.8.7.4}%
-\contentsline {chapter}{\numberline {9}Holonomia e o Teorema de Ambrose--Singer}{109}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Holonomia: Defini\c {c}\~ao Formal}{109}{section.9.1}%
-\contentsline {subsection}{\numberline {9.1.1}Conex\~ao e Transporte Paralelo}{109}{subsection.9.1.1}%
-\contentsline {subsection}{\numberline {9.1.2}Grupo de Holonomia}{109}{subsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.1.3}Intui\c {c}\~ao Financeira}{110}{subsection.9.1.3}%
-\contentsline {section}{\numberline {9.2}Parametriza\c {c}\~ao de Estrat\'egias pela Holonomia}{110}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}Correspond\^encia Fundamental}{110}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}Por que Funciona}{110}{subsection.9.2.2}%
-\contentsline {section}{\numberline {9.3}O Teorema de Ambrose--Singer}{111}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Enunciado}{111}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Esbo\c {c}o da Demonstra\c {c}\~ao}{112}{subsection.9.3.2}%
-\contentsline {section}{\numberline {9.4}Consequ\^encia Financeira do Teorema de Ambrose--Singer}{112}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}A Curvatura como Geradora de Arbitragem}{112}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}O Fluxo Conceitual}{113}{subsection.9.4.2}%
-\contentsline {section}{\numberline {9.5}Classifica\c {c}\~ao Alg\'ebrica de Estrat\'egias de Arbitragem}{113}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}Estrutura da \'Algebra de Lie \(\mathfrak {hol}(\chi )\)}{113}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}Classifica\c {c}\~ao por Estrutura da \'Algebra}{114}{subsection.9.5.2}%
-\contentsline {subsection}{\numberline {9.5.3}Invariantes Alg\'ebricos e Significado Financeiro}{114}{subsection.9.5.3}%
-\contentsline {section}{\numberline {9.6}Exemplo Guiado: Mercado com Pre\c {c}os de It\^o}{114}{section.9.6}%
-\contentsline {subsection}{\numberline {9.6.1}Modelagem do Mercado}{114}{subsection.9.6.1}%
-\contentsline {subsection}{\numberline {9.6.2}Conex\~ao de Precifica\c {c}\~ao}{114}{subsection.9.6.2}%
-\contentsline {subsection}{\numberline {9.6.3}Curvatura da Conex\~ao de Precifica\c {c}\~ao}{115}{subsection.9.6.3}%
-\contentsline {subsection}{\numberline {9.6.4}C\'alculo Expl\'icito da Curvatura}{115}{subsection.9.6.4}%
-\contentsline {subsection}{\numberline {9.6.5}Interpreta\c {c}\~ao Financeira da Curvatura}{115}{subsection.9.6.5}%
-\contentsline {subsection}{\numberline {9.6.6}Exemplo Num\'erico Simples}{116}{subsection.9.6.6}%
-\contentsline {section}{\numberline {9.7}Resumo: Dicion\'ario Geometria \(\leftrightarrow \) Finan\c {c}as}{116}{section.9.7}%
-\contentsline {part}{III\hspace {1em}Topicos Avancados}{119}{part.3}%
-\contentsline {chapter}{\numberline {10}Hidrodin\^amica da Arbitragem}{121}{chapter.10}%
-\contentsline {section}{\numberline {10.1}A Analogia Fluido-Finan\c {c}as}{121}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Defini\c {c}\~ao da Corrente de Valor $J$}{122}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Teorema da Continuidade}{122}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Interpreta\c {c}\~ao F\'isica: V\'ortices Financeiros}{123}{section.10.4}%
-\contentsline {subsection}{\numberline {10.4.1}Arbitragem como Fontes e Sumidouros}{123}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}V\'ortices Financeiros}{123}{subsection.10.4.2}%
-\contentsline {subsection}{\numberline {10.4.3}Regime Turbulento e Crises}{124}{subsection.10.4.3}%
-\contentsline {section}{\numberline {10.5}Implica\c {c}\~oes para Gest\~ao de Risco}{124}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Monitoramento da Diverg\^encia de Fluxo}{125}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Decomposi\c {c}\~ao de Helmholtz do Risco}{125}{subsection.10.5.2}%
-\contentsline {subsection}{\numberline {10.5.3}Aplica\c {c}\~ao \`a Regula\c {c}\~ao Financeira}{125}{subsection.10.5.3}%
-\contentsline {subsection}{\numberline {10.5.4}Extens\~ao: Hidrodin\^amica Relativ\'istica Financeira}{125}{subsection.10.5.4}%
-\contentsline {chapter}{\numberline {11}Formula\c {c}\~ao Lagrangiana e Teorema de Noether}{129}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Mec\^anica Lagrangiana em 5 Minutos}{129}{section.11.1}%
-\contentsline {section}{\numberline {11.2}O Lagrangiano do Mercado}{129}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Equa\c {c}\~oes de Euler--Lagrange Estoc\'asticas}{130}{section.11.3}%
-\contentsline {section}{\numberline {11.4}Simetrias e Leis de Conserva\c {c}\~ao: Teorema de Noether}{131}{section.11.4}%
-\contentsline {subsection}{\numberline {11.4.1}Teorema de Noether Cl\'assico}{131}{subsection.11.4.1}%
-\contentsline {subsection}{\numberline {11.4.2}Extens\~ao Estoc\'astica}{132}{subsection.11.4.2}%
-\contentsline {section}{\numberline {11.5}Aplica\c {c}\~ao \`a Teoria da Arbitragem (GAT)}{132}{section.11.5}%
-\contentsline {subsection}{\numberline {11.5.1}Invari\^ancia sob Mudan\c {c}a de Numer\'ario}{132}{subsection.11.5.1}%
-\contentsline {subsection}{\numberline {11.5.2}Simetria de Gauge Financeira}{132}{subsection.11.5.2}%
-\contentsline {section}{\numberline {11.6}Solu\c {c}\~oes de Equil\'ibrio}{133}{section.11.6}%
-\contentsline {subsection}{\numberline {11.6.1}Equil\'ibrio Black--Scholes (NFLVR)}{133}{subsection.11.6.1}%
-\contentsline {subsection}{\numberline {11.6.2}Equil\'ibrio com Fric\c {c}\~oes (Arbitragem Minimizada)}{133}{subsection.11.6.2}%
-\contentsline {chapter}{\numberline {12}Topologia Diferencial e o FTAP Homot\'opico}{137}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Homotopia de Estrat\'egias}{137}{section.12.1}%
-\contentsline {subsection}{\numberline {12.1.1}Intui\c {c}\~ao Financeira}{137}{subsection.12.1.1}%
-\contentsline {section}{\numberline {12.2}Classifica\c {c}\~ao por Holonomia}{138}{section.12.2}%
-\contentsline {subsection}{\numberline {12.2.1}Conex\~ao com a Vorticidade Financeira}{138}{subsection.12.2.1}%
-\contentsline {section}{\numberline {12.3}FTAP Diferencial-Homot\'opico}{139}{section.12.3}%
-\contentsline {subsection}{\numberline {12.3.1}Formula\c {c}\~ao Alg\'ebrica Compacta}{139}{subsection.12.3.1}%
-\contentsline {section}{\numberline {12.4}Interpreta\c {c}\~ao: Mercado sem Arbitragem \'e um Espa\c {c}o Simplesmente Conexo}{139}{section.12.4}%
-\contentsline {section}{\numberline {12.5}Conex\~ao com a F\'isica: Efeito Aharonov--Bohm em Finan\c {c}as?}{140}{section.12.5}%
-\contentsline {subsection}{\numberline {12.5.1}O Efeito Aharonov--Bohm Original}{140}{subsection.12.5.1}%
-\contentsline {subsection}{\numberline {12.5.2}An\'alogo Financeiro}{140}{subsection.12.5.2}%
-\contentsline {subsection}{\numberline {12.5.3}Especula\c {c}\~ao Matem\'atica}{141}{subsection.12.5.3}%
-\contentsline {chapter}{\numberline {13}Implementação Computacional da GAT em Python}{145}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Simulação de Movimento Browniano Geométrico}{145}{section.13.1}%
-\contentsline {section}{\numberline {13.2}Cálculo Numérico da Curvatura}{147}{section.13.2}%
-\contentsline {subsection}{\numberline {13.2.1}Fórmula do Tensor de Curvatura}{147}{subsection.13.2.1}%
-\contentsline {subsection}{\numberline {13.2.2}Implementação por Diferenças Finitas}{147}{subsection.13.2.2}%
-\contentsline {section}{\numberline {13.3}Construção de Estratégias de Arbitragem}{149}{section.13.3}%
-\contentsline {subsection}{\numberline {13.3.1}Holonomia e Transporte Paralelo}{149}{subsection.13.3.1}%
-\contentsline {section}{\numberline {13.4}Simulação de Mercado com Arbitragem}{152}{section.13.4}%
-\contentsline {section}{\numberline {13.5}Visualização da Curvatura}{154}{section.13.5}%
-\contentsline {section}{\numberline {13.6}Exemplo Completo: Mini-Framework GAT}{157}{section.13.6}%
-\contentsline {section}{\numberline {13.7}Considerações Finais do Capítulo}{165}{section.13.7}%
-\contentsline {chapter}{\numberline {A}Revisão de Geometria Diferencial}{167}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Variedades Diferenciáveis}{167}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Cartas e Atlas}{167}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Espaço Tangente}{168}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}Campos Vetoriais e Colchete de Lie}{168}{subsection.A.1.3}%
-\contentsline {section}{\numberline {A.2}Formas Diferenciais}{168}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}$1$-Formas e o Fibrado Cotangente}{168}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}$k$-Formas e o Produto Exterior}{169}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Derivada Exterior}{169}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}Lema de Poincaré}{169}{subsection.A.2.4}%
-\contentsline {section}{\numberline {A.3}Grupos de Lie}{170}{section.A.3}%
-\contentsline {subsection}{\numberline {A.3.1}Definição e Exemplos}{170}{subsection.A.3.1}%
-\contentsline {subsection}{\numberline {A.3.2}Álgebra de Lie}{170}{subsection.A.3.2}%
-\contentsline {subsection}{\numberline {A.3.3}Aplicação Exponencial}{170}{subsection.A.3.3}%
-\contentsline {section}{\numberline {A.4}Fibrados: Definições, Conexões e Curvatura}{170}{section.A.4}%
-\contentsline {subsection}{\numberline {A.4.1}Definição e Seções}{170}{subsection.A.4.1}%
-\contentsline {subsection}{\numberline {A.4.2}Conexões e Derivada Covariante}{171}{subsection.A.4.2}%
-\contentsline {subsection}{\numberline {A.4.3}Curvatura}{171}{subsection.A.4.3}%
-\contentsline {chapter}{\numberline {B}Derivadas Estocásticas de Nelson}{173}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Definição Formal}{173}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Conexão com Itô e Stratonovich}{174}{section.B.2}%
-\contentsline {section}{\numberline {B.3}Fórmula de Leibniz Estocástica}{174}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Exemplos Calculados}{175}{section.B.4}%
-\contentsline {subsection}{\numberline {B.4.1}Quadrado do Movimento Browniano}{175}{subsection.B.4.1}%
-\contentsline {subsection}{\numberline {B.4.2}Produto $tW_t$}{176}{subsection.B.4.2}%
-\contentsline {subsection}{\numberline {B.4.3}Exponencial do Browniano Geométrico}{176}{subsection.B.4.3}%
-\contentsline {subsection}{\numberline {B.4.4}Interpretação Geométrica na GAT}{176}{subsection.B.4.4}%
-\contentsline {chapter}{\numberline {C}Exercícios Resolvidos}{177}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Nível Básico}{177}{section.C.1}%
-\contentsline {section}{\numberline {C.2}Nível Intermediário}{179}{section.C.2}%
-\contentsline {section}{\numberline {C.3}Nível Avançado}{182}{section.C.3}%
-\contentsline {chapter}{\numberline {D}Referências Completas}{185}{appendix.D}%
-\contentsline {section}{\numberline {D.1}Fontes Primárias: Abordagem GAT}{185}{section.D.1}%
-\contentsline {subsection}{\numberline {D.1.1}Artigos Fundacionais}{185}{subsection.D.1.1}%
-\contentsline {subsection}{\numberline {D.1.2}Livros e Monografias}{186}{subsection.D.1.2}%
-\contentsline {section}{\numberline {D.2}Finanças Quantitativas}{186}{section.D.2}%
-\contentsline {subsection}{\numberline {D.2.1}Teoria Clássica de Apreçamento}{186}{subsection.D.2.1}%
-\contentsline {subsection}{\numberline {D.2.2}Teoria de Arbitragem e Medidas Martingais}{186}{subsection.D.2.2}%
-\contentsline {subsection}{\numberline {D.2.3}Modelagem de Mercado e Risco}{186}{subsection.D.2.3}%
-\contentsline {section}{\numberline {D.3}Cálculo Estocástico}{187}{section.D.3}%
-\contentsline {subsection}{\numberline {D.3.1}Textos Canônicos}{187}{subsection.D.3.1}%
-\contentsline {subsection}{\numberline {D.3.2}Obras Complementares}{187}{subsection.D.3.2}%
-\contentsline {section}{\numberline {D.4}Geometria Diferencial e Topologia}{187}{section.D.4}%
-\contentsline {subsection}{\numberline {D.4.1}Textos Clássicos de Geometria}{187}{subsection.D.4.1}%
-\contentsline {subsection}{\numberline {D.4.2}Geometria Aplicada a Finanças e Física}{188}{subsection.D.4.2}%
-\contentsline {section}{\numberline {D.5}Física-Matemática e Cinemática Estocástica}{188}{section.D.5}%
-\contentsline {subsection}{\numberline {D.5.1}Geometria e Física}{188}{subsection.D.5.1}%
-\contentsline {subsection}{\numberline {D.5.2}Cinemática Estocástica de Nelson}{188}{subsection.D.5.2}%
-\contentsline {subsection}{\numberline {D.5.3}Análise em Variedades e Processos de Difusão}{188}{subsection.D.5.3}%
-\contentsline {subsection}{\numberline {D.5.4}Fluxos Geométricos e Aplicações}{189}{subsection.D.5.4}%
+\contentsline {chapter}{Ementa do Modulo}{3}{section*.2}%
+\contentsline {part}{I\hspace {1em}Fundamentos}{13}{part.1}%
+\contentsline {chapter}{\numberline {1}Introducao: Por Que Arbitragem?}{15}{chapter.1}%
+\contentsline {section}{\numberline {1.1}O Conceito Mais Simples do Mundo}{15}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Arbitragem no Mundo Real}{15}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Por Que a Ausencia de Arbitragem e uma Hipotese Razoavel?}{16}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Arbitragem, na Arbitragem, e Quase-Arbitragem}{16}{section.1.4}%
+\contentsline {section}{\numberline {1.5}O Primeiro Teorema Fundamental — Versao Intuitiva}{17}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Um Exemplo Concreto: Aprecamento de Opcao}{17}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Black-Scholes-Merton: A Revolucao de 1973}{18}{section.1.7}%
+\contentsline {section}{\numberline {1.8}A Pergunta que a GAT Responde}{19}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Estrutura Deste Modulo}{20}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Probabilidade para Finanças\\ Revisão Rigorosa}{21}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Espaços de Probabilidade}{21}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Variáveis Aleatórias e Esperança}{22}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Distribuições Relevantes}{23}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Probabilidade Condicional e Esperança Condicional}{24}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Martingais}{25}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Movimento Browniano}{27}{section.2.6}%
+\contentsline {chapter}{\numberline {3}C\'alculo Estoc\'astico para Finan\c {c}as}{31}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Motiva\c {c}\~ao: Por que o C\'alculo Usual Falha para Processos Estoc\'asticos?}{31}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Integral de It\^o}{32}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Defini\c {c}\~ao Construtiva}{32}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Propriedades Fundamentais}{33}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Lema de It\^o: A Regra da Cadeia Estoc\'astica}{33}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Fun\c {c}\~oes de uma Vari\'avel}{33}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Fun\c {c}\~oes de $n$ Vari\'aveis}{34}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Integral de Stratonovich}{34}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Derivadas de Nelson}{35}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Equa\c {c}\~oes Diferenciais Estoc\'asticas (SDEs)}{36}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Exist\^encia e Unicidade}{36}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Exemplos Cl\'assicos}{37}{subsection.3.6.2}%
+\contentsline {section}{\numberline {3.7}Teorema de Girsanov}{37}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Mudan\c {c}a de Medida e Derivada de Radon-Nikod\'ym}{37}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Aplica\c {c}\~ao ao Modelo de Black-Scholes}{38}{subsection.3.7.2}%
+\contentsline {section}{\numberline {3.8}Representa\c {c}\~ao de Martingais}{39}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Aplica\c {c}\~ao \`a Teoria de Arbitragem Geom\'etrica}{39}{subsection.3.8.1}%
+\contentsline {chapter}{\numberline {4}O Modelo Clássico de Mercado}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Espaço de Probabilidade Filtrado e Condições Usuais}{43}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ativos, Preços e a Conta Caixa}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Semimartingales como Modelo de Preços}{44}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Preços Nominais e Descontados}{45}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}O Numerário}{45}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Estratégias de Negociação}{45}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Previsibilidade}{45}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Admissibilidade}{46}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Autofinanciamento: Itô e Stratonovich}{46}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Arbitragem Formalizada}{48}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Condição NA e suas Limitações em Tempo Contínuo}{48}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Condição NFLVR}{49}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Construção dos Cones}{49}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Definição Topológica}{50}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}FTAP em Tempo Contínuo}{50}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Pricing Kernel / State Price Deflator}{51}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Cashflows e Intensidades}{52}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Valor Presente sob NFLVR}{53}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Resumo do Capítulo}{55}{section.4.11}%
+\contentsline {part}{II\hspace {1em}Geometric Arbitrage Theory}{59}{part.2}%
+\contentsline {chapter}{\numberline {5}A Linguagem Geom\'etrica: Gauges e Transforma\c {c}\~oes}{61}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Por que Geometria?}{61}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Deflatores e Estruturas a Termo}{62}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Defini\c {c}\~ao Formal}{62}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Rela\c {c}\~ao com a Abordagem Cl\'assica}{62}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Exemplos Concretos de Gauges}{63}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Taxa Forward Instant\^anea e Taxa Curta}{64}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Condi\c {c}\~ao de Juros Positivos}{65}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Transforma\c {c}\~oes de Gauge}{65}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Motiva\c {c}\~ao}{65}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Representa\c {c}\~ao com Medidas}{66}{subsection.5.6.2}%
+\contentsline {section}{\numberline {5.7}O Semigrupo $G$ e o Grupo $G^*$}{67}{section.5.7}%
+\contentsline {section}{\numberline {5.8}\^Orbitas e Hierarquia de Informa\c {c}\~ao}{67}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Transforma\c {c}\~oes Especiais}{68}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Diagrama de Gauges}{69}{section.5.10}%
+\contentsline {section}{\numberline {5.11}S\'intese e Conex\~ao com os Pr\'oximos Cap\'itulos}{70}{section.5.11}%
+\contentsline {chapter}{\numberline {6}Fibrados Principais: A Estrutura Geom\'etrica do Mercado}{73}{chapter.6}%
+\contentsline {section}{\numberline {6.1}O Que \'E um Fibrado?}{73}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Duas Imagens Mentais}{73}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Defini\c {c}\~ao Formal}{74}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Fibrados Principais}{75}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Se\c {c}\~oes de um Fibrado}{76}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Constru\c {c}\~ao do Fibrado do Mercado}{77}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Os Ingredientes}{77}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}A Base $M$ e o Fibrado $\mathcal {B}$}{78}{subsection.6.4.2}%
+\contentsline {section}{\numberline {6.5}Teorema: $\mathcal {B}$ \'e um $G^*$-Fibrado Principal}{78}{section.6.5}%
+\contentsline {section}{\numberline {6.6}O Numer\'ario como Se\c {c}\~ao Global}{79}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Cashflows como Se\c {c}\~oes do Fibrado Associado}{80}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Automorfismos de Gauge}{81}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Resumo do Cap\'itulo}{82}{section.6.9}%
+\contentsline {chapter}{\numberline {7}Conexão, Transporte Paralelo e Derivadas de Nelson}{87}{chapter.7}%
+\contentsline {section}{\numberline {7.1}O Que É uma Conexão?}{87}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Intuição: Conectando Fibras Vizinhas}{87}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Projeções e a Forma de Conexão}{88}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}A Conexão de Mercado (Ilinski--Farinelli)}{88}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Motivação Financeira}{88}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Definição da Conexão}{88}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Expressão em Coordenadas}{89}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}A Forma de Conexão $\chi $ como 1-Forma com Valores em $\mathfrak {g}$}{90}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Álgebra de Lie do Grupo de Gauge}{90}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Expressão Completa com a Fibra}{90}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Transporte Paralelo ao Longo de Curvas}{90}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Levantamento Horizontal}{90}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Definição do Transporte Paralelo}{91}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Interpretação Financeira do Transporte Paralelo}{91}{section.7.5}%
+\contentsline {section}{\numberline {7.6}O Modelo de Mercado $D$-Diferenciável de Nelson}{93}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}A Derivada Média de Nelson}{93}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Covariação de Nelson}{93}{subsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.6.3}O Modelo de Mercado $D$-Diferenciável}{94}{subsection.7.6.3}%
+\contentsline {subsection}{\numberline {7.6.4}Estratégias Fracamente $D$-Diferenciáveis}{94}{subsection.7.6.4}%
+\contentsline {section}{\numberline {7.7}Autofinanciamento em Termos de $D$}{95}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Conexão com Malaney--Weinstein}{96}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}A Conexão de Malaney--Weinstein}{96}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}Equivalência no Caso Estocástico}{96}{subsection.7.8.2}%
+\contentsline {section}{\numberline {7.9}Resumo do Capítulo}{97}{section.7.9}%
+\contentsline {chapter}{\numberline {8}Curvatura = Arbitragem --- O Teorema Central}{101}{chapter.8}%
+\contentsline {section}{\numberline {8.1}O Que \'E Curvatura?}{101}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Intui\c {c}\~ao Geom\'etrica}{101}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Defini\c {c}\~ao Formal}{101}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}C\'alculo Expl\'icito da Curvatura}{102}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Express\~ao da Conex\~ao}{102}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}C\'alculo de $d\chi $}{102}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Simplifica\c {c}\~ao com a Express\~ao de $\chi $}{103}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Express\~ao Final da Curvatura}{103}{subsection.8.2.4}%
+\contentsline {section}{\numberline {8.3}Teorema 34 (No Arbitrage)}{104}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Prova Detalhada do Teorema 34}{105}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}(i) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (iii): FTAP}{105}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}(ii) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (iii): Deriva\c {c}\~ao e Integra\c {c}\~ao}{105}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}(ii) $\DOTSB \Relbar \joinrel \Rightarrow $ (v): Substitui\c {c}\~ao na Express\~ao da Curvatura}{105}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}(iv) $\DOTSB \Leftarrow \joinrel \Rightarrow $ (v): Teorema de Ambrose--Singer}{106}{subsection.8.4.4}%
+\contentsline {section}{\numberline {8.5}Corol\'ario 36: Implica\c {c}\~oes e Contrapositivas}{106}{section.8.5}%
+\contentsline {section}{\numberline {8.6}O Que a Rec\'iproca Falsa Significa Financeiramente}{107}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Condi\c {c}\~ao de Novikov}{107}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Exemplo Can\^onico: Processo de Bessel em Dimens\~ao 3}{107}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Interpreta\c {c}\~ao Financeira}{107}{subsection.8.6.3}%
+\contentsline {section}{\numberline {8.7}Equa\c {c}\~ao de Continuidade: Vis\~ao Geral}{108}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Corrente de Valor}{108}{subsection.8.7.1}%
+\contentsline {subsection}{\numberline {8.7.2}Teorema da Continuidade}{108}{subsection.8.7.2}%
+\contentsline {subsection}{\numberline {8.7.3}Analogia F\'isica: Fluido Incompress\'ivel}{109}{subsection.8.7.3}%
+\contentsline {subsection}{\numberline {8.7.4}Conex\~ao com a Curvatura}{109}{subsection.8.7.4}%
+\contentsline {chapter}{\numberline {9}Holonomia e o Teorema de Ambrose--Singer}{111}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Holonomia: Defini\c {c}\~ao Formal}{111}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Conex\~ao e Transporte Paralelo}{111}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Grupo de Holonomia}{111}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Intui\c {c}\~ao Financeira}{112}{subsection.9.1.3}%
+\contentsline {section}{\numberline {9.2}Parametriza\c {c}\~ao de Estrat\'egias pela Holonomia}{112}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Correspond\^encia Fundamental}{112}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Por que Funciona}{112}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}O Teorema de Ambrose--Singer}{113}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Enunciado}{113}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Esbo\c {c}o da Demonstra\c {c}\~ao}{114}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Consequ\^encia Financeira do Teorema de Ambrose--Singer}{114}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}A Curvatura como Geradora de Arbitragem}{114}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}O Fluxo Conceitual}{115}{subsection.9.4.2}%
+\contentsline {section}{\numberline {9.5}Classifica\c {c}\~ao Alg\'ebrica de Estrat\'egias de Arbitragem}{115}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Estrutura da \'Algebra de Lie \(\mathfrak {hol}(\chi )\)}{115}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Classifica\c {c}\~ao por Estrutura da \'Algebra}{116}{subsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.5.3}Invariantes Alg\'ebricos e Significado Financeiro}{116}{subsection.9.5.3}%
+\contentsline {section}{\numberline {9.6}Exemplo Guiado: Mercado com Pre\c {c}os de It\^o}{116}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}Modelagem do Mercado}{116}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Conex\~ao de Precifica\c {c}\~ao}{116}{subsection.9.6.2}%
+\contentsline {subsection}{\numberline {9.6.3}Curvatura da Conex\~ao de Precifica\c {c}\~ao}{117}{subsection.9.6.3}%
+\contentsline {subsection}{\numberline {9.6.4}C\'alculo Expl\'icito da Curvatura}{117}{subsection.9.6.4}%
+\contentsline {subsection}{\numberline {9.6.5}Interpreta\c {c}\~ao Financeira da Curvatura}{117}{subsection.9.6.5}%
+\contentsline {subsection}{\numberline {9.6.6}Exemplo Num\'erico Simples}{118}{subsection.9.6.6}%
+\contentsline {section}{\numberline {9.7}Resumo: Dicion\'ario Geometria \(\leftrightarrow \) Finan\c {c}as}{118}{section.9.7}%
+\contentsline {part}{III\hspace {1em}Topicos Avancados}{121}{part.3}%
+\contentsline {chapter}{\numberline {10}Hidrodin\^amica da Arbitragem}{123}{chapter.10}%
+\contentsline {section}{\numberline {10.1}A Analogia Fluido-Finan\c {c}as}{123}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Defini\c {c}\~ao da Corrente de Valor $J$}{124}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Teorema da Continuidade}{124}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Interpreta\c {c}\~ao F\'isica: V\'ortices Financeiros}{125}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Arbitragem como Fontes e Sumidouros}{125}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}V\'ortices Financeiros}{125}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Regime Turbulento e Crises}{126}{subsection.10.4.3}%
+\contentsline {section}{\numberline {10.5}Implica\c {c}\~oes para Gest\~ao de Risco}{126}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Monitoramento da Diverg\^encia de Fluxo}{127}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Decomposi\c {c}\~ao de Helmholtz do Risco}{127}{subsection.10.5.2}%
+\contentsline {subsection}{\numberline {10.5.3}Aplica\c {c}\~ao \`a Regula\c {c}\~ao Financeira}{127}{subsection.10.5.3}%
+\contentsline {subsection}{\numberline {10.5.4}Extens\~ao: Hidrodin\^amica Relativ\'istica Financeira}{127}{subsection.10.5.4}%
+\contentsline {chapter}{\numberline {11}Formula\c {c}\~ao Lagrangiana e Teorema de Noether}{131}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Mec\^anica Lagrangiana em 5 Minutos}{131}{section.11.1}%
+\contentsline {section}{\numberline {11.2}O Lagrangiano do Mercado}{131}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Equa\c {c}\~oes de Euler--Lagrange Estoc\'asticas}{132}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Simetrias e Leis de Conserva\c {c}\~ao: Teorema de Noether}{133}{section.11.4}%
+\contentsline {subsection}{\numberline {11.4.1}Teorema de Noether Cl\'assico}{133}{subsection.11.4.1}%
+\contentsline {subsection}{\numberline {11.4.2}Extens\~ao Estoc\'astica}{134}{subsection.11.4.2}%
+\contentsline {section}{\numberline {11.5}Aplica\c {c}\~ao \`a Teoria da Arbitragem (GAT)}{134}{section.11.5}%
+\contentsline {subsection}{\numberline {11.5.1}Invari\^ancia sob Mudan\c {c}a de Numer\'ario}{134}{subsection.11.5.1}%
+\contentsline {subsection}{\numberline {11.5.2}Simetria de Gauge Financeira}{134}{subsection.11.5.2}%
+\contentsline {section}{\numberline {11.6}Solu\c {c}\~oes de Equil\'ibrio}{135}{section.11.6}%
+\contentsline {subsection}{\numberline {11.6.1}Equil\'ibrio Black--Scholes (NFLVR)}{135}{subsection.11.6.1}%
+\contentsline {subsection}{\numberline {11.6.2}Equil\'ibrio com Fric\c {c}\~oes (Arbitragem Minimizada)}{135}{subsection.11.6.2}%
+\contentsline {chapter}{\numberline {12}Topologia Diferencial e o FTAP Homot\'opico}{139}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Homotopia de Estrat\'egias}{139}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Intui\c {c}\~ao Financeira}{139}{subsection.12.1.1}%
+\contentsline {section}{\numberline {12.2}Classifica\c {c}\~ao por Holonomia}{140}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Conex\~ao com a Vorticidade Financeira}{140}{subsection.12.2.1}%
+\contentsline {section}{\numberline {12.3}FTAP Diferencial-Homot\'opico}{141}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Formula\c {c}\~ao Alg\'ebrica Compacta}{141}{subsection.12.3.1}%
+\contentsline {section}{\numberline {12.4}Interpreta\c {c}\~ao: Mercado sem Arbitragem \'e um Espa\c {c}o Simplesmente Conexo}{141}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Conex\~ao com a F\'isica: Efeito Aharonov--Bohm em Finan\c {c}as?}{142}{section.12.5}%
+\contentsline {subsection}{\numberline {12.5.1}O Efeito Aharonov--Bohm Original}{142}{subsection.12.5.1}%
+\contentsline {subsection}{\numberline {12.5.2}An\'alogo Financeiro}{142}{subsection.12.5.2}%
+\contentsline {subsection}{\numberline {12.5.3}Especula\c {c}\~ao Matem\'atica}{143}{subsection.12.5.3}%
+\contentsline {chapter}{\numberline {13}Implementação Computacional da GAT em Python}{147}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Simulação de Movimento Browniano Geométrico}{147}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Cálculo Numérico da Curvatura}{149}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Fórmula do Tensor de Curvatura}{149}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}Implementação por Diferenças Finitas}{149}{subsection.13.2.2}%
+\contentsline {section}{\numberline {13.3}Construção de Estratégias de Arbitragem}{151}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Holonomia e Transporte Paralelo}{151}{subsection.13.3.1}%
+\contentsline {section}{\numberline {13.4}Simulação de Mercado com Arbitragem}{154}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Visualização da Curvatura}{156}{section.13.5}%
+\contentsline {section}{\numberline {13.6}Exemplo Completo: Mini-Framework GAT}{159}{section.13.6}%
+\contentsline {section}{\numberline {13.7}Considerações Finais do Capítulo}{167}{section.13.7}%
+\contentsline {part}{IV\hspace {1em}Laboratorio OpenCode: Pratica e Evolucao}{169}{part.4}%
+\contentsline {chapter}{\numberline {14}OpenCode Ecosystem como Laboratorio GAT}{171}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Por Que um Laboratorio de IA para GAT?}{171}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}O Que E o OpenCode Ecosystem?}{171}{subsection.14.1.1}%
+\contentsline {section}{\numberline {14.2}Instalacao e Primeiro Experimento}{172}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Instalacao em 3 Passos}{172}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}Experimento 1: Simular um Mercado de 2 Ativos}{172}{subsection.14.2.2}%
+\contentsline {subsection}{\numberline {14.2.3}Experimento 2: Construir uma Arbitragem Real}{173}{subsection.14.2.3}%
+\contentsline {section}{\numberline {14.3}Usando os Verificadores Cora-Debate (V1-V7)}{173}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Exemplo: Validando o Calculo de Curvatura com V1-V7}{174}{subsection.14.3.1}%
+\contentsline {section}{\numberline {14.4}SDD+TDD: Desenvolvimento Verificado de Modelos GAT}{175}{section.14.4}%
+\contentsline {subsection}{\numberline {14.4.1}Exemplo de SPEC para um Modelo GAT}{175}{subsection.14.4.1}%
+\contentsline {section}{\numberline {14.5}Integracao com o Pipeline Academico}{176}{section.14.5}%
+\contentsline {subsection}{\numberline {14.5.1}Gerando um Artigo sobre GAT com o Pipeline}{176}{subsection.14.5.1}%
+\contentsline {section}{\numberline {14.6}Exercicios Praticos}{176}{section.14.6}%
+\contentsline {section}{\numberline {14.7}Referencias do Capitulo}{177}{section.14.7}%
+\contentsline {chapter}{\numberline {15}Ciclos Evolutivos do Raciocinio Cientifico}{179}{chapter.15}%
+\contentsline {section}{\numberline {15.1}O Que E um Ciclo Evolutivo de Raciocinio?}{179}{section.15.1}%
+\contentsline {subsection}{\numberline {15.1.1}A Metafora do Cientista em Treinamento}{179}{subsection.15.1.1}%
+\contentsline {section}{\numberline {15.2}Os 17 Ciclos do OpenCode (2026)}{179}{section.15.2}%
+\contentsline {subsection}{\numberline {15.2.1}Ciclo 1 --- Cross-Validation Inicial (Score: 85/100)}{179}{subsection.15.2.1}%
+\contentsline {subsection}{\numberline {15.2.2}Ciclo 6 --- Correcao Iterativa (Score: 86,5 $\to $ 92,7)}{180}{subsection.15.2.2}%
+\contentsline {subsection}{\numberline {15.2.3}Ciclo 9 --- SDD+TDD (Score: 94/100)}{180}{subsection.15.2.3}%
+\contentsline {subsection}{\numberline {15.2.4}Ciclo 16 --- Teoria dos Jogos (Score: 96/100)}{180}{subsection.15.2.4}%
+\contentsline {subsection}{\numberline {15.2.5}Ciclo 17 --- CORA-Eval Benchmark (Score: 97/100)}{181}{subsection.15.2.5}%
+\contentsline {section}{\numberline {15.3}A Evolucao do Raciocinio sobre GAT}{181}{section.15.3}%
+\contentsline {section}{\numberline {15.4}Protocolo de Experimento Cientifico com OpenCode}{182}{section.15.4}%
+\contentsline {subsection}{\numberline {15.4.1}Exemplo Completo: Verificar o Teorema Central}{182}{subsection.15.4.1}%
+\contentsline {section}{\numberline {15.5}Exercicios}{183}{section.15.5}%
+\contentsline {section}{\numberline {15.6}Referencias do Capitulo}{183}{section.15.6}%
+\contentsline {chapter}{\numberline {A}Revisão de Geometria Diferencial}{185}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Variedades Diferenciáveis}{185}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Cartas e Atlas}{185}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Espaço Tangente}{186}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Campos Vetoriais e Colchete de Lie}{186}{subsection.A.1.3}%
+\contentsline {section}{\numberline {A.2}Formas Diferenciais}{186}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}$1$-Formas e o Fibrado Cotangente}{186}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}$k$-Formas e o Produto Exterior}{187}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Derivada Exterior}{187}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Lema de Poincaré}{187}{subsection.A.2.4}%
+\contentsline {section}{\numberline {A.3}Grupos de Lie}{188}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Definição e Exemplos}{188}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Álgebra de Lie}{188}{subsection.A.3.2}%
+\contentsline {subsection}{\numberline {A.3.3}Aplicação Exponencial}{188}{subsection.A.3.3}%
+\contentsline {section}{\numberline {A.4}Fibrados: Definições, Conexões e Curvatura}{188}{section.A.4}%
+\contentsline {subsection}{\numberline {A.4.1}Definição e Seções}{188}{subsection.A.4.1}%
+\contentsline {subsection}{\numberline {A.4.2}Conexões e Derivada Covariante}{189}{subsection.A.4.2}%
+\contentsline {subsection}{\numberline {A.4.3}Curvatura}{189}{subsection.A.4.3}%
+\contentsline {chapter}{\numberline {B}Derivadas Estocásticas de Nelson}{191}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Definição Formal}{191}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Conexão com Itô e Stratonovich}{192}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Fórmula de Leibniz Estocástica}{192}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Exemplos Calculados}{193}{section.B.4}%
+\contentsline {subsection}{\numberline {B.4.1}Quadrado do Movimento Browniano}{193}{subsection.B.4.1}%
+\contentsline {subsection}{\numberline {B.4.2}Produto $tW_t$}{194}{subsection.B.4.2}%
+\contentsline {subsection}{\numberline {B.4.3}Exponencial do Browniano Geométrico}{194}{subsection.B.4.3}%
+\contentsline {subsection}{\numberline {B.4.4}Interpretação Geométrica na GAT}{194}{subsection.B.4.4}%
+\contentsline {chapter}{\numberline {C}Exercícios Resolvidos}{195}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Nível Básico}{195}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Nível Intermediário}{197}{section.C.2}%
+\contentsline {section}{\numberline {C.3}Nível Avançado}{200}{section.C.3}%
+\contentsline {chapter}{\numberline {D}Referências Completas}{203}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Fontes Primárias: Abordagem GAT}{203}{section.D.1}%
+\contentsline {subsection}{\numberline {D.1.1}Artigos Fundacionais}{203}{subsection.D.1.1}%
+\contentsline {subsection}{\numberline {D.1.2}Livros e Monografias}{204}{subsection.D.1.2}%
+\contentsline {section}{\numberline {D.2}Finanças Quantitativas}{204}{section.D.2}%
+\contentsline {subsection}{\numberline {D.2.1}Teoria Clássica de Apreçamento}{204}{subsection.D.2.1}%
+\contentsline {subsection}{\numberline {D.2.2}Teoria de Arbitragem e Medidas Martingais}{204}{subsection.D.2.2}%
+\contentsline {subsection}{\numberline {D.2.3}Modelagem de Mercado e Risco}{204}{subsection.D.2.3}%
+\contentsline {section}{\numberline {D.3}Cálculo Estocástico}{205}{section.D.3}%
+\contentsline {subsection}{\numberline {D.3.1}Textos Canônicos}{205}{subsection.D.3.1}%
+\contentsline {subsection}{\numberline {D.3.2}Obras Complementares}{205}{subsection.D.3.2}%
+\contentsline {section}{\numberline {D.4}Geometria Diferencial e Topologia}{205}{section.D.4}%
+\contentsline {subsection}{\numberline {D.4.1}Textos Clássicos de Geometria}{205}{subsection.D.4.1}%
+\contentsline {subsection}{\numberline {D.4.2}Geometria Aplicada a Finanças e Física}{206}{subsection.D.4.2}%
+\contentsline {section}{\numberline {D.5}Física-Matemática e Cinemática Estocástica}{206}{section.D.5}%
+\contentsline {subsection}{\numberline {D.5.1}Geometria e Física}{206}{subsection.D.5.1}%
+\contentsline {subsection}{\numberline {D.5.2}Cinemática Estocástica de Nelson}{206}{subsection.D.5.2}%
+\contentsline {subsection}{\numberline {D.5.3}Análise em Variedades e Processos de Difusão}{206}{subsection.D.5.3}%
+\contentsline {subsection}{\numberline {D.5.4}Fluxos Geométricos e Aplicações}{207}{subsection.D.5.4}%

@@ -75,6 +75,59 @@
 \begin{document}
 \maketitle
 
+% ======================================================================
+% EMENTA DO CURSO
+% ======================================================================
+\chapter*{Ementa do Modulo}
+\phantomsection
+\addcontentsline{toc}{chapter}{Ementa do Modulo}
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\textwidth}
+\textbf{Modulo DCA: Geometric Arbitrage Theory (GAT)}\\[6pt]
+
+\textbf{Ementa:} Fundamentos de financas estocasticas: arbitragem, FTAP,
+modelo classico de mercado, condicao NFLVR. Reformulacao geometrica: gauges,
+deflatores e estruturas a termo. Transformacoes de gauge como operacoes
+financeiras. O fibrado principal do mercado. Conexao, transporte paralelo
+e holonomia com interpretacao financeira (cambio e desconto). Curvatura como
+medida de arbitragem: o Teorema Central da GAT. Hidrodinamica da arbitragem:
+equacao de continuidade. Formulacao Lagrangiana estocastica, Teorema de
+Noether e solucoes de equilibrio. Topologia diferencial e o FTAP homotopico.
+Os cinco principios da GAT. Implementacao computacional em Python. Laboratorio
+pratico com OpenCode Ecosystem: validacao cientifica, SDD+TDD, ciclos
+evolutivos de raciocinio.\\[6pt]
+
+\textbf{Pre-requisitos:} Calculo diferencial e integral. Nocoes basicas de
+probabilidade (esperanca, variancia, distribuicao normal). Nao requer
+conhecimento previo de geometria diferencial ou financas quantitativas
+--- todos os conceitos sao construidos a partir do zero.\\[6pt]
+
+\textbf{Carga horaria sugerida:} 30 horas (15 capitulos $\times$ 2h).\\[6pt]
+
+\textbf{Competencias desenvolvidas:}
+\begin{enumerate}[nosep]
+  \item Compreender a estrutura matematica da arbitragem em mercados financeiros
+  \item Traduzir conceitos financeiros (cambio, desconto, numerario) para
+        linguagem geometrica (conexao, transporte paralelo, secao)
+  \item Calcular curvatura de mercados simples e interpretar seu significado
+  \item Implementar computacionalmente modelos GAT em Python
+  \item Utilizar o OpenCode Ecosystem como laboratorio de experimentacao
+        cientifica com verificacao simbolica (Cora-Debate V1-V7)
+  \item Aplicar SDD+TDD para desenvolvimento de modelos financeiros
+        verificaveis e reprodutiveis
+\end{enumerate}
+
+\textbf{Metodo de avaliacao:} 13 listas de exercicios (uma por capitulo) +
+projeto final (implementacao de um mini-framework GAT com validacao no
+OpenCode Ecosystem).\\[6pt]
+
+\textbf{Bibliografia basica:}
+Farinelli (2021), Delbaen-Schachermayer (2006), Oksendal (2003),
+Bleecker (1981), Kobayashi-Nomizu (1963/69).
+\end{minipage}}
+\end{center}
+
 \tableofcontents
 
 % ======================================================================
@@ -107,6 +160,14 @@
 \input{modulo_exp_ch11_lagrangiano.tex}
 \input{modulo_exp_ch12_homotopia.tex}
 \input{modulo_exp_ch13_computacional.tex}
+
+% ======================================================================
+% PARTE IV — LABORATORIO OPENCODE
+% ======================================================================
+\part{Laboratorio OpenCode: Pratica e Evolucao}
+
+\input{modulo_exp_ch14_opencode_lab.tex}
+\input{modulo_exp_ch15_ciclos_evolutivos.tex}
 
 % ======================================================================
 % APENDICES
