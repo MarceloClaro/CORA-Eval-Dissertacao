@@ -1,5 +1,5 @@
 % ======================================================================
-% CAPITULO 14 — Laboratorio Pratico OpenCode Ecosystem
+% CAPITULO 14 \^a?? Laboratorio Pratico OpenCode Ecosystem
 % Tutorial Passo a Passo com SDD+TDD
 % ======================================================================
 \chapter{Laboratorio Pratico: OpenCode Ecosystem Passo a Passo}
@@ -69,7 +69,7 @@ na caixa de um mecanico. \\
 \end{tabular}
 \end{center}
 
-\section{Passo 2: Primeiro Experimento — Mercado com 2 Ativos}
+\section{Passo 2: Primeiro Experimento \^a?? Mercado com 2 Ativos}
 
 \subsection{2.1 A Pergunta Cientifica (SPEC)}
 
@@ -84,12 +84,12 @@ taxa livre de risco $r$, a curvatura $R$ do fibrado do mercado e zero
 
 \textbf{Explicacao para leigos:} Se duas acoes tem o mesmo retorno esperado
 que a poupanca, nao ha como ganhar dinheiro sem risco comprando uma e
-vendendo acaoutra. A GAT diz que isso e equivalente a ``curvatura zero'' —
+vendendo acaoutra. A GAT diz que isso e equivalente a ``curvatura zero'' \^a??
 o mercado e ``plano''. Queremos verificar se isso e verdade.
 
-\subsection{2.2 Escrever o Teste Primeiro (TDD — RED)}
+\subsection{2.2 Escrever o Teste Primeiro (TDD \^a?? RED)}
 
-\begin{lstlisting}[caption={test\_gat\_curvatura.py — Teste antes do codigo}, label=lst:tdd1]
+\begin{lstlisting}[caption={test\_gat\_curvatura.py \^a?? Teste antes do codigo}, label=lst:tdd1]
 """SPEC-GAT-001: Test-Driven Development para curvatura de mercado"""
 import numpy as np
 import pytest
@@ -115,7 +115,7 @@ def calcular_curvatura_aproximada(S, r, dt):
             R[t, j] = (ret/dt - r) / S[t, j]
     return np.mean(np.abs(R))
 
-# TESTE (deve falhar inicialmente — RED)
+# TESTE (deve falhar inicialmente \^a?? RED)
 def test_curvatura_zero_quando_mu_igual_r():
     """CT-1: Se mu = r para todos os ativos, curvatura ~ 0"""
     mu = np.array([0.05, 0.05])   # ambos iguais a r
@@ -135,7 +135,7 @@ def test_curvatura_nao_zero_quando_mu_diferente_r():
 
 \subsection{2.3 Executar o Teste e Verificar}
 
-\begin{lstlisting}[caption={Executar TDD — RED (deve falhar)}, label=lst:run1]
+\begin{lstlisting}[caption={Executar TDD \^a?? RED (deve falhar)}, label=lst:run1]
 cd OpenCode_Ecosystem
 python -m pytest test_gat_curvatura.py -v
 
@@ -150,17 +150,17 @@ Se ambos os testes passarem, verificamos que:
 
 \begin{enumerate}[nosep]
  \item Quando $\mu_1 = \mu_2 = r$ (todos os retornos esperados igual a taxa
- livre de risco), a curvatura $R$ e aproximadamente zero — o mercado e
+ livre de risco), a curvatura $R$ e aproximadamente zero \^a?? o mercado e
  ``plano'' e nao ha arbitragem.
  \item Quando $\mu_2 > r$ mas $\mu_1 = r$, a curvatura $R$ e maior que zero
- — existe uma ``curvatura'' no mercado, indicando oportunidade de
+ \^a?? existe uma ``curvatura'' no mercado, indicando oportunidade de
  lucro.
 \end{enumerate}
 
 \textbf{Limitacao importante (transparencia):} O teste CT-2 mostra $R > 0$
 quando $\mu \neq r$, mas isso \textbf{nao} prova que existe arbitragem no
 sentido estrito (risco zero). Prova apenas que a medida fisica $P$ nao e
-uma medida martingal — o que e diferente de afirmar que \textbf{nenhuma}
+uma medida martingal \^a?? o que e diferente de afirmar que \textbf{nenhuma}
 medida equivalente $P^*$ existe. Esta distincao e exatamente o que a
 condicao de Novikov captura.
 
@@ -212,7 +212,7 @@ opencode run /auditar --spec SPEC-GAT-001 --arquivo test_gat_curvatura.py
 # 7. V7: Auditar o codigo-fonte por vulnerabilidades
 
 # Resultado esperado (paracao caso mu=r):
-# V1-V7: 7/7 PASS — curvatura zero confirmada
+# V1-V7: 7/7 PASS \^a?? curvatura zero confirmada
 \end{lstlisting}
 
 \section{Passo 4: Gerar um Mini-Artigo Cientifico}
@@ -230,13 +230,13 @@ opencode run /artigo \
   --paginas 8
 
 # O pipeline:
-# SEEKER → busca referencias (arXiv, OpenAlex)
-# MASWOS → 49 agentes escrevem o artigo
-# TSAC → remove 87 palavras banidas de IA
-# Banca → 5 revisores simulados avaliam
-# Loop → corrige ate score >= 95/100
-# Cora-Debate → V1-V7 auditam
-# PDF → exporta artigo pronto
+# SEEKER \^a?? busca referencias (arXiv, OpenAlex)
+# MASWOS \^a?? 49 agentes escrevem o artigo
+# TSAC \^a?? remove 87 palavras banidas de IA
+# Banca \^a?? 5 revisores simulados avaliam
+# Loop \^a?? corrige ate score >= 95/100
+# Cora-Debate \^a?? V1-V7 auditam
+# PDF \^a?? exporta artigo pronto
 \end{lstlisting}
 
 \subsection{4.2 O Que Esperar do Artigo Gerado}
@@ -244,7 +244,7 @@ opencode run /artigo \
 O artigo gerado contera:
 
 \begin{enumerate}[nosep]
- \item \textbf{Resumo:} Síntese do experimento e resultados principais
+ \item \textbf{Resumo:} S\~A?ntese do experimento e resultados principais
  \item \textbf{Introducao:} Contexto da GAT, FTAP, motivacao
  \item \textbf{Metodo:} Descricao do mercado simulado, parametros,
  calculo de curvatura
@@ -301,23 +301,23 @@ e produz: um teste validado, um artigo documentado e uma nova skill.
 
 \section{Exercicios Praticos}
 
-\begin{exer}[Nivel 1 — Reproduzir]
+\begin{exer}[Nivel 1 \^a?? Reproduzir]
 Sigacaos Passos 1--2 deste capitulo e replique o experimento do mercado
 de 2 ativos. Envie o print do terminal mostrando os testes passando (GREEN).
 \end{exer}
 
-\begin{exer}[Nivel 2 — Estender]
+\begin{exer}[Nivel 2 \^a?? Estender]
 Modifique o experimento para 3 ativos com correlacoes nao-nulas entre
 os Brownianos. A curvatura ainda e zero quando $\mu_j = r$ para todo $j$?
 E quando $\mu_j \neq r$ mas os ativos sao perfeitamente correlacionados?
 \end{exer}
 
-\begin{exer}[Nivel 3 — Auditar]
+\begin{exer}[Nivel 3 \^a?? Auditar]
 Submeta seu experimento do Nivel 2 ao Cora-Debate. Quantos verificadores
 passaram? Se algum falhou, explique por que e como voce corrigiu.
 \end{exer}
 
-\begin{exer}[Nivel 4 — Publicar]
+\begin{exer}[Nivel 4 \^a?? Publicar]
 Usando o pipeline MASWOS, gere um artigo de 8 paginas sobre seu
 experimento. Submetacao PDF gerado a um colega para revisao.
 O colega encontrou erros que o Cora-Debate nao detectou?
@@ -329,7 +329,7 @@ O colega encontrou erros que o Cora-Debate nao detectou?
  \item \textbf{Aproximacao numerica:} O calculo de $R$ neste capitulo e
  uma aproximacao de primeiracaordem (diferencas finitas). A curvatura
  exata requer derivacao simbolica.
- \item \textbf{Mercado simulado:} Os precos sao gerados por GBM — um modelo
+ \item \textbf{Mercado simulado:} Os precos sao gerados por GBM \^a?? um modelo
  que nao captura saltos, agrupamento de volatilidade ou
  microestrutura de mercado.
  \item \textbf{Auto-avaliacao:} Os scores do Cora-Debate sao auto-reportados.

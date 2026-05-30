@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -75,9 +75,6 @@ Package babel Info: Making " an active character on input line 132.
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
-)
-(C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
@@ -654,9 +651,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 151--151
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 151--151
-\T1/cmr/m/n/12 pra-tico com Open-Code Ecosys-tem: va-li-da-cao ci-en-ti-fica, S
-DD+TDD, ci-clos
+Underfull \hbox (badness 1009) in paragraph at lines 151--151
+\OT1/cmr/m/n/12 pra-tico com Open-Code Ecosys-tem: va-li-da-cao ci-en-ti-fica, 
+SDD+TDD, ci-clos
  []
 
 
@@ -688,7 +685,7 @@ l.152 \end{center}
                    [1
 
 ]
-Overfull \vbox (128.0445pt too high) has occurred while \output is active []
+Overfull \vbox (128.04742pt too high) has occurred while \output is active []
 
 
 [2] (modulo_dca_gat_expandido.toc [3
@@ -713,7 +710,28 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 Cap\'{\i }tulo 1.
 [13
 
-] [14] [15] [16] [17] [18]) (modulo_exp_ch02_probabilidade.tex [19]
+] [14]
+Overfull \hbox (1.47374pt too wide) in paragraph at lines 112--112
+[]\OT1/cmr/bx/n/17.28 Arbitragem, Quase-Arbitragem e Ar-bi-tra-gem Es-
+ []
+
+[15] [16] [17] [18]) (modulo_exp_ch02_probabilidade.tex
+
+! LaTeX Error: Invalid UTF-8 byte sequence (ï??).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 ï??
+        \chapter{Probabilidade para Financas}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[19]
 Cap\'{\i }tulo 2.
 [20
 
@@ -724,10 +742,10 @@ Cap\'{\i }tulo 3.
 ]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [22]
 ! Undefined control sequence.
@@ -746,10 +764,10 @@ I treat `x^1^2' essentially like `x^1{}^2'.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [23]
 ! Double superscript.
@@ -764,26 +782,26 @@ I treat `x^1^2' essentially like `x^1{}^2'.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [24]
-Overfull \hbox (4.16441pt too wide) in paragraph at lines 139--140
-[][]\T1/cmr/bx/n/12 Definicao 3.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
-al)\T1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/
-12 (\OML/cmm/m/it/12 ^^V; ^^[[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 se $[] \OML/c
-mm/m/it/12 X \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^V; ^^[[]
-\OT1/cmr/m/n/12 )$\T1/cmr/m/it/12 .
+Overfull \hbox (4.2386pt too wide) in paragraph at lines 139--140
+[][]\OT1/cmr/bx/n/12 Definicao 3.10 \OT1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor
+-mal)\OT1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 ^^V; ^^[[]\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 se $[] \O
+ML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^V; ^
+^[[]\OT1/cmr/m/n/12 )$\OT1/cmr/m/it/12 .
  []
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [25]
 ! Double superscript.
@@ -892,19 +910,19 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (6.68982pt too wide) in paragraph at lines 184--185
-[][]\T1/cmr/bx/n/12 Teorema 3.14 \T1/cmr/m/n/12 (Pro-pri-e-da-des da Es-pe-ran 
-SSa Con-di-ci-o-nal)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se-jam $\OML/cmm/m/it/1
-2 X; Y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 L[][]$ \T1/cmr/m/it/12 e $\OMS/cmsy/
-m/n/12 G\OML/cmm/m/it/12 ; []$$^^[$\T1/cmr/m/it/12 -
+Overfull \hbox (6.77452pt too wide) in paragraph at lines 184--185
+[][]\OT1/cmr/bx/n/12 Teorema 3.14 \OT1/cmr/m/n/12 (Pro-pri-e-da-des da Es-pe-ra
+n SSa Con-di-ci-o-nal)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 Se-jam $\OML/cmm/m/
+it/12 X; Y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 L[][]$ \OT1/cmr/m/it/12 e $\OMS/
+cmsy/m/n/12 G\OML/cmm/m/it/12 ; []$$^^[$\OT1/cmr/m/it/12 -
  []
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [26]
 
@@ -1215,10 +1233,10 @@ I treat `x^1^2' essentially like `x^1{}^2'.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [27]
 ! Double superscript.
@@ -1248,18 +1266,18 @@ and I'll forget about whatever was undefined.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [28]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [29]
 ! Double superscript.
@@ -1289,10 +1307,10 @@ and I'll forget about whatever was undefined.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [30]
 ! Undefined control sequence.
@@ -1355,20 +1373,36 @@ and I'll forget about whatever was undefined.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
 [31]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                Make it at least 28.05211pt, for example:
+(fancyhdr)                \setlength{\headheight}{28.05211pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+(fancyhdr)                \addtolength{\topmargin}{-13.55211pt}.
 
-[32]) (modulo_exp_ch03_calculo_estocastico.tex [33
+[32]) (modulo_exp_ch03_calculo_estocastico.tex
+
+! LaTeX Error: Invalid UTF-8 byte sequence (ï??).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 ï??
+        \chapter{Calculo Estocastico para Financas}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[33
 
 ]
 Cap\'{\i }tulo 4.
@@ -1388,10 +1422,34 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 LaTeX Warning: Reference `sec:tga_fundamentos' on page 45 undefined on input li
 ne 422.
 
-[45]) (modulo_exp_ch04_modelo_classico.tex [46
+[45]) (modulo_exp_ch04_modelo_classico.tex
+
+! LaTeX Error: Invalid UTF-8 byte sequence (ï??).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 ï??
+        >>?% ===============================================================...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[46
 
 ]
 Cap\'{\i }tulo 5.
+
+Overfull \hbox (1.52045pt too wide) in paragraph at lines 42--45
+[]\OT1/cmr/bx/it/12 Completude: $\OMS/cmsy/m/n/12 A[]$ \OT1/cmr/m/it/12 (e por-
+tanto toda $\OMS/cmsy/m/n/12 A[]$\OT1/cmr/m/it/12 ) cont cm to-dos os con-jun-t
+os $\OML/cmm/m/it/12 P$\OT1/cmr/m/it/12 -negligenci
+ []
+
 [47
 
 ] [48] [49] [50] [51] [52]
@@ -1405,21 +1463,21 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [53] [54] [55] [56] [57] [58] [59] [60] [61]
-Underfull \hbox (badness 1424) in paragraph at lines 906--910
-\T1/cmr/m/it/12 o-rem of As-set Pri-cing\T1/cmr/m/n/12 . Mathe-ma-tis-che An-na
--len, 300(1):463--520, 1994. DOI:
+Underfull \hbox (badness 1412) in paragraph at lines 906--910
+\OT1/cmr/m/it/12 o-rem of As-set Pri-cing\OT1/cmr/m/n/12 . Mathe-ma-tis-che An-
+na-len, 300(1):463--520, 1994. DOI:
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 928--932
-[]\T1/cmr/m/n/12 Harrison, J.M.; Kreps, D.M. \T1/cmr/m/it/12 Mar-tin-ga-les and
- Ar-bi-trage in Mul-ti-pe-riod Se-
+Underfull \hbox (badness 1895) in paragraph at lines 928--932
+[]\OT1/cmr/m/n/12 Harrison, J.M.; Kreps, D.M. \OT1/cmr/m/it/12 Mar-tin-ga-les a
+nd Ar-bi-trage in Mul-ti-pe-riod Se-
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 928--932
-\T1/cmr/m/it/12 cu-ri-ties Mar-kets\T1/cmr/m/n/12 . Jour-nal of Eco-no-mic The-
-ory, 20(3):381--408, 1979. DOI:
+Underfull \hbox (badness 3396) in paragraph at lines 928--932
+\OT1/cmr/m/it/12 cu-ri-ties Mar-kets\OT1/cmr/m/n/12 . Jour-nal of Eco-no-mic Th
+e-ory, 20(3):381--408, 1979. DOI:
  []
 
 ) [62
@@ -1435,8 +1493,8 @@ LaTeX Warning: Citation `smith1998gauge' on page 65 undefined on input line 23.
 [65
 
 ] [66] [67] [68] [69]
-Overfull \hbox (16.63187pt too wide) in paragraph at lines 303--308
-[][]\T1/cmr/bx/it/12 Inflação:
+Overfull \hbox (18.56245pt too wide) in paragraph at lines 303--308
+[][]\OT1/cmr/bx/it/12 Infla^^Xc~ao:
  []
 
 [70] [71]
@@ -1460,16 +1518,29 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
 
-[72] [73] [74]
-Overfull \hbox (0.38196pt too wide) in paragraph at lines 610--614
-[][]\T1/cmr/bx/n/12 Exemplo 6.10 \T1/cmr/m/n/12 (Gauge de Preço de Ação a par-t
-ir do Gauge de Di-vi-den-dos)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se $\OT1/cmr/m
-/n/12 (\OML/cmm/m/it/12 D[]; P[]\OT1/cmr/m/n/12 )$
+[72] [73]
+Overfull \hbox (16.24422pt too wide) in paragraph at lines 541--542
+[][]\OT1/cmr/bx/n/12 Definicao 6.12 \OT1/cmr/m/n/12 (Trans-forma^^Xc~oes Can^on
+icas)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 De-fi-ni-mos as se-guin-tes in-ten-s
+i-da-des can^onicas: 
+ []
+
+[74]
+Overfull \hbox (0.8072pt too wide) in paragraph at lines 610--614
+[][]\OT1/cmr/bx/n/12 Exemplo 6.10 \OT1/cmr/m/n/12 (Gauge de Pre^^Xco de A^^Xc~a
+o a par-tir do Gauge de Di-vi-den-dos)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 Se 
+$\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D[]; P[]\OT1/cmr/m/n/12 )$
  []
 
 
-Overfull \hbox (102.11891pt too wide) detected at line 643
+Overfull \hbox (103.19327pt too wide) detected at line 643
 []
+ []
+
+
+Overfull \hbox (8.07993pt too wide) in paragraph at lines 656--659
+[][]\OT1/cmr/m/n/12 O \OT1/cmr/bx/n/12 gauge prin-ci-pal \OT1/cmr/m/n/12 (topo)
+ cont^^Sem a m^^Saxima
  []
 
 [75]) (modulo_exp_ch06_fibrados.tex [76]
@@ -1596,19 +1667,26 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 374.
 
 [83]
-Overfull \hbox (8.13997pt too wide) in paragraph at lines 421--425
-\T1/cmr/m/n/12 fornece uma tri-vi-a-li-za-ção lo-cal. A $\OML/cmm/m/it/12 G[]$\
-T1/cmr/m/n/12 -equivariância se-gue de $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ((\OM
-L/cmm/m/it/12 D; P\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^A \OML/cmm/m/it/12 ^^W\O
-T1/cmr/m/n/12 ) = \OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D[]; P[]\
-OT1/cmr/m/n/12 ) =
+Overfull \hbox (8.20792pt too wide) in paragraph at lines 421--425
+\OT1/cmr/m/n/12 fornece uma tri-vi-a-liza^^Xc~ao lo-cal. A $\OML/cmm/m/it/12 G[
+]$\OT1/cmr/m/n/12 -equivari^ancia se-gue de $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 
+((\OML/cmm/m/it/12 D; P\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^A \OML/cmm/m/it/12 
+^^W\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D[];
+ P[]\OT1/cmr/m/n/12 ) =
  []
 
 [84] [85] [86]
-Overfull \hbox (9.8583pt too wide) in paragraph at lines 653--656
-[]\T1/cmr/bx/it/12 Automorfismos de gauge \T1/cmr/m/it/12 do fi-brado prin-ci-p
-al $\OMS/cmsy/m/n/12 B$ \T1/cmr/m/it/12 --- di-fe-o-mor-fis-mos $\OML/cmm/m/it/
-12 G[]$\T1/cmr/m/it/12 -equivariantes
+Overfull \hbox (10.7738pt too wide) in paragraph at lines 648--649
+[][]\OT1/cmr/bx/n/12 Teorema 7.21 \OT1/cmr/m/n/12 (Cor-res-pond^encia Gau-ge---
+Ge-o-me-tria)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 Existe uma cor-res-pond^enci
+a biun^^S^^Pvoca
+ []
+
+
+Overfull \hbox (13.74336pt too wide) in paragraph at lines 653--656
+[]\OT1/cmr/bx/it/12 Automorfismos de gauge \OT1/cmr/m/it/12 do fi-brado prin-ci
+-pal $\OMS/cmsy/m/n/12 B$ \OT1/cmr/m/it/12 --- di-fe-o-mor-fis-mos $\OML/cmm/m/
+it/12 G[]$\OT1/cmr/m/it/12 -equivariantes
  []
 
 [87] [88] [89]
@@ -1770,15 +1848,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 231.
 
 [98]
-Overfull \hbox (5.79105pt too wide) in paragraph at lines 298--299
-[]\T1/cmr/m/n/12 Não existe me-dida mar-tin-gal equi-va-lente (o de-fla-tor can
--di-dato $\OML/cmm/m/it/12 M[]$ \T1/cmr/m/n/12 não atinge $\U/msb/m/n/12 E\OT1/
-cmr/m/n/12 [\OML/cmm/m/it/12 M[]\OT1/cmr/m/n/12 ] =
+Overfull \hbox (5.87788pt too wide) in paragraph at lines 298--299
+[]\OT1/cmr/m/n/12 N~ao existe me-dida mar-tin-gal equi-va-lente (o de-fla-tor c
+an-di-dato $\OML/cmm/m/it/12 M[]$ \OT1/cmr/m/n/12 n~ao atinge $\U/msb/m/n/12 E\
+OT1/cmr/m/n/12 [\OML/cmm/m/it/12 M[]\OT1/cmr/m/n/12 ] =
  []
 
 [99] [100]
-Underfull \hbox (badness 1092) in paragraph at lines 375--376
-[]\T1/cmr/m/n/12 Mercado li-vre de ar-bi-tra-
+Underfull \hbox (badness 1087) in paragraph at lines 375--376
+[]\OT1/cmr/m/n/12 Mercado li-vre de ar-bi-tra-
  []
 
 [101]) (modulo_exp_ch09_ambrose_singer.tex [102]
@@ -1786,30 +1864,30 @@ Cap\'{\i }tulo 10.
 [103
 
 ]
-Overfull \hbox (15.77277pt too wide) in paragraph at lines 38--39
-[][]\T1/cmr/bx/n/12 Proposicao 10.3. []$[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^
-^_\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 é um sub-grupo de Lie co-nexo de $\OML/cmm
-/m/it/12 G$\T1/cmr/m/it/12 . O quo-ci-ente $[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 ^^_\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
- ^^_\OT1/cmr/m/n/12 )$
+Overfull \hbox (15.85524pt too wide) in paragraph at lines 38--39
+[][]\OT1/cmr/bx/n/12 Proposicao 10.3. []$[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+^^_\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 ^^Se um sub-grupo de Lie co-nexo de $\OM
+L/cmm/m/it/12 G$\OT1/cmr/m/it/12 . O quo-ci-ente $[][]\OT1/cmr/m/n/12 (\OML/cmm
+/m/it/12 ^^_\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [][]\OT1/cmr/m/n/12 (\OML/cmm/m
+/it/12 ^^_\OT1/cmr/m/n/12 )$
  []
 
 
-Overfull \hbox (22.68315pt too wide) detected at line 53
+Overfull \hbox (22.77246pt too wide) detected at line 53
 [] []
  []
 
 [104] [105]
-Overfull \hbox (5.56276pt too wide) in paragraph at lines 120--121
-[]\T1/cmr/bx/n/12 A Ál-ge-bra de Lie da Ho-lo-no-mia. \T1/cmr/m/n/12 Seja $\U/e
-uf/m/n/12 m[] \OMS/cmsy/m/n/12 ^^Z \U/euf/m/n/12 g$ \T1/cmr/m/n/12 o su-bes-paç
-o ge-rado por $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 
+Overfull \hbox (5.64299pt too wide) in paragraph at lines 120--121
+[]\OT1/cmr/bx/n/12 A []Algebra de Lie da Ho-lo-no-mia. \OT1/cmr/m/n/12 Seja $\U
+/euf/m/n/12 m[] \OMS/cmsy/m/n/12 ^^Z \U/euf/m/n/12 g$ \OT1/cmr/m/n/12 o su-besp
+a^^Xco ge-rado por $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 
 [](\OML/cmm/m/it/12 X; Y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j
  []
 
 [106]
-Overfull \hbox (3.61269pt too wide) in paragraph at lines 125--125
-[]\T1/cmr/bx/n/17.28 Consequência Fi-nan-ceira do Te-o-rema de Ambrose--
+Overfull \hbox (22.84161pt too wide) in paragraph at lines 125--125
+[]\OT1/cmr/bx/n/17.28 Consequ^encia Fi-nan-ceira do Te-o-rema de Ambrose--
  []
 
 [107]
@@ -1822,16 +1900,16 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\chi' on input line 170.
 
 
-Overfull \hbox (161.80669pt too wide) in paragraph at lines 191--203
+Overfull \hbox (161.93907pt too wide) in paragraph at lines 191--203
  [] 
  []
 
 [108]
-Overfull \hbox (13.54312pt too wide) in paragraph at lines 208--209
-[][]\T1/cmr/bx/n/12 Proposicao 10.11 \T1/cmr/m/n/12 (Posto e Nú-mero de Es-tra-
-té-gias)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 O \T1/cmr/bx/it/12 posto \T1/cmr/m/
-it/12 da ál-ge-bra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_\OT1/cmr/m
-/n/12 ))$
+Overfull \hbox (14.44322pt too wide) in paragraph at lines 208--209
+[][]\OT1/cmr/bx/n/12 Proposicao 10.11 \OT1/cmr/m/n/12 (Posto e N^^Sumero de Es-
+trat^^Segias)\OT1/cmr/bx/n/12 . []\OT1/cmr/m/it/12 O \OT1/cmr/bx/it/12 posto \O
+T1/cmr/m/it/12 da ^^Salgebra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_
+\OT1/cmr/m/n/12 ))$
  []
 
 [109] [110]
@@ -1902,7 +1980,7 @@ You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (132.08076pt too wide) in paragraph at lines 309--348
+Overfull \hbox (132.21391pt too wide) in paragraph at lines 309--348
  [] 
  []
 
@@ -1911,33 +1989,38 @@ Overfull \hbox (132.08076pt too wide) in paragraph at lines 309--348
 ] (modulo_exp_ch10_hidrodinamica.tex [115]
 Cap\'{\i }tulo 11.
 
-Underfull \hbox (badness 2310) in paragraph at lines 17--18
-[]\T1/cmr/m/n/12 Densidade de va-lor (car-
+Underfull \hbox (badness 2293) in paragraph at lines 17--18
+[]\OT1/cmr/m/n/12 Densidade de va-lor (car-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 18--18
-[]\T1/cmr/m/n/12 Campo de ve-lo-ci-dade
+[]\OT1/cmr/m/n/12 Campo de ve-lo-ci-dade
  []
 
 
-Underfull \hbox (badness 3838) in paragraph at lines 19--19
-[]\T1/cmr/m/n/12 Equação da con-ti-nu-i-dade
+Underfull \hbox (badness 3803) in paragraph at lines 19--19
+[]\OT1/cmr/m/n/12 Equa^^Xc~ao da con-ti-nu-i-dade
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--21
-[]\T1/cmr/m/n/12 Condição NFLVR
+[]\OT1/cmr/m/n/12 Condi^^Xc~ao NFLVR
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
-[]\T1/cmr/m/n/12 Razão es-pe-cu-la-
+[]\OT1/cmr/m/n/12 Raz~ao es-pe-
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 25--26
-[]\T1/cmr/m/n/12 Crises fi-nan-cei-ras (re-gime
+Underfull \hbox (badness 2126) in paragraph at lines 25--26
+[]\OT1/cmr/m/n/12 Crises fi-nan-cei-ras (re-gime
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+[]\OT1/cmr/m/n/12 Custos de transa^^Xc~ao e
  []
 
 [116
@@ -1958,27 +2041,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
                    \relax 
 l.213 \bibitem{delbaen1994}
                            
-Underfull \hbox (badness 2012) in paragraph at lines 223--224
-[]\T1/cmr/m/n/12 Mantegna, R.N. & Stan-ley, H.E. (2000). \T1/cmr/m/it/12 An In-
-tro-duc-tion to Eco-nophy-sics:
+Underfull \hbox (badness 1997) in paragraph at lines 223--224
+[]\OT1/cmr/m/n/12 Mantegna, R.N. & Stan-ley, H.E. (2000). \OT1/cmr/m/it/12 An I
+n-tro-duc-tion to Eco-nophy-sics:
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 223--224
-\T1/cmr/m/it/12 Cor-re-la-ti-ons and Com-ple-xity in Fi-nance\T1/cmr/m/n/12 . C
-am-bridge Uni-ver-sity Press. DOI:
+Underfull \hbox (badness 2103) in paragraph at lines 223--224
+\OT1/cmr/m/it/12 Cor-re-la-ti-ons and Com-ple-xity in Fi-nance\OT1/cmr/m/n/12 .
+ Cam-bridge Uni-ver-sity Press. DOI:
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 226--227
-[]\T1/cmr/m/n/12 Cont, R. & Bou-chaud, J.P. (2000). Herd beha-vior and ag-gre-g
-ate fluc-tu-
+Underfull \hbox (badness 2772) in paragraph at lines 226--227
+[]\OT1/cmr/m/n/12 Cont, R. & Bou-chaud, J.P. (2000). Herd beha-vior and ag-gre-
+gate fluc-tu-
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 226--227
-\T1/cmr/m/n/12 a-ti-ons in fi-nan-cial mar-kets. \T1/cmr/m/it/12 Ma-cro-e-co-no
--mic Dy-na-mics\T1/cmr/m/n/12 , 4(2), 170--196. DOI:
+Underfull \hbox (badness 2111) in paragraph at lines 226--227
+\OT1/cmr/m/n/12 a-ti-ons in fi-nan-cial mar-kets. \OT1/cmr/m/it/12 Ma-cro-e-co-
+no-mic Dy-na-mics\OT1/cmr/m/n/12 , 4(2), 170--196. DOI:
  []
 
 
@@ -1994,29 +2077,35 @@ Cap\'{\i }tulo 12.
 [123
 
 ] [124]
-Overfull \hbox (4.05144pt too wide) in paragraph at lines 116--117
-\T1/cmr/bx/n/12 Exemplo 11.1 (Black--Scholes como Euler--Lagrange). \T1/cmr/m/n
-/12 Con-si-dere $\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ^^[[]S
-[]\OT1/cmr/m/n/12 (\U/msb/m/n/12 D\OML/cmm/m/it/12 S\OT1/cmr/m/n/12 )[] \OMS/cm
-sy/m/n/12 ^^@
+Overfull \hbox (4.13997pt too wide) in paragraph at lines 116--117
+\OT1/cmr/bx/n/12 Exemplo 11.1 (Black--Scholes como Euler--Lagrange). \OT1/cmr/m
+/n/12 Con-si-dere $\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ^^[[
+]S[]\OT1/cmr/m/n/12 (\U/msb/m/n/12 D\OML/cmm/m/it/12 S\OT1/cmr/m/n/12 )[] \OMS/
+cmsy/m/n/12 ^^@
  []
 
 [125]
-Overfull \hbox (37.60641pt too wide) in paragraph at lines 158--159
-\T1/cmr/bx/n/12 Teorema 11.3 (No-ether Es-to-cás-tico). \T1/cmr/m/n/12 Se a açã
-o es-to-cás-tica $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 D\OT1/c
-mr/m/n/12 ] = \U/msb/m/n/12 E\OT1/cmr/m/n/12 [[][] \OML/cmm/m/it/12 L\OT1/cmr/m
-/n/12 (\OML/cmm/m/it/12 D[]; \U/msb/m/n/12 D\OML/cmm/m/it/12 D[]; t\OT1/cmr/m/n
-/12 ) \OML/cmm/m/it/12 dt\OT1/cmr/m/n/12 ]$
+Overfull \hbox (37.68921pt too wide) in paragraph at lines 158--159
+\OT1/cmr/bx/n/12 Teorema 11.3 (No-ether Es-toc^^Sastico). \OT1/cmr/m/n/12 Se a 
+a^^Xc~ao es-toc^^Sastica $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12
+ D\OT1/cmr/m/n/12 ] = \U/msb/m/n/12 E\OT1/cmr/m/n/12 [[][] \OML/cmm/m/it/12 L\O
+T1/cmr/m/n/12 (\OML/cmm/m/it/12 D[]; \U/msb/m/n/12 D\OML/cmm/m/it/12 D[]; t\OT1
+/cmr/m/n/12 ) \OML/cmm/m/it/12 dt\OT1/cmr/m/n/12 ]$
  []
 
 [126]
-Overfull \hbox (1.97624pt too wide) in paragraph at lines 195--196
-\T1/cmr/m/n/12 Uma se-gunda si-me-tria fun-da-men-tal emerge quando con-si-de-r
-a-mos trans-for-ma-ções de gauge: 
+Overfull \hbox (1.7567pt too wide) in paragraph at lines 195--196
+\OT1/cmr/m/n/12 Uma se-gunda si-me-tria fun-da-men-tal emerge quando con-si-de-
+ra-mos trans-forma^^Xc~oes de gauge: 
  []
 
-[127] [128]
+[127]
+Overfull \hbox (7.14001pt too wide) in paragraph at lines 254--255
+[]\OT1/cmr/m/n/12 Esta for-mula^^Xc~ao uni-fica a te-o-ria de ar-bi-tra-gem com
+ fric^^Xc~oes (G^^Serard, Gua-soni, L^^Sepinette,
+ []
+
+[128]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
 994}) has been already used, duplicate ignored
 <to be read again> 
@@ -2035,13 +2124,19 @@ Cap\'{\i }tulo 13.
 [130
 
 ] [131]
-Overfull \hbox (22.87411pt too wide) in paragraph at lines 93--94
-[]\T1/cmr/m/n/12 O grupo fun-da-men-tal do es-paço de mer-ca-dos mó-dulo ar-bi-
-tra-gem é tri-vial: $\OML/cmm/m/it/12 ^^Y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M[
-]\OT1/cmr/m/n/12 ) =
+Overfull \hbox (22.64291pt too wide) in paragraph at lines 93--94
+[]\OT1/cmr/m/n/12 O grupo fun-da-men-tal do espa^^Xco de mer-ca-dos m^^Sodulo a
+r-bi-tra-gem ^^Se tri-vial: $\OML/cmm/m/it/12 ^^Y[]\OT1/cmr/m/n/12 (\OML/cmm/m/
+it/12 M[]\OT1/cmr/m/n/12 ) =
  []
 
-[132] [133] [134] [135]
+[132]
+Overfull \hbox (8.39989pt too wide) in paragraph at lines 117--118
+\OT1/cmr/m/n/12 A con-sequ^encia mais ele-gante do FTAP Ho-mot^^Sopico ^^Se a s
+e-guinte re-in-ter-preta^^Xc~ao geom^^Setrica: 
+ []
+
+[133] [134] [135]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
 994}) has been already used, duplicate ignored
 <to be read again> 
@@ -2075,75 +2170,70 @@ l.212 \bibitem{nakahara2003}
 
 ] [137]
 Cap\'{\i }tulo 14.
-
-Overfull \hbox (3.09187pt too wide) in paragraph at lines 6--6
-[]\T1/cmr/bx/n/17.28 Simula SS o de Mo-vi-mento Brow-ni-ano Geom ctrico 
- []
-
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 21.
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 22.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 22.
 [138
 
 ] [139] [140] [141] [142] [143] [144] [145] [146] [147] [148] [149]
 [150]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 550--551
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 550--551
 [][][] 
  []
 
 
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 552--553
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 552--553
 [][][] 
  []
 
 [151]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 582--583
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 582--583
 [][][] 
  []
 
 
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 584--585
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 584--585
 [][][] 
  []
 
 [152]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 617--618
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 617--618
 [][][] 
  []
 
 
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 619--620
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 619--620
 [][][] 
  []
 
 [153]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 667--668
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 667--668
 [][][] 
  []
 
 
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 669--670
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 669--670
 [][][] 
  []
 
 [154]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 735--736
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 735--736
+[][][] 
+ []
+
+[155]
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 737--738
+[][][] 
+ []
+
+[156] [157]
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 823--824
 [][][] 
  []
 
 
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 737--738
-[][][] 
- []
-
-[155] [156]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 823--824
-[][][] 
- []
-
-[157]
-Overfull \hbox (40.76367pt too wide) in paragraph at lines 825--826
+Overfull \hbox (40.86621pt too wide) in paragraph at lines 825--826
 [][][] 
  []
 
@@ -2154,488 +2244,195 @@ Cap\'{\i }tulo 15.
 [162
 
 ]
-Overfull \hbox (1.55496pt too wide) in paragraph at lines 63--63
-[]\T1/cmtt/m/n/12 criador-artigo/| 
+Overfull \hbox (1.57762pt too wide) in paragraph at lines 63--63
+[]\OT1/cmtt/m/n/12 criador-artigo/| 
  []
 
 
-Overfull \hbox (1.55496pt too wide) in paragraph at lines 64--64
-[]\T1/cmtt/m/n/12 basis-research/| 
+Overfull \hbox (1.57762pt too wide) in paragraph at lines 64--64
+[]\OT1/cmtt/m/n/12 basis-research/| 
  []
 
-[163]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC€).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.118 # TESTE (deve falhar inicialmente â€” 
-                                            RED)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
+[163] [164]
+Overfull \hbox (2.38167pt too wide) in paragraph at lines 167--167
+[]\OT1/cmr/bx/n/17.28 Passo 3: Ve-ri-fi-ca-cao Sim-bo-lica com Cora-Debate 
+ []
 
 
-! LaTeX Error: Invalid UTF-8 byte "94.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.118 # TESTE (deve falhar inicialmente â€” 
-                                            RED)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[164]
 Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]|\T1/cmr/m/n/12 Manipulacao sim-bo-lica
+[]|\OT1/cmr/m/n/12 Manipulacao sim-bo-lica
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 189--189
-[]|\T1/cmr/m/n/12 p-valores, IC, ta-ma-nho
+Underfull \hbox (badness 1132) in paragraph at lines 189--189
+[]|\OT1/cmr/m/n/12 p-valores, IC, ta-ma-nho
  []
 
-ignored error: Infinite glue shrinkage found in box being split [165]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC€).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.215 # V1-V7: 7/7 PASS â€” 
-                            curvatura zero confirmada
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "94.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.215 # V1-V7: 7/7 PASS â€” 
-                            curvatura zero confirmada
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[166]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.233 # SEEKER â†’ 
-                   busca referencias (arXiv, OpenAlex)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.233 # SEEKER â†’ 
-                   busca referencias (arXiv, OpenAlex)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.234 # MASWOS â†’ 
-                   49 agentes escrevem o artigo
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.234 # MASWOS â†’ 
-                   49 agentes escrevem o artigo
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.235 # TSAC â†’ 
-                 remove 87 palavras banidas de IA
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.235 # TSAC â†’ 
-                 remove 87 palavras banidas de IA
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.236 # Banca â†’ 
-                  5 revisores simulados avaliam
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.236 # Banca â†’ 
-                  5 revisores simulados avaliam
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.237 # Loop â†’ 
-                 corrige ate score >= 95/100
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.237 # Loop â†’ 
-                 corrige ate score >= 95/100
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.238 # Cora-Debate â†’ 
-                        V1-V7 auditam
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.238 # Cora-Debate â†’ 
-                        V1-V7 auditam
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 # PDF â†’ 
-                exporta artigo pronto
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 # PDF â†’ 
-                exporta artigo pronto
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
+ignored error: Infinite glue shrinkage found in box being split [165] [166]
 [167] [168]) (modulo_exp_ch15_ciclos_evolutivos.tex [169]
 Cap\'{\i }tulo 16.
+
+Overfull \hbox (10.27951pt too wide) in paragraph at lines 19--19
+[]\OT1/cmr/bx/n/17.28 SPECs Pe-da-go-gi-cas: O Que o Aluno Deve Apren-
+ []
+
 [170
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 78--78
-[]|\T1/cmr/bx/n/12 Criterio de
+[]|\OT1/cmr/bx/n/12 Criterio de
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 80--80
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 80--80
-[]|\T1/cmr/m/n/12 Definir ar-bi-tra-gem for-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
-[]|\T1/cmr/m/n/12 CT-
+Underfull \hbox (badness 1902) in paragraph at lines 80--80
+[]|\OT1/cmr/m/n/12 Definir ar-bi-tra-gem for-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 81--81
-[]|\T1/cmr/m/n/12 Identificar ar-bi-tra-gem
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 81--81
-[]|\T1/cmr/m/n/12 Resposta cor-reta
+[]|\OT1/cmr/m/n/12 Identificar ar-bi-tra-gem
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[]|\OT1/cmr/m/n/12 Resposta cor-reta
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 82--82
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 82--82
-[]|\T1/cmr/m/n/12 Menciona me-dida
+[]|\OT1/cmr/m/n/12 Menciona me-dida
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 83--83
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
-Underfull \hbox (badness 5787) in paragraph at lines 83--83
-[]|\T1/cmr/m/n/12 Mapear con-cei-tos (ta-
+Underfull \hbox (badness 5756) in paragraph at lines 83--83
+[]|\OT1/cmr/m/n/12 Mapear con-cei-tos (ta-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 84--84
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 85--85
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 86--86
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 86--86
-[]|\T1/cmtt/m/n/12 python -c
+[]|\OT1/cmtt/m/n/12 python -c
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 86--86
-\T1/cmtt/m/n/12 "import core"
+\OT1/cmtt/m/n/12 "import core"
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 87--87
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 87--87
-[]|\T1/cmr/m/n/12 Teste passa
+[]|\OT1/cmr/m/n/12 Teste passa
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 88--88
-[]|\T1/cmr/m/n/12 CT-
+[]|\OT1/cmr/m/n/12 CT-
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 88--88
-[]|\T1/cmr/m/n/12 Explica cada V1--
+Underfull \hbox (badness 1616) in paragraph at lines 88--88
+[]|\OT1/cmr/m/n/12 Explica cada V1--
  []
 
 ignored error: Infinite glue shrinkage found in box being split [171] [172]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139   Score medio: 95/100 >= 95 â†’ 
-                                      APROVADO
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139   Score medio: 95/100 >= 95 â†’ 
-                                      APROVADO
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 170--170
-[]|\T1/cmr/m/n/12 Definir ar-bi-tra-gem,
+[]|\OT1/cmr/m/n/12 Definir ar-bi-tra-gem,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 171--172
-[]|\T1/cmr/m/n/12 Dissertacao curta
+[]|\OT1/cmr/m/n/12 Dissertacao curta
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 172--173
-[]|\T1/cmr/m/n/12 Exercicio (CT-
+[]|\OT1/cmr/m/n/12 Exercicio (CT-
  []
 
 
-Underfull \hbox (badness 2452) in paragraph at lines 174--175
-[]|\T1/cmr/m/n/12 Cora-Debate (CT-
+Underfull \hbox (badness 2418) in paragraph at lines 174--175
+[]|\OT1/cmr/m/n/12 Cora-Debate (CT-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 175--175
-[]|\T1/cmr/m/n/12 Projetar novo ex-pe-ri-
+[]|\OT1/cmr/m/n/12 Projetar novo ex-pe-ri-
  []
 
 
-Underfull \hbox (badness 5954) in paragraph at lines 175--176
-[]|\T1/cmr/m/n/12 AutoEvolve (Cap.
+Underfull \hbox (badness 5908) in paragraph at lines 175--176
+[]|\OT1/cmr/m/n/12 AutoEvolve (Cap.
  []
 
 ignored error: Infinite glue shrinkage found in box being split [173]
-Underfull \hbox (badness 3058) in paragraph at lines 189--189
-[]\T1/cmr/m/n/12 Tempo ate pri-meiro ex-pe-ri-
+Underfull \hbox (badness 3039) in paragraph at lines 189--189
+[]\OT1/cmr/m/n/12 Tempo ate pri-meiro ex-pe-ri-
  []
 
 
-Underfull \hbox (badness 7451) in paragraph at lines 190--190
-[]\T1/cmr/m/n/12 Taxa de apro-va-cao CT-P1
+Underfull \hbox (badness 7415) in paragraph at lines 190--190
+[]\OT1/cmr/m/n/12 Taxa de apro-va-cao CT-P1
  []
 
 
-Underfull \hbox (badness 7451) in paragraph at lines 192--192
-[]\T1/cmr/m/n/12 Taxa de apro-va-cao CT-P3
+Underfull \hbox (badness 7415) in paragraph at lines 192--192
+[]\OT1/cmr/m/n/12 Taxa de apro-va-cao CT-P3
  []
 
 
-Overfull \hbox (0.91669pt too wide) in paragraph at lines 208--209
-[]\T1/cmr/m/n/12 Teste de sa-ni-dade passa (\T1/cmtt/m/n/12 python -c "from cor
-e.container import Container"\T1/cmr/m/n/12 ) 
- []
-
-
-Overfull \hbox (5.22108pt too wide) in paragraph at lines 218--220
-\T1/cmr/m/n/12 Este mo-dulo se-gue o \T1/cmr/bx/n/12 Prin-ci-pio de In-te-gri-d
-ade e Au-di-ta-bi-li-dade \T1/cmr/m/n/12 (IN-TE-GRI-DADE.md,
+Overfull \hbox (1.01965pt too wide) in paragraph at lines 208--209
+[]\OT1/cmr/m/n/12 Teste de sa-ni-dade passa (\OT1/cmtt/m/n/12 python -c "from c
+ore.container import Container"\OT1/cmr/m/n/12 ) 
  []
 
 [174]
-Underfull \hbox (badness 1107) in paragraph at lines 233--234
-[]\T1/cmr/m/n/12 Scores do Cora-Debate ro-tu-la-dos
+Overfull \hbox (5.33144pt too wide) in paragraph at lines 218--220
+\OT1/cmr/m/n/12 Este mo-dulo se-gue o \OT1/cmr/bx/n/12 Prin-ci-pio de In-te-gri
+-dade e Au-di-ta-bi-li-dade \OT1/cmr/m/n/12 (IN-TE-GRI-DADE.md,
+ []
+
+
+Underfull \hbox (badness 1097) in paragraph at lines 233--234
+[]\OT1/cmr/m/n/12 Scores do Cora-Debate ro-tu-la-dos
  []
 
 [175]) (modulo_exp_apx_a_geometria.tex [176]
@@ -2680,10 +2477,10 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (0.5336pt too wide) in paragraph at lines 50--52
-\T1/cmr/m/n/12 formam uma base de $\OML/cmm/m/it/12 T[]M$\T1/cmr/m/n/12 , de-no
--mi-nada \T1/cmr/bx/n/12 base co-or-de-nada\T1/cmr/m/n/12 . Todo ve-tor tan-gen
-te expressa-
+Overfull \hbox (0.63542pt too wide) in paragraph at lines 50--52
+\OT1/cmr/m/n/12 formam uma base de $\OML/cmm/m/it/12 T[]M$\OT1/cmr/m/n/12 , de-
+no-mi-nada \OT1/cmr/bx/n/12 base co-or-de-nada\OT1/cmr/m/n/12 . Todo ve-tor tan
+-gente expressa-
  []
 
 ! Undefined control sequence.
@@ -2821,33 +2618,23 @@ and I'll forget about whatever was undefined.
 [183
 
 ]
-Overfull \hbox (4.87955pt too wide) in paragraph at lines 48--49
-[]\T1/cmr/bx/it/12 Fun SS ues de-ter-min -sticas\T1/cmr/m/it/12 : Se $\OML/cmm/
-m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 
-c di-fe-renci ivel, $\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f\OT1/
-cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )) = [](\OML/cmm/m/it/12 t\OT1/cm
-r/m/n/12 )$ \T1/cmr/m/it/12 e $\OML/cmm/m/it/12 D[]\OT1/cmr/m/n/12 (\OML/cmm/m/
-it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )) =
- []
-
-
-Underfull \hbox (badness 4686) in paragraph at lines 77--77
-[]\T1/cmr/m/n/12 Nelson (pro-gres-
+Underfull \hbox (badness 4634) in paragraph at lines 77--77
+[]\OT1/cmr/m/n/12 Nelson (pro-gres-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 78--78
-[]\T1/cmr/m/n/12 Nelson (re-gres-
+[]\OT1/cmr/m/n/12 Nelson (re-gres-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 79--79
-[]\T1/cmr/m/n/12 Nelson (sim
+[]\OT1/cmr/m/n/12 Nelson (sim
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 80--80
-[]\T1/cmr/m/n/12 Nelson (an-tis-sim
+Underfull \hbox (badness 2865) in paragraph at lines 80--80
+[]\OT1/cmr/m/n/12 Nelson (an-tis-sim
  []
 
 [184]
@@ -3014,80 +2801,81 @@ and I'll forget about whatever was undefined.
 [195]) (modulo_exp_apx_d_referencias.tex [196]
 Ap\^endice D.
 
-Overfull \hbox (45.12752pt too wide) in paragraph at lines 21--22
-[]\T1/cmr/m/n/12 (1998). \T1/cmr/m/it/12 Gauge Ge-o-me-try of Op-tion Pricing\T
-1/cmr/m/n/12 .arXiv:cond-mat/9804207.
+Overfull \hbox (45.24829pt too wide) in paragraph at lines 21--22
+[]\OT1/cmr/m/n/12 (1998). \OT1/cmr/m/it/12 Gauge Ge-o-me-try of Op-tion Pricing
+\OT1/cmr/m/n/12 .arXiv:cond-mat/9804207.
  []
 
 [197
 
 ] [198]
-Overfull \hbox (2.50139pt too wide) in paragraph at lines 73--74
-[]\T1/cmr/m/n/12 (2001). \T1/cmr/m/it/12 Op-ti-mal Exe-cu-tion of Port-fo-lio T
-ran-sac-ti-ons\T1/cmr/m/n/12 . \T1/cmr/m/it/12 Jour-
+Overfull \hbox (2.61377pt too wide) in paragraph at lines 73--74
+[]\OT1/cmr/m/n/12 (2001). \OT1/cmr/m/it/12 Op-ti-mal Exe-cu-tion of Port-fo-lio
+ Tran-sac-ti-ons\OT1/cmr/m/n/12 . \OT1/cmr/m/it/12 Jour-
  []
 
 
-Overfull \hbox (61.75807pt too wide) in paragraph at lines 83--84
-\T1/cmr/m/it/12 ons\T1/cmr/m/n/12 . 6. ed. Ber-lin: Sprin-ger. \T1/cmr/bx/n/12 
-ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-3-540-04758-2\T1/cmr/m/n/12 . \T1/cmr/
-bx/n/12 DOI\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 10.1007/978-3-642-14394-6\T1/cmr/m/
-n/12 . 
+Overfull \hbox (61.8761pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/it/12 ons\OT1/cmr/m/n/12 . 6. ed. Ber-lin: Sprin-ger. \OT1/cmr/bx/n/
+12 ISBN\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 978-3-540-04758-2\OT1/cmr/m/n/12 . \O
+T1/cmr/bx/n/12 DOI\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 10.1007/978-3-642-14394-6\
+OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (1.72656pt too wide) in paragraph at lines 85--86
-[]\T1/cmr/m/n/12 (1991). \T1/cmr/m/it/12 Brow-nian Mo-tion and Sto-chas-tic Cal
--cu-lus\T1/cmr/m/n/12 . 2. ed.
+Overfull \hbox (1.83806pt too wide) in paragraph at lines 85--86
+[]\OT1/cmr/m/n/12 (1991). \OT1/cmr/m/it/12 Brow-nian Mo-tion and Sto-chas-tic C
+al-cu-lus\OT1/cmr/m/n/12 . 2. ed.
  []
 
 
-Overfull \hbox (23.20042pt too wide) in paragraph at lines 85--86
-\T1/cmr/m/n/12 New York: Sprin-ger. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cm
-tt/m/n/12 978-0-387-97655-6\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cmr/m/n/12 :
- \T1/cmtt/m/n/12 10.1007/978-1-4612-0949-2\T1/cmr/m/n/12 . 
+Overfull \hbox (23.309pt too wide) in paragraph at lines 85--86
+\OT1/cmr/m/n/12 New York: Sprin-ger. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/n/12 : \OT
+1/cmtt/m/n/12 978-0-387-97655-6\OT1/cmr/m/n/12 . \OT1/cmr/bx/n/12 DOI\OT1/cmr/m
+/n/12 : \OT1/cmtt/m/n/12 10.1007/978-1-4612-0949-2\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (4.77017pt too wide) in paragraph at lines 89--90
-\T1/cmr/m/n/12 Ber-lin: Sprin-ger. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmt
-t/m/n/12 978-3-540-64325-8\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cmr/m/n/12 : 
-\T1/cmtt/m/n/12 10.1007/978-3-662-06400-9\T1/cmr/m/n/12 . 
+Overfull \hbox (4.87448pt too wide) in paragraph at lines 89--90
+\OT1/cmr/m/n/12 Ber-lin: Sprin-ger. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/n/12 : \OT1
+/cmtt/m/n/12 978-3-540-64325-8\OT1/cmr/m/n/12 . \OT1/cmr/bx/n/12 DOI\OT1/cmr/m/
+n/12 : \OT1/cmtt/m/n/12 10.1007/978-3-662-06400-9\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (30.91797pt too wide) in paragraph at lines 109--110
-\T1/cmr/m/n/12 2 vols. New York: In-ters-ci-ence. \T1/cmr/bx/n/12 ISBN\T1/cmr/m
-/n/12 : \T1/cmtt/m/n/12 978-0-470-49647-6 \T1/cmr/m/n/12 (Vol. 1), \T1/cmtt/m/n
-/12 978-0-470-49648-3
+Overfull \hbox (31.02757pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/12 2 vols. New York: In-ters-ci-ence. \OT1/cmr/bx/n/12 ISBN\OT1/cm
+r/m/n/12 : \OT1/cmtt/m/n/12 978-0-470-49647-6 \OT1/cmr/m/n/12 (Vol. 1), \OT1/cm
+tt/m/n/12 978-0-470-49648-3
  []
 
 [199]
-Overfull \hbox (57.19763pt too wide) in paragraph at lines 113--114
-\T1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/1
-2 : \T1/cmtt/m/n/12 978-1-107-60260-1\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cm
-r/m/n/12 : \T1/cmtt/m/n/12 10.1017/CBO9781139061377\T1/cmr/m/n/12 . 
+Overfull \hbox (57.31415pt too wide) in paragraph at lines 113--114
+\OT1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/
+n/12 : \OT1/cmtt/m/n/12 978-1-107-60260-1\OT1/cmr/m/n/12 . \OT1/cmr/bx/n/12 DOI
+\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 10.1017/CBO9781139061377\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (64.59676pt too wide) in paragraph at lines 117--118
-[]\T1/cmr/m/n/12 (1992). \T1/cmr/m/it/12 Ri-e-man-nian Ge-o-me-try\T1/cmr/m/n/1
-2 . Bos-ton: Birkh user. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 9
-78-0-8176-3490-0\T1/cmr/m/n/12 .
+Overfull \hbox (64.72202pt too wide) in paragraph at lines 117--118
+[]\OT1/cmr/m/n/12 (1992). \OT1/cmr/m/it/12 Ri-e-man-nian Ge-o-me-try\OT1/cmr/m/
+n/12 . Bos-ton: Birkh user. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/n/12 : \OT1/cmtt/m/
+n/12 978-0-8176-3490-0\OT1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (69.27663pt too wide) in paragraph at lines 123--124
-\T1/cmr/m/n/12 Wesley. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978
--0-201-10096-6\T1/cmr/m/n/12 . Re-im-presso por Do-ver (2005): \T1/cmr/bx/n/12 
-ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-0-486-44546-5\T1/cmr/m/n/12 . 
+Overfull \hbox (69.39561pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/12 Wesley. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12
+ 978-0-201-10096-6\OT1/cmr/m/n/12 . Re-im-presso por Do-ver (2005): \OT1/cmr/bx
+/n/12 ISBN\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 978-0-486-44546-5\OT1/cmr/m/n/12 .
+ 
  []
 
 
-Overfull \hbox (94.61679pt too wide) in paragraph at lines 141--142
-\T1/cmr/m/it/12 Ame-ri-can Mathe-ma-ti-cal So-ci-ety\T1/cmr/m/n/12 , v. 75, n. 
-3, p. 428--443. \T1/cmr/bx/n/12 DOI\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 10.1090/S00
-02-9947-1953-0059284-8\T1/cmr/m/n/12 . 
+Overfull \hbox (94.74423pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/it/12 Ame-ri-can Mathe-ma-ti-cal So-ci-ety\OT1/cmr/m/n/12 , v. 75, n
+. 3, p. 428--443. \OT1/cmr/bx/n/12 DOI\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 10.109
+0/S0002-9947-1953-0059284-8\OT1/cmr/m/n/12 . 
  []
 
 Runaway argument?
@@ -3102,39 +2890,39 @@ control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 [200]
-Overfull \hbox (75.3719pt too wide) in paragraph at lines 155--156
-\T1/cmr/m/it/12 cal Phy-sics\T1/cmr/m/n/12 . Lon-don: Sprin-ger. \T1/cmr/bx/n/1
-2 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-0-85729-162-2\T1/cmr/m/n/12 . \T1/cm
-r/bx/n/12 DOI\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 10.1007/978-0-85729-163-9\T1/cmr/
-m/n/12 . 
+Overfull \hbox (75.49385pt too wide) in paragraph at lines 155--156
+\OT1/cmr/m/it/12 cal Phy-sics\OT1/cmr/m/n/12 . Lon-don: Sprin-ger. \OT1/cmr/bx/
+n/12 ISBN\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 978-0-85729-162-2\OT1/cmr/m/n/12 . 
+\OT1/cmr/bx/n/12 DOI\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 10.1007/978-0-85729-163-
+9\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (62.289pt too wide) in paragraph at lines 161--162
-[]\T1/cmr/m/n/12 (1989). \T1/cmr/m/it/12 Sto-chas-tic Cal-cu-lus in Ma-ni-folds
-\T1/cmr/m/n/12 . Ber-lin: Sprin-ger. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/c
-mtt/m/n/12 978-3-540-51664-2\T1/cmr/m/n/12 .
+Overfull \hbox (62.4143pt too wide) in paragraph at lines 161--162
+[]\OT1/cmr/m/n/12 (1989). \OT1/cmr/m/it/12 Sto-chas-tic Cal-cu-lus in Ma-ni-fol
+ds\OT1/cmr/m/n/12 . Ber-lin: Sprin-ger. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/n/12 : 
+\OT1/cmtt/m/n/12 978-3-540-51664-2\OT1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (57.19763pt too wide) in paragraph at lines 167--168
-\T1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/1
-2 : \T1/cmtt/m/n/12 978-0-521-28767-0\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cm
-r/m/n/12 : \T1/cmtt/m/n/12 10.1017/CBO9781107325609\T1/cmr/m/n/12 . 
+Overfull \hbox (57.31415pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \OT1/cmr/bx/n/12 ISBN\OT1/cmr/m/
+n/12 : \OT1/cmtt/m/n/12 978-0-521-28767-0\OT1/cmr/m/n/12 . \OT1/cmr/bx/n/12 DOI
+\OT1/cmr/m/n/12 : \OT1/cmtt/m/n/12 10.1017/CBO9781107325609\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (36.89955pt too wide) in paragraph at lines 186--187
-[]\T1/cmr/m/it/12 Nota bi-bli-ogr ifica: \T1/cmr/m/n/12 To-dos os DOIs fo-ram v
-e-ri-fi-ca-dos via API do Cros-s-Ref (\T1/cmtt/m/n/12 api.crossref.org\T1/cmr/m
-/n/12 )
+Overfull \hbox (37.01353pt too wide) in paragraph at lines 186--187
+[]\OT1/cmr/m/it/12 Nota bi-bli-ogr ifica: \OT1/cmr/m/n/12 To-dos os DOIs fo-ram
+ ve-ri-fi-ca-dos via API do Cros-s-Ref (\OT1/cmtt/m/n/12 api.crossref.org\OT1/c
+mr/m/n/12 )
  []
 
 
-Overfull \hbox (34.20857pt too wide) in paragraph at lines 186--187
-\T1/cmr/m/n/12 e os ISBNs con-fir-ma-dos nas ba-ses World-Cat (\T1/cmtt/m/n/12 
-worldcat.org\T1/cmr/m/n/12 ) e Open-Li-brary (\T1/cmtt/m/n/12 openlibrary.org\T
-1/cmr/m/n/12 ).
+Overfull \hbox (34.32486pt too wide) in paragraph at lines 186--187
+\OT1/cmr/m/n/12 e os ISBNs con-fir-ma-dos nas ba-ses World-Cat (\OT1/cmtt/m/n/1
+2 worldcat.org\OT1/cmr/m/n/12 ) e Open-Li-brary (\OT1/cmtt/m/n/12 openlibrary.o
+rg\OT1/cmr/m/n/12 ).
  []
 
 [201]) [202] (modulo_dca_gat_expandido.aux)
@@ -3151,14 +2939,14 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `modulo_dca_gat_expandido.out' has not change
 d.
-(rerunfilecheck)             Checksum: B76264DEDA9C5ADD7295F09F812C89F8;64205.
+(rerunfilecheck)             Checksum: 6C879E87DEDDA21B1561E5B10BBD7969;64235.
  ) 
 Here is how much of TeX's memory you used:
- 18403 strings out of 467871
- 279577 string characters out of 5418376
- 1364989 words of memory out of 5000000
- 44757 multiletter control sequences out of 15000+600000
- 671567 words of font info for 161 fonts, out of 8000000 for 9000
+ 18190 strings out of 467871
+ 277639 string characters out of 5418376
+ 1373871 words of memory out of 5000000
+ 44566 multiletter control sequences out of 15000+600000
+ 655888 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,89p,1060b,2201s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -3245,59 +3033,46 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
- <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit12
+ <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt10
 00.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecit1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ectt1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
-n/ec/dpi600\ecbx0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\eccc1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/lj
-four/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppData\Local\MiKTeX
-\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\AppData\Local\
-MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\AppData\
-Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\marce\Ap
-pData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\ma
-rce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Us
-ers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> 
-<C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx100
-0.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-cti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
-nappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljf
-our/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/
-pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\
-fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\marce\AppData\Local\M
-iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\AppData\L
-ocal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\marce\App
-Data\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\mar
-ce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Use
-rs\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <
-C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2488
-.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/mar
-ce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
-sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.p
-fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/m
-arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10
-.pfb>
-Output written on modulo_dca_gat_expandido.pdf (203 pages, 1792487 bytes).
+tcrm1200.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/marce/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/marce/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/marce/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/m
+arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><
+C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/marce/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/marce/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/marce/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/ma
+rce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/U
+sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/marce/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/marce/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/marce/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/m
+arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
+:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
+12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/euler/eufm10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/symbols/msam10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/marce/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on modulo_dca_gat_expandido.pdf (203 pages, 1581122 bytes).
 PDF statistics:
- 5997 PDF objects out of 6186 (max. 8388607)
+ 4706 PDF objects out of 5155 (max. 8388607)
  2220 named destinations out of 2487 (max. 500000)
  2265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {1.7}Black-Scholes-Merton: A Revolucao de 1973}{17}{section.1.7}%
 \contentsline {section}{\numberline {1.8}A Pergunta que a GAT Responde}{17}{section.1.8}%
 \contentsline {section}{\numberline {1.9}Estrutura Deste Modulo}{18}{section.1.9}%
-\contentsline {section}{\numberline {1.10}Checkpoint TDD — Voce Aprendeu?}{19}{section.1.10}%
+\contentsline {section}{\numberline {1.10}Checkpoint TDD \^a?? Voce Aprendeu?}{19}{section.1.10}%
 \contentsline {chapter}{\numberline {2}Probabilidade para Financas}{20}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Probabilidade para Finan SSas\\ Revis o Rigorosa}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Espa SSos de Probabilidade}{21}{section.3.1}%
@@ -198,9 +198,9 @@
 \contentsline {subsection}{\numberline {15.2.1}1.1 Verificar Pre-requisitos}{162}{subsection.15.2.1}%
 \contentsline {subsection}{\numberline {15.2.2}1.2 Clonar o Repositorio}{163}{subsection.15.2.2}%
 \contentsline {subsection}{\numberline {15.2.3}1.3 Estrutura do Diretorio (O Que Cada Pasta Faz)}{163}{subsection.15.2.3}%
-\contentsline {section}{\numberline {15.3}Passo 2: Primeiro Experimento — Mercado com 2 Ativos}{163}{section.15.3}%
+\contentsline {section}{\numberline {15.3}Passo 2: Primeiro Experimento \^a?? Mercado com 2 Ativos}{163}{section.15.3}%
 \contentsline {subsection}{\numberline {15.3.1}2.1 A Pergunta Cientifica (SPEC)}{163}{subsection.15.3.1}%
-\contentsline {subsection}{\numberline {15.3.2}2.2 Escrever o Teste Primeiro (TDD — RED)}{164}{subsection.15.3.2}%
+\contentsline {subsection}{\numberline {15.3.2}2.2 Escrever o Teste Primeiro (TDD \^a?? RED)}{164}{subsection.15.3.2}%
 \contentsline {subsection}{\numberline {15.3.3}2.3 Executar o Teste e Verificar}{165}{subsection.15.3.3}%
 \contentsline {subsection}{\numberline {15.3.4}2.4 Interpretar os Resultados (GREEN)}{165}{subsection.15.3.4}%
 \contentsline {section}{\numberline {15.4}Passo 3: Verificacao Simbolica com Cora-Debate}{165}{section.15.4}%
@@ -231,7 +231,7 @@
 \contentsline {subsection}{\numberline {16.6.1}Checklist de Reproducao}{174}{subsection.16.6.1}%
 \contentsline {subsection}{\numberline {16.6.2}Principio de Integridade na Pedagogia}{175}{subsection.16.6.2}%
 \contentsline {section}{\numberline {16.7}Exercicios de Metacognicao}{175}{section.16.7}%
-\contentsline {section}{\numberline {16.8}Referencias do Capitulo}{175}{section.16.8}%
+\contentsline {section}{\numberline {16.8}Referencias do Capitulo}{176}{section.16.8}%
 \contentsline {chapter}{\numberline {A}Revis o de Geometria Diferencial}{177}{appendix.A}%
 \contentsline {section}{\numberline {A.1}Variedades Diferenci iveis}{177}{section.A.1}%
 \contentsline {subsection}{\numberline {A.1.1}Cartas e Atlas}{177}{subsection.A.1.1}%
