@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 11:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 11:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,15 +485,6 @@ Package babel Info: 'brazilian' activates 'portuges' shorthands.
 LaTeX Warning: Label `farinelli2021' multiply defined.
 
 
-LaTeX Warning: Label `farinelli2021' multiply defined.
-
-
-LaTeX Warning: Label `kobayashi1963' multiply defined.
-
-
-LaTeX Warning: Label `bleecker1981' multiply defined.
-
-
 LaTeX Warning: Label `delbaen1994' multiply defined.
 
 
@@ -519,9 +510,6 @@ LaTeX Warning: Label `harrison1979' multiply defined.
 
 
 LaTeX Warning: Label `nakahara2003' multiply defined.
-
-
-LaTeX Warning: Label `nelson1967' multiply defined.
 
 )
 \openout1 = `modulo_dca_gat_expandido.aux'.
@@ -665,31 +653,31 @@ Underfull \vbox (badness 1546) has occurred while \output is active []
 [4
 
 ] (modulo_dca_gat_expandido.toc [5] [6]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 98.
-
+Package babel Info: 'brazilian' activates 'portuges' shorthands.
+(babel)             Reported on input line 123.
+ [7]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 131
+.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-Package babel Info: 'brazilian' activates 'portuges' shorthands.
-(babel)             Reported on input line 124.
-
-[7] [8] [9] [10])
+[8] [9] [10])
 \tf@toc=\write4
 \openout4 = `modulo_dca_gat_expandido.toc'.
 
  [11] [12
 
-] [13] [14] (modulo_exp_ch01_intro.tex
-Cap\'{\i }tulo 1.
-[15
+] [13] [14] (modulo_exp_ch01_intro.tex [15] [16
 
-] [16] [17] [18] [19]) (modulo_exp_ch02_probabilidade.tex [20]
+]
+Cap\'{\i }tulo 1.
+[17] [18] [19] [20] [21]) (modulo_exp_ch02_probabilidade.tex [22]
 Cap\'{\i }tulo 2.
 ! Undefined control sequence.
-<argument> ...�tica de Kolmogorov, veja \textcite 
+<argument> ...itica de Kolmogorov, veja \textcite 
                                                   {williams1991probability},...
-l.14 ... extenso com ênfase em teoria da medida.}
+l.14 ... extenso com  anfase em teoria da medida.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -698,9 +686,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<argument> ...bility}, Capítulos 1--3. \textcite 
+<argument> ...bility}, Cap -tulos 1--3. \textcite 
                                                   {billingsley2012probabilit...
-l.14 ... extenso com ênfase em teoria da medida.}
+l.14 ... extenso com  anfase em teoria da medida.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -708,7 +696,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[21
+[23
 
 ]
 ! Undefined control sequence.
@@ -721,9 +709,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<argument> ...essos estocásticos. Veja \textcite 
+<argument> ...essos estoc isticos. Veja \textcite 
                                                   {oksendal2003stochastic}, ...
-l.46 ...ite{oksendal2003stochastic}, Capítulo 2.}
+l.46 ...ite{oksendal2003stochastic}, Cap -tulo 2.}
                                                    satisfaz $\$\\mathcal{F}_...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -740,7 +728,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[22]
+[24]
 ! Undefined control sequence.
 l.66 ...egrais seja finita. Dizemos que $X \in \Lp
                                                   ^1(\Omega, \F, \P)$ se $\E...
@@ -760,8 +748,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.74 ...ovariância} entre duas v.a. $X, Y \in \Lp
-                                                  ^2$ é $\Cov(X,Y) := \E[(X...
+l.74 ...ovari  ncia} entre duas v.a. $X, Y \in \Lp
+                                                  ^2$  c $\Cov(X,Y) := \E[(X...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -771,7 +759,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Cov 
                      
-l.74 ... entre duas v.a. $X, Y \in \Lp^2$ é $\Cov
+l.74 ... entre duas v.a. $X, Y \in \Lp^2$  c $\Cov
                                                   (X,Y) := \E[(X - \E[X])(Y ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -780,9 +768,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<argument> ...ma da unicidade de Lévy. \textcite 
+<argument> ...ma da unicidade de L cvy. \textcite 
                                                   {williams1991probability},...
-l.80 ...e{williams1991probability}, Seção 16.6.}
+l.80 ...{williams1991probability}, Se SS  o 16.6.}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -792,7 +780,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.90 Se $X \in \Lp
-                  ^2$, então para todo $\varepsilon > 0$:
+                  ^2$, ent  o para todo $\varepsilon > 0$:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -839,7 +827,15 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[23]
+[25]
+Overfull \hbox (4.16441pt too wide) in paragraph at lines 115--116
+[][]\T1/cmr/bx/n/12 Definicao 2.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
+al)\T1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/
+12 (\OML/cmm/m/it/12 ^^V; ^^[[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 se $[] \OML/c
+mm/m/it/12 X \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^V; ^^[[]
+\OT1/cmr/m/n/12 )$\T1/cmr/m/it/12 .
+ []
+
 ! Undefined control sequence.
 <recently read> \brk 
                      
@@ -905,8 +901,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.150 ...f{esperança condicional} de $X$ dada $\G
-                                                  $ é a única (q.c.) vari�...
+l.150 ...{esperan SSa condicional} de $X$ dada $\G
+                                                  $  c a  onica (q.c.) vari ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -914,7 +910,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.150 ...(q.c.) variável aleatória $\E[X \mid \G
+l.150 ...(q.c.) vari ivel aleat 3ria $\E[X \mid \G
                                                   ]$ satisfazendo:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -922,10 +918,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[24]
+[26]
 ! Undefined control sequence.
 l.152     \item $\E[X \mid \G
-                             ]$ é $\G$-mensurável;
+                             ]$  c $\G$-mensur ivel;
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -935,8 +931,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.152     \item $\E[X \mid \G]$ é $\G
-                                      $-mensurável;
+l.152     \item $\E[X \mid \G]$  c $\G
+                                      $-mensur ivel;
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -980,8 +976,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.157 A condição (ii) afirma que $\E[X \mid \G
-                                                ]$ é a \textbf{projeção} ...
+l.157 A condi SS  o (ii) afirma que $\E[X \mid \G
+                                                 ]$  c a \textbf{proje SS  o...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -991,8 +987,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.157 ...o} de $X$ no subespaço das funções $\G
-                                                  $-mensuráveis no sentido ...
+l.157 ... de $X$ no subespa SSo das fun SS ues $\G
+                                                  $-mensur iveis no sentido ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1002,8 +998,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Lp 
                     
-l.157 ...ões $\G$-mensuráveis no sentido de $\Lp
-                                                  ^2$, ou seja, é a melhor ...
+l.157 ... ues $\G$-mensur iveis no sentido de $\Lp
+                                                  ^2$, ou seja,  c a melhor ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1013,8 +1009,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.157 ...ando apenas a informação contida em $\G
-                                                  $. Em finanças, se $\G = ...
+l.157 ...ndo apenas a informa SS  o contida em $\G
+                                                  $. Em finan SSas, se $\G =...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1024,7 +1020,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.157 ...ão contida em $\G$. Em finanças, se $\G
+l.157 ... o contida em $\G$. Em finan SSas, se $\G
                                                    = \$\\mathcal{F}_t\$$ rep...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1034,7 +1030,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.160 Sejam $X, Y \in \Lp
-                         ^1$ e $\G, \H$ sub-$\sigma$-álgebras de $\F$. Valem:
+                         ^1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1045,7 +1041,7 @@ and I'll forget about whatever was undefined.
 <recently read> \G 
                    
 l.160 Sejam $X, Y \in \Lp^1$ e $\G
-                                  , \H$ sub-$\sigma$-álgebras de $\F$. Valem:
+                                  , \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1059,7 +1055,7 @@ LaTeX Warning: Command \H invalid in math mode on input line 160.
 <recently read> \spacefactor 
                              
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
-                                        sub-$\sigma$-álgebras de $\F$. Valem:
+                                        sub-$\sigma$- ilgebras de $\F$. Valem:
 You can refer to \spacefactor only in horizontal mode;
 you can refer to \prevdepth only in vertical mode; and
 neither of these is meaningful inside \write. So
@@ -1069,7 +1065,7 @@ I'm forgetting what you said and using zero instead.
 \add@accent ... \accent@spacefactor \spacefactor }
                                                   \let \maybe@load@fontshape...
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
-                                        sub-$\sigma$-álgebras de $\F$. Valem:
+                                        sub-$\sigma$- ilgebras de $\F$. Valem:
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1080,7 +1076,7 @@ deleted material, e.g., by typing `I$}'.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
-                                        sub-$\sigma$-álgebras de $\F$. Valem:
+                                        sub-$\sigma$- ilgebras de $\F$. Valem:
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
@@ -1088,7 +1084,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 <to be read again> 
                    $
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
-                                        sub-$\sigma$-álgebras de $\F$. Valem:
+                                        sub-$\sigma$- ilgebras de $\F$. Valem:
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
 so that I will find a matching right brace soon.
@@ -1098,7 +1094,7 @@ so that I will find a matching right brace soon.
 <inserted text> 
                 }
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
-                                        sub-$\sigma$-álgebras de $\F$. Valem:
+                                        sub-$\sigma$- ilgebras de $\F$. Valem:
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1109,7 +1105,7 @@ my insertion and my current dilemma will both disappear.
 <inserted text> 
                 }
 l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$
-                                             \sigma$-álgebras de $\F$. Valem:
+                                             \sigma$- ilgebras de $\F$. Valem:
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1120,7 +1116,7 @@ my insertion and my current dilemma will both disappear.
 <inserted text> 
                 $
 l.160 ...m $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma
-                                                  $-álgebras de $\F$. Valem:
+                                                  $- ilgebras de $\F$. Valem:
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -1154,8 +1150,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.163 ...tbf{Retirada do conhecido:} se $Y$ é $\G
-                                                  $-mensurável e limitada, ...
+l.163 ...tbf{Retirada do conhecido:} se $Y$  c $\G
+                                                  $-mensur ivel e limitada, ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1163,7 +1159,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.163 ...G$-mensurável e limitada, $\E[YX \mid \G
+l.163 ...G$-mensur ivel e limitada, $\E[YX \mid \G
                                                   ] = Y \E[X \mid \G]$;
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1183,8 +1179,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \G 
                    
-l.164 ...endência:} se $X$ é independente de $\G
-                                                  $, então $\E[X \mid \G] =...
+l.164 ...end ancia:} se $X$  c independente de $\G
+                                                  $, ent  o $\E[X \mid \G] =...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1192,7 +1188,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.164 ...ndependente de $\G$, então $\E[X \mid \G
+l.164 ...ndependente de $\G$, ent  o $\E[X \mid \G
                                                   ] = \E[X]$;
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1207,7 +1203,7 @@ LaTeX Warning: Command \H invalid in math mode on input line 165.
 <inserted text> 
                 $
 l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, então
+                                                   \G$, ent  o
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -1215,7 +1211,7 @@ you left one out. Proceed, with fingers crossed.
 <recently read> \spacefactor 
                              
 l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, então
+                                                   \G$, ent  o
 You can refer to \spacefactor only in horizontal mode;
 you can refer to \prevdepth only in vertical mode; and
 neither of these is meaningful inside \write. So
@@ -1225,7 +1221,7 @@ I'm forgetting what you said and using zero instead.
 \add@accent ... \accent@spacefactor \spacefactor }
                                                   \let \maybe@load@fontshape...
 l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, então
+                                                   \G$, ent  o
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1236,7 +1232,7 @@ deleted material, e.g., by typing `I$}'.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
 l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, então
+                                                   \G$, ent  o
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
@@ -1244,7 +1240,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 \add@accent ...spaces \relax \accent #1 #2\egroup 
                                                   \ifmmode \else \spacefacto...
 l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, então
+                                                   \G$, ent  o
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1253,7 +1249,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.165 ...ropriedade de torre:} se $\H \subseteq \G
-                                                  $, então
+                                                  $, ent  o
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1490,8 +1486,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.170 ...} se $\phi$ é convexa e $\phi(X) \in \Lp
-                                                  ^1$, então $\phi(\E[X \mi...
+l.170 ...} se $\phi$  c convexa e $\phi(X) \in \Lp
+                                                  ^1$, ent  o $\phi(\E[X \mi...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1499,7 +1495,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.170 ...(X) \in \Lp^1$, então $\phi(\E[X \mid \G
+l.170 ...(X) \in \Lp^1$, ent  o $\phi(\E[X \mid \G
                                                   ]) \leq \E[\phi(X) \mid \G...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1529,7 +1525,7 @@ and I'll forget about whatever was undefined.
 <recently read> \Q 
                    
 l.181 onde $\Q
-              $ é a medida martingal equivalente (medida neutra ao risco) e...
+              $  c a medida martingal equivalente (medida neutra ao risco) e...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1537,7 +1533,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.181 ...de risco. A esperança condicional $\E^\Q
+l.181 ...e risco. A esperan SSa condicional $\E^\Q
                                                   [\cdot \mid \$\\mathcal{F}...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1548,7 +1544,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.181 ...orre assegura que $e^{-rt} V_t$ é um $\Q
+l.181 ...orre assegura que $e^{-rt} V_t$  c um $\Q
                                                   $-martingal, implicando au...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1559,7 +1555,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...rtingal equivalente. Veja \textcite 
                                                   {delbaen2006mathematics} e...
-l.189 ...{williams1991probability}, Capítulo 10.}
+l.189 ...{williams1991probability}, Cap -tulo 10.}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1570,17 +1566,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...delbaen2006mathematics} e \textcite 
                                                   {williams1991probability},...
-l.189 ...{williams1991probability}, Capítulo 10.}
+l.189 ...{williams1991probability}, Cap -tulo 10.}
                                                   .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.192 ...$\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp
-                                                  ^1$ para todo $t$ é um:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1594,12 +1581,29 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[25]
+[27]
+! Undefined control sequence.
+l.192 ...$\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp
+                                                  ^1$ para todo $t$  c um:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (3.30666pt too wide) in paragraph at lines 192--194
+\OML/cmm/m/it/12 mathcalF[]\OT1/cmr/m/n/12 $\OMS/cmsy/m/n/12 g[]\OML/cmm/m/it/1
+2 ; \OMS/cmsy/m/n/12 {\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 um espa SSo de pro-ba-
+bi-li-dade fil-trado. Um pro-cesso es-toc is-tico $\OMS/cmsy/m/n/12 f\OML/cmm/m
+/it/12 M[]\OMS/cmsy/m/n/12 g[]$
+ []
+
 ! Undefined control sequence.
 <recently read> \Q 
                    
 l.211 ...). Sob a medida martingal equivalente $\Q
-                                                  $, o \textbf{preço descon...
+                                                  $, o \textbf{pre SSo desco...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1609,7 +1613,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.211 ...}_t := S_t / B_t = e^{-rt} S_t$ é um $\Q
+l.211 ...}_t := S_t / B_t = e^{-rt} S_t$  c um $\Q
                                                   $-martingal:
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1650,7 +1654,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.215 ...etilde{S}_t = \sigma \widetilde{S}_t \dif
-                                                   W_t^\Q$, onde $W_t^\Q$ é...
+                                                   W_t^\Q$, onde $W_t^\Q$  c...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1659,7 +1663,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.215 ...S}_t = \sigma \widetilde{S}_t \dif W_t^\Q
-                                                  $, onde $W_t^\Q$ é um $\Q...
+                                                  $, onde $W_t^\Q$  c um $\Q...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1670,7 +1674,7 @@ and I'll forget about whatever was undefined.
 <to be read again> 
                    $
 l.215 ...}_t = \sigma \widetilde{S}_t \dif W_t^\Q$
-                                                  , onde $W_t^\Q$ é um $\Q$...
+                                                  , onde $W_t^\Q$  c um $\Q$...
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
 so that I will find a matching right brace soon.
@@ -1680,7 +1684,7 @@ so that I will find a matching right brace soon.
 <inserted text> 
                 }
 l.215 ...}_t = \sigma \widetilde{S}_t \dif W_t^\Q$
-                                                  , onde $W_t^\Q$ é um $\Q$...
+                                                  , onde $W_t^\Q$  c um $\Q$...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1689,7 +1693,7 @@ my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
 l.215 ...widetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q
-                                                  $ é um $\Q$-movimento bro...
+                                                  $  c um $\Q$-movimento bro...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1700,7 +1704,7 @@ and I'll forget about whatever was undefined.
 <to be read again> 
                    $
 l.215 ...idetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$
-                                                   é um $\Q$-movimento brow...
+                                                    c um $\Q$-movimento brow...
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
 so that I will find a matching right brace soon.
@@ -1710,7 +1714,7 @@ so that I will find a matching right brace soon.
 <inserted text> 
                 }
 l.215 ...idetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$
-                                                   é um $\Q$-movimento brow...
+                                                    c um $\Q$-movimento brow...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1720,7 +1724,7 @@ my insertion and my current dilemma will both disappear.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.215 ...}_t \dif W_t^\Q$, onde $W_t^\Q$ é um $\Q
+l.215 ...}_t \dif W_t^\Q$, onde $W_t^\Q$  c um $\Q
                                                   $-movimento browniano, e a...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1728,7 +1732,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[26]
+[28]
 ! Undefined control sequence.
 l.262 ...1}} - W_{t_i})^2 = t \quad \text{em } \Lp
                                                   ^2.
@@ -1738,11 +1742,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.07053pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+
+[29]
 ! Undefined control sequence.
 <recently read> \dif 
                      
-l.274 ...Delta$ em média, o que implica que $\dif
-                                                   W_t)^2 = \dif t$ na nota�...
+l.274 ...Delta$ em m cdia, o que implica que $\dif
+                                                   W_t)^2 = \dif t$ na nota ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1751,7 +1763,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.274 ...ia, o que implica que $\dif W_t)^2 = \dif
-                                                   t$ na notação diferenci...
+                                                   t$ na nota SS  o diferenc...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1787,19 +1799,11 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
-
-[27]
 ! Undefined control sequence.
 <recently read> \brk 
                      
-l.281 cuja solução é $S_t = S_0 \exp\brk
-                                           {(\mu - \sigma^2/2)t + \sigma W_t}$.
+l.281 cuja solu SS  o  c $S_t = S_0 \exp\brk
+                                            {(\mu - \sigma^2/2)t + \sigma W_...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1809,7 +1813,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \dif 
                      
-l.284 ...intuitiva é que o retorno relativo $\dif
+l.284 ...intuitiva  c que o retorno relativo $\dif
                                                    S_t / S_t$ tem uma compon...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1818,8 +1822,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.284 ... uma componente determinística $\mu \dif
-                                                   t$ (tendência) e uma com...
+l.284 ... uma componente determin -stica $\mu \dif
+                                                   t$ (tend ancia) e uma com...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1827,7 +1831,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.284 ... e uma componente aleatória $\sigma \dif
+l.284 ... e uma componente aleat 3ria $\sigma \dif
                                                    W_t$ (volatilidade). A ap...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1838,7 +1842,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...edida de Wiener, consulte \textcite 
                                                   {oksendal2003stochastic}, ...
-l.287 ...billingsley2012probability}, Seção 37.}
+l.287 ...illingsley2012probability}, Se SS  o 37.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1847,9 +1851,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<argument> ...ochastic}, Apêndice A, e \textcite 
+<argument> ...ochastic}, Ap andice A, e \textcite 
                                                   {billingsley2012probabilit...
-l.287 ...billingsley2012probability}, Seção 37.}
+l.287 ...illingsley2012probability}, Se SS  o 37.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1857,22 +1861,24 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+[30]
 
-Underfull \hbox (badness 1303) in paragraph at lines 287--287
-[][][]\T1/cmr/m/n/10 Para de-ta-lhes com-ple-tos da cons-tru-��o de L�vy e da m
-e-dida de Wi-e-ner, con-sulte ok-sen-
- []
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.07053pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[28]) (modulo_exp_ch03_calculo_estocastico.tex [29
+[31] [32
 
-] [30
+]) (modulo_exp_ch03_calculo_estocastico.tex [33] [34
 
 ]
 Cap\'{\i }tulo 3.
 ! Undefined control sequence.
 <argument> (varia\c {c}\~ao de 1\ordinal 
-                                         {ª} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ª} ordem)}
+                                         { a} ordem)
+l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1882,8 +1888,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  {ª} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1893,8 +1899,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  {ª} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1904,8 +1910,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  {ª} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
                                                   ,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1915,8 +1921,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> (varia\c {c}\~ao de 2\ordinal 
-                                         {ª} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ª} ordem)}
+                                         { a} ordem)
+l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1926,8 +1932,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  {ª} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1937,8 +1943,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  {ª} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1948,8 +1954,8 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 <argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  {ª} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ª} ordem)}
+                                                  { a} ordem)
+l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1957,7 +1963,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[31] [32] [33]
+[35] [36] [37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 142.
@@ -1966,51 +1972,28 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 142.
 
-[34] [35] [36] [37] [38] [39]
+[38] [39] [40] [41] [42] [43]
 
-LaTeX Warning: Reference `sec:tga_fundamentos' on page 40 undefined on input li
+LaTeX Warning: Reference `sec:tga_fundamentos' on page 44 undefined on input li
 ne 401.
 
-[40]) (modulo_exp_ch04_modelo_classico.tex [41
+[44]) (modulo_exp_ch04_modelo_classico.tex [45
 
-] [42
+] [46
 
 ]
 Cap\'{\i }tulo 4.
-
-Overfull \hbox (21.81339pt too wide) in paragraph at lines 42--45
-[]\T1/cmr/bx/it/12 Completude: $\OMS/cmsy/m/n/12 A[]$ \T1/cmr/m/it/12 (e por-ta
-nto toda $\OMS/cmsy/m/n/12 A[]$\T1/cmr/m/it/12 ) con-t�m to-dos os con-jun-tos 
-$\OML/cmm/m/it/12 P$\T1/cmr/m/it/12 -negligenci�veis
- []
-
-[43] [44] [45] [46] [47]
+[47] [48] [49] [50] [51]
 ! Undefined control sequence.
 l.408 $x_t := \mathbbm
-                      {1}_{S_t > K}$ para algum $K > 0$ não é previsível.
+                      {1}_{S_t > K}$ para algum $K > 0$ n  o  c previs -vel.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[48] [49] [50] [51]
-Overfull \hbox (11.53705pt too wide) in paragraph at lines 633--637
-\T1/cmr/m/n/12 � um state price de-fla-tor. Re-ci-pro-ca-mente, se $\OML/cmm/m/
-it/12 ^^L$ \T1/cmr/m/n/12 � um SPD, en-t�o $\OML/cmm/m/it/12 Q$ \T1/cmr/m/n/12 
-de-fi-nida por $\OML/cmm/m/it/12 dQ=dP\OMS/cmsy/m/n/12 j[] \OT1/cmr/m/n/12 :=
- []
-
-[52]
-Overfull \hbox (40.52792pt too wide) in paragraph at lines 710--717
-\T1/cmr/m/it/12 onde $\OML/cmm/m/it/12 ^^N[]$ \T1/cmr/m/it/12 � a dis-tri-bu-i-
-��o Delta de Di-rac na data $\OML/cmm/m/it/12 T$ \T1/cmr/m/it/12 (ge-ne-ra-li-z
-ada). For-mal-mente, $[][] \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-t\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT
-1/cmr/m/n/12 ) \OML/cmm/m/it/12 dt \OT1/cmr/m/n/12 =
- []
-
-[53] [54] [55] [56
+[52] [53] [54] [55] [56] [57] [58] [59] [60
 
 ]
 Underfull \hbox (badness 1424) in paragraph at lines 906--910
@@ -2030,22 +2013,22 @@ Underfull \hbox (badness 3417) in paragraph at lines 928--932
 ory, 20(3):381--408, 1979. DOI:
  []
 
-) [57] [58
+) [61] [62
 
-] [59] [60] (modulo_exp_ch05_gauges.tex
+] [63] [64] (modulo_exp_ch05_gauges.tex [65] [66
+
+]
 Cap\'{\i }tulo 5.
 
-LaTeX Warning: Citation `smith1998gauge' on page 61 undefined on input line 23.
+LaTeX Warning: Citation `smith1998gauge' on page 67 undefined on input line 23.
 
 
-[61
-
-] [62] [63] [64]
+[67] [68] [69] [70]
 Overfull \hbox (16.63187pt too wide) in paragraph at lines 303--308
 [][]\T1/cmr/bx/it/12 Infla��o:
  []
 
-[65]
+[71]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
@@ -2066,7 +2049,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
 
-[66] [67] [68]
+[72] [73] [74]
 Overfull \hbox (0.38196pt too wide) in paragraph at lines 610--614
 [][]\T1/cmr/bx/n/12 Exemplo 5.10 \T1/cmr/m/n/12 (Gauge de Pre�o de A��o a par-t
 ir do Gauge de Di-vi-den-dos)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se $\OT1/cmr/m
@@ -2078,11 +2061,11 @@ Overfull \hbox (102.11891pt too wide) detected at line 643
 []
  []
 
-[69] [70]) (modulo_exp_ch06_fibrados.tex [71] [72
+[75] [76]) (modulo_exp_ch06_fibrados.tex [77] [78
 
 ]
 Cap\'{\i }tulo 6.
-[73]
+[79]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -2163,7 +2146,7 @@ l.77 \end{equation}
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[74] [75] [76]
+[80] [81] [82]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 335.
@@ -2180,7 +2163,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 335.
 
-[77]
+[83]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 374.
@@ -2210,14 +2193,14 @@ T1/cmr/m/n/12 ) = \OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D[]; P[]\
 OT1/cmr/m/n/12 ) =
  []
 
-[78] [79] [80] [81]
+[84] [85] [86] [87]
 Overfull \hbox (9.8583pt too wide) in paragraph at lines 653--656
 []\T1/cmr/bx/it/12 Automorfismos de gauge \T1/cmr/m/it/12 do fi-brado prin-ci-p
 al $\OMS/cmsy/m/n/12 B$ \T1/cmr/m/it/12 --- di-fe-o-mor-fis-mos $\OML/cmm/m/it/
 12 G[]$\T1/cmr/m/it/12 -equivariantes
  []
 
-[82] [83] [84
+[88] [89] [90
 
 ]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.farinell
@@ -2225,90 +2208,28 @@ i2021}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.749 \bibitem{farinelli2021}
-                             ) (modulo_exp_ch07_conexao.tex [85] [86
+                             ) (modulo_exp_ch07_conexao.tex [91] [92
 
 ]
 Cap\'{\i }tulo 7.
-[87] [88]
+)
+Runaway argument?
+{O Que \par \subsection {Intui SS o: Conectando Fibras Vizinhas} \par \ETC.
+! File ended while scanning use of \@xdblarg.
+<inserted text> 
+                \par 
+l.150 \input{modulo_exp_ch07_conexao.tex}
+                                         
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 192.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\chi' on input line 192.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 192.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 192.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 192.
-
-[89] [90] [91]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 415.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 415.
-
-[92] [93]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 515.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 515.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 537.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 537.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 566.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 566.
-
-[94] [95] [96] [97] [98]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.farinell
-i2021}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.808 \bibitem{farinelli2021}
-                             
-pdfTeX warning (ext4): destination with the same identifier (name{cite.kobayash
-i1963}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.835 \bibitem{kobayashi1963}
-                             
-pdfTeX warning (ext4): destination with the same identifier (name{cite.bleecker
-1981}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.841 \bibitem{bleecker1981}
-                            ) (modulo_exp_ch08_curvatura.tex [99
-
-] [100
+(modulo_exp_ch08_curvatura.tex [93] [94
 
 ]
 Cap\'{\i }tulo 8.
-[101]
+[95]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 58.
@@ -2321,7 +2242,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 58.
 
-[102]
+[96]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 86.
@@ -2334,7 +2255,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 86.
 
-[103]
+[97]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 169.
@@ -2359,7 +2280,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 169.
 
-[104]
+[98]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 183.
@@ -2412,7 +2333,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 197.
 
-[105]
+[99]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 231.
@@ -2437,14 +2358,14 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 231.
 
-[106]
+[100]
 Overfull \hbox (5.79105pt too wide) in paragraph at lines 298--299
 []\T1/cmr/m/n/12 N�o existe me-dida mar-tin-gal equi-va-lente (o de-fla-tor can
 -di-dato $\OML/cmm/m/it/12 M[]$ \T1/cmr/m/n/12 n�o atinge $\U/msb/m/n/12 E\OT1/
 cmr/m/n/12 [\OML/cmm/m/it/12 M[]\OT1/cmr/m/n/12 ] =
  []
 
-[107] [108]
+[101] [102]
 Underfull \hbox (badness 1092) in paragraph at lines 375--376
 []\T1/cmr/m/n/12 Mercado li-vre de ar-bi-tra-
  []
@@ -2452,10 +2373,10 @@ Underfull \hbox (badness 1092) in paragraph at lines 375--376
 
 Underfull \vbox (badness 1325) has occurred while \output is active []
 
- [109])
-(modulo_exp_ch09_ambrose_singer.tex [110]
+ [103])
+(modulo_exp_ch09_ambrose_singer.tex [104]
 Cap\'{\i }tulo 9.
-[111
+[105
 
 ]
 Overfull \hbox (9.02441pt too wide) in paragraph at lines 38--39
@@ -2471,7 +2392,7 @@ Overfull \hbox (22.68315pt too wide) detected at line 53
 [] []
  []
 
-[112] [113]
+[106] [107]
 Overfull \hbox (5.56276pt too wide) in paragraph at lines 120--121
 []\T1/cmr/bx/n/12 A �l-ge-bra de Lie da Ho-lo-no-mia. \T1/cmr/m/n/12 Seja $\U/e
 uf/m/n/12 m[] \OMS/cmsy/m/n/12 ^^Z \U/euf/m/n/12 g$ \T1/cmr/m/n/12 o su-bes-pa�
@@ -2479,7 +2400,7 @@ o ge-rado por $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12
 [](\OML/cmm/m/it/12 X; Y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j
  []
 
-[114]
+[108]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 170.
@@ -2488,8 +2409,8 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\chi' on input line 170.
 
-[115]
-Overfull \hbox (137.65976pt too wide) in paragraph at lines 191--203
+[109]
+Overfull \hbox (161.80669pt too wide) in paragraph at lines 191--203
  [] 
  []
 
@@ -2501,7 +2422,7 @@ t/12 da �l-ge-bra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_\OT1/cmr/m/
 n/12 ))$
  []
 
-[116] [117]
+[110] [111]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 304.
@@ -2569,17 +2490,19 @@ You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (103.6111pt too wide) in paragraph at lines 309--348
+Overfull \hbox (132.08076pt too wide) in paragraph at lines 309--348
  [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [118])
-[119] [120
+ [112])
+[113] [114
 
-] [121] [122] (modulo_exp_ch10_hidrodinamica.tex
+] [115] [116] (modulo_exp_ch10_hidrodinamica.tex [117] [118
+
+]
 Cap\'{\i }tulo 10.
 
 Underfull \hbox (badness 2310) in paragraph at lines 17--18
@@ -2622,9 +2545,7 @@ Underfull \hbox (badness 2150) in paragraph at lines 25--26
 []\T1/cmr/m/n/12 Crises fi-nan-cei-ras (re-gime
  []
 
-[123
-
-]
+[119]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 33.
@@ -2633,7 +2554,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 33.
 
-[124]
+[120]
 ! Undefined control sequence.
 l.123 \bm
          {\omega}_F = \nabla \times J
@@ -2643,7 +2564,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[125] [126] [127] [128
+[121] [122] [123] [124
 
 ]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
@@ -2681,11 +2602,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.harrison
 <to be read again> 
                    \relax 
 l.237 \bibitem{harrison1979}
-                            ) (modulo_exp_ch11_lagrangiano.tex [129] [130
+                            ) (modulo_exp_ch11_lagrangiano.tex [125] [126
 
 ]
 Cap\'{\i }tulo 11.
-[131] [132]
+[127] [128]
 Overfull \hbox (4.05144pt too wide) in paragraph at lines 116--117
 \T1/cmr/bx/n/12 Exemplo 11.1 (Black--Scholes como Euler--Lagrange). \T1/cmr/m/n
 /12 Con-si-dere $\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ^^[[]S
@@ -2693,7 +2614,7 @@ Overfull \hbox (4.05144pt too wide) in paragraph at lines 116--117
 sy/m/n/12 ^^@
  []
 
-[133]
+[129]
 Overfull \hbox (37.60641pt too wide) in paragraph at lines 158--159
 \T1/cmr/bx/n/12 Teorema 11.3 (No-ether Es-to-c�s-tico). \T1/cmr/m/n/12 Se a a��
 o es-to-c�s-tica $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 D\OT1/c
@@ -2708,7 +2629,7 @@ Overfull \hbox (1.97624pt too wide) in paragraph at lines 195--196
 a-mos trans-for-ma-��es de gauge: 
  []
 
-[134] [135] [136
+[130] [131] [132
 
 ]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
@@ -2722,7 +2643,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.ilinski2
 <to be read again> 
                    \relax 
 l.285 \bibitem{ilinski2000}
-                           ) (modulo_exp_ch12_homotopia.tex [137] [138
+                           ) (modulo_exp_ch12_homotopia.tex [133] [134
 
 ]
 Cap\'{\i }tulo 12.
@@ -2768,14 +2689,14 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[139] [140]
+[135] [136]
 Overfull \hbox (22.87411pt too wide) in paragraph at lines 93--94
 []\T1/cmr/m/n/12 O grupo fun-da-men-tal do es-pa�o de mer-ca-dos m�-dulo ar-bi-
 tra-gem � tri-vial: $\OML/cmm/m/it/12 ^^Y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M[
 ]\OT1/cmr/m/n/12 ) =
  []
 
-[141] [142] [143] [144
+[137] [138] [139] [140
 
 ]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
@@ -2807,105 +2728,43 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.nakahara
 <to be read again> 
                    \relax 
 l.212 \bibitem{nakahara2003}
-                            
-pdfTeX warning (ext4): destination with the same identifier (name{cite.nelson19
-67}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.221 \bibitem{nelson1967}
-                          ) (modulo_exp_ch13_computacional.tex [145] [146
+                            ) (modulo_exp_ch13_computacional.tex [141] [142
 
 ]
 Cap\'{\i }tulo 13.
+
+Overfull \hbox (3.09187pt too wide) in paragraph at lines 6--6
+[]\T1/cmr/bx/n/17.28 Simula SS o de Mo-vi-mento Brow-ni-ano Geom ctrico 
+ []
+
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 21.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 22.
+[143]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [144]
+[145]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [146]
 [147]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [148]
-[149]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\expandafter).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.128     # Derivadas parciais via diferenças 
-                                               finitas centradas
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "A7.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.128     # Derivadas parciais via diferenças 
-                                               finitas centradas
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [150]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\expandafter).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.194 ...ntifica ciclo fechado com desvio de não-
-                                                  arbitragem (R != 0).
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "A3.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.194 ...ntifica ciclo fechado com desvio de não-
-                                                  arbitragem (R != 0).
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[151]
+ [149]
+[150]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [152]
+ [151]
+[152]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [153]
 [154]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [155]
-[156]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [157]
-[158]
 Overfull \hbox (33.2728pt too wide) in paragraph at lines 550--551
 [][] 
  []
@@ -2915,7 +2774,7 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 552--553
 [][] 
  []
 
-[159]
+[155]
 Overfull \hbox (33.2728pt too wide) in paragraph at lines 582--583
 [][] 
  []
@@ -2938,10 +2797,10 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 619--620
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [160]
+ [156]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [161]
+ [157]
 Overfull \hbox (33.2728pt too wide) in paragraph at lines 667--668
 [][] 
  []
@@ -2954,7 +2813,7 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 669--670
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [162]
+ [158]
 Overfull \hbox (33.2728pt too wide) in paragraph at lines 735--736
 [][] 
  []
@@ -2967,10 +2826,10 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 737--738
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [163]
+ [159]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [164]
+ [160]
 Overfull \hbox (33.2728pt too wide) in paragraph at lines 823--824
 [][] 
  []
@@ -2983,75 +2842,14 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 825--826
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [165]
-[166]) [167] [168
+ [161]
+[162]) [163] [164
 
-] [169] [170] (modulo_exp_ch14_opencode_lab.tex
-Cap\'{\i }tulo 14.
-[171
+] [165] [166] (modulo_exp_ch14_opencode_lab.tex [167] [168
 
 ]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 # → 
-            existe arbitragem → curvatura R != 0
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 # → 
-            existe arbitragem → curvatura R != 0
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 # → existe arbitragem → 
-                                  curvatura R != 0
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 # → existe arbitragem → 
-                                  curvatura R != 0
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[172]
+Cap\'{\i }tulo 14.
+[169] [170]
 Underfull \hbox (badness 10000) in paragraph at lines 156--156
 []\T1/cmr/m/n/12 Algebrico
  []
@@ -3059,163 +2857,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--156
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [173]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 # [r] = 1/T, [D] = valor → 
-                                   [chi] = adimensional? ✓
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 # [r] = 1/T, [D] = valor → 
-                                   [chi] = adimensional? ✓
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 ...[D] = valor → [chi] = adimensional? ✓
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "93.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 ...[D] = valor → [chi] = adimensional? ✓
-                                                  
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 # [R] = 1/(valor × 
-                          tempo)? Verificar.
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "97.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 # [R] = 1/(valor × 
-                          tempo)? Verificar.
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[174]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.200 # entao R != 0 → 
-                         existe arbitragem
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "92.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.200 # entao R != 0 → 
-                         existe arbitragem
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244 ...-1: Se mu_j = r para todo j, entao R ≡ 
-                                                  0 (NFLVR)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "A1.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.244 ...-1: Se mu_j = r para todo j, entao R ≡ 
-                                                  0 (NFLVR)
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-[175] [176]) (modulo_exp_ch15_ciclos_evolutivos.tex [177] [178
+ [171]
+[172] [173] [174]) (modulo_exp_ch15_ciclos_evolutivos.tex [175] [176
 
 ]
 Cap\'{\i }tulo 15.
-[179]
+[177]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 60.
@@ -3234,7 +2881,7 @@ Underfull \hbox (badness 3668) in paragraph at lines 112--112
 on ga-mes\T1/cmr/m/n/10 . PNAS, 36(1):48--49, 1950. DOI:
  []
 
-[180]
+[178]
 Underfull \hbox (badness 3514) in paragraph at lines 146--147
 []|\T1/cmr/m/n/12 Confirmado: $\OML/cmm/m/it/12 R \OMS/cmsy/m/n/12 6\OT1/cmr/m/
 n/12 =
@@ -3280,41 +2927,10 @@ Underfull \hbox (badness 3118) in paragraph at lines 150--151
 \T1/cmr/m/n/12 tura cal-cu-la-vel para
  []
 
-ignored error: Infinite glue shrinkage found in box being split [181]
-
-! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.176 # SPEC-GAT-002: Verificar que R=0 ⇔ 
-                                            existe pricing kernel
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! LaTeX Error: Invalid UTF-8 byte "94.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.176 # SPEC-GAT-002: Verificar que R=0 ⇔ 
-                                            existe pricing kernel
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
+ignored error: Infinite glue shrinkage found in box being split [179]
 Underfull \vbox (badness 2142) has occurred while \output is active []
 
- [182]
+ [180]
 Overfull \hbox (42.56357pt too wide) in paragraph at lines 231--233
 []\T1/cmr/m/n/12 Nash, J.F. (1950). Equi-li-brium po-ints in n-person ga-mes. P
 NAS. DOI: 10.1073/pnas.36.1.48. 
@@ -3326,12 +2942,12 @@ Overfull \hbox (54.92824pt too wide) in paragraph at lines 234--236
 u-tledge. DOI: 10.4324/9780203994627. 
  []
 
-) (modulo_exp_apx_a_geometria.tex [183] [184
+) (modulo_exp_apx_a_geometria.tex [181] [182
 
 ]
 Ap\^endice A.
 ! Undefined control sequence.
-l.4 ...erto a exposição clássica de \citeonline
+l.4 ...rto a exposi SS  o cl issica de \citeonline
                                                   {nakahara2003geometry}, co...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3359,14 +2975,14 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.34 ...o $\R^n$ com a carta identidade $(\R^n,\id
-                                                  )$ é uma variedade suave....
+                                                  )$  c uma variedade suave....
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[185]
+[183]
 Overfull \hbox (0.5336pt too wide) in paragraph at lines 50--52
 \T1/cmr/m/n/12 formam uma base de $\OML/cmm/m/it/12 T[]M$\T1/cmr/m/n/12 , de-no
 -mi-nada \T1/cmr/bx/n/12 base co-or-de-nada\T1/cmr/m/n/12 . Todo ve-tor tan-gen
@@ -3374,7 +2990,7 @@ te expressa-
  []
 
 ! Undefined control sequence.
-l.56 ...�ão $X:M\to TM$ tal que $\pi\circ X = \id
+l.56 ...S  o $X:M\to TM$ tal que $\pi\circ X = \id
                                                   _M$. Em coordenadas locais...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3382,7 +2998,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[186]
+[184]
 ! Undefined control sequence.
 l.123 que satisfaz $Kd + dK = \id
                                  $ em $\Omega^k(U)$ para $k\geq 1$. Se $d\om...
@@ -3396,7 +3012,7 @@ and I'll forget about whatever was undefined.
 <recently read> \GL 
                     
 l.139 O grupo linear geral $\GL
-                               (n,\R)$ é um grupo de Lie de dimensão $n^2$...
+                               (n,\R)$  c um grupo de Lie de dimens  o $n^2$...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3429,7 +3045,7 @@ and I'll forget about whatever was undefined.
 <recently read> \U 
                    
 l.139 ...s fechados --- $\SL(n,\R)$, $\SO(n)$, $\U
-                                                  (n)$, $\SU(n)$ --- são ig...
+                                                  (n)$, $\SU(n)$ --- s  o ig...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3440,7 +3056,7 @@ and I'll forget about whatever was undefined.
 <recently read> \SU 
                     
 l.139 ... --- $\SL(n,\R)$, $\SO(n)$, $\U(n)$, $\SU
-                                                  (n)$ --- são igualmente g...
+                                                  (n)$ --- s  o igualmente g...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3450,8 +3066,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \GL 
                     
-l.139 ... Cartan--von Neumann). Em finanças, $\GL
-                                                  (n,\R)$ modela transforma�...
+l.139 ...Cartan--von Neumann). Em finan SSas, $\GL
+                                                  (n,\R)$ modela transforma ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3469,7 +3085,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[187]
+[185]
 ! Undefined control sequence.
 l.150 Em termos matriciais, para $G\subset\GL
                                              (n,\R)$, tem-se $\mathfrak{g}\s...
@@ -3501,9 +3117,9 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[188]
+[186]
 ! Undefined control sequence.
-l.176 ...l $P$ e uma representação $\rho:G\to\GL
+l.176 ... $P$ e uma representa SS  o $\rho:G\to\GL
                                                   (V)$.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3513,7 +3129,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.180 ...uave $s:M\to E$ tal que $\pi\circ s = \id
-                                                  _M$. Campos vetoriais são...
+                                                  _M$. Campos vetoriais s  o...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3521,7 +3137,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.219 ...nanças, remetemos o leitor a \citeonline
+l.219 ...an SSas, remetemos o leitor a \citeonline
                                                   {nakahara2003geometry}, \c...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3547,12 +3163,12 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-) (modulo_exp_apx_b_nelson.tex [189] [190
+) (modulo_exp_apx_b_nelson.tex [187] [188
 
 ]
 Ap\^endice B.
 ! Undefined control sequence.
-l.4 ... na cinemática estocástica de \citeonline
+l.4 ... na cinem itica estoc istica de \citeonline
                                                   {nelson1967dynamical}, que...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3561,7 +3177,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.4 ...e Itô e Stratonovich, seguindo \citeonline
+l.4 ...e It ' e Stratonovich, seguindo \citeonline
                                                   {gliklikh2011global}.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3569,7 +3185,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[191]
+[189]
+Overfull \hbox (4.87955pt too wide) in paragraph at lines 48--49
+[]\T1/cmr/bx/it/12 Fun SS ues de-ter-min -sticas\T1/cmr/m/it/12 : Se $\OML/cmm/
+m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 
+c di-fe-renci ivel, $\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f\OT1/
+cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )) = [](\OML/cmm/m/it/12 t\OT1/cm
+r/m/n/12 )$ \T1/cmr/m/it/12 e $\OML/cmm/m/it/12 D[]\OT1/cmr/m/n/12 (\OML/cmm/m/
+it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )) =
+ []
+
+
 Underfull \hbox (badness 4686) in paragraph at lines 77--77
 []\T1/cmr/m/n/12 Nelson (pro-gres-
  []
@@ -3581,20 +3207,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--78
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 79--79
-[]\T1/cmr/m/n/12 Nelson (si-m�-
+[]\T1/cmr/m/n/12 Nelson (sim
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--80
-[]\T1/cmr/m/n/12 Nelson (an-tis-si-
+Underfull \hbox (badness 2894) in paragraph at lines 80--80
+[]\T1/cmr/m/n/12 Nelson (an-tis-sim
  []
 
-[192]
+[190]
 Overfull \hbox (11.11351pt too wide) detected at line 110
 []
  []
 
-[193]
+[191]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 133.
@@ -3625,11 +3251,11 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-) (modulo_exp_apx_c_exercicios.tex [194]
-Ap\^endice C.
-[195
+[192]) (modulo_exp_apx_c_exercicios.tex [193] [194
 
 ]
+Ap\^endice C.
+[195]
 ! Undefined control sequence.
 l.75   \E^{\Q
              }[S_1] = q\cdot 120 + (1-q)\cdot 90 = S_0 = 100.
@@ -3642,8 +3268,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.79 ...f{medida martingal equivalente única} $\Q
-                                                  $. O mercado é, portanto,...
+l.79 ...f{medida martingal equivalente  onica} $\Q
+                                                  $. O mercado  c, portanto,...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3651,7 +3277,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.79 ...rivativo europeu $H(S_1)$ é $V_0 = \E^{\Q
+l.79 ...rivativo europeu $H(S_1)$  c $V_0 = \E^{\Q
                                                   }[H(S_1)] = \frac{1}{3}H(1...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3673,7 +3299,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \rank 
                       
-l.220 ...lidade $\sigma$ tem posto máximo ($\rank
+l.220 ...lidade $\sigma$ tem posto m iximo ($\rank
                                                   (\sigma)=n$).
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3686,7 +3312,7 @@ and I'll forget about whatever was undefined.
 <recently read> \rank 
                       
 l.236 Se $\rank
-               (\sigma)=n$, então $\sigma^\top v \neq 0$ para $v\neq 0$, e ...
+               (\sigma)=n$, ent  o $\sigma^\top v \neq 0$ para $v\neq 0$, e ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3696,8 +3322,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \rank 
                       
-l.236 ...a de Mahalanobis instantânea}. Se $\rank
-                                                  (\sigma)<n$, há dependên...
+l.236 ...a de Mahalanobis instant  nea}. Se $\rank
+                                                  (\sigma)<n$, h i depend an...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3707,7 +3333,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.247 ...�sicas de $g$ define univocamente uma $\Q
+l.247 ...csicas de $g$ define univocamente uma $\Q
                                                   $-medida martingal se e so...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3718,8 +3344,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.255 \textbf{Construção de $\Q$.}
-                                     Defina $\Q$ via derivada de Radon--Niko...
+l.255 \textbf{Constru SS  o de $\Q$.}
+                                      Defina $\Q$ via derivada de Radon--Nik...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3729,8 +3355,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.255 \textbf{Construção de $\Q$.} Defina $\Q
-                                               $ via derivada de Radon--Niko...
+l.255 \textbf{Constru SS  o de $\Q$.} Defina $\Q
+                                                $ via derivada de Radon--Nik...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3751,7 +3377,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.259 ...son. A condição de Novikov para que $\Q
+l.259 ...on. A condi SS  o de Novikov para que $\Q
                                                   $ seja medida de probabili...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3762,8 +3388,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Q 
                    
-l.261 ...ão do fibrado) $\iff$ existência de $\Q
-                                                  $ única (completude de me...
+l.261 ...  o do fibrado) $\iff$ exist ancia de $\Q
+                                                  $  onica (completude de me...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3782,7 +3408,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.270 ...ante, a curvatura escalar $R = g^{ij}\Ric
-                                                  _{ij}$ é uma função mon...
+                                                  _{ij}$  c uma fun SS  o mo...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3799,7 +3425,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.278 ...Delta_g$ é o laplaciano de $g$ e $\|\Ric
+l.278 ...Delta_g$  c o laplaciano de $g$ e $\|\Ric
                                                   \|^2_g = \Ric_{ij}\Ric^{ij...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3828,8 +3454,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \Ric 
                      
-l.284 ...ge para um estado estacionário com $\Ric
-                                                  \equiv 0$ (métrica de Ein...
+l.284 ...ge para um estado estacion irio com $\Ric
+                                                  \equiv 0$ (m ctrica de Ein...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3848,7 +3474,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \C 
                    
-l.293 ...bis é a métrica de Fubini--Study em $\C
+l.293 ...bis  c a m ctrica de Fubini--Study em $\C
                                                    P^1\cong S^2$. Mostre que...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3859,8 +3485,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \C 
                    
-l.297 ...tura.} A métrica de Fubini--Study em $\C
-                                                   P^1$ é, em coordenadas d...
+l.297 ...tura.} A m ctrica de Fubini--Study em $\C
+                                                   P^1$  c, em coordenadas d...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3879,7 +3505,7 @@ and I'll forget about whatever was undefined.
 [201]
 ! Undefined control sequence.
 l.308 com $\int_{\C
-                    P^1} c_1 = 1 \neq 0$. A classe de Chern é um \textbf{in...
+                    P^1} c_1 = 1 \neq 0$. A classe de Chern  c um \textbf{in...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3887,8 +3513,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.310 ...ção de hedging exato de um payoff $H:\C
-                                                   P^1\to\R$ é que $H$ seja...
+l.310 ...SS  o de hedging exato de um payoff $H:\C
+                                                   P^1\to\R$  c que $H$ seja...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3897,7 +3523,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.312 ...ual $\mathcal{E}\geq \frac{1}{2}|\int_{\C
-                                                   P^1}c_1|$. Este erro é d...
+                                                   P^1}c_1|$. Este erro  c d...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3963,10 +3589,10 @@ r/m/n/12 : \T1/cmtt/m/n/12 10.1017/CBO9781139061377\T1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (67.85983pt too wide) in paragraph at lines 117--118
+Overfull \hbox (64.59676pt too wide) in paragraph at lines 117--118
 []\T1/cmr/m/n/12 (1992). \T1/cmr/m/it/12 Ri-e-man-nian Ge-o-me-try\T1/cmr/m/n/1
-2 . Bos-ton: Birkh�u-ser. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 
-978-0-8176-3490-0\T1/cmr/m/n/12 .
+2 . Bos-ton: Birkh user. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 9
+78-0-8176-3490-0\T1/cmr/m/n/12 .
  []
 
 
@@ -3983,12 +3609,16 @@ Overfull \hbox (94.61679pt too wide) in paragraph at lines 141--142
 02-9947-1953-0059284-8\T1/cmr/m/n/12 . 
  []
 
-
-Overfull \hbox (12.15306pt too wide) in paragraph at lines 143--144
-\T1/cmr/m/n/12 Gauthier-Villars. Re-im-presso por Jac-ques Ga-bay (2005). \T1/c
-mr/bx/n/12 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-2-87647-246-2\T1/cmr/m/n/12
- . 
- []
+Runaway argument?
+Cartan, 
+! Paragraph ended before \@item was complete.
+<to be read again> 
+                   \par 
+l.144 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
 
 Overfull \hbox (75.3719pt too wide) in paragraph at lines 155--156
@@ -4005,18 +3635,18 @@ Overfull \hbox (62.289pt too wide) in paragraph at lines 161--162
 mtt/m/n/12 978-3-540-51664-2\T1/cmr/m/n/12 .
  []
 
-[206]
+
 Overfull \hbox (57.19763pt too wide) in paragraph at lines 167--168
 \T1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/1
 2 : \T1/cmtt/m/n/12 978-0-521-28767-0\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cm
 r/m/n/12 : \T1/cmtt/m/n/12 10.1017/CBO9781107325609\T1/cmr/m/n/12 . 
  []
 
-
-Overfull \hbox (35.69984pt too wide) in paragraph at lines 186--187
-[]\T1/cmr/m/it/12 Nota bi-bli-o-gr�-fica: \T1/cmr/m/n/12 To-dos os DOIs fo-ram 
-ve-ri-fi-ca-dos via API do Cros-s-Ref (\T1/cmtt/m/n/12 api.crossref.org\T1/cmr/
-m/n/12 )
+[206]
+Overfull \hbox (36.89955pt too wide) in paragraph at lines 186--187
+[]\T1/cmr/m/it/12 Nota bi-bli-ogr ifica: \T1/cmr/m/n/12 To-dos os DOIs fo-ram v
+e-ri-fi-ca-dos via API do Cros-s-Ref (\T1/cmtt/m/n/12 api.crossref.org\T1/cmr/m
+/n/12 )
  []
 
 
@@ -4040,71 +3670,69 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `modulo_dca_gat_expandido.out' has not change
 d.
-(rerunfilecheck)             Checksum: 1420F00990F7D39AF4835F9A6A6D7C8B;65837.
+(rerunfilecheck)             Checksum: 91ACF20B40283B8081290D81C5F42141;60931.
  ) 
 Here is how much of TeX's memory you used:
- 18279 strings out of 467871
- 277202 string characters out of 5418376
- 1299077 words of memory out of 5000000
- 44547 multiletter control sequences out of 15000+600000
- 667026 words of font info for 142 fonts, out of 8000000 for 9000
+ 18096 strings out of 467871
+ 274636 string characters out of 5418376
+ 1300077 words of memory out of 5000000
+ 44476 multiletter control sequences out of 15000+600000
+ 666052 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,87p,1059b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
-1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ectt1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecit1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecit1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\marce\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\
-marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\
-Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk
-> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1
-200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecbx1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\font
-s/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTe
-X\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local
-\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData
-\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\A
-ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\m
-arce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\U
-sers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk>
- <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm12
-00.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecrm1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecrm2488.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/marce/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/marce/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ma
-rce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/
-Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmmib10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmr12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/
-marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pf
-b><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sym
-bols/msam10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb>
-Output written on modulo_dca_gat_expandido.pdf (207 pages, 1867757 bytes).
+ 75i,16n,87p,1067b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecit1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecit1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ectt1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\
+marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\
+Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk
+> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1
+000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/
+jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local\MiKTe
+X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local
+\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\AppData
+\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\marce\A
+ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\m
+arce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\U
+sers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk>
+ <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm17
+28.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecrm2488.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/U
+sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
+/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on modulo_dca_gat_expandido.pdf (207 pages, 1782698 bytes).
 PDF statistics:
- 6275 PDF objects out of 7423 (max. 8388607)
- 2325 named destinations out of 2487 (max. 500000)
- 2353 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6006 PDF objects out of 6186 (max. 8388607)
+ 2216 named destinations out of 2487 (max. 500000)
+ 2161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

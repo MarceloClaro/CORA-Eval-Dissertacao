@@ -1,107 +1,107 @@
-﻿% ============================================================================
-% Capítulo 2: Probabilidade para Finanças — Revisão Rigorosa
-% Módulo: Geometric Arbitrage Theory (DCA)
+ >>?% ============================================================================
+% Cap -tulo 2: Probabilidade para Finan SSas --- Revis  o Rigorosa
+% M 3dulo: Geometric Arbitrage Theory (DCA)
 % ============================================================================
 
-\chapter{Probabilidade para Finanças\texorpdfstring{\\}{:} Revisão Rigorosa}
+\chapter{Probabilidade para Finan SSas\texorpdfstring{\\}{:} Revis  o Rigorosa}
 
-A teoria moderna de finanças matemáticas repousa sobre os alicerces da teoria da probabilidade. O movimento browniano que modela a difusão de preços, os martingais que caracterizam a ausência de arbitragem e as expectativas condicionais que precificam derivativos --- todos esses conceitos são, em última instância, construções da teoria da probabilidade axiomatizada por Andrey Kolmogorov em 1933. Este capítulo oferece uma revisão rigorosa, porém acessível, dos conceitos probabilísticos essenciais para o estudo da Teoria de Arbitragem Geométrica, com ênfase em exemplos financeiros que ilustram cada construção teórica.
+A teoria moderna de finan SSas matem iticas repousa sobre os alicerces da teoria da probabilidade. O movimento browniano que modela a difus  o de pre SSos, os martingais que caracterizam a aus ancia de arbitragem e as expectativas condicionais que precificam derivativos --- todos esses conceitos s  o, em  oltima inst  ncia, constru SS ues da teoria da probabilidade axiomatizada por Andrey Kolmogorov em 1933. Este cap -tulo oferece uma revis  o rigorosa, por cm acess -vel, dos conceitos probabil -sticos essenciais para o estudo da Teoria de Arbitragem Geom ctrica, com  anfase em exemplos financeiros que ilustram cada constru SS  o te 3rica.
 
 % ---------------------------------------------------------------------------
-\section{Espaços de Probabilidade}
+\section{Espa SSos de Probabilidade}
 % ---------------------------------------------------------------------------
 
-A formalização da probabilidade como ramo da matemática pura deve-se a Kolmogorov, cuja monografia \textit{Grundbegriffe der Wahrscheinlichkeitsrechnung} (1933) estabeleceu a axiomática que permanece como padrão até hoje.\footnote{Para uma exposição completa da axiomática de Kolmogorov, veja \textcite{williams1991probability}, Capítulos 1--3. \textcite{billingsley2012probability} oferece um tratamento mais extenso com ênfase em teoria da medida.}
+A formaliza SS  o da probabilidade como ramo da matem itica pura deve-se a Kolmogorov, cuja monografia \textit{Grundbegriffe der Wahrscheinlichkeitsrechnung} (1933) estabeleceu a axiom itica que permanece como padr  o at c hoje.\footnote{Para uma exposi SS  o completa da axiom itica de Kolmogorov, veja \textcite{williams1991probability}, Cap -tulos 1--3. \textcite{billingsley2012probability} oferece um tratamento mais extenso com  anfase em teoria da medida.}
 
-\begin{defi}[$\sigma$-álgebra]
-Seja $\Omega$ um conjunto não vazio. Uma coleção $\$\\mathcal{F}\$ \subseteq 2^\Omega$ é uma \textbf{$\sigma$-álgebra} sobre $\Omega$ se:
+\begin{defi}[$\sigma$- ilgebra]
+Seja $\Omega$ um conjunto n  o vazio. Uma cole SS  o $\$\\mathcal{F}\$ \subseteq 2^\Omega$  c uma \textbf{$\sigma$- ilgebra} sobre $\Omega$ se:
 \begin{enumerate}[label=(\roman*)]
     \item $\Omega \in \F$;
-    \item $A \in \$\\mathcal{F}\$ \implies A^c \in \F$ (fechamento sob complementação);
-    \item $\{A_n\}_{n \in \N} \subseteq \$\\mathcal{F}\$ \implies \bigcup_{n=1}^\infty A_n \in \F$ (fechamento sob união contável).
+    \item $A \in \$\\mathcal{F}\$ \implies A^c \in \F$ (fechamento sob complementa SS  o);
+    \item $\{A_n\}_{n \in \N} \subseteq \$\\mathcal{F}\$ \implies \bigcup_{n=1}^\infty A_n \in \F$ (fechamento sob uni  o cont ivel).
 \end{enumerate}
-O par $(\Omega, \F)$ é denominado \textbf{espaço mensurável}.
+O par $(\Omega, \F)$  c denominado \textbf{espa SSo mensur ivel}.
 \end{defi}
 
-Em finanças, uma $\sigma$-álgebra modela a \textbf{estrutura de informação} disponível em determinado instante. Considere o preço de uma ação observado diariamente: a $\sigma$-álgebra $\$\\mathcal{F}_t\$$ contém todos os eventos cuja ocorrência é conhecida até o dia $t$. Esta interpretação será fundamental quando introduzirmos filtrações na Seção~\ref{sec:martingais}.
+Em finan SSas, uma $\sigma$- ilgebra modela a \textbf{estrutura de informa SS  o} dispon -vel em determinado instante. Considere o pre SSo de uma a SS  o observado diariamente: a $\sigma$- ilgebra $\$\\mathcal{F}_t\$$ cont cm todos os eventos cuja ocorr ancia  c conhecida at c o dia $t$. Esta interpreta SS  o ser i fundamental quando introduzirmos filtra SS ues na Se SS  o~\ref{sec:martingais}.
 
 \begin{defi}[Medida de Probabilidade]
-Uma função $\P: \$\\mathcal{F}\$ \to [0,1]$ é uma \textbf{medida de probabilidade} se satisfaz os \textbf{axiomas de Kolmogorov}:
+Uma fun SS  o $\P: \$\\mathcal{F}\$ \to [0,1]$  c uma \textbf{medida de probabilidade} se satisfaz os \textbf{axiomas de Kolmogorov}:
 \begin{enumerate}[label=(K\arabic*)]
-    \item $\P(\Omega) = 1$ (normalização);
-    \item $\P(A) \geq 0$ para todo $A \in \F$ (não-negatividade);
-    \item Para toda coleção $\{A_n\}_{n \in \N} \subseteq \F$ de conjuntos disjuntos dois a dois, vale a $\sigma$-aditividade:
+    \item $\P(\Omega) = 1$ (normaliza SS  o);
+    \item $\P(A) \geq 0$ para todo $A \in \F$ (n  o-negatividade);
+    \item Para toda cole SS  o $\{A_n\}_{n \in \N} \subseteq \F$ de conjuntos disjuntos dois a dois, vale a $\sigma$-aditividade:
     \begin{equation}
         \P\brk{\bigcup_{n=1}^\infty A_n} = \sum_{n=1}^\infty \P(A_n).
     \end{equation}
 \end{enumerate}
-A tripla $(\Omega, \F, \P)$ é um \textbf{espaço de probabilidade}.
+A tripla $(\Omega, \F, \P)$  c um \textbf{espa SSo de probabilidade}.
 \end{defi}
 
-\begin{ex}[Lançamento de moeda infinita]
-Seja $\Omega = \{0,1\}^\N$ o espaço de todas as sequências infinitas de caras (1) e coroas (0). A $\sigma$-álgebra gerada pelos cilindros finitos --- conjuntos da forma $\{\omega \in \Omega : \omega_1 = a_1, \dots, \omega_n = a_n\}$ --- é a $\sigma$-álgebra produto. A medida de probabilidade produto $\P = \bigotimes_{n=1}^\infty \mu_n$, com $\mu_n(\{0\}) = \mu_n(\{1\}) = 1/2$, define o espaço de probabilidade canônico para uma sequência de variáveis de Bernoulli independentes. Em finanças, este espaço modela o passeio aleatório simétrico, um dos alicerces do modelo binomial de precificação de opções.
+\begin{ex}[Lan SSamento de moeda infinita]
+Seja $\Omega = \{0,1\}^\N$ o espa SSo de todas as sequ ancias infinitas de caras (1) e coroas (0). A $\sigma$- ilgebra gerada pelos cilindros finitos --- conjuntos da forma $\{\omega \in \Omega : \omega_1 = a_1, \dots, \omega_n = a_n\}$ ---  c a $\sigma$- ilgebra produto. A medida de probabilidade produto $\P = \bigotimes_{n=1}^\infty \mu_n$, com $\mu_n(\{0\}) = \mu_n(\{1\}) = 1/2$, define o espa SSo de probabilidade can 'nico para uma sequ ancia de vari iveis de Bernoulli independentes. Em finan SSas, este espa SSo modela o passeio aleat 3rio sim ctrico, um dos alicerces do modelo binomial de precifica SS  o de op SS ues.
 \end{ex}
 
-\begin{defi}[Filtração]
-Uma família crescente de $\sigma$-álgebras $\{\$\\mathcal{F}_t\$\}_{t \geq 0}$ com $\F_s \subseteq \$\\mathcal{F}_t\$$ para $s \leq t$ é uma \textbf{filtração}. O espaço $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$ é um \textbf{espaço de probabilidade filtrado}. A filtração aumentada usual\footnote{A filtração usual inclui as condições de completude e continuidade à direita, necessárias para a teoria geral de processos estocásticos. Veja \textcite{oksendal2003stochastic}, Capítulo 2.} satisfaz $\$\\mathcal{F}_t\$ = \bigcap_{s > t} \F_s$ (continuidade à direita) e $\F_0$ contém todos os conjuntos $\P$-nulos.
+\begin{defi}[Filtra SS  o]
+Uma fam -lia crescente de $\sigma$- ilgebras $\{\$\\mathcal{F}_t\$\}_{t \geq 0}$ com $\F_s \subseteq \$\\mathcal{F}_t\$$ para $s \leq t$  c uma \textbf{filtra SS  o}. O espa SSo $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$  c um \textbf{espa SSo de probabilidade filtrado}. A filtra SS  o aumentada usual\footnote{A filtra SS  o usual inclui as condi SS ues de completude e continuidade    direita, necess irias para a teoria geral de processos estoc isticos. Veja \textcite{oksendal2003stochastic}, Cap -tulo 2.} satisfaz $\$\\mathcal{F}_t\$ = \bigcap_{s > t} \F_s$ (continuidade    direita) e $\F_0$ cont cm todos os conjuntos $\P$-nulos.
 \end{defi}
 
-A filtração $\$\\mathcal{F}_t\$$ representa a informação acumulada até o instante $t$. Em um mercado financeiro, $\$\\mathcal{F}_t\$$ contém a história completa dos preços $S_u$ para $0 \leq u \leq t$, mas não revela valores futuros. Esta assimetria informacional é o cerne da não-antecipatividade: uma estratégia de investimento $\theta_t$ deve ser $\$\\mathcal{F}_t\$$-mensurável, ou seja, baseada apenas em informação passada e presente.
+A filtra SS  o $\$\\mathcal{F}_t\$$ representa a informa SS  o acumulada at c o instante $t$. Em um mercado financeiro, $\$\\mathcal{F}_t\$$ cont cm a hist 3ria completa dos pre SSos $S_u$ para $0 \leq u \leq t$, mas n  o revela valores futuros. Esta assimetria informacional  c o cerne da n  o-antecipatividade: uma estrat cgia de investimento $\theta_t$ deve ser $\$\\mathcal{F}_t\$$-mensur ivel, ou seja, baseada apenas em informa SS  o passada e presente.
 
 % ---------------------------------------------------------------------------
-\section{Variáveis Aleatórias e Esperança}
+\section{Vari iveis Aleat 3rias e Esperan SSa}
 % ---------------------------------------------------------------------------
 
-\begin{defi}[Variável Aleatória]
-Seja $(\Omega, \F, \P)$ um espaço de probabilidade. Uma função $X: \Omega \to \R$ é uma \textbf{variável aleatória} (v.a.) se $X$ é $\F$-mensurável, isto é, $X^{-1}(B) \in \F$ para todo boreliano $B \in \mathcal{B}(\R)$. A \textbf{distribuição} de $X$ é a medida imagem $\P_X := \P \circ X^{-1}$ sobre $(\R, \mathcal{B}(\R))$.
+\begin{defi}[Vari ivel Aleat 3ria]
+Seja $(\Omega, \F, \P)$ um espa SSo de probabilidade. Uma fun SS  o $X: \Omega \to \R$  c uma \textbf{vari ivel aleat 3ria} (v.a.) se $X$  c $\F$-mensur ivel, isto  c, $X^{-1}(B) \in \F$ para todo boreliano $B \in \mathcal{B}(\R)$. A \textbf{distribui SS  o} de $X$  c a medida imagem $\P_X := \P \circ X^{-1}$ sobre $(\R, \mathcal{B}(\R))$.
 \end{defi}
 
-A condição de mensurabilidade garante que possamos atribuir probabilidades a eventos do tipo $\{X \leq a\}$, $\{X \in (a,b]\}$, etc. Em termos financeiros, o retorno logarítmico $R_t = \log(S_t/S_{t-1})$ é uma variável aleatória cuja distribuição determina o risco do ativo.
+A condi SS  o de mensurabilidade garante que possamos atribuir probabilidades a eventos do tipo $\{X \leq a\}$, $\{X \in (a,b]\}$, etc. Em termos financeiros, o retorno logar -tmico $R_t = \log(S_t/S_{t-1})$  c uma vari ivel aleat 3ria cuja distribui SS  o determina o risco do ativo.
 
-\begin{defi}[Esperança]
-A \textbf{esperança} (ou valor esperado) de uma v.a. $X \geq 0$ é definida como a integral de Lebesgue:
+\begin{defi}[Esperan SSa]
+A \textbf{esperan SSa} (ou valor esperado) de uma v.a. $X \geq 0$  c definida como a integral de Lebesgue:
 \begin{equation}
     \E[X] := \int_\Omega X(\omega) \dif \P(\omega).
 \end{equation}
 Para $X$ qualquer, decompomos $X = X^+ - X^-$ (parte positiva e negativa) e definimos $\E[X] := \E[X^+] - \E[X^-]$, desde que pelo menos uma das integrais seja finita. Dizemos que $X \in \Lp^1(\Omega, \F, \P)$ se $\E[|X|] < \infty$.
 \end{defi}
 
-\begin{defi}[Momentos e Variância]
-Para $k \in \N$, o \textbf{$k$-ésimo momento} (se existir) é $\E[X^k]$. O \textbf{$k$-ésimo momento central} é $\E[(X - \E[X])^k]$. A \textbf{variância} é o segundo momento central:
+\begin{defi}[Momentos e Vari  ncia]
+Para $k \in \N$, o \textbf{$k$- csimo momento} (se existir)  c $\E[X^k]$. O \textbf{$k$- csimo momento central}  c $\E[(X - \E[X])^k]$. A \textbf{vari  ncia}  c o segundo momento central:
 \begin{equation}
     \Var(X) := \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2.
 \end{equation}
-A \textbf{covariância} entre duas v.a. $X, Y \in \Lp^2$ é $\Cov(X,Y) := \E[(X - \E[X])(Y - \E[Y])]$.
+A \textbf{covari  ncia} entre duas v.a. $X, Y \in \Lp^2$  c $\Cov(X,Y) := \E[(X - \E[X])(Y - \E[Y])]$.
 \end{defi}
 
-Em finanças, a variância (ou sua raiz quadrada, a volatilidade) é a medida de risco mais elementar. A covariância entre retornos de ativos distintos é a base da teoria de carteiras de Markowitz e do Capital Asset Pricing Model (CAPM).
+Em finan SSas, a vari  ncia (ou sua raiz quadrada, a volatilidade)  c a medida de risco mais elementar. A covari  ncia entre retornos de ativos distintos  c a base da teoria de carteiras de Markowitz e do Capital Asset Pricing Model (CAPM).
 
-\begin{defi}[Função Característica]
-A \textbf{função característica} de uma v.a. $X$ é $\phi_X(u) := \E[e^{iuX}]$, para $u \in \R$. Esta função \textbf{sempre existe} (pois $|e^{iuX}| = 1$), é uniformemente contínua e determina unicamente a distribuição de $X$\footnote{Teorema da unicidade de Lévy. \textcite{williams1991probability}, Seção 16.6.}.
+\begin{defi}[Fun SS  o Caracter -stica]
+A \textbf{fun SS  o caracter -stica} de uma v.a. $X$  c $\phi_X(u) := \E[e^{iuX}]$, para $u \in \R$. Esta fun SS  o \textbf{sempre existe} (pois $|e^{iuX}| = 1$),  c uniformemente cont -nua e determina unicamente a distribui SS  o de $X$\footnote{Teorema da unicidade de L cvy. \textcite{williams1991probability}, Se SS  o 16.6.}.
 \end{defi}
 
-A função característica é uma ferramenta indispensável em finanças quantitativas, especialmente na precificação de opções via transformada de Fourier (método de Carr--Madan) e no estudo de distribuições infinitamente divisíveis que modelam retornos em tempo contínuo.
+A fun SS  o caracter -stica  c uma ferramenta indispens ivel em finan SSas quantitativas, especialmente na precifica SS  o de op SS ues via transformada de Fourier (m ctodo de Carr--Madan) e no estudo de distribui SS ues infinitamente divis -veis que modelam retornos em tempo cont -nuo.
 
 \begin{teo}[Desigualdade de Markov e Chebyshev]
-Seja $X$ uma v.a. não-negativa. Para todo $\lambda > 0$:
+Seja $X$ uma v.a. n  o-negativa. Para todo $\lambda > 0$:
 \begin{equation}
     \P(X \geq \lambda) \leq \frac{\E[X]}{\lambda} \quad \text{(Markov)}.
 \end{equation}
-Se $X \in \Lp^2$, então para todo $\varepsilon > 0$:
+Se $X \in \Lp^2$, ent  o para todo $\varepsilon > 0$:
 \begin{equation}
     \P(|X - \E[X]| \geq \varepsilon) \leq \frac{\Var(X)}{\varepsilon^2} \quad \text{(Chebyshev)}.
 \end{equation}
 \end{teo}
 
-Estas desigualdades fornecem cotas para probabilidades de cauda e são a base teórica para medidas de risco do tipo Value-at-Risk (VaR).
+Estas desigualdades fornecem cotas para probabilidades de cauda e s  o a base te 3rica para medidas de risco do tipo Value-at-Risk (VaR).
 
 % ---------------------------------------------------------------------------
-\section{Distribuições Relevantes}
+\section{Distribui SS ues Relevantes}
 % ---------------------------------------------------------------------------
 
-Apresentamos as quatro distribuições de probabilidade mais importantes para modelagem financeira. Cada uma captura um aspecto distinto do comportamento de preços e riscos.
+Apresentamos as quatro distribui SS ues de probabilidade mais importantes para modelagem financeira. Cada uma captura um aspecto distinto do comportamento de pre SSos e riscos.
 
-\begin{defi}[Distribuição Normal -- Gaussiana]
+\begin{defi}[Distribui SS  o Normal -- Gaussiana]
 $X \sim \mathcal{N}(\mu, \sigma^2)$ se possui densidade
 \begin{equation}
     f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\brk{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad x \in \R.
@@ -109,76 +109,76 @@ $X \sim \mathcal{N}(\mu, \sigma^2)$ se possui densidade
 com $\E[X] = \mu$ e $\Var(X) = \sigma^2$.
 \end{defi}
 
-No modelo de Black--Scholes, o log-retorno $\log(S_t/S_0)$ segue uma distribuição normal com média $(\mu - \sigma^2/2)t$ e variância $\sigma^2 t$. Embora a hipótese de normalidade seja frequentemente violada na prática (caudas pesadas e assimetria nos retornos reais), a distribuição normal permanece como ponto de partida fundamental.
+No modelo de Black--Scholes, o log-retorno $\log(S_t/S_0)$ segue uma distribui SS  o normal com m cdia $(\mu - \sigma^2/2)t$ e vari  ncia $\sigma^2 t$. Embora a hip 3tese de normalidade seja frequentemente violada na pr itica (caudas pesadas e assimetria nos retornos reais), a distribui SS  o normal permanece como ponto de partida fundamental.
 
-\begin{defi}[Distribuição Log-Normal]
-$X \sim \text{LogNormal}(\mu, \sigma^2)$ se $\log X \sim \mathcal{N}(\mu, \sigma^2)$. A densidade é
+\begin{defi}[Distribui SS  o Log-Normal]
+$X \sim \text{LogNormal}(\mu, \sigma^2)$ se $\log X \sim \mathcal{N}(\mu, \sigma^2)$. A densidade  c
 \begin{equation}
     f_X(x) = \frac{1}{x\sigma\sqrt{2\pi}} \exp\brk{-\frac{(\log x - \mu)^2}{2\sigma^2}}, \quad x > 0,
 \end{equation}
 com $\E[X] = e^{\mu + \sigma^2/2}$ e $\Var(X) = e^{2\mu + \sigma^2}(e^{\sigma^2} - 1)$.
 \end{defi}
 
-O preço de uma ação no modelo de Black--Scholes é log-normal: $S_t = S_0 \exp((\mu - \sigma^2/2)t + \sigma W_t)$, onde $W_t$ é um movimento browniano. A log-normalidade garante que $S_t > 0$ quase certamente, respeitando a responsabilidade limitada dos acionistas.
+O pre SSo de uma a SS  o no modelo de Black--Scholes  c log-normal: $S_t = S_0 \exp((\mu - \sigma^2/2)t + \sigma W_t)$, onde $W_t$  c um movimento browniano. A log-normalidade garante que $S_t > 0$ quase certamente, respeitando a responsabilidade limitada dos acionistas.
 
-\begin{defi}[Distribuição de Poisson]
+\begin{defi}[Distribui SS  o de Poisson]
 $X \sim \text{Poisson}(\lambda)$ se $\P(X = k) = e^{-\lambda} \lambda^k / k!$ para $k \in \N_0$, com $\E[X] = \Var(X) = \lambda$.
 \end{defi}
 
-Em finanças, a distribuição de Poisson modela a \textbf{chegada de eventos raros}: falências, defaults de crédito, saltos de preço, ou a chegada de ordens de compra e venda em mercados de alta frequência. Processos de Poisson compostos são a base dos modelos de difusão com saltos (Merton, 1976; Kou, 2002).
+Em finan SSas, a distribui SS  o de Poisson modela a \textbf{chegada de eventos raros}: fal ancias, defaults de cr cdito, saltos de pre SSo, ou a chegada de ordens de compra e venda em mercados de alta frequ ancia. Processos de Poisson compostos s  o a base dos modelos de difus  o com saltos (Merton, 1976; Kou, 2002).
 
-\begin{defi}[Distribuição Exponencial]
-$X \sim \text{Exp}(\lambda)$ se possui densidade $f_X(x) = \lambda e^{-\lambda x}$ para $x \geq 0$, com $\E[X] = 1/\lambda$ e $\Var(X) = 1/\lambda^2$. A propriedade fundamental é a \textbf{ausência de memória}:
+\begin{defi}[Distribui SS  o Exponencial]
+$X \sim \text{Exp}(\lambda)$ se possui densidade $f_X(x) = \lambda e^{-\lambda x}$ para $x \geq 0$, com $\E[X] = 1/\lambda$ e $\Var(X) = 1/\lambda^2$. A propriedade fundamental  c a \textbf{aus ancia de mem 3ria}:
 \begin{equation}
     \P(X > s + t \mid X > s) = \P(X > t), \quad \forall s, t \geq 0.
 \end{equation}
 \end{defi}
 
-O tempo entre eventos consecutivos em um processo de Poisson é exponencial. Em modelagem de risco de crédito, o tempo até o default de uma firma é modelado como uma variável exponencial (ou sua generalização, a distribuição de Weibull). A ausência de memória implica que a \textit{taxa de hazard} (intensidade de default) é constante, uma hipótese simplificadora que pode ser relaxada com processos de Cox (Poisson duplamente estocásticos).
+O tempo entre eventos consecutivos em um processo de Poisson  c exponencial. Em modelagem de risco de cr cdito, o tempo at c o default de uma firma  c modelado como uma vari ivel exponencial (ou sua generaliza SS  o, a distribui SS  o de Weibull). A aus ancia de mem 3ria implica que a \textit{taxa de hazard} (intensidade de default)  c constante, uma hip 3tese simplificadora que pode ser relaxada com processos de Cox (Poisson duplamente estoc isticos).
 
 \begin{ex}[Retorno de carteira]
-Considere uma carteira com $n$ ativos cujos retornos $R_i \sim \mathcal{N}(\mu_i, \sigma_i^2)$ são conjuntamente normais. O retorno da carteira $R_p = \sum_{i=1}^n w_i R_i$ (com pesos $w_i$) também é normal: $R_p \sim \mathcal{N}(\sum w_i \mu_i, \sum_{i,j} w_i w_j \sigma_{ij})$. Esta propriedade de fechamento sob combinações lineares explica a ubiquidade da distribuição normal em finanças, embora a hipótese de normalidade conjunta seja uma idealização.
+Considere uma carteira com $n$ ativos cujos retornos $R_i \sim \mathcal{N}(\mu_i, \sigma_i^2)$ s  o conjuntamente normais. O retorno da carteira $R_p = \sum_{i=1}^n w_i R_i$ (com pesos $w_i$) tamb cm  c normal: $R_p \sim \mathcal{N}(\sum w_i \mu_i, \sum_{i,j} w_i w_j \sigma_{ij})$. Esta propriedade de fechamento sob combina SS ues lineares explica a ubiquidade da distribui SS  o normal em finan SSas, embora a hip 3tese de normalidade conjunta seja uma idealiza SS  o.
 \end{ex}
 
 % ---------------------------------------------------------------------------
-\section{Probabilidade Condicional e Esperança Condicional}
+\section{Probabilidade Condicional e Esperan SSa Condicional}
 % ---------------------------------------------------------------------------
 
-O conceito de esperança condicional é a ferramenta matemática mais importante da teoria de precificação de ativos. Diferentemente da probabilidade condicional elementar $\P(A \mid B) = \P(A \cap B)/\P(B)$, que condiciona em um evento de probabilidade positiva, a esperança condicional generaliza este conceito para condicionamento em $\sigma$-álgebras --- ou seja, em \textbf{conjuntos de informação}.
+O conceito de esperan SSa condicional  c a ferramenta matem itica mais importante da teoria de precifica SS  o de ativos. Diferentemente da probabilidade condicional elementar $\P(A \mid B) = \P(A \cap B)/\P(B)$, que condiciona em um evento de probabilidade positiva, a esperan SSa condicional generaliza este conceito para condicionamento em $\sigma$- ilgebras --- ou seja, em \textbf{conjuntos de informa SS  o}.
 
-\begin{defi}[Esperança Condicional]
-Seja $X \in \Lp^1(\Omega, \F, \P)$ e $\G \subseteq \F$ uma sub-$\sigma$-álgebra. A \textbf{esperança condicional} de $X$ dada $\G$ é a única (q.c.) variável aleatória $\E[X \mid \G]$ satisfazendo:
+\begin{defi}[Esperan SSa Condicional]
+Seja $X \in \Lp^1(\Omega, \F, \P)$ e $\G \subseteq \F$ uma sub-$\sigma$- ilgebra. A \textbf{esperan SSa condicional} de $X$ dada $\G$  c a  onica (q.c.) vari ivel aleat 3ria $\E[X \mid \G]$ satisfazendo:
 \begin{enumerate}[label=(\roman*)]
-    \item $\E[X \mid \G]$ é $\G$-mensurável;
+    \item $\E[X \mid \G]$  c $\G$-mensur ivel;
     \item Para todo $G \in \G$, $\int_G \E[X \mid \G] \dif \P = \int_G X \dif \P$.
 \end{enumerate}
 \end{defi}
 
-A condição (ii) afirma que $\E[X \mid \G]$ é a \textbf{projeção} de $X$ no subespaço das funções $\G$-mensuráveis no sentido de $\Lp^2$, ou seja, é a melhor aproximação de $X$ usando apenas a informação contida em $\G$. Em finanças, se $\G = \$\\mathcal{F}_t\$$ representa a informação até $t$, então $\E[X \mid \$\\mathcal{F}_t\$]$ é a melhor previsão de $X$ com base em toda a história disponível.
+A condi SS  o (ii) afirma que $\E[X \mid \G]$  c a \textbf{proje SS  o} de $X$ no subespa SSo das fun SS ues $\G$-mensur iveis no sentido de $\Lp^2$, ou seja,  c a melhor aproxima SS  o de $X$ usando apenas a informa SS  o contida em $\G$. Em finan SSas, se $\G = \$\\mathcal{F}_t\$$ representa a informa SS  o at c $t$, ent  o $\E[X \mid \$\\mathcal{F}_t\$]$  c a melhor previs  o de $X$ com base em toda a hist 3ria dispon -vel.
 
-\begin{teo}[Propriedades da Esperança Condicional]
-Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma$-álgebras de $\F$. Valem:
+\begin{teo}[Propriedades da Esperan SSa Condicional]
+Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
 \begin{enumerate}[label=(\roman*)]
     \item \textbf{Linearidade:} $\E[aX + bY \mid \G] = a\E[X \mid \G] + b\E[Y \mid \G]$;
-    \item \textbf{Retirada do conhecido:} se $Y$ é $\G$-mensurável e limitada, $\E[YX \mid \G] = Y \E[X \mid \G]$;
-    \item \textbf{Independência:} se $X$ é independente de $\G$, então $\E[X \mid \G] = \E[X]$;
-    \item \textbf{Propriedade de torre:} se $\H \subseteq \G$, então
+    \item \textbf{Retirada do conhecido:} se $Y$  c $\G$-mensur ivel e limitada, $\E[YX \mid \G] = Y \E[X \mid \G]$;
+    \item \textbf{Independ ancia:} se $X$  c independente de $\G$, ent  o $\E[X \mid \G] = \E[X]$;
+    \item \textbf{Propriedade de torre:} se $\H \subseteq \G$, ent  o
     \begin{equation}
         \E\brk{\E[X \mid \G] \mid \H} = \E[X \mid \H];
     \end{equation}
     \item \textbf{Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \mid \G] \leq \E[Y \mid \G]$ q.c.;
-    \item \textbf{Desigualdade de Jensen condicional:} se $\phi$ é convexa e $\phi(X) \in \Lp^1$, então $\phi(\E[X \mid \G]) \leq \E[\phi(X) \mid \G]$ q.c.
+    \item \textbf{Desigualdade de Jensen condicional:} se $\phi$  c convexa e $\phi(X) \in \Lp^1$, ent  o $\phi(\E[X \mid \G]) \leq \E[\phi(X) \mid \G]$ q.c.
 \end{enumerate}
 \end{teo}
 
-A propriedade de torre (iv) é onipresente em finanças. Por exemplo, ao precificar uma opção americana por indução retroativa, a cada passo calculamos $\E[\text{payoff futuro} \mid \$\\mathcal{F}_t\$]$, e a propriedade de torre garante a consistência temporal do algoritmo de programação dinâmica.
+A propriedade de torre (iv)  c onipresente em finan SSas. Por exemplo, ao precificar uma op SS  o americana por indu SS  o retroativa, a cada passo calculamos $\E[\text{payoff futuro} \mid \$\\mathcal{F}_t\$]$, e a propriedade de torre garante a consist ancia temporal do algoritmo de programa SS  o din  mica.
 
-\begin{ex}[Precificação neutra ao risco]
-Em um mercado completo, o preço de um derivativo com payoff $H_T$ no vencimento $T$ é dado por
+\begin{ex}[Precifica SS  o neutra ao risco]
+Em um mercado completo, o pre SSo de um derivativo com payoff $H_T$ no vencimento $T$  c dado por
 \begin{equation}
     V_t = e^{-r(T-t)} \, \E^\Q [H_T \mid \$\\mathcal{F}_t\$],
 \end{equation}
-onde $\Q$ é a medida martingal equivalente (medida neutra ao risco) e $r$ é a taxa livre de risco. A esperança condicional $\E^\Q[\cdot \mid \$\\mathcal{F}_t\$]$ representa o operador de precificação: ele calcula o valor esperado descontado do payoff futuro, condicionado a toda informação disponível no instante $t$. A propriedade de torre assegura que $e^{-rt} V_t$ é um $\Q$-martingal, implicando ausência de arbitragem.
+onde $\Q$  c a medida martingal equivalente (medida neutra ao risco) e $r$  c a taxa livre de risco. A esperan SSa condicional $\E^\Q[\cdot \mid \$\\mathcal{F}_t\$]$ representa o operador de precifica SS  o: ele calcula o valor esperado descontado do payoff futuro, condicionado a toda informa SS  o dispon -vel no instante $t$. A propriedade de torre assegura que $e^{-rt} V_t$  c um $\Q$-martingal, implicando aus ancia de arbitragem.
 \end{ex}
 
 % ---------------------------------------------------------------------------
@@ -186,10 +186,10 @@ onde $\Q$ é a medida martingal equivalente (medida neutra ao risco) e $r$ é a 
 \label{sec:martingais}
 % ---------------------------------------------------------------------------
 
-O conceito de martingal está no coração da teoria moderna de finanças. Intuitivamente, um martingal modela um \textbf{jogo justo}: a expectativa do valor futuro, condicionada à informação presente, é exatamente o valor presente. Esta propriedade é a tradução matemática precisa da \textbf{ausência de oportunidades de arbitragem} em mercados financeiros\footnote{O Primeiro Teorema Fundamental de Precificação de Ativos afirma que um mercado é livre de arbitragem se, e somente se, existe uma medida martingal equivalente. Veja \textcite{delbaen2006mathematics} e \textcite{williams1991probability}, Capítulo 10.}.
+O conceito de martingal est i no cora SS  o da teoria moderna de finan SSas. Intuitivamente, um martingal modela um \textbf{jogo justo}: a expectativa do valor futuro, condicionada    informa SS  o presente,  c exatamente o valor presente. Esta propriedade  c a tradu SS  o matem itica precisa da \textbf{aus ancia de oportunidades de arbitragem} em mercados financeiros\footnote{O Primeiro Teorema Fundamental de Precifica SS  o de Ativos afirma que um mercado  c livre de arbitragem se, e somente se, existe uma medida martingal equivalente. Veja \textcite{delbaen2006mathematics} e \textcite{williams1991probability}, Cap -tulo 10.}.
 
 \begin{defi}[Martingal]
-Seja $(\Omega, \F, \{\$\\mathcal{F}_t\$\}_{t \geq 0}, \P)$ um espaço de probabilidade filtrado. Um processo estocástico $\{M_t\}_{t \geq 0}$ adaptado a $\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^1$ para todo $t$ é um:
+Seja $(\Omega, \F, \{\$\\mathcal{F}_t\$\}_{t \geq 0}, \P)$ um espa SSo de probabilidade filtrado. Um processo estoc istico $\{M_t\}_{t \geq 0}$ adaptado a $\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^1$ para todo $t$  c um:
 \begin{itemize}
     \item \textbf{martingal} se $\E[M_t \mid \F_s] = M_s$ para todo $0 \leq s \leq t$;
     \item \textbf{submartingal} se $\E[M_t \mid \F_s] \geq M_s$ para todo $0 \leq s \leq t$;
@@ -197,110 +197,110 @@ Seja $(\Omega, \F, \{\$\\mathcal{F}_t\$\}_{t \geq 0}, \P)$ um espaço de probabi
 \end{itemize}
 \end{defi}
 
-A distinção entre sub e supermartingal reflete a direção da tendência: um submartingal tende a crescer em média (jogo favorável ao apostador), enquanto um supermartingal tende a decrescer (jogo desfavorável).
+A distin SS  o entre sub e supermartingal reflete a dire SS  o da tend ancia: um submartingal tende a crescer em m cdia (jogo favor ivel ao apostador), enquanto um supermartingal tende a decrescer (jogo desfavor ivel).
 
-\begin{ex}[Passeio Aleatório Simétrico]
-Seja $\{X_n\}_{n \in \N}$ uma sequência de v.a. i.i.d. com $\P(X_n = 1) = \P(X_n = -1) = 1/2$. Defina $M_n = \sum_{k=1}^n X_k$ com $M_0 = 0$ e a filtração natural $\F_n = \sigma(X_1, \dots, X_n)$. Então $\{M_n\}$ é um martingal, pois
+\begin{ex}[Passeio Aleat 3rio Sim ctrico]
+Seja $\{X_n\}_{n \in \N}$ uma sequ ancia de v.a. i.i.d. com $\P(X_n = 1) = \P(X_n = -1) = 1/2$. Defina $M_n = \sum_{k=1}^n X_k$ com $M_0 = 0$ e a filtra SS  o natural $\F_n = \sigma(X_1, \dots, X_n)$. Ent  o $\{M_n\}$  c um martingal, pois
 \begin{equation}
     \E[M_{n+1} \mid \F_n] = \E[M_n + X_{n+1} \mid \F_n] = M_n + \E[X_{n+1}] = M_n.
 \end{equation}
-O passeio aleatório é o análogo discreto do movimento browniano e constitui a base do modelo binomial de Cox--Ross--Rubinstein (CRR).
+O passeio aleat 3rio  c o an ilogo discreto do movimento browniano e constitui a base do modelo binomial de Cox--Ross--Rubinstein (CRR).
 \end{ex}
 
-\begin{ex}[Preço Descontado sob Medida Neutra ao Risco]
-Seja $S_t$ o preço de um ativo e $B_t = e^{rt}$ o valor de um título livre de risco (conta bancária). Sob a medida martingal equivalente $\Q$, o \textbf{preço descontado} $\widetilde{S}_t := S_t / B_t = e^{-rt} S_t$ é um $\Q$-martingal:
+\begin{ex}[Pre SSo Descontado sob Medida Neutra ao Risco]
+Seja $S_t$ o pre SSo de um ativo e $B_t = e^{rt}$ o valor de um t -tulo livre de risco (conta banc iria). Sob a medida martingal equivalente $\Q$, o \textbf{pre SSo descontado} $\widetilde{S}_t := S_t / B_t = e^{-rt} S_t$  c um $\Q$-martingal:
 \begin{equation}
     \E^\Q[\widetilde{S}_t \mid \F_s] = \widetilde{S}_s, \quad 0 \leq s \leq t.
 \end{equation}
-Esta é a condição central de não-arbitragem: o valor presente de qualquer ativo, descontado pela taxa livre de risco, deve ser um martingal sob $\Q$. No modelo de Black--Scholes, $\dif \widetilde{S}_t = \sigma \widetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$ é um $\Q$-movimento browniano, e a representação como integral estocástica de um martingal é explícita.
+Esta  c a condi SS  o central de n  o-arbitragem: o valor presente de qualquer ativo, descontado pela taxa livre de risco, deve ser um martingal sob $\Q$. No modelo de Black--Scholes, $\dif \widetilde{S}_t = \sigma \widetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$  c um $\Q$-movimento browniano, e a representa SS  o como integral estoc istica de um martingal  c expl -cita.
 \end{ex}
 
-\begin{teo}[Decomposição de Doob--Meyer]
-Seja $\{X_t\}$ um submartingal contínuo à direita. Então existe uma decomposição única
+\begin{teo}[Decomposi SS  o de Doob--Meyer]
+Seja $\{X_t\}$ um submartingal cont -nuo    direita. Ent  o existe uma decomposi SS  o  onica
 \begin{equation}
     X_t = M_t + A_t,
 \end{equation}
-onde $\{M_t\}$ é um martingal e $\{A_t\}$ é um processo crescente previsível com $A_0 = 0$.
+onde $\{M_t\}$  c um martingal e $\{A_t\}$  c um processo crescente previs -vel com $A_0 = 0$.
 \end{teo}
 
-Esta decomposição separa um processo estocástico em sua componente imprevisível (martingal) e sua tendência previsível (\textit{drift}). Em finanças, a decomposição de Doob--Meyer fundamenta a distinção entre risco sistemático (tendência) e risco idiossincrático (martingal), e é essencial para a fórmula de Itô e o cálculo estocástico.
+Esta decomposi SS  o separa um processo estoc istico em sua componente imprevis -vel (martingal) e sua tend ancia previs -vel (\textit{drift}). Em finan SSas, a decomposi SS  o de Doob--Meyer fundamenta a distin SS  o entre risco sistem itico (tend ancia) e risco idiossincr itico (martingal), e  c essencial para a f 3rmula de It ' e o c ilculo estoc istico.
 
 \begin{teo}[Teorema do Sampling Opcional de Doob]
-Seja $\{M_n\}_{n \geq 0}$ um martingal e $\tau$ um tempo de parada limitado. Então
+Seja $\{M_n\}_{n \geq 0}$ um martingal e $\tau$ um tempo de parada limitado. Ent  o
 \begin{equation}
     \E[M_\tau \mid \F_0] = M_0.
 \end{equation}
 Em particular, $\E[M_\tau] = \E[M_0]$.
 \end{teo}
 
-Este teorema justifica que, em um jogo justo, nenhuma estratégia de parada baseada apenas em informação passada (\textit{stopping time}) pode gerar lucro esperado positivo. Em finanças, isto implica que não se pode ``bater o mercado'' sistematicamente sem assumir risco adicional --- uma formalização da Hipótese do Mercado Eficiente (EMH) no contexto de martingais.
+Este teorema justifica que, em um jogo justo, nenhuma estrat cgia de parada baseada apenas em informa SS  o passada (\textit{stopping time}) pode gerar lucro esperado positivo. Em finan SSas, isto implica que n  o se pode ``bater o mercado'' sistematicamente sem assumir risco adicional --- uma formaliza SS  o da Hip 3tese do Mercado Eficiente (EMH) no contexto de martingais.
 
 % ---------------------------------------------------------------------------
 \section{Movimento Browniano}
 % ---------------------------------------------------------------------------
 
-O movimento browniano (ou processo de Wiener) é o objeto matemático central da modelagem financeira em tempo contínuo. Sua onipresença decorre do Teorema Central do Limite funcional (Teorema de Donsker): o movimento browniano é o limite de escala de passeios aleatórios, e portanto surge naturalmente como modelo para flutuações agregadas de preços resultantes de muitas decisões independentes de agentes de mercado.
+O movimento browniano (ou processo de Wiener)  c o objeto matem itico central da modelagem financeira em tempo cont -nuo. Sua onipresen SSa decorre do Teorema Central do Limite funcional (Teorema de Donsker): o movimento browniano  c o limite de escala de passeios aleat 3rios, e portanto surge naturalmente como modelo para flutua SS ues agregadas de pre SSos resultantes de muitas decis ues independentes de agentes de mercado.
 
-\begin{defi}[Movimento Browniano Padrão]
-Um processo estocástico $\{W_t\}_{t \geq 0}$ definido em $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$ é um \textbf{movimento browniano padrão} (ou processo de Wiener) se:
+\begin{defi}[Movimento Browniano Padr  o]
+Um processo estoc istico $\{W_t\}_{t \geq 0}$ definido em $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$  c um \textbf{movimento browniano padr  o} (ou processo de Wiener) se:
 \begin{enumerate}[label=(B\arabic*)]
     \item $W_0 = 0$ quase certamente;
-    \item \textbf{Incrementos independentes:} para todo $0 \leq t_1 < t_2 < \cdots < t_n$, as v.a. $W_{t_2} - W_{t_1}, \dots, W_{t_n} - W_{t_{n-1}}$ são independentes;
-    \item \textbf{Incrementos estacionários gaussianos:} para $0 \leq s < t$, $W_t - W_s \sim \mathcal{N}(0, t-s)$;
-    \item \textbf{Trajetórias contínuas:} $t \mapsto W_t(\omega)$ é contínua para quase todo $\omega$.
+    \item \textbf{Incrementos independentes:} para todo $0 \leq t_1 < t_2 < \cdots < t_n$, as v.a. $W_{t_2} - W_{t_1}, \dots, W_{t_n} - W_{t_{n-1}}$ s  o independentes;
+    \item \textbf{Incrementos estacion irios gaussianos:} para $0 \leq s < t$, $W_t - W_s \sim \mathcal{N}(0, t-s)$;
+    \item \textbf{Trajet 3rias cont -nuas:} $t \mapsto W_t(\omega)$  c cont -nua para quase todo $\omega$.
 \end{enumerate}
 \end{defi}
 
-As quatro propriedades caracterizam completamente o movimento browniano. A condição (B3) implica que $\E[W_t] = 0$ e $\E[W_t W_s] = \min(s,t)$ para todo $s,t \geq 0$.
+As quatro propriedades caracterizam completamente o movimento browniano. A condi SS  o (B3) implica que $\E[W_t] = 0$ e $\E[W_t W_s] = \min(s,t)$ para todo $s,t \geq 0$.
 
 \begin{teo}[Propriedades do Movimento Browniano]\label{teo:propriedades-mb}
-Seja $\{W_t\}$ um movimento browniano padrão. Valem as seguintes propriedades:
+Seja $\{W_t\}$ um movimento browniano padr  o. Valem as seguintes propriedades:
 \begin{enumerate}[label=(\roman*)]
-    \item \textbf{Martingal:} $W_t$ é um $\$\\mathcal{F}_t\$$-martingal.
-    \item \textbf{Variação quadrática:} $\langle W \rangle_t = t$ quase certamente, e a partição refinada satisfaz
+    \item \textbf{Martingal:} $W_t$  c um $\$\\mathcal{F}_t\$$-martingal.
+    \item \textbf{Varia SS  o quadr itica:} $\langle W \rangle_t = t$ quase certamente, e a parti SS  o refinada satisfaz
     \begin{equation}
         \lim_{\|\Pi\| \to 0} \sum_{t_i \in \Pi} (W_{t_{i+1}} - W_{t_i})^2 = t \quad \text{em } \Lp^2.
     \end{equation}
-    \item \textbf{Não-diferenciabilidade:} para quase todo $\omega$, a trajetória $t \mapsto W_t(\omega)$ não é diferenciável em nenhum ponto.
-    \item \textbf{Propriedade de escala:} $\{c^{-1/2} W_{ct}\}_{t \geq 0}$ é um movimento browniano para todo $c > 0$.
+    \item \textbf{N  o-diferenciabilidade:} para quase todo $\omega$, a trajet 3ria $t \mapsto W_t(\omega)$ n  o  c diferenci ivel em nenhum ponto.
+    \item \textbf{Propriedade de escala:} $\{c^{-1/2} W_{ct}\}_{t \geq 0}$  c um movimento browniano para todo $c > 0$.
     \item \textbf{Lei do logaritmo iterado:}
     \begin{equation}
         \limsup_{t \to 0^+} \frac{W_t}{\sqrt{2t \log\log(1/t)}} = 1 \quad \text{q.c.}
     \end{equation}
-    \item \textbf{Propriedade forte de Markov:} $W_{t+\tau} - W_\tau$ é um movimento browniano independente de $\F_\tau$, para todo tempo de parada $\tau$ finito q.c.
+    \item \textbf{Propriedade forte de Markov:} $W_{t+\tau} - W_\tau$  c um movimento browniano independente de $\F_\tau$, para todo tempo de parada $\tau$ finito q.c.
 \end{enumerate}
 \end{teo}
 
-A variação quadrática não-nula é a propriedade mais crucial para o cálculo estocástico. Intuitivamente, $(W_{t+\Delta} - W_t)^2 \approx \Delta$ em média, o que implica que $\dif W_t)^2 = \dif t$ na notação diferencial. Este fato é a origem do termo de segunda ordem na fórmula de Itô, que distingue o cálculo estocástico do cálculo usual.
+A varia SS  o quadr itica n  o-nula  c a propriedade mais crucial para o c ilculo estoc istico. Intuitivamente, $(W_{t+\Delta} - W_t)^2 \approx \Delta$ em m cdia, o que implica que $\dif W_t)^2 = \dif t$ na nota SS  o diferencial. Este fato  c a origem do termo de segunda ordem na f 3rmula de It ', que distingue o c ilculo estoc istico do c ilculo usual.
 
-\begin{defi}[Movimento Browniano Geométrico]
-Um processo $\{S_t\}_{t \geq 0}$ é um \textbf{movimento browniano geométrico} (MBG) com drift $\mu$ e volatilidade $\sigma$ se satisfaz a equação diferencial estocástica (EDE)
+\begin{defi}[Movimento Browniano Geom ctrico]
+Um processo $\{S_t\}_{t \geq 0}$  c um \textbf{movimento browniano geom ctrico} (MBG) com drift $\mu$ e volatilidade $\sigma$ se satisfaz a equa SS  o diferencial estoc istica (EDE)
 \begin{equation}
     \frac{\dif S_t}{S_t} = \mu \dif t + \sigma \dif W_t,
 \end{equation}
-cuja solução é $S_t = S_0 \exp\brk{(\mu - \sigma^2/2)t + \sigma W_t}$.
+cuja solu SS  o  c $S_t = S_0 \exp\brk{(\mu - \sigma^2/2)t + \sigma W_t}$.
 \end{defi}
 
-O MBG é o modelo-padrão para preços de ações no paradigma de Black--Scholes--Merton. A interpretação intuitiva é que o retorno relativo $\dif S_t / S_t$ tem uma componente determinística $\mu \dif t$ (tendência) e uma componente aleatória $\sigma \dif W_t$ (volatilidade). A aplicação do lema de Itô a $f(S_t) = \log S_t$ produz o fator de correção $-\sigma^2/2$, essencial para garantir que $\E[S_t] = S_0 e^{\mu t}$.
+O MBG  c o modelo-padr  o para pre SSos de a SS ues no paradigma de Black--Scholes--Merton. A interpreta SS  o intuitiva  c que o retorno relativo $\dif S_t / S_t$ tem uma componente determin -stica $\mu \dif t$ (tend ancia) e uma componente aleat 3ria $\sigma \dif W_t$ (volatilidade). A aplica SS  o do lema de It ' a $f(S_t) = \log S_t$ produz o fator de corre SS  o $-\sigma^2/2$, essencial para garantir que $\E[S_t] = S_0 e^{\mu t}$.
 
-\begin{ex}[Construção de Lévy do Movimento Browniano]\label{ex:construcao-levy}
-A existência do movimento browniano pode ser estabelecida construtivamente. Define-se $W_t$ para $t$ diádico por interpolação linear com incrementos gaussianos independentes: para cada nível $n$, os valores $W_{k/2^n}$ são definidos recursivamente. Para $t$ arbitrário, define-se $W_t$ como o limite uniforme das aproximações lineares por partes. A convergência uniforme quase certa é garantida pelo Lema de Borel--Cantelli. Esta construção, devida a Paul Lévy (1939), demonstra que o espaço $C[0,\infty)$ das funções contínuas (com a topologia da convergência uniforme em compactos) é o espaço amostral canônico do movimento browniano, com a medida de Wiener $\mathbb{W}$ sobre a $\sigma$-álgebra de Borel de $C[0,\infty)$.\footnote{Para detalhes completos da construção de Lévy e da medida de Wiener, consulte \textcite{oksendal2003stochastic}, Apêndice A, e \textcite{billingsley2012probability}, Seção 37.}
+\begin{ex}[Constru SS  o de L cvy do Movimento Browniano]\label{ex:construcao-levy}
+A exist ancia do movimento browniano pode ser estabelecida construtivamente. Define-se $W_t$ para $t$ di idico por interpola SS  o linear com incrementos gaussianos independentes: para cada n -vel $n$, os valores $W_{k/2^n}$ s  o definidos recursivamente. Para $t$ arbitr irio, define-se $W_t$ como o limite uniforme das aproxima SS ues lineares por partes. A converg ancia uniforme quase certa  c garantida pelo Lema de Borel--Cantelli. Esta constru SS  o, devida a Paul L cvy (1939), demonstra que o espa SSo $C[0,\infty)$ das fun SS ues cont -nuas (com a topologia da converg ancia uniforme em compactos)  c o espa SSo amostral can 'nico do movimento browniano, com a medida de Wiener $\mathbb{W}$ sobre a $\sigma$- ilgebra de Borel de $C[0,\infty)$.\footnote{Para detalhes completos da constru SS  o de L cvy e da medida de Wiener, consulte \textcite{oksendal2003stochastic}, Ap andice A, e \textcite{billingsley2012probability}, Se SS  o 37.}
 \end{ex}
 
 % ---------------------------------------------------------------------------
-\section*{Resumo do Capítulo}
+\section*{Resumo do Cap -tulo}
 % ---------------------------------------------------------------------------
 
-Este capítulo estabeleceu o ferramental probabilístico necessário para o estudo da Teoria de Arbitragem Geométrica. Partindo dos axiomas de Kolmogorov, construímos progressivamente os conceitos de variável aleatória, esperança condicional, martingal e movimento browniano. Cada conceito foi ilustrado com exemplos financeiros concretos: a $\sigma$-álgebra como estrutura de informação, a esperança condicional como operador de precificação, o martingal como condição de não-arbitragem, e o movimento browniano como modelo-limite de flutuações de preços.
+Este cap -tulo estabeleceu o ferramental probabil -stico necess irio para o estudo da Teoria de Arbitragem Geom ctrica. Partindo dos axiomas de Kolmogorov, constru -mos progressivamente os conceitos de vari ivel aleat 3ria, esperan SSa condicional, martingal e movimento browniano. Cada conceito foi ilustrado com exemplos financeiros concretos: a $\sigma$- ilgebra como estrutura de informa SS  o, a esperan SSa condicional como operador de precifica SS  o, o martingal como condi SS  o de n  o-arbitragem, e o movimento browniano como modelo-limite de flutua SS ues de pre SSos.
 
-Os capítulos subsequentes utilizarão intensivamente este ferramental. O cálculo estocástico de Itô (Capítulo~3) estenderá o movimento browniano a integrais estocásticas, permitindo a modelagem de estratégias de investimento contínuas. A Teoria de Arbitragem Geométrica propriamente dita (Capítulo~4) aplicará martingais e medidas equivalentes para caracterizar geometricamente a ausência de arbitragem em mercados com fricções.
+Os cap -tulos subsequentes utilizar  o intensivamente este ferramental. O c ilculo estoc istico de It ' (Cap -tulo~3) estender i o movimento browniano a integrais estoc isticas, permitindo a modelagem de estrat cgias de investimento cont -nuas. A Teoria de Arbitragem Geom ctrica propriamente dita (Cap -tulo~4) aplicar i martingais e medidas equivalentes para caracterizar geometricamente a aus ancia de arbitragem em mercados com fric SS ues.
 
 \begin{center}
 \rule{0.5\textwidth}{0.4pt}
 \end{center}
 
 % ---------------------------------------------------------------------------
-% Referências bibliográficas citadas neste capítulo
+% Refer ancias bibliogr ificas citadas neste cap -tulo
 % ---------------------------------------------------------------------------
 \begin{thebibliography}{9}
 

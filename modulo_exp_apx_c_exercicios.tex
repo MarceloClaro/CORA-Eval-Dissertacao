@@ -1,30 +1,30 @@
-﻿\chapter{Exercícios Resolvidos}
+ >>?\chapter{Exerc -cios Resolvidos}
 \label{apx:exers}
 
-Este apêndice reúne treze exercícios resolvidos, organizados em três níveis de dificuldade, cobrindo os conceitos centrais da Abordagem de Apreçamento por Transporte Geométrico (GAT): curvatura de mercados, condições de não arbitragem (NFLVR), construção explícita de estratégias de arbitragem, equações de estrutura e transporte geométrico ao longo de fibrados.
+Este ap andice re one treze exerc -cios resolvidos, organizados em tr as n -veis de dificuldade, cobrindo os conceitos centrais da Abordagem de Apre SSamento por Transporte Geom ctrico (GAT): curvatura de mercados, condi SS ues de n  o arbitragem (NFLVR), constru SS  o expl -cita de estrat cgias de arbitragem, equa SS ues de estrutura e transporte geom ctrico ao longo de fibrados.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Nível Básico}
+\section{N -vel B isico}
 \label{sec:ex_basico}
 
 \begin{exer}[Curvatura de um Mercado com Dois Ativos]
 \label{ex:curvatura_2ativos}
-Considere um mercado com dois ativos cujos preços $(S^1_t, S^2_t)$ evoluem segundo o modelo de Black--Scholes bidimensional correlacionado:
+Considere um mercado com dois ativos cujos pre SSos $(S^1_t, S^2_t)$ evoluem segundo o modelo de Black--Scholes bidimensional correlacionado:
 \begin{align*}
   dS^1_t &= S^1_t(\mu_1\,dt + \sigma_1\,dW^1_t), \\
   dS^2_t &= S^2_t(\mu_2\,dt + \sigma_2\rho\,dW^1_t + \sigma_2\sqrt{1-\rho^2}\,dW^2_t),
 \end{align*}
-com $W^1_t, W^2_t$ movimentos brownianos independentes, $\rho\in(-1,1)$, e $\mu_i,\sigma_i>0$ constantes. Defina o espaço de preços logarítmicos $x^i_t = \log S^i_t$. Calcule a 2-forma de curvatura $\Omega$ associada ao fibrado de preços e verifique se o mercado admite arbitragem.
+com $W^1_t, W^2_t$ movimentos brownianos independentes, $\rho\in(-1,1)$, e $\mu_i,\sigma_i>0$ constantes. Defina o espa SSo de pre SSos logar -tmicos $x^i_t = \log S^i_t$. Calcule a 2-forma de curvatura $\Omega$ associada ao fibrado de pre SSos e verifique se o mercado admite arbitragem.
 \end{exer}
 
 \begin{sol}
-\textbf{Passo 1: Dinâmica logarítmica.} Pelo lema de Itô:
+\textbf{Passo 1: Din  mica logar -tmica.} Pelo lema de It ':
 \begin{align*}
   dx^1_t &= \bigl(\mu_1 - \tfrac{1}{2}\sigma_1^2\bigr)dt + \sigma_1\,dW^1_t = m_1\,dt + \sigma_1\,dW^1_t,\\
   dx^2_t &= \bigl(\mu_2 - \tfrac{1}{2}\sigma_2^2\bigr)dt + \sigma_2\rho\,dW^1_t + \sigma_2\sqrt{1-\rho^2}\,dW^2_t = m_2\,dt + \sigma_2\rho\,dW^1_t + \sigma_2\sqrt{1-\rho^2}\,dW^2_t.
 \end{align*}
 
-\textbf{Passo 2: Métrica do mercado.} A matriz de covariância instantânea (métrica de Mahalanobis) é:
+\textbf{Passo 2: M ctrica do mercado.} A matriz de covari  ncia instant  nea (m ctrica de Mahalanobis)  c:
 \begin{equation}
   g_{ij} = \frac{d\langle x^i, x^j\rangle_t}{dt}
   = \begin{pmatrix}
@@ -32,113 +32,113 @@ com $W^1_t, W^2_t$ movimentos brownianos independentes, $\rho\in(-1,1)$, e $\mu_
       \sigma_1\sigma_2\rho & \sigma_2^2
     \end{pmatrix}.
 \end{equation}
-Sob a hipótese de não colinearidade perfeita ($|\rho|<1$), $g$ é positiva definida e define uma métrica riemanniana em $\R^2$.
+Sob a hip 3tese de n  o colinearidade perfeita ($|\rho|<1$), $g$  c positiva definida e define uma m ctrica riemanniana em $\R^2$.
 
-\textbf{Passo 3: Conexão de Levi-Civita e símbolos de Christoffel.} Os símbolos de Christoffel para a métrica constante $g$ são:
+\textbf{Passo 3: Conex  o de Levi-Civita e s -mbolos de Christoffel.} Os s -mbolos de Christoffel para a m ctrica constante $g$ s  o:
 \begin{equation}
   \Gamma^i_{jk} = \frac{1}{2}g^{i\ell}(\partial_j g_{k\ell} + \partial_k g_{j\ell} - \partial_\ell g_{jk}) = 0,
 \end{equation}
-pois $g_{ij}$ não depende de $x$. Portanto, $\Gamma\equiv 0$ e a conexão de Levi-Civita é a conexão plana usual de $\R^2$.
+pois $g_{ij}$ n  o depende de $x$. Portanto, $\Gamma\equiv 0$ e a conex  o de Levi-Civita  c a conex  o plana usual de $\R^2$.
 
-\textbf{Passo 4: Curvatura.} Em coordenadas afins (preços logarítmicos), o tensor de Riemann é:
+\textbf{Passo 4: Curvatura.} Em coordenadas afins (pre SSos logar -tmicos), o tensor de Riemann  c:
 \begin{equation}
   R^i_{\;jk\ell} = \partial_k\Gamma^i_{j\ell} - \partial_\ell\Gamma^i_{jk} + \Gamma^i_{mk}\Gamma^m_{j\ell} - \Gamma^i_{m\ell}\Gamma^m_{jk} = 0.
 \end{equation}
-Logo, a 2-forma de curvatura $\Omega$ é identicamente nula: $\Omega \equiv 0$.
+Logo, a 2-forma de curvatura $\Omega$  c identicamente nula: $\Omega \equiv 0$.
 
-\textbf{Passo 5: Condição de não arbitragem.} Na GAT, a condição NFLVR (No Free Lunch with Vanishing Risk) equivale à existência de uma medida martingal equivalente, o que por sua vez equivale ao fechamento da forma de curvatura do fibrado de preços com desconto (identidade de Bianchi). Como $\Omega=0$, a curvatura é trivialmente fechada, e o Primeiro Teorema Fundamental do Apreçamento de Ativos (FTAP) garante a existência de medida martingal equivalente --- desde que exista $\lambda\in\R^2$ (prêmio de risco de mercado) tal que $\sigma\lambda = m$, i.e., o vetor de drift ajustado seja anulável pela carteira de volatilidade. Para o modelo bidimensional com $\sigma_1,\sigma_2>0$ e $|\rho|<1$, esta condição é satisfeita com $\lambda$ único, e o mercado é \textbf{completo e livre de arbitragem}.
+\textbf{Passo 5: Condi SS  o de n  o arbitragem.} Na GAT, a condi SS  o NFLVR (No Free Lunch with Vanishing Risk) equivale    exist ancia de uma medida martingal equivalente, o que por sua vez equivale ao fechamento da forma de curvatura do fibrado de pre SSos com desconto (identidade de Bianchi). Como $\Omega=0$, a curvatura  c trivialmente fechada, e o Primeiro Teorema Fundamental do Apre SSamento de Ativos (FTAP) garante a exist ancia de medida martingal equivalente --- desde que exista $\lambda\in\R^2$ (pr amio de risco de mercado) tal que $\sigma\lambda = m$, i.e., o vetor de drift ajustado seja anul ivel pela carteira de volatilidade. Para o modelo bidimensional com $\sigma_1,\sigma_2>0$ e $|\rho|<1$, esta condi SS  o  c satisfeita com $\lambda$  onico, e o mercado  c \textbf{completo e livre de arbitragem}.
 \end{sol}
 
-\begin{exer}[Identificação de Estratégia de Arbitragem]
+\begin{exer}[Identifica SS  o de Estrat cgia de Arbitragem]
 \label{ex:arb_ident}
-Em um mercado com dois ativos, os preços satisfazem $S^1_t = S^2_t$ para todo $t$, mas $S^1_0 = 100$ e $S^2_0 = 101$. Existe oportunidade de arbitragem? Se sim, construa a estratégia explicitamente.
+Em um mercado com dois ativos, os pre SSos satisfazem $S^1_t = S^2_t$ para todo $t$, mas $S^1_0 = 100$ e $S^2_0 = 101$. Existe oportunidade de arbitragem? Se sim, construa a estrat cgia explicitamente.
 \end{exer}
 
 \begin{sol}
-\textbf{Sim.} Trata-se de uma \textbf{arbitragem determinística} (tipo A). Estratégia em $t=0$:
+\textbf{Sim.} Trata-se de uma \textbf{arbitragem determin -stica} (tipo A). Estrat cgia em $t=0$:
 \begin{enumerate}
-  \item Venda a descoberto 1 unidade de $S^2$ ao preço de $101$, obtendo caixa de $\$101$.
-  \item Compre 1 unidade de $S^1$ ao preço de $100$, despendendo $\$100$.
-  \item Saldo líquido em $t=0$: $\$101 - \$100 = \$1 > 0$.
+  \item Venda a descoberto 1 unidade de $S^2$ ao pre SSo de $101$, obtendo caixa de $\$101$.
+  \item Compre 1 unidade de $S^1$ ao pre SSo de $100$, despendendo $\$100$.
+  \item Saldo l -quido em $t=0$: $\$101 - \$100 = \$1 > 0$.
 \end{enumerate}
-Em qualquer $t>0$, como $S^1_t = S^2_t$, a posição pode ser zerada comprando de volta $S^2$ e vendendo $S^1$ pelo mesmo preço, sem custo adicional. O lucro livre de risco é $\$1$. Esta situação viola a \textbf{Lei do Preço Único} (Law of One Price), caso particular de NFLVR.
+Em qualquer $t>0$, como $S^1_t = S^2_t$, a posi SS  o pode ser zerada comprando de volta $S^2$ e vendendo $S^1$ pelo mesmo pre SSo, sem custo adicional. O lucro livre de risco  c $\$1$. Esta situa SS  o viola a \textbf{Lei do Pre SSo  snico} (Law of One Price), caso particular de NFLVR.
 \end{sol}
 
-\begin{exer}[Existência de Medida Martingal]
+\begin{exer}[Exist ancia de Medida Martingal]
 \label{ex:medida_mart}
-Verifique se o mercado binomial de um período com $S_0=100$, $S_1^u=120$ (probabilidade $p=0{,}6$) e $S_1^d=90$ (probabilidade $1-p=0{,}4$), com taxa livre de risco $r=0$, admite medida martingal equivalente. O mercado é completo?
+Verifique se o mercado binomial de um per -odo com $S_0=100$, $S_1^u=120$ (probabilidade $p=0{,}6$) e $S_1^d=90$ (probabilidade $1-p=0{,}4$), com taxa livre de risco $r=0$, admite medida martingal equivalente. O mercado  c completo?
 \end{exer}
 
 \begin{sol}
-Seja $q$ a probabilidade risco-neutra de subida. A condição martingal exige:
+Seja $q$ a probabilidade risco-neutra de subida. A condi SS  o martingal exige:
 \begin{equation}
   \E^{\Q}[S_1] = q\cdot 120 + (1-q)\cdot 90 = S_0 = 100.
 \end{equation}
 Resolvendo: $120q + 90 - 90q = 100 \;\Rightarrow\; 30q = 10 \;\Rightarrow\; q = 1/3$.
 
-Como $q = 1/3\in(0,1)$, existe \textbf{medida martingal equivalente única} $\Q$. O mercado é, portanto, \textbf{completo e livre de arbitragem}. O preço justo de qualquer derivativo europeu $H(S_1)$ é $V_0 = \E^{\Q}[H(S_1)] = \frac{1}{3}H(120) + \frac{2}{3}H(90)$.
+Como $q = 1/3\in(0,1)$, existe \textbf{medida martingal equivalente  onica} $\Q$. O mercado  c, portanto, \textbf{completo e livre de arbitragem}. O pre SSo justo de qualquer derivativo europeu $H(S_1)$  c $V_0 = \E^{\Q}[H(S_1)] = \frac{1}{3}H(120) + \frac{2}{3}H(90)$.
 \end{sol}
 
-\begin{exer}[Cálculo da Conexão de Mercado]
+\begin{exer}[C ilculo da Conex  o de Mercado]
 \label{ex:conexao_mercado}
-Seja um mercado com dois ativos cujos preços logarítmicos têm coeficiente de difusão dependente do estado: $\sigma(x) = \sigma_0\,e^{\alpha x}$, com $\sigma_0,\alpha>0$. Determine a conexão de Levi-Civita (símbolos de Christoffel) para a métrica induzida e a 2-forma de curvatura $\Omega(x)$.
+Seja um mercado com dois ativos cujos pre SSos logar -tmicos t am coeficiente de difus  o dependente do estado: $\sigma(x) = \sigma_0\,e^{\alpha x}$, com $\sigma_0,\alpha>0$. Determine a conex  o de Levi-Civita (s -mbolos de Christoffel) para a m ctrica induzida e a 2-forma de curvatura $\Omega(x)$.
 \end{exer}
 
 \begin{sol}
-A métrica induzida é $g(x) = \sigma(x)^2 = \sigma_0^2\,e^{2\alpha x}$ (caso unidimensional). Os símbolos de Christoffel em dimensão 1 são:
+A m ctrica induzida  c $g(x) = \sigma(x)^2 = \sigma_0^2\,e^{2\alpha x}$ (caso unidimensional). Os s -mbolos de Christoffel em dimens  o 1 s  o:
 \begin{equation}
   \Gamma(x) = \frac{1}{2}g^{-1}\,\frac{dg}{dx} = \frac{1}{2\sigma_0^2\,e^{2\alpha x}}\cdot \sigma_0^2\cdot 2\alpha\,e^{2\alpha x} = \alpha.
 \end{equation}
 
-A curvatura (forma de Ricci) em 1D é:
+A curvatura (forma de Ricci) em 1D  c:
 \begin{equation}
   R(x) = -\frac{d\Gamma}{dx} + \Gamma^2 - \Gamma^2 = -\frac{d\Gamma}{dx} = -\frac{d\alpha}{dx} = 0.
 \end{equation}
 
-Surpreendentemente, a métrica exponencial em 1D tem curvatura \textbf{nula}, apesar da geometria não euclidiana aparente. Isto porque a métrica $g(x)=e^{2\alpha x}$ é conformemente plana: a transformação de coordenadas $\tilde x = \int\sqrt{g(x)}\,dx$ reduz $g$ à forma euclidiana $d\tilde x^2$. Em dimensões superiores com dependência espacial, a curvatura será geralmente não nula.
+Surpreendentemente, a m ctrica exponencial em 1D tem curvatura \textbf{nula}, apesar da geometria n  o euclidiana aparente. Isto porque a m ctrica $g(x)=e^{2\alpha x}$  c conformemente plana: a transforma SS  o de coordenadas $\tilde x = \int\sqrt{g(x)}\,dx$ reduz $g$    forma euclidiana $d\tilde x^2$. Em dimens ues superiores com depend ancia espacial, a curvatura ser i geralmente n  o nula.
 \end{sol}
 
 \begin{exer}[Transporte Paralelo de uma Carteira]
 \label{ex:transporte_paralelo}
-Considere um mercado cuja métrica de Mahalanobis é plana ($\Omega=0$). Uma carteira com pesos $w=(w_1,\dots,w_n)$ é transportada paralelamente ao longo de uma curva $\gamma(t)$ no espaço de preços. Mostre que, sob a condição NFLVR, os pesos permanecem constantes na base coordenada original.
+Considere um mercado cuja m ctrica de Mahalanobis  c plana ($\Omega=0$). Uma carteira com pesos $w=(w_1,\dots,w_n)$  c transportada paralelamente ao longo de uma curva $\gamma(t)$ no espa SSo de pre SSos. Mostre que, sob a condi SS  o NFLVR, os pesos permanecem constantes na base coordenada original.
 \end{exer}
 
 \begin{sol}
-O transporte paralelo de um vetor $w$ ao longo de $\gamma$ é governado pela equação:
+O transporte paralelo de um vetor $w$ ao longo de $\gamma$  c governado pela equa SS  o:
 \begin{equation}
   \frac{dw^i}{dt} + \Gamma^i_{jk}\,\dot\gamma^j\,w^k = 0.
 \end{equation}
-Se a curvatura $\Omega=0$ e o espaço é simplesmente conexo (como $\R^n$), a conexão é globalmente plana: existe um sistema de coordenadas no qual $\Gamma^i_{jk}\equiv 0$. Como a métrica de Mahalanobis é constante no sistema de preços logarítmicos para volatilidades constantes, já temos $\Gamma\equiv 0$ nessas coordenadas. Logo, $dw^i/dt = 0$, e $w^i(t) = w^i(0)$.
+Se a curvatura $\Omega=0$ e o espa SSo  c simplesmente conexo (como $\R^n$), a conex  o  c globalmente plana: existe um sistema de coordenadas no qual $\Gamma^i_{jk}\equiv 0$. Como a m ctrica de Mahalanobis  c constante no sistema de pre SSos logar -tmicos para volatilidades constantes, j i temos $\Gamma\equiv 0$ nessas coordenadas. Logo, $dw^i/dt = 0$, e $w^i(t) = w^i(0)$.
 
-Este resultado tem interpretação financeira direta: em mercados \textbf{geometricamente planos} (Black--Scholes multivariado com volatilidades constantes), a carteira ótima de Markowitz é estática --- não requer rebalanceamento dinâmico para manter a exposição desejada. A necessidade de rebalanceamento (hedging dinâmico) surge precisamente da \textbf{curvatura não nula} do espaço de ativos.
+Este resultado tem interpreta SS  o financeira direta: em mercados \textbf{geometricamente planos} (Black--Scholes multivariado com volatilidades constantes), a carteira  3tima de Markowitz  c est itica --- n  o requer rebalanceamento din  mico para manter a exposi SS  o desejada. A necessidade de rebalanceamento (hedging din  mico) surge precisamente da \textbf{curvatura n  o nula} do espa SSo de ativos.
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Nível Intermediário}
+\section{N -vel Intermedi irio}
 \label{sec:ex_intermediario}
 
 \begin{exer}[Arbitragem por Curvatura]
 \label{ex:arb_curvatura}
-Considere três ativos cujos preços logarítmicos $(x^1,x^2,x^3)$ evoluem com métrica não plana dependente de $x^1$:
+Considere tr as ativos cujos pre SSos logar -tmicos $(x^1,x^2,x^3)$ evoluem com m ctrica n  o plana dependente de $x^1$:
 \begin{equation}
   g_{ij}(x) = \diag\bigl(e^{2\beta x^1},\;1,\;1\bigr),\qquad \beta>0.
 \end{equation}
-Os drifts ajustados ao risco são $m_i = 0$ para $i=1,2,3$. Determine se existe estratégia de arbitragem e, em caso afirmativo, construa-a.
+Os drifts ajustados ao risco s  o $m_i = 0$ para $i=1,2,3$. Determine se existe estrat cgia de arbitragem e, em caso afirmativo, construa-a.
 \end{exer}
 
 \begin{sol}
-\textbf{Passo 1: Conexão.} Com métrica diagonal, os símbolos de Christoffel não nulos são:
+\textbf{Passo 1: Conex  o.} Com m ctrica diagonal, os s -mbolos de Christoffel n  o nulos s  o:
 \begin{align*}
   \Gamma^1_{11} &= \tfrac{1}{2}g^{11}\partial_1 g_{11} = \tfrac{1}{2}e^{-2\beta x^1}\cdot 2\beta e^{2\beta x^1} = \beta,\\
-  \Gamma^2_{12} &= \Gamma^2_{21} = 0\quad\text{(pois $g_{22}$ não depende de $x^1$)},\\
+  \Gamma^2_{12} &= \Gamma^2_{21} = 0\quad\text{(pois $g_{22}$ n  o depende de $x^1$)},\\
   \Gamma^1_{22} &= -\tfrac{1}{2}g^{11}\partial_1 g_{22} = 0.
 \end{align*}
 
-\textbf{Passo 2: Curvatura não nula.} A única componente independente do tensor de Riemann em 3D com esta métrica é $R^2_{\;121}$:
+\textbf{Passo 2: Curvatura n  o nula.} A  onica componente independente do tensor de Riemann em 3D com esta m ctrica  c $R^2_{\;121}$:
 \begin{equation}
   R^2_{\;121} = \partial_1\Gamma^2_{21} - \partial_2\Gamma^2_{11} + \Gamma^2_{m1}\Gamma^m_{21} - \Gamma^2_{m2}\Gamma^m_{11} = 0 - 0 + 0 - 0 = 0.
 \end{equation}
-Na verdade, esta métrica particular é conformemente plana e tem curvatura seccional nula. Para obter curvatura não nula, considere uma métrica do tipo \textbf{modelo de Ilinski}:
+Na verdade, esta m ctrica particular  c conformemente plana e tem curvatura seccional nula. Para obter curvatura n  o nula, considere uma m ctrica do tipo \textbf{modelo de Ilinski}:
 \begin{equation}
   g_{ij} = \begin{pmatrix}
     1 & \kappa x^3 & 0 \\
@@ -147,169 +147,169 @@ Na verdade, esta métrica particular é conformemente plana e tem curvatura secc
   \end{pmatrix},\qquad \kappa\neq 0.
 \end{equation}
 
-\textbf{Passo 3: Construção da arbitragem.} Com esta métrica, calculemos $\Gamma^1_{23} = -\frac{1}{2}\kappa$ e $\Gamma^2_{31} = \frac{1}{2}\kappa$. O tensor de curvatura $R^i_{\;jk\ell}$ é não nulo. A condição NFLVR exige que a forma de conexão do fibrado principal de \textit{frames} seja livre de curvatura após o desconto. Como $\Omega\neq 0$, existe uma \textbf{falha de fechamento} (violação da identidade de Bianchi do mercado), que se traduz em oportunidade de arbitragem.
+\textbf{Passo 3: Constru SS  o da arbitragem.} Com esta m ctrica, calculemos $\Gamma^1_{23} = -\frac{1}{2}\kappa$ e $\Gamma^2_{31} = \frac{1}{2}\kappa$. O tensor de curvatura $R^i_{\;jk\ell}$  c n  o nulo. A condi SS  o NFLVR exige que a forma de conex  o do fibrado principal de \textit{frames} seja livre de curvatura ap 3s o desconto. Como $\Omega\neq 0$, existe uma \textbf{falha de fechamento} (viola SS  o da identidade de Bianchi do mercado), que se traduz em oportunidade de arbitragem.
 
-Estratégia: opere uma \textbf{carteira delta-neutra em curvatura} --- combine posições longas no ativo 1 e curtas no ativo 2 em proporção tal que a exposição à curvatura seja capturada enquanto as exposições de primeira ordem (delta) se anulam. A carteira com pesos $w = (1, -g_{12}/g_{22}, 0)$ isola a componente $R^1_{\;212}$ da curvatura, gerando P\&L determinístico positivo se $\Omega\neq 0$.
+Estrat cgia: opere uma \textbf{carteira delta-neutra em curvatura} --- combine posi SS ues longas no ativo 1 e curtas no ativo 2 em propor SS  o tal que a exposi SS  o    curvatura seja capturada enquanto as exposi SS ues de primeira ordem (delta) se anulam. A carteira com pesos $w = (1, -g_{12}/g_{22}, 0)$ isola a componente $R^1_{\;212}$ da curvatura, gerando P\&L determin -stico positivo se $\Omega\neq 0$.
 
-\textbf{Conclusão:} A curvatura não nula do espaço de ativos, quando desacompanhada do drift compensatório prescrito pelo teorema de Ambrose--Singer, constitui uma \textbf{violação de NFLVR} e permite construir arbitragem sistemática.
+\textbf{Conclus  o:} A curvatura n  o nula do espa SSo de ativos, quando desacompanhada do drift compensat 3rio prescrito pelo teorema de Ambrose--Singer, constitui uma \textbf{viola SS  o de NFLVR} e permite construir arbitragem sistem itica.
 \end{sol}
 
-\begin{exer}[Condição de Ambrose--Singer para Não Arbitragem]
+\begin{exer}[Condi SS  o de Ambrose--Singer para N  o Arbitragem]
 \label{ex:ambrose_singer}
-Enuncie e verifique a condição de Ambrose--Singer para o mercado do Exercício~\ref{ex:curvatura_2ativos} com a inclusão de uma taxa de juros livre de risco $r>0$.
+Enuncie e verifique a condi SS  o de Ambrose--Singer para o mercado do Exerc -cio~\ref{ex:curvatura_2ativos} com a inclus  o de uma taxa de juros livre de risco $r>0$.
 \end{exer}
 
 \begin{sol}
-\textbf{Enunciado (adaptado à GAT):} Seja $\pi:P\to M$ um $G$-fibrado principal sobre o espaço de ativos $M$, com forma de conexão $\omega$ e curvatura $\Omega$. A condição de Ambrose--Singer estabelece que a holonomia do fibrado é gerada pela álgebra de Lie das curvaturas avaliadas em todos os pontos alcançáveis por transporte paralelo. Na GAT, isto se traduz em:
+\textbf{Enunciado (adaptado    GAT):} Seja $\pi:P\to M$ um $G$-fibrado principal sobre o espa SSo de ativos $M$, com forma de conex  o $\omega$ e curvatura $\Omega$. A condi SS  o de Ambrose--Singer estabelece que a holonomia do fibrado  c gerada pela  ilgebra de Lie das curvaturas avaliadas em todos os pontos alcan SS iveis por transporte paralelo. Na GAT, isto se traduz em:
 
 \begin{quote}
-\textit{Um mercado satisfaz NFLVR se, e somente se, o fechamento horizontal da 2-forma de curvatura do fibrado de preços descontados coincide com seu valor esperado sob a medida física, i.e., $\bar{D}\Omega = 0$ (derivada simétrica de Nelson).}
+\textit{Um mercado satisfaz NFLVR se, e somente se, o fechamento horizontal da 2-forma de curvatura do fibrado de pre SSos descontados coincide com seu valor esperado sob a medida f -sica, i.e., $\bar{D}\Omega = 0$ (derivada sim ctrica de Nelson).}
 \end{quote}
 
-\textbf{Verificação:} Para o modelo Black--Scholes bidimensional com $r>0$, os preços descontados são $\tilde S^i_t = e^{-rt}S^i_t$. A dinâmica logarítmica descontada é:
+\textbf{Verifica SS  o:} Para o modelo Black--Scholes bidimensional com $r>0$, os pre SSos descontados s  o $\tilde S^i_t = e^{-rt}S^i_t$. A din  mica logar -tmica descontada  c:
 \begin{equation}
   d\tilde x^i_t = \bigl(\mu_i - r - \tfrac{1}{2}\sigma_i^2\bigr)dt + \sigma_i\,d\tilde W^i_t.
 \end{equation}
-A métrica $g_{ij}$ não se altera (a volatilidade é invariante por desconto). A conexão permanece plana ($\Gamma\equiv 0$, $\Omega\equiv 0$). A condição $\bar{D}\Omega = 0$ é trivialmente satisfeita. A existência de medida martingal equivalente requer adicionalmente que $\mu_i - r$ pertença ao espaço-coluna de $\sigma$, i.e., que exista $\lambda$ (Sharpe ratio) tal que $\mu_i - r = \sigma_{ij}\lambda^j$. Para o modelo com $\sigma_1,\sigma_2>0$ e $|\rho|<1$, esta condição se cumpre, confirmando NFLVR.
+A m ctrica $g_{ij}$ n  o se altera (a volatilidade  c invariante por desconto). A conex  o permanece plana ($\Gamma\equiv 0$, $\Omega\equiv 0$). A condi SS  o $\bar{D}\Omega = 0$  c trivialmente satisfeita. A exist ancia de medida martingal equivalente requer adicionalmente que $\mu_i - r$ perten SSa ao espa SSo-coluna de $\sigma$, i.e., que exista $\lambda$ (Sharpe ratio) tal que $\mu_i - r = \sigma_{ij}\lambda^j$. Para o modelo com $\sigma_1,\sigma_2>0$ e $|\rho|<1$, esta condi SS  o se cumpre, confirmando NFLVR.
 \end{sol}
 
-\begin{exer}[Geodésicas do Mercado e Alocação Ótima]
+\begin{exer}[Geod csicas do Mercado e Aloca SS  o  "tima]
 \label{ex:geodesicas}
-Mostre que, em um mercado geometricamente plano ($\Omega=0$) com métrica de Mahalanobis constante $g$, a trajetória de mínima ação (mínimo custo de rebalanceamento) entre duas carteiras é a reta afim no espaço de pesos. Calcule o custo de rebalanceamento ao longo desta geodésica.
+Mostre que, em um mercado geometricamente plano ($\Omega=0$) com m ctrica de Mahalanobis constante $g$, a trajet 3ria de m -nima a SS  o (m -nimo custo de rebalanceamento) entre duas carteiras  c a reta afim no espa SSo de pesos. Calcule o custo de rebalanceamento ao longo desta geod csica.
 \end{exer}
 
 \begin{sol}
-O custo de rebalanceamento entre carteiras $w_A$ e $w_B$ é modelado pelo funcional de energia:
+O custo de rebalanceamento entre carteiras $w_A$ e $w_B$  c modelado pelo funcional de energia:
 \begin{equation}
   \mathcal{E}[\gamma] = \int_0^1 g_{ij}\,\dot\gamma^i(s)\,\dot\gamma^j(s)\,ds,
 \end{equation}
-com $\gamma:[0,1]\to\R^n$, $\gamma(0)=w_A$, $\gamma(1)=w_B$. A equação de Euler--Lagrange é a equação das geodésicas:
+com $\gamma:[0,1]\to\R^n$, $\gamma(0)=w_A$, $\gamma(1)=w_B$. A equa SS  o de Euler--Lagrange  c a equa SS  o das geod csicas:
 \begin{equation}
   \ddot\gamma^i + \Gamma^i_{jk}\,\dot\gamma^j\,\dot\gamma^k = 0.
 \end{equation}
-Para $\Gamma\equiv 0$, a solução é $\gamma^i(s) = w_A^i + s(w_B^i - w_A^i)$ (reta afim). O custo é:
+Para $\Gamma\equiv 0$, a solu SS  o  c $\gamma^i(s) = w_A^i + s(w_B^i - w_A^i)$ (reta afim). O custo  c:
 \begin{equation}
   \mathcal{E} = g_{ij}\,(w_B^i - w_A^i)(w_B^j - w_A^j) = (w_B - w_A)^\top G\,(w_B - w_A),
 \end{equation}
-a distância de Mahalanobis entre as carteiras, que quantifica o ``esforço de trading'' ponderado pela estrutura de correlação do mercado.
+a dist  ncia de Mahalanobis entre as carteiras, que quantifica o ``esfor SSo de trading'' ponderado pela estrutura de correla SS  o do mercado.
 
-Quando $\Omega\neq 0$, as geodésicas se desviam da reta afim: a curvatura do mercado ``curva'' a trajetória ótima de execução, fenômeno análogo ao \textit{market impact} geométrico. A GAT fornece a correção de curvatura ao algoritmo de Almgren--Chriss clássico.
+Quando $\Omega\neq 0$, as geod csicas se desviam da reta afim: a curvatura do mercado ``curva'' a trajet 3ria  3tima de execu SS  o, fen 'meno an ilogo ao \textit{market impact} geom ctrico. A GAT fornece a corre SS  o de curvatura ao algoritmo de Almgren--Chriss cl issico.
 \end{sol}
 
-\begin{exer}[Derivada de Nelson e Estratégia Delta-Neutra]
+\begin{exer}[Derivada de Nelson e Estrat cgia Delta-Neutra]
 \label{ex:nelson_delta}
-Considere um ativo cujo preço segue $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$. Uma opção de compra europeia com payoff $(S_T-K)^+$ tem delta $\Delta_t = \Phi(d_1)$ no modelo Black--Scholes. Calcule $\bar{D}\Delta_t$ (derivada simétrica de Nelson do delta) e interprete o resultado como a necessidade de rebalanceamento geométrico.
+Considere um ativo cujo pre SSo segue $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$. Uma op SS  o de compra europeia com payoff $(S_T-K)^+$ tem delta $\Delta_t = \Phi(d_1)$ no modelo Black--Scholes. Calcule $\bar{D}\Delta_t$ (derivada sim ctrica de Nelson do delta) e interprete o resultado como a necessidade de rebalanceamento geom ctrico.
 \end{exer}
 
 \begin{sol}
-O delta de Black--Scholes é $\Delta_t = \Phi(d_1)$, com $d_1 = [\log(S_t/K) + (r+\sigma^2/2)(T-t)]/(\sigma\sqrt{T-t})$. Aplicando a fórmula de Itô a $\Delta_t = f(t,S_t)$:
+O delta de Black--Scholes  c $\Delta_t = \Phi(d_1)$, com $d_1 = [\log(S_t/K) + (r+\sigma^2/2)(T-t)]/(\sigma\sqrt{T-t})$. Aplicando a f 3rmula de It ' a $\Delta_t = f(t,S_t)$:
 \begin{equation}
   d\Delta_t = \left(\frac{\partial f}{\partial t} + \mu S\frac{\partial f}{\partial S} + \frac{1}{2}\sigma^2 S^2\frac{\partial^2 f}{\partial S^2}\right)dt + \sigma S\frac{\partial f}{\partial S}\,dW_t.
 \end{equation}
 
-Pela correspondência de Nelson, $\bar{D}\Delta_t$ é o drift de Stratonovich, que inclui a \textbf{correção de Wong--Zakai}:
+Pela correspond ancia de Nelson, $\bar{D}\Delta_t$  c o drift de Stratonovich, que inclui a \textbf{corre SS  o de Wong--Zakai}:
 \begin{equation}
-  \bar{D}\Delta_t = \underbrace{\frac{\partial f}{\partial t} + \mu S\frac{\partial f}{\partial S}}_{\text{drift clássico}} + \underbrace{\frac{1}{2}\sigma^2 S^2\frac{\partial^2 f}{\partial S^2}}_{\text{correção de Itô}} + \underbrace{\frac{1}{2}\sigma^2 S^2\frac{\partial^2 f}{\partial S^2}}_{\text{correção Wong--Zakai}}.
+  \bar{D}\Delta_t = \underbrace{\frac{\partial f}{\partial t} + \mu S\frac{\partial f}{\partial S}}_{\text{drift cl issico}} + \underbrace{\frac{1}{2}\sigma^2 S^2\frac{\partial^2 f}{\partial S^2}}_{\text{corre SS  o de It '}} + \underbrace{\frac{1}{2}\sigma^2 S^2\frac{\partial^2 f}{\partial S^2}}_{\text{corre SS  o Wong--Zakai}}.
 \end{equation}
 
-Simplificando, $\bar{D}\Delta_t = \partial_t f + \mu S\,\partial_S f + \sigma^2 S^2\,\partial_S^2 f$. O termo adicional $\sigma^2 S^2\,\partial_S^2 f$ em relação ao drift clássico reflete a \textbf{curvatura do gamma} ($\Gamma = \partial_S^2 f$): a derivada simétrica de Nelson captura automaticamente a convexidade da função payoff, informando a frequência ótima de rebalanceamento em mercados com custos de transação. Esta é a base da \textbf{estratégia de Leland--Nelson} generalizada que a GAT unifica sob o formalismo geométrico.
+Simplificando, $\bar{D}\Delta_t = \partial_t f + \mu S\,\partial_S f + \sigma^2 S^2\,\partial_S^2 f$. O termo adicional $\sigma^2 S^2\,\partial_S^2 f$ em rela SS  o ao drift cl issico reflete a \textbf{curvatura do gamma} ($\Gamma = \partial_S^2 f$): a derivada sim ctrica de Nelson captura automaticamente a convexidade da fun SS  o payoff, informando a frequ ancia  3tima de rebalanceamento em mercados com custos de transa SS  o. Esta  c a base da \textbf{estrat cgia de Leland--Nelson} generalizada que a GAT unifica sob o formalismo geom ctrico.
 \end{sol}
 
-\begin{exer}[Covariação Quadrática como Métrica de Mercado]
+\begin{exer}[Covaria SS  o Quadr itica como M ctrica de Mercado]
 \label{ex:cov_metrica}
-Demonstre que, para um mercado com $n$ ativos governados por difusões de Itô, a matriz de covariação quadrática instantânea $d\langle \log S^i, \log S^j\rangle_t/dt$ define uma métrica riemanniana no espaço de preços se e somente se a matriz de volatilidade $\sigma$ tem posto máximo ($\rank(\sigma)=n$).
+Demonstre que, para um mercado com $n$ ativos governados por difus ues de It ', a matriz de covaria SS  o quadr itica instant  nea $d\langle \log S^i, \log S^j\rangle_t/dt$ define uma m ctrica riemanniana no espa SSo de pre SSos se e somente se a matriz de volatilidade $\sigma$ tem posto m iximo ($\rank(\sigma)=n$).
 \end{exer}
 
 \begin{sol}
-Sejam $x^i_t = \log S^i_t$ com $dx^i_t = m^i_t\,dt + \sigma^i_a\,dW^a_t$ (soma em $a=1,\dots,d$, $d\geq n$). A covariação quadrática é:
+Sejam $x^i_t = \log S^i_t$ com $dx^i_t = m^i_t\,dt + \sigma^i_a\,dW^a_t$ (soma em $a=1,\dots,d$, $d\geq n$). A covaria SS  o quadr itica  c:
 \begin{equation}
   d\langle x^i, x^j\rangle_t = \sigma^i_a\,\sigma^j_a\,dt = (\sigma\sigma^\top)^{ij}\,dt.
 \end{equation}
-Portanto, $g^{ij} = (\sigma\sigma^\top)^{ij}$ (ou, equivalentemente, $g_{ij}$ é a inversa quando $d=n$).
+Portanto, $g^{ij} = (\sigma\sigma^\top)^{ij}$ (ou, equivalentemente, $g_{ij}$  c a inversa quando $d=n$).
 
-$g$ é uma métrica riemanniana se for simétrica e positiva definida:
+$g$  c uma m ctrica riemanniana se for sim ctrica e positiva definida:
 \begin{itemize}
   \item \textbf{Simetria}: $g^{ij} = \sigma^i_a\sigma^j_a = \sigma^j_a\sigma^i_a = g^{ji}$. $\checkmark$
   \item \textbf{Positividade}: Para $v\in\R^n\setminus\{0\}$, $v_i g^{ij} v_j = v_i\sigma^i_a\sigma^j_a v_j = \|\sigma^\top v\|^2 \geq 0$, com igualdade apenas se $\sigma^\top v = 0$.
 \end{itemize}
 
-Se $\rank(\sigma)=n$, então $\sigma^\top v \neq 0$ para $v\neq 0$, e $g$ é positiva definida, constituindo uma métrica riemanniana legítima --- a \textbf{métrica de Mahalanobis instantânea}. Se $\rank(\sigma)<n$, há dependência linear entre ativos (colinearidade perfeita), $g$ é semidefinida positiva (métrica degenerada), e o mercado possui ativos redundantes, violando a condição de completude.
+Se $\rank(\sigma)=n$, ent  o $\sigma^\top v \neq 0$ para $v\neq 0$, e $g$  c positiva definida, constituindo uma m ctrica riemanniana leg -tima --- a \textbf{m ctrica de Mahalanobis instant  nea}. Se $\rank(\sigma)<n$, h i depend ancia linear entre ativos (colinearidade perfeita), $g$  c semidefinida positiva (m ctrica degenerada), e o mercado possui ativos redundantes, violando a condi SS  o de completude.
 
-Na GAT, a não degenerescência de $g$ é condição necessária para que o espaço de ativos seja uma variedade riemanniana própria e para que o problema de apreçamento por transporte geométrico seja bem posto.
+Na GAT, a n  o degeneresc ancia de $g$  c condi SS  o necess iria para que o espa SSo de ativos seja uma variedade riemanniana pr 3pria e para que o problema de apre SSamento por transporte geom ctrico seja bem posto.
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Nível Avançado}
+\section{N -vel Avan SSado}
 \label{sec:ex_avancado}
 
-\begin{exer}[Construção Explicita da Medida Martingal via Transporte Geométrico]
+\begin{exer}[Constru SS  o Explicita da Medida Martingal via Transporte Geom ctrico]
 \label{ex:transporte_medida}
-Seja $M$ uma variedade riemanniana compacta representando o espaço de preços descontados de $n$ ativos, com métrica $g$ e forma de conexão $\omega$. Mostre que o transporte paralelo ao longo das geodésicas de $g$ define univocamente uma $\Q$-medida martingal se e somente se a holonomia do fibrado de preços é trivial ($\Hol(\omega)\subseteq\{e\}$). Interprete esta condição como ausência de arbitragem global.
+Seja $M$ uma variedade riemanniana compacta representando o espa SSo de pre SSos descontados de $n$ ativos, com m ctrica $g$ e forma de conex  o $\omega$. Mostre que o transporte paralelo ao longo das geod csicas de $g$ define univocamente uma $\Q$-medida martingal se e somente se a holonomia do fibrado de pre SSos  c trivial ($\Hol(\omega)\subseteq\{e\}$). Interprete esta condi SS  o como aus ancia de arbitragem global.
 \end{exer}
 
 \begin{sol}
-\textbf{Construção.} Seja $\gamma:[0,T]\to M$ uma geodésica com $\gamma(0)=x_0$ (preço inicial). O transporte paralelo $\Pi_\gamma:T_{x_0}M\to T_{\gamma(t)}M$ mapeia carteiras iniciais em carteiras livres de arbitragem se $\Pi_\gamma$ independe da curva $\gamma$ escolhida --- i.e., se a conexão $\omega$ tem curvatura nula ($\Omega=0$). Neste caso, $\Pi_\gamma = \Pi$ é bem definida para toda curva.
+\textbf{Constru SS  o.} Seja $\gamma:[0,T]\to M$ uma geod csica com $\gamma(0)=x_0$ (pre SSo inicial). O transporte paralelo $\Pi_\gamma:T_{x_0}M\to T_{\gamma(t)}M$ mapeia carteiras iniciais em carteiras livres de arbitragem se $\Pi_\gamma$ independe da curva $\gamma$ escolhida --- i.e., se a conex  o $\omega$ tem curvatura nula ($\Omega=0$). Neste caso, $\Pi_\gamma = \Pi$  c bem definida para toda curva.
 
-\textbf{Holonomia.} A holonomia $\Hol_x(\omega)$ em $x\in M$ é o grupo de transformações lineares em $T_xM$ obtidas por transporte paralelo ao longo de todos os lacetes baseados em $x$. Se $\Hol_x(\omega) = \{e\}$ (holonomia trivial), o transporte paralelo é independente do caminho, e a ``carteira martingal'' associada a cada preço é única.
+\textbf{Holonomia.} A holonomia $\Hol_x(\omega)$ em $x\in M$  c o grupo de transforma SS ues lineares em $T_xM$ obtidas por transporte paralelo ao longo de todos os lacetes baseados em $x$. Se $\Hol_x(\omega) = \{e\}$ (holonomia trivial), o transporte paralelo  c independente do caminho, e a ``carteira martingal'' associada a cada pre SSo  c  onica.
 
-\textbf{Construção de $\Q$.} Defina $\Q$ via derivada de Radon--Nikodym:
+\textbf{Constru SS  o de $\Q$.} Defina $\Q$ via derivada de Radon--Nikodym:
 \begin{equation}
   \frac{d\Q}{d\P}\Big|_{\mathcal{F}_T} = \exp\!\left(-\int_0^T \theta_t\,dW_t - \frac{1}{2}\int_0^T \|\theta_t\|^2\,dt\right),
 \end{equation}
-em que $\theta_t$ é o \textbf{prêmio de risco geométrico} definido por $\theta = \omega(\bar{D})$, a avaliação da 1-forma de conexão na velocidade corrente de Nelson. A condição de Novikov para que $\Q$ seja medida de probabilidade equivalente é $\E[\exp(\frac{1}{2}\int_0^T\|\theta_t\|^2 dt)]<\infty$.
+em que $\theta_t$  c o \textbf{pr amio de risco geom ctrico} definido por $\theta = \omega(\bar{D})$, a avalia SS  o da 1-forma de conex  o na velocidade corrente de Nelson. A condi SS  o de Novikov para que $\Q$ seja medida de probabilidade equivalente  c $\E[\exp(\frac{1}{2}\int_0^T\|\theta_t\|^2 dt)]<\infty$.
 
-\textbf{Equivalência.} $\Hol(\omega)=\{e\}$ $\iff$ $\Omega=0$ (Ambrose--Singer) $\iff$ existência de seção global horizontal (trivialização do fibrado) $\iff$ existência de $\Q$ única (completude de mercado). Se $\Hol(\omega)\neq\{e\}$, o transporte paralelo ao longo de dois caminhos distintos entre $x_0$ e $x_t$ produz duas carteiras diferentes, ambas consistentes com NFLVR local, mas uma das quais constitui \textbf{arbitragem global} (efeito de holonomia --- análogo ao \textit{drift} de fase de Berry em mecânica quântica). A condição $\Hol(\omega)=\{e\}$ é, portanto, a versão geométrica do Teorema de Harison--Kreps--Pliska em sua forma mais geral.
+\textbf{Equival ancia.} $\Hol(\omega)=\{e\}$ $\iff$ $\Omega=0$ (Ambrose--Singer) $\iff$ exist ancia de se SS  o global horizontal (trivializa SS  o do fibrado) $\iff$ exist ancia de $\Q$  onica (completude de mercado). Se $\Hol(\omega)\neq\{e\}$, o transporte paralelo ao longo de dois caminhos distintos entre $x_0$ e $x_t$ produz duas carteiras diferentes, ambas consistentes com NFLVR local, mas uma das quais constitui \textbf{arbitragem global} (efeito de holonomia --- an ilogo ao \textit{drift} de fase de Berry em mec  nica qu  ntica). A condi SS  o $\Hol(\omega)=\{e\}$  c, portanto, a vers  o geom ctrica do Teorema de Harison--Kreps--Pliska em sua forma mais geral.
 \end{sol}
 
-\begin{exer}[Fluxo de Ricci do Mercado e Convergência ao Equilíbrio]
+\begin{exer}[Fluxo de Ricci do Mercado e Converg ancia ao Equil -brio]
 \label{ex:ricci_flow}
-Considere um mercado cuja métrica $g_{ij}(x,t)$ evolui segundo o fluxo de Ricci:
+Considere um mercado cuja m ctrica $g_{ij}(x,t)$ evolui segundo o fluxo de Ricci:
 \begin{equation}
   \frac{\partial g_{ij}}{\partial t} = -2\,\Ric_{ij}(g).
 \end{equation}
-Mostre que, se o mercado satisfaz NFLVR em cada instante, a curvatura escalar $R = g^{ij}\Ric_{ij}$ é uma função monótona não decrescente ao longo do fluxo e converge para um valor constante de equilíbrio $R_\infty\geq 0$. Interprete $R(t)$ como uma medida de \textbf{ineficiência de mercado}.
+Mostre que, se o mercado satisfaz NFLVR em cada instante, a curvatura escalar $R = g^{ij}\Ric_{ij}$  c uma fun SS  o mon 3tona n  o decrescente ao longo do fluxo e converge para um valor constante de equil -brio $R_\infty\geq 0$. Interprete $R(t)$ como uma medida de \textbf{inefici ancia de mercado}.
 \end{exer}
 
 \begin{sol}
-\textbf{Equação de evolução da curvatura escalar.} Sob o fluxo de Ricci, a curvatura escalar evolui segundo:
+\textbf{Equa SS  o de evolu SS  o da curvatura escalar.} Sob o fluxo de Ricci, a curvatura escalar evolui segundo:
 \begin{equation}
   \frac{\partial R}{\partial t} = \Delta_g R + 2\|\Ric\|^2_g \geq \Delta_g R,
 \end{equation}
-em que $\Delta_g$ é o laplaciano de $g$ e $\|\Ric\|^2_g = \Ric_{ij}\Ric^{ij}\geq 0$.
+em que $\Delta_g$  c o laplaciano de $g$ e $\|\Ric\|^2_g = \Ric_{ij}\Ric^{ij}\geq 0$.
 
-\textbf{Princípio do máximo.} Se $M$ é compacta, pelo princípio do máximo parabólico, o ínfimo de $R$ é não decrescente:
+\textbf{Princ -pio do m iximo.} Se $M$  c compacta, pelo princ -pio do m iximo parab 3lico, o  -nfimo de $R$  c n  o decrescente:
 \begin{equation}
   R_{\min}(t) \geq R_{\min}(0).
 \end{equation}
-Além disso, se $R_{\min}(0)>0$, a variedade colapsa em tempo finito (singularidade de Ricci). Se $R_{\min}(0)=0$, a métrica converge para um estado estacionário com $\Ric\equiv 0$ (métrica de Einstein, $R$ constante).
+Al cm disso, se $R_{\min}(0)>0$, a variedade colapsa em tempo finito (singularidade de Ricci). Se $R_{\min}(0)=0$, a m ctrica converge para um estado estacion irio com $\Ric\equiv 0$ (m ctrica de Einstein, $R$ constante).
 
-\textbf{Interpretação financeira.} Na GAT, a curvatura escalar $R(t)$ quantifica a \textbf{intensidade de oportunidades de arbitragem não exploradas} no mercado. O fluxo de Ricci modela a dinâmica de \textbf{auto-organização do mercado}: traders exploram ineficiências locais ($R>0$), cujas operações reduzem a curvatura ($\partial_t g_{ij} = -2\Ric_{ij}$), conduzindo o sistema a um equilíbrio geometricamente plano ($R\to 0$). Este processo é o análogo geométrico da \textbf{hipótese de mercado eficiente} (EMH) de Fama, reinterpretada como um \textbf{fluxo de curvatura} no espaço de ativos.
+\textbf{Interpreta SS  o financeira.} Na GAT, a curvatura escalar $R(t)$ quantifica a \textbf{intensidade de oportunidades de arbitragem n  o exploradas} no mercado. O fluxo de Ricci modela a din  mica de \textbf{auto-organiza SS  o do mercado}: traders exploram inefici ancias locais ($R>0$), cujas opera SS ues reduzem a curvatura ($\partial_t g_{ij} = -2\Ric_{ij}$), conduzindo o sistema a um equil -brio geometricamente plano ($R\to 0$). Este processo  c o an ilogo geom ctrico da \textbf{hip 3tese de mercado eficiente} (EMH) de Fama, reinterpretada como um \textbf{fluxo de curvatura} no espa SSo de ativos.
 
-O tempo de convergência $\tau = \sup\{t: R(t)>\varepsilon\}$ é o \textbf{tempo característico de absorção de informação} pelo mercado, e a GAT permite calculá-lo explicitamente a partir dos dados de volatilidade e correlação (curvatura seccional inicial).
+O tempo de converg ancia $\tau = \sup\{t: R(t)>\varepsilon\}$  c o \textbf{tempo caracter -stico de absor SS  o de informa SS  o} pelo mercado, e a GAT permite calcul i-lo explicitamente a partir dos dados de volatilidade e correla SS  o (curvatura seccional inicial).
 \end{sol}
 
-\begin{exer}[Invariantes Topológicos e Classificação de Mercados]
+\begin{exer}[Invariantes Topol 3gicos e Classifica SS  o de Mercados]
 \label{ex:topologia}
-Calcule a classe de Chern $c_1$ do fibrado de preços sobre um mercado com $n=2$ ativos cuja métrica de Mahalanobis é a métrica de Fubini--Study em $\C P^1\cong S^2$. Mostre que $c_1 \neq 0$ implica a impossibilidade de cobertura perfeita (hedging exato) para qualquer derivativo, independentemente da estratégia dinâmica empregada.
+Calcule a classe de Chern $c_1$ do fibrado de pre SSos sobre um mercado com $n=2$ ativos cuja m ctrica de Mahalanobis  c a m ctrica de Fubini--Study em $\C P^1\cong S^2$. Mostre que $c_1 \neq 0$ implica a impossibilidade de cobertura perfeita (hedging exato) para qualquer derivativo, independentemente da estrat cgia din  mica empregada.
 \end{exer}
 
 \begin{sol}
-\textbf{Métrica e curvatura.} A métrica de Fubini--Study em $\C P^1$ é, em coordenadas da carta afim $z = x^1 + ix^2$:
+\textbf{M ctrica e curvatura.} A m ctrica de Fubini--Study em $\C P^1$  c, em coordenadas da carta afim $z = x^1 + ix^2$:
 \begin{equation}
   g_{i\bar\jmath} = \frac{\partial^2}{\partial z^i\partial \bar z^j}\log(1+|z|^2),\qquad
   \Omega = i\,\partial\bar\partial\log(1+|z|^2) = \frac{i\,dz\wedge d\bar z}{(1+|z|^2)^2}.
 \end{equation}
-A 2-forma de curvatura (forma de Kähler) é $\Omega = \omega_{\text{FS}}$, com integral normalizada $\int_{\C P^1}\Omega = 2\pi$.
+A 2-forma de curvatura (forma de K  hler)  c $\Omega = \omega_{\text{FS}}$, com integral normalizada $\int_{\C P^1}\Omega = 2\pi$.
 
-\textbf{Classe de Chern.} A primeira classe de Chern do fibrado de linha canônico é:
+\textbf{Classe de Chern.} A primeira classe de Chern do fibrado de linha can 'nico  c:
 \begin{equation}
   c_1 = \frac{i}{2\pi}\,\Omega = \frac{1}{\pi}\,\frac{dx^1\wedge dx^2}{(1+|z|^2)^2},
 \end{equation}
-com $\int_{\C P^1} c_1 = 1 \neq 0$. A classe de Chern é um \textbf{invariante topológico}: nenhuma deformação contínua da métrica (i.e., nenhuma mudança suave nos parâmetros de mercado) pode anular $c_1$.
+com $\int_{\C P^1} c_1 = 1 \neq 0$. A classe de Chern  c um \textbf{invariante topol 3gico}: nenhuma deforma SS  o cont -nua da m ctrica (i.e., nenhuma mudan SSa suave nos par  metros de mercado) pode anular $c_1$.
 
-\textbf{Implicação para hedging.} Na GAT, a condição de hedging exato de um payoff $H:\C P^1\to\R$ é que $H$ seja \textbf{globalmente horizontal}, i.e., sua derivada covariante anule-se identicamente: $\nabla H \equiv 0$. Isto exige que o fibrado admita uma seção global sem zeros. Pelo teorema de Chern--Weil, a obstrução à existência de tal seção é precisamente $c_1$: se $c_1\neq 0$, não há seção global não nula.
+\textbf{Implica SS  o para hedging.} Na GAT, a condi SS  o de hedging exato de um payoff $H:\C P^1\to\R$  c que $H$ seja \textbf{globalmente horizontal}, i.e., sua derivada covariante anule-se identicamente: $\nabla H \equiv 0$. Isto exige que o fibrado admita uma se SS  o global sem zeros. Pelo teorema de Chern--Weil, a obstru SS  o    exist ancia de tal se SS  o  c precisamente $c_1$: se $c_1\neq 0$, n  o h i se SS  o global n  o nula.
 
-Portanto, \textbf{nenhum derivativo não trivial pode ser perfeitamente coberto} neste mercado: toda estratégia de hedging dinâmica terá erro de cobertura residual $\mathcal{E}\geq \frac{1}{2}|\int_{\C P^1}c_1|$. Este erro é de natureza \textbf{topológica}, não podendo ser eliminado por aumento de frequência de rebalanceamento ou refinamento do modelo. A GAT revela que mercados com topologia não trivial do fibrado de preços são \textbf{inerentemente incompletos} --- resultado que transcende a análise local de Black--Scholes e conecta a teoria de apreçamento com a topologia algébrica (teoria de Chern--Weil e $K$-teoria).
+Portanto, \textbf{nenhum derivativo n  o trivial pode ser perfeitamente coberto} neste mercado: toda estrat cgia de hedging din  mica ter i erro de cobertura residual $\mathcal{E}\geq \frac{1}{2}|\int_{\C P^1}c_1|$. Este erro  c de natureza \textbf{topol 3gica}, n  o podendo ser eliminado por aumento de frequ ancia de rebalanceamento ou refinamento do modelo. A GAT revela que mercados com topologia n  o trivial do fibrado de pre SSos s  o \textbf{inerentemente incompletos} --- resultado que transcende a an ilise local de Black--Scholes e conecta a teoria de apre SSamento com a topologia alg cbrica (teoria de Chern--Weil e $K$-teoria).
 \end{sol}
 
 \endinput

@@ -1,5 +1,5 @@
-% ======================================================================
-% CAPITULO 14 — OpenCode Ecosystem como Laboratorio GAT
+ >>?% ======================================================================
+% CAPITULO 14 --- OpenCode Ecosystem como Laboratorio GAT
 % ======================================================================
 \chapter{OpenCode Ecosystem como Laboratorio GAT}
 
@@ -48,7 +48,7 @@ outro procura erros, outro sugere melhorias. Eles trabalham em paralelo e
 depois debatem entre si. O resultado final passa por 7 verificadores
 automaticos (os ``Cora-Debate'') antes de ser aprovado. Voce, como
 pesquisador, define a pergunta e interpreta os resultados --- mas o trabalho
-braçal de verificacao e feito pelo time de agentes.
+bra SSal de verificacao e feito pelo time de agentes.
 \end{minipage}}
 \end{center}
 
@@ -103,7 +103,7 @@ discount = np.exp(-r * np.linspace(0, T, N+1))
 S_hat = S * discount.reshape(-1, 1)
 
 # Verificar: se mu != r, entao S_hat nao e martingal
-# → existe arbitragem → curvatura R != 0
+#  +' existe arbitragem  +' curvatura R != 0
 print(f"Retorno esperado anualizado: {mu}")
 print(f"Taxa livre de risco: {r}")
 print(f"Ha arbitragem? {'SIM' if any(mu != r) else 'NAO'}")
@@ -188,8 +188,8 @@ r_x = (x1*D1(t)*r + x2*D2(t)*r) / D_x  # simplificado: mesma taxa r
 # (implementacao completa no repositorio)
 
 # Verificacao V1 (dimensional):
-# [r] = 1/T, [D] = valor → [chi] = adimensional? ✓
-# [R] = 1/(valor × tempo)? Verificar.
+# [r] = 1/T, [D] = valor  +' [chi] = adimensional?  oe"
+# [R] = 1/(valor  -- tempo)? Verificar.
 
 # Verificacao V2 (algebrico):
 # R == 0 quando D1 e D2 satisfazem dD/D = r dt
@@ -197,7 +197,7 @@ r_x = (x1*D1(t)*r + x2*D2(t)*r) / D_x  # simplificado: mesma taxa r
 
 # Verificacao V3 (contraexemplo):
 # Se D1 = exp(r t + sigma W_t) e D2 = exp(r t - sigma W_t),
-# entao R != 0 → existe arbitragem
+# entao R != 0  +' existe arbitragem
 \end{lstlisting}
 
 \section{SDD+TDD: Desenvolvimento Verificado de Modelos GAT}
@@ -241,7 +241,7 @@ SAIDAS:
   - Hol(chi): grupo de holonomia
 
 CRITERIOS DE ACEITACAO (CTs):
-  CT-1: Se mu_j = r para todo j, entao R ≡ 0 (NFLVR)
+  CT-1: Se mu_j = r para todo j, entao R  %%i 0 (NFLVR)
   CT-2: Se mu_j != r para algum j, entao R != 0
   CT-3: dim(Hol(chi)) = numero de mu_j != r (estrat. independentes)
   CT-4: V1-V7: todos os verificadores passam
@@ -256,13 +256,13 @@ OpenCode e documentado em \texttt{criador-artigo/} e \texttt{basis-research/}.
 bibliografica, e 5 agentes de banca simulam a revisao por pares.}:
 
 \begin{verbatim}
-SEEKER (pesquisa) → MASWOS (escrita, 49 agentes)
-  → Anti-AI (TSAC, 87 palavras banidas)
-  → Banca simulada (5 revisores + 4 orientadores)
-  → Correcao iterativa (loop ate score >= 95/100)
-  → Cora-Debate V1-V7 (verificacao simbolica)
-  → Exportacao LaTeX/PDF
-  → AutoEvolve (aprende com o ciclo e gera novas skills)
+SEEKER (pesquisa)  +' MASWOS (escrita, 49 agentes)
+   +' Anti-AI (TSAC, 87 palavras banidas)
+   +' Banca simulada (5 revisores + 4 orientadores)
+   +' Correcao iterativa (loop ate score >= 95/100)
+   +' Cora-Debate V1-V7 (verificacao simbolica)
+   +' Exportacao LaTeX/PDF
+   +' AutoEvolve (aprende com o ciclo e gera novas skills)
 \end{verbatim}
 
 \subsection{Gerando um Artigo sobre GAT com o Pipeline}
@@ -291,7 +291,7 @@ Responda:
 \begin{enumerate}[(a)]
   \item Por que $\mu \neq r$ nao constitui arbitragem?
   \item O que precisa ser verdade para que exista arbitragem?
-  \item Simule 1.000 trajetorias e verifique a distribuicao de $R$ — ela e
+  \item Simule 1.000 trajetorias e verifique a distribuicao de $R$ --- ela e
         significativamente diferente de zero?
 \end{enumerate}
 \end{exer}
@@ -305,7 +305,7 @@ verificacao simbolica?
 
 \begin{exer}[Ciclo SDD+TDD Completo]
 Escolha um aspecto da GAT (ex: condicao de Novikov, equacao de continuidade,
-Teorema de Noether) e implemente o ciclo SPEC→TDD→IMPLEMENTAR→VERIFICAR→
+Teorema de Noether) e implemente o ciclo SPEC +'TDD +'IMPLEMENTAR +'VERIFICAR +'
 AUDITAR. Documente o processo. Submeta ao Cora-Debate. Publique o resultado.
 \end{exer}
 
