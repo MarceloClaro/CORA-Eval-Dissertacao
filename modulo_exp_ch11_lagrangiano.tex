@@ -1,0 +1,290 @@
+﻿\chapter{Formula\c{c}\~ao Lagrangiana e Teorema de Noether}
+
+\section{Mec\^anica Lagrangiana em 5 Minutos}
+
+A mec\^anica Lagrangiana, desenvolvida por Joseph-Louis Lagrange em 1788, reformula a mec\^anica Newtoniana em termos de um princ\'ipio variacional que revela as simetrias fundamentais do sistema.
+
+Seja um sistema f\'isico descrito por coordenadas generalizadas $q = (q^1,\dots,q^n)$ e velocidades generalizadas $\dot{q} = (\dot{q}^1,\dots,\dot{q}^n)$. A Lagrangiana $L(q,\dot{q},t)$ \'e definida como:
+
+\begin{equation}\label{eq:lagrangiana-classica}
+L(q,\dot{q},t) = T - V = \frac{1}{2}\sum_{i,j} m_{ij}\dot{q}^i\dot{q}^j - V(q)
+\end{equation}
+
+onde $T$ \'e a energia cin\'etica e $V$ \'e a energia potencial.
+
+\smallskip
+\noindent\textbf{Princ\'ipio da M\'inima A\c{c}\~ao (Hamilton).} A trajet\'oria f\'isica $q(t)$ entre $q(t_1)$ e $q(t_2)$ \'e aquela que extremiza o funcional a\c{c}\~ao:
+
+\begin{equation}\label{eq:acao}
+S[q] = \int_{t_1}^{t_2} L(q(t), \dot{q}(t), t) \, dt
+\end{equation}
+
+A condi\c{c}\~ao $\delta S = 0$ para varia\c{c}\~oes $\delta q$ que se anulam nos extremos conduz \`as equa\c{c}\~oes de Euler--Lagrange:
+
+\begin{equation}\label{eq:euler-lagrange}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}^i}\right) - \frac{\partial L}{\partial q^i} = 0, \qquad i = 1,\dots,n
+\end{equation}
+
+O momento can\^onico conjugado a $q^i$ \'e definido como $p_i = \partial L/\partial \dot{q}^i$.
+
+\smallskip
+\noindent\textbf{Exemplo (Oscilador Harm\^onico).} $L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2$. A equa\c{c}\~ao de Euler--Lagrange d\'a $m\ddot{x} + kx = 0$.
+
+A for\c{c}a do formalismo Lagrangiano reside em sua covari\^ancia: as equa\c{c}\~oes de movimento mant\^em a mesma forma sob qualquer mudan\c{c}a de coordenadas, e as simetrias do sistema se traduzem diretamente em leis de conserva\c{c}\~ao.
+
+\section{O Lagrangiano do Mercado}
+
+Propomos uma Lagrangiana financeira $L = L(D, \mathbb{D}D, t)$ onde:
+
+\begin{itemize}
+    \item $D = (D^1,\dots,D^n)$ \'e o vetor de derivativos (ou ativos) no mercado;
+    \item $\mathbb{D}D$ denota o operador de deriva\c{c}\~ao estoc\'astica de Nelson (1966), generalizando $\dot{q}$ para o contexto estoc\'astico;
+    \item $t \in [0,T]$ \'e o horizonte de negocia\c{c}\~ao.
+\end{itemize}
+
+A Lagrangiana do mercado \'e decomposta em tr\^es termos:
+
+\begin{equation}\label{eq:lagrangiana-mercado}
+L_{\text{mercado}}(D, \mathbb{D}D, t) = L_{\text{cin}} + L_{\text{pot}} + L_{\text{fric}}
+\end{equation}
+
+onde cada termo possui interpreta\c{c}\~ao financeira precisa:
+
+\medskip
+\noindent\textbf{1. Termo Cin\'etico $L_{\text{cin}}$ (Atividade de Negocia\c{c}\~ao):}
+
+\begin{equation}\label{eq:Lcin}
+L_{\text{cin}} = \frac{1}{2} \sum_{i,j=1}^n g_{ij}(D,t) \, (\mathbb{D}D^i)(\mathbb{D}D^j)
+\end{equation}
+
+O tensor m\'etrico $g_{ij}(D,t)$ \'e (menos) a matriz de covari\^ancia inversa dos retornos: $g_{ij} = (\Sigma^{-1})_{ij}$. Financeiramente, $L_{\text{cin}}$ penaliza movimentos r\'apidos em dire\c{c}\~oes de alta incerteza --- an\'alogo ao custo de \textit{market impact} em execu\c{c}\~ao \'otima (Almgren \& Chriss, 2001).
+
+\medskip
+\noindent\textbf{2. Termo Potencial $L_{\text{pot}}$ (Estrutura de Payoff):}
+
+\begin{equation}\label{eq:Lpot}
+L_{\text{pot}} = -\Phi(D,t)
+\end{equation}
+
+onde $\Phi(D,t)$ \'e o potencial de payoff --- o valor esperado descontado dos fluxos de caixa futuros sob a medida f\'isica (ou, alternativamente, o negativo da fun\c{c}\~ao utilidade do agente representativo). Para op\c{c}\~oes europeias, $\Phi$ \'e essencialmente o payoff descontado.
+
+\medskip
+\noindent\textbf{3. Termo de Fric\c{c}\~ao $L_{\text{fric}}$ (Custos de Mercado):}
+
+\begin{equation}\label{eq:Lfric}
+L_{\text{fric}} = -\frac{\nu}{2} \sum_{i=1}^n \lambda_i(D,t) (\mathbb{D}D^i)^2
+\end{equation}
+
+onde $\nu > 0$ \'e o coeficiente de viscosidade financeira (inverso da liquidez) e $\lambda_i$ modela o custo de transa\c{c}\~ao proporcional ao quadrado do volume negociado (modelo de Kyle, 1985).
+
+\section{Equa\c{c}\~oes de Euler--Lagrange Estoc\'asticas}
+
+A extens\~ao do formalismo Lagrangiano a processos estoc\'asticos requer a substitui\c{c}\~ao da derivada temporal ordin\'aria $d/dt$ pelo operador de deriva\c{c}\~ao de Nelson $\mathbb{D}$.
+
+\smallskip
+\noindent\textbf{Defini\c{c}\~ao 11.1 (Derivada de Nelson).} Para um processo estoc\'astico $X_t$ adaptado \`a filtra\c{c}\~ao $\mathbb{F}$, definem-se as derivadas \textit{forward} ($\mathbb{D}_+$) e \textit{backward} ($\mathbb{D}_-$):
+
+\begin{equation}\label{eq:nelson-forward}
+\mathbb{D}_+ X_t = \lim_{h\downarrow 0} \mathbb{E}\left[ \frac{X_{t+h} - X_t}{h} \;\middle|\; \mathcal{F}_t \right]
+\end{equation}
+
+\begin{equation}\label{eq:nelson-backward}
+\mathbb{D}_- X_t = \lim_{h\downarrow 0} \mathbb{E}\left[ \frac{X_t - X_{t-h}}{h} \;\middle|\; \mathcal{F}_t \right]
+\end{equation}
+
+O operador sim\'etrico (m\'edia) \'e $\mathbb{D} = \frac{1}{2}(\mathbb{D}_+ + \mathbb{D}_-)$.
+
+\medskip
+\noindent\textbf{Teorema 11.1 (Euler--Lagrange Estoc\'astico).} Seja $L = L(D, \mathbb{D}D, t)$ a Lagrangiana financeira. As equa\c{c}\~oes de movimento estoc\'asticas s\~ao:
+
+\begin{equation}\label{eq:euler-lagrange-estocastico}
+\mathbb{D}_-\left(\frac{\partial L}{\partial (\mathbb{D}D^i)}\right) - \frac{\partial L}{\partial D^i} = 0, \qquad i = 1,\dots,n
+\end{equation}
+
+Note a presen\c{c}a de $\mathbb{D}_-$ (backward) no primeiro termo --- isto garante a adapta\c{c}\~ao \`a filtra\c{c}\~ao e \'e consequ\^encia do c\'alculo estoc\'astico de Nelson--Yasue (1981).
+
+\medskip
+\noindent\textit{Prova (esbo\c{c}o).} A a\c{c}\~ao estoc\'astica \'e:
+
+\begin{equation}\label{eq:acao-estocastica}
+S_{\text{estoc}}[D] = \mathbb{E}\left[ \int_0^T L(D_t, \mathbb{D}D_t, t) \, dt \right]
+\end{equation}
+
+Aplicando o princ\'ipio variacional com respeito a varia\c{c}\~oes $\delta D$ adaptadas que se anulam em $t=0$ e $t=T$, e usando a f\'ormula de integra\c{c}\~ao por partes para o c\'alculo de Nelson (Nelson, 1966, Teorema 5.2), obtemos \eqref{eq:euler-lagrange-estocastico}. $\square$
+
+\smallskip
+\noindent\textbf{Exemplo 11.1 (Black--Scholes como Euler--Lagrange).} Considere $L = \frac{1}{2}\sigma^2 S^2 (\mathbb{D}S)^2 - rS$. A equa\c{c}\~ao de Euler--Lagrange estoc\'astica d\'a:
+
+\begin{equation}
+\mathbb{D}_-(\sigma^2 S^2 \mathbb{D}S) + r = 0
+\end{equation}
+
+que, sob a condi\c{c}\~ao de NFLVR, se reduz \`a equa\c{c}\~ao de Black--Scholes para o pre\c{c}o da op\c{c}\~ao $C(S,t)$ ap\'os transforma\c{c}\~ao adequada de vari\'aveis.
+
+\section{Simetrias e Leis de Conserva\c{c}\~ao: Teorema de Noether}
+
+\subsection{Teorema de Noether Cl\'assico}
+
+O Teorema de Noether (1918) estabelece uma correspond\^encia bijetiva entre simetrias cont\'inuas da Lagrangiana e leis de conserva\c{c}\~ao.
+
+\smallskip
+\noindent\textbf{Teorema 11.2 (Noether, 1918).} Se a a\c{c}\~ao $S[q] = \int L(q,\dot{q},t)\,dt$ \'e invariante sob a transforma\c{c}\~ao infinitesimal:
+
+\begin{equation}\label{eq:transformacao-noether}
+t \mapsto t + \epsilon \tau(q,\dot{q},t), \qquad q^i \mapsto q^i + \epsilon \xi^i(q,\dot{q},t)
+\end{equation}
+
+ent\~ao a quantidade:
+
+\begin{equation}\label{eq:carga-noether}
+Q = \sum_i p_i \xi^i - H\tau
+\end{equation}
+
+\'e conservada ($dQ/dt = 0$), onde $p_i = \partial L/\partial \dot{q}^i$ \'e o momento can\^onico e $H = \sum_i p_i \dot{q}^i - L$ \'e o Hamiltoniano.
+
+\smallskip
+\noindent\textbf{Exemplos cl\'assicos:}
+\begin{itemize}
+    \item Invari\^ancia sob transla\c{c}\~ao temporal $\Rightarrow$ conserva\c{c}\~ao da energia ($H$);
+    \item Invari\^ancia sob transla\c{c}\~ao espacial $\Rightarrow$ conserva\c{c}\~ao do momento linear;
+    \item Invari\^ancia sob rota\c{c}\~ao $\Rightarrow$ conserva\c{c}\~ao do momento angular.
+\end{itemize}
+
+\subsection{Extens\~ao Estoc\'astica}
+
+O teorema de Noether foi estendido ao contexto estoc\'astico por diversos autores (Misawa, 1995; Cresson \& Darses, 2007). A formula\c{c}\~ao relevante para finan\c{c}as \'e:
+
+\smallskip
+\noindent\textbf{Teorema 11.3 (Noether Estoc\'astico).} Se a a\c{c}\~ao estoc\'astica $S_{\text{estoc}}[D] = \mathbb{E}[\int_0^T L(D_t, \mathbb{D}D_t, t)\,dt]$ \'e invariante sob uma fam\'ilia de transforma\c{c}\~oes adaptadas $D \mapsto D^\epsilon$ com $D^0 = D$, ent\~ao:
+
+\begin{equation}\label{eq:carga-noether-estocastica}
+\mathbb{E}^{\mathbb{Q}}\left[ \frac{d}{dt} Q_t \right] = 0
+\end{equation}
+
+onde $Q_t$ \'e a carga de Noether estoc\'astica. Em particular, $Q_t$ \'e um $\mathbb{Q}$-martingale local.
+
+\section{Aplica\c{c}\~ao \`a Teoria da Arbitragem (GAT)}
+
+\subsection{Invari\^ancia sob Mudan\c{c}a de Numer\'ario}
+
+Uma das simetrias mais importantes em finan\c{c}as matem\'aticas \'e a invari\^ancia sob mudan\c{c}a de numer\'ario (Geman, El Karoui \& Rochet, 1995).
+
+Seja $N_t$ um processo estritamente positivo (o numer\'ario). A mudan\c{c}a de numer\'ario transforma os pre\c{c}os $S_t$ em $S_t/N_t$ e a medida martingale $\mathbb{Q}$ em $\mathbb{Q}^N$ via:
+
+\begin{equation}\label{eq:mudanca-numerario}
+\frac{d\mathbb{Q}^N}{d\mathbb{Q}} = \frac{N_T / N_0}{B_T / B_0}
+\end{equation}
+
+A Lagrangiana financeira \'e invariante sob esta transforma\c{c}\~ao se:
+
+\begin{equation}\label{eq:invariancia-numerario}
+L(D/N, \mathbb{D}(D/N), t) = L(D, \mathbb{D}D, t)
+\end{equation}
+
+\smallskip
+\noindent\textbf{Teorema 11.4 (Conserva\c{c}\~ao do VPL Esperado).} A invari\^ancia sob mudan\c{c}a de numer\'ario implica, via Teorema de Noether estoc\'astico, que o valor presente l\'iquido esperado \'e conservado:
+
+\begin{equation}\label{eq:conservacao-vpl}
+\frac{d}{dt} \mathbb{E}^{\mathbb{Q}}\left[ e^{-rt} V_t \right] = 0
+\end{equation}
+
+onde $V_t$ \'e o valor da carteira. Em outras palavras, a simetria de \textit{num\'eraire} protege o princ\'ipio fundamental de que o valor descontado \'e martingale sob $\mathbb{Q}$.
+
+\subsection{Simetria de Gauge Financeira}
+
+Uma segunda simetria fundamental emerge quando consideramos transforma\c{c}\~oes de gauge:
+
+\begin{equation}\label{eq:gauge-financeira}
+D \mapsto D + \nabla f, \qquad \mathbb{D}D \mapsto \mathbb{D}D + \mathbb{D}(\nabla f)
+\end{equation}
+
+onde $f(D,t)$ \'e uma fun\c{c}\~ao escalar arbitr\'aria. Esta transforma\c{c}\~ao \'e an\'aloga \`a liberdade de gauge em eletromagnetismo ($A_\mu \mapsto A_\mu + \partial_\mu \Lambda$).
+
+A invari\^ancia sob transforma\c{c}\~oes de gauge est\'a intimamente ligada \`a condi\c{c}\~ao NFLVR: a Lagrangiana \'e gauge-invariante se e somente se $\nabla \cdot J = 0$ (Cap\'itulo~10).
+
+\section{Solu\c{c}\~oes de Equil\'ibrio}
+
+\subsection{Equil\'ibrio Black--Scholes (NFLVR)}
+
+No regime NFLVR, $\nabla \cdot J = 0$, e a Lagrangiana se reduz a:
+
+\begin{equation}\label{eq:L-NFLVR}
+L_{\text{NFLVR}} = \frac{1}{2} g_{ij} (\mathbb{D}D^i)(\mathbb{D}D^j) - \Phi(D,t)
+\end{equation}
+
+As equa\c{c}\~oes de Euler--Lagrange estoc\'asticas produzem:
+
+\begin{equation}\label{eq:EL-NFLVR}
+\mathbb{D}_-(g_{ij} \mathbb{D}D^j) + \frac{\partial \Phi}{\partial D^i} = 0
+\end{equation}
+
+Esta \'e a forma mais geral da equa\c{c}\~ao de Black--Scholes em coordenadas curvil\'ineas no espa\c{c}o de ativos. Em coordenadas planas ($g_{ij} = \delta_{ij}/\sigma_i^2$) e com $\Phi(D) = \max(D-K,0)$, recuperamos a equa\c{c}\~ao de Black--Scholes cl\'assica.
+
+\medskip
+\noindent\textbf{Propriedade Geom\'etrica.} A condi\c{c}\~ao NFLVR $\nabla \cdot J = 0$ implica que a curvatura escalar da m\'etrica de Fisher--Rao induzida \'e nula:
+
+\begin{equation}\label{eq:curvatura-nula}
+R[g] = 0 \quad \Longleftrightarrow \quad \text{NFLVR}
+\end{equation}
+
+Isto significa que o espa\c{c}o de ativos em equil\'ibrio de Black--Scholes \'e Ricci-plano --- uma propriedade que conecta diretamente a teoria de arbitragem \`a geometria de Calabi--Yau.
+
+\subsection{Equil\'ibrio com Fric\c{c}\~oes (Arbitragem Minimizada)}
+
+Com fric\c{c}\~oes presentes ($\nu > 0$), a Lagrangiana completa \'e:
+
+\begin{equation}\label{eq:L-completa}
+L = \frac{1}{2} g_{ij} (\mathbb{D}D^i)(\mathbb{D}D^j) - \Phi(D,t) - \frac{\nu}{2}\lambda_i (\mathbb{D}D^i)^2
+\end{equation}
+
+As equa\c{c}\~oes de movimento agora incluem um termo dissipativo:
+
+\begin{equation}\label{eq:EL-friccao}
+\mathbb{D}_-[(g_{ij} - \nu\lambda_i\delta_{ij})\mathbb{D}D^j] + \frac{\partial \Phi}{\partial D^i} = 0
+\end{equation}
+
+No equil\'ibrio, a curvatura n\~ao \'e mais nula, mas minimizada:
+
+\begin{equation}\label{eq:curvatura-minima}
+R[g] = \nu \cdot \kappa(D) > 0
+\end{equation}
+
+onde $\kappa(D)$ \'e uma fun\c{c}\~ao de curvatura residual que quantifica o desvio do equil\'ibrio NFLVR devido \`as fric\c{c}\~oes de mercado. A arbitragem \'e ``minimizada'' quando $\kappa$ atinge seu valor m\'inimo poss\'ivel dados os custos de transa\c{c}\~ao.
+
+Esta formula\c{c}\~ao unifica a teoria de arbitragem com fric\c{c}\~oes (G\'erard, Guasoni, L\'epinette, etc.) sob um \'unico princ\'ipio variacional: o mercado minimiza a curvatura do espa\c{c}o de ativos sujeito \`as restri\c{c}\~oes de liquidez.
+
+\begin{thebibliography}{99}
+
+\bibitem{nelson1966}
+Nelson, E. (1966). Derivation of the Schr\"odinger equation from Newtonian mechanics. \textit{Physical Review}, 150(4), 1079--1085. DOI: 10.1103/PhysRev.150.1079.
+
+\bibitem{yasue1981}
+Yasue, K. (1981). Stochastic calculus of variations. \textit{Journal of Functional Analysis}, 41(3), 327--340. DOI: 10.1016/0022-1236(81)90079-3.
+
+\bibitem{noether1918}
+Noether, E. (1918). Invariante Variationsprobleme. \textit{Nachrichten von der Gesellschaft der Wissenschaften zu G\"ottingen}, 235--257. arXiv:physics/0503066.
+
+\bibitem{misawa1995}
+Misawa, T. (1995). Noether's theorem in symmetric stochastic calculus of variations. \textit{Journal of Mathematical Physics}, 36(2), 692--703.
+
+\bibitem{cresson2007}
+Cresson, J. \& Darses, S. (2007). Stochastic embedding of dynamical systems. \textit{Journal of Mathematical Physics}, 48(12), 123511. DOI: 10.1063/1.2819076.
+
+\bibitem{geman1995}
+Geman, H., El Karoui, N. \& Rochet, J.C. (1995). Changes of num\'eraire, changes of probability measure and option pricing. \textit{Journal of Applied Probability}, 32(2), 443--458. DOI: 10.2307/3215299.
+
+\bibitem{almgren2001}
+Almgren, R. \& Chriss, N. (2001). Optimal execution of portfolio transactions. \textit{Journal of Risk}, 3(2), 5--39. DOI: 10.21314/JOR.2001.041.
+
+\bibitem{kyle1985}
+Kyle, A.S. (1985). Continuous auctions and insider trading. \textit{Econometrica}, 53(6), 1315--1335. DOI: 10.2307/1913210.
+
+\bibitem{delbaen1994}
+Delbaen, F. \& Schachermayer, W. (1994). A general version of the fundamental theorem of asset pricing. \textit{Mathematische Annalen}, 300(1), 463--520. DOI: 10.1007/BF01450498.
+
+\bibitem{ilinski2000}
+Ilinski, K. (2000). \textit{Physics of Finance: Gauge Modelling in Arbitrage Theory}. arXiv:hep-th/9710148.
+
+\end{thebibliography}
+
+

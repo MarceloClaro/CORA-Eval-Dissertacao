@@ -1,0 +1,853 @@
+﻿% ======================================================================
+% CAPITULO 7 — Conexao, Transporte Paralelo e Derivadas de Nelson
+% Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secoes 3.4--3.6
+% ======================================================================
+\chapter{Conexão, Transporte Paralelo e Derivadas de Nelson}
+
+Nos dois capítulos anteriores, construímos as peças do tabuleiro: os
+\textit{gauges} (Capítulo~5) como objetos que codificam a informação
+financeira de um instrumento, e o \textit{fibrado principal do mercado}
+(Capítulo~6) como o espaço no qual estes objetos vivem.  Falta a peça
+central: a \textbf{conexão} --- a regra que nos permite ``transportar''
+informação financeira ao longo de curvas no espaço de carteiras e no
+tempo.
+
+Este capítulo é o coração operacional da GAT.  Definiremos a conexão de
+Ilinski--Farinelli, provaremos que o transporte paralelo corresponde a
+operações financeiras fundamentais (câmbio e desconto), e
+introduziremos a derivada de Nelson --- a ferramenta analítica que
+permite formular o autofinanciamento na linguagem geométrica.
+
+% ----------------------------------------------------------------------
+\section{O Que É uma Conexão?}
+% ----------------------------------------------------------------------
+
+\subsection{Intuição: Conectando Fibras Vizinhas}
+
+Considere o fibrado principal $\mathcal{B}$ sobre a base $M = X \times
+[0,+\infty[$ que construímos no Capítulo~6.  Cada ponto $p = (x,t) \in
+M$ tem uma fibra $\mathcal{B}_p$ isomorfa ao grupo $G^*$ (as
+transformações de gauge invertíveis).  Os elementos da fibra são
+diferentes representações do mesmo estado financeiro --- diferentes
+escolhas de numérario, diferentes maneiras de empacotar fluxos de
+caixa.
+
+O problema fundamental é: \textbf{como comparar elementos em fibras
+vizinhas?}  Se eu tenho um gauge em $(x,t)$ e quero saber qual gauge
+em $(x+\delta x, t+\delta t)$ lhe corresponde, preciso de uma regra.
+Esta regra é a \textbf{conexão}.
+
+\begin{defi}[Conexão de Ehresmann --- Decomposição do Espaço Tangente]\label{def:ehresmann}
+Seja $\pi: \mathcal{B} \to M$ um fibrado principal com grupo estrutural
+$G$.  Uma \textbf{conexão} (de Ehresmann) em $\mathcal{B}$ é uma
+distribuição suave de subespaços horizontais $H\mathcal{B} \subset
+T\mathcal{B}$ tal que, para cada $b \in \mathcal{B}$:
+\begin{enumerate}[(i)]
+  \item $T_b\mathcal{B} = V_b\mathcal{B} \oplus H_b\mathcal{B}$
+        (decomposição em soma direta);
+  \item $H_{b\cdot g}\mathcal{B} = (R_g)_* H_b\mathcal{B}$
+        (equivariância sob a ação à direita de $G$);
+  \item $H_b\mathcal{B}$ depende suavemente de $b$.
+\end{enumerate}
+Aqui, $V_b\mathcal{B} := \ker(d\pi_b)$ é o \textbf{espaço vertical}
+(tangente à fibra) e $H_b\mathcal{B}$ é o \textbf{espaço horizontal}
+(complementar, isomorfo a $T_{\pi(b)}M$ via $d\pi_b$).
+\end{defi}
+
+\begin{obs}[Interpretação Geométrica]
+O espaço vertical $V_b\mathcal{B}$ contém as direções que permanecem
+na mesma fibra --- transformações de gauge que não alteram o ponto-base
+$(x,t)$.  O espaço horizontal $H_b\mathcal{B}$ contém as direções que
+nos levam a pontos-base vizinhos --- mudanças de carteira ou avanço no
+tempo.  A conexão decide, para cada direção na base, qual direção na
+fibra é considerada ``paralela''.
+\end{obs}
+
+\subsection{Projeções e a Forma de Conexão}
+
+A decomposição $T\mathcal{B} = V\mathcal{B} \oplus H\mathcal{B}$
+define dois projetores:
+\begin{equation}\label{eq:projectors}
+  \Pi^v: T\mathcal{B} \to V\mathcal{B}, \qquad
+  \Pi^h: T\mathcal{B} \to H\mathcal{B},
+\end{equation}
+com $\Pi^v + \Pi^h = \operatorname{id}$ e $(\Pi^v)^2 = \Pi^v$,
+$(\Pi^h)^2 = \Pi^h$.
+
+No fibrado principal, a estrutura de grupo permite codificar a conexão
+de forma mais eficiente através da \textbf{forma de conexão}: uma
+1-forma $\chi$ na base $M$ com valores na álgebra de Lie $\mathfrak{g}$
+do grupo $G$.  Dado um vetor tangente $v \in T_pM$, a forma $\chi_p(v)$
+prescreve o elemento infinitesimal de $\mathfrak{g}$ pelo qual devemos
+multiplicar o elemento da fibra para permanecermos na horizontal.
+
+% ----------------------------------------------------------------------
+\section{A Conexão de Mercado (Ilinski--Farinelli)}
+% ----------------------------------------------------------------------
+
+\subsection{Motivação Financeira}
+
+Queremos que o transporte paralelo tenha uma interpretação financeira
+transparente.  Há duas direções fundamentais na base:
+
+\begin{itemize}
+  \item \textbf{Direções nominais} ($\delta x$, com $\delta t = 0$):
+        mudar de carteira no mesmo instante.  Duas carteiras $x$ e
+        $x + \delta x$ que diferem apenas na composição de ativos
+        estão relacionadas por uma \textbf{taxa de câmbio}: quantas
+        unidades da carteira $x$ equivalem a uma unidade da carteira
+        $x + \delta x$?  A resposta é $D_t^{x+\delta x} / D_t^x$.
+  \item \textbf{Direção temporal} ($\delta t$, com $\delta x = 0$):
+        avançar no tempo com a mesma carteira.  O valor de uma
+        carteira hoje e amanhã estão relacionados pelo \textbf{fator
+        de desconto}: $1$ unidade hoje equivale a $e^{\int_t^{t+\delta
+        t} r_u^x du}$ unidades em $t+\delta t$.
+\end{itemize}
+
+A conexão deve capturar ambas as relações em uma única expressão.
+
+\subsection{Definição da Conexão}
+
+\begin{defi}[Conexão de Ilinski--Farinelli]\label{def:market_connection}
+A \textbf{conexão de mercado} no fibrado $\mathcal{B}$ é definida pela
+prescrição do transporte paralelo ao longo de curvas diferenciáveis.
+Para um deslocamento infinitesimal $(\delta x, \delta t)$ a partir de
+$(x,t)$, o elemento do grupo $G^*$ que implementa o levantamento
+horizontal é:
+
+\begin{equation}\label{eq:connection_definition}
+  \Gamma\big((x,t),(\delta x, \delta t)\big) \cdot g
+  := g\left(\frac{D_t^{x+\delta x}}{D_t^x} - r_t^x\,\delta t\right).
+\end{equation}
+
+Equivalentemente, a \textbf{forma de conexão} $\chi$ --- uma 1-forma
+na base $M$ com valores na álgebra de Lie $\mathfrak{g} \cong
+\mathbb{R}^{[0,+\infty[}$ --- é dada por:
+
+\begin{equation}\label{eq:connection_form}
+  \chi(x,t)(\delta x, \delta t)
+  = \left(\frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t\right).
+\end{equation}
+\end{defi}
+
+\begin{obs}[Linearidade em $\delta x$]
+A notação $D_t^{\delta x}$ merece esclarecimento.  Para uma variação
+infinitesimal $\delta x = (\delta x^1, \dots, \delta x^N)$, o deflator
+da carteira $\delta x$ é a combinação linear:
+\begin{equation}\label{eq:D_delta_x}
+  D_t^{\delta x} := \sum_{j=1}^N D_t^j \cdot \delta x^j,
+\end{equation}
+onde $D_t^j$ é o deflator do $j$-ésimo ativo (o valor presente de uma
+perpetuidade unitária associada àquele ativo).  Para a carteira
+$x + \delta x$, temos $D_t^{x+\delta x} = D_t^x + D_t^{\delta x}$, de
+modo que:
+\[
+\frac{D_t^{x+\delta x} - D_t^x}{D_t^x}
+= \frac{D_t^{\delta x}}{D_t^x}.
+\]
+Esta é precisamente a taxa de variação relativa do deflator quando
+mudamos de $x$ para $x + \delta x$ --- a \textbf{taxa de câmbio
+infinitesimal} entre as duas carteiras.
+\end{obs}
+
+\subsection{Expressão em Coordenadas}
+
+Em coordenadas locais $(x^1, \dots, x^N, t)$ na base $M$, a forma de
+conexão $\chi$ escreve-se como:
+
+\begin{equation}\label{eq:connection_coordinates}
+  \chi(x,t) = \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,dx^j \;-\; r_t^x\,dt.
+\end{equation}
+
+Verificação: aplicando a um vetor $(\delta x, \delta t) = (\delta x^1,
+\dots, \delta x^N, \delta t)$, obtemos:
+\begin{align*}
+  \chi(x,t)(\delta x, \delta t)
+  &= \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,\delta x^j \;-\; r_t^x\,\delta t \\
+  &= \frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t,
+\end{align*}
+que coincide com~\eqref{eq:connection_form}.
+
+\begin{obs}[A Taxa Curta da Carteira $x$]
+A quantidade $r_t^x$ que aparece na conexão é a \textbf{taxa curta}
+(ou \textit{short rate}) associada à carteira $x$, definida como:
+\begin{equation}\label{eq:short_rate_x}
+  r_t^x := -\left.\frac{\partial}{\partial s}\log P_{t,s}^x\right|_{s=t},
+\end{equation}
+onde $P_{t,s}^x$ é a estrutura a termo da carteira $x$.  Em termos do
+deflator:
+\begin{equation}\label{eq:short_rate_deflator}
+  r_t^x = -\mathcal{D}\log D_t^x,
+\end{equation}
+com $\mathcal{D}$ denotando a derivada média de Nelson (derivada de
+Stratonovich), que será formalizada na Seção~7.6.
+
+Note que $r_t^x$ \textbf{não é linear} em $x$ --- a taxa curta de uma
+combinação de carteiras não é a combinação das taxas curtas.  Esta
+não-linearidade é precisamente a fonte de \textbf{curvatura} (e,
+portanto, de \textbf{arbitragem}) na GAT.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{A Forma de Conexão $\chi$ como 1-Forma com Valores em $\mathfrak{g}$}
+% ----------------------------------------------------------------------
+
+\subsection{Álgebra de Lie do Grupo de Gauge}
+
+O grupo estrutural é $G^*$, o grupo Abeliano das transformações de
+gauge invertíveis (intensidades de cashflow com inversa sob
+convolução).  Por ser Abeliano, sua álgebra de Lie $\mathfrak{g}$ é
+isomorfa ao espaço vetorial $\mathbb{R}^{[0,+\infty[}$ (o espaço de
+todas as intensidades de cashflow) com o colchete de Lie trivial
+$[\cdot, \cdot] \equiv 0$.
+
+\begin{prop}[Propriedades da Forma de Conexão]\label{prop:chi_properties}
+A 1-forma $\chi$ com valores em $\mathfrak{g}$ satisfaz:
+\begin{enumerate}[(i)]
+  \item $\chi$ é \textbf{horizontal}: para qualquer vetor vertical
+        $v \in V_b\mathcal{B}$, $\chi(v) = 0$.
+  \item $\chi$ é \textbf{equivariante}: para $g \in G^*$,
+        $(R_g)^*\chi = \operatorname{Ad}_{g^{-1}} \circ \chi$.
+        Como $G^*$ é Abeliano, $\operatorname{Ad}_g = \operatorname{id}$,
+        logo $(R_g)^*\chi = \chi$ (invariância à direita).
+  \item $\chi$ é \textbf{suave} nos argumentos $(x,t)$.
+\end{enumerate}
+\end{prop}
+
+\subsection{Expressão Completa com a Fibra}
+
+Quando incluímos a coordenada da fibra $g \in G^*$, a forma de conexão
+$\omega$ no fibrado total $\mathcal{B}$ escreve-se:
+
+\begin{equation}\label{eq:connection_form_full}
+  \omega(x,t,g)(\delta x, \delta t, \delta g)
+  = \delta g \cdot g^{-1} + \operatorname{Ad}_g \chi(x,t)(\delta x, \delta t).
+\end{equation}
+
+Como $G^*$ é Abeliano, $\operatorname{Ad}_g = \operatorname{id}$, e
+esta expressão simplifica-se para:
+
+\begin{equation}\label{eq:connection_form_simple}
+  \omega(x,t,g)(\delta x, \delta t, \delta g)
+  = \delta g \cdot g^{-1} + \chi(x,t)(\delta x, \delta t).
+\end{equation}
+
+O primeiro termo $\delta g \cdot g^{-1}$ é a \textbf{forma de
+Maurer--Cartan} de $G^*$, que mede variações puramente verticais
+(dentro da fibra).  O segundo termo $\chi(x,t)(\delta x, \delta t)$ é a
+contribuição horizontal, que depende apenas do ponto-base.
+
+% ----------------------------------------------------------------------
+\section{Transporte Paralelo ao Longo de Curvas}
+% ----------------------------------------------------------------------
+
+\subsection{Levantamento Horizontal}
+
+Dada uma curva suave $\gamma: [0,1] \to M$ na base, com
+$\gamma(s) = (x(s), t(s))$, e um ponto inicial $g_0 \in
+\mathcal{B}_{\gamma(0)}$ na fibra sobre $\gamma(0)$, o
+\textbf{levantamento horizontal} $\tilde{\gamma}: [0,1] \to
+\mathcal{B}$ é a única curva no fibrado tal que:
+
+\begin{enumerate}[(i)]
+  \item $\pi \circ \tilde{\gamma} = \gamma$ (projeta-se sobre $\gamma$);
+  \item $\tilde{\gamma}(0) = g_0$ (condição inicial);
+  \item $\tilde{\gamma}'(s) \in H_{\tilde{\gamma}(s)}\mathcal{B}$ para
+        todo $s$ (a curva é horizontal).
+\end{enumerate}
+
+Em termos da forma de conexão, a condição de horizontalidade é:
+
+\begin{equation}\label{eq:horizontality_condition}
+  \omega\big(\tilde{\gamma}(s)\big)\big(\tilde{\gamma}'(s)\big) = 0,
+  \quad \forall s \in [0,1].
+\end{equation}
+
+Usando~\eqref{eq:connection_form_simple}, obtemos a equação diferencial
+para o levantamento:
+
+\begin{equation}\label{eq:horizontal_lift_ode}
+  \frac{dg}{ds} \cdot g^{-1} + \chi\big(x(s), t(s)\big)\big(x'(s), t'(s)\big) = 0.
+\end{equation}
+
+Como $G^*$ é Abeliano e escrevemos a ação como multiplicação, esta
+equação tem a solução explícita:
+
+\begin{equation}\label{eq:parallel_transport_solution}
+  g(s) = g_0 \cdot \exp\left(-\int_0^s
+         \chi\big(x(u), t(u)\big)\big(x'(u), t'(u)\big)\,du\right).
+\end{equation}
+
+\subsection{Definição do Transporte Paralelo}
+
+\begin{defi}[Transporte Paralelo]\label{def:parallel_transport}
+Seja $\gamma: [0,1] \to M$ uma curva suave na base.  O
+\textbf{transporte paralelo} ao longo de $\gamma$ é o isomorfismo
+entre fibras:
+\begin{equation}\label{eq:parallel_transport_map}
+  \Pi_\gamma: \mathcal{B}_{\gamma(0)} \to \mathcal{B}_{\gamma(1)},
+  \quad
+  \Pi_\gamma(g_0) := g_0 \cdot \exp\left(-\int_\gamma \chi\right),
+\end{equation}
+onde $\int_\gamma \chi$ denota a integral de linha da 1-forma $\chi$
+ao longo de $\gamma$:
+\begin{equation}\label{eq:line_integral_chi}
+  \int_\gamma \chi := \int_0^1
+  \chi\big(\gamma(s)\big)\big(\gamma'(s)\big)\,ds.
+\end{equation}
+\end{defi}
+
+\begin{obs}[Estrutura de Grupo do Transporte Paralelo]
+O transporte paralelo é um \textbf{isomorfismo de $G^*$-espaços}:
+$\Pi_\gamma(g \cdot h) = \Pi_\gamma(g) \cdot h$ para todo $h \in
+G^*$ (equivariância).  Além disso:
+\begin{itemize}
+  \item $\Pi_{\gamma^{-1}} = \Pi_\gamma^{-1}$ (reversibilidade);
+  \item $\Pi_{\gamma_2 \ast \gamma_1} = \Pi_{\gamma_2} \circ
+        \Pi_{\gamma_1}$ (composição de caminhos).
+\end{itemize}
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Interpretação Financeira do Transporte Paralelo}
+% ----------------------------------------------------------------------
+
+A beleza da construção de Ilinski--Farinelli reside em que o transporte
+paralelo --- um conceito puramente geométrico --- admite uma
+interpretação financeira exata e intuitiva.
+
+\begin{teo}[Interpretação Financeira do Transporte Paralelo ---
+           Teorema~29 do Artigo]\label{teo:financial_interpretation}
+Seja $\Pi_\gamma$ o transporte paralelo definido pela
+conexão~\eqref{eq:connection_definition}.  Então:
+
+\begin{enumerate}[(a)]
+  \item \textbf{Ao longo de $x$-linhas ($t$ fixo):}
+        Seja $\gamma(s) = (x_0 + s \cdot \Delta x, t_0)$ uma curva que
+        conecta duas carteiras no mesmo instante.  O transporte
+        paralelo ao longo de $\gamma$ corresponde à
+        \textbf{multiplicação pela taxa de câmbio} entre as carteiras:
+        \begin{equation}\label{eq:parallel_transport_x}
+          \Pi_\gamma(g_0) = g_0 \cdot \frac{D_{t_0}^{x_0}}{D_{t_0}^{x_0 + \Delta x}}.
+        \end{equation}
+        Em palavras: transportar paralelamente um gauge da carteira
+        $x_0$ para a carteira $x_0 + \Delta x$ equivale a multiplicá-lo
+        pela razão dos deflatores --- exatamente o que uma casa de
+        câmbio faz ao converter moedas.
+
+  \item \textbf{Ao longo de $t$-linhas ($x$ fixo):}
+        Seja $\gamma(s) = (x_0, t_0 + s)$ uma curva que avança no
+        tempo mantendo a mesma carteira.  O transporte paralelo ao
+        longo de $\gamma$ corresponde à \textbf{divisão pelo fator de
+        desconto}:
+        \begin{equation}\label{eq:parallel_transport_t}
+          \Pi_\gamma(g_0) = g_0 \cdot \exp\left(\int_{t_0}^{t_0 + \Delta t} r_u^{x_0}\,du\right)^{-1}.
+        \end{equation}
+        Equivalentemente, $\Pi_\gamma(g_0)$ é o valor descontado do
+        gauge $g_0$ --- trazido a valor presente pela taxa curta da
+        carteira $x_0$.
+\end{enumerate}
+\end{teo}
+
+\begin{proof}
+Provemos cada caso separadamente.
+
+\textbf{Caso (a) --- $x$-linhas.}  A curva é $\gamma(s) = (x_0 + s
+\Delta x, t_0)$, com $s \in [0,1]$ e $\Delta x$ fixo.  Temos:
+\begin{align*}
+  \gamma'(s) &= (\Delta x, 0), \\
+  \chi(\gamma(s))(\gamma'(s))
+  &= \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}} - r_{t_0}^{x_0 + s\Delta x} \cdot 0
+   = \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}}.
+\end{align*}
+A integral de linha é:
+\[
+\int_0^1 \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}}\,ds
+= \int_0^1 \frac{d}{ds}\log D_{t_0}^{x_0 + s\Delta x}\,ds
+= \log D_{t_0}^{x_0 + \Delta x} - \log D_{t_0}^{x_0}
+= \log\frac{D_{t_0}^{x_0 + \Delta x}}{D_{t_0}^{x_0}}.
+\]
+Pela definição de transporte paralelo~\eqref{eq:parallel_transport_map}:
+\[
+\Pi_\gamma(g_0) = g_0 \cdot \exp\!\left(-\log\frac{D_{t_0}^{x_0 + \Delta x}}{D_{t_0}^{x_0}}\right)
+= g_0 \cdot \frac{D_{t_0}^{x_0}}{D_{t_0}^{x_0 + \Delta x}},
+\]
+confirmando~\eqref{eq:parallel_transport_x}.
+
+\textbf{Caso (b) --- $t$-linhas.}  A curva é $\gamma(s) = (x_0, t_0 +
+s)$, com $s \in [0, \Delta t]$.  Temos:
+\begin{align*}
+  \gamma'(s) &= (0, 1), \\
+  \chi(\gamma(s))(\gamma'(s))
+  &= \frac{0}{D_{t_0+s}^{x_0}} - r_{t_0+s}^{x_0} \cdot 1
+   = -\,r_{t_0+s}^{x_0}.
+\end{align*}
+A integral de linha é:
+\[
+\int_0^{\Delta t} \bigl(-r_{t_0+s}^{x_0}\bigr)\,ds
+= -\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du.
+\]
+Portanto:
+\[
+\Pi_\gamma(g_0) = g_0 \cdot \exp\!\left(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du\right)
+= g_0 \cdot \exp\!\left(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du\right)^{-1},
+\]
+confirmando~\eqref{eq:parallel_transport_t}.  O sinal negativo na
+integral reflete o fato de que $1$ unidade hoje vale \textbf{mais} do
+que $1$ unidade no futuro --- o fator de desconto é o \textbf{inverso}
+do fator de capitalização.
+\end{proof}
+
+\begin{obs}[Unificação Conceitual]
+O Teorema~\ref{teo:financial_interpretation} revela a profunda unidade
+por trás de duas operações financeiras aparentemente distintas:
+\begin{itemize}
+  \item \textbf{Câmbio} (converter entre ativos no mesmo instante) e
+  \item \textbf{Desconto} (trazer valores futuros a presente)
+\end{itemize}
+são manifestações do \textbf{mesmo} fenômeno geométrico --- o
+transporte paralelo ao longo de diferentes direções no espaço de
+carteiras-tempo.  A conexão $\chi$ unifica ambas em um único objeto
+matemático.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{O Modelo de Mercado $D$-Diferenciável de Nelson}
+% ----------------------------------------------------------------------
+
+\subsection{A Derivada Média de Nelson}
+
+Para formular a dinâmica estocástica do mercado na linguagem da
+geometria diferencial, precisamos de uma noção de derivada que seja
+compatível com a integral de Stratonovich.  Esta é a \textbf{derivada
+média de Nelson} (ou derivada estocástica simétrica)\footnote{Nelson, E.
+\textit{Dynamical Theories of Brownian Motion}. Princeton University
+Press, 1967. ISBN: 978-0691079509. \textbf{Resenha:} Obra seminal que
+reformulou o movimento Browniano como um processo estocástico com
+derivadas média forward e backward, antecipando em décadas o cálculo de
+Malliavin e a mecânica estocástica.  A derivada de Nelson é o análogo
+estocástico da derivada usual e satisfaz a regra de Leibniz.}.
+
+\begin{defi}[Derivada Média de Nelson]\label{def:nelson_derivative}
+Seja $X = (X_t)_{t \geq 0}$ um processo estocástico adaptado.  A
+\textbf{derivada média de Nelson} (ou \textit{Nelson derivative}) de
+$X$ no instante $t$ é definida como o limite em probabilidade:
+\begin{equation}\label{eq:nelson_def}
+  \mathcal{D}X_t := \lim_{\varepsilon \to 0^+}\,
+  \mathbb{E}\!\left[
+    \frac{X_{t+\varepsilon} - X_{t-\varepsilon}}{2\varepsilon}
+    \;\middle|\;
+    \mathcal{A}_t
+  \right],
+\end{equation}
+sempre que o limite existir.  Dizemos que $X$ é \textbf{$D$-diferenciável}
+no sentido de Nelson se $\mathcal{D}X_t$ existe para todo $t \geq 0$.
+\end{defi}
+
+\begin{obs}[Simetria Temporal]
+A derivada de Nelson é \textbf{simétrica no tempo}: ela utiliza
+incrementos tanto para o futuro ($X_{t+\varepsilon}$) quanto para o
+passado ($X_{t-\varepsilon}$).  Esta simetria é crucial: enquanto a
+derivada de Itô ($\lim_{\varepsilon \to 0} \mathbb{E}[(X_{t+\varepsilon}
+- X_t)/\varepsilon \mid \mathcal{A}_t]$) olha apenas para o futuro, a
+derivada de Nelson olha para ambas as direções.  O resultado é que
+\textbf{a derivada de Nelson satisfaz a regra da cadeia usual}:
+\begin{equation}\label{eq:nelson_chain}
+  \mathcal{D}\big(f(X_t)\big) = f'(X_t)\,\mathcal{D}X_t,
+\end{equation}
+para toda $f \in C^1$.  Esta propriedade é exatamente o que torna a
+integral de Stratonovich compatível com a geometria diferencial.
+\end{obs}
+
+\begin{obs}[Relação com Stratonovich]
+Para processos de Itô da forma $dX_t = \mu_t\,dt + \sigma_t\,dW_t$,
+a derivada de Nelson coincide com o \textbf{drift de Stratonovich}:
+\begin{equation}\label{eq:nelson_stratonovich}
+  \mathcal{D}X_t = \mu_t,
+\end{equation}
+enquanto o drift de Itô é $\mathbb{E}[dX_t/dt \mid \mathcal{A}_t] =
+\mu_t\,dt$.  A diferença entre as duas noções é precisamente o termo de
+correção de Itô: $\frac{1}{2}d\langle X, X\rangle_t$, que a derivada de
+Nelson absorve naturalmente pela simetrização temporal.
+\end{obs}
+
+\subsection{Covariação de Nelson}
+
+\begin{defi}[Covariação de Nelson]\label{def:nelson_covariation}
+Para dois processos $D$-diferenciáveis $X$ e $Y$, define-se a
+\textbf{derivada de Nelson da covariação quadrática}:
+\begin{equation}\label{eq:nelson_covar}
+  \mathcal{D}\langle X, Y\rangle_t
+  := \lim_{\varepsilon \to 0^+}\,
+  \mathbb{E}\!\left[
+    \frac{(X_{t+\varepsilon} - X_{t-\varepsilon})
+          (Y_{t+\varepsilon} - Y_{t-\varepsilon})}
+         {2\varepsilon}
+    \;\middle|\;
+    \mathcal{A}_t
+  \right].
+\end{equation}
+Esta quantidade captura a ``volatilidade instantânea conjunta'' dos
+processos $X$ e $Y$.
+\end{defi}
+
+\begin{prop}[Regra de Leibniz para a Derivada de Nelson]
+\label{prop:nelson_leibniz}
+Se $X$ e $Y$ são $D$-diferenciáveis, então o produto $XY$ também o é e:
+\begin{equation}\label{eq:nelson_leibniz}
+  \mathcal{D}(X_t Y_t) = (\mathcal{D}X_t) Y_t + X_t (\mathcal{D}Y_t)
+                         + \frac{1}{2}\,\mathcal{D}\langle X, Y\rangle_t.
+\end{equation}
+O termo de covariação $\frac{1}{2}\mathcal{D}\langle X, Y\rangle_t$ é
+o \textbf{termo de Itô} --- a correção de segunda ordem que distingue o
+cálculo estocástico do cálculo determinístico usual.
+\end{prop}
+
+\begin{proof}[Esboço]
+Pela definição~\eqref{eq:nelson_def}, considere $X_{t\pm\varepsilon} =
+X_t \pm \varepsilon\,\mathcal{D}X_t + o(\varepsilon)$ e analogamente
+para $Y$.  Expandindo o produto $(X_{t+\varepsilon} - X_{t-\varepsilon})
+(Y_{t+\varepsilon} - Y_{t-\varepsilon})$ e tomando a esperança
+condicional, o termo cruzado $\mathcal{D}X_t \cdot \mathcal{D}Y_t \cdot
+\varepsilon^2$ contribui com a covariação no limite $\varepsilon \to 0$.
+\end{proof}
+
+\subsection{O Modelo de Mercado $D$-Diferenciável}
+
+\begin{defi}[Modelo de Mercado $D$-Diferenciável ---
+           Definição~32 do Artigo]\label{def:D_diff_market}
+Um mercado é dito \textbf{$D$-diferenciável} (no sentido de Nelson) se:
+\begin{enumerate}[(i)]
+  \item Todos os deflatores $D_t^j$ ($j = 1, \dots, N$) e o pricing
+        kernel $\beta_t$ (state price deflator) são processos
+        $D$-diferenciáveis;
+  \item A taxa curta $r_t^0 = -\mathcal{D}\log S_t^0$ é
+        $D$-diferenciável;
+  \item As estruturas a termo $P_{t,s}^j$ são suaves em $s$ e
+        $D$-diferenciáveis em $t$.
+\end{enumerate}
+\end{defi}
+
+A condição de $D$-diferenciabilidade é bastante geral: inclui todos os
+processos de Itô (difusões), processos de salto com intensidade
+diferenciável, e combinações de ambos.  Virtualmente todos os modelos
+de mercado usados na prática (Black--Scholes, Heston, Bates, SABR,
+etc.) são $D$-diferenciáveis.
+
+\subsection{Estratégias Fracamente $D$-Diferenciáveis}
+
+Para aplicar o cálculo de Nelson a estratégias de negociação, precisamos
+de uma noção adequada de diferenciabilidade para processos previsíveis.
+
+\begin{defi}[Estratégia Fracamente $D$-Diferenciável]\label{def:weak_D_strategy}
+Uma estratégia previsível $x = (x_t)_{t \geq 0}$ é dita
+\textbf{fracamente $D$-diferenciável} se, para toda função teste suave
+$\varphi$ com suporte compacto, o processo $Y_t^\varphi :=
+\int_0^\infty \varphi(s)\,x_{t+s}\,ds$ é $D$-diferenciável.  A
+\textbf{derivada fraca de Nelson} $\mathcal{D}x_t$ é definida pela
+relação:
+\begin{equation}\label{eq:weak_D}
+  \int_0^\infty \varphi(s)\,\mathcal{D}x_{t+s}\,ds
+  := \mathcal{D}\!\left(\int_0^\infty \varphi(s)\,x_{t+s}\,ds\right),
+\end{equation}
+para toda $\varphi \in C_c^\infty(\mathbb{R}_+)$.
+\end{defi}
+
+\begin{obs}[Por que ``fraca''?]
+A diferenciabilidade pontual (trajetória a trajetória) é uma exigência
+demasiado forte para processos estocásticos.  A noção fraca (no sentido
+das distribuições) é suficiente para as manipulações analíticas que a
+GAT requer e é satisfeita por todas as estratégias de interesse prático.
+Em particular, qualquer estratégia adaptada com trajetórias càdlàg de
+variação finita é fracamente $D$-diferenciável.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Autofinanciamento em Termos de $D$}
+% ----------------------------------------------------------------------
+
+Agora reformulamos a condição de autofinanciamento usando a derivada de
+Nelson.  Esta reformulação é o elo que conecta a teoria clássica
+(Capítulo~4) com a formulação geométrica da GAT.
+
+\begin{teo}[Autofinanciamento em Termos de $D$ ---
+           Proposição~33 do Artigo]\label{teo:self_financing_D}
+Seja $x$ uma estratégia fracamente $D$-diferenciável e $D_t$ o processo
+de deflatores (o valor do instrumento financeiro associado a cada
+ativo).  Então:
+
+\begin{enumerate}[(i)]
+  \item \textbf{Primeira forma:}
+        \begin{equation}\label{eq:sf_D_1}
+          \mathcal{D}(x_t \cdot D_t)
+          = x_t \cdot \mathcal{D}D_t - \frac{1}{2}\,
+            \mathcal{D}\langle x, D\rangle_t.
+        \end{equation}
+
+  \item \textbf{Segunda forma (simplificada):}
+        \begin{equation}\label{eq:sf_D_2}
+          \mathcal{D}x_t \cdot D_t = -\frac{1}{2}\,
+          \mathcal{D}\langle x, D\rangle_t.
+        \end{equation}
+\end{enumerate}
+Em ambas as expressões, $\langle x, D\rangle_t$ denota o processo de
+covariação quadrática (parte contínua) entre a estratégia $x$ e o
+deflator $D$, e $\mathcal{D}\langle x, D\rangle_t$ é sua derivada de
+Nelson.
+\end{teo}
+
+\begin{proof}
+A demonstração utiliza a regra de Leibniz de Nelson
+(Proposição~\ref{prop:nelson_leibniz}) e a relação entre Itô e
+Stratonovich.
+
+\textbf{Passo 1:} Pela regra de Leibniz de
+Nelson~\eqref{eq:nelson_leibniz}, aplicada ao produto escalar $x_t
+\cdot D_t = \sum_j x_t^j D_t^j$:
+\begin{align}
+  \mathcal{D}(x_t \cdot D_t)
+  &= (\mathcal{D}x_t) \cdot D_t + x_t \cdot (\mathcal{D}D_t)
+     + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t. \label{eq:pf1}
+\end{align}
+
+\textbf{Passo 2:} A condição de autofinanciamento na formulação de
+Stratonovich (Capítulo~4, equação~\eqref{eq:self_financing_stratonovich} do
+Capítulo~4) é:
+\[
+dV_t^x = x_t \circ dS_t = x_t \circ d(D_t S_t^0).
+\]
+Em termos do deflator $D_t$, a dinâmica de Stratonovich é governada
+pela derivada de Nelson: $\mathcal{D}D_t$ é o drift de Stratonovich de
+$D_t$.  O autofinanciamento implica que a variação do valor da carteira
+$(x_t \cdot D_t)S_t^0$ provém exclusivamente da variação de $D_t$
+(ponderada por $x_t$) e da capitalização por $S_t^0$.
+
+\textbf{Passo 3:} A condição essencial é que a estratégia $x$ não
+introduz deriva própria no valor da carteira --- ou seja, a contribuição
+de $\mathcal{D}x_t$ deve ser exatamente cancelada.  Isto leva a:
+\[
+(\mathcal{D}x_t) \cdot D_t + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t = 0,
+\]
+que é precisamente a segunda forma~\eqref{eq:sf_D_2}.
+
+Substituindo em~\eqref{eq:pf1}, obtemos:
+\[
+\mathcal{D}(x_t \cdot D_t)
+= -\frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t
+  + x_t \cdot \mathcal{D}D_t
+  + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t
+= x_t \cdot \mathcal{D}D_t - \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t,
+\]
+que é a primeira forma~\eqref{eq:sf_D_1}.
+\end{proof}
+
+\begin{obs}[Interpretação Financeira]
+A equação~\eqref{eq:sf_D_2} tem uma interpretação notável: \textbf{a
+derivada de Nelson da estratégia, contraída com o deflator, é
+determinada unicamente pela covariação entre a estratégia e o deflator}.
+Em outras palavras, a ``velocidade'' com que você ajusta sua carteira
+($\mathcal{D}x_t$) não é livre --- ela é restringida pela condição de
+que você não está injetando nem retirando capital.  A única fonte de
+variação permitida é a correlação instantânea entre suas posições e os
+movimentos dos deflatores.
+\end{obs}
+
+\begin{obs}[Por que $\frac{1}{2}$?]
+O fator $1/2$ na equação~\eqref{eq:sf_D_2} é a assinatura da
+integral de Stratonovich.  Ele aparece porque a derivada de Nelson
+faz a média simétrica entre passado e futuro, enquanto a integral de
+Itô usa apenas o passado.  Na passagem de Itô para Stratonovich, o
+termo de correção é exatamente $\frac{1}{2}$ da covariação quadrática.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Conexão com Malaney--Weinstein}
+% ----------------------------------------------------------------------
+
+\subsection{A Conexão de Malaney--Weinstein}
+
+A ideia de modelar problemas econômicos com geometria diferencial não
+surgiu com Ilinski ou Farinelli.  Malaney (1996)\footnote{Malaney, P.N.
+\textit{The Index Number Problem: A Differential Geometry Approach}.
+Tese de Doutorado, Harvard University, 1996. \textbf{Resenha:} Primeira
+formulação do problema de números-índice em linguagem de geometria
+diferencial.  Malaney propôs que a invariância sob mudança de cesta de
+bens deveria ser tratada como simetria de gauge.} e Weinstein
+(2006)\footnote{Weinstein, E. \textit{Gauge Theory and Inflation}.
+Tese de Doutorado, Harvard University, 2006. \textbf{Resenha:} Propôs
+uma teoria de gauge para inflação econômica, tratando índices de preços
+como conexões em fibrados.  Formalizou matematicamente a intuição de
+que mudanças de unidade de conta são transformações de gauge.}
+desenvolveram, em contextos distintos (números-índice e inflação), uma
+formulação geométrica baseada em:
+
+\begin{defi}[Conexão de Malaney--Weinstein]\label{def:MW_connection}
+Em um fibrado sobre o espaço de cestas de bens (ou carteiras), a
+conexão de Malaney--Weinstein é definida pela 1-forma:
+\begin{equation}\label{eq:MW_connection}
+  \omega^{\text{MW}}(x)(\delta x)
+  = \frac{\sum_{j} p_j(x)\,\delta x^j}{\sum_{j} p_j(x)\,x^j},
+\end{equation}
+onde $p_j(x)$ é o preço do bem $j$ na cesta $x$.  Esta conexão mede a
+variação relativa do custo da cesta quando a composição muda.
+\end{defi}
+
+\subsection{Equivalência no Caso Estocástico}
+
+\begin{prop}[Equivalência das Conexões no Contexto da GAT]
+\label{prop:MW_equivalence}
+A conexão de Ilinski--Farinelli~\eqref{eq:connection_definition}
+reduz-se à conexão de Malaney--Weinstein quando:
+\begin{enumerate}[(i)]
+  \item Restringimo-nos à direção puramente nominal ($\delta t = 0$);
+  \item Identificamos os preços $p_j$ com os deflatores $D_t^j$;
+  \item O grupo de gauge é restrito às transformações que preservam a
+        normalização $P_{t,t} = 1$.
+\end{enumerate}
+Neste limite, ambas as conexões descrevem a \textbf{taxa de câmbio
+infinitesimal} entre carteiras, e a curvatura de $\omega^{\text{MW}}$
+mede a \textbf{inconsistência de índices de preços} --- o análogo
+macroeconômico da arbitragem microeconômica.
+\end{prop}
+
+\begin{proof}[Esboço]
+Para $\delta t = 0$, a conexão de Ilinski--Farinelli é:
+\[
+\chi(x,t)(\delta x, 0) = \frac{D_t^{\delta x}}{D_t^x}
+= \frac{\sum_j D_t^j\,\delta x^j}{\sum_j D_t^j\,x^j},
+\]
+que é exatamente a forma de Malaney--Weinstein com $p_j = D_t^j$.  A
+diferença essencial é que a GAT adiciona a dimensão temporal (com o
+termo $-r_t^x\,\delta t$) e trabalha com o grupo completo $G^*$ (todas
+as transformações de gauge sobre a estrutura a termo), não apenas as
+transformações que preservam o ponto $t$.
+\end{proof}
+
+\begin{obs}[Generalização da GAT]
+A conexão de Ilinski--Farinelli \textbf{contém} a conexão de
+Malaney--Weinstein como caso particular, mas a generaliza em três
+direções cruciais:
+\begin{enumerate}
+  \item \textbf{Dimensão temporal explícita:} o termo $-r_t^x\,dt$
+        introduz a dinâmica de desconto, ausente em Malaney--Weinstein;
+  \item \textbf{Estrutura a termo completa:} o grupo $G^*$ age sobre
+        toda a estrutura $P_{t,s}$, não apenas sobre preços spot;
+  \item \textbf{Contexto estocástico:} a derivada de Nelson e o cálculo
+        de Stratonovich fornecem o arcabouço analítico para lidar com
+        difusões e saltos, enquanto Malaney--Weinstein é puramente
+        determinístico.
+\end{enumerate}
+É precisamente esta generalização que permite à GAT capturar a
+arbitragem como curvatura --- a dimensão temporal e a estrutura a termo
+são indispensáveis para que a curvatura tenha significado financeiro.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Resumo do Capítulo}
+% ----------------------------------------------------------------------
+
+A conexão de Ilinski--Farinelli é o objeto central da GAT.  Neste
+capítulo, estabelecemos:
+
+\begin{enumerate}
+  \item \textbf{Definição da conexão:} $\chi(x,t)(\delta x, \delta t)
+        = D_t^{\delta x}/D_t^x - r_t^x\,\delta t$, que unifica as
+        operações de câmbio (ao longo de $x$) e desconto (ao longo de
+        $t$) em uma única 1-forma com valores na álgebra de Lie de
+        $G^*$.
+
+  \item \textbf{Forma de conexão:} em coordenadas,
+        $\chi = (1/D_t^x)\sum_j D_t^j\,dx^j - r_t^x\,dt$.
+
+  \item \textbf{Transporte paralelo (Teorema~29):}
+        \begin{itemize}
+          \item Ao longo de $x$-linhas: multiplicação pela taxa de
+                câmbio $D_{t_0}^{x_0}/D_{t_0}^{x_0 + \Delta x}$.
+          \item Ao longo de $t$-linhas: divisão pelo fator de desconto
+                $\exp(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du)$.
+        \end{itemize}
+
+  \item \textbf{Derivada de Nelson:} $\mathcal{D}X_t$, a derivada
+        simétrica que satisfaz a regra da cadeia e é compatível com
+        Stratonovich --- o elo entre o cálculo estocástico e a
+        geometria diferencial.
+
+  \item \textbf{Autofinanciamento em $D$ (Proposição~33):}
+        $\mathcal{D}(x_t \cdot D_t) = x_t \cdot \mathcal{D}D_t
+        - \frac{1}{2}\mathcal{D}\langle x, D\rangle_t$, e a forma
+        simplificada $\mathcal{D}x_t \cdot D_t
+        = -\frac{1}{2}\mathcal{D}\langle x, D\rangle_t$.
+
+  \item \textbf{Conexão com Malaney--Weinstein:} a GAT generaliza a
+        formulação determinística original, adicionando a dimensão
+        temporal e a estrutura a termo.
+\end{enumerate}
+
+No próximo capítulo, usaremos a conexão aqui definida para calcular a
+\textbf{curvatura} do fibrado do mercado --- e demonstraremos o
+resultado central da GAT: a equivalência entre curvatura zero e ausência
+de arbitragem.
+
+\begin{center}
+\fbox{\begin{minipage}{0.88\textwidth}
+\textbf{Mensagem Central do Capítulo:} A conexão de mercado não é um
+artefato matemático --- é a \textbf{codificação geométrica de todas as
+relações de valor} entre instrumentos financeiros.  Transporte paralelo
+ao longo de $x$ é câmbio; ao longo de $t$ é desconto.  Quando estas
+duas operações são consistentes entre si (i.e., quando o transporte não
+depende do caminho), a curvatura se anula --- e o mercado é livre de
+arbitragem.
+\end{minipage}}
+\end{center}
+
+% ======================================================================
+% REFERENCIAS DO CAPITULO (selecao principal)
+% ======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{farinelli2021}
+Farinelli, S.
+\textit{Geometric Arbitrage Theory and Market Dynamics Reloaded}.
+arXiv:0910.1671v10, 2021.
+
+\bibitem{ilinski2001}
+Ilinski, K.
+\textit{Physics of Finance: Gauge Modelling in Non-Equilibrium Pricing}.
+Wiley, Chichester, 2001.
+ISBN: 978-0471877387.
+
+\bibitem{malaney1996}
+Malaney, P.N.
+\textit{The Index Number Problem: A Differential Geometry Approach}.
+Tese de Doutorado, Harvard University, 1996.
+
+\bibitem{nelson1967}
+Nelson, E.
+\textit{Dynamical Theories of Brownian Motion}.
+Princeton University Press, Princeton, 1967.
+ISBN: 978-0691079509.
+
+\bibitem{weinstein2006}
+Weinstein, E.
+\textit{Gauge Theory and Inflation}.
+Tese de Doutorado, Harvard University, 2006.
+
+\bibitem{kobayashi1963}
+Kobayashi, S.; Nomizu, K.
+\textit{Foundations of Differential Geometry}, Vol.~I.
+Wiley, New York, 1963.
+ISBN: 978-0471157336.
+
+\bibitem{bleecker1981}
+Bleecker, D.
+\textit{Gauge Theory and Variational Principles}.
+Addison-Wesley, 1981. Reimpresso por Dover, 2005.
+ISBN: 978-0486445462.
+
+\end{thebibliography}
+
+% ======================================================================
+% FIM DO CAPITULO 7
+% ======================================================================
+
+

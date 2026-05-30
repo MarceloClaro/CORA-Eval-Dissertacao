@@ -1,0 +1,223 @@
+﻿\chapter{Revisão de Geometria Diferencial}
+\label{apx:geometria}
+
+Este apêndice apresenta os conceitos fundamentais de geometria diferencial necessários à compreensão da Abordagem de Apreçamento por Transporte Geométrico (GAT). O leitor familiarizado com a linguagem de fibrados e formas diferenciais pode consultá-lo como referência pontual; o leitor iniciante encontrará aqui as definições essenciais, enunciados dos principais teoremas e notação empregada ao longo do texto. Seguimos de perto a exposição clássica de \citeonline{nakahara2003geometry}, complementada por \citeonline{frankel2011geometry} e \citeonline{bleecker1981gauge}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Variedades Diferenciáveis}
+\label{sec:variedades}
+
+\subsection{Cartas e Atlas}
+
+\begin{defi}[Carta Local]
+Seja $M$ um espaço topológico Hausdorff com base enumerável. Uma \textbf{carta local} (ou sistema de coordenadas) em $M$ é um par $(U,\varphi)$, em que $U\subset M$ é um aberto e $\varphi:U\to\varphi(U)\subset\R^n$ é um homeomorfismo sobre sua imagem. As funções $x^i = u^i\circ\varphi:U\to\R$, em que $u^i:\R^n\to\R$ são as projeções canônicas, denominam-se \textbf{coordenadas locais}.
+\end{defi}
+
+\begin{defi}[Atlas]
+Um \textbf{atlas} $\mathcal{A}$ de classe $C^k$ sobre $M$ é uma coleção de cartas $\{(U_\alpha,\varphi_\alpha)\}_{\alpha\in I}$ tal que:
+\begin{enumerate}
+  \item $\bigcup_{\alpha\in I}U_\alpha = M$ (cobertura);
+  \item Para todo $\alpha,\beta\in I$ com $U_\alpha\cap U_\beta\neq\varnothing$, a \textbf{mudança de coordenadas}
+  \begin{equation}
+    \varphi_\beta\circ\varphi_\alpha^{-1}:\varphi_\alpha(U_\alpha\cap U_\beta)\to\varphi_\beta(U_\alpha\cap U_\beta)
+  \end{equation}
+  é um difeomorfismo de classe $C^k$ entre abertos de $\R^n$.
+\end{enumerate}
+Duas cartas são \textbf{compatíveis} se a união de seus atlas ainda constitui um atlas $C^k$. Um atlas é \textbf{máximo} quando contém todas as cartas compatíveis com suas cartas.
+\end{defi}
+
+\begin{defi}[Variedade Diferenciável]
+Uma \textbf{variedade diferenciável} de dimensão $n$ e classe $C^k$ é um par $(M,\mathcal{A})$, em que $M$ é um espaço topológico Hausdorff com base enumerável e $\mathcal{A}$ é um atlas máximo $C^k$ sobre $M$. Quando $k=\infty$, dizemos que $M$ é uma variedade \textbf{suave}.
+\end{defi}
+
+\begin{ex}
+O espaço euclidiano $\R^n$ com a carta identidade $(\R^n,\id)$ é uma variedade suave. A esfera $S^n = \{x\in\R^{n+1}:\|x\|=1\}$ admite um atlas com duas cartas estereográficas, constituindo uma variedade suave compacta de dimensão $n$.
+\end{ex}
+
+\subsection{Espaço Tangente}
+
+\begin{defi}[Vetor Tangente via Derivações]
+Seja $p\in M$. Uma \textbf{derivação} em $p$ é um funcional linear $X_p:C^\infty(M)\to\R$ satisfazendo a regra de Leibniz:
+\begin{equation}
+  X_p(fg) = X_p(f)\,g(p) + f(p)\,X_p(g),\qquad \forall f,g\in C^\infty(M).
+\end{equation}
+O \textbf{espaço tangente} $T_pM$ é o conjunto de todas as derivações em $p$, dotado da estrutura natural de espaço vetorial real de dimensão $n$.
+\end{defi}
+
+Em coordenadas locais $(U,\varphi)$ com $\varphi=(x^1,\dots,x^n)$, os operadores
+\begin{equation}
+  \left.\frac{\partial}{\partial x^i}\right|_p(f) = \frac{\partial (f\circ\varphi^{-1})}{\partial u^i}\Big|_{\varphi(p)}
+\end{equation}
+formam uma base de $T_pM$, denominada \textbf{base coordenada}. Todo vetor tangente expressa-se unicamente como $X_p = X^i\,\partial/\partial x^i|_p$ (soma de Einstein implícita).
+
+\subsection{Campos Vetoriais e Colchete de Lie}
+
+\begin{defi}
+Um \textbf{campo vetorial} $X$ sobre $M$ é uma seção suave do fibrado tangente $TM$, isto é, uma aplicação $X:M\to TM$ tal que $\pi\circ X = \id_M$. Em coordenadas locais, $X = X^i(x)\,\partial/\partial x^i$.
+\end{defi}
+
+O conjunto $\mathfrak{X}(M)$ de todos os campos vetoriais suaves constitui um módulo sobre $C^\infty(M)$ e uma álgebra de Lie real com o \textbf{colchete de Lie}:
+\begin{equation}
+  [X,Y](f) = X(Y(f)) - Y(X(f)),\qquad f\in C^\infty(M).
+\end{equation}
+Em coordenadas, $[X,Y] = (X^j\partial_jY^i - Y^j\partial_jX^i)\,\partial_i$.
+
+O colchete de Lie satisfaz a \textbf{identidade de Jacobi}:
+\begin{equation}
+  [X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0,
+\end{equation}
+e constitui o protótipo algébrico da curvatura em geometria diferencial.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formas Diferenciais}
+\label{sec:formas}
+
+\subsection{\texorpdfstring{$1$}{1}-Formas e o Fibrado Cotangente}
+
+\begin{defi}
+O \textbf{espaço cotangente} $T_p^*M$ é o dual do espaço tangente: $T_p^*M = (T_pM)^*$. Uma \textbf{1-forma diferencial} $\omega$ é uma seção suave do fibrado cotangente $T^*M$, atribuindo a cada $p\in M$ um funcional linear $\omega_p:T_pM\to\R$.
+\end{defi}
+
+A \textbf{diferencial exterior} de uma função $f\in C^\infty(M)$ é a 1-forma $df$ definida por $df(X) = X(f)$. Em coordenadas, $df = (\partial_i f)\,dx^i$, em que $\{dx^i\}$ é a base dual de $\{\partial/\partial x^i\}$, satisfazendo $dx^i(\partial_j) = \delta^i_j$.
+
+\subsection{\texorpdfstring{$k$}{k}-Formas e o Produto Exterior}
+
+Seja $\bigwedge^k T_p^*M$ a $k$-ésima potência exterior do espaço cotangente. Uma \textbf{$k$-forma diferencial} $\omega$ é uma seção do fibrado $\bigwedge^k T^*M$. Localmente,
+\begin{equation}
+  \omega = \frac{1}{k!}\,\omega_{i_1\cdots i_k}\,dx^{i_1}\wedge\cdots\wedge dx^{i_k},
+\end{equation}
+com coeficientes $\omega_{i_1\cdots i_k}$ totalmente antissimétricos.
+
+O \textbf{produto exterior} $\wedge:\Omega^k(M)\times\Omega^\ell(M)\to\Omega^{k+\ell}(M)$ é bilinear, associativo, e satisfaz $\alpha\wedge\beta = (-1)^{k\ell}\beta\wedge\alpha$ para $\alpha\in\Omega^k(M)$, $\beta\in\Omega^\ell(M)$.
+
+\subsection{Derivada Exterior}
+
+\begin{defi}
+A \textbf{derivada exterior} $d:\Omega^k(M)\to\Omega^{k+1}(M)$ é a única aplicação $\R$-linear satisfazendo:
+\begin{enumerate}
+  \item $df$ coincide com a diferencial de funções para $k=0$;
+  \item $d(d\omega)=0$ para toda forma $\omega$ (nilpotência: $d^2=0$);
+  \item $d(\alpha\wedge\beta) = d\alpha\wedge\beta + (-1)^k\alpha\wedge d\beta$ (regra de Leibniz graduada).
+\end{enumerate}
+Em coordenadas, para $\omega = \frac{1}{k!}\omega_{i_1\cdots i_k}dx^{i_1}\wedge\cdots\wedge dx^{i_k}$:
+\begin{equation}
+  d\omega = \frac{1}{k!}\,\partial_j\omega_{i_1\cdots i_k}\,dx^j\wedge dx^{i_1}\wedge\cdots\wedge dx^{i_k}.
+\end{equation}
+\end{defi}
+
+\begin{defi}
+Uma forma $\omega$ é \textbf{fechada} se $d\omega=0$, e \textbf{exata} se existe $\eta$ tal que $\omega = d\eta$. Toda forma exata é fechada, pois $d^2=0$.
+\end{defi}
+
+\subsection{Lema de Poincaré}
+
+\begin{teo}[Lema de Poincaré]
+Seja $U\subset\R^n$ um aberto contrátil (em particular, estrelado). Toda $k$-forma fechada em $U$ ($k\geq 1$) é exata. Equivalentemente, os grupos de cohomologia de de Rham de $U$ satisfazem $H^k_{\text{dR}}(U)=0$ para $k\geq 1$.
+\end{teo}
+
+\begin{proof}[Esboço]
+Define-se o operador de homotopia $K:\Omega^k(U)\to\Omega^{k-1}(U)$ por integração ao longo de raios:
+\begin{equation}
+  (K\omega)_{i_1\cdots i_{k-1}}(x) = \int_0^1 t^{k-1}\,\omega_{j i_1\cdots i_{k-1}}(tx)\,x^j\,dt,
+\end{equation}
+que satisfaz $Kd + dK = \id$ em $\Omega^k(U)$ para $k\geq 1$. Se $d\omega=0$, então $\omega = d(K\omega)$, donde $\omega$ é exata.
+\end{proof}
+
+O Lema de Poincaré é fundamental na GAT: ele garante que toda 2-forma de curvatura fechada (identidade de Bianchi) é localmente exata, fornecendo potenciais de conexão (1-formas de gauge) em vizinhanças contráteis do espaço de ativos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grupos de Lie}
+\label{sec:grupos_lie}
+
+\subsection{Definição e Exemplos}
+
+\begin{defi}
+Um \textbf{grupo de Lie} $G$ é uma variedade suave dotada de uma estrutura de grupo tal que as operações de multiplicação $\mu:G\times G\to G$, $\mu(g,h)=gh$, e inversão $\iota:G\to G$, $\iota(g)=g^{-1}$, são aplicações suaves.
+\end{defi}
+
+\begin{ex}
+O grupo linear geral $\GL(n,\R)$ é um grupo de Lie de dimensão $n^2$. Seus subgrupos fechados --- $\SL(n,\R)$, $\SO(n)$, $\U(n)$, $\SU(n)$ --- são igualmente grupos de Lie (teorema de Cartan--von Neumann). Em finanças, $\GL(n,\R)$ modela transformações lineares invertíveis entre cestas de ativos, enquanto $\SO(n)$ preserva a estrutura de correlação (métrica de Mahalanobis).
+\end{ex}
+
+\subsection{Álgebra de Lie}
+
+\begin{defi}
+A \textbf{álgebra de Lie} $\mathfrak{g}$ de um grupo de Lie $G$ é o espaço tangente na identidade, $\mathfrak{g}=T_eG$, munido do colchete de Lie induzido pelos campos invariantes à esquerda.
+\end{defi}
+
+Um campo $X\in\mathfrak{X}(G)$ é \textbf{invariante à esquerda} se $(L_g)_*X = X$ para todo $g\in G$, em que $L_g(h)=gh$. O colchete de dois campos invariantes à esquerda é invariante à esquerda, conferindo a $\mathfrak{g}$ a estrutura de álgebra de Lie.
+
+Em termos matriciais, para $G\subset\GL(n,\R)$, tem-se $\mathfrak{g}\subset\mathfrak{gl}(n,\R)=M_n(\R)$ e $[A,B]=AB-BA$ (comutador de matrizes).
+
+\subsection{Aplicação Exponencial}
+
+\begin{defi}
+A \textbf{aplicação exponencial} $\exp:\mathfrak{g}\to G$ é definida por $\exp(A)=\gamma_A(1)$, em que $\gamma_A:\R\to G$ é o subgrupo a 1-parâmetro gerado por $A\in\mathfrak{g}$, i.e., a única curva satisfazendo $\gamma_A(0)=e$ e $\dot\gamma_A(t) = (L_{\gamma_A(t)})_*A$.
+\end{defi}
+
+Para grupos matriciais, $\exp(A) = \sum_{k=0}^\infty A^k/k!$, a exponencial de matrizes usual. A exponencial é um difeomorfismo local entre uma vizinhança de $0\in\mathfrak{g}$ e uma vizinhança de $e\in G$, fornecendo a \textbf{carta exponencial} fundamental na GAT para parametrizar instrumentos financeiros como elementos de grupos de Lie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fibrados: Definições, Conexões e Curvatura}
+\label{sec:fibrados}
+
+\subsection{Definição e Seções}
+
+\begin{defi}
+Um \textbf{fibrado} (ou espaço fibrado) $\pi:E\to M$ consiste em um espaço total $E$, uma base $M$ (variedade), e uma projeção $\pi$ sobrejetora e suave. Para cada $x\in M$, a \textbf{fibra} $E_x=\pi^{-1}(x)$ é uma variedade difeomorfa a uma \textbf{fibra típica} $F$. Localmente, $E$ é trivial: existe uma vizinhança $U\subset M$ e um difeomorfismo $\phi:\pi^{-1}(U)\to U\times F$ tal que $\pr_1\circ\phi = \pi$.
+\end{defi}
+
+\begin{ex}[Fibrados Relevantes na GAT]
+\begin{itemize}
+  \item \textbf{Fibrado tangente} $TM$: fibra típica $\R^n$, base $M$.
+  \item \textbf{Fibrado cotangente} $T^*M$: dual de $TM$.
+  \item \textbf{Fibrado de frames} $FM$: fibra em $x$ é o conjunto de todas as bases de $T_xM$; isomorfo a $\GL(n,\R)$.
+  \item \textbf{Fibrado principal} $P(M,G)$: fibra típica é um grupo de Lie $G$ agindo livremente à direita.
+  \item \textbf{Fibrado associado} $E = P\times_G V$: obtido de um fibrado principal $P$ e uma representação $\rho:G\to\GL(V)$.
+\end{itemize}
+\end{ex}
+
+Uma \textbf{seção} de $\pi:E\to M$ é uma aplicação suave $s:M\to E$ tal que $\pi\circ s = \id_M$. Campos vetoriais são seções de $TM$; 1-formas são seções de $T^*M$.
+
+\subsection{Conexões e Derivada Covariante}
+
+\begin{defi}
+Uma \textbf{conexão} (ou derivada covariante) em um fibrado vetorial $E\to M$ é um operador $\nabla:\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$, $(X,s)\mapsto\nabla_X s$, $\R$-bilinear e satisfazendo:
+\begin{enumerate}
+  \item $\nabla_{fX}s = f\nabla_X s$ ($C^\infty(M)$-linearidade no argumento do campo);
+  \item $\nabla_X(fs) = X(f)s + f\nabla_X s$ (regra de Leibniz no argumento da seção).
+\end{enumerate}
+\end{defi}
+
+Em uma base local de seções $\{e_a\}$ de $E$ sobre $U\subset M$, a conexão é determinada pela \textbf{1-forma de conexão} $\omega$:
+\begin{equation}
+  \nabla_X e_a = \omega^b_{\;a}(X)\,e_b,
+\end{equation}
+em que $\omega = (\omega^b_{\;a})$ é uma matriz de 1-formas diferenciais em $U$, denominada forma de conexão local.
+
+\subsection{Curvatura}
+
+\begin{defi}
+A \textbf{curvatura} de uma conexão $\nabla$ é o operador $R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$ definido por:
+\begin{equation}
+  R(X,Y)s = \nabla_X\nabla_Y s - \nabla_Y\nabla_X s - \nabla_{[X,Y]}s.
+\end{equation}
+\end{defi}
+
+Em termos da forma de conexão, a curvatura é representada pela \textbf{2-forma de curvatura} $\Omega$:
+\begin{equation}
+  \Omega^a_{\;b} = d\omega^a_{\;b} + \omega^a_{\;c}\wedge\omega^c_{\;b}.
+\end{equation}
+Esta é a \textbf{equação de estrutura de Cartan} (ou equação de Maurer--Cartan para fibrados principais).
+
+A curvatura satisfaz a \textbf{identidade de Bianchi}:
+\begin{equation}
+  d\Omega + \omega\wedge\Omega - \Omega\wedge\omega = 0,
+\end{equation}
+que na GAT corresponde à condição de ausência de arbitragem (NFLVR): a curvatura do fibrado de preços deve ser uma 2-forma fechada com respeito à derivada covariante, garantindo que a carteira de ativos não admite oportunidades de lucro sem risco. Este vínculo geométrico entre curvatura e equilíbrio de mercado constitui o cerne da Abordagem de Apreçamento por Transporte Geométrico.
+
+Para um tratamento completo da teoria de fibrados e suas aplicações à física e finanças, remetemos o leitor a \citeonline{nakahara2003geometry}, \citeonline{kobayashi1963foundations} e \citeonline{bleecker1981gauge}.
+
+\endinput
+
+

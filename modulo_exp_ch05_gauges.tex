@@ -1,0 +1,707 @@
+﻿% ======================================================================
+% CAPITULO 5 — A Linguagem Geometrica: Gauges e Transformacoes
+% Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secoes 2.2 e 2.3
+%            Smith, A., Speed, C. (1998). Gauge Transforms in Stochastic Investment Modelling.
+%            Bleecker, D. (1981). Gauge Theory and Variational Principles.
+% ======================================================================
+\chapter{A Linguagem Geom\'etrica: Gauges e Transforma\c{c}\~oes}
+
+Este cap\'itulo constr\'oi a ponte entre finan\c{c}as e geometria
+diferencial introduzindo o conceito central da Teoria Geom\'etrica da
+Arbitragem (GAT): o \textbf{gauge} --- um par deflator--estrutura a
+termo que codifica toda a informa\c{c}\~ao financeira de um instrumento.
+Veremos que gauges formam um espa\c{c}o sobre o qual atua um grupo de
+transforma\c{c}\~oes, exatamente como na f\'isica de part\'iculas o
+potencial vetor $A_\mu$ se transforma sob $U(1)$. Esta analogia n\~ao
+\'e metaf\'orica --- \'e matem\'atica. O fibrado principal do mercado
+(Cap\'itulo~6) ser\'a constru\'ido inteiramente a partir dos objetos
+definidos aqui.
+
+A refer\^encia prim\'aria \'e Farinelli (2021), Se\c{c}\~oes~2.2 e~2.3
+\cite{farinelli2021}. A formula\c{c}\~ao original de transforma\c{c}\~oes
+de gauge em modelagem estoc\'astica de investimentos remonta a Smith e
+Speed (1998) \cite{smith1998gauge}. A ponte com a teoria de gauge
+diferencial segue Bleecker (1981) \cite{bleecker1981}.
+
+% ======================================================================
+\section{Por que Geometria?}
+% ======================================================================
+
+A f\'isica te\'orica do s\'eculo XX ensinou que as intera\c{c}\~oes
+fundamentais da natureza s\~ao descritas por \textbf{teorias de gauge}:
+o eletromagnetismo \'e uma teoria de gauge $U(1)$, a for\c{c}a fraca
+\'e $SU(2)$, a for\c{c}a forte \'e $SU(3)$. Em cada caso, a
+estrutura matem\'atica subjacente \'e um \textbf{fibrado principal}
+$P \to M$ com grupo de estrutura $G$, munido de uma \textbf{conex\~ao}
+$\omega$ cuja \textbf{curvatura} $F = d\omega + \omega \wedge \omega$
+codifica o campo de for\c{c}a.
+
+\begin{obs}[Analogia Eletromagnetismo $\leftrightarrow$ Mercado Financeiro]
+O quadro abaixo estabelece a correspond\^encia precisa entre os dois
+dom\'inios. N\~ao se trata de uma met\'afora: a estrutura alg\'ebrica e
+geom\'etrica \'e rigorosamente a mesma.
+\[
+\begin{array}{c|c}
+\textbf{Eletromagnetismo (F\'isica)} & \textbf{Mercado Financeiro (GAT)} \\ \hline
+\text{Fibrado principal } P(M, U(1)) & \text{Fibrado principal } P(\mathcal{M}, G^*) \\
+\text{Potencial vetor } A_\mu & \text{Conex\~ao de mercado } \omega \\
+\text{Transforma\c{c}\~ao de gauge } A \mapsto A + d\Lambda & (D,P) \mapsto (D^\pi, P^\pi) \\
+\text{Tensor de campo } F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu & \text{Curvatura } F = d\omega + \omega \wedge \omega \\
+\text{Carga el\'etrica } e & \text{Intensidade de cashflow } \pi \\
+\text{Equa\c{c}\~oes de Maxwell } dF = 0,\; d*F = J & \text{Condi\c{c}\~ao de n\~ao-arbitragem } F = 0
+\end{array}
+\]
+A consequ\^encia mais profunda: \textbf{arbitragem \'e curvatura}. Um
+mercado livre de arbitragem \'e plano ($F = 0$); a presen\c{c}a de
+oportunidades de arbitragem corresponde a curvatura n\~ao-nula na
+conex\~ao de mercado.
+\end{obs}
+
+Por que esta linguagem \'e \'util em finan\c{c}as? Tr\^es raz\~oes:
+
+\begin{enumerate}[(i)]
+  \item \textbf{Invari\^ancia:} O pre\c{c}o de um derivativo n\~ao deve
+        depender da escolha de numer\'ario. Exatamente como as leis da
+        f\'isica n\~ao dependem da escolha de gauge, o valor de um
+        contrato \'e \textbf{invariante de gauge} --- uma quantidade
+        geom\'etrica global, n\~ao coordenada-dependente.
+  \item \textbf{Unifica\c{c}\~ao:} Diferentes instrumentos financeiros
+        (t\'itulos, a\c{c}\~oes, taxas de c\^ambio, derivativos) s\~ao
+        todos descritos pelo mesmo objeto matem\'atico --- o gauge. As
+        rela\c{c}\~oes entre eles s\~ao transforma\c{c}\~oes de gauge.
+  \item \textbf{Classifica\c{c}\~ao:} A \^orbita de um gauge sob a
+        a\c{c}\~ao do grupo $G^*$ determina sua \textbf{hierarquia de
+        informa\c{c}\~ao}. Instrumentos em \^orbitas superiores
+        cont\^em mais dados de mercado.
+\end{enumerate}
+
+% ======================================================================
+\section{Deflatores e Estruturas a Termo}
+% ======================================================================
+
+\subsection{Defini\c{c}\~ao Formal}
+
+\begin{defi}[Gauge]\label{def:gauge}
+Seja $(\Omega, \mathcal{A}, \mathbb{A}, P)$ um espa\c{c}o de
+probabilidade filtrado satisfazendo as condi\c{c}\~oes usuais
+(Cap\'itulo~4). Um \textbf{gauge} \'e um par $(D, P)$ onde:
+\begin{enumerate}[(i)]
+  \item $D = (D_t)_{t \geq 0}$ \'e um processo estoc\'astico
+        estritamente positivo, adaptado a $\mathbb{A}$, chamado
+        \textbf{deflator}: o valor \textit{spot} (presente) do
+        instrumento no instante $t$, expresso em unidades do
+        numer\'ario escolhido.
+  \item $P = (P_{t,s})_{0 \leq t \leq s}$ \'e um processo estoc\'astico
+        a dois par\^ametros, estritamente positivo, $\mathcal{A}_t$-mensur\'avel
+        para cada $s$ fixo, chamado \textbf{estrutura a termo}: o valor
+        em $t$ de receber uma unidade do instrumento no instante
+        $s \geq t$.
+\end{enumerate}
+com as propriedades fundamentais:
+\[
+P_{t,t} = 1, \qquad P_{t,s} > 0 \quad \text{para todo } 0 \leq t \leq s.
+\]
+\end{defi}
+
+\begin{obs}[Interpreta\c{c}\~ao Econ\^omica]
+Um gauge \'e a descri\c{c}\~ao completa e autocontida de um instrumento
+financeiro. Ele responde a duas perguntas fundamentais:
+\begin{itemize}[nosep]
+  \item \textbf{Quanto vale hoje?} A resposta \'e $D_t$.
+  \item \textbf{Quanto valer\'a no futuro, se eu travar o pre\c{c}o agora?}
+        A resposta \'e $P_{t,s}$.
+\end{itemize}
+A condi\c{c}\~ao $P_{t,t} = 1$ \'e a normaliza\c{c}\~ao natural: uma
+unidade entregue instantaneamente vale exatamente uma unidade. A
+positividade $P_{t,s} > 0$ reflete o princ\'ipio econ\^omico de que
+dinheiro futuro certo (em $s$) tem valor presente positivo (em $t$), por
+menor que seja devido ao desconto.
+\end{obs}
+
+\subsection{Rela\c{c}\~ao com a Abordagem Cl\'assica}
+
+Na abordagem cl\'assica (Cap\'itulo~4), o mercado \'e descrito por um
+vetor de pre\c{c}os $S_t = (S_t^0, S_t^1, \dots, S_t^N)$ e uma conta
+caixa $S_t^0 = \exp(\int_0^t r_u\,du)$. O gauge correspondente \'e:
+\[
+D_t = (S_t^0)^{-1} S_t^j, \qquad
+P_{t,s} = \frac{\mathbb{E}_{\mathbb{Q}}[(S_s^0)^{-1} \mid \mathcal{A}_t]}
+                 {(S_t^0)^{-1}}
+\]
+Ou seja, $D_t$ \'e o pre\c{c}o descontado do ativo $j$ e $P_{t,s}$
+\'e o fator de desconto forward impl\'icito na medida neutra ao risco
+$\mathbb{Q}$. A GAT, contudo, trabalha diretamente com $(D,P)$ sem
+invocar $\mathbb{Q}$ --- a estrutura a termo \'e um objeto primitivo,
+n\~ao derivado de uma medida martingal.
+
+% ======================================================================
+\section{Exemplos Concretos de Gauges}
+% ======================================================================
+
+Cada exemplo ilustra como instrumentos financeiros radicalmente
+diferentes s\~ao unificados sob o mesmo formalismo. Em todos os casos,
+o deflator $D_t$ e a estrutura a termo $P_{t,s}$ s\~ao expressos em
+unidades do mesmo numer\'ario (tipicamente caixa, $S_t^0$).
+
+\begin{ex}[T\'itulo de Cupom Zero (\textit{Zero-Coupon Bond})]\label{ex:zero_bond}
+Uma fam\'ilia de t\'itulos p\'ublicos sem risco de cr\'edito que pagam
+uma unidade monet\'aria no vencimento $T$.
+
+\noindent\textbf{Deflator:} $D_t \equiv 1$. O valor do t\'itulo
+emitido em $t$ \'e constante em unidades de caixa porque ele j\'a
+representa dinheiro futuro descontado.
+
+\noindent\textbf{Estrutura a termo:} $P_{t,s}$ \'e o pre\c{c}o em $t$
+de um t\'itulo de cupom zero que vence em $s$. Tipicamente,
+$P_{t,s} < 1$ para $s > t$ (o desconto reflete o valor temporal do
+dinheiro). A fun\c{c}\~ao $s \mapsto P_{t,s}$ \'e chamada
+\textbf{curva de desconto} no instante $t$.
+
+\noindent\textbf{Propriedade:} Se o mercado \'e livre de arbitragem,
+existe uma taxa curta $r_t$ tal que $P_{t,s} = \mathbb{E}_{\mathbb{Q}}[\exp(-\int_t^s
+r_u\,du) \mid \mathcal{A}_t]$. Esta \'e a representa\c{c}\~ao
+martingal cl\'assica --- a GAT n\~ao a exige, mas a permite.
+\end{ex}
+
+\begin{ex}[\'Indice de A\c{c}\~oes com Dividendos Reinvestidos]\label{ex:equity_index}
+Considere um \'indice de a\c{c}\~oes (S\&P 500, Ibovespa) onde todos
+os dividendos s\~ao automaticamente reinvestidos na compra de mais a\c{c}\~oes
+do \'indice.
+
+\noindent\textbf{Deflator:} $D_t =$ valor do \'indice em $t$,
+descontado pela conta caixa. $D_t$ captura o \textbf{retorno total}
+(pre\c{c}o + dividendos), descontado para eliminar o efeito da
+infla\c{c}\~ao monet\'aria.
+
+\noindent\textbf{Estrutura a termo:} $P_{t,s} =$ pre\c{c}o de um
+contrato forward sobre o \'indice, emitido em $t$ com entrega em $s$,
+expresso em unidades de $D_t$. Para a\c{c}\~oes, tipicamente $P_{t,s}$
+\', e pr\'oximo de 1, pois a\c{c}\~oes n\~ao possuem `desconto
+temporal'` no mesmo sentido que t\'itulos.
+
+\noindent\textbf{Observa\c{c}\~ao:} O reinvestimento de dividendos \'e
+crucial. Sem ele, $D_t$ refletiria apenas a aprecia\c{c}\~ao de
+capital, e a estrutura a termo $P_{t,s}$ n\~ao seria bem definida
+(pois haveria `vazamento'` de valor via dividendos em dinheiro).
+\end{ex}
+
+\begin{ex}[Taxas de C\^ambio como Quociente de Deflatores]\label{ex:fx}
+Sejam $(D^{\text{dom}}, P^{\text{dom}})$ e $(D^{\text{for}},
+P^{\text{for}})$ os gauges de dois pa\'ises (dom\'estico e estrangeiro).
+A taxa de c\^ambio $X_t$ (unidades da moeda dom\'estica por unidade da
+moeda estrangeira) \'e dada pelo quociente de deflatores:
+\[
+X_t = \frac{D_t^{\text{dom}}}{D_t^{\text{for}}}
+\]
+Esta rela\c{c}\~ao \'e uma consequ\^encia direta do princ\'ipio de
+que deflatores convertem valores a numer\'ario. A estrutura a termo da
+taxa de c\^ambio (forward FX) \'e obtida de forma an\'aloga:
+\[
+F_{t,s}^{\text{FX}} = X_t \cdot \frac{P_{t,s}^{\text{for}}}{P_{t,s}^{\text{dom}}}
+\]
+que \'e a conhecida \textbf{paridade coberta da taxa de juros}.
+\end{ex}
+
+\begin{ex}[Infla\c{c}\~ao]\label{ex:inflation}
+O gauge de infla\c{c}\~ao descreve o poder de compra da moeda.
+
+\noindent\textbf{Deflator:} $D_t = I_t$, o \'indice de pre\c{c}os ao
+consumidor (IPC) no instante $t$. Ele mede quantas unidades monet\'arias
+s\~ao necess\'arias para comprar uma cesta fixa de bens.
+
+\noindent\textbf{Estrutura a termo:} $P_{t,s} =$ pre\c{c}o em $t$ de
+um t\'itulo indexado a infla\c{c}\~ao que paga $I_s$ unidades
+monet\'arias em $s$, expresso em unidades de $I_t$. Em outras
+palavras, $P_{t,s}$ captura a taxa de juros real forward.
+\end{ex}
+
+% ======================================================================
+\section{Taxa Forward Instant\^anea e Taxa Curta}
+% ======================================================================
+
+Suponha que a estrutura a termo $P_{t,s}$ seja diferenci\'avel em
+$s$ para cada $t$ fixo. Isto \'e verdade para a maioria dos modelos
+param\'etricos (Nelson--Siegel, Svensson) e para difus\~oes
+markovianas.
+
+\begin{defi}[Taxa Forward Instant\^anea]\label{def:forward_rate}
+A \textbf{taxa forward instant\^anea} no instante $t$ para o
+per\'iodo infinitesimal em $s \geq t$ \'e:
+\[
+\boxed{f_{t,s} := -\frac{\partial}{\partial s}\log P_{t,s}
+       = -\frac{1}{P_{t,s}}\frac{\partial P_{t,s}}{\partial s}}
+\]
+\end{defi}
+
+\begin{defi}[Taxa Curta (\textit{Short Rate})]\label{def:short_rate}
+A \textbf{taxa curta} (ou taxa instant\^anea de juros) \'e o limite
+da taxa forward quando o horizonte colapsa para o presente:
+\[
+\boxed{r_t := \lim_{s \to t^+} f_{t,s}
+       = -\left.\frac{\partial}{\partial s}\log P_{t,s}\right|_{s=t}}
+\]
+\end{defi}
+
+\begin{prop}[Reconstru\c{c}\~ao da Estrutura a Termo]\label{prop:reconstrucao}
+A estrutura a termo pode ser reconstru\'ida a partir da taxa forward
+via integra\c{c}\~ao:
+\[
+P_{t,s} = \exp\left(-\int_t^s f_{t,u}\,du\right)
+\]
+Em particular, se $r_u$ \'e a taxa curta e o mercado \'e livre de
+arbitragem (implicando $f_{t,u} = \mathbb{E}_{\mathbb{Q}}[r_u \mid
+\mathcal{A}_t]$ para um modelo de taxa curta), obtemos a f\'ormula
+cl\'assica de desconto.
+\end{prop}
+
+\begin{proof}
+Integrando a equa\c{c}\~ao diferencial $\frac{\partial}{\partial s}\log
+P_{t,s} = -f_{t,s}$ de $s=t$ a $s=T$, com a condi\c{c}\~ao de contorno
+$\log P_{t,t} = \log 1 = 0$:
+\[
+\log P_{t,T} - \log P_{t,t} = -\int_t^T f_{t,u}\,du
+\implies
+P_{t,T} = \exp\left(-\int_t^T f_{t,u}\,du\right)
+\]
+\end{proof}
+
+\begin{obs}[Interpreta\c{c}\~ao Financeira]
+A taxa forward $f_{t,s}$ \'e a taxa de juros marginal que o mercado
+\"precifica\" hoje ($t$) para o per\'iodo $[s, s+ds]$. \'E an\'aloga
+ao custo marginal em economia: o que custa emprestar dinheiro por
+um instante adicional no futuro. A taxa curta $r_t$ \'e o custo
+marginal do dinheiro \textit{agora}.
+\end{obs}
+
+% ======================================================================
+\section{Condi\c{c}\~ao de Juros Positivos}
+% ======================================================================
+
+\begin{defi}[Condi\c{c}\~ao de \textit{Storage} (Juros Positivos)]\label{def:storage}
+Um gauge $(D,P)$ satisfaz a \textbf{condi\c{c}\~ao de juros positivos}
+(ou condi\c{c}\~ao de armazenamento) se, para todo $t$ e todo
+$s_1 \leq s_2$:
+\[
+P_{t,s_1} \geq P_{t,s_2}
+\]
+isto \'e, a estrutura a termo \'e \textbf{mon\'otona decrescente} em
+$s$. Equivalentemente, $f_{t,s} \geq 0$ para todo $s \geq t$.
+\end{defi}
+
+\begin{obs}[Significado Econ\^omico]
+A condi\c{c}\~ao de juros positivos reflete o princ\'ipio do
+\textbf{armazenamento} (\textit{storage}): dinheiro hoje \'e sempre
+prefer\'ivel a dinheiro amanh\~a, pois pode ser armazenado sem custo
+(em caixa) e mantido at\'e o futuro. Se $P_{t,s_1} < P_{t,s_2}$ para
+$s_1 < s_2$, haveria uma oportunidade de arbitragem: comprar o
+instrumento de prazo mais curto, receber o principal em $s_1$, guardar
+o dinheiro f\'isico at\'e $s_2$, e lucrar a diferen\c{c}a.
+\end{obs}
+
+\begin{ex}[Instrumentos que \textbf{N\~AO} satisfazem a condi\c{c}\~ao de \textit{storage}]
+\begin{enumerate}[(a)]
+  \item \textbf{Infla\c{c}\~ao:} A estrutura a termo da infla\c{c}\~ao
+        (Exemplo~\ref{ex:inflation}) tipicamente \'e \textbf{crescente}
+        em $s$, pois $I_s$ tende a crescer com o tempo. N\~ao h\'a
+        como ``armazenar'' o n\'ivel geral de pre\c{c}os --- a
+        infla\c{c}\~ao \'e um processo n\~ao-armazen\'avel.
+  \item \textbf{Dividendos:} O gauge de a\c{c}\~oes com dividendos
+        (Exemplo~\ref{ex:equity_index}) tem $P_{t,s}$ pr\'oximo de~1,
+        n\~ao monotonicamente decrescente. Empresas crescem e pagam
+        dividendos; n\~ao \'e poss\'ivel ``armazenar'' o valor de uma
+        a\c{c}\~ao sem risco.
+  \item \textbf{Commodities com custo de carregamento:} Petr\'oleo,
+        gr\~aos e metais t\^em custos de armazenamento f\'isico que
+        podem tornar $P_{t,s}$ crescente em $s$ (contango).
+\end{enumerate}
+\end{ex}
+
+A condi\c{c}\~ao de \textit{storage} n\~ao \'e uma exig\^encia do
+formalismo --- \'e uma propriedade que alguns instrumentos possuem e
+outros n\~ao. A GAT funciona igualmente para ambos, mas a estrutura
+geom\'etrica \'e mais rica quando a condi\c{c}\~ao \'e satisfeita,
+pois ent\~ao o semigrupo $G$ (Se\c{c}\~ao~\ref{sec:semigrupo}) tem
+uma interpreta\c{c}\~ao probabil\'istica natural.
+
+% ======================================================================
+\section{Transforma\c{c}\~oes de Gauge}
+% ======================================================================
+
+\subsection{Motiva\c{c}\~ao}
+
+Um investidor raramente det\'em um \'unico instrumento puro. Mais
+comumente, ele possui um \textbf{portf\'olio de fluxos de caixa} ---
+uma combina\c{c}\~ao de pagamentos em diferentes datas futuras. A GAT
+formaliza esta ideia: dada uma ``receita'' de fluxos de caixa $\pi$,
+constr\'oi-se um novo gauge a partir de um gauge base.
+
+\begin{defi}[Transforma\c{c}\~ao de Gauge]\label{def:gauge_transform}
+Seja $(D,P)$ um gauge e $\pi: [0,+\infty[ \to \mathbb{R}$ uma
+fun\c{c}\~ao localmente integr\'avel chamada \textbf{intensidade de
+fluxo de caixa} (\textit{cashflow intensity}). A transforma\c{c}\~ao de
+gauge por $\pi$ produz um novo gauge $(D^\pi, P^\pi)$ definido por:
+\[
+\boxed{D_t^\pi := D_t \int_0^\infty \pi_h\, P_{t,t+h}\,dh}
+\qquad
+\boxed{P_{t,s}^\pi := \frac{\displaystyle\int_0^\infty \pi_h\, P_{t,s+h}\,dh}
+                              {\displaystyle\int_0^\infty \pi_h\, P_{t,t+h}\,dh}}
+\]
+onde a interpreta\c{c}\~ao \'e:
+\begin{itemize}[nosep]
+  \item $\pi_h\,dh$ mede quanto de fluxo de caixa \'e recebido no
+        horizonte $h$ (medido a partir de $t$);
+  \item $P_{t,t+h}$ desconta esse fluxo de $t+h$ para $t$;
+  \item $D_t^\pi$ \'e o valor presente total de todos os fluxos de
+        caixa futuros, ponderados por $\pi$.
+\end{itemize}
+\end{defi}
+
+\begin{obs}[Interpreta\c{c}\~ao Financeira]
+Uma transforma\c{c}\~ao de gauge \textbf{constr\'oi um novo instrumento
+a partir de um existente}. A fun\c{c}\~ao $\pi$ \'e a ``receita'' ---
+ela especifica quanto de cada maturidade $h$ entra no novo
+instrumento. O denominador em $P_{t,s}^\pi$ garante a
+normaliza\c{c}\~ao $P_{t,t}^\pi = 1$.
+\end{obs}
+
+\subsection{Representa\c{c}\~ao com Medidas}
+
+\'E conveniente interpretar $\pi$ como uma medida (assinada) na reta
+real. Se $\pi$ cont\'em \textbf{fun\c{c}\~oes delta de Dirac}, podemos
+representar pagamentos discretos. A nota\c{c}\~ao com integral de
+Lebesgue--Stieltjes \'e:
+\[
+D_t^\pi := D_t \int_0^\infty P_{t,t+h}\,d\pi(h), \qquad
+P_{t,s}^\pi := \frac{\int_0^\infty P_{t,s+h}\,d\pi(h)}
+                       {\int_0^\infty P_{t,t+h}\,d\pi(h)}
+\]
+Esta formula\c{c}\~ao unifica pagamentos cont\'inuos e discretos.
+
+\begin{ex}[T\'itulo com Cupom usando Deltas de Dirac]\label{ex:coupon_bond}
+Para um t\'itulo com valor de face 1, taxa de cupom anual $g$, e
+vencimento em $T$ anos (com pagamentos anuais):
+\[
+\pi = \sum_{k=1}^{T-1} g\,\delta_{k} + (1+g)\,\delta_{T}
+\]
+onde $\delta_a$ \'e a medida de Dirac concentrada em $a$. O primeiro
+termo representa os $T-1$ cupons anuais de valor $g$; o segundo, o
+principal mais o \'ultimo cupom no vencimento. Substituindo na
+f\'ormula:
+\begin{align*}
+  D_t^\pi &= D_t\left[\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}\right] \\[4pt]
+  P_{t,s}^\pi &= \frac{\sum_{k=1}^{T-1} g\,P_{t,s+k} + (1+g)P_{t,s+T}}
+                       {\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}}
+\end{align*}
+\end{ex}
+
+\begin{ex}[Perpetuidade (\textit{Consol})]\label{ex:consol}
+Uma perpetuidade paga cupom cont\'inuo de 1 unidade por ano para
+sempre. A fun\c{c}\~ao de cashflow \'e:
+\[
+\pi_h = 1 \quad \text{para todo } h \geq 0
+\]
+\'E a fun\c{c}\~ao de Heaviside ($\pi = \Theta$). O deflator da
+perpetuidade \'e:
+\[
+D_t^{\text{consol}} = D_t \int_0^\infty P_{t,t+h}\,dh
+\]
+que \'e a \'area sob a curva de desconto.
+\end{ex}
+
+% ======================================================================
+\section{O Semigrupo $G$ e o Grupo $G^*$}\label{sec:semigrupo}
+% ======================================================================
+
+A composi\c{c}\~ao de transforma\c{c}\~oes de gauge forma uma
+estrutura alg\'ebrica not\'avel que ser\'a o grupo de estrutura do
+fibrado principal do mercado (Cap\'itulo~6).
+
+\begin{defi}[O Semigrupo $G$]\label{def:semi_grupo}
+Seja $E'([0,+\infty[,\mathbb{R})$ o espa\c{c}o das distribui\c{c}\~oes
+com suporte compacto em $[0,+\infty[$, munido da opera\c{c}\~ao de
+\textbf{convolu\c{c}\~ao}:
+\[
+(\pi * \nu)(t) := \int_0^t \pi(t-u)\,d\nu(u)
+\]
+Ent\~ao $G := (E'([0,+\infty[,\mathbb{R}), *)$ \'e um \textbf{semigrupo
+abeliano} com elemento neutro $\delta_0$ (a delta de Dirac na origem).
+\end{defi}
+
+\begin{defi}[O Grupo $G^*$]\label{def:grupo_estrela}
+$G^* \subset G$ \'e o conjunto dos elementos invert\'iveis de $G$:
+\[
+G^* := \{\pi \in G \mid \exists\,\nu \in G \text{ tal que } \pi * \nu = \delta_0\}
+\]
+$G^*$ \'e um \textbf{grupo abeliano} sob convolu\c{c}\~ao.
+\end{defi}
+
+\begin{prop}[Propriedade Fundamental da Composi\c{c}\~ao]\label{prop:composicao}
+A composi\c{c}\~ao de transforma\c{c}\~oes de gauge corresponde
+\`a convolu\c{c}\~ao das intensidades de cashflow:
+\[
+\boxed{((D,P)^\pi)^\nu = (D,P)^{\pi * \nu}}
+\]
+Em particular, se $\pi \in G^*$ com inversa $\pi^{-1}$, ent\~ao
+$(D,P)^\pi$ pode ser revertido ao gauge original via
+$((D,P)^\pi)^{\pi^{-1}} = (D,P)$.
+\end{prop}
+
+\begin{proof}
+Seja $(D^\pi, P^\pi)$ o gauge transformado. Aplicando a segunda
+transforma\c{c}\~ao com intensidade $\nu$:
+\begin{align*}
+  D_t^{(\pi,\nu)}
+  &= D_t^\pi \int_0^\infty \nu_h\, P_{t,t+h}^\pi\,dh \\[4pt]
+  &= D_t \left(\int_0^\infty \pi_u\, P_{t,t+u}\,du\right) \cdot
+     \frac{\int_0^\infty \nu_h \int_0^\infty \pi_u\, P_{t,t+h+u}\,du\,dh}
+          {\int_0^\infty \pi_u\, P_{t,t+u}\,du} \\[4pt]
+  &= D_t \int_0^\infty (\pi * \nu)_w\, P_{t,t+w}\,dw = D_t^{\pi * \nu}
+\end{align*}
+O c\'alculo para $P_{t,s}$ \'e an\'alogo, e a normaliza\c{c}\~ao
+cancela o denominador.
+\end{proof}
+
+\begin{obs}[Estrutura de Semigrupo e N\~ao-negatividade]
+Se nos restringirmos a medidas n\~ao-negativas, obtemos um
+sub-semigrupo $G_+ \subset G$ cujos elementos t\^em interpreta\c{c}\~ao
+financeira direta (todo fluxo de caixa recebido \'e positivo). O grupo
+$G^*$ cont\'em elementos com partes negativas (ex.: transforma\c{c}\~ao
+de taxa curta, Se\c{c}\~ao~\ref{sec:especiais}), correspondendo a
+opera\c{c}\~oes financeiras que envolvem tanto recebimentos quanto
+pagamentos.
+\end{obs}
+
+% ======================================================================
+\section{\^Orbitas e Hierarquia de Informa\c{c}\~ao}
+% ======================================================================
+
+A a\c{c}\~ao do grupo $G^*$ sobre o espa\c{c}o de gauges particiona
+este espa\c{c}o em \textbf{\^orbitas}. A estrutura das \^orbitas
+codifica a hierarquia de informa\c{c}\~ao dispon\'ivel no mercado.
+
+\begin{defi}[\^Orbita de um Gauge]\label{def:orbita}
+A \textbf{\^orbita} de um gauge $(D,P)$ sob a a\c{c}\~ao de $G^*$ \'e:
+\[
+\mathcal{O}(D,P) := \{(D^\pi, P^\pi) \mid \pi \in G^*\}
+\]
+Dois gauges est\~ao na \textbf{mesma \^orbita} se e somente se existe
+uma transforma\c{c}\~ao invert\'ivel mapeando um no outro.
+\end{defi}
+
+\begin{prop}[Hierarquia de Informa\c{c}\~ao]\label{prop:hierarquia}
+Sejam $(D,P)$ e $(D^*,P^*)$ dois gauges.
+\begin{enumerate}[(i)]
+  \item Se $(D^*,P^*) = (D^\pi, P^\pi)$ com $\pi \in G^*$, ent\~ao
+        ambos cont\^em a \textbf{mesma informa\c{c}\~ao de mercado}, e
+        um pode ser reconstru\'ido a partir do outro.
+  \item Se $(D^*,P^*)$ \'e obtido a partir de $(D,P)$ por uma
+        transforma\c{c}\~ao \textbf{n\~ao-invert\'ivel}
+        ($\pi \in G \setminus G^*$), ent\~ao a \^orbita de $(D^*,P^*)$
+        \'e \textbf{estritamente inferior}: cont\'em menos
+        informa\c{c}\~ao de mercado, e o gauge original n\~ao pode ser
+        recuperado.
+\end{enumerate}
+\end{prop}
+
+\begin{obs}[Intui\c{c}\~ao Geom\'etrica]
+Imagine o espa\c{c}o de todos os gauges como um cone. As \^orbitas de
+$G^*$ s\~ao ``fatias horizontais'' deste cone. Transforma\c{c}\~oes
+invert\'iveis movem um gauge dentro de sua pr\'opria fatia (mesmo
+n\'ivel de informa\c{c}\~ao). Transforma\c{c}\~oes singulares
+projetam o gauge para uma fatia inferior (perda de informa\c{c}\~ao).
+No topo do cone est\'a o \textbf{gauge principal} --- aquele a partir
+do qual todos os outros podem ser obtidos por transforma\c{c}\~ao
+(invert\'ivel ou n\~ao).
+\end{obs}
+
+\begin{ex}[Hierarquia na Pr\'atica]
+Considere um mercado de t\'itulos:
+\begin{itemize}[nosep]
+  \item \textbf{Gauge de taxa curta} $(D^r, P^r)$: obtido do gauge
+        de t\'itulos $(D^{\text{bond}}, P^{\text{bond}})$ pela
+        transforma\c{c}\~ao $[-1]$ (Se\c{c}\~ao~\ref{sec:especiais}).
+        Esta transforma\c{c}\~ao \'e \textbf{singular}, logo o gauge
+        de taxa curta pertence a uma \^orbita inferior --- a partir
+        dele n\~ao se pode reconstruir toda a estrutura a termo.
+  \item \textbf{Gauge de t\'itulo com cupom}: obtido do gauge de
+        zero-coupon por uma transforma\c{c}\~ao \textbf{invert\'ivel},
+        logo pertence \`a mesma \^orbita. Ambos cont\^em a mesma
+        informa\c{c}\~ao.
+\end{itemize}
+\end{ex}
+
+% ======================================================================
+\section{Transforma\c{c}\~oes Especiais}\label{sec:especiais}
+% ======================================================================
+
+Certas intensidades de cashflow $\pi$ t\^em significado financeiro
+t\~ao fundamental que recebem nota\c{c}\~ao pr\'opria.
+
+\begin{defi}[Transforma\c{c}\~oes Can\^onicas]\label{def:canonicas}
+Definimos as seguintes intensidades can\^onicas:
+\[
+\begin{array}{ccl}
+\text{Elemento neutro} & [0] &:= \delta_0 \\[4pt]
+\text{Taxa curta (\textit{short rate})} & [-1] &:= \delta'_0\
+  \text{(derivada da delta de Dirac)} \\[4pt]
+\text{Perpetuidade (\textit{consol})} & [+1] &:= \Theta\
+  \text{(fun\c{c}\~ao de Heaviside: $\Theta_h = 1$ para $h \geq 0$)}
+\end{array}
+\]
+\end{defi}
+
+\begin{prop}[\'Algebra dos \'Indices]\label{prop:algebra_indices}
+Os \'indices can\^onicos satisfazem a seguinte \'algebra de
+convolu\c{c}\~ao:
+\[
+\boxed{[k] * [l] = [k + l]}
+\]
+para todo $k, l \in \mathbb{Z}$.
+\end{prop}
+
+\begin{proof}
+Por indu\c{c}\~ao a partir dos casos base:
+\begin{itemize}[nosep]
+  \item $[0] * [k] = [k]$ para todo $k$: pela defini\c{c}\~ao de
+        elemento neutro.
+  \item $[+1] * [+1] = [+2], [+1] * [+1] * [+1] = [+3]$, etc.: a
+        convolu\c{c}\~ao de $n$ fun\c{c}\~oes de Heaviside produz
+        $\Theta^{*n}(t) = \frac{t^{n-1}}{(n-1)!}$ para $t \geq 0$.
+  \item $[-1] * [+1] = [0]$: a derivada da delta convolu\'ida com
+        Heaviside devolve a delta ($\delta' * \Theta = \delta$).
+  \item $[-1] * [-1] = [-2]$: segunda derivada da delta.
+\end{itemize}
+Estendendo para $k,l \in \mathbb{Z}$ arbitr\'arios, obtemos a
+\'algebra de convolu\c{c}\~ao $[k]*[l] = [k+l]$. O grupo gerado por
+$\{[k]\}_{k \in \mathbb{Z}}$ \'e isomorfo a $(\mathbb{Z}, +)$.
+\end{proof}
+
+\begin{obs}[Significado Financeiro dos \'Indices]
+O \'indice $k$ conta quantas ``camadas de integra\c{c}\~ao'' ou
+``camadas de deriva\c{c}\~ao'' separam o gauge do gauge de refer\^encia:
+\begin{itemize}[nosep]
+  \item $k = 0$: o pr\'oprio gauge (identidade).
+  \item $k = +1$: perpetuidade --- integra a estrutura a termo sobre
+        todos os horizontes (acumula\c{c}\~ao de fluxos).
+  \item $k = -1$: taxa curta --- deriva a estrutura a termo na origem
+        (extrai informa\c{c}\~ao marginal).
+  \item $k = +n$ ($n > 1$): $n$-\'esima perpetuidade iterada.
+  \item $k = -n$ ($n > 1$): $n$-\'esima derivada na origem.
+\end{itemize}
+\end{obs}
+
+\begin{ex}[Construindo o Gauge de Taxa Curta]
+Partindo do gauge de zero-coupon $(D^{\text{bond}}, P^{\text{bond}})$:
+\[
+D_t^{[-1]} = D_t \int_0^\infty \delta_0'(h)\, P_{t,t+h}\,dh
+            = -D_t \left.\frac{\partial}{\partial h}P_{t,t+h}\right|_{h=0}
+            = D_t \cdot r_t
+\]
+onde usamos $P_{t,t} = 1$ e $f_{t,t} = r_t$. A estrutura a termo
+correspondente $P_{t,s}^{[-1]}$ \'e a raz\~ao de duas taxas forward,
+mas o ponto crucial \'e que a transforma\c{c}\~ao $[-1]$ \'e
+\textbf{singular}: $\delta_0'$ n\~ao possui inversa em $G$. Isto
+reflete o fato econ\^omico de que conhecer apenas a taxa curta $r_t$
+n\~ao basta para reconstruir toda a estrutura a termo --- \'e
+necess\'ario conhecer a din\^amica completa de $r_t$ sob $\mathbb{Q}$.
+\end{ex}
+
+\begin{ex}[Gauge de Pre\c{c}o de A\c{c}\~ao a partir do Gauge de Dividendos]
+Se $(D^{\text{div}}, P^{\text{div}})$ \'e o gauge de dividendos
+(pagamentos de dividendos apenas, sem aprecia\c{c}\~ao de capital), o
+gauge de pre\c{c}o da a\c{c}\~ao (com dividendos reinvestidos) \'e
+obtido aplicando $[+1]$:
+\[
+D_t^{\text{acao}} = D_t^{\text{div}} \int_0^\infty P_{t,t+h}^{\text{div}}\,dh
+\]
+que \'e o valor presente de todos os dividendos futuros --- o modelo
+de Gordon--Shapiro em linguagem de gauge.
+\end{ex}
+
+% ======================================================================
+\section{Diagrama de Gauges}
+% ======================================================================
+
+A figura a seguir (\`a la diagrama comutativo) resume as
+rela\c{c}\~oes entre os principais tipos de gauges e as
+transforma\c{c}\~oes que os conectam. As setas s\~ao rotuladas pela
+intensidade de cashflow $\pi$ (ou pelo \'indice $[k]$) que realiza a
+transforma\c{c}\~ao.
+
+\[
+\begin{array}{ccccccc}
+& & & \boxed{\text{Principal } (D,P)} & & & \\[4pt]
+& & \swarrow[-1] & \downarrow[+1] & \searrow\text{Cupom} & & \\[4pt]
+& \boxed{\text{Taxa Curta}} & & \boxed{\text{Consol}} & & \boxed{\text{Coupon Bond}} & \\[4pt]
+& \swarrow[-1] & & \downarrow[+1] & & \swarrow[-1] & \\[4pt]
+\boxed{\text{Volatilidade}} & & \boxed{\text{Renda Fixa}} & & \boxed{\text{Fwd Rate}} & & \boxed{\text{Zero Bond}} \\[4pt]
+& & & \downarrow[+1] & & & \\[4pt]
+& & & \boxed{\text{Equity}} & & & \\[4pt]
+& & & \downarrow\text{Div} & & & \\[4pt]
+& & & \boxed{\text{Dividend}} & & &
+\end{array}
+\]
+
+\begin{center}
+\small
+\textbf{Legenda:} $[+1]$ = perpetuidade (Heaviside $\Theta$);
+$[-1]$ = taxa curta ($\delta'$). As setas pontilhadas indicam
+transforma\c{c}\~oes singulares (perda de informa\c{c}\~ao: mudam de
+\^orbita). As setas s\'olidas indicam transforma\c{c}\~oes invert\'iveis
+(mesma \^orbita).
+\end{center}
+
+\begin{obs}[Leitura do Diagrama]
+\begin{itemize}[nosep]
+  \item O \textbf{gauge principal} (topo) cont\'em a m\'axima
+        informa\c{c}\~ao. A partir dele, qualquer outro gauge pode
+        ser obtido.
+  \item Descendo no diagrama via setas pontilhadas ($[-1]$), perde-se
+        informa\c{c}\~ao (proje\c{c}\~ao para \^orbita inferior).
+  \item Movimentos horizontais (ex.: Principal $\to$ Coupon Bond)
+        s\~ao transforma\c{c}\~oes invert\'iveis --- mesma \^orbita,
+        mesma informa\c{c}\~ao.
+  \item O gauge de \textbf{equity} (a\c{c}\~ao com dividendos
+        reinvestidos) \'e obtido aplicando $[+1]$ ao gauge de renda
+        fixa, enquanto o gauge de \textbf{dividend} (apenas dividendos)
+        \'e obtido removendo a aprecia\c{c}\~ao de capital.
+\end{itemize}
+\end{obs}
+
+% ======================================================================
+\section{S\'intese e Conex\~ao com os Pr\'oximos Cap\'itulos}
+% ======================================================================
+
+O cap\'itulo estabeleceu o vocabul\'ario fundamental da GAT:
+
+\begin{enumerate}[(i)]
+  \item \textbf{Gauge} $(D,P)$: a ``certid\~ao de nascimento''
+        financeira de qualquer instrumento.
+  \item \textbf{Transforma\c{c}\~ao de gauge} via $\pi$: constru\c{c}\~ao
+        de novos instrumentos a partir de existentes.
+  \item \textbf{Grupo $G^*$}: as transforma\c{c}\~oes invert\'iveis,
+        que particionam o espa\c{c}o de gauges em \^orbitas.
+  \item \textbf{\^Orbitas e hierarquia}: cada \^orbita corresponde a
+        um n\'ivel de informa\c{c}\~ao de mercado.
+  \item \textbf{\'Algebra $[k]*[l] = [k+l]$}: aritm\'etica das
+        transforma\c{c}\~oes fundamentais.
+\end{enumerate}
+
+No Cap\'itulo~6, veremos que o conjunto de todos os gauges forma um
+\textbf{fibrado principal} $P(\mathcal{M}, G^*)$ sobre o espa\c{c}o de
+par\^ametros de mercado $\mathcal{M}$. O grupo $G^*$ atua como grupo
+de estrutura, e as transforma\c{c}\~oes de gauge s\~ao exatamente as
+mudan\c{c}as de trivializa\c{c}\~ao local. Esta \'e a ponte
+definitiva entre finan\c{c}as e geometria diferencial.
+
+\vspace{12pt}
+\begin{center}
+\rule{0.4\textwidth}{0.5pt}\\[4pt]
+{\small \textbf{Princ\'ipio Geom\'etrico:} O que a f\'isica chama de
+\emph{simetria de gauge}, as finan\c{c}as chamam de \emph{mudan\c{c}a
+de numer\'ario}. A invari\^ancia da f\'isica sob $U(1)$ \'e a
+invari\^ancia das finan\c{c}as sob $G^*$.}\\[4pt]
+\rule{0.4\textwidth}{0.5pt}
+\end{center}
+
+

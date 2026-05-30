@@ -1,0 +1,427 @@
+﻿\chapter{Curvatura = Arbitragem --- O Teorema Central}
+
+Este \'e o cap\'itulo culminante da teoria. Aqui estabelecemos a equival\^encia entre curvatura e arbitragem --- o resultado que d\'a sentido geom\'etrico profundo \`a modelagem financeira. A intui\c{c}\~ao \'e poderosa: um mercado \'e livre de arbitragem se, e somente se, a conex\~ao de gauge associada \'e plana. Em linguagem de geometria diferencial: \textbf{NFLVR $\Longleftrightarrow$ $R \equiv 0$}. As demonstra\c{c}\~oes aqui apresentadas seguem Farinelli (2021, Se\c{c}\~oes 3.7--3.8), com expans\~oes did\'aticas dos c\'alculos intermedi\'arios.
+
+\section{O Que \'E Curvatura?}
+
+\subsection{Intui\c{c}\~ao Geom\'etrica}
+
+Considere uma variedade diferenci\'avel $M$ munida de uma conex\~ao $\nabla$. Tome um vetor tangente $v \in T_pM$ e transporte-o paralelamente ao longo de um loop fechado $\gamma$ baseado em $p$. Se, ao retornar a $p$, o vetor transportado $v'$ difere de $v$, dizemos que a variedade possui curvatura. A curvatura mede precisamente a obstru\c{c}\~ao \`a integrabilidade do transporte paralelo: em uma variedade plana, o transporte paralelo independe do caminho; em uma variedade curva, ele depende.
+
+No contexto financeiro, o an\'alogo do transporte paralelo \'e a evolu\c{c}\~ao dos pre\c{c}os descontados sob a medida martingal. A curvatura mede a obstru\c{c}\~ao \`a exist\^encia de uma tal medida --- ou seja, mede a presen\c{c}a de oportunidades de arbitragem.
+
+\subsection{Defini\c{c}\~ao Formal}
+
+Seja $\chi$ a conex\~ao de gauge definida no Cap\'itulo 7. A 2-forma de curvatura $R$ associada a $\chi$ \'e dada por:
+
+\begin{defi}[Curvatura da Conex\~ao de Gauge]
+A 2-forma de curvatura $R \in \Omega^2(M, \mathfrak{g}^*)$ da conex\~ao $\chi$ \'e definida por
+\begin{equation}
+R = d\chi + [\chi, \chi],
+\end{equation}
+onde $d$ \'e a diferencial exterior sobre $M$ e $[\chi, \chi]$ \'e o colchete de Lie graduado em $\mathfrak{g}^*$.
+\end{defi}
+
+\noindent Como o grupo de gauge $G^*$ \'e abeliano --- trata-se do grupo multiplicativo dos deflatores de estado --- temos que $\mathfrak{g}^*$ \'e uma \'algebra de Lie abeliana. Consequentemente:
+
+\begin{equation}
+[\chi, \chi] = 0.
+\end{equation}
+
+\noindent A curvatura reduz-se ent\~ao \`a forma mais simples:
+
+\begin{equation}
+\boxed{R = d\chi}
+\end{equation}
+
+\noindent Esta simplifica\c{c}\~ao \'e crucial: em um grupo de gauge abeliano, a curvatura \'e puramente a diferencial exterior da conex\~ao. N\~ao h\'a termo n\~ao-linear. A condi\c{c}\~ao de planicidade $R \equiv 0$ equivale a $d\chi = 0$, ou seja, $\chi$ \'e uma 1-forma fechada.
+
+\section{C\'alculo Expl\'icito da Curvatura}
+
+\subsection{Express\~ao da Conex\~ao}
+
+Retomemos a conex\~ao $\chi$ derivada no Cap\'itulo 7. Sobre o fibrado de gauge $\pi: P \to M$, com $M = \R \times \R^n_{\ge 0}$ (tempo $\times$ pre\c{c}os positivos), a conex\~ao \'e:
+
+\begin{equation}
+\chi(x, t, g) = \chi_t(x, t, g)\, dt + \sum_{i=1}^n \chi_i(x, t, g)\, dx^i,
+\end{equation}
+
+onde $x = (x^1, \dots, x^n)$ s\~ao as coordenadas de pre\c{c}o (log-pre\c{c}os), $t$ \'e o tempo, e $g \in G^*$ \'e a coordenada do grupo de gauge. As componentes s\~ao:
+
+\begin{align}
+\chi_t(x, t, g) &= -\frac{D_t^x}{g}\,\partial_t\left(\frac{g}{D_t^x}\right), \label{eq:chi_t}\\
+\chi_i(x, t, g) &= -\frac{D_t^x}{g}\,\partial_i\left(\frac{g}{D_t^x}\right), \label{eq:chi_i}
+\end{align}
+
+onde $D_t^x$ \'e o deflator de estado (num\'eraire) e $g \in G^*$ \'e um elemento do grupo de gauge.
+
+\subsection{C\'alculo de $d\chi$}
+
+A diferencial exterior $d\chi$ expande-se como:
+
+\begin{equation}
+d\chi = d\chi_t \wedge dt + \sum_{i=1}^n d\chi_i \wedge dx^i.
+\end{equation}
+
+\noindent Calculando termo a termo:
+
+\begin{align}
+d\chi_t &= \frac{\partial \chi_t}{\partial t}\,dt + \sum_{j=1}^n \frac{\partial \chi_t}{\partial x^j}\,dx^j + \frac{\partial \chi_t}{\partial g}\,dg, \\
+d\chi_i &= \frac{\partial \chi_i}{\partial t}\,dt + \sum_{j=1}^n \frac{\partial \chi_i}{\partial x^j}\,dx^j + \frac{\partial \chi_i}{\partial g}\,dg.
+\end{align}
+
+\noindent Substituindo em $d\chi$ e usando a antissimetria do produto wedge ($dt \wedge dt = 0$, $dx^i \wedge dx^i = 0$, $dx^i \wedge dx^j = -dx^j \wedge dx^i$):
+
+\begin{align}
+d\chi &= \sum_{j=1}^n \frac{\partial \chi_t}{\partial x^j}\,dx^j \wedge dt + \frac{\partial \chi_t}{\partial g}\,dg \wedge dt \nonumber\\
+&\quad + \sum_{i=1}^n \frac{\partial \chi_i}{\partial t}\,dt \wedge dx^i + \sum_{i,j=1}^n \frac{\partial \chi_i}{\partial x^j}\,dx^j \wedge dx^i + \sum_{i=1}^n \frac{\partial \chi_i}{\partial g}\,dg \wedge dx^i.
+\end{align}
+
+\noindent Reagrupando os termos em $dt \wedge dx^i$:
+
+\begin{equation}
+d\chi = \sum_{i=1}^n \left(\frac{\partial \chi_i}{\partial t} - \frac{\partial \chi_t}{\partial x^i}\right) dt \wedge dx^i + \frac{1}{2}\sum_{i,j=1}^n \left(\frac{\partial \chi_i}{\partial x^j} - \frac{\partial \chi_j}{\partial x^i}\right) dx^j \wedge dx^i + \text{termos em } dg.
+\end{equation}
+
+\subsection{Simplifica\c{c}\~ao com a Express\~ao de $\chi$}
+
+Das equa\c{c}\~oes (\ref{eq:chi_t})--(\ref{eq:chi_i}), expandimos as derivadas:
+
+\begin{align}
+\chi_t &= -\frac{D_t^x}{g}\left(\frac{\partial_t g}{D_t^x} - \frac{g\,\partial_t D_t^x}{(D_t^x)^2}\right) = -\frac{\partial_t g}{g} + \frac{\partial_t D_t^x}{D_t^x} = -\partial_t \ln g + \partial_t \ln D_t^x, \\
+\chi_i &= -\frac{D_t^x}{g}\left(\frac{\partial_i g}{D_t^x} - \frac{g\,\partial_i D_t^x}{(D_t^x)^2}\right) = -\frac{\partial_i g}{g} + \frac{\partial_i D_t^x}{D_t^x} = -\partial_i \ln g + \partial_i \ln D_t^x.
+\end{align}
+
+\noindent Portanto:
+
+\begin{align}
+\frac{\partial \chi_i}{\partial t} &= -\partial_t \partial_i \ln g + \partial_t \partial_i \ln D_t^x, \\
+\frac{\partial \chi_t}{\partial x^i} &= -\partial_i \partial_t \ln g + \partial_i \partial_t \ln D_t^x.
+\end{align}
+
+\noindent Pela igualdade das derivadas cruzadas (Schwarz), $\partial_t \partial_i = \partial_i \partial_t$, obtemos:
+
+\begin{equation}
+\frac{\partial \chi_i}{\partial t} - \frac{\partial \chi_t}{\partial x^i} = 0,
+\end{equation}
+
+\noindent e, analogamente,
+
+\begin{equation}
+\frac{\partial \chi_i}{\partial x^j} - \frac{\partial \chi_j}{\partial x^i} = -\partial_i \partial_j \ln g + \partial_j \partial_i \ln g + \partial_i \partial_j \ln D_t^x - \partial_j \partial_i \ln D_t^x = 0.
+\end{equation}
+
+\subsection{Express\~ao Final da Curvatura}
+
+Surpreendentemente, os termos em $dt \wedge dx^i$ e $dx^i \wedge dx^j$ anulam-se. A curvatura sobrevive apenas nos termos que envolvem a coordenada do grupo de gauge $g$:
+
+\begin{equation}
+\boxed{R(x, t, g) = \left(-\frac{r_t^x}{g} + \frac{\partial \ln D_t^x}{\partial t}\right) dg \wedge dt + \sum_{i=1}^n \left(-\frac{\mu_t^{x,i}}{g} + \frac{\partial \ln D_t^x}{\partial x^i}\right) dg \wedge dx^i}
+\end{equation}
+
+\noindent onde $r_t^x$ \'e a taxa curta e $\mu_t^{x,i}$ \'e o drift do ativo $i$. Equivalentemente, usando a defini\c{c}\~ao de $\chi$ e o fato de que $R = d\chi$:
+
+\begin{equation}
+R(x, t, g) = d\left(-\frac{D_t^x}{g}\,d\left(\frac{g}{D_t^x}\right)\right).
+\end{equation}
+
+\noindent Expandindo esta express\~ao e simplificando, obt\'em-se a forma compacta:
+
+\begin{equation}
+\boxed{R = \frac{dD_t^x \wedge dg}{g\,D_t^x} - \frac{D_t^x}{g^2}\,dg \wedge dg}
+\end{equation}
+
+\noindent onde o segundo termo anula-se pois $dg \wedge dg = 0$. Resta:
+
+\begin{equation}
+\boxed{R = \frac{dD_t^x \wedge dg}{g\,D_t^x}}
+\end{equation}
+
+\noindent Esta \'e a express\~ao mais sint\'etica da curvatura: o produto wedge entre a diferencial do deflator e a diferencial do elemento de gauge, ponderado pelo inverso do produto de ambos. A curvatura anula-se precisamente quando $dD_t^x$ e $dg$ s\~ao linearmente dependentes --- ou seja, quando o deflator de estado e o gauge evoluem de forma alinhada.
+
+\section{Teorema 34 (No Arbitrage)}
+
+Enunciamos agora o resultado central de toda a teoria.
+
+\begin{teo}[Teorema Central da Arbitragem Geom\'etrica --- Farinelli 2021, Teorema 34]
+Seja $(\Omega, \mathcal{F}, \{\mathcal{F}_t\}_{t \ge 0}, \mathbb{P})$ um espa\c{c}o de probabilidade filtrado satisfazendo as condi\c{c}\~oes usuais. Considere um mercado financeiro com $n$ ativos de risco modelados por semimartingales positivos $S_t = (S_t^1, \dots, S_t^n)$ e um ativo livre de risco com taxa $r_t$. Seja $\chi$ a conex\~ao de gauge sobre o fibrado principal $P \to M$ e $R = d\chi$ sua curvatura. As seguintes afirma\c{c}\~oes s\~ao equivalentes:
+
+\begin{enumerate}
+\item[(i)] O mercado satisfaz \textbf{NFLVR} (No Free Lunch with Vanishing Risk).
+\item[(ii)] Existe um deflator de estado $\beta = (\beta_t)_{t \ge 0}$ estritamente positivo tal que, para cada ativo $x$, a taxa curta satisfaz:
+\begin{equation}
+r_t^x = -\frac{D \log(\beta_t D_t^x)}{Dt},
+\end{equation}
+onde $D/Dt$ denota a derivada covariante ao longo do tempo.
+\item[(iii)] Para quaisquer $0 \le t \le s$, o pre\c{c}o forward \'e dado pela f\'ormula martingal:
+\begin{equation}
+P_{t,s}^x = \frac{\mathbb{E}_t[\beta_s D_s^x]}{\beta_t D_t^x}.
+\end{equation}
+\item[(iv)] O grupo de holonomia restrita $\mathrm{Hol}^0(\chi)$ da conex\~ao $\chi$ \'e trivial.
+\item[(v)] A curvatura \'e identicamente nula: $R \equiv 0$ sobre $P$.
+\end{enumerate}
+\end{teo}
+
+\noindent A equival\^encia (v) $\Longleftrightarrow$ (i) \'e o \textbf{Teorema Central da Arbitragem Geom\'etrica}: um mercado \'e livre de arbitragem se, e somente se, a conex\~ao de gauge associada \'e plana.
+
+\section{Prova Detalhada do Teorema 34}
+
+\subsection{(i) $\Longleftrightarrow$ (iii): FTAP}
+
+A equival\^encia entre NFLVR e a exist\^encia de uma representa\c{c}\~ao martingal para os pre\c{c}os \'e o Primeiro Teorema Fundamental da Precifica\c{c}\~ao de Ativos (FTAP) em sua vers\~ao para processos de tempo cont\'inuo, devido a Delbaen \& Schachermayer (1994).
+
+\begin{proof}
+Se NFLVR vale, ent\~ao existe uma medida martingal equivalente $\mathbb{Q} \sim \mathbb{P}$ tal que os pre\c{c}os descontados $S_t^i / B_t$ s\~ao $\mathbb{Q}$-martingales locais, onde $B_t = \exp(\int_0^t r_u\, du)$ \'e o numer\'aire do ativo livre de risco. O deflator de estado $\beta_t$ \'e precisamente o processo densidade de Radon--Nikod\'ym: $\beta_t = \mathbb{E}_t[d\mathbb{Q}/d\mathbb{P}]$. Pela f\'ormula de Bayes para martingales, obtemos:
+
+\begin{equation}
+P_{t,s}^x = \frac{\mathbb{E}_t[\beta_s S_s^x / B_s]}{\beta_t S_t^x / B_t} = \frac{\mathbb{E}_t[\beta_s D_s^x]}{\beta_t D_t^x},
+\end{equation}
+
+onde $D_t^x = S_t^x / B_t$ \'e o pre\c{c}o descontado. A rec\'iproca \'e imediata: se existe $\beta > 0$ satisfazendo (iii), ent\~ao $\mathbb{Q}$ definida por $d\mathbb{Q}/d\mathbb{P} = \beta_T / \beta_0$ \'e uma medida martingal equivalente, e o FTAP garante NFLVR.
+\end{proof}
+
+\subsection{(ii) $\Longleftrightarrow$ (iii): Deriva\c{c}\~ao e Integra\c{c}\~ao}
+
+\begin{proof}
+Suponha que (ii) vale: $r_t^x = -D \log(\beta_t D_t^x) / Dt$. Ent\~ao o processo $\beta_t D_t^x$ satisfaz a equa\c{c}\~ao diferencial estoc\'astica:
+
+\begin{equation}
+d(\beta_t D_t^x) = \beta_t D_t^x \left(r_t^x\, dt + \frac{D \log(\beta_t D_t^x)}{Dt}\,dt\right) + \text{martingale} = \text{martingale local},
+\end{equation}
+
+pois os termos de drift cancelam-se. Logo, $\beta_t D_t^x$ \'e um martingale local positivo, e portanto um supermartingale. Sob a condi\c{c}\~ao de integrabilidade apropriada (Novikov), \'e um martingale verdadeiro e (iii) segue.
+
+Reciprocamente, se (iii) vale, ent\~ao $\beta_t D_t^x$ \'e um martingale. Pela representa\c{c}\~ao de It\^o, o drift de $\log(\beta_t D_t^x)$ deve ser exatamente $-r_t^x$, o que implica (ii).
+\end{proof}
+
+\subsection{(ii) $\Longrightarrow$ (v): Substitui\c{c}\~ao na Express\~ao da Curvatura}
+
+Esta \'e a etapa geometricamente mais reveladora.
+
+\begin{proof}
+Suponha que existe $\beta_t > 0$ satisfazendo (ii). Ent\~ao a taxa curta \'e:
+
+\begin{equation}
+r_t^x = -\partial_t \ln(\beta_t D_t^x) = -\frac{\partial_t \beta_t}{\beta_t} - \frac{\partial_t D_t^x}{D_t^x}.
+\end{equation}
+
+\noindent Inserindo esta express\~ao na f\'ormula da curvatura $R = d\chi$, onde $\chi = -d\ln g + d\ln D_t^x$ (com $g = \beta_t$ ap\'os fixa\c{c}\~ao de gauge), obtemos:
+
+\begin{equation}
+\chi = -d\ln \beta_t + d\ln D_t^x.
+\end{equation}
+
+\noindent A curvatura \'e:
+
+\begin{equation}
+R = d\chi = d(-d\ln \beta_t + d\ln D_t^x) = -d^2 \ln \beta_t + d^2 \ln D_t^x.
+\end{equation}
+
+\noindent Pela propriedade fundamental da diferencial exterior, $d^2 = 0$. Portanto:
+
+\begin{equation}
+R = 0 - 0 = 0.
+\end{equation}
+
+\noindent Logo, $R \equiv 0$ sobre todo o fibrado $P$.
+
+A interpreta\c{c}\~ao f\'isica \'e cristalina: a exist\^encia de um deflator de estado $\beta_t$ que satisfaz (ii) implica que a 1-forma $\chi$ \'e exata ($\chi = d\phi$ para algum potencial $\phi$), e uma forma exata \'e automaticamente fechada. A curvatura, sendo $d\chi$, anula-se identicamente. Em linguagem geom\'etrica: o fibrado de gauge \'e plano.
+\end{proof}
+
+\subsection{(iv) $\Longleftrightarrow$ (v): Teorema de Ambrose--Singer}
+
+\begin{proof}
+O Teorema de Ambrose--Singer (1953) estabelece que a \'algebra de Lie do grupo de holonomia restrita $\mathrm{Hol}^0(\chi)$ \'e gerada pelos valores da curvatura $R$ em todos os pontos do fibrado $P$. Formalmente:
+
+\begin{equation}
+\mathfrak{hol}^0(\chi)_p = \{ R_p(u, v) \mid u, v \in T_pP \}.
+\end{equation}
+
+\noindent Portanto, $\mathrm{Hol}^0(\chi)$ \'e trivial se, e somente se, sua \'algebra de Lie \'e trivial, o que ocorre se, e somente se, $R \equiv 0$ sobre $P$. Isto estabelece a equival\^encia (iv) $\Longleftrightarrow$ (v).
+
+Intuitivamente: se a curvatura \'e nula, o transporte paralelo ao longo de qualquer loop fechado \'e a identidade, e o grupo de holonomia \'e trivial. Reciprocamente, se o grupo de holonomia \'e trivial, o transporte paralelo \'e independente do caminho, o que s\'o \'e poss\'ivel em um fibrado plano ($R \equiv 0$).
+\end{proof}
+
+\section{Corol\'ario 36: Implica\c{c}\~oes e Contrapositivas}
+
+\begin{coro}[Implica\c{c}\~oes entre Condi\c{c}\~oes de Arbitragem --- Farinelli 2021, Corol\'ario 36]
+Valem as seguintes implica\c{c}\~oes estritas:
+
+\begin{align}
+\text{(NFLVR)} &\Longrightarrow \text{(NA)}, \\
+\text{(NFLVR)} &\Longrightarrow \text{(ZC)}.
+\end{align}
+
+onde NA denota \textit{No Arbitrage} (aus\^encia de arbitragem) e ZC denota \textit{Zero Curvature} (curvatura nula). A rec\'iproca de (NFLVR) $\Longrightarrow$ (ZC) \'e \textbf{falsa}.
+\end{coro}
+
+\begin{proof}
+\textbf{(NFLVR) $\Rightarrow$ (NA):} NFLVR \'e uma condi\c{c}\~ao mais forte que NA por constru\c{c}\~ao. Se n\~ao existem free lunches com vanishing risk, em particular n\~ao existem arbitragens cl\'assicas. A implica\c{c}\~ao \'e direta da defini\c{c}\~ao.
+
+\textbf{(NFLVR) $\Rightarrow$ (ZC):} Pelo Teorema 34, NFLVR $\Rightarrow$ existe $\beta$ martingal positivo $\Rightarrow$ $R \equiv 0$ $\Rightarrow$ curvatura nula. Esta dire\c{c}\~ao \'e v\'alida.
+
+\textbf{A rec\'iproca de (NFLVR) $\Rightarrow$ (ZC) \'e falsa:} Existem mercados com curvatura nula ($R \equiv 0$) que n\~ao satisfazem NFLVR. O ponto crucial \'e que a condi\c{c}\~ao $R \equiv 0$ garante que $\chi$ \'e fechada ($d\chi = 0$), mas n\~ao garante que $\chi$ seja \textbf{exata} globalmente. A exist\^encia de um deflator de estado martingal requer que a forma fechada seja exata e que o processo densidade resultante seja um martingal verdadeiro, n\~ao apenas um martingale local. A falha ocorre precisamente quando a \textbf{condi\c{c}\~ao de Novikov} n\~ao \'e satisfeita.
+\end{proof}
+
+\section{O Que a Rec\'iproca Falsa Significa Financeiramente}
+
+A n\~ao-equival\^encia entre curvatura nula e NFLVR \'e uma das contribui\c{c}\~oes mais sutis e profundas da teoria. Vamos dissec\'a-la.
+
+\subsection{Condi\c{c}\~ao de Novikov}
+
+Seja $\beta_t$ um martingale local positivo. Para que $\beta_t$ seja um martingale verdadeiro, \'e necess\'ario e suficiente que a condi\c{c}\~ao de Novikov seja satisfeita:
+
+\begin{equation}
+\mathbb{E}\left[\exp\left(\frac{1}{2} \int_0^T \|\sigma_u\|^2\, du\right)\right] < \infty,
+\end{equation}
+
+onde $\sigma_t$ \'e a volatilidade do processo $\beta_t$. Quando esta condi\c{c}\~ao falha, $\beta_t$ \'e um martingale local estrito: $\mathbb{E}[\beta_T] < \beta_0$, e a medida $\mathbb{Q}$ definida por $d\mathbb{Q}/d\mathbb{P} = \beta_T / \beta_0$ n\~ao \'e uma medida de probabilidade equivalente, mas apenas uma medida sub-probabilidade.
+
+\subsection{Exemplo Can\^onico: Processo de Bessel em Dimens\~ao 3}
+
+O exemplo paradigm\'atico de um mercado com curvatura nula mas sem medida martingal equivalente \'e dado pelo processo de Bessel de dimens\~ao 3, $\mathrm{BES}^3(1)$:
+
+\begin{equation}
+dX_t = \frac{1}{X_t}\,dt + dW_t, \quad X_0 = 1,
+\end{equation}
+
+onde $W_t$ \'e um movimento Browniano padr\~ao. O processo $M_t = 1/X_t$ \'e um martingale local positivo (pela f\'ormula de It\^o, $dM_t = -M_t^2\,dW_t$), mas n\~ao \'e um martingale verdadeiro: $\mathbb{E}[M_t] < 1$ para $t > 0$. A condi\c{c}\~ao de Novikov falha porque:
+
+\begin{equation}
+\mathbb{E}\left[\exp\left(\frac{1}{2} \int_0^T M_t^2\, dt\right)\right] = \infty.
+\end{equation}
+
+\noindent Neste mercado:
+
+\begin{itemize}
+\item A curvatura \'e nula: $R \equiv 0$ (a conex\~ao \'e plana por constru\c{c}\~ao).
+\item N\~ao existe medida martingal equivalente (o deflator candidato $M_t$ n\~ao atinge $\mathbb{E}[M_T] = 1$).
+\item NFLVR \'e violada: existe um free lunch with vanishing risk.
+\end{itemize}
+
+\subsection{Interpreta\c{c}\~ao Financeira}
+
+A distin\c{c}\~ao entre curvatura nula e NFLVR captura a diferen\c{c}a entre:
+
+\begin{center}
+\begin{tabular}{p{5cm} p{5cm}}
+\toprule
+\textbf{Geometria Local} & \textbf{Geometria Global} \\
+\midrule
+Curvatura nula ($R \equiv 0$) & Grupo de holonomia trivial \\
+$\chi$ \'e fechada ($d\chi = 0$) & $\chi$ \'e exata ($\chi = d\phi$) \\
+Exist\^encia local de deflator & Exist\^encia global de deflator \\
+Martingale local & Martingale verdadeiro \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Em termos financeiros: a curvatura nula garante que n\~ao h\'a arbitragem \textbf{local} --- n\~ao se pode obter lucro sem risco em intervalos infinitesimais. No entanto, pode haver arbitragem \textbf{global} se o deflator de estado local n\~ao puder ser estendido a um martingale verdadeiro em todo o horizonte de negocia\c{c}\~ao. A condi\c{c}\~ao de Novikov \'e precisamente o crit\'erio que distingue estas duas situa\c{c}\~oes.
+
+Este fen\^omeno \'e an\'alogo \`a diferen\c{c}a entre uma variedade localmente euclidiana e uma variedade globalmente euclidiana: um cilindro tem curvatura nula em todo ponto mas n\~ao \'e globalmente isom\'etrico a $\R^2$.
+
+\section{Equa\c{c}\~ao de Continuidade: Vis\~ao Geral}
+
+Encerramos este cap\'itulo com uma conex\~ao elegante entre a teoria geom\'etrica da arbitragem e a f\'isica dos fluidos.
+
+\subsection{Corrente de Valor}
+
+\begin{defi}[Corrente de Valor]
+A corrente de valor $J$ \'e o campo vetorial sobre o espa\c{c}o de fase $(x, t)$ cujas componentes s\~ao:
+
+\begin{equation}
+J(x, t) = \left(J^1(x,t), \dots, J^n(x,t), J^0(x,t)\right),
+\end{equation}
+
+onde $J^i(x,t)$ \'e o fluxo de valor na dire\c{c}\~ao do ativo $i$ e $J^0(x,t)$ \'e o fluxo temporal de valor. Explicitamente:
+
+\begin{align}
+J^i(x, t) &= \mu_t^{x,i}\, \rho(x,t) - \frac{1}{2}\sum_{j=1}^n \partial_j\left(\sigma_t^{x,ij}\,\rho(x,t)\right), \\
+J^0(x, t) &= \rho(x,t),
+\end{align}
+
+onde $\rho(x,t)$ \'e a densidade de probabilidade do processo de pre\c{c}os sob a medida f\'isica e $\sigma_t^{x,ij}$ \'e a matriz de covari\^ancia instant\^anea.
+\end{defi}
+
+\subsection{Teorema da Continuidade}
+
+\begin{teo}[Equa\c{c}\~ao de Continuidade do Valor --- Farinelli 2021]
+O mercado satisfaz NFLVR se, e somente se, a corrente de valor \'e conservada:
+
+\begin{equation}
+\boxed{\operatorname{div} J = 0},
+\end{equation}
+
+ou seja,
+
+\begin{equation}
+\frac{\partial J^0}{\partial t} + \sum_{i=1}^n \frac{\partial J^i}{\partial x^i} = 0.
+\end{equation}
+\end{teo}
+
+\begin{proof}[Esbo\c{c}o da Prova]
+Pelo Teorema 34, NFLVR $\Longleftrightarrow$ $R \equiv 0$. A condi\c{c}\~ao $R = 0$ imp\~oe v\'inculos sobre os coeficientes de drift $\mu_t^{x,i}$ e difus\~ao $\sigma_t^{x,ij}$. Substituindo esses v\'inculos na defini\c{c}\~ao de $J$ e calculando a diverg\^encia, obt\'em-se $\operatorname{div} J = 0$. A rec\'iproca segue por integra\c{c}\~ao: se $\operatorname{div} J = 0$, ent\~ao existe um potencial $\phi$ tal que $J = \nabla^\perp \phi$, e este potencial gera o deflator de estado $\beta_t$ via $d\beta_t / \beta_t = -r_t\,dt - \nabla \phi \cdot dW_t$.
+\end{proof}
+
+\subsection{Analogia F\'isica: Fluido Incompress\'ivel}
+
+A equa\c{c}\~ao $\operatorname{div} J = 0$ \'e matematicamente id\^entica \`a equa\c{c}\~ao de continuidade para um fluido incompress\'ivel em hidrodin\^amica. A interpreta\c{c}\~ao \'e not\'avel:
+
+\begin{center}
+\begin{tabular}{p{5cm} p{5cm}}
+\toprule
+\textbf{F\'isica de Fluidos} & \textbf{Geometria Financeira} \\
+\midrule
+Fluido incompress\'ivel & Mercado livre de arbitragem \\
+$\operatorname{div} \mathbf{v} = 0$ & $\operatorname{div} J = 0$ \\
+N\~ao h\'a fontes nem sumidouros & N\~ao h\'a cria\c{c}\~ao nem destrui\c{c}\~ao de valor \\
+Fluxo conservativo & Mercado justo \\
+Linhas de corrente fechadas & Arbitragem (ciclo de valor) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Em um mercado com arbitragem ($R \not\equiv 0$), a diverg\^encia \'e n\~ao-nula: $\operatorname{div} J \neq 0$. Existem \textbf{fontes} e \textbf{sumidouros} de valor no espa\c{c}o de fase. Um agente racional pode extrair valor infinito destas fontes --- esta \'e precisamente a defini\c{c}\~ao de \textit{free lunch with vanishing risk}.
+
+Em um mercado livre de arbitragem ($R \equiv 0$), o valor flui como um fluido incompress\'ivel: o que entra em uma regi\~ao do espa\c{c}o de fase deve sair. N\~ao h\'a cria\c{c}\~ao l\'iquida de valor. Esta \'e a ess\^encia f\'isica do Primeiro Teorema Fundamental.
+
+\subsection{Conex\~ao com a Curvatura}
+
+A rela\c{c}\~ao entre a diverg\^encia da corrente de valor e a curvatura da conex\~ao de gauge \'e dada pela identidade:
+
+\begin{equation}
+\operatorname{div} J = \star\, d \star \chi^\flat,
+\end{equation}
+
+onde $\star$ \'e o operador estrela de Hodge sobre $M$ e $\chi^\flat$ \'e o isomorfismo musical (rebaixamento de \'indices) aplicado a $\chi$. No caso abeliano, $R = d\chi$, e temos:
+
+\begin{equation}
+\operatorname{div} J = 0 \Longleftrightarrow d\chi = 0 \Longleftrightarrow R \equiv 0.
+\end{equation}
+
+\noindent A equa\c{c}\~ao de continuidade \'e, portanto, uma reformula\c{c}\~ao dual do Teorema Central: a linguagem da curvatura (geometria diferencial) e a linguagem da diverg\^encia (teoria de campos) s\~ao duas faces da mesma moeda.
+
+\vspace{1em}
+\noindent\rule{\textwidth}{0.5pt}
+\vspace{0.5em}
+
+\begin{center}
+\textbf{Resumo do Cap\'itulo 8}
+
+\vspace{0.5em}
+\begin{tabular}{p{4cm} p{8cm}}
+\toprule
+\textbf{Conceito} & \textbf{Resultado} \\
+\midrule
+Curvatura $R$ & $R = d\chi$ (grupo de gauge abeliano) \\
+Teorema Central & NFLVR $\Longleftrightarrow$ $R \equiv 0$ \\
+Holonomia & $\mathrm{Hol}^0(\chi)$ trivial $\Longleftrightarrow$ $R \equiv 0$ \\
+Deflator de Estado & Exist\^encia de $\beta > 0$ martingal $\Longleftrightarrow$ $R \equiv 0$ + Novikov \\
+Rec\'iproca Falsa & $R \equiv 0 \not\Rightarrow$ NFLVR (falha de Novikov) \\
+Equa\c{c}\~ao de Continuidade & NFLVR $\Longleftrightarrow$ $\operatorname{div} J = 0$ \\
+Analogia F\'isica & Mercado justo = Fluido incompress\'ivel \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+

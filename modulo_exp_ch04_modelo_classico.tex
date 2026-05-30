@@ -1,0 +1,952 @@
+﻿% ======================================================================
+% CAPITULO 4 — O Modelo Classico de Mercado
+% Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secao 2
+% ======================================================================
+\chapter{O Modelo Clássico de Mercado}
+
+Este capítulo apresenta o arcabouço matemático padrão da teoria de
+arbitragem em tempo contínuo, conforme estabelecido por
+Harrison--Kreps--Pliska (1979--1981) e consolidado por Delbaen e
+Schachermayer (1994, 2006). Todas as definições, notações e teoremas
+seguem a Seção~2 de Farinelli (2021). O leitor que domina este
+capítulo possui os pré-requisitos formais para a Parte~II (GAT).
+
+% ----------------------------------------------------------------------
+\section{Espaço de Probabilidade Filtrado e Condições Usuais}
+% ----------------------------------------------------------------------
+
+O alicerce de qualquer modelo financeiro em tempo contínuo é um
+\textbf{espaço de probabilidade filtrado} que satisfaz as condições
+técnicas mínimas para que a integração estocástica funcione.
+
+\begin{defi}[Espaço de Probabilidade Filtrado]
+Um espaço de probabilidade filtrado é uma quádrupla
+$(\Omega, \mathcal{A}, \mathbb{A}, P)$, onde:
+\begin{enumerate}[(i)]
+  \item $(\Omega, \mathcal{A}, P)$ é um espaço de probabilidade
+        completo --- toda a teoria de integração de Lebesgue se aplica;
+  \item $\mathbb{A} = (\mathcal{A}_t)_{t \in [0, +\infty[}$ é uma
+        \textbf{filtração}: uma família crescente de sub-$\sigma$-álgebras
+        de $\mathcal{A}$, isto é, $\mathcal{A}_s \subseteq \mathcal{A}_t$
+        para $0 \leq s \leq t < +\infty$;
+  \item A filtração satisfaz as \textbf{condições usuais} de
+        Dellacherie (1972)\footnote{Dellacherie, C. \textit{Capacités et
+        Processus Stochastiques}. Springer, 1972. ISBN: 978-3540056768.
+        \textbf{Resenha:} Obra fundacional que introduziu as condições
+        usuais para filtrações em tempo contínuo, indispensáveis para a
+        teoria geral dos processos.}:
+        \begin{enumerate}
+          \item \textbf{Continuidade à direita:}
+                $\mathcal{A}_t = \bigcap_{s > t} \mathcal{A}_s$
+                para todo $t \geq 0$;
+          \item \textbf{Completude:} $\mathcal{A}_0$ (e portanto
+                toda $\mathcal{A}_t$) contém todos os conjuntos
+                $P$-negligenciáveis de $\mathcal{A}$.
+        \end{enumerate}
+\end{enumerate}
+\end{defi}
+
+\begin{obs}[Interpretação Intuitiva]
+$\mathcal{A}_t$ representa \textbf{toda a informação disponível ao
+mercado até o instante} $t$. A condição de crescimento
+($\mathcal{A}_s \subseteq \mathcal{A}_t$) reflete o fato de que
+informação nunca é perdida. A continuidade à direita é uma
+regularização técnica que garante que tempos de parada se comportam
+bem. A completude assegura que conjuntos de probabilidade zero não
+afetam a estrutura da informação --- eventos impossíveis não carregam
+informação.
+\end{obs}
+
+O horizonte temporal é $[0, +\infty[$. Isto permite modelar mercados
+sem data terminal fixa, o que é conveniente para a GAT, onde
+transformações de gauge envolvem integrais sobre $[0, +\infty[$.
+
+% ----------------------------------------------------------------------
+\section{Ativos, Preços e a Conta Caixa}
+% ----------------------------------------------------------------------
+
+O mercado consiste em $N$ \textbf{ativos de risco} indexados por
+$j = 1, \dots, N$, mais um \textbf{ativo livre de risco} que serve
+como \textbf{numerário} (unidade de conta), indexado por $j = 0$.
+
+\subsection{Semimartingales como Modelo de Preços}
+
+A classe de processos estocásticos que modela os preços deve ser
+suficientemente rica para incluir todos os casos de interesse
+(movimento Browniano geométrico, processos de salto, difusões com
+saltos) e, simultaneamente, suficientemente restrita para que a
+integral estocástica seja bem definida. A classe correta é a dos
+\textbf{semimartingales}.
+
+\begin{defi}[Semimartingale]
+Um processo adaptado $X = (X_t)_{t \geq 0}$ é um
+\textbf{semimartingale} se admite a decomposição
+\begin{equation}\label{eq:semimartingale_decomp}
+  X_t = X_0 + M_t + A_t,
+\end{equation}
+onde $M$ é um martingal local (com $M_0 = 0$) e $A$ é um processo
+adaptado càdlàg de variação finita (com $A_0 = 0$). A decomposição
+não é única em geral; torna-se única se exigirmos que $A$ seja
+previsível (decomposição canônica).
+\end{defi}
+
+A classe dos semimartingales é maximal para a integração
+estocástica\footnote{Protter, P. \textit{Stochastic Integration and
+Differential Equations}. Springer, 2nd ed., 2005. DOI:
+10.1007/978-3-662-10061-5. \textbf{Resenha:} Tratamento matemático
+rigoroso da integração estocástica, cobrindo semimartingales, integral
+de Itô, teorema de Girsanov e representação de martingais. O
+Teorema~II.4 prova que a integral estocástica só é bem definida
+(como operador contínuo) exatamente para integradores
+semimartingales. Referência técnica padrão para pesquisadores em
+finanças quantitativas.}: o operador integral $I_X: H \mapsto
+\int H\,dX$ só é contínuo (na topologia de Emery) quando $X$ é um
+semimartingale.
+
+\begin{ex}[Processos de Itô]
+O exemplo mais relevante para aplicações é o processo de Itô
+$d$-dimensional:
+\begin{equation}\label{eq:ito_process}
+  dX_t = \mu_t\,dt + \sigma_t\,dW_t,
+\end{equation}
+onde $W$ é um movimento Browniano $m$-dimensional, $\mu$ é um
+processo adaptado localmente integrável e $\sigma$ é um processo
+adaptado localmente de quadrado integrável. Todo processo de Itô é um
+semimartingale (com $M_t = \int_0^t \sigma_u\,dW_u$ e
+$A_t = \int_0^t \mu_u\,du$).
+\end{ex}
+
+\begin{ex}[Processos de Salto (Lévy)]
+Processos de Lévy com saltos --- como o processo de Poisson composto
+$X_t = \sum_{k=1}^{N_t} Y_k$, onde $N$ é um processo de Poisson e
+$Y_k$ são os tamanhos dos saltos --- também são semimartingales.
+Estes modelam \textit{crashes} e eventos extremos. A GAT incorpora
+naturalmente processos de salto pois a geometria diferencial não
+distingue entre parte contínua e parte de salto.
+\end{ex}
+
+\subsection{Preços Nominais e Descontados}
+
+\begin{defi}[Preços Nominais]
+O vetor de \textbf{preços nominais} é um semimartingale $N$-dimensional
+\begin{equation}\label{eq:prices}
+  S: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
+  \quad S_t = (S_t^1, \dots, S_t^N),
+\end{equation}
+adaptado à filtração $\mathbb{A}$. Cada componente $S_t^j$ é o preço
+de uma unidade do ativo $j$ no instante $t$, expresso em unidades
+monetárias (reais, dólares, etc.).
+\end{defi}
+
+A \textbf{conta caixa} (ou \textit{money market account}) $S^0$ é o
+ativo livre de risco que acumula juros à taxa curta $r_t^0$:
+\begin{equation}\label{eq:cash_account}
+  S_t^0 := \exp\left(\int_0^t r_u^0\,du\right),
+\end{equation}
+onde $r^0 = (r_t^0)_{t \geq 0}$ é um processo adaptado localmente
+integrável. Tipicamente, $r^0$ é determinístico ou, no máximo, um
+processo de Itô. Note que $S_0^0 = 1$ por construção --- uma unidade
+monetária investida na conta caixa no instante zero.
+
+\begin{defi}[Preços Descontados]
+Os \textbf{preços descontados} (em relação ao numerário $S^0$) são
+definidos por:
+\begin{equation}\label{eq:discounted}
+  \hat{S}_t^j := \frac{S_t^j}{S_t^0}, \quad j = 1, \dots, N,
+\end{equation}
+com a convenção natural $\hat{S}_t^0 \equiv 1$. O vetor descontado é
+denotado $\hat{S}_t = (\hat{S}_t^1, \dots, \hat{S}_t^N)$.
+\end{defi}
+
+\begin{obs}[Significado Financeiro]
+$\hat{S}_t^j$ expressa o preço do ativo $j$ em \textbf{unidades de
+caixa no instante} $t$, e não em reais nominais. Descontar é o
+processo contínuo de ``trazer a valor presente'': um real no futuro
+vale menos que um real hoje. A conta caixa $S_t^0$ é o fator de
+capitalização. Matematicamente, descontar é uma mudança de numerário
+--- o primeiro exemplo de transformação de gauge que a GAT
+generalizará.
+\end{obs}
+
+\subsection{O Numerário}
+
+\begin{defi}[Numerário]
+Um \textbf{numerário} é um ativo cujo preço é estritamente positivo
+($S_t^{\text{Num}} > 0$ q.c. para todo $t$) e que serve como unidade
+de conta. A escolha mais comum é $S^0$ (a conta caixa), mas
+qualquer ativo estritamente positivo pode desempenhar este papel.
+\end{defi}
+
+A GAT explora exaustivamente a \textbf{arbitrariedade do numerário}:
+as leis de mercado devem ser invariantes sob mudança de unidade de
+conta. Esta invariância --- conhecida como \textbf{simetria de gauge}
+--- será o ponto de partida para a construção geométrica.
+
+% ----------------------------------------------------------------------
+\section{Estratégias de Negociação}
+% ----------------------------------------------------------------------
+
+\subsection{Previsibilidade}
+
+\begin{defi}[Processo Previsível]
+Um processo estocástico $x: [0, +\infty[ \times \Omega \to
+\mathbb{R}^N$ é \textbf{previsível} se é mensurável em relação à
+$\sigma$-álgebra previsível $\mathcal{P}$, gerada por todos os
+processos contínuos à esquerda e adaptados.
+\end{defi}
+
+A previsibilidade codifica a restrição fundamental de causalidade:
+\textbf{você decide sua posição no instante $t$ com base na
+informação disponível estritamente antes de $t$}. Você não pode
+prever o futuro; você não pode reagir instantaneamente a um salto.
+Se o preço salta em $t$, sua estratégia $x_t$ já estava fixada
+antes do salto.
+
+\begin{defi}[Estratégia de Negociação]
+Uma \textbf{estratégia de negociação} (ou \textit{portfólio}) é um
+processo previsível $N$-dimensional
+\begin{equation}\label{eq:strategy}
+  x: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
+  \quad x_t = (x_t^1, \dots, x_t^N),
+\end{equation}
+onde $x_t^j$ é a \textbf{quantidade} (número de unidades) do ativo
+$j$ mantida no instante $t$. A quantidade $x_t^0$ (posição na conta
+caixa) é determinada pela condição de autofinanciamento.
+\end{defi}
+
+O \textbf{valor da carteira} (ou \textit{wealth process}) associado à
+estratégia $x$ é:
+\begin{equation}\label{eq:wealth}
+  V_t := V_t^x := \sum_{j=0}^N x_t^j S_t^j = x_t^0 S_t^0 + x_t \cdot S_t.
+\end{equation}
+
+\subsection{Admissibilidade}
+
+Nem toda estratégia previsível é economicamente razoável. A condição
+de \textbf{admissibilidade} exclui estratégias que realizam lucros
+infinitos com capital finito --- as chamadas ``estratégias de
+dobrar'' (\textit{doubling strategies}).
+
+\begin{defi}[Estratégia Admissível]
+Uma estratégia $x$ é dita \textbf{$a$-admissível} (para $a \in
+\mathbb{R}$) se o processo de valor descontado é limitado
+inferiormente:
+\begin{equation}\label{eq:admissible}
+  \hat{V}_t^x = \frac{V_t^x}{S_t^0} \geq -a, \quad \forall t \geq 0,
+  \quad P\text{-q.c.}
+\end{equation}
+Uma estratégia é \textbf{admissível} se é $a$-admissível para algum
+$a \in \mathbb{R}_+$. Denotamos por $\mathcal{A}$ o conjunto de todas
+as estratégias admissíveis.
+\end{defi}
+
+\begin{obs}[Por que limitar a perda?]
+Em tempo contínuo, sem a limitação inferior, é possível construir uma
+estratégia de ``aposta de Martingale'' que dobra a aposta após cada
+perda e gera lucro certo com probabilidade~1 --- mas requer crédito
+ilimitado. A cota inferior $a$ representa uma \textbf{linha de crédito
+finita} e exclui estas patologias\footnote{Harrison, J.M. e Pliska,
+S.R. \textit{Martingales and Stochastic Integrals in the Theory of
+Continuous Trading}. Stochastic Processes and their Applications,
+11(3):215--260, 1981. DOI: 10.1016/0304-4149(81)90026-0.
+\textbf{Resenha:} O artigo que estendeu o FTAP de tempo discreto
+(Harrison--Kreps 1979) para tempo contínuo. Formalizou o conceito de
+estratégia admissível e provou que, sob a existência de uma medida
+martingal equivalente, o valor descontado de qualquer estratégia
+admissível autofinanciada é um martingal local limitado
+inferiormente --- portanto, um supermartingal.}.
+\end{obs}
+
+\subsection{Autofinanciamento: Itô e Stratonovich}
+
+A condição de \textbf{autofinanciamento} afirma que variações no valor da
+carteira decorrem exclusivamente de variações nos preços dos ativos ---
+você não injeta nem retira capital.
+
+\begin{defi}[Estratégia Autofinanciada --- Formulação de Itô]
+Uma estratégia $x$ é \textbf{autofinanciada} (na formulação de Itô) se
+\begin{equation}\label{eq:self_financing_ito}
+  V_t = V_0 + \int_0^t x_u \cdot dS_u
+       = V_0 + \sum_{j=0}^N \int_0^t x_u^j\,dS_u^j,
+\end{equation}
+onde a integral é a \textbf{integral estocástica de Itô}. Em notação
+diferencial:
+\begin{equation}\label{eq:self_financing_diff}
+  dV_t = x_t \cdot dS_t = \sum_{j=0}^N x_t^j\,dS_t^j.
+\end{equation}
+\end{defi}
+
+A integral de Itô avalia o integrando no \textit{início} do intervalo
+de integração. Isto a torna não-antecipativa (o valor da integral no
+futuro não pode ser conhecido hoje) --- uma propriedade essencial para
+finanças. Contudo, a regra da cadeia usual do cálculo falha para a
+integral de Itô, sendo substituída pelo \textbf{Lema de Itô}, que
+adiciona um termo de correção de segunda ordem (o termo de Itô):
+\begin{equation}\label{eq:ito_lemma}
+  df(X_t) = f'(X_t)\,dX_t + \frac{1}{2} f''(X_t)\,d\langle X, X\rangle_t.
+\end{equation}
+
+\begin{defi}[Estratégia Autofinanciada --- Formulação de Stratonovich]
+A mesma condição pode ser expressa via \textbf{integral de
+Stratonovich}:
+\begin{equation}\label{eq:self_financing_stratonovich}
+  V_t = V_0 + \int_0^t x_u \circ dS_u
+       = V_0 + \sum_{j=0}^N \int_0^t x_u^j \circ dS_u^j.
+\end{equation}
+A notação ``$\circ$'' indica a integral de Stratonovich, definida pela
+relação com a integral de Itô:
+\begin{equation}\label{eq:ito_stratonovich_relation}
+  \int_0^t x_u \circ dS_u
+  := \int_0^t x_u \cdot dS_u
+     + \frac{1}{2}\langle x, S\rangle_t,
+\end{equation}
+onde $\langle x, S\rangle_t$ é o processo de \textbf{covariação
+quadrática} entre $x$ e $S$, i.e., a parte contínua (previsível) da
+variação conjunta.
+\end{defi}
+
+\begin{obs}[Por que duas formulações?]
+A distinção entre Itô e Stratonovich não é um preciosismo técnico ---
+é \textbf{fundamental para a GAT}. A integral de Stratonovich satisfaz
+a regra da cadeia usual do cálculo:
+\begin{equation}\label{eq:stratonovich_chain}
+  df(X_t) = f'(X_t) \circ dX_t,
+\end{equation}
+exatamente como no cálculo de Newton--Leibniz. Isto significa que
+\textbf{a geometria diferencial (que depende crucialmente da regra da
+cadeia) requer Stratonovich}. A GAT formula todas as construções
+geométricas (conexões, curvatura, transporte paralelo) usando
+Stratonovich. A integral de Itô permanece a ferramenta correta para
+martingais e para a teoria de apreçamento, mas é Stratonovich que
+permite ``colar'' os pedaços geométricos.
+\end{obs}
+
+A relação~\eqref{eq:ito_stratonovich_relation} é a ponte entre os
+dois mundos: o mundo probabilístico (Itô) e o mundo geométrico
+(Stratonovich). A covariância quadrática $\langle x, S\rangle_t$ é o
+\textbf{termo de conexão} que corrige a ``não-regularidade'' da
+integral de Itô.
+
+% ----------------------------------------------------------------------
+\section{Arbitragem Formalizada}
+% ----------------------------------------------------------------------
+
+Com as definições anteriores, podemos dar uma definição matematicamente
+precisa de arbitragem.
+
+\begin{defi}[Arbitragem]
+Uma estratégia autofinanciada admissível $x \in \mathcal{A}$ é uma
+\textbf{oportunidade de arbitragem} se existe $T > 0$ tal que uma das
+duas condições seguintes se verifica:
+\begin{enumerate}[(i)]
+  \item $P[V_0^x < 0] = 1$ \;\; e \;\; $P[V_T^x \geq 0] = 1$
+        (você começa com dívida certa e termina com patrimônio não
+        negativo certo);
+  \item $P[V_0^x \leq 0] = 1$, \;\; $P[V_T^x \geq 0] = 1$ \;\; e
+        \;\; $P[V_T^x > 0] > 0$
+        (você começa sem capital, nunca perde, e tem probabilidade
+        positiva de lucro).
+\end{enumerate}
+\end{defi}
+
+\begin{obs}[Interpretação Financeira]
+A condição~(i) descreve a situação em que o mercado literalmente
+\textit{paga} você para entrar numa estratégia que nunca dará prejuízo
+(arbitragem de tipo~I). A condição~(ii) descreve a situação clássica:
+você não investe nada, não corre risco de perda, mas pode ganhar algo
+(arbitragem de tipo~II). Em tempo discreto com espaço de estados
+finito, a condição~(i) implica a~(ii), mas em tempo contínuo as duas
+são independentes.
+\end{obs}
+
+\begin{ex}[Arbitragem por Mudança de Numerário]
+Considere dois ativos $S^1$ e $S^2$ com preços estritamente positivos.
+Defina $\hat{S}_t := S_t^1 / S_t^2$ (preço de $S^1$ em unidades de
+$S^2$). Se $\hat{S}_0 \neq \hat{S}_T$ com probabilidade~1 para algum
+$T$, e a direção da variação é conhecida, existe arbitragem:
+compre o ativo mais barato e venda o mais caro.
+\end{ex}
+
+% ----------------------------------------------------------------------
+\section{Condição NA e suas Limitações em Tempo Contínuo}
+% ----------------------------------------------------------------------
+
+A condição mais básica de eficiência de mercado é a \textbf{ausência
+de arbitragem}:
+
+\begin{defi}[Condição NA --- \textit{No Arbitrage}]
+O mercado satisfaz \textbf{NA} se não existe nenhuma estratégia
+admissível $x \in \mathcal{A}$ que seja uma oportunidade de
+arbitragem.
+\end{defi}
+
+Em tempo discreto com espaço de probabilidade finito, a condição NA é
+equivalente à existência de uma medida martingal equivalente
+(Harrison--Kreps, 1979)\footnote{Harrison, J.M. e Kreps, D.M.
+\textit{Martingales and Arbitrage in Multiperiod Securities Markets}.
+Journal of Economic Theory, 20(3):381--408, 1979. DOI:
+10.1016/0022-0531(79)90043-7. \textbf{Resenha:} O artigo seminal que
+provou pela primeira vez a equivalência entre ausência de arbitragem e
+existência de medida martingal equivalente, no contexto de mercados
+multi-período com espaço de estados finito. Introduziu o conceito de
+``preço de estado'' (\textit{state price}) e demonstrou que a
+existência de um vetor de preços de estado estritamente positivo é
+equivalente à condição NA.}.
+
+\textbf{Em tempo contínuo, a condição NA é insuficiente.} Existem
+mercados que satisfazem NA mas nos quais é possível construir
+estratégias que ``aproximam'' uma arbitragem --- o risco tende a zero,
+mas o lucro esperado permanece positivo. O exemplo canônico é a
+\textbf{estratégia de venda a descoberto com horizonte exponencial}:
+venda $e^{-t}$ unidades do ativo no instante $t$; o investimento
+inicial converge para zero, o risco converge para zero, mas o payoff
+terminal permanece estritamente positivo.
+
+\begin{ex}[NA é Insuficiente --- Esboço]
+Considere um ativo cujo preço segue um movimento Browniano geométrico
+$S_t = \exp(W_t - t/2)$, onde $W$ é um $P$-Browniano. A estratégia
+$x_t := \mathbbm{1}_{S_t > K}$ para algum $K > 0$ não é previsível.
+Toda estratégia previsível que ``tenta'' capturar esta oportunidade
+falha em ser admissível ou gera perda ilimitada com probabilidade
+positiva. Contudo, é possível construir uma \textbf{sequência} de
+estratégias admissíveis $(x^{(n)})_{n \in \mathbb{N}}$ cujo risco
+tende a zero e cujo payoff tende a algo não-negativo com probabilidade
+positiva de ser estritamente positivo. O limite desta sequência não é
+uma estratégia admissível --- mas a \textit{existência da sequência} já
+viola a intuição econômica de ``mercado eficiente''.
+\end{ex}
+
+Para fechar esta brecha, precisamos de uma condição \textbf{topológica}
+mais forte.
+
+% ----------------------------------------------------------------------
+\section{Condição NFLVR}
+% ----------------------------------------------------------------------
+
+Delbaen e Schachermayer (1994)\footnote{Delbaen, F. e Schachermayer, W.
+\textit{A General Version of the Fundamental Theorem of Asset Pricing}.
+Mathematische Annalen, 300(1):463--520, 1994. DOI: 10.1007/BF01450498.
+\textbf{Resenha:} O artigo que estabeleceu o FTAP para tempo contínuo
+com processos de preço semimartingales. Introduziu a condição NFLVR e
+provou sua equivalência à existência de uma medida martingal
+equivalente $\sigma$-martingal. Generaliza todos os resultados
+anteriores (Harrison--Pliska 1981, Dalang--Morton--Willinger 1990) e é
+considerado um dos resultados mais profundos da matemática financeira
+moderna.} introduziram a condição \textbf{NFLVR} (\textit{No Free Lunch
+with Vanishing Risk}), que exclui não apenas arbitragens puras, mas
+também \textbf{aproximações} de arbitragens.
+
+\subsection{Construção dos Cones}
+
+Considere o conjunto de todos os payoffs terminais descontados
+atingíveis por estratégias admissíveis com investimento inicial zero
+(ou negativo):
+
+\begin{defi}[Cone $K_0$]
+\begin{equation}\label{eq:K0}
+  K_0 := \left\{
+    \int_0^\infty x_u \cdot d\hat{S}_u \;\middle|\;
+    x \in \mathcal{A},\; V_0^x \leq 0
+  \right\}.
+\end{equation}
+$K_0$ é o conjunto de \textbf{payoffs terminais atingíveis sem
+investimento inicial positivo}. Cada elemento de $K_0$ é uma variável
+aleatória representando o valor terminal (descontado) de uma
+estratégia que não exigiu capital inicial.
+\end{defi}
+
+\begin{defi}[Cone $C_0$ e Cone $C$]
+Definimos:
+\begin{align}
+  C_0 &:= K_0 - L_+^0(\Omega, \mathcal{A}_\infty, P)
+        \label{eq:C0} \\
+  C   &:= C_0 \cap L^\infty(\Omega, \mathcal{A}_\infty, P)
+        \label{eq:C}
+\end{align}
+onde $L_+^0$ é o cone das variáveis aleatórias não-negativas
+(possivelmente não limitadas) e $L^\infty$ é o espaço das variáveis
+aleatórias essencialmente limitadas.
+\end{defi}
+
+\begin{obs}[Interpretação dos Cones]
+\begin{itemize}
+  \item $K_0$: payoffs que você pode atingir com capital inicial zero
+        (ou negativo). É o ``cardápio'' de resultados financeiros
+        disponíveis sem investimento.
+  \item $C_0$: $K_0$ menos variáveis não-negativas. Subtrair algo de
+        $L_+^0$ significa que você pode \textbf{descartar} dinheiro
+        (dominância): se você pode obter $X$ com capital zero, você
+        pode obter qualquer $Y \leq X$ (simplesmente jogando fora a
+        diferença). Esta é a propriedade de \textbf{free disposal}.
+  \item $C$: a restrição a $L^\infty$ (payoffs limitados). A razão
+        técnica é que $L^\infty$ é o dual de $L^1$, e o teorema de
+        separação de Hahn--Banach (essencial para provar a existência
+        da medida martingal) requer o espaço $L^\infty$ com sua
+        topologia natural.
+\end{itemize}
+\end{obs}
+
+\subsection{Definição Topológica}
+
+\begin{defi}[Condição NFLVR --- Delbaen--Schachermayer 1994]
+O mercado satisfaz \textbf{NFLVR} (\textit{No Free Lunch with
+Vanishing Risk}) se
+\begin{equation}\label{eq:NFLVR}
+  \overline{C} \cap L_+^\infty(\Omega, \mathcal{A}_\infty, P) = \{0\},
+\end{equation}
+onde $\overline{C}$ denota o \textbf{fecho de $C$ na topologia
+forte} (norma) de $L^\infty$.
+\end{defi}
+
+\begin{obs}[Tradução para Português Claro]
+A condição NFLVR diz: \textit{Não existe sequência de payoffs
+atingíveis (limitados, com investimento inicial zero ou negativo) que
+convirja uniformemente para um payoff não-negativo que seja
+estritamente positivo com probabilidade positiva.} Em outras palavras:
+você não pode ``aproximar'' uma arbitragem --- se o risco de uma
+sequência de estratégias tende a zero (convergência em
+$L^\infty$), o payoff limite também deve ser exatamente zero.
+\end{obs}
+
+A condição NFLVR decompõe-se em duas condições mais simples que são
+úteis nas demonstrações:
+
+\begin{prop}[Decomposição da NFLVR]
+NFLVR é equivalente à conjunção de:
+\begin{enumerate}[(i)]
+  \item \textbf{NA} (ausência de arbitragem): $C \cap L_+^\infty = \{0\}$;
+  \item \textbf{NFL} (\textit{No Free Lunch}):
+        $\overline{C}_{\text{frac}} \cap L_+^\infty = \{0\}$, onde o
+        fecho fraco estrito (relativo à topologia fraca-$\ast$ de
+        $L^\infty$) exclui limites de sequências limitadas.
+\end{enumerate}
+\end{prop}
+
+% ----------------------------------------------------------------------
+\section{FTAP em Tempo Contínuo}
+% ----------------------------------------------------------------------
+
+O \textbf{Primeiro Teorema Fundamental do Apreçamento de Ativos}
+(FTAP) estabelece a equivalência entre a condição NFLVR e a existência
+de uma medida de probabilidade equivalente sob a qual os preços
+descontados são martingais (em sentido generalizado).
+
+\begin{defi}[Medida Martingal Equivalente]
+Uma medida de probabilidade $Q$ em $(\Omega, \mathcal{A}_\infty)$ é
+uma \textbf{medida martingal equivalente} (EMM --- \textit{Equivalent
+Martingale Measure}) se:
+\begin{enumerate}[(i)]
+  \item $Q \sim P$ (equivalência: $Q$ e $P$ têm os mesmos conjuntos
+        de medida nula);
+  \item O processo de preços descontados $\hat{S}$ é um
+        $\sigma$-\textbf{martingal} sob $Q$: existe uma sequência
+        crescente de tempos de parada $(\tau_n)_{n \in \mathbb{N}}$
+        com $\tau_n \uparrow +\infty$ $Q$-q.c. tal que, para cada $j$,
+        o processo parado $\hat{S}^{j, \tau_n}$ é um $Q$-martingal.
+\end{enumerate}
+\end{defi}
+
+\begin{obs}[$\sigma$-martingal vs. Martingal Local]
+A noção de $\sigma$-martingal é uma generalização técnica de
+martingal local necessária para cobrir todos os semimartingales. Para
+processos localmente limitados (i.e., processos de Itô sem saltos
+explosivos), $\sigma$-martingal coincide com martingal local. Para
+processos com saltos, a distinção é relevante. O leitor interessado
+nos detalhes técnicos deve consultar Delbaen--Schachermayer (2006,
+Cap.~9)\footnote{Delbaen, F. e Schachermayer, W. \textit{The
+Mathematics of Arbitrage}. Springer Finance, 2006. DOI:
+10.1007/978-3-540-31299-4. \textbf{Resenha:} Obra de referência
+definitiva sobre os fundamentos matemáticos da arbitragem. Cobre desde
+o modelo discreto (Dalang--Morton--Willinger) até o caso contínuo com
+semimartingales gerais. O Capítulo~9 contém a prova completa do FTAP
+via teorema de separação de Kreps--Yan. Indispensável para qualquer
+estudo sério de finanças quantitativas.}.
+\end{obs}
+
+\begin{teo}[FTAP --- Delbaen--Schachermayer 1994]
+\label{teo:FTAP_DS}
+Para um mercado com preços modelados por um semimartingale $S$
+localmente limitado, as seguintes condições são equivalentes:
+\begin{enumerate}[(i)]
+  \item O mercado satisfaz \textbf{NFLVR};
+  \item Existe uma \textbf{medida martingal equivalente} $Q$ (EMM)
+        tal que $\hat{S}$ é um $\sigma$-martingal sob $Q$.
+\end{enumerate}
+Além disso, o conjunto de EMMs com densidade limitada é denso (na
+topologia da variação total) no conjunto de todas as EMMs.
+\end{teo}
+
+\begin{proof}[Esboço da Prova --- Ideias Centrais]
+A implicação (ii)~$\Rightarrow$~(i) é a mais fácil e segue do
+Teorema de Parada Opcional para $\sigma$-martingais e do Lema de
+Fatou.
+
+A implicação (i)~$\Rightarrow$~(ii) é profunda e requer:
+\begin{enumerate}
+  \item NFLVR garante que $C$ é fechado em $L^\infty$ (Lema de
+        Kreps--Yan);
+  \item Pelo Teorema de Separação de Hahn--Banach, existe um
+        funcional linear contínuo (um elemento de $(L^\infty)^*$) que
+        separa $C$ de $L_+^\infty \setminus \{0\}$;
+  \item A representação de Yosida--Hewitt decompõe este funcional em
+        parte absolutamente contínua (densidade $dQ/dP$) e parte
+        singular;
+  \item A condição NA elimina a parte singular, produzindo uma
+        densidade estritamente positiva para $Q$;
+  \item A condição de $\sigma$-martingal segue da propriedade de
+        martingal local da integral estocástica sob $Q$.
+\end{enumerate}
+A prova completa ocupa aproximadamente 40 páginas no artigo original.
+\end{proof}
+
+\begin{coro}[FTAP para Processos de Itô Localmente Limitados]
+Se $S$ é um processo de Itô localmente limitado (sem saltos, drift e
+difusão localmente limitados), NFLVR é equivalente à existência de uma
+EMM sob a qual $\hat{S}$ é um martingal local.
+\end{coro}
+
+% ----------------------------------------------------------------------
+\section{Pricing Kernel / State Price Deflator}
+% ----------------------------------------------------------------------
+
+Uma formulação equivalente --- e particularmente útil para a GAT ---
+utiliza o conceito de \textbf{deflator de preços de estado}
+(\textit{state price deflator}) ou \textbf{pricing kernel}.
+
+\begin{defi}[State Price Deflator]
+Um processo estocástico estritamente positivo $\beta = (\beta_t)_{t
+\geq 0}$ com $\beta_0 = 1$ é um \textbf{state price deflator} (SPD)
+se o produto $\beta_t S_t$ é um $P$-martingal local para todo ativo
+(incluindo a conta caixa):
+\begin{equation}\label{eq:SPD}
+  \beta_t S_t^j \text{ é um } P\text{-martingal local}, \quad
+  j = 0, 1, \dots, N.
+\end{equation}
+Equivalentemente, $\beta$ é um \textbf{pricing kernel}.
+\end{defi}
+
+\begin{obs}[Relação com a EMM]
+Se $Q$ é uma EMM com processo de densidade $Z_t :=
+\mathbb{E}_P[dQ/dP \mid \mathcal{A}_t]$, então
+\begin{equation}\label{eq:SPD_from_EMM}
+  \beta_t := \frac{Z_t}{S_t^0}
+\end{equation}
+é um state price deflator. Reciprocamente, se $\beta$ é um SPD,
+então $Q$ definida por $dQ/dP|_{\mathcal{A}_t} := \beta_t S_t^0$ é uma
+EMM. A correspondência é bijetiva.
+\end{obs}
+
+\begin{teo}[Equivalência NFLVR $\Leftrightarrow$ Existência de SPD]
+\label{teo:SPD_equivalence}
+Para um mercado com preços modelados por semimartingales localmente
+limitados, as seguintes condições são equivalentes:
+\begin{enumerate}[(i)]
+  \item O mercado satisfaz \textbf{NFLVR};
+  \item Existe um \textbf{state price deflator} $\beta$ (processo
+        estritamente positivo, $\beta_0 = 1$) tal que
+        $\beta S^j$ é um $\sigma$-martingal para $j = 0, \dots, N$.
+\end{enumerate}
+\end{teo}
+
+\begin{proof}
+Seja $Q$ uma EMM com processo de densidade $Z$. Defina
+$\beta_t := Z_t / S_t^0$. Como $S_t^0$ é determinístico (ou quase), e
+$Z$ é um $P$-martingal, $\beta$ é um $P$-semimartingale. Para cada
+$j$:
+\[
+\beta_t S_t^j = Z_t \frac{S_t^j}{S_t^0} = Z_t \hat{S}_t^j,
+\]
+que é um $\sigma$-martingal sob $P$ se, e somente se, $\hat{S}_t^j$ é
+um $\sigma$-martingal sob $Q$ (pelo Teorema de Girsanov
+generalizado). A recíproca segue revertendo a construção.
+\end{proof}
+
+O SPD desempenha um papel central na GAT porque sua derivada
+estocástica (no sentido de Stratonovich) está diretamente relacionada
+à \textbf{conexão de mercado}. Como veremos no Capítulo~7, a taxa
+curta de cada carteira satisfaz:
+\begin{equation}\label{eq:short_rate_SPD}
+  r_t^x = -\mathcal{D} \log(\beta_t D_t^x),
+\end{equation}
+onde $\mathcal{D}$ é a derivada média de Nelson (derivada de
+Stratonovich).
+
+% ----------------------------------------------------------------------
+\section{Cashflows e Intensidades}
+% ----------------------------------------------------------------------
+
+A Seção~2.2 de Farinelli (2021) introduz a noção de \textbf{cashflows}
+e \textbf{intensidades}, que são fundamentais para a construção dos
+\textbf{gauges} no Capítulo~5.
+
+\begin{defi}[Cashflow]
+Um \textbf{cashflow} é uma família de variáveis aleatórias
+$(C_t)_{t \geq 0}$ onde $C_t$ representa o pagamento (dividendo,
+cupom, principal) recebido no instante $t$. Um cashflow é dito
+\textbf{admissível} se é um processo adaptado càdlàg com
+$\mathbb{E}[\int_0^\infty |C_t|\,dt] < \infty$.
+\end{defi}
+
+Em tempo contínuo, é mais natural trabalhar com a \textbf{intensidade}
+(ou densidade) de cashflow, análoga à ``velocidade instantânea'' de
+pagamentos.
+
+\begin{defi}[Intensidade de Cashflow]
+Uma \textbf{intensidade de cashflow} é um processo estocástico
+$\pi = (\pi_t)_{t \geq 0}$ adaptado e localmente integrável. O
+cashflow acumulado até o instante $T$ é:
+\begin{equation}\label{eq:cashflow_intensity}
+  C_T^\pi := \int_0^T \pi_u\,du.
+\end{equation}
+Em particular, o pagamento infinitesimal no intervalo $[t, t+dt[$ é
+$\pi_t\,dt$.
+\end{defi}
+
+\begin{ex}[Título de Cupom Zero (\textit{Zero-Coupon Bond})]
+Um título que paga $1$ unidade monetária no vencimento $T$ tem
+intensidade de cashflow concentrada em $T$:
+\begin{equation}\label{eq:zero_coupon_intensity}
+  \pi_t = \delta_T(t),
+\end{equation}
+onde $\delta_T$ é a distribuição Delta de Dirac na data $T$
+(generalizada). Formalmente, $\int_0^\infty f(t)\,\delta_T(t)\,dt =
+f(T)$ para toda função $f$ contínua. O uso de distribuições é
+justificado no contexto de funcionais lineares contínuos sobre espaços
+de funções teste; na GAT, as integrais de gauge envolvem convoluções
+que regularizam naturalmente estas distribuições.
+\end{ex}
+
+\begin{ex}[Ação com Dividendos Contínuos]
+Uma ação que paga dividendos a uma taxa contínua $d_t$ (proporção do
+preço) tem intensidade:
+\begin{equation}\label{eq:dividend_intensity}
+  \pi_t = d_t S_t.
+\end{equation}
+Se os dividendos são reinvestidos, a intensidade é nula e o preço
+$S_t$ já incorpora o retorno total.
+\end{ex}
+
+\begin{ex}[Título com Cupom]
+Um título com vencimento $T$ que paga cupons anuais de valor $c$ e
+principal $1$ no vencimento tem intensidade:
+\begin{equation}\label{eq:coupon_bond_intensity}
+  \pi_t = \sum_{k=1}^{\lfloor T \rfloor} c\,\delta_{k}(t)
+          + (1 + c)\,\delta_T(t).
+\end{equation}
+\end{ex}
+
+\begin{ex}[Perpetuidade]
+Uma perpetuidade que paga $1$ unidade por ano indefinidamente:
+\begin{equation}\label{eq:perpetuity_intensity}
+  \pi_t = 1, \quad \forall t \geq 0.
+\end{equation}
+Este é o caso mais simples e serve como exemplo canônico na
+construção de gauges.
+\end{ex}
+
+% ----------------------------------------------------------------------
+\section{Valor Presente sob NFLVR}
+% ----------------------------------------------------------------------
+
+Sob a condição NFLVR (e, portanto, na presença de um pricing kernel
+$\beta$), o valor presente de qualquer cashflow pode ser expresso
+de forma única.
+
+\begin{teo}[Fórmula de Apreçamento com Pricing Kernel]
+\label{teo:pricing_kernel_formula}
+Suponha que o mercado satisfaz NFLVR e seja $\beta$ um state price
+deflator. O \textbf{valor presente} (preço de não-arbitragem) no
+instante $t$ de um cashflow com intensidade $\pi$ é:
+\begin{equation}\label{eq:present_value}
+  V_t^\pi = \frac{1}{\beta_t}\,
+            \mathbb{E}_P\!\left[
+              \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\;
+              \mathcal{A}_t
+            \right].
+\end{equation}
+Em particular, o valor presente de um fluxo unitário perpétuo
+($\pi_t = 1$) é:
+\begin{equation}\label{eq:perpetuity_value}
+  D_t := V_t^{\pi=1} = \frac{1}{\beta_t}\,
+        \mathbb{E}_P\!\left[
+          \int_t^\infty \beta_u\,du \;\middle|\;
+          \mathcal{A}_t
+        \right].
+\end{equation}
+\end{teo}
+
+\begin{proof}
+Pela definição de $\beta$, o processo $\beta_t S_t^j$ é um
+$P$-martingal local para cada ativo $j$. O valor presente de um
+cashflow é, por ausência de arbitragem, o custo de replicá-lo com uma
+carteira autofinanciada. Pelo Teorema de Representação de Martingais
+(quando aplicável), existe uma estratégia $x$ tal que
+$V_t^x = V_t^\pi$. Aplicando a definição de SPD:
+\[
+\beta_t V_t^\pi = \mathbb{E}_P\!\left[
+  \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\; \mathcal{A}_t
+\right],
+\]
+já que $\beta_t V_t^\pi$ deve ser um martingal sob $P$ (é o valor
+descontado pelo SPD de uma carteira autofinanciada). Dividindo por
+$\beta_t$ obtém-se~\eqref{eq:present_value}.
+\end{proof}
+
+\begin{obs}[Interpretação Econômica]
+A fórmula~\eqref{eq:present_value} generaliza o desconto tradicional
+($e^{-r(T-t)}$) para um ambiente estocástico com pricing kernel
+variável no tempo e nos estados da natureza. O pricing kernel $\beta$
+atua como uma ``taxa de desconto estocástica instantânea'' que
+incorpora tanto o valor temporal do dinheiro quanto o preço de mercado
+do risco. Em particular, se $\beta_t = e^{-rt}$ (determinístico),
+recupera-se a fórmula clássica de desconto.
+\end{obs}
+
+A quantidade $D_t$ definida em~\eqref{eq:perpetuity_value} --- o valor
+presente de uma perpetuidade unitária --- será o \textbf{deflator} no
+sentido da GAT. Ela mede, em unidades monetárias de hoje, quanto vale
+o direito de receber 1 unidade monetária por ano para sempre. Este é
+o instrumento financeiro mais fundamental, a partir do qual todos os
+outros podem ser construídos via transformações de gauge.
+
+\begin{prop}[Propriedade de Martingal do Valor Descontado pelo SPD]
+\label{prop:SPD_martingale}
+Para qualquer cashflow admissível com intensidade $\pi$, o processo
+\begin{equation}\label{eq:SPD_discounted_value}
+  M_t^\pi := \beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du
+\end{equation}
+é um $P$-martingal (local). Em particular, para uma perpetuidade
+($\pi_t = 1$):
+\begin{equation}\label{eq:SPD_martingale_perpetuity}
+  M_t := \beta_t D_t + \int_0^t \beta_u\,du
+\end{equation}
+é um $P$-martingal, donde se obtém a dinâmica:
+\begin{equation}\label{eq:D_dynamics}
+  dD_t = (r_t^0 D_t - 1)\,dt + dM_t^\beta,
+\end{equation}
+onde $M^\beta$ é a parte martingal (sob $P$) do processo $\beta D$.
+\end{prop}
+
+\begin{proof}
+Pela definição de $V_t^\pi$ em~\eqref{eq:present_value}:
+\[
+\beta_t V_t^\pi = \mathbb{E}_P\!\left[
+  \int_t^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
+\right]
+= \mathbb{E}_P\!\left[
+  \int_0^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
+\right] - \int_0^t \beta_u \pi_u\,du.
+\]
+O primeiro termo é uma esperança condicional (martingal), e o segundo
+é um processo de variação finita. Portanto,
+$\beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du$ é a soma de um
+martingal com um termo de variação finita que cancela exatamente a
+parte de variação finita da integral, resultando em um martingal.
+\end{proof}
+
+Esta proposição fornece a equação dinâmica que governa a evolução do
+deflator $D_t$ --- uma equação que, no contexto da GAT, será
+interpretada como a condição de que a \textbf{conexão de mercado} tem
+\textbf{curvatura zero}.
+
+% ----------------------------------------------------------------------
+\section{Resumo do Capítulo}
+% ----------------------------------------------------------------------
+
+O modelo clássico de mercado em tempo contínuo assenta sobre seis pilares:
+
+\begin{enumerate}
+  \item \textbf{Espaço filtrado:} $(\Omega, \mathcal{A}, \mathbb{A}, P)$
+        com condições usuais --- a base matemática para a chegada
+        gradual de informação.
+  \item \textbf{Preços como semimartingales:} $S_t^j$ --- a classe
+        maximal para a qual a integral estocástica é bem definida.
+  \item \textbf{Estratégias previsíveis e admissíveis:} $x \in
+        \mathcal{A}$ --- causalidade (não-antecipação) e limitação de
+        perdas (exclusão de doubling strategies).
+  \item \textbf{Autofinanciamento:} $dV_t = x_t \cdot dS_t$ (Itô) ou
+        $dV_t = x_t \circ dS_t$ (Stratonovich) --- a variação da
+        riqueza vem exclusivamente da variação dos preços.
+  \item \textbf{NFLVR:} $\overline{C} \cap L_+^\infty = \{0\}$ --- a
+        condição topológica que exclui não apenas arbitragens, mas
+        também suas aproximações.
+  \item \textbf{FTAP:} NFLVR $\Leftrightarrow$ existência de EMM
+        $\Leftrightarrow$ existência de state price deflator $\beta$
+        --- o teorema que conecta eficiência de mercado, medidas de
+        probabilidade e apreçamento.
+\end{enumerate}
+
+A partir do próximo capítulo, a GAT reformulará cada um destes pilares
+na linguagem da geometria diferencial. A intuição essencial é: a
+medida martingal equivalente $Q$ (ou o pricing kernel $\beta$) não é
+apenas uma ferramenta de apreçamento --- é uma \textbf{seção de um
+fibrado principal}, e a condição NFLVR é a afirmação de que este
+fibrado é \textbf{plano} (curvatura zero). O que a matemática
+financeira clássica chama de ``mudança de numerário'' ou ``escolha de
+conta caixa'', a GAT chama de \textbf{transformação de gauge}.
+
+\begin{center}
+\fbox{\begin{minipage}{0.88\textwidth}
+\textbf{Mensagem Central do Capítulo:} A teoria clássica de arbitragem
+é completa e autocontida --- mas está formulada em uma linguagem
+(probabilidade) que \textit{esconde} a estrutura geométrica subjacente.
+A GAT não contradiz a teoria clássica; ela a \textbf{revela} como um
+caso particular ($R \equiv 0$) de uma estrutura muito mais rica, onde
+arbitragem, holonomia e curvatura são manifestações do mesmo fenômeno
+geométrico.
+\end{minipage}}
+\end{center}
+
+% ======================================================================
+% REFERÊNCIAS DO CAPÍTULO (selecao principal)
+% ======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{delbaen1994}
+Delbaen, F.; Schachermayer, W.
+\textit{A General Version of the Fundamental Theorem of Asset Pricing}.
+Mathematische Annalen, 300(1):463--520, 1994.
+DOI: \texttt{10.1007/BF01450498}.
+
+\bibitem{delbaen2006}
+Delbaen, F.; Schachermayer, W.
+\textit{The Mathematics of Arbitrage}.
+Springer Finance, Berlin, 2006.
+DOI: \texttt{10.1007/978-3-540-31299-4}.
+
+\bibitem{dellacherie1972}
+Dellacherie, C.
+\textit{Capacités et Processus Stochastiques}.
+Springer, Berlin, 1972.
+
+\bibitem{farinelli2021}
+Farinelli, S.
+\textit{Geometric Arbitrage Theory and Market Dynamics Reloaded}.
+arXiv:0910.1671v10, 2021.
+
+\bibitem{harrison1979}
+Harrison, J.M.; Kreps, D.M.
+\textit{Martingales and Arbitrage in Multiperiod Securities Markets}.
+Journal of Economic Theory, 20(3):381--408, 1979.
+DOI: \texttt{10.1016/0022-0531(79)90043-7}.
+
+\bibitem{harrison1981}
+Harrison, J.M.; Pliska, S.R.
+\textit{Martingales and Stochastic Integrals in the Theory of
+Continuous Trading}.
+Stochastic Processes and their Applications, 11(3):215--260, 1981.
+DOI: \texttt{10.1016/0304-4149(81)90026-0}.
+
+\bibitem{protter2005}
+Protter, P.
+\textit{Stochastic Integration and Differential Equations}.
+Springer, 2nd ed., Berlin, 2005.
+DOI: \texttt{10.1007/978-3-662-10061-5}.
+
+\end{thebibliography}
+
+% ======================================================================
+% FIM DO CAPITULO 4
+% ======================================================================
+
+

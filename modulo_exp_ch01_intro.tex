@@ -1,0 +1,311 @@
+﻿% ======================================================================
+% CAPITULO 1 — Introducao: Por que Arbitragem?
+% ======================================================================
+\chapter{Introducao: Por Que Arbitragem?}
+
+\section{O Conceito Mais Simples do Mundo}
+
+Imagine que voce esta no aeroporto de Guarulhos. Na casa de cambio A, 1 dolar
+americano custa R\$ 5,00. Na casa de cambio B, a 20 metros de distancia, 1
+dolar custa R\$ 4,90. O que voce faz?
+
+\begin{enumerate}
+  \item Compra 1 dolar na casa B, pagando R\$ 4,90.
+  \item Imediatamente vende este mesmo dolar na casa A, recebendo R\$ 5,00.
+  \item Lucro liquido: R\$ 0,10.
+\end{enumerate}
+
+\textbf{Risco: zero.} As duas transacoes sao simultaneas. Voce nao precisa
+de capital inicial — pode pedir emprestado os R\$ 4,90 e devolver
+instantaneamente com os R\$ 5,00 recebidos. \textbf{Investimento inicial:
+zero.}
+
+Este e o exemplo mais simples de \textbf{arbitragem}: lucro sem risco obtido
+pela exploracao de uma inconsistencia de precos. A palavra vem do frances
+\textit{arbitrer} (julgar, decidir) e do latim \textit{arbitrari} (dar um
+veredito). O arbitrador e aquele que ``julga'' que dois precos deveriam ser
+iguais e age sobre essa discrepancia.
+
+\section{Arbitragem no Mundo Real}
+
+Em mercados financeiros reais, oportunidades como a do exemplo duram
+milissegundos — ou menos. Algoritmos de \textit{high-frequency trading}
+(HFT)\footnote{Aldridge, I. \textit{High-Frequency Trading: A Practical Guide
+to Algorithmic Strategies and Trading Systems}. Wiley, 2nd ed., 2013. ISBN:
+978-1118343500. \textbf{Resenha:} Referencia pratica sobre estrategias de HFT,
+incluindo arbitragem estatistica, market making e execucao algoritmica.} sao
+programados para detectar e executar estas oportunidades antes que qualquer
+humano possa reagir. Em 2023, estimava-se que 50-60\% do volume de negociacao
+nas bolsas americanas era gerado por algoritmos de HFT.
+
+Mas a \textit{teoria} da arbitragem — e nao sua pratica — e o alicerce sobre o
+qual todo o edificio das financas quantitativas modernas foi construido. A
+hipotese de \textbf{ausencia de arbitragem} e o ponto de partida para:
+
+\begin{itemize}
+  \item O modelo de Black-Scholes-Merton (1973) para aprecamento de opcoes
+  \item A teoria de carteiras de Markowitz (1952)
+  \item O Capital Asset Pricing Model (CAPM)
+  \item Os modelos de estrutura a termo de taxas de juros
+  \item Os modelos de risco de credito
+  \item Praticamente toda a matematica financeira moderna
+\end{itemize}
+
+\section{Por Que a Ausencia de Arbitragem e uma Hipotese Razoavel?}
+
+A resposta e surpreendentemente simples: \textbf{se houvesse uma oportunidade
+de arbitragem obvia e sem risco, alguem ja a teria explorado ate ela
+desaparecer.}
+
+Este argumento, conhecido como \textbf{principio da nao arbitragem}, e um
+caso especial da \textbf{hipotese do mercado eficiente}
+(HME)\footnote{Fama, E.F. \textit{Efficient Capital Markets: A Review of Theory
+and Empirical Work}. Journal of Finance, 25(2):383--417, 1970. DOI:
+10.2307/2325486. \textbf{Resenha:} O artigo seminal que formalizou a HME em
+tres formas: fraca (precos refletem informacao historica), semiforte (precos
+refletem toda informacao publica) e forte (precos refletem toda informacao,
+inclusive privada). Fama recebeu o Premio Nobel de Economia em 2013.}: em um
+mercado eficiente, os precos refletem toda a informacao disponivel. Se houvesse
+uma discrepancia que permitisse lucro sem risco, os proprios agentes que a
+exploram fariam os precos convergirem — eliminando a oportunidade.
+
+E importante notar que a HME \textbf{nao} afirma que os mercados sao perfeitos.
+Ela afirma que e \textbf{dificil} bater o mercado consistentemente apos
+descontar custos de transacao e risco. A arbitragem pura (risco zero, lucro
+certo) e virtualmente inexistente em mercados liquidos. A \textbf{arbitragem
+estatistica} (risco muito baixo, lucro muito provavel) e o que os fundos
+quantitativos perseguem.
+
+\section{Arbitragem, na Arbitragem, e Quase-Arbitragem}
+
+Precisamos distinguir tres conceitos que sao frequentemente confundidos:
+
+\begin{defi}[Arbitragem Pura]
+Uma estrategia autofinanciada que:
+\begin{enumerate}[(i)]
+  \item Nao requer investimento inicial (ou requer investimento negativo —
+      voce recebe dinheiro para entrar na estrategia),
+  \item Nunca gera perda (payoff $\geq 0$ com probabilidade 1),
+  \item Tem probabilidade positiva de lucro ($P[\text{payoff} > 0] > 0$).
+\end{enumerate}
+\end{defi}
+
+\begin{defi}[Quase-Arbitragem]
+Uma estrategia que ``quase'' satisfaz as condicoes acima — o risco nao e
+exatamente zero, mas tende a zero assintoticamente. Estas estrategias sao
+excluidas pela condicao NFLVR (No-Free-Lunch-with-Vanishing-Risk).
+\end{defi}
+
+\begin{defi}[Arbitragem Estatistica]
+Uma estrategia cujo valor esperado e positivo e cuja probabilidade de perda
+tende a zero quando o horizonte de tempo tende a infinito. Risco existe, mas
+e controlado. E o dominio dos fundos quantitativos.
+\end{defi}
+
+\section{O Primeiro Teorema Fundamental — Versao Intuitiva}
+
+O \textbf{Primeiro Teorema Fundamental do Aprecamento de Ativos} (FTAP) e o
+resultado central da teoria de arbitragem. Em sua versao mais intuitiva:
+
+\begin{center}
+\fbox{\begin{minipage}{0.88\textwidth}
+\textbf{FTAP (versao intuitiva):} Em um mercado livre de arbitragem, existe
+uma medida de probabilidade $P^*$ — chamada \textbf{medida martingal
+equivalente} ou \textbf{medida neutra ao risco} — sob a qual o preco descontado
+de todo ativo e um martingal:
+\[
+\hat{S}_t = \mathbb{E}^{P^*}_t[\hat{S}_T], \quad \forall T \geq t
+\]
+Em palavras: o melhor previsor do preco futuro (descontado) e o preco de hoje.
+E, reciprocamente, se tal medida existe, nao pode haver arbitragem.
+\end{minipage}}
+\end{center}
+
+\textbf{Traducao para o portugues claro:} Se eu consigo atribuir probabilidades
+aos cenarios futuros de tal forma que, em media, nenhum ativo tende a subir
+ou cair (todos sao ``jogos justos''), entao e impossivel montar uma estrategia
+que lucre sem risco. E vice-versa: se nao ha arbitragem, entao \textit{existe}
+uma tal atribuicao de probabilidades — mesmo que ela nao corresponda as
+probabilidades reais.
+
+\section{Um Exemplo Concreto: Aprecamento de Opcao}
+
+Suponha uma acao que hoje custa $S_0 = 100$. Em um mes, dois cenarios sao
+possiveis:
+\[
+S_1 = \begin{cases}
+120 & \text{com probabilidade real } p = 0,5 \\
+80  & \text{com probabilidade real } 1-p = 0,5
+\end{cases}
+\]
+A taxa de juros e zero (para simplificar).
+
+Considere uma \textbf{opcao de compra} (\textit{call}) com preco de exercicio
+$K = 105$ e vencimento em 1 mes. Seu payoff e:
+\[
+C_1 = \max(S_1 - K, 0) = \begin{cases} 15 & \text{se } S_1 = 120 \\
+0 & \text{se } S_1 = 80 \end{cases}
+\]
+
+\textbf{Abordagem ingenua (errada):} O valor esperado do payoff e
+\[
+\mathbb{E}^P[C_1] = 0,5 \times 15 + 0,5 \times 0 = 7,50
+\]
+Logo o preco justo seria R\$ 7,50. Certo? \textbf{Errado.}
+
+Se a opcao custasse R\$ 7,50, eu poderia montar uma arbitragem:
+\begin{enumerate}
+  \item Vendo 1 opcao por R\$ 7,50.
+  \item Compro $x$ acoes por R\$ 100x.
+  \item Ajusto $x$ para que o valor da carteira seja identico nos dois
+        cenarios (eliminando o risco):
+        \begin{align*}
+          120x - 15 &= 80x - 0 \\
+          40x &= 15 \\
+          x &= 0,375
+        \end{align*}
+  \item Valor final da carteira em qualquer cenario:
+        \[
+        120 \times 0,375 - 15 = 45 - 15 = 30
+        \]
+        \[
+        80 \times 0,375 - 0 = 30 - 0 = 30
+        \]
+  \item Custo da carteira hoje: $100 \times 0,375 - 7,50 = 37,50 - 7,50 = 30$.
+  \item Valor em 1 mes: 30 (certo).
+  \item Lucro: $30 - 30 = 0$? Nao — a arbitragem esta em outro lugar.
+\end{enumerate}
+
+Na verdade, a verdadeira arbitragem e mais sutil: se a opcao custa R\$ 7,50,
+o retorno da carteira coberta e $30/30 = 0\%$ — a taxa livre de risco. Mas
+ha uma carteira que custa menos e produz o mesmo payoff:
+
+\begin{itemize}
+  \item Compre $0,375$ acoes por R\$ 37,50.
+  \item Tome emprestado R\$ 30,00 a taxa zero.
+  \item Custo liquido: R\$ 7,50.
+  \item Payoff: $45 - 30 = 15$ ou $30 - 30 = 0$ — replica a opcao.
+\end{itemize}
+
+Para eliminar a arbitragem, o preco da opcao deve ser exatamente o custo da
+carteira replicante. A medida martingal equivalente $P^*$ atribui
+probabilidade $p^*$ ao cenario de alta tal que:
+
+\[
+100 = p^* \times 120 + (1-p^*) \times 80 \implies p^* = 0,5
+\]
+
+(Neste caso, com taxa de juros zero, $p^* = 0,5$.) O preco justo da opcao e:
+
+\[
+C_0 = \mathbb{E}^{P^*}[C_1] = 0,5 \times 15 + 0,5 \times 0 = 7,50
+\]
+
+Espere — isso da 7,50 de novo! O que mudou? A \textbf{medida} mudou. Na medida
+real $P$, o retorno esperado da acao e $0,5 \times 120 + 0,5 \times 80 = 100$,
+que e exatamente o preco de hoje. Mas a medida $P^*$ \textbf{nao e a medida
+real} — e a medida sob a qual o retorno esperado da acao e a taxa de juros.
+Com taxa zero, $P^* = P$ neste exemplo simplificado, mas em geral $P^* \neq P$.
+
+\section{Black-Scholes-Merton: A Revolucao de 1973}
+
+O exemplo acima e um modelo binomial de um periodo. A grande contribuicao de
+Black, Scholes e Merton\footnote{Black, F. e Scholes, M. \textit{The Pricing of
+Options and Corporate Liabilities}. Journal of Political Economy, 81(3):637--654,
+1973. DOI: 10.1086/260062. \textbf{Resenha:} O artigo que revolucionou as
+financas. Derivou a equacao diferencial parcial que governa o preco de opcoes
+europeias. Black e Scholes usaram um argumento de hedge continuo (carteira
+livre de risco) para derivar a EDP. Merton\footnotemark\ generalizou para
+tempo continuo com processos de Ito. Scholes e Merton receberam o Premio Nobel
+de Economia em 1997.}
+\footnotetext{Merton, R.C. \textit{Theory of Rational Option Pricing}. Bell
+Journal of Economics and Management Science, 4(1):141--183, 1973. DOI:
+10.2307/3003143. \textbf{Resenha:} Estendeu Black-Scholes com tratamento
+rigoroso em tempo continuo e provou que o preco de uma opcao e o valor esperado
+descontado do payoff sob a medida martingal equivalente.} foi estender esta
+ideia para tempo continuo com negociacao continua — o que levou a famosa
+\textbf{equacao de Black-Scholes}:
+
+\[
+\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2
+\frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
+\]
+
+A solucao para uma opcao de compra europeia e a celebrada formula:
+
+\[
+C(S,t) = S\Phi(d_1) - Ke^{-r(T-t)}\Phi(d_2)
+\]
+
+onde $\Phi$ e a funcao de distribuicao normal padrao e
+\[
+d_{1,2} = \frac{\log(S/K) + (r \pm \sigma^2/2)(T-t)}{\sigma\sqrt{T-t}}
+\]
+
+\section{A Pergunta que a GAT Responde}
+
+A teoria classica de arbitragem, que acabamos de resumir, e inteiramente
+formulada na linguagem da \textbf{probabilidade}: medidas martingais
+equivalentes, martingais, processos de Ito, equacoes diferenciais estocasticas.
+
+A \textbf{Geometric Arbitrage Theory} (GAT), proposta por Ilinski
+(2001)\footnote{Ilinski, K. \textit{Physics of Finance: Gauge Modelling in
+Non-Equilibrium Pricing}. Wiley, 2001. ISBN: 978-0471877387. \textbf{Resenha:}
+Primeiro livro a propor que arbitragem deveria ser modelada como curvatura de
+uma conexao de gauge, em analogia com a eletrodinamica quantica. Ilinski ve
+precos como campos de gauge e fluxos de capital como correntes. Embora menos
+rigoroso que Farinelli, foi pioneiro na intuicao fisica para financas.} e
+desenvolvida rigorosamente por Farinelli (2021)\footnote{Farinelli, S.
+\textit{Geometric Arbitrage Theory and Market Dynamics Reloaded}. arXiv:
+0910.1671v10, 2021.}, faz uma pergunta radicalmente diferente:
+
+\begin{center}
+\fbox{\begin{minipage}{0.85\textwidth}
+\textbf{E se pudessemos \textit{ver} a arbitragem como uma propriedade
+geometrica do mercado?} E se a ausencia de arbitragem fosse equivalente a
+``planicidade'' de um espaco curvo — como a ausencia de campo eletromagnetico
+e equivalente a curvatura zero do fibrado $U(1)$?
+\end{minipage}}
+\end{center}
+
+A resposta — elegante e profunda — e \textbf{sim}. E as implicacoes vao muito
+alem da elegancia matematica:
+
+\begin{itemize}
+  \item \textbf{Classificacao de estrategias:} A holonomia do fibrado do
+        mercado parametriza as classes de equivalencia de estrategias de
+        arbitragem.
+  \item \textbf{Hidrodinamica:} A condicao NFLVR e equivalente a uma equacao
+        de continuidade — a arbitragem flui como um fluido.
+  \item \textbf{Leis de conservacao:} O Teorema de Noether estocastico conecta
+        simetrias do mercado (invariancia sob mudanca de numerario) a
+        quantidades conservadas (valor presente liquido esperado).
+  \item \textbf{FTAP homotopico:} O Primeiro Teorema Fundamental ganha uma
+        formulacao em termos de topologia diferencial — grupos de homotopia e
+        holonomia.
+\end{itemize}
+
+Nas proximas secoes, construiremos cada um destes conceitos a partir do zero.
+Nao assumimos conhecimento previo de geometria diferencial. Comecaremos pela
+probabilidade e pelo calculo estocastico — os alicerces sobre os quais a GAT
+se ergue.
+
+\section{Estrutura Deste Modulo}
+
+\begin{enumerate}[nosep]
+  \item \textbf{Parte I — Fundamentos (Caps. 1-4):} Revisao de probabilidade,
+        calculo estocastico, e o modelo classico de mercado. O minimo
+        necessario para entender a GAT.
+  \item \textbf{Parte II — GAT (Caps. 5-9):} Gauges, fibrados principais,
+        conexoes, curvatura, e o Teorema Central (arbitragem = curvatura).
+        O coracao da teoria.
+  \item \textbf{Parte III — Avancado (Caps. 10-13):} Hidrodinamica,
+        formulacao Lagrangiana, topologia diferencial, e implementacoes
+        computacionais. Para quem quer ir alem.
+  \item \textbf{Apendices:} Revisao de geometria diferencial, derivadas de
+        Nelson, exercicios resolvidos, e referencias completas.
+\end{enumerate}
+
+
+
+

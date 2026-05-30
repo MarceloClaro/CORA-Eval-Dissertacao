@@ -1,0 +1,431 @@
+﻿\chapter{C\'alculo Estoc\'astico para Finan\c{c}as}
+
+\section{Motiva\c{c}\~ao: Por que o C\'alculo Usual Falha para Processos Estoc\'asticos?}
+
+O c\'alculo diferencial e integral cl\'assico, fundamentado nas contribui\c{c}\~oes de Newton, Leibniz e Riemann, pressup\~oe que as trajet\'orias das fun\c{c}\~oes sob an\'alise possuem varia\c{c}\~ao limitada. Em finan\c{c}as modernas, contudo, os pre\c{c}os de ativos s\~ao modelados como processos estoc\'asticos cujas trajet\'orias exibem varia\c{c}\~ao ilimitada em qualquer intervalo finito.
+
+\begin{obs}[Varia\c{c}\~ao Quadr\'atica e Movimento Browniano]\label{obs:variacao}
+Seja $(W_t)_{t \geq 0}$ um movimento Browniano padr\~ao. Para uma parti\c{c}\~ao $\Pi = \{t_0, t_1, \dots, t_n\}$ de $[0,T]$, a soma
+\begin{equation}
+    \sum_{i=1}^{n} |W_{t_i} - W_{t_{i-1}}| \xrightarrow{|\Pi| \to 0} \infty \quad \text{(varia\c{c}\~ao de 1\ordinal{ª} ordem)},
+\end{equation}
+enquanto a varia\c{c}\~ao quadr\'atica converge para um valor finito:
+\begin{equation}
+    \sum_{i=1}^{n} |W_{t_i} - W_{t_{i-1}}|^2 \xrightarrow{|\Pi| \to 0} T \quad \text{(varia\c{c}\~ao de 2\ordinal{ª} ordem)}.
+\end{equation}
+\end{obs}
+
+A consequ\^encia fundamental \'e que a integral de Riemann-Stieltjes $\int_0^T f(t) \, dW_t$ n\~ao pode ser definida trajet\'oria por trajet\'oria, pois o integrador $W_t$ n\~ao possui varia\c{c}\~ao limitada. Ilustremos com um exemplo elementar.
+
+\begin{ex}[Falha da Integral de Riemann-Stieltjes]\label{ex:falha}
+Considere a integral $\int_0^T W_t \, dW_t$. Se tentarmos defini-la como limite de somas de Riemann-Stieltjes com pontos intermedi\'arios $\tau_i \in [t_{i-1}, t_i]$, obtemos:
+\begin{equation}
+    S_n = \sum_{i=1}^{n} W_{\tau_i} (W_{t_i} - W_{t_{i-1}}).
+\end{equation}
+Para $\tau_i = t_{i-1}$ (extremo esquerdo), o limite \'e $\frac{1}{2}(W_T^2 - T)$. Para $\tau_i = \frac{t_{i-1}+t_i}{2}$ (ponto m\'edio), o limite \'e $\frac{1}{2}W_T^2$. A integral de Riemann-Stieltjes \'e, portanto, \textbf{n\~ao un\'ivoca} --- o valor depende da escolha do ponto de avalia\c{c}\~ao do integrando. \'E precisamente esta ambiguidade que motiva o desenvolvimento do c\'alculo estoc\'astico.
+\end{ex}
+
+\begin{obs}[Interpreta\c{c}\~ao Financeira]\label{obs:interp_fin}
+A escolha do ponto de avalia\c{c}\~ao possui significado econ\^omico concreto: o extremo esquerdo (integra\c{c}\~ao de It\^o) corresponde a uma estrat\'egia de investimento n\~ao antecipativa --- o investidor decide a quantidade de ativos \emph{antes} de observar a varia\c{c}\~ao de pre\c{c}o. O ponto m\'edio (Stratonovich) permite antecipa\c{c}\~ao parcial, relevante em contextos geom\'etricos e f\'isicos.
+\end{obs}
+
+\section{Integral de It\^o}
+
+\subsection{Defini\c{c}\~ao Construtiva}
+
+A constru\c{c}\~ao da integral de It\^o procede em tr\^es etapas: fun\c{c}\~oes simples, aproxima\c{c}\~ao por processos elementares e extens\~ao por isometria.
+
+\begin{defi}[Processo Elementar]\label{def:proc_elem}
+Um processo estoc\'astico $\phi(t,\omega)$ \'e dito \textbf{elementar} (ou simples) se existe uma parti\c{c}\~ao $0 = t_0 < t_1 < \cdots < t_n = T$ e vari\'aveis aleat\'orias $\mathcal{F}_{t_{i-1}}$-mensur\'aveis $e_i(\omega)$ limitadas tais que
+\begin{equation}
+    \phi(t,\omega) = \sum_{i=1}^{n} e_i(\omega) \, \mathbf{1}_{[t_{i-1}, t_i)}(t).
+\end{equation}
+\end{defi}
+
+\begin{defi}[Integral de It\^o para Processos Elementares]\label{def:ito_elem}
+Para um processo elementar $\phi$, define-se
+\begin{equation}\label{eq:int_ito_simples}
+    I_T(\phi) = \int_0^T \phi(t,\omega) \, dW_t(\omega) = \sum_{i=1}^{n} e_i(\omega) \, (W_{t_i} - W_{t_{i-1}}).
+\end{equation}
+\end{defi}
+
+\begin{prop}[Isometria de It\^o para Processos Elementares]\label{prop:isom_elem}
+Para $\phi$ elementar, vale:
+\begin{equation}
+    \mathbb{E}\!\left[\left(\int_0^T \phi(t) \, dW_t\right)^2\right] = \mathbb{E}\!\left[\int_0^T \phi(t)^2 \, dt\right].
+\end{equation}
+\end{prop}
+\begin{proof}
+Expandindo o quadrado da soma em (\ref{eq:int_ito_simples}) e usando que $W_{t_i} - W_{t_{i-1}}$ \'e independente de $\mathcal{F}_{t_{i-1}}$ com m\'edia zero e vari\^ancia $t_i - t_{i-1}$, os termos cruzados anulam-se, restando
+\begin{equation}
+    \mathbb{E}\!\left[\sum_i e_i^2 (W_{t_i} - W_{t_{i-1}})^2\right] = \mathbb{E}\!\left[\sum_i e_i^2 (t_i - t_{i-1})\right] = \mathbb{E}\!\left[\int_0^T \phi(t)^2 dt\right].
+\end{equation}
+\end{proof}
+
+Seja $\mathcal{V} = \mathcal{V}([0,T])$ o espa\c{c}o dos processos adaptados $\phi(t,\omega)$ tais que $\mathbb{E}\!\left[\int_0^T \phi(t)^2 dt\right] < \infty$. Todo $\phi \in \mathcal{V}$ pode ser aproximado por uma sequ\^encia de processos elementares $\phi_n$ na norma $L^2(dt \otimes d\mathbb{P})$. A isometria de It\^o garante que a sequ\^encia de integrais $I_T(\phi_n)$ \'e de Cauchy em $L^2(\mathbb{P})$, definindo-se ent\~ao:
+
+\begin{defi}[Integral de It\^o --- Caso Geral]\label{def:ito_geral}
+Para $\phi \in \mathcal{V}$, a integral de It\^o \'e o limite em $L^2(\mathbb{P})$:
+\begin{equation}
+    \int_0^T \phi(t) \, dW_t \equiv \lim_{n \to \infty} \int_0^T \phi_n(t) \, dW_t,
+\end{equation}
+onde $(\phi_n)$ \'e qualquer sequ\^encia de processos elementares convergindo para $\phi$ em $L^2(dt \otimes d\mathbb{P})$.
+\end{defi}
+
+\subsection{Propriedades Fundamentais}
+
+\begin{teo}[Propriedades da Integral de It\^o]\label{teo:prop_ito}
+Sejam $\phi, \psi \in \mathcal{V}$. Ent\~ao:
+\begin{enumerate}
+    \item \textbf{Linearidade:} $\int_0^T (a\phi + b\psi) \, dW = a\int_0^T \phi \, dW + b\int_0^T \psi \, dW$ para $a,b \in \mathbb{R}$.
+    \item \textbf{Isometria de It\^o:} $\mathbb{E}\!\left[\left(\int_0^T \phi \, dW\right)^2\right] = \mathbb{E}\!\left[\int_0^T \phi^2 \, dt\right]$.
+    \item \textbf{Propriedade de Martingal:} $M_t = \int_0^t \phi(s) \, dW_s$ \'e um $\mathcal{F}_t$-martingal.
+    \item \textbf{Esperan\c{c}a Nula:} $\mathbb{E}\!\left[\int_0^T \phi \, dW\right] = 0$.
+    \item \textbf{Continuidade:} $t \mapsto \int_0^t \phi(s) \, dW_s$ possui modifica\c{c}\~ao cont\'inua.
+\end{enumerate}
+\end{teo}
+
+\begin{obs}[Interpreta\c{c}\~ao da Isometria]\label{obs:isom}
+A isometria de It\^o estabelece que a norma $L^2(\mathbb{P})$ da integral estoc\'astica iguala a norma $L^2(dt \otimes d\mathbb{P})$ do integrando. Esta propriedade \'e o pilar t\'ecnico que sustenta toda a teoria de integra\c{c}\~ao estoc\'astica, an\'alogo ao papel da completude de $L^2$ na constru\c{c}\~ao da integral de Lebesgue.
+\end{obs}
+
+\section{Lema de It\^o: A Regra da Cadeia Estoc\'astica}
+
+\subsection{Fun\c{c}\~oes de uma Vari\'avel}
+
+O Lema de It\^o \'e o an\'alogo estoc\'astico da regra da cadeia do c\'alculo cl\'assico. A diferen\c{c}a crucial reside no termo de segunda ordem, que n\~ao se anula devido \`a varia\c{c}\~ao quadr\'atica n\~ao nula do movimento Browniano.
+
+\begin{teo}[Lema de It\^o --- Caso Unidimensional]\label{teo:ito_lemma_1d}
+Seja $X_t$ um processo de It\^o com diferencial estoc\'astica
+\begin{equation}
+    dX_t = \mu(t,\omega) \, dt + \sigma(t,\omega) \, dW_t,
+\end{equation}
+e $f \in C^{2}(\mathbb{R})$. Ent\~ao $Y_t = f(X_t)$ \'e um processo de It\^o com diferencial:
+\begin{equation}\label{eq:ito_lemma_1d}
+    df(X_t) = f'(X_t) \, dX_t + \frac{1}{2} f''(X_t) \, (dX_t)^2,
+\end{equation}
+onde $(dX_t)^2 = \sigma(t,\omega)^2 \, dt$, segundo as regras de multiplica\c{c}\~ao:
+\begin{equation}
+    dt \cdot dt = 0,\qquad dt \cdot dW_t = 0,\qquad dW_t \cdot dW_t = dt.
+\end{equation}
+Equivalentemente,
+\begin{equation}
+    df(X_t) = \left(f'(X_t)\mu_t + \frac{1}{2}f''(X_t)\sigma_t^2\right) dt + f'(X_t)\sigma_t \, dW_t.
+\end{equation}
+\end{teo}
+\begin{proof}[Esbo\c{c}o da Prova]
+A expans\~ao de Taylor de $f$ at\'e segunda ordem fornece:
+\begin{align}
+    f(X_{t+\Delta t}) - f(X_t) &= f'(X_t)\Delta X_t + \frac{1}{2}f''(X_t)(\Delta X_t)^2 + o((\Delta X_t)^2).
+\end{align}
+Substituindo $\Delta X_t \approx \mu_t \Delta t + \sigma_t \Delta W_t$, o termo quadr\'atico produz $\sigma_t^2 (\Delta W_t)^2$, cujo limite \'e $\sigma_t^2 \Delta t$ (pela varia\c{c}\~ao quadr\'atica do Browniano). Os termos $(\Delta t)^2$ e $\Delta t \cdot \Delta W_t$ s\~ao de ordem superior e desaparecem no limite. A soma telesc\'opica sobre a parti\c{c}\~ao e a passagem ao limite $|\Pi| \to 0$ completam a prova.
+\end{proof}
+
+\begin{ex}[Movimento Browniano Geom\'etrico]\label{ex:gmb}
+Seja $dS_t = \mu S_t \, dt + \sigma S_t \, dW_t$ (modelo de Black-Scholes). Para $f(x) = x^2$, temos $f'(x) = 2x$ e $f''(x) = 2$. Aplicando o Lema de It\^o:
+\begin{align}
+    d(S_t^2) &= 2S_t \, dS_t + \frac{1}{2} \cdot 2 \cdot (dS_t)^2 \\
+             &= 2S_t(\mu S_t dt + \sigma S_t dW_t) + (\sigma S_t)^2 dt \\
+             &= (2\mu S_t^2 + \sigma^2 S_t^2) dt + 2\sigma S_t^2 \, dW_t.
+\end{align}
+Observe o termo extra $\sigma^2 S_t^2 dt$, ausente no c\'alculo determin\'istico. Este termo \'e a origem do \emph{pr\^emio de volatilidade} em finan\c{c}as.
+\end{ex}
+
+\begin{ex}[Log-Pre\c{c}o]\label{ex:log_preco}
+Para $f(x) = \ln x$ com o mesmo $S_t$, temos $f'(x) = 1/x$ e $f''(x) = -1/x^2$. Logo:
+\begin{align}
+    d(\ln S_t) &= \frac{1}{S_t} dS_t - \frac{1}{2S_t^2} (dS_t)^2 \\
+                &= (\mu - \tfrac{1}{2}\sigma^2) dt + \sigma \, dW_t.
+\end{align}
+\end{ex}
+
+\subsection{Fun\c{c}\~oes de $n$ Vari\'aveis}
+
+\begin{teo}[Lema de It\^o --- Caso Multidimensional]\label{teo:ito_lemma_nd}
+Seja $\mathbf{X}_t = (X_t^1, \dots, X_t^n)$ um processo de It\^o $n$-dimensional com
+\begin{equation}
+    dX_t^i = \mu_i(t) \, dt + \sum_{j=1}^{m} \sigma_{ij}(t) \, dW_t^j,
+\end{equation}
+onde $\mathbf{W}_t = (W_t^1, \dots, W_t^m)$ \'e um movimento Browniano $m$-dimensional com componentes independentes. Se $f \in C^{1,2}([0,T] \times \mathbb{R}^n)$, ent\~ao:
+\begin{equation}\label{eq:ito_lemma_nd}
+    df(t, \mathbf{X}_t) = \frac{\partial f}{\partial t} dt + \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} dX_t^i + \frac{1}{2} \sum_{i,j=1}^{n} \frac{\partial^2 f}{\partial x_i \partial x_j} dX_t^i \, dX_t^j,
+\end{equation}
+com as regras de multiplica\c{c}\~ao $dW_t^i \, dW_t^j = \delta_{ij} \, dt$, $dt \cdot dW_t^i = 0$, $dt \cdot dt = 0$.
+\end{teo}
+
+\begin{ex}[Carteira de Dois Ativos]\label{ex:dois_ativos}
+Considere dois ativos $S_t^1$ e $S_t^2$ com din\^amicas
+\begin{equation}
+    dS_t^i = \mu_i S_t^i dt + \sigma_i S_t^i dW_t^i,\qquad d\langle W^1, W^2 \rangle_t = \rho \, dt,
+\end{equation}
+e $f(s_1, s_2) = \ln(s_1 s_2)$. O Lema de It\^o multidimensional fornece:
+\begin{align}
+    d(\ln S_t^1 S_t^2) = d(\ln S_t^1) + d(\ln S_t^2)
+    = \sum_{i=1}^{2} \left[(\mu_i - \tfrac{1}{2}\sigma_i^2)dt + \sigma_i dW_t^i\right].
+\end{align}
+\end{ex}
+
+\section{Integral de Stratonovich}
+
+A integral de Stratonovich oferece uma alternativa \`a integral de It\^o que preserva as regras do c\'alculo ordin\'ario, sendo particularmente \'util em contextos geom\'etricos e f\'isicos.
+
+\begin{defi}[Integral de Stratonovich]\label{def:strat}
+Para processos $\phi$ e $W$ suficientemente regulares, a integral de Stratonovich \'e definida como o limite de somas avaliadas no ponto m\'edio de cada subintervalo:
+\begin{equation}\label{eq:strat_def}
+    \int_0^T \phi(t) \circ dW_t = \lim_{|\Pi| \to 0} \sum_{i=1}^{n} \frac{\phi(t_{i-1}) + \phi(t_i)}{2} \, (W_{t_i} - W_{t_{i-1}}).
+\end{equation}
+\end{defi}
+
+\begin{teo}[Rela\c{c}\~ao entre It\^o e Stratonovich]\label{teo:ito_strat}
+Seja $\phi_t = f(X_t)$ onde $X_t$ \'e um processo de It\^o com $dX_t = \sigma_t dW_t + \mu_t dt$, e $f \in C^1$. Ent\~ao:
+\begin{equation}\label{eq:ito_strat_conv}
+    \int_0^T f(X_t) \circ dW_t = \int_0^T f(X_t) \, dW_t + \frac{1}{2} \int_0^T f'(X_t)\sigma_t \, dt.
+\end{equation}
+Mais geralmente, para um semimartingal $Y_t$, a rela\c{c}\~ao de convers\~ao \'e:
+\begin{equation}
+    \int_0^T \phi_t \circ dY_t = \int_0^T \phi_t \, dY_t + \frac{1}{2} \langle \phi, Y \rangle_T.
+\end{equation}
+\end{teo}
+
+\begin{prop}[Regra da Cadeia de Stratonovich]\label{prop:strat_chain}
+Sob a integral de Stratonovich, a regra da cadeia assume a forma cl\'assica:
+\begin{equation}
+    f(X_T) - f(X_0) = \int_0^T f'(X_t) \circ dX_t,
+\end{equation}
+para $f \in C^1$. N\~ao h\'a termo de segunda ordem --- a corre\c{c}\~ao de It\^o \'e absorvida pela pr\'opria defini\c{c}\~ao da integral.
+\end{prop}
+
+\begin{obs}[Vantagens Geom\'etricas]\label{obs:vantagens_strat}
+A integral de Stratonovich \'e natural em geometria diferencial estoc\'astica porque:
+\begin{enumerate}
+    \item Preserva a regra da cadeia cl\'assica, compat\'ivel com o c\'alculo em variedades.
+    \item Transforma-se corretamente sob mudan\c{c}as de coordenadas (covari\^ancia).
+    \item \'E a vers\~ao ``f\'isica'' da integral estoc\'astica --- emerge naturalmente quando o ru\'ido branco \'e aproximado por processos suaves.
+\end{enumerate}
+Entretanto, a integral de Stratonovich \emph{n\~ao} \'e um martingal, o que a torna menos conveniente para aplica\c{c}\~oes financeiras onde a propriedade de martingal \'e fundamental para a precifica\c{c}\~ao.
+\end{obs}
+
+\section{Derivadas de Nelson}
+
+O c\'alculo estoc\'astico de Nelson (1966, 2001) introduz tr\^es operadores diferenciais que quantificam a taxa de varia\c{c}\~ao de processos estoc\'asticos em diferentes sentidos temporais, fornecendo uma ponte elegante entre as integrais de It\^o e Stratonovich.
+
+\begin{defi}[Derivadas de Nelson]\label{def:nelson}
+Seja $X_t$ um processo estoc\'astico com $\mathbb{E}[|X_t|] < \infty$. Definem-se:
+\begin{align}
+    D X_t &= \lim_{h \downarrow 0} \mathbb{E}\!\left[ \left. \frac{X_{t+h} - X_t}{h} \;\right|\; \mathcal{F}_t \right] \quad \text{(derivada \emph{forward})},\\[4pt]
+    D_* X_t &= \lim_{h \downarrow 0} \mathbb{E}\!\left[ \left. \frac{X_t - X_{t-h}}{h} \;\right|\; \mathcal{F}_t \right] \quad \text{(derivada \emph{backward})},\\[4pt]
+    \bar{D} X_t &= \frac{D X_t + D_* X_t}{2} \quad \text{(derivada \emph{m\'edia} de Nelson)}.
+\end{align}
+\end{defi}
+
+\begin{prop}[Conex\~ao com It\^o e Stratonovich]\label{prop:nelson_conn}
+Seja $X_t$ um processo de It\^o com $dX_t = b_t dt + \sigma_t dW_t$, onde $b_t$ e $\sigma_t$ s\~ao adaptados. Ent\~ao:
+\begin{align}
+    D X_t &= b_t, \label{eq:nelson_forward}\\
+    D_* X_t &= b_t + \frac{1}{\sigma_t} D(\sigma_t^2) \quad \text{(quando $\sigma_t > 0$)}, \label{eq:nelson_backward}\\
+    \bar{D} X_t &= b_t + \frac{1}{2} D(\sigma_t^2)/\sigma_t. \label{eq:nelson_mean}
+\end{align}
+A integral de Stratonovich satisfaz:
+\begin{equation}
+    \int_0^T f(X_t) \circ dX_t = \int_0^T f(X_t) \, dX_t + \frac{1}{2} \int_0^T f'(X_t) \sigma_t^2 \, dt,
+\end{equation}
+onde o termo de corre\c{c}\~ao pode ser expresso via derivadas de Nelson como $\frac{1}{2} \int_0^T f'(X_t) (\bar{D} - D) X_t \, \sigma_t \, dt$.
+\end{prop}
+
+\begin{obs}[Interpreta\c{c}\~ao F\'isica]\label{obs:nelson_fis}
+A derivada forward $D$ \'e n\~ao antecipativa (como a integral de It\^o), a backward $D_*$ \'e retrospetiva, e a m\'edia $\bar{D}$ corresponde \`a integral de Stratonovich. No contexto da mec\^anica estoc\'astica de Nelson, $\bar{D}$ desempenha o papel de uma ``velocidade osm\'otica'' e $\frac{1}{2}(D D_* + D_* D)$ fornece a acelera\c{c}\~ao estoc\'astica.
+\end{obs}
+
+\section{Equa\c{c}\~oes Diferenciais Estoc\'asticas (SDEs)}
+
+\subsection{Exist\^encia e Unicidade}
+
+\begin{defi}[SDE]\label{def:sde}
+Uma equa\c{c}\~ao diferencial estoc\'astica (SDE) \'e uma equa\c{c}\~ao da forma
+\begin{equation}\label{eq:sde}
+    dX_t = b(t, X_t) \, dt + \sigma(t, X_t) \, dW_t,
+\end{equation}
+com condi\c{c}\~ao inicial $X_0 = x_0$ (determin\'istico ou aleat\'orio). A solu\c{c}\~ao \'e entendida no sentido integral:
+\begin{equation}
+    X_t = x_0 + \int_0^t b(s, X_s) \, ds + \int_0^t \sigma(s, X_s) \, dW_s.
+\end{equation}
+\end{defi}
+
+\begin{teo}[Exist\^encia e Unicidade Forte --- Condi\c{c}\~oes de Lipschitz e Crescimento Linear]\label{teo:exist_unic}
+Suponha que os coeficientes $b, \sigma: [0,T] \times \mathbb{R} \to \mathbb{R}$ satisfazem:
+\begin{enumerate}
+    \item \textbf{Lipschitz (espa\c{c}o):} $|b(t,x) - b(t,y)| + |\sigma(t,x) - \sigma(t,y)| \leq K |x-y|$,
+    \item \textbf{Crescimento linear:} $|b(t,x)|^2 + |\sigma(t,x)|^2 \leq K^2 (1 + |x|^2)$,
+\end{enumerate}
+para alguma constante $K > 0$ e todo $t \in [0,T]$, $x,y \in \mathbb{R}$. Ent\~ao a SDE (\ref{eq:sde}) admite uma \'unica solu\c{c}\~ao forte $X_t$ cont\'inua tal que $\mathbb{E}\!\left[\int_0^T |X_t|^2 dt\right] < \infty$.
+\end{teo}
+\begin{proof}[Esbo\c{c}o]
+Define-se a sequ\^encia de Picard:
+\begin{equation}
+    X_t^{(0)} = x_0,\qquad X_t^{(n+1)} = x_0 + \int_0^t b(s, X_s^{(n)}) ds + \int_0^t \sigma(s, X_s^{(n)}) dW_s.
+\end{equation}
+Usando a isometria de It\^o e a condi\c{c}\~ao de Lipschitz, mostra-se que
+\begin{equation}
+    \mathbb{E}\!\left[|X_t^{(n+1)} - X_t^{(n)}|^2\right] \leq \frac{(K' t)^{n+1}}{(n+1)!},
+\end{equation}
+donde a converg\^encia uniforme em $L^2$. A unicidade segue por um argumento de Gronwall.
+\end{proof}
+
+\subsection{Exemplos Cl\'assicos}
+
+\begin{ex}[Movimento Browniano Geom\'etrico]\label{ex:sde_gbm}
+\begin{equation}
+    dS_t = \mu S_t \, dt + \sigma S_t \, dW_t,\quad S_0 > 0.
+\end{equation}
+Solu\c{c}\~ao expl\'icita: $S_t = S_0 \exp\left((\mu - \tfrac{1}{2}\sigma^2)t + \sigma W_t\right)$. \'E o modelo fundamental para pre\c{c}os de a\c{c}\~oes no mercado Black-Scholes.
+\end{ex}
+
+\begin{ex}[Processo de Ornstein-Uhlenbeck]\label{ex:sde_ou}
+\begin{equation}
+    dX_t = \theta(\mu - X_t) \, dt + \sigma \, dW_t,\quad X_0 = x_0.
+\end{equation}
+Solu\c{c}\~ao: $X_t = x_0 e^{-\theta t} + \mu(1 - e^{-\theta t}) + \sigma \int_0^t e^{-\theta(t-s)} dW_s$. Este processo modela revers\~ao \`a m\'edia, amplamente utilizado em taxas de juros (modelo de Vasicek).
+\end{ex}
+
+\begin{ex}[Processo de Cox-Ingersoll-Ross (CIR)]\label{ex:sde_cir}
+\begin{equation}
+    dX_t = \kappa(\theta - X_t) \, dt + \sigma \sqrt{X_t} \, dW_t,\quad X_0 > 0.
+\end{equation}
+O coeficiente de difus\~ao $\sigma\sqrt{X_t}$ \'e H\"older-$\frac{1}{2}$, n\~ao satisfazendo a condi\c{c}\~ao de Lipschitz cl\'assica. Ainda assim, existe uma \'unica solu\c{c}\~ao forte com $X_t \geq 0$ quando $2\kappa\theta \geq \sigma^2$ (condi\c{c}\~ao de Feller). \'E o modelo base para volatilidade estoc\'astica (Heston) e taxas de juros.
+\end{ex}
+
+\begin{ex}[Ponte Browniana]\label{ex:sde_ponte}
+\begin{equation}
+    dX_t = \frac{b - X_t}{T-t} \, dt + dW_t,\quad X_0 = a,\; X_T = b.
+\end{equation}
+Solu\c{c}\~ao: $X_t = a(1 - \frac{t}{T}) + b\frac{t}{T} + (T-t)\int_0^t \frac{dW_s}{T-s}$. \'U til para simula\c{c}\~ao condicional de trajet\'orias brownianas.
+\end{ex}
+
+\section{Teorema de Girsanov}
+
+O Teorema de Girsanov \'e uma ferramenta central em finan\c{c}as quantitativas, permitindo alterar a medida de probabilidade para transformar processos com drift em martingais --- a ess\^encia da precifica\c{c}\~ao neutra ao risco.
+
+\subsection{Mudan\c{c}a de Medida e Derivada de Radon-Nikod\'ym}
+
+\begin{teo}[Teorema de Girsanov --- Caso Unidimensional]\label{teo:girsanov}
+Seja $W_t$ um movimento Browniano padr\~ao sob a medida $\mathbb{P}$ em $(\Omega, \mathcal{F}, (\mathcal{F}_t)_{t \in [0,T]}, \mathbb{P})$. Seja $\theta_t$ um processo adaptado satisfazendo a condi\c{c}\~ao de Novikov:
+\begin{equation}\label{eq:novikov}
+    \mathbb{E}\!\left[\exp\left(\frac{1}{2} \int_0^T \theta_t^2 \, dt\right)\right] < \infty.
+\end{equation}
+Defina o martingal exponencial (processo de densidade):
+\begin{equation}\label{eq:densidade}
+    Z_t = \exp\left(-\int_0^t \theta_s \, dW_s - \frac{1}{2} \int_0^t \theta_s^2 \, ds\right).
+\end{equation}
+Ent\~ao, sob a medida de probabilidade equivalente $\mathbb{Q}$ definida por
+\begin{equation}
+    \frac{d\mathbb{Q}}{d\mathbb{P}}\bigg|_{\mathcal{F}_T} = Z_T,
+\end{equation}
+o processo
+\begin{equation}\label{eq:girsanov_wt}
+    \widetilde{W}_t = W_t + \int_0^t \theta_s \, ds
+\end{equation}
+\'e um movimento Browniano padr\~ao sob $\mathbb{Q}$ no intervalo $[0,T]$.
+\end{teo}
+
+\begin{proof}[Esbo\c{c}o]
+Pelo Lema de It\^o, $Z_t$ satisfaz $dZ_t = -Z_t \theta_t dW_t$, logo \'e um martingal local. A condi\c{c}\~ao de Novikov garante que $Z_t$ \'e um martingal verdadeiro, com $\mathbb{E}^{\mathbb{P}}[Z_T] = 1$, definindo uma medida de probabilidade $\mathbb{Q}$ equivalente a $\mathbb{P}$ via $Z_T = d\mathbb{Q}/d\mathbb{P}$. Para verificar que $\widetilde{W}_t$ \'e $\mathbb{Q}$-Browniano, usa-se o teorema de caracteriza\c{c}\~ao de L\'evy: o processo $\widetilde{W}_t$ \'e um $\mathbb{Q}$-martingal cont\'inuo com varia\c{c}\~ao quadr\'atica $t$, donde \'e um Browniano.
+\end{proof}
+
+\subsection{Aplica\c{c}\~ao ao Modelo de Black-Scholes}
+
+\begin{ex}[Precifica\c{c}\~ao Neutra ao Risco]\label{ex:bs_neutro}
+Considere o mercado com um ativo de risco
+\begin{equation}
+    dS_t = \mu S_t \, dt + \sigma S_t \, dW_t,
+\end{equation}
+e um ativo livre de risco $dB_t = r B_t dt$. Sob $\mathbb{P}$, o drift $\mu$ reflete o retorno esperado real. Para precificar derivativos, busca-se uma medida $\mathbb{Q}$ sob a qual o pre\c{c}o descontado $\widetilde{S}_t = e^{-rt} S_t$ seja um martingal. Aplicando Girsanov com $\theta_t = \frac{\mu - r}{\sigma}$ (pr\^emio de risco de mercado), obtemos:
+\begin{equation}
+    dS_t = r S_t \, dt + \sigma S_t \, d\widetilde{W}_t \quad \text{sob } \mathbb{Q}.
+\end{equation}
+Assim, sob $\mathbb{Q}$, o drift $\mu$ \'e substitu\'ido pela taxa livre de risco $r$ --- a \emph{medida martingal equivalente} ou \emph{medida neutra ao risco}.
+\end{ex}
+
+\begin{obs}[Unicidade da Medida Martingal]\label{obs:unica_mm}
+No modelo de Black-Scholes, a medida martingal equivalente \'e \'unica (mercado completo). Em mercados incompletos, existem m\'ultiplas medidas martingais equivalentes, e a precifica\c{c}\~ao requer crit\'erios adicionais (e.g., minimiza\c{c}\~ao de entropia, hedging quadr\'atico).
+\end{obs}
+
+\begin{teo}[Girsanov Multidimensional]\label{teo:girsanov_multi}
+Seja $\mathbf{W}_t$ um Browniano $m$-dimensional sob $\mathbb{P}$ e $\boldsymbol{\theta}_t = (\theta_t^1, \dots, \theta_t^m)$ um processo adaptado satisfazendo a condi\c{c}\~ao de Novikov multidimensional. Defina
+\begin{equation}
+    Z_t = \exp\left(-\sum_{j=1}^{m} \int_0^t \theta_s^j \, dW_s^j - \frac{1}{2} \sum_{j=1}^{m} \int_0^t (\theta_s^j)^2 \, ds\right).
+\end{equation}
+Sob $\mathbb{Q}$ com $d\mathbb{Q}/d\mathbb{P}|_{\mathcal{F}_T} = Z_T$, os processos
+\begin{equation}
+    \widetilde{W}_t^j = W_t^j + \int_0^t \theta_s^j \, ds,\qquad j = 1, \dots, m,
+\end{equation}
+s\~ao movimentos Brownianos independentes sob $\mathbb{Q}$.
+\end{teo}
+
+\section{Representa\c{c}\~ao de Martingais}
+
+O Teorema de Representa\c{c}\~ao de Martingais estabelece que, na filtra\c{c}\~ao Browniana, todo martingal pode ser expresso como uma integral estoc\'astica em rela\c{c}\~ao ao movimento Browniano. Este resultado \'e fundamental para a teoria de hedging e completeza de mercados.
+
+\begin{teo}[Representa\c{c}\~ao de Martingais --- Caso Browniano]\label{teo:rep_mart}
+Seja $(\mathcal{F}_t)_{t \geq 0}$ a filtra\c{c}\~ao gerada por um movimento Browniano $m$-dimensional $\mathbf{W}_t$ (aumentada com os conjuntos nulos). Se $M_t$ \'e um $\mathcal{F}_t$-martingal em $L^2(\mathbb{P})$, ent\~ao existe um \'unico processo $\phi_t = (\phi_t^1, \dots, \phi_t^m)$ adaptado, progressivamente mensur\'avel, com $\mathbb{E}\!\left[\int_0^T \|\phi_t\|^2 dt\right] < \infty$, tal que:
+\begin{equation}\label{eq:rep_mart}
+    M_t = M_0 + \sum_{j=1}^{m} \int_0^t \phi_s^j \, dW_s^j,\qquad \forall t \in [0,T].
+\end{equation}
+\end{teo}
+\begin{proof}[Esbo\c{c}o da Prova]
+A prova baseia-se no Teorema de Representa\c{c}\~ao de It\^o: toda vari\'avel aleat\'oria $F \in L^2(\mathcal{F}_T, \mathbb{P})$ pode ser representada como
+\begin{equation}
+    F = \mathbb{E}[F] + \sum_{j=1}^{m} \int_0^T \phi_s^j \, dW_s^j.
+\end{equation}
+Para um martingal $M_t$, escreve-se $M_t = \mathbb{E}[M_T \mid \mathcal{F}_t]$, aplica-se a representa\c{c}\~ao de $M_T$, e usa-se a propriedade de martingal da integral estoc\'astica para obter (\ref{eq:rep_mart}).
+\end{proof}
+
+\begin{prop}[Consequ\^encia: Completeza do Mercado]\label{prop:completeness}
+Em um mercado cuja filtra\c{c}\~ao \'e gerada por um Browniano $m$-dimensional, e onde h\'a exatamente $m$ fontes de risco com matriz de volatilidade invert\'ivel, todo direito contingente $H \in L^2(\mathcal{F}_T)$ \'e replic\'avel --- o mercado \'e completo. Esta \'e a ess\^encia do segundo teorema fundamental da precifica\c{c}\~ao de ativos.
+\end{prop}
+
+\begin{obs}[Dimens\~ao do Browniano vs.\ N\'umero de Ativos]\label{obs:dim_brown}
+A completeza do mercado exige que o n\'umero de ativos de risco seja pelo menos igual \`a dimens\~ao do Browniano gerador. Se h\'a mais fontes de incerteza do que ativos negoci\'aveis, o mercado \'e \emph{incompleto} e existem riscos n\~ao hedge\'aveis --- cen\'ario t\'ipico em mercados com saltos, volatilidade estoc\'astica n\~ao negociada, ou m\'ultiplos fatores latentes.
+\end{obs}
+
+\subsection{Aplica\c{c}\~ao \`a Teoria de Arbitragem Geom\'etrica}
+
+O formalismo desenvolvido neste cap\'itulo \'e a funda\c{c}\~ao sobre a qual se ergue a Teoria Geom\'etrica da Arbitragem (TGA). Em particular:
+
+\begin{enumerate}
+    \item \textbf{Integral de Stratonovich:} Fornece a estrutura natural para o transporte paralelo estoc\'astico e a defini\c{c}\~ao de conex\~oes sobre o fibrado de ativos.
+    \item \textbf{Derivada M\'edia de Nelson $\bar{D}$:} O drift de Stratonovich $\bar{D}X_t$ ser\'a identificado, nos cap\'itulos subsequentes, com a derivada covariante de uma m\'etrica de Finsler sobre o espa\c{c}o de configura\c{c}\~oes do mercado.
+    \item \textbf{Teorema de Girsanov:} Estabelece a equival\^encia entre medidas martingais e a aus\^encia de arbitragem --- a curvatura do fibrado financeiro.
+    \item \textbf{Representa\c{c}\~ao de Martingais:} Garante que, na aus\^encia de arbitragem, todo payoff pode ser decomposto em componentes hedge\'aveis (integral estoc\'astica) e n\~ao hedge\'aveis (martingais ortogonais ao Browniano), correspondendo \`a decomposi\c{c}\~ao de Hodge do c\'alculo de Malliavin geom\'etrico.
+\end{enumerate}
+
+Estas conex\~oes ser\~ao exploradas em profundidade no Cap\'itulo~\ref{sec:tga_fundamentos}, onde a geometria diferencial do mercado \'e formalizada.
+
+\begin{thebibliography}{99}
+
+\bibitem{oksendal}
+\v{O}ksendal, B. \textit{Stochastic Differential Equations: An Introduction with Applications}. 6th ed., Springer, 2003. DOI: \href{https://doi.org/10.1007/978-3-642-14394-6}{10.1007/978-3-642-14394-6}.
+
+\bibitem{protter}
+Protter, P. \textit{Stochastic Integration and Differential Equations}. 2nd ed., Springer, 2005. DOI: \href{https://doi.org/10.1007/978-3-662-10061-5}{10.1007/978-3-662-10061-5}.
+
+\bibitem{shreve}
+Shreve, S. \textit{Stochastic Calculus for Finance II: Continuous-Time Models}. Springer, 2004. DOI: \href{https://doi.org/10.1007/978-1-4419-0035-8}{10.1007/978-1-4419-0035-8}.
+
+\bibitem{karatzas}
+Karatzas, I.; Shreve, S. \textit{Brownian Motion and Stochastic Calculus}. 2nd ed., Springer, 1991. DOI: \href{https://doi.org/10.1007/978-1-4612-0949-2}{10.1007/978-1-4612-0949-2}.
+
+\bibitem{nelson}
+Nelson, E. \textit{Dynamical Theories of Brownian Motion}. Princeton University Press, 1967. (Reimpresso em 2001).
+
+\bibitem{nualart}
+Nualart, D. \textit{The Malliavin Calculus and Related Topics}. 2nd ed., Springer, 2006. DOI: \href{https://doi.org/10.1007/3-540-28329-3}{10.1007/3-540-28329-3}.
+
+\bibitem{revuz}
+Revuz, D.; Yor, M. \textit{Continuous Martingales and Brownian Motion}. 3rd ed., Springer, 1999. DOI: \href{https://doi.org/10.1007/978-3-662-06400-9}{10.1007/978-3-662-06400-9}.
+
+\bibitem{kunita}
+Kunita, H. \textit{Stochastic Flows and Stochastic Differential Equations}. Cambridge University Press, 1990.
+
+\end{thebibliography}
+
+

@@ -1,0 +1,242 @@
+﻿\chapter{Hidrodin\^amica da Arbitragem}
+
+\section{A Analogia Fluido-Finan\c{c}as}
+
+A correspond\^encia entre a din\^amica dos fluidos e a teoria de mercados financeiros constitui uma das pontes conceituais mais f\'erteis da matem\'atica financeira contempor\^anea. A intui\c{c}\~ao fundamental \'e que o capital se comporta, em termos agregados, como um fluido que percorre o espa\c{c}o de ativos --- sujeito a leis de conserva\c{c}\~ao, vorticidade e fontes/sumidouros representados por oportunidades de arbitragem.
+
+A Tabela~\ref{tab:fluido-financas} sistematiza as equival\^encias centrais entre as duas \'areas.
+
+\begin{table}[htbp]
+\centering
+\caption{Correspond\^encia entre Hidrodin\^amica e Finan\c{c}as}
+\label{tab:fluido-financas}
+\begin{tabular}{p{5cm}|p{5cm}}
+\toprule
+\textbf{Hidrodin\^amica} & \textbf{Finan\c{c}as Matem\'aticas} \\
+\midrule
+Densidade de massa $\rho(x,t)$ & Densidade de valor (carteira) \\
+Campo de velocidade $\mathbf{v}(x,t)$ & Fluxo de valor $\mathbf{J}(x,t)$ \\
+Equa\c{c}\~ao da continuidade $\partial_t \rho + \nabla\cdot(\rho\mathbf{v}) = 0$ & Teorema de conserva\c{c}\~ao $\nabla\cdot \mathbf{J} = 0$ (NFLVR) \\
+Incompressibilidade $\nabla\cdot\mathbf{v}=0$ & Condi\c{c}\~ao NFLVR (Delbaen--Schachermayer) \\
+Vorticidade $\bm{\omega} = \nabla\times\mathbf{v}$ & Oportunidades de arbitragem \\
+Fontes e sumidouros & Cria\c{c}\~ao/ destrui\c{c}\~ao de valor sem risco \\
+Fun\c{c}\~ao de corrente $\psi$ & Potencial de pre\c{c}o (medida martingale) \\
+N\'umero de Reynolds & Raz\~ao especula\c{c}\~ao/cobertura \\
+Turbul\^encia & Crises financeiras (regime n\~ao-linear) \\
+Viscosidade & Custos de transa\c{c}\~ao e fric\c{c}\~oes de mercado \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Esta analogia n\~ao \'e meramente metaf\'orica. Conforme demonstrado por Ilinski (2000), as equa\c{c}\~oes de Black--Scholes podem ser derivadas como o limite de baixa viscosidade de um modelo hidrodin\^amico de fluxo de capital. A abordagem ganhou rigor matem\'atico com os trabalhos de \c{S}iki\'c (2015) sobre a topologia do espa\c{c}o de probabilidades martingale equivalentes.
+
+\section{Defini\c{c}\~ao da Corrente de Valor $J$}
+
+Seja $(\Omega, \mathcal{F}, \mathbb{P})$ um espa\c{c}o de probabilidade filtrado com filtra\c{c}\~ao $\mathbb{F}=(\mathcal{F}_t)_{t\in[0,T]}$ satisfazendo as condi\c{c}\~oes usuais. Considere um mercado com $n$ ativos cujos pre\c{c}os s\~ao modelados por um semimartingale $S=(S_t)_{t\in[0,T]}$.
+
+\smallskip
+\noindent\textbf{Defini\c{c}\~ao 10.1 (Corrente de Valor).} A corrente de valor $\mathbf{J}: \mathbb{R}^n \times [0,T] \to \mathbb{R}^n$ \'e definida por:
+
+\begin{equation}\label{eq:corrente-valor}
+\mathbf{J}(x,t) = \nabla_x \mathbb{E}^{\mathbb{Q}}\left[ \int_t^T e^{-r(s-t)} D_s \cdot dS_s \;\middle|\; \mathcal{F}_t \right]
+\end{equation}
+
+onde $\mathbb{Q}$ \'e uma medida martingale equivalente, $D_s$ \'e o processo de desconto e $\nabla_x$ denota o gradiente no espa\c{c}o de estrat\'egias admiss\'iveis.
+
+Em coordenadas locais, escrevemos:
+
+\begin{equation}\label{eq:corrente-componentes}
+J^i(x,t) = \frac{\partial}{\partial x^i} \mathbb{E}^{\mathbb{Q}}\left[ \int_t^T e^{-r(s-t)} \sum_{k=1}^n H^k_s dS^k_s \;\middle|\; \mathcal{F}_t \right]
+\end{equation}
+
+onde $H=(H^1,\dots,H^n)$ \'e uma estrat\'egia autofinanciada com valor $x$ em $t$.
+
+A interpreta\c{c}\~ao financeira \'e direta: $\mathbf{J}(x,t)$ mede a taxa instant\^anea de fluxo de valor esperado (sob a medida martingale) atrav\'es de uma superf\'icie de n\'ivel de riqueza constante no espa\c{c}o de estrat\'egias. Em outras palavras, \'e o an\'alogo financeiro do vetor de Poynting em eletromagnetismo --- descreve como o valor ``escoa'' pelo mercado.
+
+\smallskip
+\noindent\textbf{Proposi\c{c}\~ao 10.1 (Propriedades de $J$).} Para um mercado sem arbitragem:
+\begin{enumerate}[(i)]
+    \item $J$ \'e um campo vetorial suave em $\mathbb{R}^n \setminus \{0\}$;
+    \item $J$ \'e livre de diverg\^encia: $\nabla \cdot J = 0$;
+    \item $J$ \'e irrotacional se e somente se o mercado \'e completo.
+\end{enumerate}
+
+\section{Teorema da Continuidade}
+
+O resultado central que conecta a formula\c{c}\~ao hidrodin\^amica \`a teoria de arbitragem \'e o teorema da continuidade para o fluxo de valor.
+
+\smallskip
+\noindent\textbf{Teorema 10.1 (Continuidade do Valor).} Seja $M$ a variedade de estrat\'egias admiss\'iveis. Ent\~ao:
+
+\begin{equation}\label{eq:continuidade-valor}
+\frac{\partial \rho}{\partial t} + \nabla \cdot J = \sigma
+\end{equation}
+
+onde $\rho(x,t)$ \'e a densidade de valor (fun\c{c}\~ao de distribui\c{c}\~ao da riqueza) e $\sigma(x,t)$ \'e o termo de fonte/sumidouro representando cria\c{c}\~ao ou destrui\c{c}\~ao local de valor.
+
+A demonstra\c{c}\~ao segue de um balan\c{c}o integral sobre um volume de controle $\Omega \subset M$:
+
+\begin{equation}\label{eq:balanco-integral}
+\frac{d}{dt} \int_\Omega \rho \, dV = - \oint_{\partial\Omega} J \cdot \mathbf{n} \, dS + \int_\Omega \sigma \, dV
+\end{equation}
+
+Aplicando o teorema da diverg\^encia e notando que a igualdade vale para todo $\Omega$, obtemos \eqref{eq:continuidade-valor}.
+
+\medskip
+\noindent\textbf{Teorema 10.2 (NFLVR $\Leftrightarrow$ Diverg\^encia Nula).} As seguintes condi\c{c}\~oes s\~ao equivalentes:
+
+\begin{enumerate}[(a)]
+    \item O mercado satisfaz NFLVR (\textit{No Free Lunch with Vanishing Risk});
+    \item $\nabla \cdot J = 0$ em todo ponto de $M$;
+    \item Existe uma fun\c{c}\~ao potencial $\Phi$ tal que $J = \nabla^\perp \Phi$ (em dimens\~ao 2) ou, mais geralmente, $J$ \'e um campo solenoidal.
+\end{enumerate}
+
+\medskip
+\noindent\textit{Esbo\c{c}o da prova.} $(a) \Rightarrow (b)$: Se existe NFLVR, ent\~ao pelo Primeiro Teorema Fundamental de Precifica\c{c}\~ao de Ativos (FTAP) de Delbaen--Schachermayer (1994), existe uma medida martingale equivalente $\mathbb{Q}$. Sob $\mathbb{Q}$, o processo de valor descontado de qualquer estrat\'egia admiss\'ivel \'e um $\mathbb{Q}$-martingale local, donde $\mathbb{E}^{\mathbb{Q}}[d(\text{valor})]=0$ em m\'edia local. Isto implica que n\~ao h\'a fontes nem sumidouros no fluxo esperado, logo $\nabla \cdot J = 0$.
+
+$(b) \Rightarrow (c)$: $\nabla \cdot J = 0$ \'e precisamente a condi\c{c}\~ao para que exista um potencial vetor $A$ tal que $J = \nabla \times A$ (em $\mathbb{R}^3$) ou $J = \nabla^\perp \Phi$ (em $\mathbb{R}^2$). Esta fun\c{c}\~ao potencial corresponde ao potencial de pre\c{c}o na teoria de Ilinski (2000).
+
+$(c) \Rightarrow (a)$: Se $J$ \'e solenoidal, o teorema de Helmholtz garante que o campo de fluxo admite apenas circula\c{c}\~ao fechada --- toda linha de corrente que entra em uma regi\~ao deve sair. Financeiramente, isto significa que n\~ao \'e poss\'ivel extrair valor l\'iquido positivo sem risco (NFLVR). $\square$
+
+A equival\^encia $\nabla \cdot J = 0 \Leftrightarrow \text{NFLVR}$ \'e o an\'alogo financeiro da equa\c{c}\~ao de continuidade para fluidos incompress\'iveis. Em termos pr\'aticos, mercados livres de arbitragem s\~ao ``incompress\'iveis'' --- o valor se conserva ao longo das linhas de fluxo.
+
+\section{Interpreta\c{c}\~ao F\'isica: V\'ortices Financeiros}
+
+\subsection{Arbitragem como Fontes e Sumidouros}
+
+Quando $\nabla \cdot J \neq 0$, a diverg\^encia positiva ($\nabla \cdot J > 0$) indica um sumidouro de valor --- uma regi\~ao onde o mercado est\'a sistematicamente destruindo oportunidades de lucro sem risco (arbitragem sendo eliminada). A diverg\^encia negativa ($\nabla \cdot J < 0$) indica uma fonte de valor --- uma regi\~ao onde oportunidades de arbitragem est\~ao sendo criadas (por exemplo, por assimetria de informa\c{c}\~ao ou inova\c{c}\~ao financeira).
+
+\begin{equation}\label{eq:fonte-sumidouro}
+\sigma(x,t) = -\nabla \cdot J(x,t) = 
+\begin{cases}
+> 0, & \text{fonte de arbitragem (cria\c{c}\~ao de valor sem risco)} \\
+= 0, & \text{equil\'ibrio (NFLVR)} \\
+< 0, & \text{sumidouro de arbitragem (absor\c{c}\~ao pelo mercado)}
+\end{cases}
+\end{equation}
+
+\subsection{V\'ortices Financeiros}
+
+A vorticidade financeira \'e definida como o rotacional do campo de fluxo:
+
+\begin{equation}\label{eq:vorticidade-financeira}
+\bm{\omega}_F = \nabla \times J
+\end{equation}
+
+Em um mercado bidimensional (dois ativos), a vorticidade se reduz a um escalar:
+
+\begin{equation}\label{eq:vorticidade-2d}
+\omega_F = \frac{\partial J^y}{\partial x} - \frac{\partial J^x}{\partial y}
+\end{equation}
+
+Um v\'ortice financeiro ($\omega_F \neq 0$) corresponde a uma circula\c{c}\~ao fechada de valor no espa\c{c}o de ativos --- uma situa\c{c}\~ao em que o capital flui ciclicamente entre ativos sem se dispersar. Isto \'e precisamente a assinatura hidrodin\^amica de uma oportunidade de arbitragem em ciclo.
+
+\smallskip
+\noindent\textbf{Exemplo 10.1 (Arbitragem Triangular).} Considere tr\^es moedas: USD, EUR, GBP. Uma oportunidade de arbitragem triangular existe quando:
+
+\begin{equation}\label{eq:arbitragem-triangular}
+\omega_F = \frac{\partial J^{\text{GBP}}}{\partial (\text{EUR})} - \frac{\partial J^{\text{EUR}}}{\partial (\text{GBP})} \neq 0
+\end{equation}
+
+Neste caso, o v\'ortice representa a possibilidade de lucro instant\^aneo percorrendo o ciclo USD $\to$ EUR $\to$ GBP $\to$ USD.
+
+\subsection{Regime Turbulento e Crises}
+
+O n\'umero de Reynolds financeiro \'e definido como:
+
+\begin{equation}\label{eq:reynolds-financeiro}
+\text{Re}_F = \frac{\|\text{termo convectivo}\|}{\|\text{termo difusivo}\|} = \frac{\|J \cdot \nabla J\|}{\nu \|\nabla^2 J\|}
+\end{equation}
+
+onde $\nu$ \'e a viscosidade financeira (inversamente proporcional \`a liquidez do mercado). Quando $\text{Re}_F \gg 1$, o mercado entra em regime turbulento --- equivalente a uma crise financeira, caracterizada por:
+
+\begin{itemize}
+    \item Alta vorticidade localizada (bolhas especulativas);
+    \item Cascatas de energia (cont\'agio financeiro entre setores);
+    \item Quebra de escala (aus\^encia de um \'unico horizonte temporal dominante).
+\end{itemize}
+
+A modelagem de crises financeiras como transi\c{c}\~ao \`a turbul\^encia em fluidos foi proposta por Ghashghaie et al. (1996) e desenvolvida matematicamente por Mantegna \& Stanley (2000). A evid\^encia emp\'irica de leis de escala turbulentas em s\'eries financeiras \'e robusta para escalas intraday (DOI: 10.1038/381767a0).
+
+\section{Implica\c{c}\~oes para Gest\~ao de Risco}
+
+A formula\c{c}\~ao hidrodin\^amica oferece ferramentas quantitativas para o monitoramento de risco sist\^emico que v\~ao al\'em das m\'etricas tradicionais (VaR, Expected Shortfall).
+
+\subsection{Monitoramento da Diverg\^encia de Fluxo}
+
+O indicador de diverg\^encia de fluxo (FDI, do ingl\^es \textit{Flow Divergence Indicator}) \'e definido como:
+
+\begin{equation}\label{eq:FDI}
+\text{FDI}(t) = \int_{\mathcal{D}} |\nabla \cdot J(x,t)| \, d\mu(x)
+\end{equation}
+
+onde $\mathcal{D}$ \'e um dom\'inio de interesse (e.g., setor banc\'ario, mercado de derivativos) e $\mu$ \'e a medida de valor em risco.
+
+O FDI serve como um sinal de alerta precoce (\textit{early warning signal}) para acumula\c{c}\~ao de risco sist\^emico. Em particular:
+
+\begin{enumerate}[(a)]
+    \item $\text{FDI}(t)$ crescente $\Rightarrow$ aumento de fontes/sumidouros de valor sem risco;
+    \item $\text{FDI}(t)$ com acelera\c{c}\~ao positiva ($d^2\text{FDI}/dt^2 > 0$) $\Rightarrow$ aproxima\c{c}\~ao de instabilidade;
+    \item $\text{FDI}(t)$ excedendo limiar hist\'orico $\Rightarrow$ sinal de alerta vermelho.
+\end{enumerate}
+
+\subsection{Decomposi\c{c}\~ao de Helmholtz do Risco}
+
+O teorema de Helmholtz permite decompor qualquer campo de fluxo $J$ em componentes irrotacional e solenoidal:
+
+\begin{equation}\label{eq:helmholtz-decomp}
+J = -\nabla \phi + \nabla \times \mathbf{A}
+\end{equation}
+
+onde $\phi$ \'e o potencial escalar (associado ao crescimento/contra\c{c}\~ao do mercado) e $\mathbf{A}$ \'e o potencial vetor (associado \`a circula\c{c}\~ao especulativa).
+
+A componente $\nabla \times \mathbf{A}$ quantifica diretamente o risco de bolha: quanto maior a norma $\|\nabla \times \mathbf{A}\|$ em um setor, maior a probabilidade de forma\c{c}\~ao de bolha especulativa. A componente $-\nabla\phi$ quantifica o risco de cont\'agio direcional.
+
+\subsection{Aplica\c{c}\~ao \`a Regula\c{c}\~ao Financeira}
+
+Propomos que \'org\~aos reguladores (CVM, BACEN, SEC, ESMA) incorporem m\'etricas hidrodin\^amicas em seus pain\'eis de monitoramento. Em particular, o c\'alculo computacional de $\nabla \cdot J$ sobre dados de alta frequ\^encia do mercado pode revelar acumula\c{c}\~oes de arbitragem antes que se manifestem como eventos de crise.
+
+A viabilidade computacional foi demonstrada por Cont \& Bouchaud (2000) para modelos de agentes heterog\^eneos e por Abergel et al. (2016) para dados de \textit{order book} de alta frequ\^encia (DOI: 10.1017/CBO9781316651247).
+
+\subsection{Extens\~ao: Hidrodin\^amica Relativ\'istica Financeira}
+
+Uma extens\~ao natural da analogia considera o espa\c{c}o-tempo financeiro como uma variedade pseudo-Riemanniana, onde a m\'etrica \'e induzida pela matriz de covari\^ancia dos retornos. Neste contexto, a equa\c{c}\~ao de continuidade assume forma covariante:
+
+\begin{equation}\label{eq:continuidade-covariante}
+\nabla_\mu J^\mu = 0
+\end{equation}
+
+onde $\nabla_\mu$ \'e a derivada covariante associada \`a m\'etrica de Fisher--Rao no espa\c{c}o de probabilidades. Esta formula\c{c}\~ao conecta diretamente a hidrodin\^amica da arbitragem \`a geometria da informa\c{c}\~ao de Amari (2016) e ser\'a explorada no Cap\'itulo~13.
+
+\begin{thebibliography}{99}
+
+\bibitem{delbaen1994}
+Delbaen, F. \& Schachermayer, W. (1994). A general version of the fundamental theorem of asset pricing. \textit{Mathematische Annalen}, 300(1), 463--520. DOI: 10.1007/BF01450498.
+
+\bibitem{ilinski2000}
+Ilinski, K. (2000). \textit{Physics of Finance: Gauge Modelling in Arbitrage Theory}. arXiv:hep-th/9710148.
+
+\bibitem{ghashghaie1996}
+Ghashghaie, S., Breymann, W., Peinke, J., Talkner, P. \& Dodge, Y. (1996). Turbulent cascades in foreign exchange markets. \textit{Nature}, 381, 767--770. DOI: 10.1038/381767a0.
+
+\bibitem{mantegna2000}
+Mantegna, R.N. \& Stanley, H.E. (2000). \textit{An Introduction to Econophysics: Correlations and Complexity in Finance}. Cambridge University Press. DOI: 10.1017/CBO9780511755767.
+
+\bibitem{cont2000}
+Cont, R. \& Bouchaud, J.P. (2000). Herd behavior and aggregate fluctuations in financial markets. \textit{Macroeconomic Dynamics}, 4(2), 170--196. DOI: 10.1017/S1365100500015029.
+
+\bibitem{abergel2016}
+Abergel, F., Anane, M., Chakraborti, A., Jedidi, A. \& Toke, I.M. (2016). \textit{Limit Order Books}. Cambridge University Press. DOI: 10.1017/CBO9781316651247.
+
+\bibitem{sikic2015}
+\v{S}iki\'c, H. (2015). Topology of equivalent martingale measures. \textit{Finance and Stochastics}, 19(4), 731--757.
+
+\bibitem{amari2016}
+Amari, S. (2016). \textit{Information Geometry and Its Applications}. Springer. DOI: 10.1007/978-4-431-55978-8.
+
+\bibitem{harrison1979}
+Harrison, J.M. \& Kreps, D.M. (1979). Martingales and arbitrage in multiperiod securities markets. \textit{Journal of Economic Theory}, 20(3), 381--408. DOI: 10.1016/0022-0531(79)90043-7.
+
+\end{thebibliography}
+
+

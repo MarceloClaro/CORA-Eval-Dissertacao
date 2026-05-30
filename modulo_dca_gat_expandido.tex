@@ -1,0 +1,121 @@
+% ======================================================================
+% DCA — MODULO DE LEITURA COMPLEMENTAR (EXPANDIDO)
+% Geometric Arbitrage Theory — do Zero ao Avancado
+% 130 laudas, 4 Partes, 13 Capitulos, 4 Apendices
+% Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10
+% SPEC-MOD-001 — Reproduibilidade cientifica
+% ======================================================================
+\documentclass[12pt,a4paper,twoside]{book}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{defi}[teo]{Definicao}
+\newtheorem{prop}[teo]{Proposicao}
+\newtheorem{coro}[teo]{Corolario}
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{ex}{Exemplo}[chapter]
+\theoremstyle{remark}
+\newtheorem{obs}{Observacao}[chapter]
+\newtheorem{exer}{Exercicio}[chapter]
+\newtheorem{sol}{Solucao}[chapter]
+\newtheorem*{nota}{Nota}
+
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+% Math operators
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\Hol}{Hol}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\1}{\mathbf{1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small DCA — GAT Expandido}
+\fancyhead[RO]{\small \leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\title{\Huge Geometric Arbitrage Theory\\[8pt]
+       \Large Teoria Geometrica da Arbitragem e Dinamica de Mercado\\[4pt]
+       \normalsize Modulo Expandido de Leitura Complementar — DCA}
+\author{\normalsize Baseado em Farinelli, S. (2021). arXiv:0910.1671v10\\
+        \normalsize Adaptacao didatica com 130 laudas\\
+        \normalsize Versao 2.0 — Maio 2026}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+% ======================================================================
+% PARTE I — FUNDAMENTOS
+% ======================================================================
+\part{Fundamentos}
+
+\input{modulo_exp_ch01_intro.tex}
+\input{modulo_exp_ch02_probabilidade.tex}
+\input{modulo_exp_ch03_calculo_estocastico.tex}
+\input{modulo_exp_ch04_modelo_classico.tex}
+
+% ======================================================================
+% PARTE II — GAT
+% ======================================================================
+\part{Geometric Arbitrage Theory}
+
+\input{modulo_exp_ch05_gauges.tex}
+\input{modulo_exp_ch06_fibrados.tex}
+\input{modulo_exp_ch07_conexao.tex}
+\input{modulo_exp_ch08_curvatura.tex}
+\input{modulo_exp_ch09_ambrose_singer.tex}
+
+% ======================================================================
+% PARTE III — AVANCADO
+% ======================================================================
+\part{Topicos Avancados}
+
+\input{modulo_exp_ch10_hidrodinamica.tex}
+\input{modulo_exp_ch11_lagrangiano.tex}
+\input{modulo_exp_ch12_homotopia.tex}
+\input{modulo_exp_ch13_computacional.tex}
+
+% ======================================================================
+% APENDICES
+% ======================================================================
+\appendix
+
+\input{modulo_exp_apx_a_geometria.tex}
+\input{modulo_exp_apx_b_nelson.tex}
+\input{modulo_exp_apx_c_exercicios.tex}
+\input{modulo_exp_apx_d_referencias.tex}
+
+\end{document}

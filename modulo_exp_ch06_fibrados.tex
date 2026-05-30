@@ -1,0 +1,784 @@
+﻿% ======================================================================
+% CAPITULO 6 — Fibrados Principais: A Estrutura Geometrica do Mercado
+% Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secoes 3.1-3.3
+% Complementos: Bleecker (1981), Kobayashi-Nomizu (1963/69)
+% ======================================================================
+\chapter{Fibrados Principais: A Estrutura Geom\'etrica do Mercado}
+
+O cap\'itulo anterior demonstrou que o modelo cl\'assico de mercado --- pre\c{c}os
+como semimartingales, estrat\'egias previs\'iveis, autofinanciamento e a
+condi\c{c}\~ao NFLVR --- \'e matematicamente completo e autocontido. Contudo,
+essa formula\c{c}\~ao esconde uma estrutura mais profunda: o mercado n\~ao \'e
+apenas um espa\c{c}o de probabilidade equipado com processos estoc\'asticos; ele
+\'e uma \textbf{variedade diferenci\'avel de dimens\~ao infinita} com um
+\textbf{fibrado principal} cuja curvatura mensura a presen\c{c}a de arbitragem.
+
+Este cap\'itulo constr\'oi, passo a passo, a maquinaria geom\'etrica necess\'aria
+para reformular a teoria de arbitragem na linguagem dos fibrados. Come\c{c}amos
+com a intui\c{c}\~ao pict\'orica --- fitas de M\"obius e produtos cartesianos ---
+e avan\c{c}amos at\'e a constru\c{c}\~ao expl\'icita do fibrado do mercado
+$\mathcal{B} \to M$ com fibra $G^*$, o grupo das intensidades de fluxo de caixa
+invert\'iveis. Ao final, o leitor compreender\'a por que \textbf{mudar de
+numer\'ario \'e uma transforma\c{c}\~ao de gauge} --- e por que essa observa\c{c}\~ao,
+aparentemente inocente, \'e a chave para geometrizar toda a teoria de
+apre\c{c}amento de ativos.
+
+% ----------------------------------------------------------------------
+\section{O Que \'E um Fibrado?}
+% ----------------------------------------------------------------------
+
+Antes de mergulhar nas defini\c{c}\~oes formais, construamos a intui\c{c}\~ao
+com duas imagens mentais\footnote{A exposi\c{c}\~ao intuitiva que segue inspira-se
+em Bleecker, D. \textit{Gauge Theory and Variational Principles}. Addison-Wesley,
+1981. Reimpresso por Dover, 2005. ISBN: 978-0486445462. \textbf{Resenha:}
+Introdu\c{c}\~ao concisa \`a teoria de gauge para matem\'aticos e f\'isicos.
+Come\c{c}a com fibrados principais, conex\~oes e curvatura, e avan\c{c}a para
+aplica\c{c}\~oes em f\'isica de part\'iculas (eletromagnetismo $U(1)$,
+Yang-Mills $SU(2)$). A refer\^encia usada por Farinelli na constru\c{c}\~ao do
+fibrado do mercado.}.
+
+\subsection{Duas Imagens Mentais}
+
+\textbf{Imagem 1: O cilindro (produto cartesiano).} Imagine o c\'irculo unit\'ario
+$S^1$ --- uma linha que se fecha sobre si mesma. Agora, sobre cada ponto do
+c\'irculo, cole um segmento de reta $[-1, 1]$ perpendicular ao plano do
+c\'irculo. O resultado \'e um cilindro finito: $S^1 \times [-1, 1]$. Este
+espa\c{c}o \'e \textbf{globalmente} um produto: n\~ao importa quantas voltas
+voc\^e d\^e no c\'irculo, a fibra (o segmento) permanece sempre a mesma,
+alinhada da mesma forma. Visualmente, \'e como uma lata de refrigerante: corte
+a lata ao meio e voc\^e ver\'a o c\'irculo (base) e a altura (fibra)
+perfeitamente desacoplados.
+
+\textbf{Imagem 2: A fita de M\"obius (fibrado n\~ao-trivial).} Agora, ao inv\'es
+de colar os segmentos sempre na mesma orienta\c{c}\~ao, gire cada segmento
+gradualmente \`a medida que avana\c{c}a pelo c\'irculo --- exatamente meia volta
+ap\'os um circuito completo. O resultado \'e a \textbf{fita de M\"obius}.
+Localmente --- se voc\^e olhar apenas um pequeno arco do c\'irculo --- ela
+parece um produto: um ret\^angulo plano. Mas globalmente, ela \'e ``torcida'':
+n\~ao existe maneira cont\'inua de escolher um lado da fita (n\~ao \'e
+orient\'avel). Esta \'e a ess\^encia de um fibrado: \textbf{localmente trivial,
+globalmente torcido}.
+
+\subsection{Defini\c{c}\~ao Formal}
+
+\begin{defi}[Fibrado]\label{def:fibrado}
+Um \textbf{fibrado} (ou espa\c{c}o fibrado) \'e uma qu\'adrupla
+$(E, M, \pi, F)$, onde $E$, $M$ e $F$ s\~ao variedades diferenci\'aveis
+(possivelmente de dimens\~ao infinita) e $\pi: E \to M$ \'e uma submers\~ao
+sobrejetora, satisfazendo a condi\c{c}\~ao de \textbf{trivialidade local}:
+para todo $p \in M$, existe uma vizinhan\c{c}a aberta $U \subseteq M$ contendo
+$p$ e um difeomorfismo
+\begin{equation}\label{eq:trivializacao}
+  \varphi_U: \pi^{-1}(U) \to U \times F
+\end{equation}
+tal que o diagrama abaixo comuta:
+\begin{equation}\label{eq:diagrama_triv}
+  
+\end{equation}
+onde $\operatorname{pr}_1(u, f) = u$ \'e a proje\c{c}\~ao na primeira
+coordenada. Os objetos s\~ao denominados:
+\begin{itemize}
+  \item $E$: \textbf{espa\c{c}o total} do fibrado;
+  \item $M$: \textbf{base} do fibrado;
+  \item $\pi$: \textbf{proje\c{c}\~ao} do fibrado;
+  \item $F$: \textbf{fibra t\'ipica} (ou fibra modelo);
+  \item $E_p := \pi^{-1}(p)$: \textbf{fibra sobre} $p \in M$ (difeomorfa a $F$);
+  \item $\varphi_U$: \textbf{trivializa\c{c}\~ao local}.
+\end{itemize}
+\end{defi}
+
+\begin{obs}[Interpreta\c{c}\~ao Geom\'etrica]
+A condi\c{c}\~ao de trivialidade local \'e o an\'alogo matem\'atico da
+observa\c{c}\~ao de que \textbf{a Terra parece plana quando vista de perto}.
+Assim como um navegador no oceano v\^e um plano --- e n\~ao a curvatura da
+esfera --- um observador restrito a uma vizinhan\c{c}a $U$ da base $M$ v\^e um
+produto cartesiano $U \times F$, e n\~ao a tor\c{c}\~ao global do fibrado. A
+riqueza dos fibrados reside precisamente na discrep\^ancia entre a estrutura
+local (trivial) e a estrutura global (potencialmente n\~ao-trivial).
+\end{obs}
+
+\begin{ex}[Fibrado Tangente]\label{ex:tangente}
+O exemplo mais fundamental em geometria diferencial: para uma variedade $M$ de
+dimens\~ao $n$, o \textbf{fibrado tangente} $TM$ tem base $M$, fibra t\'ipica
+$\mathbb{R}^n$ e espa\c{c}o total formado por todos os pares $(p, v)$ onde
+$p \in M$ e $v \in T_pM$. A proje\c{c}\~ao \'e $\pi(p, v) = p$. Em
+coordenadas locais $(x^1, \dots, x^n)$ sobre $U \subseteq M$, a
+trivializa\c{c}\~ao \'e:
+\begin{equation}
+  \varphi_U(p, v) = (p, (v^1, \dots, v^n)) \in U \times \mathbb{R}^n,
+\end{equation}
+onde $v = \sum_i v^i \frac{\partial}{\partial x^i}\big|_p$. Este fibrado \'e
+\textbf{n\~ao-trivial} em geral: $TS^2$ n\~ao \'e difeomorfo a
+$S^2 \times \mathbb{R}^2$ (Teorema da Bola Cabeluda --- n\~ao existe campo
+vetorial cont\'inuo n\~ao-nulo sobre a esfera). J\'a $TS^1 \cong
+S^1 \times \mathbb{R}$, pois o c\'irculo \'e paraleliz\'avel.
+\end{ex}
+
+\begin{ex}[Fibrado Trivial vs. Fita de M\"obius]
+O cilindro $S^1 \times [-1,1]$ \'e o fibrado trivial com base $S^1$ e fibra
+$[-1,1]$. A fita de M\"obius \'e um fibrado \textbf{n\~ao-trivial} com a mesma
+base e a mesma fibra. A diferen\c{c}a est\'a nas \textbf{fun\c{c}\~oes de
+transi\c{c}\~ao}: para o cilindro, $g_{\alpha\beta}(p) = \operatorname{id}$
+(identidade na fibra); para a fita de M\"obius,
+$g_{\alpha\beta}(p) = \pm \operatorname{id}$, com o sinal trocando ao longo
+de uma volta. As fun\c{c}\~oes de transi\c{c}\~ao codificam a
+\textbf{topologia global} do fibrado.
+\end{ex}
+
+% ----------------------------------------------------------------------
+\section{Fibrados Principais}
+% ----------------------------------------------------------------------
+
+Um fibrado principal \'e um fibrado cuja fibra t\'ipica \'e um grupo de Lie $G$
+e cujas trivializa\c{c}\~oes respeitam a estrutura de grupo. Em outras palavras:
+sobre cada ponto da base, em vez de um espa\c{c}o vetorial ou um intervalo,
+temos uma \textbf{c\'opia do grupo} $G$.
+
+\begin{defi}[Fibrado Principal]\label{def:fibrado_principal}
+Um \textbf{$G$-fibrado principal} sobre $M$ \'e um fibrado
+$\pi: P \to M$ equipado com uma \textbf{a\c{c}\~ao \`a direita} livre e
+transitiva nas fibras
+\begin{equation}\label{eq:acao_direita}
+  \Phi: P \times G \to P, \quad \Phi(p, g) \equiv p \cdot g,
+\end{equation}
+tal que:
+\begin{enumerate}[(i)]
+  \item $\pi(p \cdot g) = \pi(p)$ para todo $p \in P$, $g \in G$ (a a\c{c}\~ao
+        preserva as fibras);
+  \item A a\c{c}\~ao \'e \textbf{livre}: $p \cdot g = p \implies g = e$
+        (elemento neutro de $G$);
+  \item A a\c{c}\~ao \'e \textbf{transitiva nas fibras}: para $p, q \in P$ com
+        $\pi(p) = \pi(q)$, existe um \'unico $g \in G$ tal que $q = p \cdot g$;
+  \item As trivializa\c{c}\~oes locais s\~ao $G$-equivariantes:
+        $\varphi_U(p \cdot g) = \varphi_U(p) \cdot g$, onde a a\c{c}\~ao em
+        $U \times G$ \'e $(u, h) \cdot g = (u, hg)$.
+\end{enumerate}
+\end{defi}
+
+\begin{obs}[Interpreta\c{c}\~ao]
+As condi\c{c}\~oes (ii) e (iii) dizem que, sobre cada ponto $x \in M$, a fibra
+$P_x = \pi^{-1}(x)$ \'e um \textbf{espa\c{c}o homog\^eneo principal} para $G$:
+ela \'e difeomorfa a $G$, mas \textbf{sem um ponto distinguido} (sem elemento
+neutro can\^onico). Escolher um ponto $p_0 \in P_x$ \'e equivalente a
+identificar $P_x \cong G$ via $g \mapsto p_0 \cdot g$. Esta ambiguidade ---
+a aus\^encia de uma origem can\^onica na fibra --- \'e precisamente a
+liberdade de gauge.
+\end{obs}
+
+\begin{ex}[Fibrado de Referenciais]\label{ex:referenciais}
+Seja $M$ uma variedade de dimens\~ao $n$. O \textbf{fibrado de referenciais}
+$\operatorname{Fr}(M)$ \'e o $\operatorname{GL}(n, \mathbb{R})$-fibrado
+principal cuja fibra sobre $x \in M$ \'e o conjunto de todas as bases
+ordenadas do espa\c{c}o tangente $T_xM$ (os \textbf{referenciais lineares}).
+A a\c{c}\~ao \`a direita \'e a mudan\c{c}a de base: se $e = (e_1, \dots, e_n)$
+\'e uma base e $g = (g^i_j) \in \operatorname{GL}(n, \mathbb{R})$, ent\~ao
+\begin{equation}
+  e \cdot g = \left(\sum_{j=1}^n e_j g^j_1, \dots, \sum_{j=1}^n e_j g^j_n\right).
+\end{equation}
+Este fibrado \'e o prot\'otipo de todos os fibrados principais: toda
+estrutura geom\'etrica sobre $M$ (conex\~ao, curvatura, tor\c{c}\~ao) pode ser
+formulada em $\operatorname{Fr}(M)$.
+
+\textbf{Analogia financeira:} Assim como um referencial \'e uma ``base para
+medir vetores'', um gauge (deflator + estrutura a termo) \'e uma ``base para
+medir fluxos de caixa''. Mudar de referencial \'e uma transforma\c{c}\~ao
+$\operatorname{GL}(n)$; mudar de gauge \'e uma transforma\c{c}\~ao $G^*$.
+\end{ex}
+
+\begin{defi}[Fun\c{c}\~oes de Transi\c{c}\~ao]\label{def:transicao}
+Sejam $(U_\alpha, \varphi_\alpha)$ e $(U_\beta, \varphi_\beta)$ duas
+trivializa\c{c}\~oes locais com $U_\alpha \cap U_\beta \neq \varnothing$.
+A \textbf{fun\c{c}\~ao de transi\c{c}\~ao} $g_{\alpha\beta}: U_\alpha \cap
+U_\beta \to G$ \'e definida por:
+\begin{equation}\label{eq:transicao_def}
+  g_{\alpha\beta}(x) := \operatorname{pr}_2 \circ \varphi_\alpha \circ
+                         \varphi_\beta^{-1}(x, e),
+\end{equation}
+onde $\operatorname{pr}_2: U \times G \to G$ \'e a proje\c{c}\~ao na segunda
+coordenada. Equivalentemente, para quaisquer $x \in U_\alpha \cap U_\beta$ e
+$g \in G$:
+\begin{equation}\label{eq:cocycle}
+  \varphi_\alpha \circ \varphi_\beta^{-1}(x, g) = (x, g_{\alpha\beta}(x) \cdot g).
+\end{equation}
+As fun\c{c}\~oes de transi\c{c}\~ao satisfazem a \textbf{condi\c{c}\~ao de
+cociclo}:
+\begin{equation}\label{eq:cocycle_cond}
+  g_{\alpha\beta}(x) \cdot g_{\beta\gamma}(x) = g_{\alpha\gamma}(x), \quad
+  g_{\alpha\alpha}(x) = e, \quad \forall x \in U_\alpha \cap U_\beta \cap
+  U_\gamma.
+\end{equation}
+\end{defi}
+
+A condi\c{c}\~ao de cociclo \'e a vers\~ao matem\'atica da
+\textbf{consist\^encia das mudan\c{c}as de coordenadas}: se voc\^e muda do
+sistema $\alpha$ para o $\beta$ e depois para o $\gamma$, o resultado deve
+ser o mesmo que mudar diretamente de $\alpha$ para $\gamma$. Em finan\c{c}as,
+essa consist\^encia \'e a \textbf{inexist\^encia de arbitragem triangular} no
+mercado de c\^ambio.
+
+% ----------------------------------------------------------------------
+\section{Se\c{c}\~oes de um Fibrado}
+% ----------------------------------------------------------------------
+
+\begin{defi}[Se\c{c}\~ao]\label{def:secao}
+Uma \textbf{se\c{c}\~ao} (global) de um fibrado $\pi: E \to M$ \'e uma
+aplica\c{c}\~ao diferenci\'avel $\sigma: M \to E$ tal que
+\begin{equation}\label{eq:secao}
+  \pi \circ \sigma = \operatorname{id}_M,
+\end{equation}
+isto \'e, $\sigma(x) \in E_x = \pi^{-1}(x)$ para todo $x \in M$. Uma
+\textbf{se\c{c}\~ao local} \'e uma se\c{c}\~ao definida apenas sobre um
+aberto $U \subseteq M$.
+\end{defi}
+
+\begin{obs}[Intui\c{c}\~ao]
+Uma se\c{c}\~ao \'e uma \textbf{escolha cont\'inua} de um elemento da fibra
+para cada ponto da base. Para o fibrado tangente $TM$, uma se\c{c}\~ao \'e um
+\textbf{campo vetorial}. Para o fibrado de referenciais $\operatorname{Fr}(M)$,
+uma se\c{c}\~ao \'e um \textbf{campo de referenciais m\'oveis} (\textit{moving
+frame}). Para o fibrado trivial $M \times F$, uma se\c{c}\~ao \'e simplesmente
+o gr\'afico de uma fun\c{c}\~ao $f: M \to F$.
+\end{obs}
+
+\begin{prop}[Exist\^encia de Se\c{c}\~oes]\label{prop:secao}
+Um fibrado principal $P \to M$ admite uma se\c{c}\~ao global \textbf{se, e
+somente se}, ele \'e trivial (isomorfo ao fibrado produto $M \times G$).
+\end{prop}
+\begin{proof}
+Se $\sigma: M \to P$ \'e uma se\c{c}\~ao global, a aplica\c{c}\~ao
+$\Phi: M \times G \to P$ definida por $\Phi(x, g) := \sigma(x) \cdot g$
+\'e um isomorfismo de fibrados principais (verifique:
+$\pi \circ \Phi(x, g) = \pi(\sigma(x)) = x$; $\Phi$ \'e $G$-equivariante;
+$\Phi$ \'e bijetora pois a a\c{c}\~ao \'e livre e transitiva nas fibras).
+Reciprocamente, se $P \cong M \times G$, a se\c{c}\~ao $\sigma(x) = (x, e)$
+fornece uma se\c{c}\~ao global.
+\end{proof}
+
+\begin{obs}[Consequ\^encia Profunda]
+Fibrados principais n\~ao-triviais \textbf{n\~ao admitem se\c{c}\~ao global}.
+A fita de M\"obius, como $\mathbb{Z}_2$-fibrado principal sobre $S^1$, n\~ao
+admite se\c{c}\~ao global --- voc\^e n\~ao pode escolher continuamente um
+``lado'' da fita. Esta \'e a origem topol\'ogica da \textbf{obstru\c{c}\~ao
+\`a exist\^encia de um numer\'ario global} que ser\'a discutida na
+Se\c{c}\~ao~6.6.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Constru\c{c}\~ao do Fibrado do Mercado}
+% ----------------------------------------------------------------------
+
+Aplicamos agora a maquinaria abstrata dos fibrados principais ao contexto
+financeiro\footnote{A constru\c{c}\~ao que segue \'e a Se\c{c}\~ao~3.1 de
+Farinelli (2021) e representa o n\'ucleo geom\'etrico da GAT.}. O objetivo
+\'e construir um fibrado cuja base codifica as \textbf{carteiras no tempo}
+e cuja fibra codifica as \textbf{poss\'iveis escolhas de gauge} (isto \'e,
+diferentes maneiras de ``empacotar'' fluxos de caixa em instrumentos
+financeiros).
+
+\subsection{Os Ingredientes}
+
+Recordemos do Cap\'itulo~5 os objetos fundamentais da linguagem geom\'etrica:
+
+\begin{defi}[Gauge]\label{def:gauge_recap}
+Um \textbf{gauge} \'e um par $(D, P)$ onde:
+\begin{itemize}
+  \item $D = (D_t)_{t \geq 0}$ \'e o \textbf{deflator}: um semimartingale
+        estritamente positivo que representa o valor do instrumento financeiro
+        no instante $t$, expresso em unidades do numer\'ario escolhido;
+  \item $P = (P_{t,s})_{0 \leq t \leq s < \infty}$ \'e a
+        \textbf{estrutura a termo}: $P_{t,s}$ \'e o valor em $t$ de receber
+        1 unidade do instrumento em $s$. Por defini\c{c}\~ao,
+        $P_{t,s} > 0$ e $P_{t,t} \equiv 1$.
+\end{itemize}
+Denotamos por $\mathcal{G}$ o conjunto de todos os gauges.
+\end{defi}
+
+\begin{defi}[Carteira]
+Uma \textbf{carteira} \'e um vetor $x = (x^1, \dots, x^N) \in X \subseteq
+\mathbb{R}^N$ representando as quantidades investidas em cada ativo de risco.
+O espa\c{c}o de todas as carteiras admiss\'iveis \'e denotado por $X$
+(um aberto de $\mathbb{R}^N$).
+\end{defi}
+
+\begin{defi}[Transforma\c{c}\~ao de Gauge]\label{def:tg}
+Uma fun\c{c}\~ao mensur\'avel $\pi: [0, \infty[\, \to \mathbb{R}$
+(\textbf{intensidade de fluxo de caixa}) induz uma transforma\c{c}\~ao
+$(D, P) \mapsto (D^\pi, P^\pi)$ definida por:
+\begin{align}
+  D_t^\pi &:= D_t \int_0^\infty dh \, \pi_h \, P_{t, t+h},
+  \label{eq:D_pi} \\
+  P_{t,s}^\pi &:= \frac{\int_0^\infty dh \, \pi_h \, P_{t, s+h}}
+                       {\int_0^\infty dh \, \pi_h \, P_{t, t+h}}.
+  \label{eq:P_pi}
+\end{align}
+Quando as integrais s\~ao bem definidas e $D_t^\pi > 0$, a transforma\c{c}\~ao
+\'e dita \textbf{admiss\'ivel}.
+\end{defi}
+
+\begin{defi}[Grupo $G^*$]\label{def:Gstar}
+$G^* := \{\pi: [0,\infty[\, \to \mathbb{R} \mid \exists\, \nu \text{ tal que }
+\pi * \nu = \nu * \pi = \delta\}$ \'e o grupo Abeliano das transforma\c{c}\~oes
+de gauge invert\'iveis, onde $*$ denota o produto de convolu\c{c}\~ao e
+$\delta$ \'e a distribui\c{c}\~ao Delta de Dirac (elemento neutro).
+\end{defi}
+
+\begin{obs}[Por que Convolu\c{c}\~ao?]
+A composi\c{c}\~ao de transforma\c{c}\~oes de gauge corresponde \`a
+convolu\c{c}\~ao das intensidades: $((D,P)^\pi)^\nu = (D,P)^{\pi * \nu}$.
+Geom\'etricamente, isso significa que $G^*$ age \`a direita no espa\c{c}o
+de gauges $\mathcal{G}$, e a composi\c{c}\~ao de duas transforma\c{c}\~oes
+\'e novamente uma transforma\c{c}\~ao de gauge. Este \'e o an\'alogo
+financeiro da composi\c{c}\~ao de mudan\c{c}as de base no fibrado de
+referenciais.
+\end{obs}
+
+\subsection{A Base $M$ e o Fibrado $\mathcal{B}$}
+
+\begin{defi}[Base do Mercado]\label{def:base_M}
+A \textbf{base do mercado} \'e o produto
+\begin{equation}\label{eq:base}
+  M := X \times [0, \infty[,
+\end{equation}
+onde $X \subseteq \mathbb{R}^N$ \'e o espa\c{c}o de carteiras
+($N$ = n\'umero de ativos de risco). Um ponto $(x, t) \in M$ representa
+\textbf{a carteira $x$ no instante $t$}. O fator $\mathbb{R}^+$ no tempo
+reflete o horizonte infinito do mercado.
+\end{defi}
+
+\begin{defi}[Fibrado do Mercado $\mathcal{B}$]\label{def:fibrado_B}
+Para cada $(x, t) \in M$ e cada gauge associado \`a carteira $x$ no
+instante $t$, considere o par $(D_t^{x, \pi}, P_{t,\cdot}^{x,\pi})$
+obtido pela transforma\c{c}\~ao de gauge $\pi$ aplicada ao gauge da
+carteira $x$. O \textbf{fibrado do mercado} \'e:
+\begin{equation}\label{eq:fibrado_mercado}
+  \boxed{\;
+  \mathcal{B} := \bigl\{(D_t^{x,\pi}, P_{t,\cdot}^{x,\pi}) \;\big|\;
+  (x, t) \in M,\; \pi \in G^* \bigr\}\; }.
+\end{equation}
+com proje\c{c}\~ao $\Pi: \mathcal{B} \to M$ definida por
+$\Pi(D_t^{x,\pi}, P_{t,\cdot}^{x,\pi}) := (x, t)$.
+\end{defi}
+
+\begin{obs}[Interpreta\c{c}\~ao Intuitiva]
+Sobre cada ``ponto do mercado'' $(x, t)$ --- a carteira $x$ no instante $t$
+--- a fibra $\Pi^{-1}(x,t)$ cont\'em \textbf{todas as poss\'iveis
+representa\c{c}\~oes financeiras} dos fluxos de caixa dessa carteira,
+parametrizadas pelas transforma\c{c}\~oes de gauge $\pi \in G^*$. Duas
+representa\c{c}\~oes na mesma fibra pertencem \`a \textbf{mesma \'orbita} de
+$G^*$ e s\~ao financeiramente equivalentes --- assim como dois referenciais
+na mesma fibra de $\operatorname{Fr}(M)$ descrevem o mesmo espa\c{c}o tangente,
+apenas em bases diferentes.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Teorema: $\mathcal{B}$ \'e um $G^*$-Fibrado Principal}
+% ----------------------------------------------------------------------
+
+\begin{teo}[Estrutura de Fibrado Principal do Mercado]\label{teo:fibrado_principal}
+O fibrado do mercado $\mathcal{B}$ \'e um $G^*$-fibrado principal sobre $M$,
+com a\c{c}\~ao \`a direita:
+\begin{equation}\label{eq:acao_B}
+  (D, P) \cdot \pi := (D^\pi, P^\pi),
+\end{equation}
+onde $(D^\pi, P^\pi)$ \'e a transforma\c{c}\~ao de gauge definida em
+(\ref{eq:D_pi})--(\ref{eq:P_pi}).
+\end{teo}
+
+\begin{proof}
+Verifiquemos as condi\c{c}\~oes da Defini\c{c}\~ao~\ref{def:fibrado_principal}.
+
+\textbf{1. A a\c{c}\~ao preserva as fibras.} Por constru\c{c}\~ao,
+$\Pi(D^\pi, P^\pi) = (x, t) = \Pi(D, P)$, pois a transforma\c{c}\~ao de
+gauge altera apenas a representa\c{c}\~ao financeira, n\~ao a carteira
+subjacente nem o instante de avalia\c{c}\~ao.
+
+\textbf{2. A a\c{c}\~ao \'e livre.} Suponha $(D,P)^\pi = (D,P)$. Ent\~ao
+$D_t^\pi = D_t$ e $P_{t,s}^\pi = P_{t,s}$ para todo $t, s$. Usando
+(\ref{eq:D_pi}), obtemos:
+\begin{equation}
+  D_t^\pi = D_t \int_0^\infty dh \, \pi_h \, P_{t,t+h} = D_t
+  \implies \int_0^\infty dh \, \pi_h \, P_{t,t+h} = 1.
+\end{equation}
+Mas a defini\c{c}\~ao de $G^*$ como grupo de convolu\c{c}\~ao implica que
+o \'unico elemento que age como identidade em todos os gauges \'e
+$\pi = \delta$ (o elemento neutro). Logo, a a\c{c}\~ao \'e livre.
+
+\textbf{3. A a\c{c}\~ao \'e transitiva nas fibras.} Sejam
+$(D^{x,\pi_1}, P^{x,\pi_1})$ e $(D^{x,\pi_2}, P^{x,\pi_2})$ dois pontos
+na mesma fibra sobre $(x,t)$. Pela propriedade de composi\c{c}\~ao,
+\begin{equation}
+  (D^{x,\pi_1}, P^{x,\pi_1}) \cdot (\pi_1^{-1} * \pi_2)
+  = (D^{x,\pi_2}, P^{x,\pi_2}),
+\end{equation}
+onde $\pi_1^{-1}$ \'e a inversa de $\pi_1$ em $G^*$ (no sentido da
+convolu\c{c}\~ao). A exist\^encia de $\pi_1^{-1}$ \'e garantida pela
+defini\c{c}\~ao de $G^*$ como grupo das intensidades invert\'iveis.
+
+\textbf{4. $G^*$-equivari\^ancia das trivializa\c{c}\~oes.} Nos pontos onde
+$D_t^x > 0$, a aplica\c{c}\~ao
+\begin{equation}
+  \varphi(x,t,\pi) = ((x,t), \pi)
+\end{equation}
+fornece uma trivializa\c{c}\~ao local. A $G^*$-equivari\^ancia segue de
+$\varphi((D,P) \cdot \nu) = \varphi(D^{\pi * \nu}, P^{\pi * \nu})
+= ((x,t), \pi * \nu) = \varphi(D,P) \cdot \nu$.
+
+Portanto, $\mathcal{B}$ satisfaz todos os axiomas de $G^*$-fibrado principal.
+\end{proof}
+
+\begin{obs}[Dimens\~ao Infinita]
+Diferentemente dos fibrados da geometria diferencial cl\'assica (que s\~ao
+variedades de dimens\~ao finita), $\mathcal{B}$ \'e uma variedade de
+\textbf{dimens\~ao infinita} modelada sobre espa\c{c}os de Fr\'echet. A base
+$M = X \times [0,\infty[$ tem dimens\~ao $N+1$ (finita), mas a fibra
+$G^* \subset \mathbb{R}^{[0,\infty[}$ \'e um espa\c{c}o de fun\c{c}\~oes.
+O tratamento rigoroso requer ferramentas de an\'alise funcional global,
+\`a la Kriegl-Michor (1997). Para os prop\'ositos deste m\'odulo, as
+intui\c{c}\~oes da dimens\~ao finita s\~ao suficientes; o leitor interessado
+encontrar\'a os detalhes t\'ecnicos em Farinelli (2021, Ap\^endice A).
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{O Numer\'ario como Se\c{c}\~ao Global}
+% ----------------------------------------------------------------------
+
+Uma das observa\c{c}\~oes mais elegantes da GAT \'e que a \textbf{escolha de
+um numer\'ario} --- o ativo que serve como unidade de conta do mercado ---
+corresponde matematicamente \`a escolha de uma \textbf{se\c{c}\~ao global} do
+fibrado $\mathcal{B}$.
+
+\begin{defi}[Se\c{c}\~ao do Numer\'ario]\label{def:numeraire_section}
+Seja $x^{\text{Num}} \in X$ a carteira escolhida como numer\'ario
+(por exemplo, a conta caixa $x^0$). A \textbf{se\c{c}\~ao do numer\'ario}
+\'e a aplica\c{c}\~ao $\sigma^{\text{Num}}: M \to \mathcal{B}$ definida por:
+\begin{equation}\label{eq:num_section}
+  \sigma^{\text{Num}}(x, t) := \left(D_t^{x, \pi^{\text{Num},x}},
+  P_{t,\cdot}^{x, \pi^{\text{Num},x}}\right),
+\end{equation}
+onde a intensidade de gauge $\pi^{\text{Num},x}$ \'e escolhida de modo que
+\begin{equation}\label{eq:pi_num}
+  \pi_t^{\text{Num},x} := \frac{D_t^x}{D_t^{x^{\text{Num}}}}.
+\end{equation}
+\end{defi}
+
+\begin{prop}[Boa Defini\c{c}\~ao da Se\c{c}\~ao do Numer\'ario]\label{prop:boa_def}
+A se\c{c}\~ao do numer\'ario \'e bem definida (isto \'e, $\sigma^{\text{Num}}$
+\'e de fato uma se\c{c}\~ao global de $\mathcal{B}$) se, e somente se, o
+deflator do numer\'ario \'e estritamente positivo:
+\begin{equation}\label{eq:cond_num}
+  D_t^{x^{\text{Num}}} > 0 \quad \text{quase certamente, para todo } t \geq 0.
+\end{equation}
+\end{prop}
+\begin{proof}
+Por defini\c{c}\~ao, $\Pi(\sigma^{\text{Num}}(x,t)) = (x,t)$. Resta verificar
+que $\pi^{\text{Num},x} \in G^*$ para toda carteira $x$. A condi\c{c}\~ao
+(\ref{eq:cond_num}) garante que $\pi_t^{\text{Num},x}$ \'e finita e n\~ao-nula.
+Sua inversa em $G^*$ \'e $\nu_t^{\text{Num},x} = D_t^{x^{\text{Num}}} / D_t^x$,
+que tamb\'em \'e finita pela positividade estrita dos deflatores.
+\end{proof}
+
+\begin{obs}[Interpreta\c{c}\~ao Financeira]
+A se\c{c}\~ao $\sigma^{\text{Num}}$ \textbf{normaliza} o valor do numer\'ario
+para $1$ em todos os instantes e expressa cada carteira $x$ em unidades do
+numer\'ario. Em coordenadas: se $x^{\text{Num}}$ \'e a conta caixa $S^0$,
+ent\~ao
+\begin{equation}
+  D_t^{x, \pi^{\text{Num},x}} = \frac{D_t^x}{D_t^{x^{\text{Num}}}}
+\end{equation}
+\'e exatamente o \textbf{pre\c{c}o descontado} da carteira $x$ --- o mesmo
+objeto que o Cap\'itulo~4 introduziu como $\hat{S}_t$. A GAT revela que este
+procedimento familiar de desconto \'e, geometricamente, a \textbf{fixa\c{c}\~ao
+de uma se\c{c}\~ao global} em um fibrado principal. A condi\c{c}\~ao
+$D_t^{x^{\text{Num}}} > 0$ --- que parece puramente t\'ecnica --- \'e a
+condi\c{c}\~ao topol\'ogica para que esta se\c{c}\~ao exista sem
+singularidades.
+\end{obs}
+
+\begin{teo}[Mudan\c{c}a de Numer\'ario = Transforma\c{c}\~ao de Gauge]\label{teo:num_gauge}
+Sejam $x^{\text{Num}_1}$ e $x^{\text{Num}_2}$ dois numer\'arios admiss\'iveis
+(ambos com deflatores estritamente positivos). Ent\~ao as se\c{c}\~oes
+correspondentes $\sigma^{\text{Num}_1}$ e $\sigma^{\text{Num}_2}$ est\~ao
+relacionadas por uma \'unica transforma\c{c}\~ao de gauge $\pi^{1 \to 2}$:
+\begin{equation}\label{eq:num_gauge}
+  \sigma^{\text{Num}_2}(x, t) = \sigma^{\text{Num}_1}(x, t)
+  \cdot \pi^{1 \to 2},
+\end{equation}
+onde $\pi^{1 \to 2}_t = D_t^{x^{\text{Num}_1}} / D_t^{x^{\text{Num}_2}}$.
+\end{teo}
+\begin{proof}
+Aplicando a defini\c{c}\~ao (\ref{eq:D_pi}) com $\pi = \pi^{1 \to 2}$:
+\begin{align}
+  (D_t^{x, \pi^{\text{Num}_1}})^{\pi^{1 \to 2}}
+  &= D_t^{x, \pi^{\text{Num}_1}} \int_0^\infty dh \,
+     \pi^{1 \to 2}_h \, P_{t, t+h}^{x, \pi^{\text{Num}_1}} \\
+  &= \frac{D_t^x}{D_t^{x^{\text{Num}_1}}} \cdot
+     \frac{D_t^{x^{\text{Num}_1}}}{D_t^{x^{\text{Num}_2}}}
+   = \frac{D_t^x}{D_t^{x^{\text{Num}_2}}}
+   = D_t^{x, \pi^{\text{Num}_2}}.
+\end{align}
+A unicidade segue da liberdade da a\c{c}\~ao de $G^*$.
+\end{proof}
+
+\begin{obs}[A Mensagem Central]
+Este teorema \'e o elo conceitual entre finan\c{c}as e geometria:
+\textbf{mudar de numer\'ario n\~ao \'e uma conven\c{c}\~ao cont\'abil --- \'e
+uma transforma\c{c}\~ao de gauge}. Assim como um f\'isico pode descrever o
+eletromagnetismo em qualquer gauge (Lorenz, Coulomb, temporal), um financista
+pode descrever o mercado em qualquer numer\'ario (conta caixa, t\'itulo longo,
+a\c{c}\~ao espec\'ifica). As quantidades fisicamente (financeiramente)
+significativas s\~ao as \textbf{invariantes de gauge}: aquelas que n\~ao
+dependem da escolha de numer\'ario. A mais importante delas \'e a curvatura
+$R$ do fibrado $\mathcal{B}$ --- que, como veremos no Cap\'itulo~7, mensura
+a \textbf{arbitragem}.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Cashflows como Se\c{c}\~oes do Fibrado Associado}
+% ----------------------------------------------------------------------
+
+At\'e aqui, tratamos apenas do fibrado principal $\mathcal{B}$, cujas fibras
+s\~ao c\'opias do grupo $G^*$. Mas o que s\~ao os fluxos de caixa propriamente
+ditos --- os pagamentos que um instrumento financeiro gera ao longo do tempo?
+A resposta envolve o conceito de \textbf{fibrado associado}\footnote{Para a
+teoria geral de fibrados associados, veja Kobayashi, S. e Nomizu, K.
+\textit{Foundations of Differential Geometry}, Vol.~I. Wiley, 1963.
+ISBN: 978-0471157336. \textbf{Resenha:} A obra de refer\^encia em geometria
+diferencial moderna. Cap\'itulo~I cobre fibrados principais e associados com
+todo o rigor.}.
+
+\begin{defi}[Fibrado Associado]\label{def:associado}
+Seja $P \to M$ um $G$-fibrado principal e $\rho: G \to \operatorname{GL}(V)$
+uma representa\c{c}\~ao de $G$ em um espa\c{c}o vetorial $V$. O
+\textbf{fibrado associado} $E := P \times_\rho V$ \'e o quociente de
+$P \times V$ pela rela\c{c}\~ao de equival\^encia:
+\begin{equation}\label{eq:assoc}
+  (p, v) \sim (p \cdot g, \rho(g^{-1}) v), \quad g \in G.
+\end{equation}
+A fibra de $E$ sobre $x \in M$ \'e isomorfa a $V$.
+\end{defi}
+
+\begin{obs}[Intui\c{c}\~ao Geom\'etrica]
+Enquanto o fibrado principal $P$ carrega o grupo de simetria $G$ (as
+``transforma\c{c}\~oes admiss\'iveis de gauge''), o fibrado associado $E$
+carrega os \textbf{objetos f\'isicos} (vetores, tensores, fluxos de caixa)
+sobre os quais $G$ atua. A rela\c{c}\~ao (\ref{eq:assoc}) garante que uma
+mudan\c{c}a de gauge em $P$ \'e compensada pela a\c{c}\~ao inversa em $V$,
+mantendo o objeto f\'isico invariante. Esta \'e a vers\~ao geom\'etrica do
+\textbf{princ\'ipio de covari\^ancia}: as leis da f\'isica (e das finan\c{c}as)
+devem ser independentes da escolha de coordenadas.
+\end{obs}
+
+No contexto financeiro, $V := \mathbb{R}^{[0,\infty[}$ \'e o espa\c{c}o de todas
+as fun\c{c}\~oes $c: [0,\infty[\, \to \mathbb{R}$ que representam
+\textbf{fluxos de caixa}: $c_t$ \'e o pagamento recebido no instante $t$.
+
+\begin{defi}[Representa\c{c}\~ao de $G^*$ nos Fluxos de Caixa]\label{def:rep_V}
+A representa\c{c}\~ao $\rho: G^* \to \operatorname{GL}(V)$ \'e definida por:
+\begin{equation}\label{eq:rep_rho}
+  (\rho(\pi) c)_t := \int_0^\infty dh \, \pi_h \, c_{t+h},
+\end{equation}
+isto \'e, $\rho(\pi)$ age por \textbf{convolu\c{c}\~ao e transla\c{c}\~ao
+temporal}. O fluxo de caixa original $c$ \'e ``reescalonado'' pela
+intensidade $\pi$, que pondera pagamentos em diferentes horizontes futuros.
+\end{defi}
+
+\begin{ex}[Fluxo de Caixa de um T\'itulo sem Cupom]
+Considere um t\'itulo que paga $1$ unidade no vencimento $T$ e nada antes.
+Seu fluxo de caixa \'e $c_t = \delta_T(t)$ (Delta de Dirac concentrada em
+$T$). A a\c{c}\~ao de $\pi$ produz:
+\begin{equation}
+  (\rho(\pi) c)_t = \int_0^\infty dh \, \pi_h \, \delta_T(t+h)
+  = \pi_{T-t} \cdot \mathbf{1}_{\{t \leq T\}}.
+\end{equation}
+O fluxo resultante \'e uma vers\~ao ``suavizada'' do pagamento original,
+ponderada pela intensidade $\pi$.
+\end{ex}
+
+\begin{defi}[Fibrado de Fluxos de Caixa]\label{def:fibrado_cashflow}
+O \textbf{fibrado de fluxos de caixa} associado a $\mathcal{B}$ \'e:
+\begin{equation}\label{eq:mathcal_E}
+  \mathcal{E} := \mathcal{B} \times_\rho \mathbb{R}^{[0,\infty[},
+\end{equation}
+onde $\rho$ \'e a representa\c{c}\~ao definida em (\ref{eq:rep_rho}). Uma
+se\c{c}\~ao $\xi: M \to \mathcal{E}$ associa a cada carteira $(x,t)$ um
+fluxo de caixa $\xi(x,t) \in \mathbb{R}^{[0,\infty[}$, interpretado como os
+pagamentos futuros que o detentor da carteira $x$ receber\'a a partir do
+instante $t$.
+\end{defi}
+
+\begin{prop}[Invari\^ancia de Gauge dos Fluxos de Caixa]\label{prop:inv_cashflow}
+Se $\xi$ \'e uma se\c{c}\~ao de $\mathcal{E}$, ent\~ao para qualquer
+$\pi \in G^*$, o valor presente do fluxo de caixa \'e invariante de gauge:
+\begin{equation}\label{eq:invar}
+  \int_0^\infty dh \, P_{t,t+h} \, \xi(x,t)_h
+  = \int_0^\infty dh \, P_{t,t+h}^\pi \, ((\rho(\pi^{-1}) \xi)(x,t))_h.
+\end{equation}
+\end{prop}
+\begin{proof}
+Aplicando a defini\c{c}\~ao de $\rho(\pi^{-1})$ e a propriedade de composi\c{c}\~ao
+em $G^*$, obtemos o resultado por manipula\c{c}\~ao direta (ver Farinelli, 2021,
+Proposi\c{c}\~ao~3.3).
+\end{proof}
+
+% ----------------------------------------------------------------------
+\section{Automorfismos de Gauge}
+% ----------------------------------------------------------------------
+
+A se\c{c}\~ao final conecta explicitamente as transforma\c{c}\~oes de gauge
+(no sentido financeiro) aos \textbf{automorfismos de gauge} (no sentido
+geom\'etrico dos fibrados principais), fornecendo a correspond\^encia
+biun\'ivoca que solidifica a analogia finan\c{c}as-geometria.
+
+\begin{defi}[Automorfismo de Gauge de um Fibrado Principal]\label{def:auto_gauge}
+Um \textbf{automorfismo de gauge} (ou transforma\c{c}\~ao de gauge vertical)
+de um $G$-fibrado principal $P \to M$ \'e um difeomorfismo
+$\Phi: P \to P$ tal que:
+\begin{enumerate}[(i)]
+  \item $\pi \circ \Phi = \pi$ ($\Phi$ preserva as fibras --- \'e
+        \textbf{vertical});
+  \item $\Phi(p \cdot g) = \Phi(p) \cdot g$ para todo $p \in P$, $g \in G$
+        ($\Phi$ \'e $G$-equivariante).
+\end{enumerate}
+O conjunto de todos os automorfismos de gauge forma o
+\textbf{grupo de gauge} $\mathcal{G}(P)$, isomorfo ao grupo das se\c{c}\~oes
+do fibrado de grupos $P \times_{\operatorname{Ad}} G$.
+\end{defi}
+
+\begin{teo}[Correspond\^encia Gauge-Geometria]\label{teo:corresp}
+Existe uma correspond\^encia biun\'ivoca entre:
+\begin{enumerate}[(a)]
+  \item \textbf{Transforma\c{c}\~oes de gauge} no sentido financeiro ---
+        fun\c{c}\~oes $\pi: [0,\infty[\, \to \mathbb{R}$ em $G^*$ que
+        mapeiam gauges em gauges via (\ref{eq:D_pi})--(\ref{eq:P_pi});
+  \item \textbf{Automorfismos de gauge} do fibrado principal $\mathcal{B}$ ---
+        difeomorfismos $G^*$-equivariantes que preservam a proje\c{c}\~ao
+        $\Pi$.
+\end{enumerate}
+Adicionalmente, o grupo de gauge $\mathcal{G}(\mathcal{B})$ \'e isomorfo
+ao grupo das se\c{c}\~oes do fibrado associado
+$\mathcal{B} \times_{\operatorname{Ad}} G^*$.
+\end{teo}
+
+\begin{proof}[Esbo\c{c}o da Prova]
+Dada $\pi \in G^*$, defina $\Phi_\pi: \mathcal{B} \to \mathcal{B}$ por
+$\Phi_\pi(D, P) := (D, P)^\pi$. Pelas propriedades demonstradas no
+Teorema~\ref{teo:fibrado_principal}, $\Phi_\pi$ \'e $G^*$-equivariante
+(pois $((D,P)^{\pi_1})^{\pi} = (D,P)^{\pi_1 * \pi} = (D,P)^\pi \cdot
+\pi_1$) e preserva a proje\c{c}\~ao $\Pi$. Logo, $\Phi_\pi \in
+\mathcal{G}(\mathcal{B})$.
+
+Reciprocamente, dado $\Phi \in \mathcal{G}(\mathcal{B})$, para cada
+ponto $b \in \mathcal{B}$ sobre $(x,t) \in M$, a $G^*$-equivari\^ancia
+implica que $\Phi(b) = b \cdot \pi_{\Phi}(x,t)$ para alguma $\pi_\Phi(x,t)$.
+A aplica\c{c}\~ao $(x,t) \mapsto \pi_\Phi(x,t)$ \'e uma se\c{c}\~ao do
+fibrado associado $\mathcal{B} \times_{\operatorname{Ad}} G^*$, que por
+sua vez define univocamente uma transforma\c{c}\~ao de gauge financeira.
+\end{proof}
+
+\begin{obs}[Interpreta\c{c}\~ao F\'isica]
+Em teorias de gauge na f\'isica (eletromagnetismo, for\c{c}a fraca,
+cromodin\^amica qu\^antica), os \textbf{b\'osons de gauge} (f\'oton, $W^\pm$,
+$Z^0$, gl\'uons) s\~ao precisamente as \textbf{conex\~oes} no fibrado
+principal, e as \textbf{transforma\c{c}\~oes de gauge} s\~ao os
+automorfismos que preservam a f\'isica. No mercado financeiro, a
+\textbf{conex\~ao de mercado} $\chi$ (Cap\'itulo~7) desempenha o papel
+do potencial vetor $A_\mu$, e as \textbf{transforma\c{c}\~oes de gauge}
+$\pi \in G^*$ s\~ao as mudan\c{c}as de numer\'ario. A \textbf{curvatura}
+$R$ --- o tensor de campo financeiro --- mensura a arbitragem, exatamente
+como $F_{\mu\nu}$ mensura o campo eletromagn\'etico.
+\end{obs}
+
+% ----------------------------------------------------------------------
+\section{Resumo do Cap\'itulo}
+% ----------------------------------------------------------------------
+
+Este cap\'itulo estabeleceu o arcabou\c{c}o geom\'etrico sobre o qual a
+Teoria de Arbitragem Geom\'etrica \'e constru\'ida:
+
+\begin{enumerate}
+  \item \textbf{Fibrados} s\~ao espa\c{c}os localmente triviais mas
+        globalmente ``torcidos'' --- a fita de M\"obius \'e o exemplo
+        can\^onico.
+  \item \textbf{Fibrados principais} t\^em um grupo de Lie $G$ como fibra,
+        com a\c{c}\~ao livre e transitiva. O exemplo protot\'ipico \'e o
+        fibrado de referenciais $\operatorname{Fr}(M)$.
+  \item \textbf{Se\c{c}\~oes} s\~ao escolhas cont\'inuas de elementos da
+        fibra. Fibrados principais n\~ao-triviais n\~ao admitem se\c{c}\~ao
+        global.
+  \item O \textbf{fibrado do mercado} $\mathcal{B} \to M$ tem base
+        $M = X \times [0,\infty[$ (carteiras $\times$ tempo) e fibra
+        $G^*$ (grupo das intensidades de fluxo de caixa invert\'iveis).
+  \item $\mathcal{B}$ \'e um $G^*$-\textbf{fibrado principal}, com
+        a\c{c}\~ao $(D,P) \mapsto (D,P)^\pi$.
+  \item A \textbf{escolha de numer\'ario} \'e uma se\c{c}\~ao global de
+        $\mathcal{B}$, e \textbf{mudar de numer\'ario \'e uma
+        transforma\c{c}\~ao de gauge}.
+  \item \textbf{Fluxos de caixa} s\~ao se\c{c}\~oes do fibrado associado
+        $\mathcal{E} = \mathcal{B} \times_\rho \mathbb{R}^{[0,\infty[}$,
+        com $\rho(\pi)$ agindo por convolu\c{c}\~ao.
+  \item A \textbf{correspond\^encia} entre transforma\c{c}\~oes de gauge
+        financeiras e automorfismos de gauge geom\'etricos \'e biun\'ivoca.
+\end{enumerate}
+
+\begin{center}
+\fbox{\begin{minipage}{0.88\textwidth}
+\textbf{Mensagem Central do Cap\'itulo:} A estrutura do mercado n\~ao \'e
+apenas um espa\c{c}o de probabilidade com processos estoc\'asticos --- \'e
+uma \textbf{variedade fibrada} cuja geometria codifica toda a informa\c{c}\~ao
+sobre apre\c{c}amento, desconto e arbitragem. A liberdade de escolher o
+numer\'ario --- que a teoria cl\'assica trata como mera conven\c{c}\~ao ---
+revela-se como a \textbf{liberdade de gauge} de um fibrado principal. O
+Cap\'itulo~7 adicionar\'a \`a esta estrutura a \textbf{conex\~ao} --- o
+objeto geom\'etrico que dita como os deflatores se transportam ao longo
+do tempo e entre carteiras --- e demonstrar\'a que \textbf{arbitragem \'e
+curvatura}.
+\end{minipage}}
+\end{center}
+
+% ======================================================================
+% REFERENCIAS DO CAPITULO
+% ======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{bleecker1981}
+Bleecker, D.
+\textit{Gauge Theory and Variational Principles}.
+Addison-Wesley, 1981. Reimpresso por Dover, 2005.
+ISBN: 978-0486445462.
+
+\bibitem{farinelli2021}
+Farinelli, S.
+\textit{Geometric Arbitrage Theory and Market Dynamics Reloaded}.
+arXiv:0910.1671v10, 2021.
+
+\bibitem{kobayashi1963}
+Kobayashi, S.; Nomizu, K.
+\textit{Foundations of Differential Geometry}, Vol.~I.
+Wiley-Interscience, 1963.
+ISBN: 978-0471157336.
+
+\bibitem{kobayashi1969}
+Kobayashi, S.; Nomizu, K.
+\textit{Foundations of Differential Geometry}, Vol.~II.
+Wiley-Interscience, 1969.
+ISBN: 978-0471157329.
+
+\bibitem{kriegl1997}
+Kriegl, A.; Michor, P.W.
+\textit{The Convenient Setting of Global Analysis}.
+American Mathematical Society, 1997.
+ISBN: 978-0821807804.
+
+\bibitem{nakahara2003}
+Nakahara, M.
+\textit{Geometry, Topology and Physics}.
+Taylor \& Francis, 2nd ed., 2003.
+ISBN: 978-0750306065.
+
+\end{thebibliography}
+
+% ======================================================================
+% FIM DO CAPITULO 6
+% ======================================================================
+
+

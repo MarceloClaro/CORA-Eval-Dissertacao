@@ -1,0 +1,163 @@
+﻿\chapter{Derivadas Estocásticas de Nelson}
+\label{apx:nelson}
+
+A Abordagem de Apreçamento por Transporte Geométrico (GAT) baseia-se na cinemática estocástica de \citeonline{nelson1967dynamical}, que reformula a mecânica quântica --- e, por extensão, processos de difusão em variedades --- por meio de derivadas estocásticas simétricas e antissimétricas. Este apêndice sistematiza essas definições e estabelece a correspondência com o cálculo de Itô e Stratonovich, seguindo \citeonline{gliklikh2011global}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definição Formal}
+\label{sec:nelson_definicao}
+
+Seja $(\Omega,\mathcal{F},\{\mathcal{F}_t\}_{t\geq 0},\P)$ um espaço de probabilidade filtrado satisfazendo as condições usuais. Considere um processo estocástico $X_t$ adaptado, com trajetórias contínuas e quadraticamente integrável: $\E[X_t^2]<\infty$ para todo $t$.
+
+\begin{defi}[Derivada Progressiva $D$]
+A \textbf{derivada progressiva} (forward derivative) de $X_t$ no instante $t$ é o processo $DX_t$ definido pelo limite em média quadrática:
+\begin{equation}
+  DX_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_{t+\Delta t} - X_t}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
+\end{equation}
+sempre que este limite existir em $L^2(\Omega)$. Intuitivamente, $DX_t$ é a taxa de variação esperada condicional de $X$ para o futuro imediato.
+\end{defi}
+
+\begin{defi}[Derivada Regressiva $D_*$]
+A \textbf{derivada regressiva} (backward derivative) de $X_t$ é definida pelo limite condicional voltado ao passado:
+\begin{equation}
+  D_*X_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_t - X_{t-\Delta t}}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
+\end{equation}
+sempre que o limite existir em $L^2(\Omega)$.
+\end{defi}
+
+\begin{defi}[Derivada Simétrica $\bar{D}$]
+A \textbf{derivada simétrica} (média ou corrente) é a semissoma das derivadas progressiva e regressiva:
+\begin{equation}
+  \bar{D}X_t = \frac{1}{2}\bigl(DX_t + D_*X_t\bigr).
+\end{equation}
+Na interpretação de Nelson, $\bar{D}X_t$ corresponde à \textbf{velocidade corrente} (current velocity) do processo difusivo, análoga à velocidade clássica na mecânica determinística.
+\end{defi}
+
+\begin{defi}[Derivada Antissimétrica $D_A$]
+A \textbf{derivada antissimétrica} (osmótica) é a semidiferença:
+\begin{equation}
+  D_A X_t = \frac{1}{2}\bigl(DX_t - D_*X_t\bigr).
+\end{equation}
+Esta quantidade está associada à \textbf{velocidade osmótica} (osmotic velocity), que no contexto da GAT mede o grau de ``difusividade pura'' do mercado, distinguindo a componente reversível (corrente) da irreversível (ruído) na dinâmica de preços.
+\end{defi}
+
+\begin{proposicao}[Propriedades Básicas]
+Para processos $X_t, Y_t$ nas condições acima e $f\in C^2(\R)$:
+\begin{enumerate}
+  \item \textbf{Linearidade}: $D(aX_t + bY_t) = a\,DX_t + b\,DY_t$ para $a,b\in\R$, e analogamente para $D_*$, $\bar{D}$, $D_A$.
+  \item \textbf{Funções determinísticas}: Se $f(t)$ é diferenciável, $D(f(t))=\dot f(t)$ e $D_*(f(t))=\dot f(t)$.
+  \item \textbf{Martingais}: Se $X_t$ é um $\mathcal{F}_t$-martingal, então $DX_t = 0$ (a tendência futura condicional é nula).
+  \item \textbf{Processos reversíveis}: Se $X_t$ tem a mesma lei sob reversão temporal, então $DX_t = -D_*X_t$ e portanto $\bar{D}X_t = 0$.
+\end{enumerate}
+\end{proposicao}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conexão com Itô e Stratonovich}
+\label{sec:nelson_conexao}
+
+Considere um processo de difusão de Itô $X_t$ em $\R^n$ governado pela EDE:
+\begin{equation}
+  dX_t = b(t,X_t)\,dt + \sigma(t,X_t)\,dW_t,
+\end{equation}
+em que $W_t$ é um movimento browniano $m$-dimensional padrão, $b:\R_+\times\R^n\to\R^n$ é o vetor de \textit{drift}, e $\sigma:\R_+\times\R^n\to\R^{n\times m}$ é a matriz de difusão (volatilidade). O \textbf{coeficiente de difusão} associado é $\nu^{ij} = \frac{1}{2}(\sigma\sigma^\top)^{ij}$.
+
+\begin{teo}[Correspondência Nelson--Itô--Stratonovich]
+Para um processo de difusão de Itô $X_t$ com coeficientes suficientemente regulares, as derivadas de Nelson relacionam-se com as formulações de Itô e Stratonovich conforme a Tabela~\ref{tab:nelson_ito_strat}.
+\end{teo}
+
+\begin{table}[htbp]
+\centering
+\caption{Correspondência entre formulações estocásticas}
+\label{tab:nelson_ito_strat}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{3.2cm}p{5cm}p{5cm}@{}}
+\toprule
+\textbf{Formulação} & \textbf{Derivada/Operador} & \textbf{Expressão em termos de Itô} \\
+\midrule
+Nelson (progressiva)  & $DX_t$      & $b(t,X_t)$ \\
+Nelson (regressiva)   & $D_*X_t$    & $b(t,X_t) - 2\,\partial_j\nu^{ij}(t,X_t)\big|_{(t,X_t)}$ \\
+Nelson (simétrica)    & $\bar{D}X_t$& $b(t,X_t) - \partial_j\nu^{ij}(t,X_t)$ \\
+Nelson (antissimétrica)& $D_A X_t$  & $\partial_j\nu^{ij}(t,X_t)$ \\
+Itô                   & $dX_t$      & $b\,dt + \sigma\,dW_t$ (integral de Itô) \\
+Stratonovich          & $\circ dX_t$& $(b - \frac{1}{2}\partial_j\nu^{ij})\,dt + \sigma\circ dW_t$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{observacao}
+A derivada simétrica $\bar{D}$ coincide precisamente com o \textbf{drift de Stratonovich}: $\bar{D}X_t = b(t,X_t) - \frac{1}{2}(\nabla\cdot\nu)(t,X_t)$. Esta identidade é fundamental na GAT, pois a formulação de Stratonovich respeita a regra da cadeia usual (Leibniz não graduada), permitindo tratar a geometria diferencial do espaço de ativos sem correções de Itô adicionais. A curvatura do fibrado, expressa em termos de $\bar{D}$, adquire assim interpretação financeira direta.
+\end{observacao}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fórmula de Leibniz Estocástica}
+\label{sec:nelson_leibniz}
+
+\begin{teo}[Regra do Produto de Nelson]
+Sejam $X_t$ e $Y_t$ processos estocásticos contínuos quadraticamente integráveis. As derivadas progressiva, regressiva e simétrica satisfazem as seguintes regras de Leibniz:
+\begin{align}
+  D(X_t Y_t)      &= (DX_t)Y_t + X_t(DY_t) + D[X,Y]_t,      \label{eq:leibniz_D}\\
+  D_*(X_t Y_t)    &= (D_*X_t)Y_t + X_t(D_*Y_t) - D_*[X,Y]_t, \label{eq:leibniz_Dstar}\\
+  \bar{D}(X_t Y_t) &= (\bar{D}X_t)Y_t + X_t(\bar{D}Y_t),      \label{eq:leibniz_bar}
+\end{align}
+em que $[X,Y]_t$ denota o processo de covariação quadrática (colchete de probabilidade) entre $X$ e $Y$, e $D[X,Y]_t$, $D_*[X,Y]_t$ são as derivadas progressiva e regressiva deste processo.
+\end{teo}
+
+\begin{proof}[Esboço]
+A identidade~\eqref{eq:leibniz_D} decorre da decomposição:
+\begin{align*}
+  \E[X_{t+h}Y_{t+h} - X_tY_t\mid\mathcal{F}_t]
+  &= \E[(X_{t+h}-X_t)Y_t + X_t(Y_{t+h}-Y_t) + (X_{t+h}-X_t)(Y_{t+h}-Y_t)\mid\mathcal{F}_t].
+\end{align*}
+Dividindo por $h$, tomando $h\downarrow 0$, e notando que o termo cruzado converge para a derivada da covariação quadrática, obtém-se~\eqref{eq:leibniz_D}. A equação~\eqref{eq:leibniz_Dstar} segue por simetria temporal. A equação~\eqref{eq:leibniz_bar} resulta de somar~\eqref{eq:leibniz_D} e~\eqref{eq:leibniz_Dstar}: os termos de covariação se cancelam, pois $D[X,Y]_t = D_*[X,Y]_t$ para processos com difusão simétrica. Isto implica que a derivada simétrica satisfaz a \textbf{regra de Leibniz clássica}, sem termo de segunda ordem --- propriedade que a torna a ferramenta natural para o cálculo geométrico em variedades com ruído.
+\end{proof}
+
+\begin{corolario}
+A derivada simétrica $\bar{D}$ é uma \textbf{derivação} na álgebra de processos estocásticos (com respeito ao produto pontual), no sentido da geometria diferencial. Este fato permite definir o \textbf{transporte geométrico} como o fluxo de $\bar{D}$ ao longo do fibrado de preços, unificando a cinemática de Nelson com a estrutura de conexão de Koszul.
+\end{corolario}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exemplos Calculados}
+\label{sec:nelson_exemplos}
+
+\subsection{Quadrado do Movimento Browniano}
+
+Seja $W_t$ um movimento browniano padrão unidimensional. Para $X_t = W_t^2$, aplicamos a fórmula de Itô: $d(W_t^2) = dt + 2W_t\,dW_t$. Logo, o drift de Itô é $b=1$ e $\sigma=2W_t$.
+
+\begin{itemize}
+  \item $D(W_t^2) = 1$ (tendência determinística do crescimento quadrático médio);
+  \item $D_*(W_t^2) = 1 - 2 = -1$ (da perspectiva reversa, o processo ``encolhe'' quadraticamente);
+  \item $\bar{D}(W_t^2) = \frac{1}{2}(1 + (-1)) = 0$ (velocidade corrente nula);
+  \item $D_A(W_t^2) = \frac{1}{2}(1 - (-1)) = 1$ (velocidade osmótica igual à intensidade do ruído).
+\end{itemize}
+
+\subsection{Produto $tW_t$}
+
+Para $X_t = tW_t$, com $d(tW_t) = W_t\,dt + t\,dW_t$, tem-se $b=W_t$ e $\sigma = t$. O coeficiente de difusão é $\nu = \frac{1}{2}t^2$, com $\partial_W\nu = 0$. Portanto:
+\begin{align*}
+  D(tW_t)      &= W_t,               \\
+  D_*(tW_t)    &= W_t,               \\
+  \bar{D}(tW_t) &= W_t,              \\
+  D_A(tW_t)    &= 0.
+\end{align*}
+A velocidade osmótica é nula porque a volatilidade $\sigma(t) = t$ independe do estado $W_t$ (difusão aditiva).
+
+\subsection{Exponencial do Browniano Geométrico}
+
+Seja $X_t = e^{W_t}$. Pelo lema de Itô: $d(e^{W_t}) = \frac{1}{2}e^{W_t}dt + e^{W_t}dW_t$. Portanto $b = \frac{1}{2}e^{W_t}$, $\sigma = e^{W_t}$, $\nu = \frac{1}{2}e^{2W_t}$, e $\partial_W\nu = e^{2W_t}$. Aplicando a correspondência da Tabela~\ref{tab:nelson_ito_strat}:
+\begin{align*}
+  D(e^{W_t})      &= \frac{1}{2}e^{W_t},                \\
+  D_*(e^{W_t})    &= \frac{1}{2}e^{W_t} - e^{W_t} = -\frac{1}{2}e^{W_t}, \\
+  \bar{D}(e^{W_t})&= \frac{1}{2}e^{W_t} - \frac{1}{2}e^{W_t} = 0,        \\
+  D_A(e^{W_t})    &= \frac{1}{2}e^{W_t}.
+\end{align*}
+A velocidade corrente é nula para todo processo cuja dinâmica de Itô é puramente multiplicativa e cujo drift compensa exatamente a correção de convexidade --- caso dos martingais exponenciais. A velocidade osmótica não nula reflete a difusão intrínseca do mercado.
+
+\subsection{Interpretação Geométrica na GAT}
+
+Os exemplos acima ilustram a decomposição essencial da GAT: a dinâmica de qualquer ativo financeiro governado por difusão decompõe-se em uma \textbf{componente de corrente} $\bar{D}$ (reversível, geométrica, associada ao drift de Stratonovich e portanto às geodésicas do fibrado) e uma \textbf{componente osmótica} $D_A$ (irreversível, dissipativa, associada à curvatura do mercado). O teorema de representação de Nelson garante que toda difusão em uma variedade riemanniana $M$ pode ser reconstruída a partir destas duas velocidades mais o tensor métrico, estabelecendo a equivalência entre processos estocásticos e fluxos geométricos --- precisamente a ponte que a GAT explora para traduzir problemas de apreçamento em problemas de curvatura.
+
+Para demonstrações completas e extensões a variedades riemannianas, consulte \citeonline{nelson1967dynamical} e \citeonline{gliklikh2011global}.
+
+\endinput
+
+
