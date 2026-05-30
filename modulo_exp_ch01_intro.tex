@@ -14,7 +14,7 @@
   \item[\textbf{CT-C1.1}] Definir arbitragem com as 3 condicoes formais
   \item[\textbf{CT-C1.2}] Explicar por que a ausencia de arbitragem e uma
         hipotese razoavel (HIPOTESE DO MERCADO EFICIENTE)
-  \item[\textbf{CT-C1.3}] Calcular o preco justo de uma opcao pelo metodo
+  \item[\textbf{CT-C1.3}] Calcular o preco justo de umacaopcao pelo metodo
         da carteira replicante (MEDIDA MARTINGAL EQUIVALENTE)
   \item[\textbf{CT-C1.4}] Enunciar o Primeiro Teorema Fundamental do
         Aprecamento de Ativos (FTAP) em linguagem acessivel
@@ -65,7 +65,7 @@ milissegundos --- ou menos. Algoritmos de \textit{high-frequency trading}
 to Algorithmic Strategies and Trading Systems}. Wiley, 2nd ed., 2013. ISBN:
 978-1118343500. \textbf{Resenha:} Referencia pratica sobre estrategias de
 HFT, incluindo arbitragem estatistica, market making e execucao algoritmica.
-Para o leitor nao-especialista: este livro explica como computadores
+Paracao leitor nao-especialista: este livro explica como computadores
 programados para detectar diferencas minusculas de preco executam milhares
 de operacoes por segundo --- muito alem da capacidade humana.} sao
 programados para detectar e executar estas oportunidades antes que qualquer
@@ -74,13 +74,13 @@ humano possa reagir.
 Mas a \textit{teoria} da arbitragem --- e nao sua pratica --- e o alicerce
 sobre o qual todo o edificio das financas quantitativas modernas foi
 construido. A hipotese de \textbf{ausencia de arbitragem} e o ponto de
-partida para o modelo de Black-Scholes-Merton (1973), a teoria de carteiras
+partida paracao modelo de Black-Scholes-Merton (1973), a teoria de carteiras
 de Markowitz (1952), o CAPM e praticamente toda a matematica financeira
 moderna.
 
 \section{Por Que a Ausencia de Arbitragem e uma Hipotese Razoavel?}
 
-A resposta e surpreendentemente simples: \textbf{se houvesse uma oportunidade
+A resposta e surpreendentemente simples: \textbf{se houvesse umacaoportunidade
 de arbitragem obvia e sem risco, alguem ja a teria explorado ate ela
 desaparecer.}
 
@@ -96,7 +96,7 @@ semiforte (refletem tudo que e publico) e forte (refletem ate informacao
 privilegiada).}: em um mercado eficiente, os precos refletem toda a
 informacao disponivel. Se houvesse uma discrepancia que permitisse lucro sem
 risco, os proprios agentes que a exploram fariam os precos convergirem ---
-eliminando a oportunidade.
+eliminando acaoportunidade.
 
 \begin{center}
 \fbox{\begin{minipage}{0.88\textwidth}
@@ -153,7 +153,7 @@ arbitragem.
 \end{minipage}}
 \end{center}
 
-\textbf{Traducao para o portugues claro:} Se eu consigo atribuir
+\textbf{Traducao paracao portugues claro:} Se eu consigo atribuir
 probabilidades aos cenarios futuros de tal forma que, em media, nenhum
 ativo tende a subir ou cair (todos sao ``jogos justos''), entao e
 impossivel montar uma estrategia que lucre sem risco. E vice-versa: se
@@ -190,15 +190,15 @@ C_1 = \max(S_1 - K, 0) = \begin{cases} 15 & \text{se } S_1 = 120 \\
 \textbf{Abordagem ingenua (errada):} Valor esperado $= 0,5 \times 15 +
 0,5 \times 0 = 7,50$. Preco justo = R\$ 7,50? \textbf{Nao.}
 
-Para eliminar a arbitragem, o preco da opcao deve ser exatamente o custo
+Para eliminar a arbitragem, o preco dacaopcao deve ser exatamente o custo
 da \textbf{carteira replicante} --- uma combinacao de acoes e emprestimo que
-reproduz exatamente o payoff da opcao em \textbf{todos} os cenarios:
+reproduz exatamente o payoff dacaopcao em \textbf{todos} os cenarios:
 
 \begin{itemize}[nosep]
   \item Compre $x = 0,375$ acoes (custo: $100 \times 0,375 = 37,50$)
   \item Tome emprestado R\$ 30,00 a taxa zero
   \item Custo liquido: R\$ 7,50
-  \item Payoff: $45 - 30 = 15$ ou $30 - 30 = 0$ --- replica a opcao
+  \item Payoff: $45 - 30 = 15$ ou $30 - 30 = 0$ --- replica acaopcao
 \end{itemize}
 
 Portanto, o preco justo e R\$ 7,50 --- mas \textbf{nao} porque esse e o valor
@@ -211,7 +211,7 @@ valor esperado sob a \textbf{medida martingal equivalente} $P^*$.
 automatiza exatamente este raciocinio:
 
 \begin{enumerate}[nosep]
-  \item \textbf{SPEC:} ``Calcular o preco justo da opcao pelo metodo
+  \item \textbf{SPEC:} ``Calcular o preco justo dacaopcao pelo metodo
         da carteira replicante''
   \item \textbf{TDD-RED:} Escrever \texttt{assert preco\_justo == 7.50}
         (o teste falha inicialmente --- nao implementamos ainda)
@@ -239,7 +239,7 @@ Scholes e Merton receberam o Nobel de Economia em 1997.}
 \footnotetext{Merton, R.C. \textit{Theory of Rational Option Pricing}.
 Bell Journal of Economics, 4(1):141--183, 1973. DOI: 10.2307/3003143.
 \textbf{Resenha:} Estendeu Black-Scholes com tratamento rigoroso em tempo
-continuo, provando que o preco de uma opcao e o valor esperado descontado
+continuo, provando que o preco de umacaopcao e o valor esperado descontado
 sob a medida martingal equivalente.} foi estender esta ideia para tempo
 continuo com negociacao continua --- resultando na celebre \textbf{equacao
 de Black-Scholes}:
@@ -294,7 +294,7 @@ que:
 Este modulo inteiro segue o metodo SDD+TDD. Cada capitulo e uma
 \textbf{SPEC} (especificacao do que aprender). Cada exercicio e um
 \textbf{CT} (criterio de teste --- voce so sabe que aprendeu se passar).
-O OpenCode Ecosystem e o \textbf{laboratorio} onde voce executara os
+O OpenCode Ecosystem e o \textbf{laboratorio} onde voce executaracaos
 experimentos. O Cora-Debate (V1--V7) e o \textbf{auditor} que verificara
 seus resultados. O AutoEvolve e o \textbf{historico} que registrara seu
 progresso.
@@ -327,7 +327,7 @@ conceito, pergunte-se: ``Como eu testaria isso no OpenCode?''
   \item[\textbf{CT-C1.1}] Defina arbitragem com as 3 condicoes.
   \item[\textbf{CT-C1.2}] Por que a ausencia de arbitragem e uma
         hipotese razoavel?
-  \item[\textbf{CT-C1.3}] No exemplo da opcao, \textbf{por que} o
+  \item[\textbf{CT-C1.3}] No exemplo dacaopcao, \textbf{por que} o
         preco justo e R\$ 7,50 e nao outro valor?
   \item[\textbf{CT-C1.4}] Enuncie o FTAP em uma frase.
   \item[\textbf{CT-C1.5}] Qual verificador do Cora-Debate testaria

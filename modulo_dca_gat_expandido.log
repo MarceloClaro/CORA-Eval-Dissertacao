@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -478,6 +478,9 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup9
 )
+(C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
 \c@teo=\count332
 \c@ex=\count333
 \c@obs=\count334
@@ -491,13 +494,13 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less.
 (fancyhdr)                Please consider using the `twoside' option on input l
-ine 78.
+ine 86.
 
 
 Package fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
 less.
 (fancyhdr)                Please consider using the `twoside' option on input l
-ine 80.
+ine 88.
 
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
@@ -541,24 +544,24 @@ LaTeX Warning: Label `nakahara2003' multiply defined.
 )
 \openout1 = `modulo_dca_gat_expandido.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
+LaTeX Font Info:    ... okay on input line 98.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -585,7 +588,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 90.
+Package hyperref Info: Link coloring OFF on input line 98.
  (modulo_dca_gat_expandido.out) (modulo_dca_gat_expandido.out)
 \@outlinefile=\write3
 \openout3 = `modulo_dca_gat_expandido.out'.
@@ -599,15 +602,15 @@ Package hyperref Info: Link coloring OFF on input line 90.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
-* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* h-part:(L,W,R)=(85.35826pt, 455.24411pt, 56.9055pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78308pt, 56.9055pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=455.24411pt
 * \textheight=702.78308pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-35.5119pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-21.28552pt
 * \headheight=14.5pt
 * \headsep=19.8738pt
 * \topskip=12.0pt
@@ -626,19 +629,19 @@ Package hyperref Info: Link coloring OFF on input line 90.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count344
-LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 100
+.
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 100
+.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 92
-.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
+0.
 
 (C:\Program Files\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -646,33 +649,33 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 
 {C:/Users/marce/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
 
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 143--143
+Underfull \hbox (badness 1019) in paragraph at lines 151--151
 \T1/cmr/m/n/12 pra-tico com Open-Code Ecosys-tem: va-li-da-cao ci-en-ti-fica, S
 DD+TDD, ci-clos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
 
  []
 
@@ -681,38 +684,42 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.146 \tableofcontents
-                       [1
+l.152 \end{center}
+                   [1
 
-] (modulo_dca_gat_expandido.toc [2
+]
+Overfull \vbox (128.0445pt too high) has occurred while \output is active []
+
+
+[2] (modulo_dca_gat_expandido.toc [3
 
 ]
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
-(babel)             Reported on input line 78.
- [3] [4]
+(babel)             Reported on input line 64.
+ [4] [5]
 LaTeX Font Info:    Trying to load font information for U+euf on input line 133
 .
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-[5] [6] [7])
+[6] [7] [8] [9])
 \tf@toc=\write4
 \openout4 = `modulo_dca_gat_expandido.toc'.
 
- [8] [9
+ [10] [11] [12
 
 ] (modulo_exp_ch01_intro.tex
 Cap\'{\i }tulo 1.
-[10
+[13
 
-] [11] [12] [13] [14]) (modulo_exp_ch02_probabilidade.tex [15]
+] [14] [15] [16] [17] [18]) (modulo_exp_ch02_probabilidade.tex [19]
 Cap\'{\i }tulo 2.
-[16
+[20
 
 ]
 Cap\'{\i }tulo 3.
-[17
+[21
 
 ]
 
@@ -722,7 +729,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[18]
+[22]
 ! Undefined control sequence.
 l.88  \\E[X] := \int_\Omega X(\omega) \dif
                                            \\PP(\omega).
@@ -737,9 +744,22 @@ l.90 ...grais seja finita. Dizemos que $X \in \Lp^
                                                   1(\Omega, \F, \\PP)$ se $\...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.07053pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+
+[23]
 ! Double superscript.
 l.98 ...ovari ncia} entre duas v.a. $X, Y \in \Lp^
                                                   2$ c $\Cov(X,Y) := \\E[(X ...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Double superscript.
+l.114 Se $X \in \Lp^
+                    2$, ent o para todo $\varepsilon > 0$:
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
@@ -749,13 +769,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[19]
-! Double superscript.
-l.114 Se $X \in \Lp^
-                    2$, ent o para todo $\varepsilon > 0$:
-I treat `x^1^2' essentially like `x^1{}^2'.
-
-
+[24]
 Overfull \hbox (4.16441pt too wide) in paragraph at lines 139--140
 [][]\T1/cmr/bx/n/12 Definicao 3.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
 al)\T1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/
@@ -771,7 +785,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[20]
+[25]
 ! Double superscript.
 l.174 Seja $X \in \Lp^
                       1(\Omega, \F, \\PP)$ e $\G \subseteq \F$ uma sub-$\sig...
@@ -892,7 +906,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[21]
+[26]
 
 LaTeX Warning: Command \H invalid in math mode on input line 189.
 
@@ -1199,11 +1213,6 @@ l.194 ...} se $\phi$ c convexa e $\phi(X) \in \Lp^
                                                   1$, ent o $\phi(\\E[X \mid...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
-! Double superscript.
-l.216 ...\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^
-                                                  1$ para todo $t$ c um:
-I treat `x^1^2' essentially like `x^1{}^2'.
-
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
 (fancyhdr)                Make it at least 27.07053pt, for example:
@@ -1211,7 +1220,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[22]
+[27]
+! Double superscript.
+l.216 ...\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^
+                                                  1$ para todo $t$ c um:
+I treat `x^1^2' essentially like `x^1{}^2'.
+
 ! Undefined control sequence.
 <recently read> \dif 
                      
@@ -1239,12 +1253,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[23]
-! Double superscript.
-l.286 ...}} - W_{t_i})^2 = t \quad \text{em } \Lp^
-                                                  2.
-I treat `x^1^2' essentially like `x^1{}^2'.
-
+[28]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
 (fancyhdr)                Make it at least 27.07053pt, for example:
@@ -1252,7 +1261,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[24]
+[29]
+! Double superscript.
+l.286 ...}} - W_{t_i})^2 = t \quad \text{em } \Lp^
+                                                  2.
+I treat `x^1^2' essentially like `x^1{}^2'.
+
 ! Undefined control sequence.
 <recently read> \dif 
                      
@@ -1273,6 +1287,14 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.07053pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
+
+[30]
 ! Undefined control sequence.
 <argument> \dif 
                 S_t
@@ -1338,7 +1360,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[25]
+[31]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
 (fancyhdr)                Make it at least 27.07053pt, for example:
@@ -1346,33 +1368,33 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[26]) (modulo_exp_ch03_calculo_estocastico.tex [27
+[32]) (modulo_exp_ch03_calculo_estocastico.tex [33
 
 ]
 Cap\'{\i }tulo 4.
-[28
+[34
 
-] [29] [30]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
-
+] [35] [36] [37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 163.
 
-[31] [32] [33] [34] [35] [36]
 
-LaTeX Warning: Reference `sec:tga_fundamentos' on page 37 undefined on input li
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 163.
+
+[38] [39] [40] [41] [42] [43] [44]
+
+LaTeX Warning: Reference `sec:tga_fundamentos' on page 45 undefined on input li
 ne 422.
 
-[37]) (modulo_exp_ch04_modelo_classico.tex [38
+[45]) (modulo_exp_ch04_modelo_classico.tex [46
 
 ]
 Cap\'{\i }tulo 5.
-[39
+[47
 
-] [40] [41] [42] [43]
+] [48] [49] [50] [51] [52]
 ! Undefined control sequence.
 l.408 $x_t := \mathbbm
                       {1}_{S_t > K}$ para algum $K > 0$ n o c previs -vel.
@@ -1382,7 +1404,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[44] [45] [46] [47] [48] [49] [50] [51]
+[53] [54] [55] [56] [57] [58] [59] [60] [61]
 Underfull \hbox (badness 1424) in paragraph at lines 906--910
 \T1/cmr/m/it/12 o-rem of As-set Pri-cing\T1/cmr/m/n/12 . Mathe-ma-tis-che An-na
 -len, 300(1):463--520, 1994. DOI:
@@ -1400,24 +1422,24 @@ Underfull \hbox (badness 3417) in paragraph at lines 928--932
 ory, 20(3):381--408, 1979. DOI:
  []
 
-) [52
+) [62
 
-] [53
+] [63
 
-] (modulo_exp_ch05_gauges.tex [54]
+] (modulo_exp_ch05_gauges.tex [64]
 Cap\'{\i }tulo 6.
 
-LaTeX Warning: Citation `smith1998gauge' on page 55 undefined on input line 23.
+LaTeX Warning: Citation `smith1998gauge' on page 65 undefined on input line 23.
 
 
-[55
+[65
 
-] [56] [57] [58]
+] [66] [67] [68] [69]
 Overfull \hbox (16.63187pt too wide) in paragraph at lines 303--308
 [][]\T1/cmr/bx/it/12 Inflação:
  []
 
-[59]
+[70] [71]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
@@ -1438,7 +1460,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
 
-[60] [61] [62]
+[72] [73] [74]
 Overfull \hbox (0.38196pt too wide) in paragraph at lines 610--614
 [][]\T1/cmr/bx/n/12 Exemplo 6.10 \T1/cmr/m/n/12 (Gauge de Preço de Ação a par-t
 ir do Gauge de Di-vi-den-dos)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se $\OT1/cmr/m
@@ -1450,9 +1472,9 @@ Overfull \hbox (102.11891pt too wide) detected at line 643
 []
  []
 
-[63] [64]) (modulo_exp_ch06_fibrados.tex [65]
+[75]) (modulo_exp_ch06_fibrados.tex [76]
 Cap\'{\i }tulo 7.
-[66
+[77
 
 ]
 ! Missing $ inserted.
@@ -1535,7 +1557,7 @@ l.77 \end{equation}
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[67] [68] [69]
+[78] [79] [80] [81]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 335.
@@ -1552,7 +1574,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 335.
 
-[70]
+[82]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 374.
@@ -1573,7 +1595,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 374.
 
-
+[83]
 Overfull \hbox (8.13997pt too wide) in paragraph at lines 421--425
 \T1/cmr/m/n/12 fornece uma tri-vi-a-li-za-ção lo-cal. A $\OML/cmm/m/it/12 G[]$\
 T1/cmr/m/n/12 -equivariância se-gue de $\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ((\OM
@@ -1582,20 +1604,20 @@ T1/cmr/m/n/12 ) = \OML/cmm/m/it/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 D[]; P[]\
 OT1/cmr/m/n/12 ) =
  []
 
-[71] [72] [73] [74]
+[84] [85] [86]
 Overfull \hbox (9.8583pt too wide) in paragraph at lines 653--656
 []\T1/cmr/bx/it/12 Automorfismos de gauge \T1/cmr/m/it/12 do fi-brado prin-ci-p
 al $\OMS/cmsy/m/n/12 B$ \T1/cmr/m/it/12 --- di-fe-o-mor-fis-mos $\OML/cmm/m/it/
 12 G[]$\T1/cmr/m/it/12 -equivariantes
  []
 
-[75] [76]
+[87] [88] [89]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.farinell
 i2021}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.749 \bibitem{farinelli2021}
-                             ) (modulo_exp_ch07_conexao.tex [77
+                             ) (modulo_exp_ch07_conexao.tex [90
 
 ]
 Cap\'{\i }tulo 8.
@@ -1605,18 +1627,18 @@ Runaway argument?
 ! File ended while scanning use of \@xdblarg.
 <inserted text> 
                 \par 
-l.165 \input{modulo_exp_ch07_conexao.tex}
+l.173 \input{modulo_exp_ch07_conexao.tex}
                                          
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-(modulo_exp_ch08_curvatura.tex [78
+(modulo_exp_ch08_curvatura.tex [91
 
 ]
 Cap\'{\i }tulo 9.
-[79
+[92
 
 ]
 
@@ -1631,7 +1653,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 58.
 
-[80]
+[93]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 86.
@@ -1644,7 +1666,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 86.
 
-[81]
+[94] [95]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 169.
@@ -1669,7 +1691,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 169.
 
-[82]
+[96]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 183.
@@ -1722,7 +1744,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 197.
 
-[83]
+[97]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 231.
@@ -1747,21 +1769,21 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 231.
 
-[84]
+[98]
 Overfull \hbox (5.79105pt too wide) in paragraph at lines 298--299
 []\T1/cmr/m/n/12 Não existe me-dida mar-tin-gal equi-va-lente (o de-fla-tor can
 -di-dato $\OML/cmm/m/it/12 M[]$ \T1/cmr/m/n/12 não atinge $\U/msb/m/n/12 E\OT1/
 cmr/m/n/12 [\OML/cmm/m/it/12 M[]\OT1/cmr/m/n/12 ] =
  []
 
-[85] [86]
+[99] [100]
 Underfull \hbox (badness 1092) in paragraph at lines 375--376
 []\T1/cmr/m/n/12 Mercado li-vre de ar-bi-tra-
  []
 
-[87]) (modulo_exp_ch09_ambrose_singer.tex [88]
+[101]) (modulo_exp_ch09_ambrose_singer.tex [102]
 Cap\'{\i }tulo 10.
-[89
+[103
 
 ]
 Overfull \hbox (15.77277pt too wide) in paragraph at lines 38--39
@@ -1777,7 +1799,7 @@ Overfull \hbox (22.68315pt too wide) detected at line 53
 [] []
  []
 
-[90] [91]
+[104] [105]
 Overfull \hbox (5.56276pt too wide) in paragraph at lines 120--121
 []\T1/cmr/bx/n/12 A Ál-ge-bra de Lie da Ho-lo-no-mia. \T1/cmr/m/n/12 Seja $\U/e
 uf/m/n/12 m[] \OMS/cmsy/m/n/12 ^^Z \U/euf/m/n/12 g$ \T1/cmr/m/n/12 o su-bes-paç
@@ -1785,12 +1807,12 @@ o ge-rado por $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12
 [](\OML/cmm/m/it/12 X; Y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j
  []
 
-
+[106]
 Overfull \hbox (3.61269pt too wide) in paragraph at lines 125--125
 []\T1/cmr/bx/n/17.28 Consequência Fi-nan-ceira do Te-o-rema de Ambrose--
  []
 
-[92]
+[107]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 170.
@@ -1799,12 +1821,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\chi' on input line 170.
 
-[93]
+
 Overfull \hbox (161.80669pt too wide) in paragraph at lines 191--203
  [] 
  []
 
-
+[108]
 Overfull \hbox (13.54312pt too wide) in paragraph at lines 208--209
 [][]\T1/cmr/bx/n/12 Proposicao 10.11 \T1/cmr/m/n/12 (Posto e Nú-mero de Es-tra-
 té-gias)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 O \T1/cmr/bx/it/12 posto \T1/cmr/m/
@@ -1812,7 +1834,7 @@ it/12 da ál-ge-bra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_\OT1/cmr/m
 /n/12 ))$
  []
 
-[94] [95]
+[109] [110]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 304.
@@ -1884,9 +1906,9 @@ Overfull \hbox (132.08076pt too wide) in paragraph at lines 309--348
  [] 
  []
 
-[96]) [97] [98
+[111] [112]) [113] [114
 
-] (modulo_exp_ch10_hidrodinamica.tex [99]
+] (modulo_exp_ch10_hidrodinamica.tex [115]
 Cap\'{\i }tulo 11.
 
 Underfull \hbox (badness 2310) in paragraph at lines 17--18
@@ -1918,7 +1940,7 @@ Underfull \hbox (badness 2150) in paragraph at lines 25--26
 []\T1/cmr/m/n/12 Crises fi-nan-cei-ras (re-gime
  []
 
-[100
+[116
 
 ]
 
@@ -1929,7 +1951,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 33.
 
-[101] [102] [103] [104]
+[117] [118] [119] [120] [121]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
 994}) has been already used, duplicate ignored
 <to be read again> 
@@ -1965,13 +1987,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.harrison
 <to be read again> 
                    \relax 
 l.237 \bibitem{harrison1979}
-                            ) (modulo_exp_ch11_lagrangiano.tex [105
+                            ) (modulo_exp_ch11_lagrangiano.tex [122
 
 ]
 Cap\'{\i }tulo 12.
-[106
+[123
 
-] [107]
+] [124]
 Overfull \hbox (4.05144pt too wide) in paragraph at lines 116--117
 \T1/cmr/bx/n/12 Exemplo 11.1 (Black--Scholes como Euler--Lagrange). \T1/cmr/m/n
 /12 Con-si-dere $\OML/cmm/m/it/12 L \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ^^[[]S
@@ -1979,7 +2001,7 @@ Overfull \hbox (4.05144pt too wide) in paragraph at lines 116--117
 sy/m/n/12 ^^@
  []
 
-[108]
+[125]
 Overfull \hbox (37.60641pt too wide) in paragraph at lines 158--159
 \T1/cmr/bx/n/12 Teorema 11.3 (No-ether Es-to-cás-tico). \T1/cmr/m/n/12 Se a açã
 o es-to-cás-tica $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 D\OT1/c
@@ -1988,13 +2010,13 @@ mr/m/n/12 ] = \U/msb/m/n/12 E\OT1/cmr/m/n/12 [[][] \OML/cmm/m/it/12 L\OT1/cmr/m
 /12 ) \OML/cmm/m/it/12 dt\OT1/cmr/m/n/12 ]$
  []
 
-
+[126]
 Overfull \hbox (1.97624pt too wide) in paragraph at lines 195--196
 \T1/cmr/m/n/12 Uma se-gunda si-me-tria fun-da-men-tal emerge quando con-si-de-r
 a-mos trans-for-ma-ções de gauge: 
  []
 
-[109] [110]
+[127] [128]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
 994}) has been already used, duplicate ignored
 <to be read again> 
@@ -2006,20 +2028,20 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.ilinski2
 <to be read again> 
                    \relax 
 l.285 \bibitem{ilinski2000}
-                           ) (modulo_exp_ch12_homotopia.tex [111
+                           ) (modulo_exp_ch12_homotopia.tex [129
 
 ]
 Cap\'{\i }tulo 13.
-[112
+[130
 
-] [113]
+] [131]
 Overfull \hbox (22.87411pt too wide) in paragraph at lines 93--94
 []\T1/cmr/m/n/12 O grupo fun-da-men-tal do es-paço de mer-ca-dos mó-dulo ar-bi-
 tra-gem é tri-vial: $\OML/cmm/m/it/12 ^^Y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M[
 ]\OT1/cmr/m/n/12 ) =
  []
 
-[114] [115] [116]
+[132] [133] [134] [135]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
 994}) has been already used, duplicate ignored
 <to be read again> 
@@ -2049,9 +2071,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{cite.nakahara
 <to be read again> 
                    \relax 
 l.212 \bibitem{nakahara2003}
-                            ) (modulo_exp_ch13_computacional.tex [117
+                            ) (modulo_exp_ch13_computacional.tex [136
 
-]
+] [137]
 Cap\'{\i }tulo 14.
 
 Overfull \hbox (3.09187pt too wide) in paragraph at lines 6--6
@@ -2060,75 +2082,76 @@ Overfull \hbox (3.09187pt too wide) in paragraph at lines 6--6
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 21.
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 22.
-[118
+[138
 
-] [119] [120] [121] [122] [123] [124] [125] [126] [127] [128] [129]
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 550--551
-[][] 
+] [139] [140] [141] [142] [143] [144] [145] [146] [147] [148] [149]
+[150]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 550--551
+[][][] 
  []
 
 
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 552--553
-[][] 
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 552--553
+[][][] 
  []
 
-[130]
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 582--583
-[][] 
- []
-
-
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 584--585
-[][] 
+[151]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 582--583
+[][][] 
  []
 
 
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 617--618
-[][] 
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 584--585
+[][][] 
+ []
+
+[152]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 617--618
+[][][] 
  []
 
 
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 619--620
-[][] 
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 619--620
+[][][] 
  []
 
-[131] [132]
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 667--668
-[][] 
- []
-
-
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 669--670
-[][] 
- []
-
-[133]
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 735--736
-[][] 
+[153]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 667--668
+[][][] 
  []
 
 
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 737--738
-[][] 
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 669--670
+[][][] 
  []
 
-[134] [135]
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 823--824
-[][] 
+[154]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 735--736
+[][][] 
  []
 
 
-Overfull \hbox (33.2728pt too wide) in paragraph at lines 825--826
-[][] 
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 737--738
+[][][] 
  []
 
-[136] [137]) [138] [139
+[155] [156]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 823--824
+[][][] 
+ []
+
+[157]
+Overfull \hbox (40.76367pt too wide) in paragraph at lines 825--826
+[][][] 
+ []
+
+[158] [159]) [160] [161
 
 ] (modulo_exp_ch14_opencode_lab.tex
 Cap\'{\i }tulo 15.
-[140
+[162
 
 ]
 Overfull \hbox (1.55496pt too wide) in paragraph at lines 63--63
@@ -2140,7 +2163,7 @@ Overfull \hbox (1.55496pt too wide) in paragraph at lines 64--64
 []\T1/cmtt/m/n/12 basis-research/| 
  []
 
-[141]
+[163]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC€).
 
@@ -2171,7 +2194,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-[142]
+[164]
 Underfull \hbox (badness 10000) in paragraph at lines 187--187
 []|\T1/cmr/m/n/12 Manipulacao sim-bo-lica
  []
@@ -2181,7 +2204,7 @@ Underfull \hbox (badness 1142) in paragraph at lines 189--189
 []|\T1/cmr/m/n/12 p-valores, IC, ta-ma-nho
  []
 
-[143]
+ignored error: Infinite glue shrinkage found in box being split [165]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC€).
 
@@ -2212,6 +2235,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
+[166]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
 
@@ -2422,9 +2446,9 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-[144] [145]) (modulo_exp_ch15_ciclos_evolutivos.tex [146]
+[167] [168]) (modulo_exp_ch15_ciclos_evolutivos.tex [169]
 Cap\'{\i }tulo 16.
-[147
+[170
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 78--78
@@ -2521,7 +2545,7 @@ Underfull \hbox (badness 1629) in paragraph at lines 88--88
 []|\T1/cmr/m/n/12 Explica cada V1--
  []
 
-[148]
+ignored error: Infinite glue shrinkage found in box being split [171] [172]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (â\lst@FillFixed@\lst@EC†).
 
@@ -2552,7 +2576,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-[149]
+
 Underfull \hbox (badness 10000) in paragraph at lines 170--170
 []|\T1/cmr/m/n/12 Definir ar-bi-tra-gem,
  []
@@ -2582,7 +2606,7 @@ Underfull \hbox (badness 5954) in paragraph at lines 175--176
 []|\T1/cmr/m/n/12 AutoEvolve (Cap.
  []
 
-
+ignored error: Infinite glue shrinkage found in box being split [173]
 Underfull \hbox (badness 3058) in paragraph at lines 189--189
 []\T1/cmr/m/n/12 Tempo ate pri-meiro ex-pe-ri-
  []
@@ -2597,7 +2621,7 @@ Underfull \hbox (badness 7451) in paragraph at lines 192--192
 []\T1/cmr/m/n/12 Taxa de apro-va-cao CT-P3
  []
 
-[150]
+
 Overfull \hbox (0.91669pt too wide) in paragraph at lines 208--209
 []\T1/cmr/m/n/12 Teste de sa-ni-dade passa (\T1/cmtt/m/n/12 python -c "from cor
 e.container import Container"\T1/cmr/m/n/12 ) 
@@ -2609,12 +2633,12 @@ Overfull \hbox (5.22108pt too wide) in paragraph at lines 218--220
 ade e Au-di-ta-bi-li-dade \T1/cmr/m/n/12 (IN-TE-GRI-DADE.md,
  []
 
-
+[174]
 Underfull \hbox (badness 1107) in paragraph at lines 233--234
 []\T1/cmr/m/n/12 Scores do Cora-Debate ro-tu-la-dos
  []
 
-[151]) (modulo_exp_apx_a_geometria.tex [152]
+[175]) (modulo_exp_apx_a_geometria.tex [176]
 Ap\^endice A.
 ! Undefined control sequence.
 l.4 ...erto a exposi SS o cl issica de \citeonline
@@ -2643,6 +2667,9 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+[177
+
+]
 ! Undefined control sequence.
 l.34 ...o $\R^n$ com a carta identidade $(\R^n,\id
                                                   )$ c uma variedade suave. ...
@@ -2652,9 +2679,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[153
 
-]
 Overfull \hbox (0.5336pt too wide) in paragraph at lines 50--52
 \T1/cmr/m/n/12 formam uma base de $\OML/cmm/m/it/12 T[]M$\T1/cmr/m/n/12 , de-no
 -mi-nada \T1/cmr/bx/n/12 base co-or-de-nada\T1/cmr/m/n/12 . Todo ve-tor tan-gen
@@ -2670,7 +2695,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[154]
+[178] [179]
 ! Undefined control sequence.
 l.123 que satisfaz $Kd + dK = \id
                                  $ em $\Omega^k(U)$ para $k\geq 1$. Se $d\om...
@@ -2735,7 +2760,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[155] [156]
+[180]
 ! Undefined control sequence.
 l.180 ...uave $s:M\to E$ tal que $\pi\circ s = \id
                                                   _M$. Campos vetoriais s o ...
@@ -2745,6 +2770,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+[181]
 ! Undefined control sequence.
 l.219 ...an SSas, remetemos o leitor a \citeonline
                                                   {nakahara2003geometry}, \c...
@@ -2772,7 +2798,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-) (modulo_exp_apx_b_nelson.tex [157]
+) (modulo_exp_apx_b_nelson.tex [182]
 Ap\^endice B.
 ! Undefined control sequence.
 l.4 ... na cinem itica estoc istica de \citeonline
@@ -2792,7 +2818,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[158
+[183
 
 ]
 Overfull \hbox (4.87955pt too wide) in paragraph at lines 48--49
@@ -2824,12 +2850,12 @@ Underfull \hbox (badness 2894) in paragraph at lines 80--80
 []\T1/cmr/m/n/12 Nelson (an-tis-sim
  []
 
-[159]
+[184]
 Overfull \hbox (11.11351pt too wide) detected at line 110
 []
  []
 
-[160]
+[185]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 133.
@@ -2842,6 +2868,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 133.
 
+[186]
 ! Undefined control sequence.
 l.159 ...edades riemannianas, consulte \citeonline
                                                   {nelson1967dynamical} e \c...
@@ -2860,11 +2887,11 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[161]) (modulo_exp_apx_c_exercicios.tex [162]
+) (modulo_exp_apx_c_exercicios.tex [187]
 Ap\^endice C.
-[163
+[188
 
-] [164]
+] [189] [190]
 ! Undefined control sequence.
 l.124  g_{ij}(x) = \diag
                         \bigl(e^{2\beta x^1},\;1,\;1\bigr),\qquad \beta>0.
@@ -2874,7 +2901,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[165] [166]
+[191] [192]
 ! Undefined control sequence.
 <recently read> \rank 
                       
@@ -2886,7 +2913,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[167]
+[193]
 ! Undefined control sequence.
 <recently read> \rank 
                       
@@ -2909,7 +2936,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[168]
+[194]
 ! Undefined control sequence.
 l.268 ...c{\partial g_{ij}}{\partial t} = -2\,\Ric
                                                   _{ij}(g).
@@ -2984,7 +3011,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[169]) (modulo_exp_apx_d_referencias.tex [170]
+[195]) (modulo_exp_apx_d_referencias.tex [196]
 Ap\^endice D.
 
 Overfull \hbox (45.12752pt too wide) in paragraph at lines 21--22
@@ -2992,15 +3019,15 @@ Overfull \hbox (45.12752pt too wide) in paragraph at lines 21--22
 1/cmr/m/n/12 .arXiv:cond-mat/9804207.
  []
 
-[171
+[197
 
-]
+] [198]
 Overfull \hbox (2.50139pt too wide) in paragraph at lines 73--74
 []\T1/cmr/m/n/12 (2001). \T1/cmr/m/it/12 Op-ti-mal Exe-cu-tion of Port-fo-lio T
 ran-sac-ti-ons\T1/cmr/m/n/12 . \T1/cmr/m/it/12 Jour-
  []
 
-[172]
+
 Overfull \hbox (61.75807pt too wide) in paragraph at lines 83--84
 \T1/cmr/m/it/12 ons\T1/cmr/m/n/12 . 6. ed. Ber-lin: Sprin-ger. \T1/cmr/bx/n/12 
 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-3-540-04758-2\T1/cmr/m/n/12 . \T1/cmr/
@@ -3035,7 +3062,7 @@ Overfull \hbox (30.91797pt too wide) in paragraph at lines 109--110
 /12 978-0-470-49648-3
  []
 
-
+[199]
 Overfull \hbox (57.19763pt too wide) in paragraph at lines 113--114
 \T1/cmr/m/n/12 Cam-bridge Uni-ver-sity Press. \T1/cmr/bx/n/12 ISBN\T1/cmr/m/n/1
 2 : \T1/cmtt/m/n/12 978-1-107-60260-1\T1/cmr/m/n/12 . \T1/cmr/bx/n/12 DOI\T1/cm
@@ -3056,7 +3083,7 @@ Overfull \hbox (69.27663pt too wide) in paragraph at lines 123--124
 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-0-486-44546-5\T1/cmr/m/n/12 . 
  []
 
-[173]
+
 Overfull \hbox (94.61679pt too wide) in paragraph at lines 141--142
 \T1/cmr/m/it/12 Ame-ri-can Mathe-ma-ti-cal So-ci-ety\T1/cmr/m/n/12 , v. 75, n. 
 3, p. 428--443. \T1/cmr/bx/n/12 DOI\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 10.1090/S00
@@ -3074,7 +3101,7 @@ I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-
+[200]
 Overfull \hbox (75.3719pt too wide) in paragraph at lines 155--156
 \T1/cmr/m/it/12 cal Phy-sics\T1/cmr/m/n/12 . Lon-don: Sprin-ger. \T1/cmr/bx/n/1
 2 ISBN\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 978-0-85729-162-2\T1/cmr/m/n/12 . \T1/cm
@@ -3096,7 +3123,7 @@ Overfull \hbox (57.19763pt too wide) in paragraph at lines 167--168
 r/m/n/12 : \T1/cmtt/m/n/12 10.1017/CBO9781107325609\T1/cmr/m/n/12 . 
  []
 
-[174]
+
 Overfull \hbox (36.89955pt too wide) in paragraph at lines 186--187
 []\T1/cmr/m/it/12 Nota bi-bli-ogr ifica: \T1/cmr/m/n/12 To-dos os DOIs fo-ram v
 e-ri-fi-ca-dos via API do Cros-s-Ref (\T1/cmtt/m/n/12 api.crossref.org\T1/cmr/m
@@ -3110,7 +3137,7 @@ worldcat.org\T1/cmr/m/n/12 ) e Open-Li-brary (\T1/cmtt/m/n/12 openlibrary.org\T
 1/cmr/m/n/12 ).
  []
 
-) [175] (modulo_dca_gat_expandido.aux)
+[201]) [202] (modulo_dca_gat_expandido.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -3127,67 +3154,150 @@ d.
 (rerunfilecheck)             Checksum: B76264DEDA9C5ADD7295F09F812C89F8;64205.
  ) 
 Here is how much of TeX's memory you used:
- 18334 strings out of 467871
- 278427 string characters out of 5418376
- 1302176 words of memory out of 5000000
- 44718 multiletter control sequences out of 15000+600000
- 671882 words of font info for 162 fonts, out of 8000000 for 9000
+ 18403 strings out of 467871
+ 279577 string characters out of 5418376
+ 1364989 words of memory out of 5000000
+ 44757 multiletter control sequences out of 15000+600000
+ 671567 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,91p,1060b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
-1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecit1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecit1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ectt1095.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\
-marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\
-Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk
-> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1
-200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecbx1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\font
-s/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local\MiKTe
-X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local
-\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\marce\AppData
-\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\A
-ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\m
-arce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\U
-sers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk>
- <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm17
-28.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecrm2488.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/U
-sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.p
+ 75i,16n,89p,1060b,2201s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.21} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.20} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.19} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.18} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.17} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.16} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+ <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit12
+00.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecit1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+pi600\ectt1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
+n/ec/dpi600\ecbx0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/j
+knappen/ec/dpi600\eccc1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/lj
+four/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppData\Local\MiKTeX
+\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\AppData\Local\
+MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\AppData\
+Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\marce\Ap
+pData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\ma
+rce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Us
+ers\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> 
+<C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx100
+0.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
+cti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
+i600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
+/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljf
+our/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/
+pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local\MiKTeX\
+fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\marce\AppData\Local\M
+iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\marce\AppData\L
+ocal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\marce\App
+Data\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\mar
+ce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Use
+rs\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <
+C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2488
+.pk><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmex10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marce/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marce/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marce/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/mar
+ce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
+sers/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.p
 fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr12.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
-/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsf
-s/rsfs10.pfb>
-Output written on modulo_dca_gat_expandido.pdf (176 pages, 1772025 bytes).
+/cmr6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/m
+arce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10
+.pfb>
+Output written on modulo_dca_gat_expandido.pdf (203 pages, 1792487 bytes).
 PDF statistics:
- 5903 PDF objects out of 6186 (max. 8388607)
- 2193 named destinations out of 2487 (max. 500000)
+ 5997 PDF objects out of 6186 (max. 8388607)
+ 2220 named destinations out of 2487 (max. 500000)
  2265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

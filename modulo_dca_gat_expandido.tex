@@ -14,13 +14,15 @@
 \usepackage{hyperref}
 \usepackage[shortlabels]{enumitem}
 \usepackage{fancyhdr}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[a4paper,left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{bm}
 \usepackage{mathrsfs}
+\usepackage{setspace}
+\onehalfspacing
 
 \setlength{\headheight}{14.5pt}
 \addtolength{\topmargin}{-2.5pt}
@@ -39,13 +41,19 @@
 
 \definecolor{codebg}{rgb}{0.95,0.95,0.95}
 \lstset{
- language=Python,
- basicstyle=\ttfamily\small,
- backgroundcolor=\color{codebg},
- frame=single,
- numbers=left,
- numberstyle=\tiny,
- breaklines=true
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakautoindent=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  xleftmargin=8pt,
+  xrightmargin=0pt,
+  linewidth=\dimexpr\textwidth-16pt\relax
 }
 
 % Math operators
