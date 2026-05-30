@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -464,6 +464,20 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count331
 \@thisrulewidth=\dimen191
 )
+(C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
+Package: bm 2025/10/21 v1.2g Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+)
+(C:\Program Files\MiKTeX\tex/latex/jknappen\mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup9
+)
 \c@teo=\count332
 \c@ex=\count333
 \c@obs=\count334
@@ -514,24 +528,24 @@ LaTeX Warning: Label `nakahara2003' multiply defined.
 )
 \openout1 = `modulo_dca_gat_expandido.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -558,7 +572,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 75.
+Package hyperref Info: Link coloring OFF on input line 90.
  (modulo_dca_gat_expandido.out) (modulo_dca_gat_expandido.out)
 \@outlinefile=\write3
 \openout3 = `modulo_dca_gat_expandido.out'.
@@ -599,50 +613,55 @@ Package hyperref Info: Link coloring OFF on input line 75.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count344
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-[1
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 92
+.
+
+(C:\Program Files\MiKTeX\tex/latex/jknappen\ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) [1
 
 
 {C:/Users/marce/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 128--128
+Underfull \hbox (badness 1019) in paragraph at lines 143--143
 \T1/cmr/m/n/12 pra-tico com Open-Code Ecosys-tem: va-li-da-cao ci-en-ti-fica, S
 DD+TDD, ci-clos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
+Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
@@ -674,151 +693,27 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 Cap\'{\i }tulo 1.
 [17] [18] [19] [20] [21]) (modulo_exp_ch02_probabilidade.tex [22]
 Cap\'{\i }tulo 2.
-! Undefined control sequence.
-<argument> ...itica de Kolmogorov, veja \textcite 
-                                                  {williams1991probability},...
-l.14 ... extenso com  anfase em teoria da medida.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...bility}, Cap -tulos 1--3. \textcite 
-                                                  {billingsley2012probabilit...
-l.14 ... extenso com  anfase em teoria da medida.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [23
 
-]
+] [24]
 ! Undefined control sequence.
-l.35         \P\brk
-                   {\bigcup_{n=1}^\infty A_n} = \sum_{n=1}^\infty \P(A_n).
+l.64     \\E[X] := \int_\Omega X(\omega) \dif
+                                              \\PP(\omega).
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<argument> ...essos estoc isticos. Veja \textcite 
-                                                  {oksendal2003stochastic}, ...
-l.46 ...ite{oksendal2003stochastic}, Cap -tulo 2.}
-                                                   satisfaz $\$\\mathcal{F}_...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.66 ...grais seja finita. Dizemos que $X \in \Lp^
+                                                  1(\Omega, \F, \\PP)$ se $\...
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-! Undefined control sequence.
-l.64     \E[X] := \int_\Omega X(\omega) \dif
-                                             \P(\omega).
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[24]
-! Undefined control sequence.
-l.66 ...egrais seja finita. Dizemos que $X \in \Lp
-                                                  ^1(\Omega, \F, \P)$ se $\E...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.72     \Var
-             (X) := \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.74 ...ovari  ncia} entre duas v.a. $X, Y \in \Lp
-                                                  ^2$  c $\Cov(X,Y) := \E[(X...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Cov 
-                     
-l.74 ... entre duas v.a. $X, Y \in \Lp^2$  c $\Cov
-                                                  (X,Y) := \E[(X - \E[X])(Y ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...ma da unicidade de L cvy. \textcite 
-                                                  {williams1991probability},...
-l.80 ...{williams1991probability}, Se SS  o 16.6.}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.90 Se $X \in \Lp
-                  ^2$, ent  o para todo $\varepsilon > 0$:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \Var 
-                (X)
-l.92 ...psilon) \leq \frac{\Var(X)}{\varepsilon^2}
-                                                   \quad \text{(Chebyshev)}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \brk 
-                     
-l.107 ...x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\brk
-                                                  {-\frac{(x-\mu)^2}{2\sigma...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Var 
-                     
-l.109 com $\E[X] = \mu$ e $\Var
-                               (X) = \sigma^2$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.74 ...vari  ncia} entre duas v.a. $X, Y \in \Lp^
+                                                  2$  c $\Cov(X,Y) := \\E[(X...
+I treat `x^1^2' essentially like `x^1{}^2'.
 
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
@@ -828,6 +723,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
 [25]
+! Double superscript.
+l.90 Se $X \in \Lp^
+                   2$, ent  o para todo $\varepsilon > 0$:
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+
 Overfull \hbox (4.16441pt too wide) in paragraph at lines 115--116
 [][]\T1/cmr/bx/n/12 Definicao 2.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
 al)\T1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/
@@ -836,92 +737,15 @@ mm/m/it/12 X \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^V; ^^[[]
 \OT1/cmr/m/n/12 )$\T1/cmr/m/it/12 .
  []
 
-! Undefined control sequence.
-<recently read> \brk 
-                     
-l.117 ...) = \frac{1}{x\sigma\sqrt{2\pi}} \exp\brk
-                                                  {-\frac{(\log x - \mu)^2}{...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Var 
-                     
-l.119 com $\E[X] = e^{\mu + \sigma^2/2}$ e $\Var
-                                                (X) = e^{2\mu + \sigma^2}(e^...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.125 ... k!$ para $k \in \N_0$, com $\E[X] = \Var
-                                                  (X) = \lambda$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Var 
-                     
-l.131 ... \geq 0$, com $\E[X] = 1/\lambda$ e $\Var
-                                                  (X) = 1/\lambda^2$. A prop...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.150 Seja $X \in \Lp
-                     ^1(\Omega, \F, \P)$ e $\G \subseteq \F$ uma sub-$\sigma...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.150 Seja $X \in \Lp^1(\Omega, \F, \P)$ e $\G
-                                               \subseteq \F$ uma sub-$\sigma...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.150 ...{esperan SSa condicional} de $X$ dada $\G
-                                                  $  c a  onica (q.c.) vari ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.150 ...(q.c.) vari ivel aleat 3ria $\E[X \mid \G
-                                                  ]$ satisfazendo:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [26]
+! Double superscript.
+l.150 Seja $X \in \Lp^
+                      1(\Omega, \F, \\PP)$ e $\G \subseteq \F$ uma sub-$\sig...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
 ! Undefined control sequence.
-l.152     \item $\E[X \mid \G
-                             ]$  c $\G$-mensur ivel;
+l.153 ...o $G \in \G$, $\int_G \\E[X \mid \G] \dif
+                                                   \\PP = \int_G X \dif \\PP$.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -929,124 +753,23 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<recently read> \G 
-                   
-l.152     \item $\E[X \mid \G]$  c $\G
-                                      $-mensur ivel;
+l.153 ... \\E[X \mid \G] \dif \\PP = \int_G X \dif
+                                                   \\PP$.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.153     \item Para todo $G \in \G
-                                   $, $\int_G \E[X \mid \G] \dif \P = \int_G...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.157 ...ues $\G$-mensur iveis no sentido de $\Lp^
+                                                  2$, ou seja,  c a melhor a...
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-! Undefined control sequence.
-l.153 ...ara todo $G \in \G$, $\int_G \E[X \mid \G
-                                                  ] \dif \P = \int_G X \dif ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.153 ...do $G \in \G$, $\int_G \E[X \mid \G] \dif
-                                                   \P = \int_G X \dif \P$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.153 ...t_G \E[X \mid \G] \dif \P = \int_G X \dif
-                                                   \P$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.157 A condi SS  o (ii) afirma que $\E[X \mid \G
-                                                 ]$  c a \textbf{proje SS  o...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.157 ... de $X$ no subespa SSo das fun SS ues $\G
-                                                  $-mensur iveis no sentido ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Lp 
-                    
-l.157 ... ues $\G$-mensur iveis no sentido de $\Lp
-                                                  ^2$, ou seja,  c a melhor ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.157 ...ndo apenas a informa SS  o contida em $\G
-                                                  $. Em finan SSas, se $\G =...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.157 ... o contida em $\G$. Em finan SSas, se $\G
-                                                   = \$\\mathcal{F}_t\$$ rep...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.160 Sejam $X, Y \in \Lp
-                         ^1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.160 Sejam $X, Y \in \Lp^1$ e $\G
-                                  , \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.160 Sejam $X, Y \in \Lp^
+                          1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
+I treat `x^1^2' essentially like `x^1{}^2'.
 
 
 LaTeX Warning: Command \H invalid in math mode on input line 160.
@@ -1120,82 +843,22 @@ l.160 ...m $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Undefined control sequence.
-l.162 ...\textbf{Linearidade:} $\E[aX + bY \mid \G
-                                                  ] = a\E[X \mid \G] + b\E[Y...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.162 ...de:} $\E[aX + bY \mid \G] = a\E[X \mid \G
-                                                  ] + b\E[Y \mid \G]$;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Overfull \hbox (6.68982pt too wide) in paragraph at lines 160--161
+[][]\T1/cmr/bx/n/12 Teorema 2.14 \T1/cmr/m/n/12 (Pro-pri-e-da-des da Es-pe-ran 
+SSa Con-di-ci-o-nal)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se-jam $\OML/cmm/m/it/1
+2 X; Y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 L[][]$ \T1/cmr/m/it/12 e $\OMS/cmsy/
+m/n/12 G\OML/cmm/m/it/12 ; []$$^^[$\T1/cmr/m/it/12 -
+ []
 
-! Undefined control sequence.
-l.162 ...\mid \G] = a\E[X \mid \G] + b\E[Y \mid \G
-                                                  ]$;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.163 ...tbf{Retirada do conhecido:} se $Y$  c $\G
-                                                  $-mensur ivel e limitada, ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Package fancyhdr Warning: \headheight is too small (14.5pt): 
+(fancyhdr)                Make it at least 27.07053pt, for example:
+(fancyhdr)                \setlength{\headheight}{27.07053pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-! Undefined control sequence.
-l.163 ...G$-mensur ivel e limitada, $\E[YX \mid \G
-                                                  ] = Y \E[X \mid \G]$;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.163 ...imitada, $\E[YX \mid \G] = Y \E[X \mid \G
-                                                  ]$;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \G 
-                   
-l.164 ...end ancia:} se $X$  c independente de $\G
-                                                  $, ent  o $\E[X \mid \G] =...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.164 ...ndependente de $\G$, ent  o $\E[X \mid \G
-                                                  ] = \E[X]$;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+[27]
 
 LaTeX Warning: Command \H invalid in math mode on input line 165.
 
@@ -1247,15 +910,6 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-! Undefined control sequence.
-l.165 ...ropriedade de torre:} se $\H \subseteq \G
-                                                  $, ent  o
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -1264,120 +918,115 @@ l.166     \begin{equation}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Undefined control sequence.
-l.167         \E\brk
-                    {\E[X \mid \G] \mid \H} = \E[X \mid \H];
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.167         \E\brk{\E[X \mid \G
-                                 ] \mid \H} = \E[X \mid \H];
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 LaTeX Warning: Command \H invalid in math mode on input line 167.
 
-! Argument of \T1\H has an extra }.
+! Missing $ inserted.
 <inserted text> 
-                \par 
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
-I've run across a `}' that doesn't seem to match anything.
-For example, `\def\a#1{...}' and `\a}' would produce
-this error. If you simply proceed now, the `\par' that
-I've just inserted will cause me to report a runaway
-argument that might be the root of the problem. But if
-your `}' was spurious, just type `2' and it will go away.
+                $
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-Runaway argument?
-! Paragraph ended before \T1\H was complete.
+! Missing delimiter (. inserted).
 <to be read again> 
-                   \par 
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+                   \global 
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+! Extra \right.
+<to be read again> 
+                   \global 
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I'm ignoring a \right that had no matching \left.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+! Improper \spacefactor.
+<recently read> \spacefactor 
+                             
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+You can refer to \spacefactor only in horizontal mode;
+you can refer to \prevdepth only in vertical mode; and
+neither of these is meaningful inside \write. So
+I'm forgetting what you said and using zero instead.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
+! Extra }, or forgotten $.
+\add@accent ... \accent@spacefactor \spacefactor }
+                                                  \let \maybe@load@fontshape...
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-! Extra }, or forgotten \endgroup.
-<recently read> }
-                 
-l.167         \E\brk{\E[X \mid \G] \mid \H}
-                                            = \E[X \mid \H];
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! Missing { inserted.
+<to be read again> 
+                   \right 
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing delimiter (. inserted).
+<to be read again> 
+                   \egroup 
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
+
+! Extra \right.
+<to be read again> 
+                   \egroup 
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
+I'm ignoring a \right that had no matching \left.
+
+! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.167         \E\brk{\\E[X \mid \G] \mid \H}
+                                             = \\E[X \mid \H];
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
-
-
-! LaTeX Error: \mathbb allowed only in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.167         \E\brk{\E[X \mid \G] \mid \H} = \E
-                                                [X \mid \H];
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167 ...\E\brk{\E[X \mid \G] \mid \H} = \E[X \mid
-                                                   \H];
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
 
 LaTeX Warning: Command \H invalid in math mode on input line 167.
@@ -1385,7 +1034,7 @@ LaTeX Warning: Command \H invalid in math mode on input line 167.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
-l.167 ...rk{\E[X \mid \G] \mid \H} = \E[X \mid \H]
+l.167 ...{\\E[X \mid \G] \mid \H} = \\E[X \mid \H]
                                                   ;
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -1411,6 +1060,50 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
+! Missing } inserted.
+<inserted text> 
+                }
+l.168     \end{equation}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.168     \end{equation}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.168     \end{equation}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.168     \end{equation}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 ! LaTeX Error: Not allowed in LR mode.
 
@@ -1419,7 +1112,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \m...
+                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
 
 You've lost some text.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1432,7 +1125,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \m...
+                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
 
 You've lost some text.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1441,7 +1134,7 @@ If that doesn't work, type  X <return>  to quit.
 <inserted text> 
                 }
 l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \m...
+                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1452,7 +1145,7 @@ my insertion and my current dilemma will both disappear.
 <inserted text> 
                 $
 l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \m...
+                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -1460,187 +1153,24 @@ you left one out. Proceed, with fingers crossed.
 <inserted text> 
                 }
 l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \m...
+                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-! Undefined control sequence.
-l.169 ... $X \leq Y$ q.c. $\implies$ $\E[X \mid \G
-                                                  ] \leq \E[Y \mid \G]$ q.c.;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.170 ... se $\phi$  c convexa e $\phi(X) \in \Lp^
+                                                  1$, ent  o $\phi(\\E[X \mi...
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-! Undefined control sequence.
-l.169 ...implies$ $\E[X \mid \G] \leq \E[Y \mid \G
-                                                  ]$ q.c.;
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Double superscript.
+l.192 ...\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^
+                                                  1$ para todo $t$  c um:
+I treat `x^1^2' essentially like `x^1{}^2'.
 
-! Undefined control sequence.
-l.170 ...} se $\phi$  c convexa e $\phi(X) \in \Lp
-                                                  ^1$, ent  o $\phi(\E[X \mi...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.170 ...(X) \in \Lp^1$, ent  o $\phi(\E[X \mid \G
-                                                  ]) \leq \E[\phi(X) \mid \G...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.170 ...hi(\E[X \mid \G]) \leq \E[\phi(X) \mid \G
-                                                  ]$ q.c.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.179     V_t = e^{-r(T-t)} \, \E^\Q
-                                     [H_T \mid \$\\mathcal{F}_t\$],
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.181 onde $\Q
-              $  c a medida martingal equivalente (medida neutra ao risco) e...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.181 ...e risco. A esperan SSa condicional $\E^\Q
-                                                  [\cdot \mid \$\\mathcal{F}...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.181 ...orre assegura que $e^{-rt} V_t$  c um $\Q
-                                                  $-martingal, implicando au...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...rtingal equivalente. Veja \textcite 
-                                                  {delbaen2006mathematics} e...
-l.189 ...{williams1991probability}, Cap -tulo 10.}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...delbaen2006mathematics} e \textcite 
-                                                  {williams1991probability},...
-l.189 ...{williams1991probability}, Cap -tulo 10.}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package fancyhdr Warning: \headheight is too small (14.5pt): 
-(fancyhdr)                Make it at least 27.07053pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.07053pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
-
-[27]
-! Undefined control sequence.
-l.192 ...$\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp
-                                                  ^1$ para todo $t$  c um:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (3.30666pt too wide) in paragraph at lines 192--194
-\OML/cmm/m/it/12 mathcalF[]\OT1/cmr/m/n/12 $\OMS/cmsy/m/n/12 g[]\OML/cmm/m/it/1
-2 ; \OMS/cmsy/m/n/12 {\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 um espa SSo de pro-ba-
-bi-li-dade fil-trado. Um pro-cesso es-toc is-tico $\OMS/cmsy/m/n/12 f\OML/cmm/m
-/it/12 M[]\OMS/cmsy/m/n/12 g[]$
- []
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.211 ...). Sob a medida martingal equivalente $\Q
-                                                  $, o \textbf{pre SSo desco...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.211 ...}_t := S_t / B_t = e^{-rt} S_t$  c um $\Q
-                                                  $-martingal:
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.213     \E^\Q
-               [\widetilde{S}_t \mid \F_s] = \widetilde{S}_s, \quad 0 \leq s...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.215 ...e de risco, deve ser um martingal sob $\Q
-                                                  $. No modelo de Black--Sch...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+[28]
 ! Undefined control sequence.
 <recently read> \dif 
                      
@@ -1661,87 +1191,6 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.215 ...S}_t = \sigma \widetilde{S}_t \dif W_t^\Q
-                                                  $, onde $W_t^\Q$  c um $\Q...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.215 ...}_t = \sigma \widetilde{S}_t \dif W_t^\Q$
-                                                  , onde $W_t^\Q$  c um $\Q$...
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.215 ...}_t = \sigma \widetilde{S}_t \dif W_t^\Q$
-                                                  , onde $W_t^\Q$  c um $\Q$...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Undefined control sequence.
-l.215 ...widetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q
-                                                  $  c um $\Q$-movimento bro...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.215 ...idetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$
-                                                    c um $\Q$-movimento brow...
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.215 ...idetilde{S}_t \dif W_t^\Q$, onde $W_t^\Q$
-                                                    c um $\Q$-movimento brow...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.215 ...}_t \dif W_t^\Q$, onde $W_t^\Q$  c um $\Q
-                                                  $-movimento browniano, e a...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[28]
-! Undefined control sequence.
-l.262 ...1}} - W_{t_i})^2 = t \quad \text{em } \Lp
-                                                  ^2.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
 (fancyhdr)                Make it at least 27.07053pt, for example:
@@ -1750,6 +1199,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
 [29]
+! Double superscript.
+l.262 ...}} - W_{t_i})^2 = t \quad \text{em } \Lp^
+                                                  2.
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+[30]
 ! Undefined control sequence.
 <recently read> \dif 
                      
@@ -1800,17 +1255,6 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<recently read> \brk 
-                     
-l.281 cuja solu SS  o  c $S_t = S_0 \exp\brk
-                                            {(\mu - \sigma^2/2)t + \sigma W_...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
 <recently read> \dif 
                      
 l.284 ...intuitiva  c que o retorno relativo $\dif
@@ -1839,29 +1283,6 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<argument> ...edida de Wiener, consulte \textcite 
-                                                  {oksendal2003stochastic}, ...
-l.287 ...illingsley2012probability}, Se SS  o 37.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...ochastic}, Ap andice A, e \textcite 
-                                                  {billingsley2012probabilit...
-l.287 ...illingsley2012probability}, Se SS  o 37.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[30]
 
 Package fancyhdr Warning: \headheight is too small (14.5pt): 
 (fancyhdr)                Make it at least 27.07053pt, for example:
@@ -1869,100 +1290,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.57053pt}.
 
-[31] [32
+[31] [32]) (modulo_exp_ch03_calculo_estocastico.tex [33
 
-]) (modulo_exp_ch03_calculo_estocastico.tex [33] [34
+] [34
 
 ]
 Cap\'{\i }tulo 3.
-! Undefined control sequence.
-<argument> (varia\c {c}\~ao de 1\ordinal 
-                                         { a} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
-                                                  ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  { a} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
-                                                  ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  { a} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
-                                                  ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 1\ordinal 
-                                                  { a} ordem)
-l.10 ...t{(varia\c{c}\~ao de 1\ordinal{ a} ordem)}
-                                                  ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> (varia\c {c}\~ao de 2\ordinal 
-                                         { a} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  { a} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  { a} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...false (varia\c {c}\~ao de 2\ordinal 
-                                                  { a} ordem)
-l.14 ...t{(varia\c{c}\~ao de 2\ordinal{ a} ordem)}
-                                                  .
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [35] [36] [37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2218,7 +1551,7 @@ Runaway argument?
 ! File ended while scanning use of \@xdblarg.
 <inserted text> 
                 \par 
-l.150 \input{modulo_exp_ch07_conexao.tex}
+l.165 \input{modulo_exp_ch07_conexao.tex}
                                          
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -2524,17 +1857,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 []\T1/cmr/m/n/12 Condição NFLVR
  []
 
-! Undefined control sequence.
-<recently read> \bm 
-                    
-l.21 Vorticidade $\bm
-                     {\omega} = \nabla\times\mathbf{v}$ & Oportunidades de a...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
 []\T1/cmr/m/n/12 Razão es-pe-cu-la-
@@ -2554,17 +1876,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 33.
 
-[120]
-! Undefined control sequence.
-l.123 \bm
-         {\omega}_F = \nabla \times J
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[121] [122] [123] [124
+[120] [121] [122] [123] [124
 
 ]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.delbaen1
@@ -2647,48 +1959,6 @@ l.285 \bibitem{ilinski2000}
 
 ]
 Cap\'{\i }tulo 12.
-! Undefined control sequence.
-l.11 \mathscr
-             {H}: [0,1] \times [0,T] \times \Omega \to \mathbb{R}^n
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \mathscr 
-                         
-l.16     \item $\mathscr
-                        {H}(0,t,\omega) = H_0(t,\omega)$ para todo $(t,\omeg...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \mathscr 
-                         
-l.17     \item $\mathscr
-                        {H}(1,t,\omega) = H_1(t,\omega)$ para todo $(t,\omeg...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \mathscr 
-                         
-l.18 ...m Para cada $\lambda \in [0,1]$, $\mathscr
-                                                  {H}(\lambda,\cdot,\cdot)$ ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [135] [136]
 Overfull \hbox (22.87411pt too wide) in paragraph at lines 93--94
 []\T1/cmr/m/n/12 O grupo fun-da-men-tal do es-paço de mer-ca-dos mó-dulo ar-bi-
@@ -3009,17 +2279,6 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<recently read> \GL 
-                    
-l.139 O grupo linear geral $\GL
-                               (n,\R)$  c um grupo de Lie de dimens  o $n^2$...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
 <recently read> \SL 
                     
 l.139 ...o $n^2$. Seus subgrupos fechados --- $\SL
@@ -3064,17 +2323,6 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-<recently read> \GL 
-                    
-l.139 ...Cartan--von Neumann). Em finan SSas, $\GL
-                                                  (n,\R)$ modela transforma ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
 <recently read> \SO 
                     
 l.139 ...eis entre cestas de ativos, enquanto $\SO
@@ -3085,48 +2333,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[185]
-! Undefined control sequence.
-l.150 Em termos matriciais, para $G\subset\GL
-                                             (n,\R)$, tem-se $\mathfrak{g}\s...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \pr 
-                    
-l.167 ...hi:\pi^{-1}(U)\to U\times F$ tal que $\pr
-                                                  _1\circ\phi = \pi$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \GL 
-                    
-l.174 ...todas as bases de $T_xM$; isomorfo a $\GL
-                                                  (n,\R)$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[186]
-! Undefined control sequence.
-l.176 ... $P$ e uma representa SS  o $\rho:G\to\GL
-                                                  (V)$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+[185] [186]
 ! Undefined control sequence.
 l.180 ...uave $s:M\to E$ tal que $\pi\circ s = \id
                                                   _M$. Campos vetoriais s  o...
@@ -3255,37 +2462,7 @@ and I'll forget about whatever was undefined.
 
 ]
 Ap\^endice C.
-[195]
-! Undefined control sequence.
-l.75   \E^{\Q
-             }[S_1] = q\cdot 120 + (1-q)\cdot 90 = S_0 = 100.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.79 ...f{medida martingal equivalente  onica} $\Q
-                                                  $. O mercado  c, portanto,...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.79 ...rivativo europeu $H(S_1)$  c $V_0 = \E^{\Q
-                                                  }[H(S_1)] = \frac{1}{3}H(1...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[196]
+[195] [196]
 ! Undefined control sequence.
 l.124   g_{ij}(x) = \diag
                          \bigl(e^{2\beta x^1},\;1,\;1\bigr),\qquad \beta>0.
@@ -3324,72 +2501,6 @@ and I'll forget about whatever was undefined.
                       
 l.236 ...a de Mahalanobis instant  nea}. Se $\rank
                                                   (\sigma)<n$, h i depend an...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.247 ...csicas de $g$ define univocamente uma $\Q
-                                                  $-medida martingal se e so...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.255 \textbf{Constru SS  o de $\Q$.}
-                                      Defina $\Q$ via derivada de Radon--Nik...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.255 \textbf{Constru SS  o de $\Q$.} Defina $\Q
-                                                $ via derivada de Radon--Nik...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> d\Q 
-               
-l.257   \frac{d\Q}{d\P}
-                       \Big|_{\mathcal{F}_T} = \exp\!\left(-\int_0^T \theta_...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.259 ...on. A condi SS  o de Novikov para que $\Q
-                                                  $ seja medida de probabili...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \Q 
-                   
-l.261 ...  o do fibrado) $\iff$ exist ancia de $\Q
-                                                  $  onica (completude de me...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3471,66 +2582,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<recently read> \C 
-                   
-l.293 ...bis  c a m ctrica de Fubini--Study em $\C
-                                                   P^1\cong S^2$. Mostre que...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \C 
-                   
-l.297 ...tura.} A m ctrica de Fubini--Study em $\C
-                                                   P^1$  c, em coordenadas d...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.302 ...FS}}$, com integral normalizada $\int_{\C
-                                                   P^1}\Omega = 2\pi$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[201]
-! Undefined control sequence.
-l.308 com $\int_{\C
-                    P^1} c_1 = 1 \neq 0$. A classe de Chern  c um \textbf{in...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.310 ...SS  o de hedging exato de um payoff $H:\C
-                                                   P^1\to\R$  c que $H$ seja...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.312 ...ual $\mathcal{E}\geq \frac{1}{2}|\int_{\C
-                                                   P^1}c_1|$. Este erro  c d...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-) (modulo_exp_apx_d_referencias.tex [202]
+[201]) (modulo_exp_apx_d_referencias.tex [202]
 Ap\^endice D.
 
 Overfull \hbox (45.12752pt too wide) in paragraph at lines 21--22
@@ -3673,11 +2725,11 @@ d.
 (rerunfilecheck)             Checksum: 91ACF20B40283B8081290D81C5F42141;60931.
  ) 
 Here is how much of TeX's memory you used:
- 18096 strings out of 467871
- 274636 string characters out of 5418376
- 1300077 words of memory out of 5000000
- 44476 multiletter control sequences out of 15000+600000
- 666052 words of font info for 139 fonts, out of 8000000 for 9000
+ 18251 strings out of 467871
+ 276998 string characters out of 5418376
+ 1302161 words of memory out of 5000000
+ 44612 multiletter control sequences out of 15000+600000
+ 671882 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,87p,1067b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -3729,10 +2781,11 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marce/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/marce/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
 /Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb>
-Output written on modulo_dca_gat_expandido.pdf (207 pages, 1782698 bytes).
+msbm10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsf
+s/rsfs10.pfb>
+Output written on modulo_dca_gat_expandido.pdf (207 pages, 1790779 bytes).
 PDF statistics:
- 6006 PDF objects out of 6186 (max. 8388607)
+ 6022 PDF objects out of 6186 (max. 8388607)
  2216 named destinations out of 2487 (max. 500000)
  2161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

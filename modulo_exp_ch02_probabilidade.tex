@@ -1,4 +1,4 @@
- >>?% ============================================================================
+﻿ >>?% ============================================================================
 % Cap -tulo 2: Probabilidade para Finan SSas --- Revis  o Rigorosa
 % M 3dulo: Geometric Arbitrage Theory (DCA)
 % ============================================================================
@@ -26,24 +26,24 @@ O par $(\Omega, \F)$  c denominado \textbf{espa SSo mensur ivel}.
 Em finan SSas, uma $\sigma$- ilgebra modela a \textbf{estrutura de informa SS  o} dispon -vel em determinado instante. Considere o pre SSo de uma a SS  o observado diariamente: a $\sigma$- ilgebra $\$\\mathcal{F}_t\$$ cont cm todos os eventos cuja ocorr ancia  c conhecida at c o dia $t$. Esta interpreta SS  o ser i fundamental quando introduzirmos filtra SS ues na Se SS  o~\ref{sec:martingais}.
 
 \begin{defi}[Medida de Probabilidade]
-Uma fun SS  o $\P: \$\\mathcal{F}\$ \to [0,1]$  c uma \textbf{medida de probabilidade} se satisfaz os \textbf{axiomas de Kolmogorov}:
+Uma fun SS  o $\\PP: \$\\mathcal{F}\$ \to [0,1]$  c uma \textbf{medida de probabilidade} se satisfaz os \textbf{axiomas de Kolmogorov}:
 \begin{enumerate}[label=(K\arabic*)]
-    \item $\P(\Omega) = 1$ (normaliza SS  o);
-    \item $\P(A) \geq 0$ para todo $A \in \F$ (n  o-negatividade);
+    \item $\\PP(\Omega) = 1$ (normaliza SS  o);
+    \item $\\PP(A) \geq 0$ para todo $A \in \F$ (n  o-negatividade);
     \item Para toda cole SS  o $\{A_n\}_{n \in \N} \subseteq \F$ de conjuntos disjuntos dois a dois, vale a $\sigma$-aditividade:
     \begin{equation}
-        \P\brk{\bigcup_{n=1}^\infty A_n} = \sum_{n=1}^\infty \P(A_n).
+        \\PP\brk{\bigcup_{n=1}^\infty A_n} = \sum_{n=1}^\infty \\PP(A_n).
     \end{equation}
 \end{enumerate}
-A tripla $(\Omega, \F, \P)$  c um \textbf{espa SSo de probabilidade}.
+A tripla $(\Omega, \F, \\PP)$  c um \textbf{espa SSo de probabilidade}.
 \end{defi}
 
 \begin{ex}[Lan SSamento de moeda infinita]
-Seja $\Omega = \{0,1\}^\N$ o espa SSo de todas as sequ ancias infinitas de caras (1) e coroas (0). A $\sigma$- ilgebra gerada pelos cilindros finitos --- conjuntos da forma $\{\omega \in \Omega : \omega_1 = a_1, \dots, \omega_n = a_n\}$ ---  c a $\sigma$- ilgebra produto. A medida de probabilidade produto $\P = \bigotimes_{n=1}^\infty \mu_n$, com $\mu_n(\{0\}) = \mu_n(\{1\}) = 1/2$, define o espa SSo de probabilidade can 'nico para uma sequ ancia de vari iveis de Bernoulli independentes. Em finan SSas, este espa SSo modela o passeio aleat 3rio sim ctrico, um dos alicerces do modelo binomial de precifica SS  o de op SS ues.
+Seja $\Omega = \{0,1\}^\N$ o espa SSo de todas as sequ ancias infinitas de caras (1) e coroas (0). A $\sigma$- ilgebra gerada pelos cilindros finitos --- conjuntos da forma $\{\omega \in \Omega : \omega_1 = a_1, \dots, \omega_n = a_n\}$ ---  c a $\sigma$- ilgebra produto. A medida de probabilidade produto $\\PP = \bigotimes_{n=1}^\infty \mu_n$, com $\mu_n(\{0\}) = \mu_n(\{1\}) = 1/2$, define o espa SSo de probabilidade can 'nico para uma sequ ancia de vari iveis de Bernoulli independentes. Em finan SSas, este espa SSo modela o passeio aleat 3rio sim ctrico, um dos alicerces do modelo binomial de precifica SS  o de op SS ues.
 \end{ex}
 
 \begin{defi}[Filtra SS  o]
-Uma fam -lia crescente de $\sigma$- ilgebras $\{\$\\mathcal{F}_t\$\}_{t \geq 0}$ com $\F_s \subseteq \$\\mathcal{F}_t\$$ para $s \leq t$  c uma \textbf{filtra SS  o}. O espa SSo $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$  c um \textbf{espa SSo de probabilidade filtrado}. A filtra SS  o aumentada usual\footnote{A filtra SS  o usual inclui as condi SS ues de completude e continuidade    direita, necess irias para a teoria geral de processos estoc isticos. Veja \textcite{oksendal2003stochastic}, Cap -tulo 2.} satisfaz $\$\\mathcal{F}_t\$ = \bigcap_{s > t} \F_s$ (continuidade    direita) e $\F_0$ cont cm todos os conjuntos $\P$-nulos.
+Uma fam -lia crescente de $\sigma$- ilgebras $\{\$\\mathcal{F}_t\$\}_{t \geq 0}$ com $\F_s \subseteq \$\\mathcal{F}_t\$$ para $s \leq t$  c uma \textbf{filtra SS  o}. O espa SSo $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \\PP)$  c um \textbf{espa SSo de probabilidade filtrado}. A filtra SS  o aumentada usual\footnote{A filtra SS  o usual inclui as condi SS ues de completude e continuidade    direita, necess irias para a teoria geral de processos estoc isticos. Veja \textcite{oksendal2003stochastic}, Cap -tulo 2.} satisfaz $\$\\mathcal{F}_t\$ = \bigcap_{s > t} \F_s$ (continuidade    direita) e $\F_0$ cont cm todos os conjuntos $\\PP$-nulos.
 \end{defi}
 
 A filtra SS  o $\$\\mathcal{F}_t\$$ representa a informa SS  o acumulada at c o instante $t$. Em um mercado financeiro, $\$\\mathcal{F}_t\$$ cont cm a hist 3ria completa dos pre SSos $S_u$ para $0 \leq u \leq t$, mas n  o revela valores futuros. Esta assimetria informacional  c o cerne da n  o-antecipatividade: uma estrat cgia de investimento $\theta_t$ deve ser $\$\\mathcal{F}_t\$$-mensur ivel, ou seja, baseada apenas em informa SS  o passada e presente.
@@ -53,7 +53,7 @@ A filtra SS  o $\$\\mathcal{F}_t\$$ representa a informa SS  o acumulada at c o 
 % ---------------------------------------------------------------------------
 
 \begin{defi}[Vari ivel Aleat 3ria]
-Seja $(\Omega, \F, \P)$ um espa SSo de probabilidade. Uma fun SS  o $X: \Omega \to \R$  c uma \textbf{vari ivel aleat 3ria} (v.a.) se $X$  c $\F$-mensur ivel, isto  c, $X^{-1}(B) \in \F$ para todo boreliano $B \in \mathcal{B}(\R)$. A \textbf{distribui SS  o} de $X$  c a medida imagem $\P_X := \P \circ X^{-1}$ sobre $(\R, \mathcal{B}(\R))$.
+Seja $(\Omega, \F, \\PP)$ um espa SSo de probabilidade. Uma fun SS  o $X: \Omega \to \R$  c uma \textbf{vari ivel aleat 3ria} (v.a.) se $X$  c $\F$-mensur ivel, isto  c, $X^{-1}(B) \in \F$ para todo boreliano $B \in \mathcal{B}(\R)$. A \textbf{distribui SS  o} de $X$  c a medida imagem $\P_X := \\PP \circ X^{-1}$ sobre $(\R, \mathcal{B}(\R))$.
 \end{defi}
 
 A condi SS  o de mensurabilidade garante que possamos atribuir probabilidades a eventos do tipo $\{X \leq a\}$, $\{X \in (a,b]\}$, etc. Em termos financeiros, o retorno logar -tmico $R_t = \log(S_t/S_{t-1})$  c uma vari ivel aleat 3ria cuja distribui SS  o determina o risco do ativo.
@@ -61,23 +61,23 @@ A condi SS  o de mensurabilidade garante que possamos atribuir probabilidades a 
 \begin{defi}[Esperan SSa]
 A \textbf{esperan SSa} (ou valor esperado) de uma v.a. $X \geq 0$  c definida como a integral de Lebesgue:
 \begin{equation}
-    \E[X] := \int_\Omega X(\omega) \dif \P(\omega).
+    \\E[X] := \int_\Omega X(\omega) \dif \\PP(\omega).
 \end{equation}
-Para $X$ qualquer, decompomos $X = X^+ - X^-$ (parte positiva e negativa) e definimos $\E[X] := \E[X^+] - \E[X^-]$, desde que pelo menos uma das integrais seja finita. Dizemos que $X \in \Lp^1(\Omega, \F, \P)$ se $\E[|X|] < \infty$.
+Para $X$ qualquer, decompomos $X = X^+ - X^-$ (parte positiva e negativa) e definimos $\\E[X] := \\E[X^+] - \\E[X^-]$, desde que pelo menos uma das integrais seja finita. Dizemos que $X \in \Lp^1(\Omega, \F, \\PP)$ se $\\E[|X|] < \infty$.
 \end{defi}
 
 \begin{defi}[Momentos e Vari  ncia]
-Para $k \in \N$, o \textbf{$k$- csimo momento} (se existir)  c $\E[X^k]$. O \textbf{$k$- csimo momento central}  c $\E[(X - \E[X])^k]$. A \textbf{vari  ncia}  c o segundo momento central:
+Para $k \in \N$, o \textbf{$k$- csimo momento} (se existir)  c $\\E[X^k]$. O \textbf{$k$- csimo momento central}  c $\\E[(X - \\E[X])^k]$. A \textbf{vari  ncia}  c o segundo momento central:
 \begin{equation}
-    \Var(X) := \E[(X - \E[X])^2] = \E[X^2] - (\E[X])^2.
+    \Var(X) := \\E[(X - \\E[X])^2] = \\E[X^2] - (\\E[X])^2.
 \end{equation}
-A \textbf{covari  ncia} entre duas v.a. $X, Y \in \Lp^2$  c $\Cov(X,Y) := \E[(X - \E[X])(Y - \E[Y])]$.
+A \textbf{covari  ncia} entre duas v.a. $X, Y \in \Lp^2$  c $\Cov(X,Y) := \\E[(X - \\E[X])(Y - \\E[Y])]$.
 \end{defi}
 
 Em finan SSas, a vari  ncia (ou sua raiz quadrada, a volatilidade)  c a medida de risco mais elementar. A covari  ncia entre retornos de ativos distintos  c a base da teoria de carteiras de Markowitz e do Capital Asset Pricing Model (CAPM).
 
 \begin{defi}[Fun SS  o Caracter -stica]
-A \textbf{fun SS  o caracter -stica} de uma v.a. $X$  c $\phi_X(u) := \E[e^{iuX}]$, para $u \in \R$. Esta fun SS  o \textbf{sempre existe} (pois $|e^{iuX}| = 1$),  c uniformemente cont -nua e determina unicamente a distribui SS  o de $X$\footnote{Teorema da unicidade de L cvy. \textcite{williams1991probability}, Se SS  o 16.6.}.
+A \textbf{fun SS  o caracter -stica} de uma v.a. $X$  c $\phi_X(u) := \\E[e^{iuX}]$, para $u \in \R$. Esta fun SS  o \textbf{sempre existe} (pois $|e^{iuX}| = 1$),  c uniformemente cont -nua e determina unicamente a distribui SS  o de $X$\footnote{Teorema da unicidade de L cvy. \textcite{williams1991probability}, Se SS  o 16.6.}.
 \end{defi}
 
 A fun SS  o caracter -stica  c uma ferramenta indispens ivel em finan SSas quantitativas, especialmente na precifica SS  o de op SS ues via transformada de Fourier (m ctodo de Carr--Madan) e no estudo de distribui SS ues infinitamente divis -veis que modelam retornos em tempo cont -nuo.
@@ -85,11 +85,11 @@ A fun SS  o caracter -stica  c uma ferramenta indispens ivel em finan SSas quant
 \begin{teo}[Desigualdade de Markov e Chebyshev]
 Seja $X$ uma v.a. n  o-negativa. Para todo $\lambda > 0$:
 \begin{equation}
-    \P(X \geq \lambda) \leq \frac{\E[X]}{\lambda} \quad \text{(Markov)}.
+    \\PP(X \geq \lambda) \leq \frac{\\E[X]}{\lambda} \quad \text{(Markov)}.
 \end{equation}
 Se $X \in \Lp^2$, ent  o para todo $\varepsilon > 0$:
 \begin{equation}
-    \P(|X - \E[X]| \geq \varepsilon) \leq \frac{\Var(X)}{\varepsilon^2} \quad \text{(Chebyshev)}.
+    \\PP(|X - \\E[X]| \geq \varepsilon) \leq \frac{\Var(X)}{\varepsilon^2} \quad \text{(Chebyshev)}.
 \end{equation}
 \end{teo}
 
@@ -106,7 +106,7 @@ $X \sim \mathcal{N}(\mu, \sigma^2)$ se possui densidade
 \begin{equation}
     f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\brk{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad x \in \R.
 \end{equation}
-com $\E[X] = \mu$ e $\Var(X) = \sigma^2$.
+com $\\E[X] = \mu$ e $\Var(X) = \sigma^2$.
 \end{defi}
 
 No modelo de Black--Scholes, o log-retorno $\log(S_t/S_0)$ segue uma distribui SS  o normal com m cdia $(\mu - \sigma^2/2)t$ e vari  ncia $\sigma^2 t$. Embora a hip 3tese de normalidade seja frequentemente violada na pr itica (caudas pesadas e assimetria nos retornos reais), a distribui SS  o normal permanece como ponto de partida fundamental.
@@ -116,21 +116,21 @@ $X \sim \text{LogNormal}(\mu, \sigma^2)$ se $\log X \sim \mathcal{N}(\mu, \sigma
 \begin{equation}
     f_X(x) = \frac{1}{x\sigma\sqrt{2\pi}} \exp\brk{-\frac{(\log x - \mu)^2}{2\sigma^2}}, \quad x > 0,
 \end{equation}
-com $\E[X] = e^{\mu + \sigma^2/2}$ e $\Var(X) = e^{2\mu + \sigma^2}(e^{\sigma^2} - 1)$.
+com $\\E[X] = e^{\mu + \sigma^2/2}$ e $\Var(X) = e^{2\mu + \sigma^2}(e^{\sigma^2} - 1)$.
 \end{defi}
 
 O pre SSo de uma a SS  o no modelo de Black--Scholes  c log-normal: $S_t = S_0 \exp((\mu - \sigma^2/2)t + \sigma W_t)$, onde $W_t$  c um movimento browniano. A log-normalidade garante que $S_t > 0$ quase certamente, respeitando a responsabilidade limitada dos acionistas.
 
 \begin{defi}[Distribui SS  o de Poisson]
-$X \sim \text{Poisson}(\lambda)$ se $\P(X = k) = e^{-\lambda} \lambda^k / k!$ para $k \in \N_0$, com $\E[X] = \Var(X) = \lambda$.
+$X \sim \text{Poisson}(\lambda)$ se $\\PP(X = k) = e^{-\lambda} \lambda^k / k!$ para $k \in \N_0$, com $\\E[X] = \Var(X) = \lambda$.
 \end{defi}
 
 Em finan SSas, a distribui SS  o de Poisson modela a \textbf{chegada de eventos raros}: fal ancias, defaults de cr cdito, saltos de pre SSo, ou a chegada de ordens de compra e venda em mercados de alta frequ ancia. Processos de Poisson compostos s  o a base dos modelos de difus  o com saltos (Merton, 1976; Kou, 2002).
 
 \begin{defi}[Distribui SS  o Exponencial]
-$X \sim \text{Exp}(\lambda)$ se possui densidade $f_X(x) = \lambda e^{-\lambda x}$ para $x \geq 0$, com $\E[X] = 1/\lambda$ e $\Var(X) = 1/\lambda^2$. A propriedade fundamental  c a \textbf{aus ancia de mem 3ria}:
+$X \sim \text{Exp}(\lambda)$ se possui densidade $f_X(x) = \lambda e^{-\lambda x}$ para $x \geq 0$, com $\\E[X] = 1/\lambda$ e $\Var(X) = 1/\lambda^2$. A propriedade fundamental  c a \textbf{aus ancia de mem 3ria}:
 \begin{equation}
-    \P(X > s + t \mid X > s) = \P(X > t), \quad \forall s, t \geq 0.
+    \\PP(X > s + t \mid X > s) = \\PP(X > t), \quad \forall s, t \geq 0.
 \end{equation}
 \end{defi}
 
@@ -144,34 +144,34 @@ Considere uma carteira com $n$ ativos cujos retornos $R_i \sim \mathcal{N}(\mu_i
 \section{Probabilidade Condicional e Esperan SSa Condicional}
 % ---------------------------------------------------------------------------
 
-O conceito de esperan SSa condicional  c a ferramenta matem itica mais importante da teoria de precifica SS  o de ativos. Diferentemente da probabilidade condicional elementar $\P(A \mid B) = \P(A \cap B)/\P(B)$, que condiciona em um evento de probabilidade positiva, a esperan SSa condicional generaliza este conceito para condicionamento em $\sigma$- ilgebras --- ou seja, em \textbf{conjuntos de informa SS  o}.
+O conceito de esperan SSa condicional  c a ferramenta matem itica mais importante da teoria de precifica SS  o de ativos. Diferentemente da probabilidade condicional elementar $\\PP(A \mid B) = \\PP(A \cap B)/\\PP(B)$, que condiciona em um evento de probabilidade positiva, a esperan SSa condicional generaliza este conceito para condicionamento em $\sigma$- ilgebras --- ou seja, em \textbf{conjuntos de informa SS  o}.
 
 \begin{defi}[Esperan SSa Condicional]
-Seja $X \in \Lp^1(\Omega, \F, \P)$ e $\G \subseteq \F$ uma sub-$\sigma$- ilgebra. A \textbf{esperan SSa condicional} de $X$ dada $\G$  c a  onica (q.c.) vari ivel aleat 3ria $\E[X \mid \G]$ satisfazendo:
+Seja $X \in \Lp^1(\Omega, \F, \\PP)$ e $\G \subseteq \F$ uma sub-$\sigma$- ilgebra. A \textbf{esperan SSa condicional} de $X$ dada $\G$  c a  onica (q.c.) vari ivel aleat 3ria $\\E[X \mid \G]$ satisfazendo:
 \begin{enumerate}[label=(\roman*)]
-    \item $\E[X \mid \G]$  c $\G$-mensur ivel;
-    \item Para todo $G \in \G$, $\int_G \E[X \mid \G] \dif \P = \int_G X \dif \P$.
+    \item $\\E[X \mid \G]$  c $\G$-mensur ivel;
+    \item Para todo $G \in \G$, $\int_G \\E[X \mid \G] \dif \\PP = \int_G X \dif \\PP$.
 \end{enumerate}
 \end{defi}
 
-A condi SS  o (ii) afirma que $\E[X \mid \G]$  c a \textbf{proje SS  o} de $X$ no subespa SSo das fun SS ues $\G$-mensur iveis no sentido de $\Lp^2$, ou seja,  c a melhor aproxima SS  o de $X$ usando apenas a informa SS  o contida em $\G$. Em finan SSas, se $\G = \$\\mathcal{F}_t\$$ representa a informa SS  o at c $t$, ent  o $\E[X \mid \$\\mathcal{F}_t\$]$  c a melhor previs  o de $X$ com base em toda a hist 3ria dispon -vel.
+A condi SS  o (ii) afirma que $\\E[X \mid \G]$  c a \textbf{proje SS  o} de $X$ no subespa SSo das fun SS ues $\G$-mensur iveis no sentido de $\Lp^2$, ou seja,  c a melhor aproxima SS  o de $X$ usando apenas a informa SS  o contida em $\G$. Em finan SSas, se $\G = \$\\mathcal{F}_t\$$ representa a informa SS  o at c $t$, ent  o $\\E[X \mid \$\\mathcal{F}_t\$]$  c a melhor previs  o de $X$ com base em toda a hist 3ria dispon -vel.
 
 \begin{teo}[Propriedades da Esperan SSa Condicional]
 Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
 \begin{enumerate}[label=(\roman*)]
-    \item \textbf{Linearidade:} $\E[aX + bY \mid \G] = a\E[X \mid \G] + b\E[Y \mid \G]$;
-    \item \textbf{Retirada do conhecido:} se $Y$  c $\G$-mensur ivel e limitada, $\E[YX \mid \G] = Y \E[X \mid \G]$;
-    \item \textbf{Independ ancia:} se $X$  c independente de $\G$, ent  o $\E[X \mid \G] = \E[X]$;
+    \item \textbf{Linearidade:} $\\E[aX + bY \mid \G] = a\\E[X \mid \G] + b\\E[Y \mid \G]$;
+    \item \textbf{Retirada do conhecido:} se $Y$  c $\G$-mensur ivel e limitada, $\\E[YX \mid \G] = Y \\E[X \mid \G]$;
+    \item \textbf{Independ ancia:} se $X$  c independente de $\G$, ent  o $\\E[X \mid \G] = \\E[X]$;
     \item \textbf{Propriedade de torre:} se $\H \subseteq \G$, ent  o
     \begin{equation}
-        \E\brk{\E[X \mid \G] \mid \H} = \E[X \mid \H];
+        \E\brk{\\E[X \mid \G] \mid \H} = \\E[X \mid \H];
     \end{equation}
-    \item \textbf{Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\E[X \mid \G] \leq \E[Y \mid \G]$ q.c.;
-    \item \textbf{Desigualdade de Jensen condicional:} se $\phi$  c convexa e $\phi(X) \in \Lp^1$, ent  o $\phi(\E[X \mid \G]) \leq \E[\phi(X) \mid \G]$ q.c.
+    \item \textbf{Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid \G] \leq \\E[Y \mid \G]$ q.c.;
+    \item \textbf{Desigualdade de Jensen condicional:} se $\phi$  c convexa e $\phi(X) \in \Lp^1$, ent  o $\phi(\\E[X \mid \G]) \leq \\E[\phi(X) \mid \G]$ q.c.
 \end{enumerate}
 \end{teo}
 
-A propriedade de torre (iv)  c onipresente em finan SSas. Por exemplo, ao precificar uma op SS  o americana por indu SS  o retroativa, a cada passo calculamos $\E[\text{payoff futuro} \mid \$\\mathcal{F}_t\$]$, e a propriedade de torre garante a consist ancia temporal do algoritmo de programa SS  o din  mica.
+A propriedade de torre (iv)  c onipresente em finan SSas. Por exemplo, ao precificar uma op SS  o americana por indu SS  o retroativa, a cada passo calculamos $\\E[\text{payoff futuro} \mid \$\\mathcal{F}_t\$]$, e a propriedade de torre garante a consist ancia temporal do algoritmo de programa SS  o din  mica.
 
 \begin{ex}[Precifica SS  o neutra ao risco]
 Em um mercado completo, o pre SSo de um derivativo com payoff $H_T$ no vencimento $T$  c dado por
@@ -189,20 +189,20 @@ onde $\Q$  c a medida martingal equivalente (medida neutra ao risco) e $r$  c a 
 O conceito de martingal est i no cora SS  o da teoria moderna de finan SSas. Intuitivamente, um martingal modela um \textbf{jogo justo}: a expectativa do valor futuro, condicionada    informa SS  o presente,  c exatamente o valor presente. Esta propriedade  c a tradu SS  o matem itica precisa da \textbf{aus ancia de oportunidades de arbitragem} em mercados financeiros\footnote{O Primeiro Teorema Fundamental de Precifica SS  o de Ativos afirma que um mercado  c livre de arbitragem se, e somente se, existe uma medida martingal equivalente. Veja \textcite{delbaen2006mathematics} e \textcite{williams1991probability}, Cap -tulo 10.}.
 
 \begin{defi}[Martingal]
-Seja $(\Omega, \F, \{\$\\mathcal{F}_t\$\}_{t \geq 0}, \P)$ um espa SSo de probabilidade filtrado. Um processo estoc istico $\{M_t\}_{t \geq 0}$ adaptado a $\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^1$ para todo $t$  c um:
+Seja $(\Omega, \F, \{\$\\mathcal{F}_t\$\}_{t \geq 0}, \\PP)$ um espa SSo de probabilidade filtrado. Um processo estoc istico $\{M_t\}_{t \geq 0}$ adaptado a $\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^1$ para todo $t$  c um:
 \begin{itemize}
-    \item \textbf{martingal} se $\E[M_t \mid \F_s] = M_s$ para todo $0 \leq s \leq t$;
-    \item \textbf{submartingal} se $\E[M_t \mid \F_s] \geq M_s$ para todo $0 \leq s \leq t$;
-    \item \textbf{supermartingal} se $\E[M_t \mid \F_s] \leq M_s$ para todo $0 \leq s \leq t$.
+    \item \textbf{martingal} se $\\E[M_t \mid \F_s] = M_s$ para todo $0 \leq s \leq t$;
+    \item \textbf{submartingal} se $\\E[M_t \mid \F_s] \geq M_s$ para todo $0 \leq s \leq t$;
+    \item \textbf{supermartingal} se $\\E[M_t \mid \F_s] \leq M_s$ para todo $0 \leq s \leq t$.
 \end{itemize}
 \end{defi}
 
 A distin SS  o entre sub e supermartingal reflete a dire SS  o da tend ancia: um submartingal tende a crescer em m cdia (jogo favor ivel ao apostador), enquanto um supermartingal tende a decrescer (jogo desfavor ivel).
 
 \begin{ex}[Passeio Aleat 3rio Sim ctrico]
-Seja $\{X_n\}_{n \in \N}$ uma sequ ancia de v.a. i.i.d. com $\P(X_n = 1) = \P(X_n = -1) = 1/2$. Defina $M_n = \sum_{k=1}^n X_k$ com $M_0 = 0$ e a filtra SS  o natural $\F_n = \sigma(X_1, \dots, X_n)$. Ent  o $\{M_n\}$  c um martingal, pois
+Seja $\{X_n\}_{n \in \N}$ uma sequ ancia de v.a. i.i.d. com $\\PP(X_n = 1) = \\PP(X_n = -1) = 1/2$. Defina $M_n = \sum_{k=1}^n X_k$ com $M_0 = 0$ e a filtra SS  o natural $\F_n = \sigma(X_1, \dots, X_n)$. Ent  o $\{M_n\}$  c um martingal, pois
 \begin{equation}
-    \E[M_{n+1} \mid \F_n] = \E[M_n + X_{n+1} \mid \F_n] = M_n + \E[X_{n+1}] = M_n.
+    \\E[M_{n+1} \mid \F_n] = \\E[M_n + X_{n+1} \mid \F_n] = M_n + \\E[X_{n+1}] = M_n.
 \end{equation}
 O passeio aleat 3rio  c o an ilogo discreto do movimento browniano e constitui a base do modelo binomial de Cox--Ross--Rubinstein (CRR).
 \end{ex}
@@ -228,9 +228,9 @@ Esta decomposi SS  o separa um processo estoc istico em sua componente imprevis 
 \begin{teo}[Teorema do Sampling Opcional de Doob]
 Seja $\{M_n\}_{n \geq 0}$ um martingal e $\tau$ um tempo de parada limitado. Ent  o
 \begin{equation}
-    \E[M_\tau \mid \F_0] = M_0.
+    \\E[M_\tau \mid \F_0] = M_0.
 \end{equation}
-Em particular, $\E[M_\tau] = \E[M_0]$.
+Em particular, $\\E[M_\tau] = \\E[M_0]$.
 \end{teo}
 
 Este teorema justifica que, em um jogo justo, nenhuma estrat cgia de parada baseada apenas em informa SS  o passada (\textit{stopping time}) pode gerar lucro esperado positivo. Em finan SSas, isto implica que n  o se pode ``bater o mercado'' sistematicamente sem assumir risco adicional --- uma formaliza SS  o da Hip 3tese do Mercado Eficiente (EMH) no contexto de martingais.
@@ -242,7 +242,7 @@ Este teorema justifica que, em um jogo justo, nenhuma estrat cgia de parada base
 O movimento browniano (ou processo de Wiener)  c o objeto matem itico central da modelagem financeira em tempo cont -nuo. Sua onipresen SSa decorre do Teorema Central do Limite funcional (Teorema de Donsker): o movimento browniano  c o limite de escala de passeios aleat 3rios, e portanto surge naturalmente como modelo para flutua SS ues agregadas de pre SSos resultantes de muitas decis ues independentes de agentes de mercado.
 
 \begin{defi}[Movimento Browniano Padr  o]
-Um processo estoc istico $\{W_t\}_{t \geq 0}$ definido em $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \P)$  c um \textbf{movimento browniano padr  o} (ou processo de Wiener) se:
+Um processo estoc istico $\{W_t\}_{t \geq 0}$ definido em $(\Omega, \F, \{\$\\mathcal{F}_t\$\}, \\PP)$  c um \textbf{movimento browniano padr  o} (ou processo de Wiener) se:
 \begin{enumerate}[label=(B\arabic*)]
     \item $W_0 = 0$ quase certamente;
     \item \textbf{Incrementos independentes:} para todo $0 \leq t_1 < t_2 < \cdots < t_n$, as v.a. $W_{t_2} - W_{t_1}, \dots, W_{t_n} - W_{t_{n-1}}$ s  o independentes;
@@ -251,7 +251,7 @@ Um processo estoc istico $\{W_t\}_{t \geq 0}$ definido em $(\Omega, \F, \{\$\\ma
 \end{enumerate}
 \end{defi}
 
-As quatro propriedades caracterizam completamente o movimento browniano. A condi SS  o (B3) implica que $\E[W_t] = 0$ e $\E[W_t W_s] = \min(s,t)$ para todo $s,t \geq 0$.
+As quatro propriedades caracterizam completamente o movimento browniano. A condi SS  o (B3) implica que $\\E[W_t] = 0$ e $\\E[W_t W_s] = \min(s,t)$ para todo $s,t \geq 0$.
 
 \begin{teo}[Propriedades do Movimento Browniano]\label{teo:propriedades-mb}
 Seja $\{W_t\}$ um movimento browniano padr  o. Valem as seguintes propriedades:
@@ -281,7 +281,7 @@ Um processo $\{S_t\}_{t \geq 0}$  c um \textbf{movimento browniano geom ctrico} 
 cuja solu SS  o  c $S_t = S_0 \exp\brk{(\mu - \sigma^2/2)t + \sigma W_t}$.
 \end{defi}
 
-O MBG  c o modelo-padr  o para pre SSos de a SS ues no paradigma de Black--Scholes--Merton. A interpreta SS  o intuitiva  c que o retorno relativo $\dif S_t / S_t$ tem uma componente determin -stica $\mu \dif t$ (tend ancia) e uma componente aleat 3ria $\sigma \dif W_t$ (volatilidade). A aplica SS  o do lema de It ' a $f(S_t) = \log S_t$ produz o fator de corre SS  o $-\sigma^2/2$, essencial para garantir que $\E[S_t] = S_0 e^{\mu t}$.
+O MBG  c o modelo-padr  o para pre SSos de a SS ues no paradigma de Black--Scholes--Merton. A interpreta SS  o intuitiva  c que o retorno relativo $\dif S_t / S_t$ tem uma componente determin -stica $\mu \dif t$ (tend ancia) e uma componente aleat 3ria $\sigma \dif W_t$ (volatilidade). A aplica SS  o do lema de It ' a $f(S_t) = \log S_t$ produz o fator de corre SS  o $-\sigma^2/2$, essencial para garantir que $\\E[S_t] = S_0 e^{\mu t}$.
 
 \begin{ex}[Constru SS  o de L cvy do Movimento Browniano]\label{ex:construcao-levy}
 A exist ancia do movimento browniano pode ser estabelecida construtivamente. Define-se $W_t$ para $t$ di idico por interpola SS  o linear com incrementos gaussianos independentes: para cada n -vel $n$, os valores $W_{k/2^n}$ s  o definidos recursivamente. Para $t$ arbitr irio, define-se $W_t$ como o limite uniforme das aproxima SS ues lineares por partes. A converg ancia uniforme quase certa  c garantida pelo Lema de Borel--Cantelli. Esta constru SS  o, devida a Paul L cvy (1939), demonstra que o espa SSo $C[0,\infty)$ das fun SS ues cont -nuas (com a topologia da converg ancia uniforme em compactos)  c o espa SSo amostral can 'nico do movimento browniano, com a medida de Wiener $\mathbb{W}$ sobre a $\sigma$- ilgebra de Borel de $C[0,\infty)$.\footnote{Para detalhes completos da constru SS  o de L cvy e da medida de Wiener, consulte \textcite{oksendal2003stochastic}, Ap andice A, e \textcite{billingsley2012probability}, Se SS  o 37.}

@@ -13,11 +13,11 @@
 \contentsline {section}{\numberline {1.9}Estrutura Deste Modulo}{22}{section.1.9}%
 \contentsline {chapter}{\numberline {2}Probabilidade para Finan SSas\\ Revis o Rigorosa}{23}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Espa SSos de Probabilidade}{23}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Vari iveis Aleat 3rias e Esperan SSa}{24}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Distribui SS ues Relevantes}{25}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Probabilidade Condicional e Esperan SSa Condicional}{26}{section.2.4}%
+\contentsline {section}{\numberline {2.2}Vari iveis Aleat 3rias e Esperan SSa}{25}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Distribui SS ues Relevantes}{26}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Probabilidade Condicional e Esperan SSa Condicional}{27}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Martingais}{28}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Movimento Browniano}{29}{section.2.6}%
+\contentsline {section}{\numberline {2.6}Movimento Browniano}{30}{section.2.6}%
 \contentsline {chapter}{\numberline {3}C\'alculo Estoc\'astico para Finan\c {c}as}{35}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Motiva\c {c}\~ao: Por que o C\'alculo Usual Falha para Processos Estoc\'asticos?}{35}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Integral de It\^o}{36}{section.3.2}%
