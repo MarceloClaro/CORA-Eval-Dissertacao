@@ -1,68 +1,68 @@
  >>?\chapter{Derivadas Estoc isticas de Nelson}
 \label{apx:nelson}
 
-A Abordagem de Apre SSamento por Transporte Geom ctrico (GAT) baseia-se na cinem itica estoc istica de \citeonline{nelson1967dynamical}, que reformula a mec  nica qu  ntica --- e, por extens  o, processos de difus  o em variedades --- por meio de derivadas estoc isticas sim ctricas e antissim ctricas. Este ap andice sistematiza essas defini SS ues e estabelece a correspond ancia com o c ilculo de It ' e Stratonovich, seguindo \citeonline{gliklikh2011global}.
+A Abordagem de Apre SSamento por Transporte Geom ctrico (GAT) baseia-se na cinem itica estoc istica de \citeonline{nelson1967dynamical}, que reformula a mec nica qu ntica --- e, por extens o, processos de difus o em variedades --- por meio de derivadas estoc isticas sim ctricas e antissim ctricas. Este ap andice sistematiza essas defini SS ues e estabelece a correspond ancia com o c ilculo de It ' e Stratonovich, seguindo \citeonline{gliklikh2011global}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Defini SS  o Formal}
+\section{Defini SS o Formal}
 \label{sec:nelson_definicao}
 
 Seja $(\Omega,\mathcal{F},\{\mathcal{F}_t\}_{t\geq 0},\P)$ um espa SSo de probabilidade filtrado satisfazendo as condi SS ues usuais. Considere um processo estoc istico $X_t$ adaptado, com trajet 3rias cont -nuas e quadraticamente integr ivel: $\E[X_t^2]<\infty$ para todo $t$.
 
 \begin{defi}[Derivada Progressiva $D$]
-A \textbf{derivada progressiva} (forward derivative) de $X_t$ no instante $t$  c o processo $DX_t$ definido pelo limite em m cdia quadr itica:
+A \textbf{derivada progressiva} (forward derivative) de $X_t$ no instante $t$ c o processo $DX_t$ definido pelo limite em m cdia quadr itica:
 \begin{equation}
-  DX_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_{t+\Delta t} - X_t}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
+ DX_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_{t+\Delta t} - X_t}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
 \end{equation}
-sempre que este limite existir em $L^2(\Omega)$. Intuitivamente, $DX_t$  c a taxa de varia SS  o esperada condicional de $X$ para o futuro imediato.
+sempre que este limite existir em $L^2(\Omega)$. Intuitivamente, $DX_t$ c a taxa de varia SS o esperada condicional de $X$ para o futuro imediato.
 \end{defi}
 
 \begin{defi}[Derivada Regressiva $D_*$]
-A \textbf{derivada regressiva} (backward derivative) de $X_t$  c definida pelo limite condicional voltado ao passado:
+A \textbf{derivada regressiva} (backward derivative) de $X_t$ c definida pelo limite condicional voltado ao passado:
 \begin{equation}
-  D_*X_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_t - X_{t-\Delta t}}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
+ D_*X_t = \lim_{\Delta t\downarrow 0}\,\E\!\left[\frac{X_t - X_{t-\Delta t}}{\Delta t}\;\middle|\;\mathcal{F}_t\right],
 \end{equation}
 sempre que o limite existir em $L^2(\Omega)$.
 \end{defi}
 
 \begin{defi}[Derivada Sim ctrica $\bar{D}$]
-A \textbf{derivada sim ctrica} (m cdia ou corrente)  c a semissoma das derivadas progressiva e regressiva:
+A \textbf{derivada sim ctrica} (m cdia ou corrente) c a semissoma das derivadas progressiva e regressiva:
 \begin{equation}
-  \bar{D}X_t = \frac{1}{2}\bigl(DX_t + D_*X_t\bigr).
+ \bar{D}X_t = \frac{1}{2}\bigl(DX_t + D_*X_t\bigr).
 \end{equation}
-Na interpreta SS  o de Nelson, $\bar{D}X_t$ corresponde    \textbf{velocidade corrente} (current velocity) do processo difusivo, an iloga    velocidade cl issica na mec  nica determin -stica.
+Na interpreta SS o de Nelson, $\bar{D}X_t$ corresponde \textbf{velocidade corrente} (current velocity) do processo difusivo, an iloga velocidade cl issica na mec nica determin -stica.
 \end{defi}
 
 \begin{defi}[Derivada Antissim ctrica $D_A$]
-A \textbf{derivada antissim ctrica} (osm 3tica)  c a semidiferen SSa:
+A \textbf{derivada antissim ctrica} (osm 3tica) c a semidiferen SSa:
 \begin{equation}
-  D_A X_t = \frac{1}{2}\bigl(DX_t - D_*X_t\bigr).
+ D_A X_t = \frac{1}{2}\bigl(DX_t - D_*X_t\bigr).
 \end{equation}
-Esta quantidade est i associada    \textbf{velocidade osm 3tica} (osmotic velocity), que no contexto da GAT mede o grau de ``difusividade pura'' do mercado, distinguindo a componente revers -vel (corrente) da irrevers -vel (ru -do) na din  mica de pre SSos.
+Esta quantidade est i associada \textbf{velocidade osm 3tica} (osmotic velocity), que no contexto da GAT mede o grau de ``difusividade pura'' do mercado, distinguindo a componente revers -vel (corrente) da irrevers -vel (ru -do) na din mica de pre SSos.
 \end{defi}
 
 \begin{prop}[Propriedades B isicas]
 Para processos $X_t, Y_t$ nas condi SS ues acima e $f\in C^2(\R)$:
 \begin{enumerate}
-  \item \textbf{Linearidade}: $D(aX_t + bY_t) = a\,DX_t + b\,DY_t$ para $a,b\in\R$, e analogamente para $D_*$, $\bar{D}$, $D_A$.
-  \item \textbf{Fun SS ues determin -sticas}: Se $f(t)$  c diferenci ivel, $D(f(t))=\dot f(t)$ e $D_*(f(t))=\dot f(t)$.
-  \item \textbf{Martingais}: Se $X_t$  c um $\mathcal{F}_t$-martingal, ent  o $DX_t = 0$ (a tend ancia futura condicional  c nula).
-  \item \textbf{Processos revers -veis}: Se $X_t$ tem a mesma lei sob revers  o temporal, ent  o $DX_t = -D_*X_t$ e portanto $\bar{D}X_t = 0$.
+ \item \textbf{Linearidade}: $D(aX_t + bY_t) = a\,DX_t + b\,DY_t$ para $a,b\in\R$, e analogamente para $D_*$, $\bar{D}$, $D_A$.
+ \item \textbf{Fun SS ues determin -sticas}: Se $f(t)$ c diferenci ivel, $D(f(t))=\dot f(t)$ e $D_*(f(t))=\dot f(t)$.
+ \item \textbf{Martingais}: Se $X_t$ c um $\mathcal{F}_t$-martingal, ent o $DX_t = 0$ (a tend ancia futura condicional c nula).
+ \item \textbf{Processos revers -veis}: Se $X_t$ tem a mesma lei sob revers o temporal, ent o $DX_t = -D_*X_t$ e portanto $\bar{D}X_t = 0$.
 \end{enumerate}
 \end{prop}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conex  o com It ' e Stratonovich}
+\section{Conex o com It ' e Stratonovich}
 \label{sec:nelson_conexao}
 
-Considere um processo de difus  o de It ' $X_t$ em $\R^n$ governado pela EDE:
+Considere um processo de difus o de It ' $X_t$ em $\R^n$ governado pela EDE:
 \begin{equation}
-  dX_t = b(t,X_t)\,dt + \sigma(t,X_t)\,dW_t,
+ dX_t = b(t,X_t)\,dt + \sigma(t,X_t)\,dW_t,
 \end{equation}
-em que $W_t$  c um movimento browniano $m$-dimensional padr  o, $b:\R_+\times\R^n\to\R^n$  c o vetor de \textit{drift}, e $\sigma:\R_+\times\R^n\to\R^{n\times m}$  c a matriz de difus  o (volatilidade). O \textbf{coeficiente de difus  o} associado  c $\nu^{ij} = \frac{1}{2}(\sigma\sigma^\top)^{ij}$.
+em que $W_t$ c um movimento browniano $m$-dimensional padr o, $b:\R_+\times\R^n\to\R^n$ c o vetor de \textit{drift}, e $\sigma:\R_+\times\R^n\to\R^{n\times m}$ c a matriz de difus o (volatilidade). O \textbf{coeficiente de difus o} associado c $\nu^{ij} = \frac{1}{2}(\sigma\sigma^\top)^{ij}$.
 
 \begin{teo}[Correspond ancia Nelson--It '--Stratonovich]
-Para um processo de difus  o de It ' $X_t$ com coeficientes suficientemente regulares, as derivadas de Nelson relacionam-se com as formula SS ues de It ' e Stratonovich conforme a Tabela~\ref{tab:nelson_ito_strat}.
+Para um processo de difus o de It ' $X_t$ com coeficientes suficientemente regulares, as derivadas de Nelson relacionam-se com as formula SS ues de It ' e Stratonovich conforme a Tabela~\ref{tab:nelson_ito_strat}.
 \end{teo}
 
 \begin{table}[htbp]
@@ -72,20 +72,20 @@ Para um processo de difus  o de It ' $X_t$ com coeficientes suficientemente regu
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{@{}p{3.2cm}p{5cm}p{5cm}@{}}
 \toprule
-\textbf{Formula SS  o} & \textbf{Derivada/Operador} & \textbf{Express  o em termos de It '} \\
+\textbf{Formula SS o} & \textbf{Derivada/Operador} & \textbf{Express o em termos de It '} \\
 \midrule
-Nelson (progressiva)  & $DX_t$      & $b(t,X_t)$ \\
-Nelson (regressiva)   & $D_*X_t$    & $b(t,X_t) - 2\,\partial_j\nu^{ij}(t,X_t)\big|_{(t,X_t)}$ \\
-Nelson (sim ctrica)    & $\bar{D}X_t$& $b(t,X_t) - \partial_j\nu^{ij}(t,X_t)$ \\
-Nelson (antissim ctrica)& $D_A X_t$  & $\partial_j\nu^{ij}(t,X_t)$ \\
-It '                   & $dX_t$      & $b\,dt + \sigma\,dW_t$ (integral de It ') \\
-Stratonovich          & $\circ dX_t$& $(b - \frac{1}{2}\partial_j\nu^{ij})\,dt + \sigma\circ dW_t$ \\
+Nelson (progressiva) & $DX_t$ & $b(t,X_t)$ \\
+Nelson (regressiva) & $D_*X_t$ & $b(t,X_t) - 2\,\partial_j\nu^{ij}(t,X_t)\big|_{(t,X_t)}$ \\
+Nelson (sim ctrica) & $\bar{D}X_t$& $b(t,X_t) - \partial_j\nu^{ij}(t,X_t)$ \\
+Nelson (antissim ctrica)& $D_A X_t$ & $\partial_j\nu^{ij}(t,X_t)$ \\
+It ' & $dX_t$ & $b\,dt + \sigma\,dW_t$ (integral de It ') \\
+Stratonovich & $\circ dX_t$& $(b - \frac{1}{2}\partial_j\nu^{ij})\,dt + \sigma\circ dW_t$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{obs}
-A derivada sim ctrica $\bar{D}$ coincide precisamente com o \textbf{drift de Stratonovich}: $\bar{D}X_t = b(t,X_t) - \frac{1}{2}(\nabla\cdot\nu)(t,X_t)$. Esta identidade  c fundamental na GAT, pois a formula SS  o de Stratonovich respeita a regra da cadeia usual (Leibniz n  o graduada), permitindo tratar a geometria diferencial do espa SSo de ativos sem corre SS ues de It ' adicionais. A curvatura do fibrado, expressa em termos de $\bar{D}$, adquire assim interpreta SS  o financeira direta.
+A derivada sim ctrica $\bar{D}$ coincide precisamente com o \textbf{drift de Stratonovich}: $\bar{D}X_t = b(t,X_t) - \frac{1}{2}(\nabla\cdot\nu)(t,X_t)$. Esta identidade c fundamental na GAT, pois a formula SS o de Stratonovich respeita a regra da cadeia usual (Leibniz n o graduada), permitindo tratar a geometria diferencial do espa SSo de ativos sem corre SS ues de It ' adicionais. A curvatura do fibrado, expressa em termos de $\bar{D}$, adquire assim interpreta SS o financeira direta.
 \end{obs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,24 +95,24 @@ A derivada sim ctrica $\bar{D}$ coincide precisamente com o \textbf{drift de Str
 \begin{teo}[Regra do Produto de Nelson]
 Sejam $X_t$ e $Y_t$ processos estoc isticos cont -nuos quadraticamente integr iveis. As derivadas progressiva, regressiva e sim ctrica satisfazem as seguintes regras de Leibniz:
 \begin{align}
-  D(X_t Y_t)      &= (DX_t)Y_t + X_t(DY_t) + D[X,Y]_t,      \label{eq:leibniz_D}\\
-  D_*(X_t Y_t)    &= (D_*X_t)Y_t + X_t(D_*Y_t) - D_*[X,Y]_t, \label{eq:leibniz_Dstar}\\
-  \bar{D}(X_t Y_t) &= (\bar{D}X_t)Y_t + X_t(\bar{D}Y_t),      \label{eq:leibniz_bar}
+ D(X_t Y_t) &= (DX_t)Y_t + X_t(DY_t) + D[X,Y]_t, \label{eq:leibniz_D}\\
+ D_*(X_t Y_t) &= (D_*X_t)Y_t + X_t(D_*Y_t) - D_*[X,Y]_t, \label{eq:leibniz_Dstar}\\
+ \bar{D}(X_t Y_t) &= (\bar{D}X_t)Y_t + X_t(\bar{D}Y_t), \label{eq:leibniz_bar}
 \end{align}
-em que $[X,Y]_t$ denota o processo de covaria SS  o quadr itica (colchete de probabilidade) entre $X$ e $Y$, e $D[X,Y]_t$, $D_*[X,Y]_t$ s  o as derivadas progressiva e regressiva deste processo.
+em que $[X,Y]_t$ denota o processo de covaria SS o quadr itica (colchete de probabilidade) entre $X$ e $Y$, e $D[X,Y]_t$, $D_*[X,Y]_t$ s o as derivadas progressiva e regressiva deste processo.
 \end{teo}
 
 \begin{proof}[Esbo SSo]
-A identidade~\eqref{eq:leibniz_D} decorre da decomposi SS  o:
+A identidade~\eqref{eq:leibniz_D} decorre da decomposi SS o:
 \begin{align*}
-  \E[X_{t+h}Y_{t+h} - X_tY_t\mid\mathcal{F}_t]
-  &= \E[(X_{t+h}-X_t)Y_t + X_t(Y_{t+h}-Y_t) + (X_{t+h}-X_t)(Y_{t+h}-Y_t)\mid\mathcal{F}_t].
+ \E[X_{t+h}Y_{t+h} - X_tY_t\mid\mathcal{F}_t]
+ &= \E[(X_{t+h}-X_t)Y_t + X_t(Y_{t+h}-Y_t) + (X_{t+h}-X_t)(Y_{t+h}-Y_t)\mid\mathcal{F}_t].
 \end{align*}
-Dividindo por $h$, tomando $h\downarrow 0$, e notando que o termo cruzado converge para a derivada da covaria SS  o quadr itica, obt cm-se~\eqref{eq:leibniz_D}. A equa SS  o~\eqref{eq:leibniz_Dstar} segue por simetria temporal. A equa SS  o~\eqref{eq:leibniz_bar} resulta de somar~\eqref{eq:leibniz_D} e~\eqref{eq:leibniz_Dstar}: os termos de covaria SS  o se cancelam, pois $D[X,Y]_t = D_*[X,Y]_t$ para processos com difus  o sim ctrica. Isto implica que a derivada sim ctrica satisfaz a \textbf{regra de Leibniz cl issica}, sem termo de segunda ordem --- propriedade que a torna a ferramenta natural para o c ilculo geom ctrico em variedades com ru -do.
+Dividindo por $h$, tomando $h\downarrow 0$, e notando que o termo cruzado converge para a derivada da covaria SS o quadr itica, obt cm-se~\eqref{eq:leibniz_D}. A equa SS o~\eqref{eq:leibniz_Dstar} segue por simetria temporal. A equa SS o~\eqref{eq:leibniz_bar} resulta de somar~\eqref{eq:leibniz_D} e~\eqref{eq:leibniz_Dstar}: os termos de covaria SS o se cancelam, pois $D[X,Y]_t = D_*[X,Y]_t$ para processos com difus o sim ctrica. Isto implica que a derivada sim ctrica satisfaz a \textbf{regra de Leibniz cl issica}, sem termo de segunda ordem --- propriedade que a torna a ferramenta natural para o c ilculo geom ctrico em variedades com ru -do.
 \end{proof}
 
 \begin{coro}
-A derivada sim ctrica $\bar{D}$  c uma \textbf{deriva SS  o} na  ilgebra de processos estoc isticos (com respeito ao produto pontual), no sentido da geometria diferencial. Este fato permite definir o \textbf{transporte geom ctrico} como o fluxo de $\bar{D}$ ao longo do fibrado de pre SSos, unificando a cinem itica de Nelson com a estrutura de conex  o de Koszul.
+A derivada sim ctrica $\bar{D}$ c uma \textbf{deriva SS o} na ilgebra de processos estoc isticos (com respeito ao produto pontual), no sentido da geometria diferencial. Este fato permite definir o \textbf{transporte geom ctrico} como o fluxo de $\bar{D}$ ao longo do fibrado de pre SSos, unificando a cinem itica de Nelson com a estrutura de conex o de Koszul.
 \end{coro}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,40 +121,40 @@ A derivada sim ctrica $\bar{D}$  c uma \textbf{deriva SS  o} na  ilgebra de proc
 
 \subsection{Quadrado do Movimento Browniano}
 
-Seja $W_t$ um movimento browniano padr  o unidimensional. Para $X_t = W_t^2$, aplicamos a f 3rmula de It ': $d(W_t^2) = dt + 2W_t\,dW_t$. Logo, o drift de It '  c $b=1$ e $\sigma=2W_t$.
+Seja $W_t$ um movimento browniano padr o unidimensional. Para $X_t = W_t^2$, aplicamos a f 3rmula de It ': $d(W_t^2) = dt + 2W_t\,dW_t$. Logo, o drift de It ' c $b=1$ e $\sigma=2W_t$.
 
 \begin{itemize}
-  \item $D(W_t^2) = 1$ (tend ancia determin -stica do crescimento quadr itico m cdio);
-  \item $D_*(W_t^2) = 1 - 2 = -1$ (da perspectiva reversa, o processo ``encolhe'' quadraticamente);
-  \item $\bar{D}(W_t^2) = \frac{1}{2}(1 + (-1)) = 0$ (velocidade corrente nula);
-  \item $D_A(W_t^2) = \frac{1}{2}(1 - (-1)) = 1$ (velocidade osm 3tica igual    intensidade do ru -do).
+ \item $D(W_t^2) = 1$ (tend ancia determin -stica do crescimento quadr itico m cdio);
+ \item $D_*(W_t^2) = 1 - 2 = -1$ (da perspectiva reversa, o processo ``encolhe'' quadraticamente);
+ \item $\bar{D}(W_t^2) = \frac{1}{2}(1 + (-1)) = 0$ (velocidade corrente nula);
+ \item $D_A(W_t^2) = \frac{1}{2}(1 - (-1)) = 1$ (velocidade osm 3tica igual intensidade do ru -do).
 \end{itemize}
 
 \subsection{Produto $tW_t$}
 
-Para $X_t = tW_t$, com $d(tW_t) = W_t\,dt + t\,dW_t$, tem-se $b=W_t$ e $\sigma = t$. O coeficiente de difus  o  c $\nu = \frac{1}{2}t^2$, com $\partial_W\nu = 0$. Portanto:
+Para $X_t = tW_t$, com $d(tW_t) = W_t\,dt + t\,dW_t$, tem-se $b=W_t$ e $\sigma = t$. O coeficiente de difus o c $\nu = \frac{1}{2}t^2$, com $\partial_W\nu = 0$. Portanto:
 \begin{align*}
-  D(tW_t)      &= W_t,               \\
-  D_*(tW_t)    &= W_t,               \\
-  \bar{D}(tW_t) &= W_t,              \\
-  D_A(tW_t)    &= 0.
+ D(tW_t) &= W_t, \\
+ D_*(tW_t) &= W_t, \\
+ \bar{D}(tW_t) &= W_t, \\
+ D_A(tW_t) &= 0.
 \end{align*}
-A velocidade osm 3tica  c nula porque a volatilidade $\sigma(t) = t$ independe do estado $W_t$ (difus  o aditiva).
+A velocidade osm 3tica c nula porque a volatilidade $\sigma(t) = t$ independe do estado $W_t$ (difus o aditiva).
 
 \subsection{Exponencial do Browniano Geom ctrico}
 
 Seja $X_t = e^{W_t}$. Pelo lema de It ': $d(e^{W_t}) = \frac{1}{2}e^{W_t}dt + e^{W_t}dW_t$. Portanto $b = \frac{1}{2}e^{W_t}$, $\sigma = e^{W_t}$, $\nu = \frac{1}{2}e^{2W_t}$, e $\partial_W\nu = e^{2W_t}$. Aplicando a correspond ancia da Tabela~\ref{tab:nelson_ito_strat}:
 \begin{align*}
-  D(e^{W_t})      &= \frac{1}{2}e^{W_t},                \\
-  D_*(e^{W_t})    &= \frac{1}{2}e^{W_t} - e^{W_t} = -\frac{1}{2}e^{W_t}, \\
-  \bar{D}(e^{W_t})&= \frac{1}{2}e^{W_t} - \frac{1}{2}e^{W_t} = 0,        \\
-  D_A(e^{W_t})    &= \frac{1}{2}e^{W_t}.
+ D(e^{W_t}) &= \frac{1}{2}e^{W_t}, \\
+ D_*(e^{W_t}) &= \frac{1}{2}e^{W_t} - e^{W_t} = -\frac{1}{2}e^{W_t}, \\
+ \bar{D}(e^{W_t})&= \frac{1}{2}e^{W_t} - \frac{1}{2}e^{W_t} = 0, \\
+ D_A(e^{W_t}) &= \frac{1}{2}e^{W_t}.
 \end{align*}
-A velocidade corrente  c nula para todo processo cuja din  mica de It '  c puramente multiplicativa e cujo drift compensa exatamente a corre SS  o de convexidade --- caso dos martingais exponenciais. A velocidade osm 3tica n  o nula reflete a difus  o intr -nseca do mercado.
+A velocidade corrente c nula para todo processo cuja din mica de It ' c puramente multiplicativa e cujo drift compensa exatamente a corre SS o de convexidade --- caso dos martingais exponenciais. A velocidade osm 3tica n o nula reflete a difus o intr -nseca do mercado.
 
-\subsection{Interpreta SS  o Geom ctrica na GAT}
+\subsection{Interpreta SS o Geom ctrica na GAT}
 
-Os exemplos acima ilustram a decomposi SS  o essencial da GAT: a din  mica de qualquer ativo financeiro governado por difus  o decomp ue-se em uma \textbf{componente de corrente} $\bar{D}$ (revers -vel, geom ctrica, associada ao drift de Stratonovich e portanto   s geod csicas do fibrado) e uma \textbf{componente osm 3tica} $D_A$ (irrevers -vel, dissipativa, associada    curvatura do mercado). O teorema de representa SS  o de Nelson garante que toda difus  o em uma variedade riemanniana $M$ pode ser reconstru -da a partir destas duas velocidades mais o tensor m ctrico, estabelecendo a equival ancia entre processos estoc isticos e fluxos geom ctricos --- precisamente a ponte que a GAT explora para traduzir problemas de apre SSamento em problemas de curvatura.
+Os exemplos acima ilustram a decomposi SS o essencial da GAT: a din mica de qualquer ativo financeiro governado por difus o decomp ue-se em uma \textbf{componente de corrente} $\bar{D}$ (revers -vel, geom ctrica, associada ao drift de Stratonovich e portanto s geod csicas do fibrado) e uma \textbf{componente osm 3tica} $D_A$ (irrevers -vel, dissipativa, associada curvatura do mercado). O teorema de representa SS o de Nelson garante que toda difus o em uma variedade riemanniana $M$ pode ser reconstru -da a partir destas duas velocidades mais o tensor m ctrico, estabelecendo a equival ancia entre processos estoc isticos e fluxos geom ctricos --- precisamente a ponte que a GAT explora para traduzir problemas de apre SSamento em problemas de curvatura.
 
 Para demonstra SS ues completas e extens ues a variedades riemannianas, consulte \citeonline{nelson1967dynamical} e \citeonline{gliklikh2011global}.
 

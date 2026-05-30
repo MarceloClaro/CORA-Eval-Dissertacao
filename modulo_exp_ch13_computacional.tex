@@ -1,22 +1,22 @@
- >>?\chapter{Implementa SS  o Computacional da GAT em Python}
+ >>?\chapter{Implementa SS o Computacional da GAT em Python}
 \label{ch:implementacao-computacional}
 
-Este cap -tulo fornece a implementa SS  o computacional completa dos conceitos centrais da Teoria Geom ctrica de Arbitragem (GAT). Todos os c 3digos s  o funcionais em Python 3.12+ com depend ancias exclusivas em \texttt{numpy} e \texttt{scipy}. O objetivo  c que o estudante possa executar, modificar e experimentar cada algoritmo, consolidando a intui SS  o geom ctrica desenvolvida nos cap -tulos anteriores.
+Este cap -tulo fornece a implementa SS o computacional completa dos conceitos centrais da Teoria Geom ctrica de Arbitragem (GAT). Todos os c 3digos s o funcionais em Python 3.12+ com depend ancias exclusivas em \texttt{numpy} e \texttt{scipy}. O objetivo c que o estudante possa executar, modificar e experimentar cada algoritmo, consolidando a intui SS o geom ctrica desenvolvida nos cap -tulos anteriores.
 
-\section{Simula SS  o de Movimento Browniano Geom ctrico}
+\section{Simula SS o de Movimento Browniano Geom ctrico}
 \label{sec:simulacao-gbm}
 
-O ponto de partida  c simular a din  mica estoc istica de ativos financeiros sob a hip 3tese de mercado eficiente (aus ancia de arbitragem). O Movimento Browniano Geom ctrico (GBM)  c governado pela equa SS  o diferencial estoc istica:
+O ponto de partida c simular a din mica estoc istica de ativos financeiros sob a hip 3tese de mercado eficiente (aus ancia de arbitragem). O Movimento Browniano Geom ctrico (GBM) c governado pela equa SS o diferencial estoc istica:
 \begin{equation}
-    dS_t = \mu S_t\,dt + \sigma S_t\,dW_t,
+ dS_t = \mu S_t\,dt + \sigma S_t\,dW_t,
 \end{equation}
-onde \(\mu\)  c o drift (retorno esperado), \(\sigma\)  c a volatilidade e \(dW_t \sim \mathcal{N}(0, dt)\)  c o incremento de Wiener.
+onde \(\mu\) c o drift (retorno esperado), \(\sigma\) c a volatilidade e \(dW_t \sim \mathcal{N}(0, dt)\) c o incremento de Wiener.
 
-A discretiza SS  o de Euler-Maruyama para um passo \(\Delta t\)  c:
+A discretiza SS o de Euler-Maruyama para um passo \(\Delta t\) c:
 \begin{equation}
-    S_{t+\Delta t} = S_t \exp\!\left[\left(\mu - \frac{\sigma^2}{2}\right)\Delta t + \sigma\sqrt{\Delta t}\,\varepsilon_t\right], \quad \varepsilon_t \sim \mathcal{N}(0,1).
+ S_{t+\Delta t} = S_t \exp\!\left[\left(\mu - \frac{\sigma^2}{2}\right)\Delta t + \sigma\sqrt{\Delta t}\,\varepsilon_t\right], \quad \varepsilon_t \sim \mathcal{N}(0,1).
 \end{equation}
-A forma exponencial garante positividade exata de \(S_t\), evitando valores negativos que surgiriam na discretiza SS  o aditiva ing anua.
+A forma exponencial garante positividade exata de \(S_t\), evitando valores negativos que surgiriam na discretiza SS o aditiva ing anua.
 
 \begin{lstlisting}[language=Python, caption={Simula SS  o de $M=10$ trajet 3rias de GBM com $S_0=100$, $\mu=0.08$, $\sigma=0.25$, $T=1$ ano, $N=252$ passos.}]
 import numpy as np
@@ -72,31 +72,31 @@ plt.savefig('gbm_trajetorias.pdf')
 plt.show()
 \end{lstlisting}
 
-O estudante deve observar que, para \(\mu = r\) (taxa livre de risco), o processo descontado \(\tilde{S}_t = e^{-rt}S_t\)  c um martingale --- propriedade que ser i violada quando existir arbitragem.
+O estudante deve observar que, para \(\mu = r\) (taxa livre de risco), o processo descontado \(\tilde{S}_t = e^{-rt}S_t\) c um martingale --- propriedade que ser i violada quando existir arbitragem.
 
 \section{C ilculo Num crico da Curvatura}
 \label{sec:calculo-curvatura}
 
 \subsection{F 3rmula do Tensor de Curvatura}
 
-No contexto da GAT, a conex  o de gauge \(A_\mu\) encapsula os excessos de retorno em rela SS  o    taxa livre de risco. Para um mercado com \(N\) ativos, a curvatura (forma de curvatura 2)  c dada por:
+No contexto da GAT, a conex o de gauge \(A_\mu\) encapsula os excessos de retorno em rela SS o taxa livre de risco. Para um mercado com \(N\) ativos, a curvatura (forma de curvatura 2) c dada por:
 \begin{equation}
-    R_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + [A_\mu, A_\nu],
+ R_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + [A_\mu, A_\nu],
 \end{equation}
-onde o comutador \([A_\mu, A_\nu] = A_\mu A_\nu - A_\nu A_\mu\)  c n  o nulo apenas para teorias de gauge n  o-abelianas. No caso abeliano (um  onico fator de risco), a curvatura reduz-se a \(R_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu\).
+onde o comutador \([A_\mu, A_\nu] = A_\mu A_\nu - A_\nu A_\mu\) c n o nulo apenas para teorias de gauge n o-abelianas. No caso abeliano (um onico fator de risco), a curvatura reduz-se a \(R_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu\).
 
-Para o mercado financeiro, identificamos os  -ndices \(\mu = j\) (ativo) e \(\nu = t\) (tempo), de modo que:
+Para o mercado financeiro, identificamos os -ndices \(\mu = j\) (ativo) e \(\nu = t\) (tempo), de modo que:
 \begin{equation}
-    R_{jt} = \frac{\partial A_j}{\partial t} - \frac{\partial A_t}{\partial S_j} + [A_j, A_t].
+ R_{jt} = \frac{\partial A_j}{\partial t} - \frac{\partial A_t}{\partial S_j} + [A_j, A_t].
 \end{equation}
 Em coordenadas de pre SSo, com \(A_j\) proporcional ao drift ajustado \(\mu_j - r\), a curvatura mede o ``rotacional'' do campo de gauge no espa SSo \((S, t)\).
 
-\subsection{Implementa SS  o por Diferen SSas Finitas}
+\subsection{Implementa SS o por Diferen SSas Finitas}
 
 Para calcular \(R\) numericamente, aproximamos as derivadas parciais por diferen SSas finitas centradas de segunda ordem:
 \begin{align}
-    \frac{\partial A}{\partial S}\bigg|_{(j,k)} &\approx \frac{A_{j+1,k} - A_{j-1,k}}{2\,\Delta S}, \\
-    \frac{\partial A}{\partial t}\bigg|_{(j,k)}  &\approx \frac{A_{j,k+1} - A_{j,k-1}}{2\,\Delta t}.
+ \frac{\partial A}{\partial S}\bigg|_{(j,k)} &\approx \frac{A_{j+1,k} - A_{j-1,k}}{2\,\Delta S}, \\
+ \frac{\partial A}{\partial t}\bigg|_{(j,k)} &\approx \frac{A_{j,k+1} - A_{j,k-1}}{2\,\Delta t}.
 \end{align}
 
 \begin{lstlisting}[language=Python, caption={C ilculo num crico da curvatura $R$ via diferen SSas finitas. Verifica SS  o: $R \approx 0$ quando $\mu_j = r$ (aus ancia de arbitragem).}]
@@ -163,27 +163,27 @@ print(f'Max |R|                      : {np.max(np.abs(R_arb)):.6e}')
 \begin{ex}
 Execute o c 3digo acima e verifique que:
 \begin{enumerate}
-    \item Para \(\mu_j = r\) (todos os ativos), \(\|R\| \approx 0\) dentro da precis  o num crica.
-    \item Ao introduzir um ativo com \(\mu_j \neq r\), a curvatura torna-se significativamente n  o nula, sinalizando oportunidade de arbitragem.
+ \item Para \(\mu_j = r\) (todos os ativos), \(\|R\| \approx 0\) dentro da precis o num crica.
+ \item Ao introduzir um ativo com \(\mu_j \neq r\), a curvatura torna-se significativamente n o nula, sinalizando oportunidade de arbitragem.
 \end{enumerate}
 \end{ex}
 
-\section{Constru SS  o de Estrat cgias de Arbitragem}
+\section{Constru SS o de Estrat cgias de Arbitragem}
 \label{sec:estrategias-arbitragem}
 
 \subsection{Holonomia e Transporte Paralelo}
 
-Quando \(R \neq 0\), o fibrado financeiro possui curvatura n  o trivial. A holonomia --- o desvio de um vetor ap 3s transporte paralelo ao longo de uma curva fechada --- quantifica o ganho de arbitragem. Para uma curva fechada \(\gamma\) no espa SSo de par  metros, o operador de holonomia  c:
+Quando \(R \neq 0\), o fibrado financeiro possui curvatura n o trivial. A holonomia --- o desvio de um vetor ap 3s transporte paralelo ao longo de uma curva fechada --- quantifica o ganho de arbitragem. Para uma curva fechada \(\gamma\) no espa SSo de par metros, o operador de holonomia c:
 \begin{equation}
-    \mathcal{P}\exp\!\left(\oint_\gamma A_\mu\,dx^\mu\right) \neq \mathbb{I},
+ \mathcal{P}\exp\!\left(\oint_\gamma A_\mu\,dx^\mu\right) \neq \mathbb{I},
 \end{equation}
-onde \(\mathcal{P}\) denota ordena SS  o de caminho (path ordering).
+onde \(\mathcal{P}\) denota ordena SS o de caminho (path ordering).
 
 No contexto pr itico, a estrat cgia de arbitragem consiste em tr as etapas:
 \begin{enumerate}
-    \item \textbf{Encontrar curva fechada}: Identificar um ciclo no grafo de ativos cujo produto de taxas de c  mbio (ou pre SSos relativos) desvia de 1.
-    \item \textbf{Transporte paralelo}: Propagar um portf 3lio inicial ao longo da curva usando a conex  o de gauge.
-    \item \textbf{Extrair lucro}: A diferen SSa entre o portf 3lio final e o inicial  c o lucro de arbitragem.
+ \item \textbf{Encontrar curva fechada}: Identificar um ciclo no grafo de ativos cujo produto de taxas de c mbio (ou pre SSos relativos) desvia de 1.
+ \item \textbf{Transporte paralelo}: Propagar um portf 3lio inicial ao longo da curva usando a conex o de gauge.
+ \item \textbf{Extrair lucro}: A diferen SSa entre o portf 3lio final e o inicial c o lucro de arbitragem.
 \end{enumerate}
 
 \begin{lstlisting}[language=Python, caption={Algoritmo de constru SS  o de estrat cgia de arbitragem via holonomia.}]
@@ -297,13 +297,13 @@ print(f'Pesos do portfolio   : {resultado["pesos_portfolio"]}')
 \end{lstlisting}
 
 \begin{defi}[Holonomia financeira]
-A holonomia \(H_\gamma = \mathcal{P}\exp(\oint_\gamma A) - 1\)  c uma medida direta do lucro de arbitragem dispon -vel ao longo da curva fechada \(\gamma\). Se \(H_\gamma > 0\), existe uma estrat cgia de investimento com lucro livre de risco e custo inicial nulo.
+A holonomia \(H_\gamma = \mathcal{P}\exp(\oint_\gamma A) - 1\) c uma medida direta do lucro de arbitragem dispon -vel ao longo da curva fechada \(\gamma\). Se \(H_\gamma > 0\), existe uma estrat cgia de investimento com lucro livre de risco e custo inicial nulo.
 \end{defi}
 
-\section{Simula SS  o de Mercado com Arbitragem}
+\section{Simula SS o de Mercado com Arbitragem}
 \label{sec:mercado-arbitragem}
 
-Nesta se SS  o, constru -mos um mercado sint ctico com 3 ativos onde uma inconsist ancia de precifica SS  o gera \(R \neq 0\). Em seguida, implementamos a estrat cgia de arbitragem e simulamos o P\&L (Profit and Loss) ao longo do tempo.
+Nesta se SS o, constru -mos um mercado sint ctico com 3 ativos onde uma inconsist ancia de precifica SS o gera \(R \neq 0\). Em seguida, implementamos a estrat cgia de arbitragem e simulamos o P\&L (Profit and Loss) ao longo do tempo.
 
 \begin{lstlisting}[language=Python, caption={Simula SS  o de mercado sint ctico com 3 ativos e arbitragem. Constru SS  o da estrat cgia e PnL.}]
 import numpy as np
@@ -418,19 +418,19 @@ print(f'Sharpe ratio: {np.mean(pnl) / (np.std(pnl) + 1e-12) * np.sqrt(252):.2f}'
 \end{lstlisting}
 
 \begin{ex}
-Analise os resultados da simula SS  o:
+Analise os resultados da simula SS o:
 \begin{enumerate}
-    \item O ativo 2, com \(\mu = 0.18\) quando deveria ter \(\mu = r = 0.05\), apresenta trajet 3ria consistentemente superior --- evid ancia de m i precifica SS  o.
-    \item A curvatura \(R\)  c n  o nula em todo o per -odo, confirmando a presen SSa de oportunidade de arbitragem.
-    \item A estrat cgia \textit{long-short} (comprado nos ativos corretamente precificados, vendido no ativo sobrevalorizado) gera PnL positivo e crescente.
-    \item O Sharpe ratio elevado indica que o lucro n  o  c compensa SS  o por risco, mas sim explora SS  o de inefici ancia de mercado --- a assinatura da arbitragem.
+ \item O ativo 2, com \(\mu = 0.18\) quando deveria ter \(\mu = r = 0.05\), apresenta trajet 3ria consistentemente superior --- evid ancia de m i precifica SS o.
+ \item A curvatura \(R\) c n o nula em todo o per -odo, confirmando a presen SSa de oportunidade de arbitragem.
+ \item A estrat cgia \textit{long-short} (comprado nos ativos corretamente precificados, vendido no ativo sobrevalorizado) gera PnL positivo e crescente.
+ \item O Sharpe ratio elevado indica que o lucro n o c compensa SS o por risco, mas sim explora SS o de inefici ancia de mercado --- a assinatura da arbitragem.
 \end{enumerate}
 \end{ex}
 
-\section{Visualiza SS  o da Curvatura}
+\section{Visualiza SS o da Curvatura}
 \label{sec:visualizacao-curvatura}
 
-A visualiza SS  o da curvatura como fun SS  o do tempo e da composi SS  o da carteira permite identificar regi ues de alta curvatura --- os ``hotspots'' de arbitragem. Nesta se SS  o, geramos gr ificos de calor (\textit{heatmaps}) e superf -cies 3D.
+A visualiza SS o da curvatura como fun SS o do tempo e da composi SS o da carteira permite identificar regi ues de alta curvatura --- os ``hotspots'' de arbitragem. Nesta se SS o, geramos gr ificos de calor (\textit{heatmaps}) e superf -cies 3D.
 
 \begin{lstlisting}[language=Python, caption={Visualiza SS  o da curvatura: heatmap temporal e superf -cie 3D em fun SS  o da carteira.}]
 import numpy as np
@@ -529,18 +529,18 @@ print(f'Curvatura minima: {np.nanmin(Z):.4f}')
 \end{lstlisting}
 
 \begin{ex}
-Interpreta SS  o dos gr ificos:
+Interpreta SS o dos gr ificos:
 \begin{enumerate}
-    \item O \textbf{heatmap no simplex} mostra que carteiras concentradas no ativo com maior desvio de precifica SS  o (Ativo 2, canto inferior direito) apresentam curvatura m ixima --- estas s  o as carteiras com maior potencial de arbitragem.
-    \item A \textbf{s crie temporal} revela que a curvatura n  o  c constante: oscila com a din  mica do mercado, criando janelas de oportunidade que o arbitrador deve identificar e explorar.
-    \item Regi ues de curvatura acima do percentil 90 s  o candidatas priorit irias para execu SS  o de estrat cgias.
+ \item O \textbf{heatmap no simplex} mostra que carteiras concentradas no ativo com maior desvio de precifica SS o (Ativo 2, canto inferior direito) apresentam curvatura m ixima --- estas s o as carteiras com maior potencial de arbitragem.
+ \item A \textbf{s crie temporal} revela que a curvatura n o c constante: oscila com a din mica do mercado, criando janelas de oportunidade que o arbitrador deve identificar e explorar.
+ \item Regi ues de curvatura acima do percentil 90 s o candidatas priorit irias para execu SS o de estrat cgias.
 \end{enumerate}
 \end{ex}
 
 \section{Exemplo Completo: Mini-Framework GAT}
 \label{sec:framework-gat}
 
-Esta se SS  o consolida todos os conceitos em um mini-framework orientado a objetos, com classes para os componentes fundamentais da GAT: \texttt{Gauge}, \texttt{MarketBundle}, \texttt{Connection} e \texttt{Curvature}. O framework  c autocontido e funcional, permitindo ao estudante instanciar mercados, calcular curvaturas e construir estrat cgias de arbitragem.
+Esta se SS o consolida todos os conceitos em um mini-framework orientado a objetos, com classes para os componentes fundamentais da GAT: \texttt{Gauge}, \texttt{MarketBundle}, \texttt{Connection} e \texttt{Curvature}. O framework c autocontido e funcional, permitindo ao estudante instanciar mercados, calcular curvaturas e construir estrat cgias de arbitragem.
 
 \begin{lstlisting}[language=Python, caption={Mini-framework GAT: classes para Gauge, MarketBundle, Connection e Curvature. C 3digo funcional completo.}]
 import numpy as np
@@ -863,38 +863,38 @@ if __name__ == '__main__':
 \begin{defi}[Framework GAT m -nimo]
 O mini-framework acima implementa o ciclo completo da GAT:
 \begin{enumerate}
-    \item \textbf{Gauge.from\_drifts}: Constr 3i o campo de gauge a partir de dados observ iveis de mercado (pre SSos, drifts, volatilidades).
-    \item \textbf{MarketBundle}: Encapsula a geometria do fibrado --- base temporal e fibra de pre SSos.
-    \item \textbf{Connection}: Define transporte paralelo e derivada covariante, opera SS ues fundamentais para propaga SS  o de carteiras.
-    \item \textbf{Curvature}: Calcula o tensor \(R\) e verifica a condi SS  o de integrabilidade (aus ancia de arbitragem \(\iff R = 0\)).
-    \item \textbf{AnalisadorArbitragem}: Orquestrador que integra todos os componentes e gera diagn 3stico completo.
+ \item \textbf{Gauge.from\_drifts}: Constr 3i o campo de gauge a partir de dados observ iveis de mercado (pre SSos, drifts, volatilidades).
+ \item \textbf{MarketBundle}: Encapsula a geometria do fibrado --- base temporal e fibra de pre SSos.
+ \item \textbf{Connection}: Define transporte paralelo e derivada covariante, opera SS ues fundamentais para propaga SS o de carteiras.
+ \item \textbf{Curvature}: Calcula o tensor \(R\) e verifica a condi SS o de integrabilidade (aus ancia de arbitragem \(\iff R = 0\)).
+ \item \textbf{AnalisadorArbitragem}: Orquestrador que integra todos os componentes e gera diagn 3stico completo.
 \end{enumerate}
 \end{defi}
 
 \begin{ex}
 Modifique o exemplo acima para:
 \begin{enumerate}
-    \item Adicionar um quinto ativo com drift ainda maior (\(\mu = 0.25\)) e verificar o aumento na norma de \(R\).
-    \item Introduzir correla SS  o n  o trivial entre os ativos (matriz de covari  ncia n  o diagonal) e observar o efeito na curvatura.
-    \item Implementar o caso n  o-abeliano com dois gauges \(A^{(1)}\) e \(A^{(2)}\) e calcular o comutador \([A^{(1)}, A^{(2)}]\).
-    \item Estender o \texttt{AnalisadorArbitragem} para buscar ciclos de comprimento arbitr irio (n  o apenas tri  ngulos) usando o algoritmo de Bellman-Ford para detec SS  o de ciclos negativos.
+ \item Adicionar um quinto ativo com drift ainda maior (\(\mu = 0.25\)) e verificar o aumento na norma de \(R\).
+ \item Introduzir correla SS o n o trivial entre os ativos (matriz de covari ncia n o diagonal) e observar o efeito na curvatura.
+ \item Implementar o caso n o-abeliano com dois gauges \(A^{(1)}\) e \(A^{(2)}\) e calcular o comutador \([A^{(1)}, A^{(2)}]\).
+ \item Estender o \texttt{AnalisadorArbitragem} para buscar ciclos de comprimento arbitr irio (n o apenas tri ngulos) usando o algoritmo de Bellman-Ford para detec SS o de ciclos negativos.
 \end{enumerate}
 \end{ex}
 
 \section{Considera SS ues Finais do Cap -tulo}
 \label{sec:consideracoes-finais-comp}
 
-Este cap -tulo demonstrou a viabilidade computacional da Teoria Geom ctrica de Arbitragem. Os principais resultados s  o:
+Este cap -tulo demonstrou a viabilidade computacional da Teoria Geom ctrica de Arbitragem. Os principais resultados s o:
 
 \begin{enumerate}
-    \item A simula SS  o de GBM fornece a base estoc istica para testar a GAT em ambientes controlados.
-    \item O c ilculo num crico da curvatura confirma a equival ancia fundamental: \(R = 0 \iff\) aus ancia de arbitragem.
-    \item A holonomia fornece um algoritmo construtivo para extrair lucros de arbitragem a partir de \(R \neq 0\).
-    \item A simula SS  o de mercado sint ctico valida a estrat cgia com PnL positivo e Sharpe elevado.
-    \item A visualiza SS  o da curvatura revela \textit{hotspots} de oportunidade no espa SSo de carteiras e no tempo.
-    \item O mini-framework GAT consolida todos os conceitos em c 3digo reutiliz ivel e extens -vel.
+ \item A simula SS o de GBM fornece a base estoc istica para testar a GAT em ambientes controlados.
+ \item O c ilculo num crico da curvatura confirma a equival ancia fundamental: \(R = 0 \iff\) aus ancia de arbitragem.
+ \item A holonomia fornece um algoritmo construtivo para extrair lucros de arbitragem a partir de \(R \neq 0\).
+ \item A simula SS o de mercado sint ctico valida a estrat cgia com PnL positivo e Sharpe elevado.
+ \item A visualiza SS o da curvatura revela \textit{hotspots} de oportunidade no espa SSo de carteiras e no tempo.
+ \item O mini-framework GAT consolida todos os conceitos em c 3digo reutiliz ivel e extens -vel.
 \end{enumerate}
 
-O estudante deve agora ser capaz de implementar, testar e estender a GAT para cen irios mais complexos, incluindo m oltiplos fatores de risco, custos de transa SS  o e mercados incompletos --- t 3picos abordados nos cap -tulos avan SSados seguintes.
+O estudante deve agora ser capaz de implementar, testar e estender a GAT para cen irios mais complexos, incluindo m oltiplos fatores de risco, custos de transa SS o e mercados incompletos --- t 3picos abordados nos cap -tulos avan SSados seguintes.
 
 

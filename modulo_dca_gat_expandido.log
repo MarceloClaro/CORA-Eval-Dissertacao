@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.20)  30 MAY 2026 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -688,9 +688,9 @@ l.146 \tableofcontents
 
 ]
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
-(babel)             Reported on input line 80.
+(babel)             Reported on input line 78.
  [3] [4]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 131
+LaTeX Font Info:    Trying to load font information for U+euf on input line 133
 .
 
 (C:\Users\marce\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
@@ -702,12 +702,16 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 
  [8] [9
 
-] (modulo_exp_ch01_intro.tex [10]
+] (modulo_exp_ch01_intro.tex
 Cap\'{\i }tulo 1.
-[11
+[10
 
-] [12] [13] [14] [15]) (modulo_exp_ch02_probabilidade.tex [16]
+] [11] [12] [13] [14]) (modulo_exp_ch02_probabilidade.tex [15]
 Cap\'{\i }tulo 2.
+[16
+
+]
+Cap\'{\i }tulo 3.
 [17
 
 ]
@@ -720,8 +724,8 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 [18]
 ! Undefined control sequence.
-l.64     \\E[X] := \int_\Omega X(\omega) \dif
-                                              \\PP(\omega).
+l.88  \\E[X] := \int_\Omega X(\omega) \dif
+                                           \\PP(\omega).
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -729,13 +733,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Double superscript.
-l.66 ...grais seja finita. Dizemos que $X \in \Lp^
+l.90 ...grais seja finita. Dizemos que $X \in \Lp^
                                                   1(\Omega, \F, \\PP)$ se $\...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.74 ...vari  ncia} entre duas v.a. $X, Y \in \Lp^
-                                                  2$  c $\Cov(X,Y) := \\E[(X...
+l.98 ...ovari ncia} entre duas v.a. $X, Y \in \Lp^
+                                                  2$ c $\Cov(X,Y) := \\E[(X ...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
@@ -747,13 +751,13 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 [19]
 ! Double superscript.
-l.90 Se $X \in \Lp^
-                   2$, ent  o para todo $\varepsilon > 0$:
+l.114 Se $X \in \Lp^
+                    2$, ent o para todo $\varepsilon > 0$:
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
-Overfull \hbox (4.16441pt too wide) in paragraph at lines 115--116
-[][]\T1/cmr/bx/n/12 Definicao 2.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
+Overfull \hbox (4.16441pt too wide) in paragraph at lines 139--140
+[][]\T1/cmr/bx/n/12 Definicao 3.10 \T1/cmr/m/n/12 (Dis-tri-bui SS o Log---Nor-m
 al)\T1/cmr/bx/n/12 . []$\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12 ^^X []\OT1/cmr/m/n/
 12 (\OML/cmm/m/it/12 ^^V; ^^[[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 se $[] \OML/c
 mm/m/it/12 X \OMS/cmsy/m/n/12 ^^X N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^V; ^^[[]
@@ -769,12 +773,12 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 [20]
 ! Double superscript.
-l.150 Seja $X \in \Lp^
+l.174 Seja $X \in \Lp^
                       1(\Omega, \F, \\PP)$ e $\G \subseteq \F$ uma sub-$\sig...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Undefined control sequence.
-l.153 ...o $G \in \G$, $\int_G \\E[X \mid \G] \dif
+l.177 ...o $G \in \G$, $\int_G \\E[X \mid \G] \dif
                                                    \\PP = \int_G X \dif \\PP$.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -783,7 +787,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.153 ... \\E[X \mid \G] \dif \\PP = \int_G X \dif
+l.177 ... \\E[X \mid \G] \dif \\PP = \int_G X \dif
                                                    \\PP$.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -792,22 +796,22 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Double superscript.
-l.157 ...ues $\G$-mensur iveis no sentido de $\Lp^
-                                                  2$, ou seja,  c a melhor a...
+l.181 ...ues $\G$-mensur iveis no sentido de $\Lp^
+                                                  2$, ou seja, c a melhor ap...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.160 Sejam $X, Y \in \Lp^
+l.184 Sejam $X, Y \in \Lp^
                           1$ e $\G, \H$ sub-$\sigma$- ilgebras de $\F$. Valem:
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
-LaTeX Warning: Command \H invalid in math mode on input line 160.
+LaTeX Warning: Command \H invalid in math mode on input line 184.
 
 ! Improper \spacefactor.
 <recently read> \spacefactor 
                              
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$
                                         sub-$\sigma$- ilgebras de $\F$. Valem:
 You can refer to \spacefactor only in horizontal mode;
 you can refer to \prevdepth only in vertical mode; and
@@ -817,7 +821,7 @@ I'm forgetting what you said and using zero instead.
 ! Extra }, or forgotten $.
 \add@accent ... \accent@spacefactor \spacefactor }
                                                   \let \maybe@load@fontshape...
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$
                                         sub-$\sigma$- ilgebras de $\F$. Valem:
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -828,7 +832,7 @@ deleted material, e.g., by typing `I$}'.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$
                                         sub-$\sigma$- ilgebras de $\F$. Valem:
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -836,7 +840,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 ! Missing { inserted.
 <to be read again> 
                    $
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$
                                         sub-$\sigma$- ilgebras de $\F$. Valem:
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -846,7 +850,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$
                                         sub-$\sigma$- ilgebras de $\F$. Valem:
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -857,7 +861,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.160 Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$
+l.184 Sejam $X, Y \in \Lp^1$ e $\G, \H$ sub-$
                                              \sigma$- ilgebras de $\F$. Valem:
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -868,14 +872,14 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.160 ...m $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma
+l.184 ...m $X, Y \in \Lp^1$ e $\G, \H$ sub-$\sigma
                                                   $- ilgebras de $\F$. Valem:
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (6.68982pt too wide) in paragraph at lines 160--161
-[][]\T1/cmr/bx/n/12 Teorema 2.14 \T1/cmr/m/n/12 (Pro-pri-e-da-des da Es-pe-ran 
+Overfull \hbox (6.68982pt too wide) in paragraph at lines 184--185
+[][]\T1/cmr/bx/n/12 Teorema 3.14 \T1/cmr/m/n/12 (Pro-pri-e-da-des da Es-pe-ran 
 SSa Con-di-ci-o-nal)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se-jam $\OML/cmm/m/it/1
 2 X; Y \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 L[][]$ \T1/cmr/m/it/12 e $\OMS/cmsy/
 m/n/12 G\OML/cmm/m/it/12 ; []$$^^[$\T1/cmr/m/it/12 -
@@ -890,21 +894,21 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 [21]
 
-LaTeX Warning: Command \H invalid in math mode on input line 165.
+LaTeX Warning: Command \H invalid in math mode on input line 189.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, ent  o
+l.189 ...f{Propriedade de torre:} se $\H \subseteq
+                                                   \G$, ent o
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Improper \spacefactor.
 <recently read> \spacefactor 
                              
-l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, ent  o
+l.189 ...f{Propriedade de torre:} se $\H \subseteq
+                                                   \G$, ent o
 You can refer to \spacefactor only in horizontal mode;
 you can refer to \prevdepth only in vertical mode; and
 neither of these is meaningful inside \write. So
@@ -913,8 +917,8 @@ I'm forgetting what you said and using zero instead.
 ! Extra }, or forgotten $.
 \add@accent ... \accent@spacefactor \spacefactor }
                                                   \let \maybe@load@fontshape...
-l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, ent  o
+l.189 ...f{Propriedade de torre:} se $\H \subseteq
+                                                   \G$, ent o
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -924,16 +928,16 @@ deleted material, e.g., by typing `I$}'.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
-l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, ent  o
+l.189 ...f{Propriedade de torre:} se $\H \subseteq
+                                                   \G$, ent o
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
 ! Extra }, or forgotten $.
 \add@accent ...spaces \relax \accent #1 #2\egroup 
                                                   \ifmmode \else \spacefacto...
-l.165 ...f{Propriedade de torre:} se $\H \subseteq
-                                                   \G$, ent  o
+l.189 ...f{Propriedade de torre:} se $\H \subseteq
+                                                   \G$, ent o
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -943,27 +947,27 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.166     \begin{equation}
-                          
+l.190  \begin{equation}
+                       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-LaTeX Warning: Command \H invalid in math mode on input line 167.
+LaTeX Warning: Command \H invalid in math mode on input line 191.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Missing delimiter (. inserted).
 <to be read again> 
                    \global 
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
 should probably delete the `{' by typing `1' now, so that
@@ -974,15 +978,15 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Extra \right.
 <to be read again> 
                    \global 
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I'm ignoring a \right that had no matching \left.
 
 ! Improper \spacefactor.
 <recently read> \spacefactor 
                              
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 You can refer to \spacefactor only in horizontal mode;
 you can refer to \prevdepth only in vertical mode; and
 neither of these is meaningful inside \write. So
@@ -991,8 +995,8 @@ I'm forgetting what you said and using zero instead.
 ! Extra }, or forgotten $.
 \add@accent ... \accent@spacefactor \spacefactor }
                                                   \let \maybe@load@fontshape...
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1002,16 +1006,16 @@ deleted material, e.g., by typing `I$}'.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
 ! Missing { inserted.
 <to be read again> 
                    \right 
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
 so that I will find a matching right brace soon.
@@ -1020,8 +1024,8 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1031,8 +1035,8 @@ my insertion and my current dilemma will both disappear.
 ! Missing delimiter (. inserted).
 <to be read again> 
                    \egroup 
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
 should probably delete the `{' by typing `1' now, so that
@@ -1043,15 +1047,15 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Extra \right.
 <to be read again> 
                    \egroup 
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I'm ignoring a \right that had no matching \left.
 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.167         \E\brk{\\E[X \mid \G] \mid \H}
-                                             = \\E[X \mid \H];
+l.191  \E\brk{\\E[X \mid \G] \mid \H}
+                                      = \\E[X \mid \H];
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1059,12 +1063,12 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-LaTeX Warning: Command \H invalid in math mode on input line 167.
+LaTeX Warning: Command \H invalid in math mode on input line 191.
 
 ! Please use \mathaccent for accents in math mode.
 \add@accent ... \let \ignorespaces \relax \accent 
                                                   #1 #2\egroup \ifmmode \els...
-l.167 ...{\\E[X \mid \G] \mid \H} = \\E[X \mid \H]
+l.191 ...{\\E[X \mid \G] \mid \H} = \\E[X \mid \H]
                                                   ;
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -1072,8 +1076,8 @@ I'm changing \accent to \mathaccent here; wish me luck.
 ! You can't use `\eqno' in math mode.
 \veqno ->\@kernel@eqno 
                        \aftergroup \ignorespaces 
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -1082,8 +1086,8 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1093,8 +1097,8 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1104,8 +1108,8 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1115,8 +1119,8 @@ my insertion and my current dilemma will both disappear.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1126,8 +1130,8 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168     \end{equation}
-                        
+l.192  \end{equation}
+                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1141,8 +1145,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
+l.193  \item \textbf
+                    {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid...
 
 You've lost some text.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1154,8 +1158,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
+l.193  \item \textbf
+                    {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid...
 
 You've lost some text.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1163,8 +1167,8 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
+l.193  \item \textbf
+                    {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1174,16 +1178,16 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
+l.193  \item \textbf
+                    {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.169     \item \textbf
-                       {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \...
+l.193  \item \textbf
+                    {Monotonicidade:} $X \leq Y$ q.c. $\implies$ $\\E[X \mid...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1191,13 +1195,13 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Double superscript.
-l.170 ... se $\phi$  c convexa e $\phi(X) \in \Lp^
-                                                  1$, ent  o $\phi(\\E[X \mi...
+l.194 ...} se $\phi$ c convexa e $\phi(X) \in \Lp^
+                                                  1$, ent o $\phi(\\E[X \mid...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Double superscript.
-l.192 ...\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^
-                                                  1$ para todo $t$  c um:
+l.216 ...\{\$\\mathcal{F}_t\$\}$ com $M_t \in \Lp^
+                                                  1$ para todo $t$ c um:
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 
@@ -1211,7 +1215,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 ! Undefined control sequence.
 <recently read> \dif 
                      
-l.215 ... $\Q$. No modelo de Black--Scholes, $\dif
+l.239 ... $\Q$. No modelo de Black--Scholes, $\dif
                                                    \widetilde{S}_t = \sigma ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1220,8 +1224,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.215 ...etilde{S}_t = \sigma \widetilde{S}_t \dif
-                                                   W_t^\Q$, onde $W_t^\Q$  c...
+l.239 ...etilde{S}_t = \sigma \widetilde{S}_t \dif
+                                                   W_t^\Q$, onde $W_t^\Q$ c ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1237,7 +1241,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 
 [23]
 ! Double superscript.
-l.262 ...}} - W_{t_i})^2 = t \quad \text{em } \Lp^
+l.286 ...}} - W_{t_i})^2 = t \quad \text{em } \Lp^
                                                   2.
 I treat `x^1^2' essentially like `x^1{}^2'.
 
@@ -1252,7 +1256,7 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 ! Undefined control sequence.
 <recently read> \dif 
                      
-l.274 ...Delta$ em m cdia, o que implica que $\dif
+l.298 ...Delta$ em m cdia, o que implica que $\dif
                                                    W_t)^2 = \dif t$ na nota ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1261,8 +1265,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.274 ...ia, o que implica que $\dif W_t)^2 = \dif
-                                                   t$ na nota SS  o diferenc...
+l.298 ...ia, o que implica que $\dif W_t)^2 = \dif
+                                                   t$ na nota SS o diferenci...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1272,8 +1276,8 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> \dif 
                 S_t
-l.279     \frac{\dif S_t}{S_t}
-                               = \mu \dif t + \sigma \dif W_t,
+l.303  \frac{\dif S_t}{S_t}
+                            = \mu \dif t + \sigma \dif W_t,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1281,8 +1285,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.279     \frac{\dif S_t}{S_t} = \mu \dif
-                                          t + \sigma \dif W_t,
+l.303  \frac{\dif S_t}{S_t} = \mu \dif
+                                       t + \sigma \dif W_t,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1290,7 +1294,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.279 ...\dif S_t}{S_t} = \mu \dif t + \sigma \dif
+l.303 ...\dif S_t}{S_t} = \mu \dif t + \sigma \dif
                                                    W_t,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1301,7 +1305,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \dif 
                      
-l.284 ...intuitiva  c que o retorno relativo $\dif
+l.308 ... intuitiva c que o retorno relativo $\dif
                                                    S_t / S_t$ tem uma compon...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1310,7 +1314,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.284 ... uma componente determin -stica $\mu \dif
+l.308 ... uma componente determin -stica $\mu \dif
                                                    t$ (tend ancia) e uma com...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1319,7 +1323,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.284 ... e uma componente aleat 3ria $\sigma \dif
+l.308 ... e uma componente aleat 3ria $\sigma \dif
                                                    W_t$ (volatilidade). A ap...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1345,33 +1349,33 @@ Package fancyhdr Warning: \headheight is too small (14.5pt):
 [26]) (modulo_exp_ch03_calculo_estocastico.tex [27
 
 ]
-Cap\'{\i }tulo 3.
+Cap\'{\i }tulo 4.
 [28
 
 ] [29] [30]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 142.
+(hyperref)                removing `math shift' on input line 163.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 142.
+(hyperref)                removing `math shift' on input line 163.
 
 [31] [32] [33] [34] [35] [36]
 
 LaTeX Warning: Reference `sec:tga_fundamentos' on page 37 undefined on input li
-ne 401.
+ne 422.
 
 [37]) (modulo_exp_ch04_modelo_classico.tex [38
 
 ]
-Cap\'{\i }tulo 4.
+Cap\'{\i }tulo 5.
 [39
 
 ] [40] [41] [42] [43]
 ! Undefined control sequence.
 l.408 $x_t := \mathbbm
-                      {1}_{S_t > K}$ para algum $K > 0$ n  o  c previs -vel.
+                      {1}_{S_t > K}$ para algum $K > 0$ n o c previs -vel.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1401,7 +1405,7 @@ ory, 20(3):381--408, 1979. DOI:
 ] [53
 
 ] (modulo_exp_ch05_gauges.tex [54]
-Cap\'{\i }tulo 5.
+Cap\'{\i }tulo 6.
 
 LaTeX Warning: Citation `smith1998gauge' on page 55 undefined on input line 23.
 
@@ -1436,7 +1440,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [60] [61] [62]
 Overfull \hbox (0.38196pt too wide) in paragraph at lines 610--614
-[][]\T1/cmr/bx/n/12 Exemplo 5.10 \T1/cmr/m/n/12 (Gauge de Preço de Ação a par-t
+[][]\T1/cmr/bx/n/12 Exemplo 6.10 \T1/cmr/m/n/12 (Gauge de Preço de Ação a par-t
 ir do Gauge de Di-vi-den-dos)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 Se $\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 D[]; P[]\OT1/cmr/m/n/12 )$
  []
@@ -1447,7 +1451,7 @@ Overfull \hbox (102.11891pt too wide) detected at line 643
  []
 
 [63] [64]) (modulo_exp_ch06_fibrados.tex [65]
-Cap\'{\i }tulo 6.
+Cap\'{\i }tulo 7.
 [66
 
 ]
@@ -1594,7 +1598,7 @@ l.749 \bibitem{farinelli2021}
                              ) (modulo_exp_ch07_conexao.tex [77
 
 ]
-Cap\'{\i }tulo 7.
+Cap\'{\i }tulo 8.
 )
 Runaway argument?
 {O Que \par \subsection {Intui SS o: Conectando Fibras Vizinhas} \par \ETC.
@@ -1611,7 +1615,7 @@ you'd better type `E' or `X' now and fix your file.
 (modulo_exp_ch08_curvatura.tex [78
 
 ]
-Cap\'{\i }tulo 8.
+Cap\'{\i }tulo 9.
 [79
 
 ]
@@ -1756,16 +1760,16 @@ Underfull \hbox (badness 1092) in paragraph at lines 375--376
  []
 
 [87]) (modulo_exp_ch09_ambrose_singer.tex [88]
-Cap\'{\i }tulo 9.
+Cap\'{\i }tulo 10.
 [89
 
 ]
-Overfull \hbox (9.02441pt too wide) in paragraph at lines 38--39
-[][]\T1/cmr/bx/n/12 Proposicao 9.3. []$[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^
-_\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 é um sub-grupo de Lie co-nexo de $\OML/cmm/
-m/it/12 G$\T1/cmr/m/it/12 . O quo-ci-ente $[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
-2 ^^_\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-^^_\OT1/cmr/m/n/12 )$
+Overfull \hbox (15.77277pt too wide) in paragraph at lines 38--39
+[][]\T1/cmr/bx/n/12 Proposicao 10.3. []$[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^
+^_\OT1/cmr/m/n/12 )$ \T1/cmr/m/it/12 é um sub-grupo de Lie co-nexo de $\OML/cmm
+/m/it/12 G$\T1/cmr/m/it/12 . O quo-ci-ente $[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/
+12 ^^_\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ ^^_\OT1/cmr/m/n/12 )$
  []
 
 
@@ -1779,6 +1783,11 @@ Overfull \hbox (5.56276pt too wide) in paragraph at lines 120--121
 uf/m/n/12 m[] \OMS/cmsy/m/n/12 ^^Z \U/euf/m/n/12 g$ \T1/cmr/m/n/12 o su-bes-paç
 o ge-rado por $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 
 [](\OML/cmm/m/it/12 X; Y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 j
+ []
+
+
+Overfull \hbox (3.61269pt too wide) in paragraph at lines 125--125
+[]\T1/cmr/bx/n/17.28 Consequência Fi-nan-ceira do Te-o-rema de Ambrose--
  []
 
 [92]
@@ -1796,11 +1805,11 @@ Overfull \hbox (161.80669pt too wide) in paragraph at lines 191--203
  []
 
 
-Overfull \hbox (6.79477pt too wide) in paragraph at lines 208--209
-[][]\T1/cmr/bx/n/12 Proposicao 9.11 \T1/cmr/m/n/12 (Posto e Nú-mero de Es-tra-t
-é-gias)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 O \T1/cmr/bx/it/12 posto \T1/cmr/m/i
-t/12 da ál-ge-bra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_\OT1/cmr/m/
-n/12 ))$
+Overfull \hbox (13.54312pt too wide) in paragraph at lines 208--209
+[][]\T1/cmr/bx/n/12 Proposicao 10.11 \T1/cmr/m/n/12 (Posto e Nú-mero de Es-tra-
+té-gias)\T1/cmr/bx/n/12 . []\T1/cmr/m/it/12 O \T1/cmr/bx/it/12 posto \T1/cmr/m/
+it/12 da ál-ge-bra de Lie $[]\OT1/cmr/m/n/12 ([](\OML/cmm/m/it/12 ^^_\OT1/cmr/m
+/n/12 ))$
  []
 
 [94] [95]
@@ -1878,7 +1887,7 @@ Overfull \hbox (132.08076pt too wide) in paragraph at lines 309--348
 [96]) [97] [98
 
 ] (modulo_exp_ch10_hidrodinamica.tex [99]
-Cap\'{\i }tulo 10.
+Cap\'{\i }tulo 11.
 
 Underfull \hbox (badness 2310) in paragraph at lines 17--18
 []\T1/cmr/m/n/12 Densidade de va-lor (car-
@@ -1959,7 +1968,7 @@ l.237 \bibitem{harrison1979}
                             ) (modulo_exp_ch11_lagrangiano.tex [105
 
 ]
-Cap\'{\i }tulo 11.
+Cap\'{\i }tulo 12.
 [106
 
 ] [107]
@@ -2000,7 +2009,7 @@ l.285 \bibitem{ilinski2000}
                            ) (modulo_exp_ch12_homotopia.tex [111
 
 ]
-Cap\'{\i }tulo 12.
+Cap\'{\i }tulo 13.
 [112
 
 ] [113]
@@ -2043,7 +2052,7 @@ l.212 \bibitem{nakahara2003}
                             ) (modulo_exp_ch13_computacional.tex [117
 
 ]
-Cap\'{\i }tulo 13.
+Cap\'{\i }tulo 14.
 
 Overfull \hbox (3.09187pt too wide) in paragraph at lines 6--6
 []\T1/cmr/bx/n/17.28 Simula SS o de Mo-vi-mento Brow-ni-ano Geom ctrico 
@@ -2118,7 +2127,7 @@ Overfull \hbox (33.2728pt too wide) in paragraph at lines 825--826
 [136] [137]) [138] [139
 
 ] (modulo_exp_ch14_opencode_lab.tex
-Cap\'{\i }tulo 14.
+Cap\'{\i }tulo 15.
 [140
 
 ]
@@ -2414,7 +2423,7 @@ in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
 [144] [145]) (modulo_exp_ch15_ciclos_evolutivos.tex [146]
-Cap\'{\i }tulo 15.
+Cap\'{\i }tulo 16.
 [147
 
 ]
@@ -2608,7 +2617,7 @@ Underfull \hbox (badness 1107) in paragraph at lines 233--234
 [151]) (modulo_exp_apx_a_geometria.tex [152]
 Ap\^endice A.
 ! Undefined control sequence.
-l.4 ...rto a exposi SS  o cl issica de \citeonline
+l.4 ...erto a exposi SS o cl issica de \citeonline
                                                   {nakahara2003geometry}, co...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2636,7 +2645,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.34 ...o $\R^n$ com a carta identidade $(\R^n,\id
-                                                  )$  c uma variedade suave....
+                                                  )$ c uma variedade suave. ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2653,7 +2662,7 @@ te expressa-
  []
 
 ! Undefined control sequence.
-l.56 ...S  o $X:M\to TM$ tal que $\pi\circ X = \id
+l.56 ...SS o $X:M\to TM$ tal que $\pi\circ X = \id
                                                   _M$. Em coordenadas locais...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2697,7 +2706,7 @@ and I'll forget about whatever was undefined.
 <recently read> \U 
                    
 l.139 ...s fechados --- $\SL(n,\R)$, $\SO(n)$, $\U
-                                                  (n)$, $\SU(n)$ --- s  o ig...
+                                                  (n)$, $\SU(n)$ --- s o igu...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2708,7 +2717,7 @@ and I'll forget about whatever was undefined.
 <recently read> \SU 
                     
 l.139 ... --- $\SL(n,\R)$, $\SO(n)$, $\U(n)$, $\SU
-                                                  (n)$ --- s  o igualmente g...
+                                                  (n)$ --- s o igualmente gr...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2729,7 +2738,7 @@ and I'll forget about whatever was undefined.
 [155] [156]
 ! Undefined control sequence.
 l.180 ...uave $s:M\to E$ tal que $\pi\circ s = \id
-                                                  _M$. Campos vetoriais s  o...
+                                                  _M$. Campos vetoriais s o ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2857,8 +2866,8 @@ Ap\^endice C.
 
 ] [164]
 ! Undefined control sequence.
-l.124   g_{ij}(x) = \diag
-                         \bigl(e^{2\beta x^1},\;1,\;1\bigr),\qquad \beta>0.
+l.124  g_{ij}(x) = \diag
+                        \bigl(e^{2\beta x^1},\;1,\;1\bigr),\qquad \beta>0.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2882,7 +2891,7 @@ and I'll forget about whatever was undefined.
 <recently read> \rank 
                       
 l.236 Se $\rank
-               (\sigma)=n$, ent  o $\sigma^\top v \neq 0$ para $v\neq 0$, e ...
+               (\sigma)=n$, ent o $\sigma^\top v \neq 0$ para $v\neq 0$, e $...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2892,7 +2901,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \rank 
                       
-l.236 ...a de Mahalanobis instant  nea}. Se $\rank
+l.236 ...ca de Mahalanobis instant nea}. Se $\rank
                                                   (\sigma)<n$, h i depend an...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2912,7 +2921,7 @@ and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
 l.270 ...ante, a curvatura escalar $R = g^{ij}\Ric
-                                                  _{ij}$  c uma fun SS  o mo...
+                                                  _{ij}$ c uma fun SS o mon ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2929,7 +2938,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.278 ...Delta_g$  c o laplaciano de $g$ e $\|\Ric
+l.278 ...\Delta_g$ c o laplaciano de $g$ e $\|\Ric
                                                   \|^2_g = \Ric_{ij}\Ric^{ij...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3115,16 +3124,16 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `modulo_dca_gat_expandido.out' has not change
 d.
-(rerunfilecheck)             Checksum: 2FB94FDFD34AEB17DE2F485243BF98B6;63669.
+(rerunfilecheck)             Checksum: B76264DEDA9C5ADD7295F09F812C89F8;64205.
  ) 
 Here is how much of TeX's memory you used:
- 18336 strings out of 467871
- 278352 string characters out of 5418376
+ 18334 strings out of 467871
+ 278427 string characters out of 5418376
  1302176 words of memory out of 5000000
- 44716 multiletter control sequences out of 15000+600000
+ 44718 multiletter control sequences out of 15000+600000
  671882 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,91p,1067b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,91p,1060b,2246s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecit1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -3137,14 +3146,14 @@ eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\marce\AppData\Loca
 l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\marce\AppDat
 a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\marce\
 AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\
-marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\
-Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk
-> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1
-000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/l
+marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\
+Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk
+> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1
+200.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecbx1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecti1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm1000.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/ljfour/
+jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\marce\AppData\Local\MiKTeX\fonts/pk/l
 jfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\marce\AppData\Local\MiKTeX\font
 s/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\marce\AppData\Local\MiKTe
 X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\marce\AppData\Local
@@ -3176,9 +3185,9 @@ ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:
 /Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb><C:/Users/marce/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsf
 s/rsfs10.pfb>
-Output written on modulo_dca_gat_expandido.pdf (176 pages, 1769673 bytes).
+Output written on modulo_dca_gat_expandido.pdf (176 pages, 1772025 bytes).
 PDF statistics:
- 5901 PDF objects out of 6186 (max. 8388607)
- 2197 named destinations out of 2487 (max. 500000)
- 2249 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 5903 PDF objects out of 6186 (max. 8388607)
+ 2193 named destinations out of 2487 (max. 500000)
+ 2265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

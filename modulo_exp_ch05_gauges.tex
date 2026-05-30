@@ -1,8 +1,8 @@
  >>?% ======================================================================
 % CAPITULO 5 --- A Linguagem Geometrica: Gauges e Transformacoes
 % Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secoes 2.2 e 2.3
-%            Smith, A., Speed, C. (1998). Gauge Transforms in Stochastic Investment Modelling.
-%            Bleecker, D. (1981). Gauge Theory and Variational Principles.
+% Smith, A., Speed, C. (1998). Gauge Transforms in Stochastic Investment Modelling.
+% Bleecker, D. (1981). Gauge Theory and Variational Principles.
 % ======================================================================
 \chapter{A Linguagem Geom\'etrica: Gauges e Transforma\c{c}\~oes}
 
@@ -60,19 +60,19 @@ conex\~ao de mercado.
 Por que esta linguagem \'e \'util em finan\c{c}as? Tr\^es raz\~oes:
 
 \begin{enumerate}[(i)]
-  \item \textbf{Invari\^ancia:} O pre\c{c}o de um derivativo n\~ao deve
-        depender da escolha de numer\'ario. Exatamente como as leis da
-        f\'isica n\~ao dependem da escolha de gauge, o valor de um
-        contrato \'e \textbf{invariante de gauge} --- uma quantidade
-        geom\'etrica global, n\~ao coordenada-dependente.
-  \item \textbf{Unifica\c{c}\~ao:} Diferentes instrumentos financeiros
-        (t\'itulos, a\c{c}\~oes, taxas de c\^ambio, derivativos) s\~ao
-        todos descritos pelo mesmo objeto matem\'atico --- o gauge. As
-        rela\c{c}\~oes entre eles s\~ao transforma\c{c}\~oes de gauge.
-  \item \textbf{Classifica\c{c}\~ao:} A \^orbita de um gauge sob a
-        a\c{c}\~ao do grupo $G^*$ determina sua \textbf{hierarquia de
-        informa\c{c}\~ao}. Instrumentos em \^orbitas superiores
-        cont\^em mais dados de mercado.
+ \item \textbf{Invari\^ancia:} O pre\c{c}o de um derivativo n\~ao deve
+ depender da escolha de numer\'ario. Exatamente como as leis da
+ f\'isica n\~ao dependem da escolha de gauge, o valor de um
+ contrato \'e \textbf{invariante de gauge} --- uma quantidade
+ geom\'etrica global, n\~ao coordenada-dependente.
+ \item \textbf{Unifica\c{c}\~ao:} Diferentes instrumentos financeiros
+ (t\'itulos, a\c{c}\~oes, taxas de c\^ambio, derivativos) s\~ao
+ todos descritos pelo mesmo objeto matem\'atico --- o gauge. As
+ rela\c{c}\~oes entre eles s\~ao transforma\c{c}\~oes de gauge.
+ \item \textbf{Classifica\c{c}\~ao:} A \^orbita de um gauge sob a
+ a\c{c}\~ao do grupo $G^*$ determina sua \textbf{hierarquia de
+ informa\c{c}\~ao}. Instrumentos em \^orbitas superiores
+ cont\^em mais dados de mercado.
 \end{enumerate}
 
 % ======================================================================
@@ -86,16 +86,16 @@ Seja $(\Omega, \mathcal{A}, \mathbb{A}, P)$ um espa\c{c}o de
 probabilidade filtrado satisfazendo as condi\c{c}\~oes usuais
 (Cap\'itulo~4). Um \textbf{gauge} \'e um par $(D, P)$ onde:
 \begin{enumerate}[(i)]
-  \item $D = (D_t)_{t \geq 0}$ \'e um processo estoc\'astico
-        estritamente positivo, adaptado a $\mathbb{A}$, chamado
-        \textbf{deflator}: o valor \textit{spot} (presente) do
-        instrumento no instante $t$, expresso em unidades do
-        numer\'ario escolhido.
-  \item $P = (P_{t,s})_{0 \leq t \leq s}$ \'e um processo estoc\'astico
-        a dois par\^ametros, estritamente positivo, $\mathcal{A}_t$-mensur\'avel
-        para cada $s$ fixo, chamado \textbf{estrutura a termo}: o valor
-        em $t$ de receber uma unidade do instrumento no instante
-        $s \geq t$.
+ \item $D = (D_t)_{t \geq 0}$ \'e um processo estoc\'astico
+ estritamente positivo, adaptado a $\mathbb{A}$, chamado
+ \textbf{deflator}: o valor \textit{spot} (presente) do
+ instrumento no instante $t$, expresso em unidades do
+ numer\'ario escolhido.
+ \item $P = (P_{t,s})_{0 \leq t \leq s}$ \'e um processo estoc\'astico
+ a dois par\^ametros, estritamente positivo, $\mathcal{A}_t$-mensur\'avel
+ para cada $s$ fixo, chamado \textbf{estrutura a termo}: o valor
+ em $t$ de receber uma unidade do instrumento no instante
+ $s \geq t$.
 \end{enumerate}
 com as propriedades fundamentais:
 \[
@@ -107,9 +107,9 @@ P_{t,t} = 1, \qquad P_{t,s} > 0 \quad \text{para todo } 0 \leq t \leq s.
 Um gauge \'e a descri\c{c}\~ao completa e autocontida de um instrumento
 financeiro. Ele responde a duas perguntas fundamentais:
 \begin{itemize}[nosep]
-  \item \textbf{Quanto vale hoje?} A resposta \'e $D_t$.
-  \item \textbf{Quanto valer\'a no futuro, se eu travar o pre\c{c}o agora?}
-        A resposta \'e $P_{t,s}$.
+ \item \textbf{Quanto vale hoje?} A resposta \'e $D_t$.
+ \item \textbf{Quanto valer\'a no futuro, se eu travar o pre\c{c}o agora?}
+ A resposta \'e $P_{t,s}$.
 \end{itemize}
 A condi\c{c}\~ao $P_{t,t} = 1$ \'e a normaliza\c{c}\~ao natural: uma
 unidade entregue instantaneamente vale exatamente uma unidade. A
@@ -126,7 +126,7 @@ caixa $S_t^0 = \exp(\int_0^t r_u\,du)$. O gauge correspondente \'e:
 \[
 D_t = (S_t^0)^{-1} S_t^j, \qquad
 P_{t,s} = \frac{\mathbb{E}_{\mathbb{Q}}[(S_s^0)^{-1} \mid \mathcal{A}_t]}
-                 {(S_t^0)^{-1}}
+ {(S_t^0)^{-1}}
 \]
 Ou seja, $D_t$ \'e o pre\c{c}o descontado do ativo $j$ e $P_{t,s}$
 \'e o fator de desconto forward impl\'icito na medida neutra ao risco
@@ -229,7 +229,7 @@ A \textbf{taxa forward instant\^anea} no instante $t$ para o
 per\'iodo infinitesimal em $s \geq t$ \'e:
 \[
 \boxed{f_{t,s} := -\frac{\partial}{\partial s}\log P_{t,s}
-       = -\frac{1}{P_{t,s}}\frac{\partial P_{t,s}}{\partial s}}
+ = -\frac{1}{P_{t,s}}\frac{\partial P_{t,s}}{\partial s}}
 \]
 \end{defi}
 
@@ -238,7 +238,7 @@ A \textbf{taxa curta} (ou taxa instant\^anea de juros) \'e o limite
 da taxa forward quando o horizonte colapsa para o presente:
 \[
 \boxed{r_t := \lim_{s \to t^+} f_{t,s}
-       = -\left.\frac{\partial}{\partial s}\log P_{t,s}\right|_{s=t}}
+ = -\left.\frac{\partial}{\partial s}\log P_{t,s}\right|_{s=t}}
 \]
 \end{defi}
 
@@ -300,19 +300,19 @@ o dinheiro f\'isico at\'e $s_2$, e lucrar a diferen\c{c}a.
 
 \begin{ex}[Instrumentos que \textbf{N\~AO} satisfazem a condi\c{c}\~ao de \textit{storage}]
 \begin{enumerate}[(a)]
-  \item \textbf{Infla\c{c}\~ao:} A estrutura a termo da infla\c{c}\~ao
-        (Exemplo~\ref{ex:inflation}) tipicamente \'e \textbf{crescente}
-        em $s$, pois $I_s$ tende a crescer com o tempo. N\~ao h\'a
-        como ``armazenar'' o n\'ivel geral de pre\c{c}os --- a
-        infla\c{c}\~ao \'e um processo n\~ao-armazen\'avel.
-  \item \textbf{Dividendos:} O gauge de a\c{c}\~oes com dividendos
-        (Exemplo~\ref{ex:equity_index}) tem $P_{t,s}$ pr\'oximo de~1,
-        n\~ao monotonicamente decrescente. Empresas crescem e pagam
-        dividendos; n\~ao \'e poss\'ivel ``armazenar'' o valor de uma
-        a\c{c}\~ao sem risco.
-  \item \textbf{Commodities com custo de carregamento:} Petr\'oleo,
-        gr\~aos e metais t\^em custos de armazenamento f\'isico que
-        podem tornar $P_{t,s}$ crescente em $s$ (contango).
+ \item \textbf{Infla\c{c}\~ao:} A estrutura a termo da infla\c{c}\~ao
+ (Exemplo~\ref{ex:inflation}) tipicamente \'e \textbf{crescente}
+ em $s$, pois $I_s$ tende a crescer com o tempo. N\~ao h\'a
+ como ``armazenar'' o n\'ivel geral de pre\c{c}os --- a
+ infla\c{c}\~ao \'e um processo n\~ao-armazen\'avel.
+ \item \textbf{Dividendos:} O gauge de a\c{c}\~oes com dividendos
+ (Exemplo~\ref{ex:equity_index}) tem $P_{t,s}$ pr\'oximo de~1,
+ n\~ao monotonicamente decrescente. Empresas crescem e pagam
+ dividendos; n\~ao \'e poss\'ivel ``armazenar'' o valor de uma
+ a\c{c}\~ao sem risco.
+ \item \textbf{Commodities com custo de carregamento:} Petr\'oleo,
+ gr\~aos e metais t\^em custos de armazenamento f\'isico que
+ podem tornar $P_{t,s}$ crescente em $s$ (contango).
 \end{enumerate}
 \end{ex}
 
@@ -344,15 +344,15 @@ gauge por $\pi$ produz um novo gauge $(D^\pi, P^\pi)$ definido por:
 \boxed{D_t^\pi := D_t \int_0^\infty \pi_h\, P_{t,t+h}\,dh}
 \qquad
 \boxed{P_{t,s}^\pi := \frac{\displaystyle\int_0^\infty \pi_h\, P_{t,s+h}\,dh}
-                              {\displaystyle\int_0^\infty \pi_h\, P_{t,t+h}\,dh}}
+ {\displaystyle\int_0^\infty \pi_h\, P_{t,t+h}\,dh}}
 \]
 onde a interpreta\c{c}\~ao \'e:
 \begin{itemize}[nosep]
-  \item $\pi_h\,dh$ mede quanto de fluxo de caixa \'e recebido no
-        horizonte $h$ (medido a partir de $t$);
-  \item $P_{t,t+h}$ desconta esse fluxo de $t+h$ para $t$;
-  \item $D_t^\pi$ \'e o valor presente total de todos os fluxos de
-        caixa futuros, ponderados por $\pi$.
+ \item $\pi_h\,dh$ mede quanto de fluxo de caixa \'e recebido no
+ horizonte $h$ (medido a partir de $t$);
+ \item $P_{t,t+h}$ desconta esse fluxo de $t+h$ para $t$;
+ \item $D_t^\pi$ \'e o valor presente total de todos os fluxos de
+ caixa futuros, ponderados por $\pi$.
 \end{itemize}
 \end{defi}
 
@@ -373,7 +373,7 @@ Lebesgue--Stieltjes \'e:
 \[
 D_t^\pi := D_t \int_0^\infty P_{t,t+h}\,d\pi(h), \qquad
 P_{t,s}^\pi := \frac{\int_0^\infty P_{t,s+h}\,d\pi(h)}
-                       {\int_0^\infty P_{t,t+h}\,d\pi(h)}
+ {\int_0^\infty P_{t,t+h}\,d\pi(h)}
 \]
 Esta formula\c{c}\~ao unifica pagamentos cont\'inuos e discretos.
 
@@ -388,9 +388,9 @@ termo representa os $T-1$ cupons anuais de valor $g$; o segundo, o
 principal mais o \'ultimo cupom no vencimento. Substituindo na
 f\'ormula:
 \begin{align*}
-  D_t^\pi &= D_t\left[\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}\right] \\[4pt]
-  P_{t,s}^\pi &= \frac{\sum_{k=1}^{T-1} g\,P_{t,s+k} + (1+g)P_{t,s+T}}
-                       {\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}}
+ D_t^\pi &= D_t\left[\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}\right] \\[4pt]
+ P_{t,s}^\pi &= \frac{\sum_{k=1}^{T-1} g\,P_{t,s+k} + (1+g)P_{t,s+T}}
+ {\sum_{k=1}^{T-1} g\,P_{t,t+k} + (1+g)P_{t,t+T}}
 \end{align*}
 \end{ex}
 
@@ -450,12 +450,12 @@ $((D,P)^\pi)^{\pi^{-1}} = (D,P)$.
 Seja $(D^\pi, P^\pi)$ o gauge transformado. Aplicando a segunda
 transforma\c{c}\~ao com intensidade $\nu$:
 \begin{align*}
-  D_t^{(\pi,\nu)}
-  &= D_t^\pi \int_0^\infty \nu_h\, P_{t,t+h}^\pi\,dh \\[4pt]
-  &= D_t \left(\int_0^\infty \pi_u\, P_{t,t+u}\,du\right) \cdot
-     \frac{\int_0^\infty \nu_h \int_0^\infty \pi_u\, P_{t,t+h+u}\,du\,dh}
-          {\int_0^\infty \pi_u\, P_{t,t+u}\,du} \\[4pt]
-  &= D_t \int_0^\infty (\pi * \nu)_w\, P_{t,t+w}\,dw = D_t^{\pi * \nu}
+ D_t^{(\pi,\nu)}
+ &= D_t^\pi \int_0^\infty \nu_h\, P_{t,t+h}^\pi\,dh \\[4pt]
+ &= D_t \left(\int_0^\infty \pi_u\, P_{t,t+u}\,du\right) \cdot
+ \frac{\int_0^\infty \nu_h \int_0^\infty \pi_u\, P_{t,t+h+u}\,du\,dh}
+ {\int_0^\infty \pi_u\, P_{t,t+u}\,du} \\[4pt]
+ &= D_t \int_0^\infty (\pi * \nu)_w\, P_{t,t+w}\,dw = D_t^{\pi * \nu}
 \end{align*}
 O c\'alculo para $P_{t,s}$ \'e an\'alogo, e a normaliza\c{c}\~ao
 cancela o denominador.
@@ -491,15 +491,15 @@ uma transforma\c{c}\~ao invert\'ivel mapeando um no outro.
 \begin{prop}[Hierarquia de Informa\c{c}\~ao]\label{prop:hierarquia}
 Sejam $(D,P)$ e $(D^*,P^*)$ dois gauges.
 \begin{enumerate}[(i)]
-  \item Se $(D^*,P^*) = (D^\pi, P^\pi)$ com $\pi \in G^*$, ent\~ao
-        ambos cont\^em a \textbf{mesma informa\c{c}\~ao de mercado}, e
-        um pode ser reconstru\'ido a partir do outro.
-  \item Se $(D^*,P^*)$ \'e obtido a partir de $(D,P)$ por uma
-        transforma\c{c}\~ao \textbf{n\~ao-invert\'ivel}
-        ($\pi \in G \setminus G^*$), ent\~ao a \^orbita de $(D^*,P^*)$
-        \'e \textbf{estritamente inferior}: cont\'em menos
-        informa\c{c}\~ao de mercado, e o gauge original n\~ao pode ser
-        recuperado.
+ \item Se $(D^*,P^*) = (D^\pi, P^\pi)$ com $\pi \in G^*$, ent\~ao
+ ambos cont\^em a \textbf{mesma informa\c{c}\~ao de mercado}, e
+ um pode ser reconstru\'ido a partir do outro.
+ \item Se $(D^*,P^*)$ \'e obtido a partir de $(D,P)$ por uma
+ transforma\c{c}\~ao \textbf{n\~ao-invert\'ivel}
+ ($\pi \in G \setminus G^*$), ent\~ao a \^orbita de $(D^*,P^*)$
+ \'e \textbf{estritamente inferior}: cont\'em menos
+ informa\c{c}\~ao de mercado, e o gauge original n\~ao pode ser
+ recuperado.
 \end{enumerate}
 \end{prop}
 
@@ -517,16 +517,16 @@ do qual todos os outros podem ser obtidos por transforma\c{c}\~ao
 \begin{ex}[Hierarquia na Pr\'atica]
 Considere um mercado de t\'itulos:
 \begin{itemize}[nosep]
-  \item \textbf{Gauge de taxa curta} $(D^r, P^r)$: obtido do gauge
-        de t\'itulos $(D^{\text{bond}}, P^{\text{bond}})$ pela
-        transforma\c{c}\~ao $[-1]$ (Se\c{c}\~ao~\ref{sec:especiais}).
-        Esta transforma\c{c}\~ao \'e \textbf{singular}, logo o gauge
-        de taxa curta pertence a uma \^orbita inferior --- a partir
-        dele n\~ao se pode reconstruir toda a estrutura a termo.
-  \item \textbf{Gauge de t\'itulo com cupom}: obtido do gauge de
-        zero-coupon por uma transforma\c{c}\~ao \textbf{invert\'ivel},
-        logo pertence \`a mesma \^orbita. Ambos cont\^em a mesma
-        informa\c{c}\~ao.
+ \item \textbf{Gauge de taxa curta} $(D^r, P^r)$: obtido do gauge
+ de t\'itulos $(D^{\text{bond}}, P^{\text{bond}})$ pela
+ transforma\c{c}\~ao $[-1]$ (Se\c{c}\~ao~\ref{sec:especiais}).
+ Esta transforma\c{c}\~ao \'e \textbf{singular}, logo o gauge
+ de taxa curta pertence a uma \^orbita inferior --- a partir
+ dele n\~ao se pode reconstruir toda a estrutura a termo.
+ \item \textbf{Gauge de t\'itulo com cupom}: obtido do gauge de
+ zero-coupon por uma transforma\c{c}\~ao \textbf{invert\'ivel},
+ logo pertence \`a mesma \^orbita. Ambos cont\^em a mesma
+ informa\c{c}\~ao.
 \end{itemize}
 \end{ex}
 
@@ -543,9 +543,9 @@ Definimos as seguintes intensidades can\^onicas:
 \begin{array}{ccl}
 \text{Elemento neutro} & [0] &:= \delta_0 \\[4pt]
 \text{Taxa curta (\textit{short rate})} & [-1] &:= \delta'_0\
-  \text{(derivada da delta de Dirac)} \\[4pt]
+ \text{(derivada da delta de Dirac)} \\[4pt]
 \text{Perpetuidade (\textit{consol})} & [+1] &:= \Theta\
-  \text{(fun\c{c}\~ao de Heaviside: $\Theta_h = 1$ para $h \geq 0$)}
+ \text{(fun\c{c}\~ao de Heaviside: $\Theta_h = 1$ para $h \geq 0$)}
 \end{array}
 \]
 \end{defi}
@@ -562,14 +562,14 @@ para todo $k, l \in \mathbb{Z}$.
 \begin{proof}
 Por indu\c{c}\~ao a partir dos casos base:
 \begin{itemize}[nosep]
-  \item $[0] * [k] = [k]$ para todo $k$: pela defini\c{c}\~ao de
-        elemento neutro.
-  \item $[+1] * [+1] = [+2], [+1] * [+1] * [+1] = [+3]$, etc.: a
-        convolu\c{c}\~ao de $n$ fun\c{c}\~oes de Heaviside produz
-        $\Theta^{*n}(t) = \frac{t^{n-1}}{(n-1)!}$ para $t \geq 0$.
-  \item $[-1] * [+1] = [0]$: a derivada da delta convolu\'ida com
-        Heaviside devolve a delta ($\delta' * \Theta = \delta$).
-  \item $[-1] * [-1] = [-2]$: segunda derivada da delta.
+ \item $[0] * [k] = [k]$ para todo $k$: pela defini\c{c}\~ao de
+ elemento neutro.
+ \item $[+1] * [+1] = [+2], [+1] * [+1] * [+1] = [+3]$, etc.: a
+ convolu\c{c}\~ao de $n$ fun\c{c}\~oes de Heaviside produz
+ $\Theta^{*n}(t) = \frac{t^{n-1}}{(n-1)!}$ para $t \geq 0$.
+ \item $[-1] * [+1] = [0]$: a derivada da delta convolu\'ida com
+ Heaviside devolve a delta ($\delta' * \Theta = \delta$).
+ \item $[-1] * [-1] = [-2]$: segunda derivada da delta.
 \end{itemize}
 Estendendo para $k,l \in \mathbb{Z}$ arbitr\'arios, obtemos a
 \'algebra de convolu\c{c}\~ao $[k]*[l] = [k+l]$. O grupo gerado por
@@ -580,13 +580,13 @@ $\{[k]\}_{k \in \mathbb{Z}}$ \'e isomorfo a $(\mathbb{Z}, +)$.
 O \'indice $k$ conta quantas ``camadas de integra\c{c}\~ao'' ou
 ``camadas de deriva\c{c}\~ao'' separam o gauge do gauge de refer\^encia:
 \begin{itemize}[nosep]
-  \item $k = 0$: o pr\'oprio gauge (identidade).
-  \item $k = +1$: perpetuidade --- integra a estrutura a termo sobre
-        todos os horizontes (acumula\c{c}\~ao de fluxos).
-  \item $k = -1$: taxa curta --- deriva a estrutura a termo na origem
-        (extrai informa\c{c}\~ao marginal).
-  \item $k = +n$ ($n > 1$): $n$-\'esima perpetuidade iterada.
-  \item $k = -n$ ($n > 1$): $n$-\'esima derivada na origem.
+ \item $k = 0$: o pr\'oprio gauge (identidade).
+ \item $k = +1$: perpetuidade --- integra a estrutura a termo sobre
+ todos os horizontes (acumula\c{c}\~ao de fluxos).
+ \item $k = -1$: taxa curta --- deriva a estrutura a termo na origem
+ (extrai informa\c{c}\~ao marginal).
+ \item $k = +n$ ($n > 1$): $n$-\'esima perpetuidade iterada.
+ \item $k = -n$ ($n > 1$): $n$-\'esima derivada na origem.
 \end{itemize}
 \end{obs}
 
@@ -594,8 +594,8 @@ O \'indice $k$ conta quantas ``camadas de integra\c{c}\~ao'' ou
 Partindo do gauge de zero-coupon $(D^{\text{bond}}, P^{\text{bond}})$:
 \[
 D_t^{[-1]} = D_t \int_0^\infty \delta_0'(h)\, P_{t,t+h}\,dh
-            = -D_t \left.\frac{\partial}{\partial h}P_{t,t+h}\right|_{h=0}
-            = D_t \cdot r_t
+ = -D_t \left.\frac{\partial}{\partial h}P_{t,t+h}\right|_{h=0}
+ = D_t \cdot r_t
 \]
 onde usamos $P_{t,t} = 1$ e $f_{t,t} = r_t$. A estrutura a termo
 correspondente $P_{t,s}^{[-1]}$ \'e a raz\~ao de duas taxas forward,
@@ -653,18 +653,18 @@ transforma\c{c}\~oes singulares (perda de informa\c{c}\~ao: mudam de
 
 \begin{obs}[Leitura do Diagrama]
 \begin{itemize}[nosep]
-  \item O \textbf{gauge principal} (topo) cont\'em a m\'axima
-        informa\c{c}\~ao. A partir dele, qualquer outro gauge pode
-        ser obtido.
-  \item Descendo no diagrama via setas pontilhadas ($[-1]$), perde-se
-        informa\c{c}\~ao (proje\c{c}\~ao para \^orbita inferior).
-  \item Movimentos horizontais (ex.: Principal $\to$ Coupon Bond)
-        s\~ao transforma\c{c}\~oes invert\'iveis --- mesma \^orbita,
-        mesma informa\c{c}\~ao.
-  \item O gauge de \textbf{equity} (a\c{c}\~ao com dividendos
-        reinvestidos) \'e obtido aplicando $[+1]$ ao gauge de renda
-        fixa, enquanto o gauge de \textbf{dividend} (apenas dividendos)
-        \'e obtido removendo a aprecia\c{c}\~ao de capital.
+ \item O \textbf{gauge principal} (topo) cont\'em a m\'axima
+ informa\c{c}\~ao. A partir dele, qualquer outro gauge pode
+ ser obtido.
+ \item Descendo no diagrama via setas pontilhadas ($[-1]$), perde-se
+ informa\c{c}\~ao (proje\c{c}\~ao para \^orbita inferior).
+ \item Movimentos horizontais (ex.: Principal $\to$ Coupon Bond)
+ s\~ao transforma\c{c}\~oes invert\'iveis --- mesma \^orbita,
+ mesma informa\c{c}\~ao.
+ \item O gauge de \textbf{equity} (a\c{c}\~ao com dividendos
+ reinvestidos) \'e obtido aplicando $[+1]$ ao gauge de renda
+ fixa, enquanto o gauge de \textbf{dividend} (apenas dividendos)
+ \'e obtido removendo a aprecia\c{c}\~ao de capital.
 \end{itemize}
 \end{obs}
 
@@ -675,16 +675,16 @@ transforma\c{c}\~oes singulares (perda de informa\c{c}\~ao: mudam de
 O cap\'itulo estabeleceu o vocabul\'ario fundamental da GAT:
 
 \begin{enumerate}[(i)]
-  \item \textbf{Gauge} $(D,P)$: a ``certid\~ao de nascimento''
-        financeira de qualquer instrumento.
-  \item \textbf{Transforma\c{c}\~ao de gauge} via $\pi$: constru\c{c}\~ao
-        de novos instrumentos a partir de existentes.
-  \item \textbf{Grupo $G^*$}: as transforma\c{c}\~oes invert\'iveis,
-        que particionam o espa\c{c}o de gauges em \^orbitas.
-  \item \textbf{\^Orbitas e hierarquia}: cada \^orbita corresponde a
-        um n\'ivel de informa\c{c}\~ao de mercado.
-  \item \textbf{\'Algebra $[k]*[l] = [k+l]$}: aritm\'etica das
-        transforma\c{c}\~oes fundamentais.
+ \item \textbf{Gauge} $(D,P)$: a ``certid\~ao de nascimento''
+ financeira de qualquer instrumento.
+ \item \textbf{Transforma\c{c}\~ao de gauge} via $\pi$: constru\c{c}\~ao
+ de novos instrumentos a partir de existentes.
+ \item \textbf{Grupo $G^*$}: as transforma\c{c}\~oes invert\'iveis,
+ que particionam o espa\c{c}o de gauges em \^orbitas.
+ \item \textbf{\^Orbitas e hierarquia}: cada \^orbita corresponde a
+ um n\'ivel de informa\c{c}\~ao de mercado.
+ \item \textbf{\'Algebra $[k]*[l] = [k+l]$}: aritm\'etica das
+ transforma\c{c}\~oes fundamentais.
 \end{enumerate}
 
 No Cap\'itulo~6, veremos que o conjunto de todos os gauges forma um

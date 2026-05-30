@@ -4,61 +4,61 @@
 % ======================================================================
 \chapter{O Modelo Cl issico de Mercado}
 
-Este cap -tulo apresenta o arcabou SSo matem itico padr  o da teoria de
+Este cap -tulo apresenta o arcabou SSo matem itico padr o da teoria de
 arbitragem em tempo cont -nuo, conforme estabelecido por
 Harrison--Kreps--Pliska (1979--1981) e consolidado por Delbaen e
 Schachermayer (1994, 2006). Todas as defini SS ues, nota SS ues e teoremas
-seguem a Se SS  o~2 de Farinelli (2021). O leitor que domina este
+seguem a Se SS o~2 de Farinelli (2021). O leitor que domina este
 cap -tulo possui os pr c-requisitos formais para a Parte~II (GAT).
 
 % ----------------------------------------------------------------------
 \section{Espa SSo de Probabilidade Filtrado e Condi SS ues Usuais}
 % ----------------------------------------------------------------------
 
-O alicerce de qualquer modelo financeiro em tempo cont -nuo  c um
+O alicerce de qualquer modelo financeiro em tempo cont -nuo c um
 \textbf{espa SSo de probabilidade filtrado} que satisfaz as condi SS ues
-t ccnicas m -nimas para que a integra SS  o estoc istica funcione.
+t ccnicas m -nimas para que a integra SS o estoc istica funcione.
 
 \begin{defi}[Espa SSo de Probabilidade Filtrado]
-Um espa SSo de probabilidade filtrado  c uma qu idrupla
+Um espa SSo de probabilidade filtrado c uma qu idrupla
 $(\Omega, \mathcal{A}, \mathbb{A}, P)$, onde:
 \begin{enumerate}[(i)]
-  \item $(\Omega, \mathcal{A}, P)$  c um espa SSo de probabilidade
-        completo --- toda a teoria de integra SS  o de Lebesgue se aplica;
-  \item $\mathbb{A} = (\mathcal{A}_t)_{t \in [0, +\infty[}$  c uma
-        \textbf{filtra SS  o}: uma fam -lia crescente de sub-$\sigma$- ilgebras
-        de $\mathcal{A}$, isto  c, $\mathcal{A}_s \subseteq \mathcal{A}_t$
-        para $0 \leq s \leq t < +\infty$;
-  \item A filtra SS  o satisfaz as \textbf{condi SS ues usuais} de
-        Dellacherie (1972)\footnote{Dellacherie, C. \textit{Capacit cs et
-        Processus Stochastiques}. Springer, 1972. ISBN: 978-3540056768.
-        \textbf{Resenha:} Obra fundacional que introduziu as condi SS ues
-        usuais para filtra SS ues em tempo cont -nuo, indispens iveis para a
-        teoria geral dos processos.}:
-        \begin{enumerate}
-          \item \textbf{Continuidade    direita:}
-                $\mathcal{A}_t = \bigcap_{s > t} \mathcal{A}_s$
-                para todo $t \geq 0$;
-          \item \textbf{Completude:} $\mathcal{A}_0$ (e portanto
-                toda $\mathcal{A}_t$) cont cm todos os conjuntos
-                $P$-negligenci iveis de $\mathcal{A}$.
-        \end{enumerate}
+ \item $(\Omega, \mathcal{A}, P)$ c um espa SSo de probabilidade
+ completo --- toda a teoria de integra SS o de Lebesgue se aplica;
+ \item $\mathbb{A} = (\mathcal{A}_t)_{t \in [0, +\infty[}$ c uma
+ \textbf{filtra SS o}: uma fam -lia crescente de sub-$\sigma$- ilgebras
+ de $\mathcal{A}$, isto c, $\mathcal{A}_s \subseteq \mathcal{A}_t$
+ para $0 \leq s \leq t < +\infty$;
+ \item A filtra SS o satisfaz as \textbf{condi SS ues usuais} de
+ Dellacherie (1972)\footnote{Dellacherie, C. \textit{Capacit cs et
+ Processus Stochastiques}. Springer, 1972. ISBN: 978-3540056768.
+ \textbf{Resenha:} Obra fundacional que introduziu as condi SS ues
+ usuais para filtra SS ues em tempo cont -nuo, indispens iveis para a
+ teoria geral dos processos.}:
+ \begin{enumerate}
+ \item \textbf{Continuidade direita:}
+ $\mathcal{A}_t = \bigcap_{s > t} \mathcal{A}_s$
+ para todo $t \geq 0$;
+ \item \textbf{Completude:} $\mathcal{A}_0$ (e portanto
+ toda $\mathcal{A}_t$) cont cm todos os conjuntos
+ $P$-negligenci iveis de $\mathcal{A}$.
+ \end{enumerate}
 \end{enumerate}
 \end{defi}
 
-\begin{obs}[Interpreta SS  o Intuitiva]
-$\mathcal{A}_t$ representa \textbf{toda a informa SS  o dispon -vel ao
-mercado at c o instante} $t$. A condi SS  o de crescimento
+\begin{obs}[Interpreta SS o Intuitiva]
+$\mathcal{A}_t$ representa \textbf{toda a informa SS o dispon -vel ao
+mercado at c o instante} $t$. A condi SS o de crescimento
 ($\mathcal{A}_s \subseteq \mathcal{A}_t$) reflete o fato de que
-informa SS  o nunca  c perdida. A continuidade    direita  c uma
-regulariza SS  o t ccnica que garante que tempos de parada se comportam
-bem. A completude assegura que conjuntos de probabilidade zero n  o
-afetam a estrutura da informa SS  o --- eventos imposs -veis n  o carregam
-informa SS  o.
+informa SS o nunca c perdida. A continuidade direita c uma
+regulariza SS o t ccnica que garante que tempos de parada se comportam
+bem. A completude assegura que conjuntos de probabilidade zero n o
+afetam a estrutura da informa SS o --- eventos imposs -veis n o carregam
+informa SS o.
 \end{obs}
 
-O horizonte temporal  c $[0, +\infty[$. Isto permite modelar mercados
-sem data terminal fixa, o que  c conveniente para a GAT, onde
+O horizonte temporal c $[0, +\infty[$. Isto permite modelar mercados
+sem data terminal fixa, o que c conveniente para a GAT, onde
 transforma SS ues de gauge envolvem integrais sobre $[0, +\infty[$.
 
 % ----------------------------------------------------------------------
@@ -75,173 +75,173 @@ A classe de processos estoc isticos que modela os pre SSos deve ser
 suficientemente rica para incluir todos os casos de interesse
 (movimento Browniano geom ctrico, processos de salto, difus ues com
 saltos) e, simultaneamente, suficientemente restrita para que a
-integral estoc istica seja bem definida. A classe correta  c a dos
+integral estoc istica seja bem definida. A classe correta c a dos
 \textbf{semimartingales}.
 
 \begin{defi}[Semimartingale]
-Um processo adaptado $X = (X_t)_{t \geq 0}$  c um
-\textbf{semimartingale} se admite a decomposi SS  o
+Um processo adaptado $X = (X_t)_{t \geq 0}$ c um
+\textbf{semimartingale} se admite a decomposi SS o
 \begin{equation}\label{eq:semimartingale_decomp}
-  X_t = X_0 + M_t + A_t,
+ X_t = X_0 + M_t + A_t,
 \end{equation}
-onde $M$  c um martingal local (com $M_0 = 0$) e $A$  c um processo
-adaptado c  dl  g de varia SS  o finita (com $A_0 = 0$). A decomposi SS  o
-n  o  c  onica em geral; torna-se  onica se exigirmos que $A$ seja
-previs -vel (decomposi SS  o can 'nica).
+onde $M$ c um martingal local (com $M_0 = 0$) e $A$ c um processo
+adaptado c dl g de varia SS o finita (com $A_0 = 0$). A decomposi SS o
+n o c onica em geral; torna-se onica se exigirmos que $A$ seja
+previs -vel (decomposi SS o can 'nica).
 \end{defi}
 
-A classe dos semimartingales  c maximal para a integra SS  o
+A classe dos semimartingales c maximal para a integra SS o
 estoc istica\footnote{Protter, P. \textit{Stochastic Integration and
 Differential Equations}. Springer, 2nd ed., 2005. DOI:
 10.1007/978-3-662-10061-5. \textbf{Resenha:} Tratamento matem itico
-rigoroso da integra SS  o estoc istica, cobrindo semimartingales, integral
-de It ', teorema de Girsanov e representa SS  o de martingais. O
-Teorema~II.4 prova que a integral estoc istica s 3  c bem definida
+rigoroso da integra SS o estoc istica, cobrindo semimartingales, integral
+de It ', teorema de Girsanov e representa SS o de martingais. O
+Teorema~II.4 prova que a integral estoc istica s 3 c bem definida
 (como operador cont -nuo) exatamente para integradores
-semimartingales. Refer ancia t ccnica padr  o para pesquisadores em
+semimartingales. Refer ancia t ccnica padr o para pesquisadores em
 finan SSas quantitativas.}: o operador integral $I_X: H \mapsto
-\int H\,dX$ s 3  c cont -nuo (na topologia de Emery) quando $X$  c um
+\int H\,dX$ s 3 c cont -nuo (na topologia de Emery) quando $X$ c um
 semimartingale.
 
 \begin{ex}[Processos de It ']
-O exemplo mais relevante para aplica SS ues  c o processo de It '
+O exemplo mais relevante para aplica SS ues c o processo de It '
 $d$-dimensional:
 \begin{equation}\label{eq:ito_process}
-  dX_t = \mu_t\,dt + \sigma_t\,dW_t,
+ dX_t = \mu_t\,dt + \sigma_t\,dW_t,
 \end{equation}
-onde $W$  c um movimento Browniano $m$-dimensional, $\mu$  c um
-processo adaptado localmente integr ivel e $\sigma$  c um processo
-adaptado localmente de quadrado integr ivel. Todo processo de It '  c um
+onde $W$ c um movimento Browniano $m$-dimensional, $\mu$ c um
+processo adaptado localmente integr ivel e $\sigma$ c um processo
+adaptado localmente de quadrado integr ivel. Todo processo de It ' c um
 semimartingale (com $M_t = \int_0^t \sigma_u\,dW_u$ e
 $A_t = \int_0^t \mu_u\,du$).
 \end{ex}
 
 \begin{ex}[Processos de Salto (L cvy)]
 Processos de L cvy com saltos --- como o processo de Poisson composto
-$X_t = \sum_{k=1}^{N_t} Y_k$, onde $N$  c um processo de Poisson e
-$Y_k$ s  o os tamanhos dos saltos --- tamb cm s  o semimartingales.
+$X_t = \sum_{k=1}^{N_t} Y_k$, onde $N$ c um processo de Poisson e
+$Y_k$ s o os tamanhos dos saltos --- tamb cm s o semimartingales.
 Estes modelam \textit{crashes} e eventos extremos. A GAT incorpora
-naturalmente processos de salto pois a geometria diferencial n  o
+naturalmente processos de salto pois a geometria diferencial n o
 distingue entre parte cont -nua e parte de salto.
 \end{ex}
 
 \subsection{Pre SSos Nominais e Descontados}
 
 \begin{defi}[Pre SSos Nominais]
-O vetor de \textbf{pre SSos nominais}  c um semimartingale $N$-dimensional
+O vetor de \textbf{pre SSos nominais} c um semimartingale $N$-dimensional
 \begin{equation}\label{eq:prices}
-  S: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
-  \quad S_t = (S_t^1, \dots, S_t^N),
+ S: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
+ \quad S_t = (S_t^1, \dots, S_t^N),
 \end{equation}
-adaptado    filtra SS  o $\mathbb{A}$. Cada componente $S_t^j$  c o pre SSo
+adaptado filtra SS o $\mathbb{A}$. Cada componente $S_t^j$ c o pre SSo
 de uma unidade do ativo $j$ no instante $t$, expresso em unidades
 monet irias (reais, d 3lares, etc.).
 \end{defi}
 
-A \textbf{conta caixa} (ou \textit{money market account}) $S^0$  c o
-ativo livre de risco que acumula juros    taxa curta $r_t^0$:
+A \textbf{conta caixa} (ou \textit{money market account}) $S^0$ c o
+ativo livre de risco que acumula juros taxa curta $r_t^0$:
 \begin{equation}\label{eq:cash_account}
-  S_t^0 := \exp\left(\int_0^t r_u^0\,du\right),
+ S_t^0 := \exp\left(\int_0^t r_u^0\,du\right),
 \end{equation}
-onde $r^0 = (r_t^0)_{t \geq 0}$  c um processo adaptado localmente
-integr ivel. Tipicamente, $r^0$  c determin -stico ou, no m iximo, um
-processo de It '. Note que $S_0^0 = 1$ por constru SS  o --- uma unidade
+onde $r^0 = (r_t^0)_{t \geq 0}$ c um processo adaptado localmente
+integr ivel. Tipicamente, $r^0$ c determin -stico ou, no m iximo, um
+processo de It '. Note que $S_0^0 = 1$ por constru SS o --- uma unidade
 monet iria investida na conta caixa no instante zero.
 
 \begin{defi}[Pre SSos Descontados]
-Os \textbf{pre SSos descontados} (em rela SS  o ao numer irio $S^0$) s  o
+Os \textbf{pre SSos descontados} (em rela SS o ao numer irio $S^0$) s o
 definidos por:
 \begin{equation}\label{eq:discounted}
-  \hat{S}_t^j := \frac{S_t^j}{S_t^0}, \quad j = 1, \dots, N,
+ \hat{S}_t^j := \frac{S_t^j}{S_t^0}, \quad j = 1, \dots, N,
 \end{equation}
-com a conven SS  o natural $\hat{S}_t^0 \equiv 1$. O vetor descontado  c
+com a conven SS o natural $\hat{S}_t^0 \equiv 1$. O vetor descontado c
 denotado $\hat{S}_t = (\hat{S}_t^1, \dots, \hat{S}_t^N)$.
 \end{defi}
 
 \begin{obs}[Significado Financeiro]
 $\hat{S}_t^j$ expressa o pre SSo do ativo $j$ em \textbf{unidades de
-caixa no instante} $t$, e n  o em reais nominais. Descontar  c o
+caixa no instante} $t$, e n o em reais nominais. Descontar c o
 processo cont -nuo de ``trazer a valor presente'': um real no futuro
-vale menos que um real hoje. A conta caixa $S_t^0$  c o fator de
-capitaliza SS  o. Matematicamente, descontar  c uma mudan SSa de numer irio
---- o primeiro exemplo de transforma SS  o de gauge que a GAT
+vale menos que um real hoje. A conta caixa $S_t^0$ c o fator de
+capitaliza SS o. Matematicamente, descontar c uma mudan SSa de numer irio
+--- o primeiro exemplo de transforma SS o de gauge que a GAT
 generalizar i.
 \end{obs}
 
 \subsection{O Numer irio}
 
 \begin{defi}[Numer irio]
-Um \textbf{numer irio}  c um ativo cujo pre SSo  c estritamente positivo
+Um \textbf{numer irio} c um ativo cujo pre SSo c estritamente positivo
 ($S_t^{\text{Num}} > 0$ q.c. para todo $t$) e que serve como unidade
-de conta. A escolha mais comum  c $S^0$ (a conta caixa), mas
+de conta. A escolha mais comum c $S^0$ (a conta caixa), mas
 qualquer ativo estritamente positivo pode desempenhar este papel.
 \end{defi}
 
 A GAT explora exaustivamente a \textbf{arbitrariedade do numer irio}:
 as leis de mercado devem ser invariantes sob mudan SSa de unidade de
-conta. Esta invari  ncia --- conhecida como \textbf{simetria de gauge}
---- ser i o ponto de partida para a constru SS  o geom ctrica.
+conta. Esta invari ncia --- conhecida como \textbf{simetria de gauge}
+--- ser i o ponto de partida para a constru SS o geom ctrica.
 
 % ----------------------------------------------------------------------
-\section{Estrat cgias de Negocia SS  o}
+\section{Estrat cgias de Negocia SS o}
 % ----------------------------------------------------------------------
 
 \subsection{Previsibilidade}
 
 \begin{defi}[Processo Previs -vel]
 Um processo estoc istico $x: [0, +\infty[ \times \Omega \to
-\mathbb{R}^N$  c \textbf{previs -vel} se  c mensur ivel em rela SS  o   
+\mathbb{R}^N$ c \textbf{previs -vel} se c mensur ivel em rela SS o 
 $\sigma$- ilgebra previs -vel $\mathcal{P}$, gerada por todos os
-processos cont -nuos    esquerda e adaptados.
+processos cont -nuos esquerda e adaptados.
 \end{defi}
 
-A previsibilidade codifica a restri SS  o fundamental de causalidade:
-\textbf{voc a decide sua posi SS  o no instante $t$ com base na
-informa SS  o dispon -vel estritamente antes de $t$}. Voc a n  o pode
-prever o futuro; voc a n  o pode reagir instantaneamente a um salto.
+A previsibilidade codifica a restri SS o fundamental de causalidade:
+\textbf{voc a decide sua posi SS o no instante $t$ com base na
+informa SS o dispon -vel estritamente antes de $t$}. Voc a n o pode
+prever o futuro; voc a n o pode reagir instantaneamente a um salto.
 Se o pre SSo salta em $t$, sua estrat cgia $x_t$ j i estava fixada
 antes do salto.
 
-\begin{defi}[Estrat cgia de Negocia SS  o]
-Uma \textbf{estrat cgia de negocia SS  o} (ou \textit{portf 3lio})  c um
+\begin{defi}[Estrat cgia de Negocia SS o]
+Uma \textbf{estrat cgia de negocia SS o} (ou \textit{portf 3lio}) c um
 processo previs -vel $N$-dimensional
 \begin{equation}\label{eq:strategy}
-  x: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
-  \quad x_t = (x_t^1, \dots, x_t^N),
+ x: [0, +\infty[ \times \Omega \to \mathbb{R}^N,
+ \quad x_t = (x_t^1, \dots, x_t^N),
 \end{equation}
-onde $x_t^j$  c a \textbf{quantidade} (n omero de unidades) do ativo
-$j$ mantida no instante $t$. A quantidade $x_t^0$ (posi SS  o na conta
-caixa)  c determinada pela condi SS  o de autofinanciamento.
+onde $x_t^j$ c a \textbf{quantidade} (n omero de unidades) do ativo
+$j$ mantida no instante $t$. A quantidade $x_t^0$ (posi SS o na conta
+caixa) c determinada pela condi SS o de autofinanciamento.
 \end{defi}
 
-O \textbf{valor da carteira} (ou \textit{wealth process}) associado   
-estrat cgia $x$  c:
+O \textbf{valor da carteira} (ou \textit{wealth process}) associado 
+estrat cgia $x$ c:
 \begin{equation}\label{eq:wealth}
-  V_t := V_t^x := \sum_{j=0}^N x_t^j S_t^j = x_t^0 S_t^0 + x_t \cdot S_t.
+ V_t := V_t^x := \sum_{j=0}^N x_t^j S_t^j = x_t^0 S_t^0 + x_t \cdot S_t.
 \end{equation}
 
 \subsection{Admissibilidade}
 
-Nem toda estrat cgia previs -vel  c economicamente razo ivel. A condi SS  o
+Nem toda estrat cgia previs -vel c economicamente razo ivel. A condi SS o
 de \textbf{admissibilidade} exclui estrat cgias que realizam lucros
 infinitos com capital finito --- as chamadas ``estrat cgias de
 dobrar'' (\textit{doubling strategies}).
 
 \begin{defi}[Estrat cgia Admiss -vel]
-Uma estrat cgia $x$  c dita \textbf{$a$-admiss -vel} (para $a \in
-\mathbb{R}$) se o processo de valor descontado  c limitado
+Uma estrat cgia $x$ c dita \textbf{$a$-admiss -vel} (para $a \in
+\mathbb{R}$) se o processo de valor descontado c limitado
 inferiormente:
 \begin{equation}\label{eq:admissible}
-  \hat{V}_t^x = \frac{V_t^x}{S_t^0} \geq -a, \quad \forall t \geq 0,
-  \quad P\text{-q.c.}
+ \hat{V}_t^x = \frac{V_t^x}{S_t^0} \geq -a, \quad \forall t \geq 0,
+ \quad P\text{-q.c.}
 \end{equation}
-Uma estrat cgia  c \textbf{admiss -vel} se  c $a$-admiss -vel para algum
+Uma estrat cgia c \textbf{admiss -vel} se c $a$-admiss -vel para algum
 $a \in \mathbb{R}_+$. Denotamos por $\mathcal{A}$ o conjunto de todas
 as estrat cgias admiss -veis.
 \end{defi}
 
 \begin{obs}[Por que limitar a perda?]
-Em tempo cont -nuo, sem a limita SS  o inferior,  c poss -vel construir uma
+Em tempo cont -nuo, sem a limita SS o inferior, c poss -vel construir uma
 estrat cgia de ``aposta de Martingale'' que dobra a aposta ap 3s cada
 perda e gera lucro certo com probabilidade~1 --- mas requer cr cdito
 ilimitado. A cota inferior $a$ representa uma \textbf{linha de cr cdito
@@ -253,135 +253,135 @@ Continuous Trading}. Stochastic Processes and their Applications,
 (Harrison--Kreps 1979) para tempo cont -nuo. Formalizou o conceito de
 estrat cgia admiss -vel e provou que, sob a exist ancia de uma medida
 martingal equivalente, o valor descontado de qualquer estrat cgia
-admiss -vel autofinanciada  c um martingal local limitado
+admiss -vel autofinanciada c um martingal local limitado
 inferiormente --- portanto, um supermartingal.}.
 \end{obs}
 
 \subsection{Autofinanciamento: It ' e Stratonovich}
 
-A condi SS  o de \textbf{autofinanciamento} afirma que varia SS ues no valor da
+A condi SS o de \textbf{autofinanciamento} afirma que varia SS ues no valor da
 carteira decorrem exclusivamente de varia SS ues nos pre SSos dos ativos ---
-voc a n  o injeta nem retira capital.
+voc a n o injeta nem retira capital.
 
-\begin{defi}[Estrat cgia Autofinanciada --- Formula SS  o de It ']
-Uma estrat cgia $x$  c \textbf{autofinanciada} (na formula SS  o de It ') se
+\begin{defi}[Estrat cgia Autofinanciada --- Formula SS o de It ']
+Uma estrat cgia $x$ c \textbf{autofinanciada} (na formula SS o de It ') se
 \begin{equation}\label{eq:self_financing_ito}
-  V_t = V_0 + \int_0^t x_u \cdot dS_u
-       = V_0 + \sum_{j=0}^N \int_0^t x_u^j\,dS_u^j,
+ V_t = V_0 + \int_0^t x_u \cdot dS_u
+ = V_0 + \sum_{j=0}^N \int_0^t x_u^j\,dS_u^j,
 \end{equation}
-onde a integral  c a \textbf{integral estoc istica de It '}. Em nota SS  o
+onde a integral c a \textbf{integral estoc istica de It '}. Em nota SS o
 diferencial:
 \begin{equation}\label{eq:self_financing_diff}
-  dV_t = x_t \cdot dS_t = \sum_{j=0}^N x_t^j\,dS_t^j.
+ dV_t = x_t \cdot dS_t = \sum_{j=0}^N x_t^j\,dS_t^j.
 \end{equation}
 \end{defi}
 
 A integral de It ' avalia o integrando no \textit{in -cio} do intervalo
-de integra SS  o. Isto a torna n  o-antecipativa (o valor da integral no
-futuro n  o pode ser conhecido hoje) --- uma propriedade essencial para
+de integra SS o. Isto a torna n o-antecipativa (o valor da integral no
+futuro n o pode ser conhecido hoje) --- uma propriedade essencial para
 finan SSas. Contudo, a regra da cadeia usual do c ilculo falha para a
 integral de It ', sendo substitu -da pelo \textbf{Lema de It '}, que
-adiciona um termo de corre SS  o de segunda ordem (o termo de It '):
+adiciona um termo de corre SS o de segunda ordem (o termo de It '):
 \begin{equation}\label{eq:ito_lemma}
-  df(X_t) = f'(X_t)\,dX_t + \frac{1}{2} f''(X_t)\,d\langle X, X\rangle_t.
+ df(X_t) = f'(X_t)\,dX_t + \frac{1}{2} f''(X_t)\,d\langle X, X\rangle_t.
 \end{equation}
 
-\begin{defi}[Estrat cgia Autofinanciada --- Formula SS  o de Stratonovich]
-A mesma condi SS  o pode ser expressa via \textbf{integral de
+\begin{defi}[Estrat cgia Autofinanciada --- Formula SS o de Stratonovich]
+A mesma condi SS o pode ser expressa via \textbf{integral de
 Stratonovich}:
 \begin{equation}\label{eq:self_financing_stratonovich}
-  V_t = V_0 + \int_0^t x_u \circ dS_u
-       = V_0 + \sum_{j=0}^N \int_0^t x_u^j \circ dS_u^j.
+ V_t = V_0 + \int_0^t x_u \circ dS_u
+ = V_0 + \sum_{j=0}^N \int_0^t x_u^j \circ dS_u^j.
 \end{equation}
-A nota SS  o ``$\circ$'' indica a integral de Stratonovich, definida pela
-rela SS  o com a integral de It ':
+A nota SS o ``$\circ$'' indica a integral de Stratonovich, definida pela
+rela SS o com a integral de It ':
 \begin{equation}\label{eq:ito_stratonovich_relation}
-  \int_0^t x_u \circ dS_u
-  := \int_0^t x_u \cdot dS_u
-     + \frac{1}{2}\langle x, S\rangle_t,
+ \int_0^t x_u \circ dS_u
+ := \int_0^t x_u \cdot dS_u
+ + \frac{1}{2}\langle x, S\rangle_t,
 \end{equation}
-onde $\langle x, S\rangle_t$  c o processo de \textbf{covaria SS  o
+onde $\langle x, S\rangle_t$ c o processo de \textbf{covaria SS o
 quadr itica} entre $x$ e $S$, i.e., a parte cont -nua (previs -vel) da
-varia SS  o conjunta.
+varia SS o conjunta.
 \end{defi}
 
 \begin{obs}[Por que duas formula SS ues?]
-A distin SS  o entre It ' e Stratonovich n  o  c um preciosismo t ccnico ---
+A distin SS o entre It ' e Stratonovich n o c um preciosismo t ccnico ---
  c \textbf{fundamental para a GAT}. A integral de Stratonovich satisfaz
 a regra da cadeia usual do c ilculo:
 \begin{equation}\label{eq:stratonovich_chain}
-  df(X_t) = f'(X_t) \circ dX_t,
+ df(X_t) = f'(X_t) \circ dX_t,
 \end{equation}
 exatamente como no c ilculo de Newton--Leibniz. Isto significa que
 \textbf{a geometria diferencial (que depende crucialmente da regra da
 cadeia) requer Stratonovich}. A GAT formula todas as constru SS ues
 geom ctricas (conex ues, curvatura, transporte paralelo) usando
 Stratonovich. A integral de It ' permanece a ferramenta correta para
-martingais e para a teoria de apre SSamento, mas  c Stratonovich que
+martingais e para a teoria de apre SSamento, mas c Stratonovich que
 permite ``colar'' os peda SSos geom ctricos.
 \end{obs}
 
-A rela SS  o~\eqref{eq:ito_stratonovich_relation}  c a ponte entre os
+A rela SS o~\eqref{eq:ito_stratonovich_relation} c a ponte entre os
 dois mundos: o mundo probabil -stico (It ') e o mundo geom ctrico
-(Stratonovich). A covari  ncia quadr itica $\langle x, S\rangle_t$  c o
-\textbf{termo de conex  o} que corrige a ``n  o-regularidade'' da
+(Stratonovich). A covari ncia quadr itica $\langle x, S\rangle_t$ c o
+\textbf{termo de conex o} que corrige a ``n o-regularidade'' da
 integral de It '.
 
 % ----------------------------------------------------------------------
 \section{Arbitragem Formalizada}
 % ----------------------------------------------------------------------
 
-Com as defini SS ues anteriores, podemos dar uma defini SS  o matematicamente
+Com as defini SS ues anteriores, podemos dar uma defini SS o matematicamente
 precisa de arbitragem.
 
 \begin{defi}[Arbitragem]
-Uma estrat cgia autofinanciada admiss -vel $x \in \mathcal{A}$  c uma
+Uma estrat cgia autofinanciada admiss -vel $x \in \mathcal{A}$ c uma
 \textbf{oportunidade de arbitragem} se existe $T > 0$ tal que uma das
 duas condi SS ues seguintes se verifica:
 \begin{enumerate}[(i)]
-  \item $P[V_0^x < 0] = 1$ \;\; e \;\; $P[V_T^x \geq 0] = 1$
-        (voc a come SSa com d -vida certa e termina com patrim 'nio n  o
-        negativo certo);
-  \item $P[V_0^x \leq 0] = 1$, \;\; $P[V_T^x \geq 0] = 1$ \;\; e
-        \;\; $P[V_T^x > 0] > 0$
-        (voc a come SSa sem capital, nunca perde, e tem probabilidade
-        positiva de lucro).
+ \item $P[V_0^x < 0] = 1$ \;\; e \;\; $P[V_T^x \geq 0] = 1$
+ (voc a come SSa com d -vida certa e termina com patrim 'nio n o
+ negativo certo);
+ \item $P[V_0^x \leq 0] = 1$, \;\; $P[V_T^x \geq 0] = 1$ \;\; e
+ \;\; $P[V_T^x > 0] > 0$
+ (voc a come SSa sem capital, nunca perde, e tem probabilidade
+ positiva de lucro).
 \end{enumerate}
 \end{defi}
 
-\begin{obs}[Interpreta SS  o Financeira]
-A condi SS  o~(i) descreve a situa SS  o em que o mercado literalmente
+\begin{obs}[Interpreta SS o Financeira]
+A condi SS o~(i) descreve a situa SS o em que o mercado literalmente
 \textit{paga} voc a para entrar numa estrat cgia que nunca dar i preju -zo
-(arbitragem de tipo~I). A condi SS  o~(ii) descreve a situa SS  o cl issica:
-voc a n  o investe nada, n  o corre risco de perda, mas pode ganhar algo
+(arbitragem de tipo~I). A condi SS o~(ii) descreve a situa SS o cl issica:
+voc a n o investe nada, n o corre risco de perda, mas pode ganhar algo
 (arbitragem de tipo~II). Em tempo discreto com espa SSo de estados
-finito, a condi SS  o~(i) implica a~(ii), mas em tempo cont -nuo as duas
-s  o independentes.
+finito, a condi SS o~(i) implica a~(ii), mas em tempo cont -nuo as duas
+s o independentes.
 \end{obs}
 
 \begin{ex}[Arbitragem por Mudan SSa de Numer irio]
 Considere dois ativos $S^1$ e $S^2$ com pre SSos estritamente positivos.
 Defina $\hat{S}_t := S_t^1 / S_t^2$ (pre SSo de $S^1$ em unidades de
 $S^2$). Se $\hat{S}_0 \neq \hat{S}_T$ com probabilidade~1 para algum
-$T$, e a dire SS  o da varia SS  o  c conhecida, existe arbitragem:
+$T$, e a dire SS o da varia SS o c conhecida, existe arbitragem:
 compre o ativo mais barato e venda o mais caro.
 \end{ex}
 
 % ----------------------------------------------------------------------
-\section{Condi SS  o NA e suas Limita SS ues em Tempo Cont -nuo}
+\section{Condi SS o NA e suas Limita SS ues em Tempo Cont -nuo}
 % ----------------------------------------------------------------------
 
-A condi SS  o mais b isica de efici ancia de mercado  c a \textbf{aus ancia
+A condi SS o mais b isica de efici ancia de mercado c a \textbf{aus ancia
 de arbitragem}:
 
-\begin{defi}[Condi SS  o NA --- \textit{No Arbitrage}]
-O mercado satisfaz \textbf{NA} se n  o existe nenhuma estrat cgia
+\begin{defi}[Condi SS o NA --- \textit{No Arbitrage}]
+O mercado satisfaz \textbf{NA} se n o existe nenhuma estrat cgia
 admiss -vel $x \in \mathcal{A}$ que seja uma oportunidade de
 arbitragem.
 \end{defi}
 
-Em tempo discreto com espa SSo de probabilidade finito, a condi SS  o NA  c
-equivalente    exist ancia de uma medida martingal equivalente
+Em tempo discreto com espa SSo de probabilidade finito, a condi SS o NA c
+equivalente exist ancia de uma medida martingal equivalente
 (Harrison--Kreps, 1979)\footnote{Harrison, J.M. e Kreps, D.M.
 \textit{Martingales and Arbitrage in Multiperiod Securities Markets}.
 Journal of Economic Theory, 20(3):381--408, 1979. DOI:
@@ -390,53 +390,53 @@ provou pela primeira vez a equival ancia entre aus ancia de arbitragem e
 exist ancia de medida martingal equivalente, no contexto de mercados
 multi-per -odo com espa SSo de estados finito. Introduziu o conceito de
 ``pre SSo de estado'' (\textit{state price}) e demonstrou que a
-exist ancia de um vetor de pre SSos de estado estritamente positivo  c
-equivalente    condi SS  o NA.}.
+exist ancia de um vetor de pre SSos de estado estritamente positivo c
+equivalente condi SS o NA.}.
 
-\textbf{Em tempo cont -nuo, a condi SS  o NA  c insuficiente.} Existem
-mercados que satisfazem NA mas nos quais  c poss -vel construir
+\textbf{Em tempo cont -nuo, a condi SS o NA c insuficiente.} Existem
+mercados que satisfazem NA mas nos quais c poss -vel construir
 estrat cgias que ``aproximam'' uma arbitragem --- o risco tende a zero,
-mas o lucro esperado permanece positivo. O exemplo can 'nico  c a
+mas o lucro esperado permanece positivo. O exemplo can 'nico c a
 \textbf{estrat cgia de venda a descoberto com horizonte exponencial}:
 venda $e^{-t}$ unidades do ativo no instante $t$; o investimento
 inicial converge para zero, o risco converge para zero, mas o payoff
 terminal permanece estritamente positivo.
 
-\begin{ex}[NA  c Insuficiente --- Esbo SSo]
+\begin{ex}[NA c Insuficiente --- Esbo SSo]
 Considere um ativo cujo pre SSo segue um movimento Browniano geom ctrico
-$S_t = \exp(W_t - t/2)$, onde $W$  c um $P$-Browniano. A estrat cgia
-$x_t := \mathbbm{1}_{S_t > K}$ para algum $K > 0$ n  o  c previs -vel.
+$S_t = \exp(W_t - t/2)$, onde $W$ c um $P$-Browniano. A estrat cgia
+$x_t := \mathbbm{1}_{S_t > K}$ para algum $K > 0$ n o c previs -vel.
 Toda estrat cgia previs -vel que ``tenta'' capturar esta oportunidade
 falha em ser admiss -vel ou gera perda ilimitada com probabilidade
-positiva. Contudo,  c poss -vel construir uma \textbf{sequ ancia} de
+positiva. Contudo, c poss -vel construir uma \textbf{sequ ancia} de
 estrat cgias admiss -veis $(x^{(n)})_{n \in \mathbb{N}}$ cujo risco
-tende a zero e cujo payoff tende a algo n  o-negativo com probabilidade
-positiva de ser estritamente positivo. O limite desta sequ ancia n  o  c
+tende a zero e cujo payoff tende a algo n o-negativo com probabilidade
+positiva de ser estritamente positivo. O limite desta sequ ancia n o c
 uma estrat cgia admiss -vel --- mas a \textit{exist ancia da sequ ancia} j i
-viola a intui SS  o econ 'mica de ``mercado eficiente''.
+viola a intui SS o econ 'mica de ``mercado eficiente''.
 \end{ex}
 
-Para fechar esta brecha, precisamos de uma condi SS  o \textbf{topol 3gica}
+Para fechar esta brecha, precisamos de uma condi SS o \textbf{topol 3gica}
 mais forte.
 
 % ----------------------------------------------------------------------
-\section{Condi SS  o NFLVR}
+\section{Condi SS o NFLVR}
 % ----------------------------------------------------------------------
 
 Delbaen e Schachermayer (1994)\footnote{Delbaen, F. e Schachermayer, W.
 \textit{A General Version of the Fundamental Theorem of Asset Pricing}.
 Mathematische Annalen, 300(1):463--520, 1994. DOI: 10.1007/BF01450498.
 \textbf{Resenha:} O artigo que estabeleceu o FTAP para tempo cont -nuo
-com processos de pre SSo semimartingales. Introduziu a condi SS  o NFLVR e
-provou sua equival ancia    exist ancia de uma medida martingal
+com processos de pre SSo semimartingales. Introduziu a condi SS o NFLVR e
+provou sua equival ancia exist ancia de uma medida martingal
 equivalente $\sigma$-martingal. Generaliza todos os resultados
-anteriores (Harrison--Pliska 1981, Dalang--Morton--Willinger 1990) e  c
+anteriores (Harrison--Pliska 1981, Dalang--Morton--Willinger 1990) e c
 considerado um dos resultados mais profundos da matem itica financeira
-moderna.} introduziram a condi SS  o \textbf{NFLVR} (\textit{No Free Lunch
-with Vanishing Risk}), que exclui n  o apenas arbitragens puras, mas
+moderna.} introduziram a condi SS o \textbf{NFLVR} (\textit{No Free Lunch
+with Vanishing Risk}), que exclui n o apenas arbitragens puras, mas
 tamb cm \textbf{aproxima SS ues} de arbitragens.
 
-\subsection{Constru SS  o dos Cones}
+\subsection{Constru SS o dos Cones}
 
 Considere o conjunto de todos os payoffs terminais descontados
 ating -veis por estrat cgias admiss -veis com investimento inicial zero
@@ -444,81 +444,81 @@ ating -veis por estrat cgias admiss -veis com investimento inicial zero
 
 \begin{defi}[Cone $K_0$]
 \begin{equation}\label{eq:K0}
-  K_0 := \left\{
-    \int_0^\infty x_u \cdot d\hat{S}_u \;\middle|\;
-    x \in \mathcal{A},\; V_0^x \leq 0
-  \right\}.
+ K_0 := \left\{
+ \int_0^\infty x_u \cdot d\hat{S}_u \;\middle|\;
+ x \in \mathcal{A},\; V_0^x \leq 0
+ \right\}.
 \end{equation}
-$K_0$  c o conjunto de \textbf{payoffs terminais ating -veis sem
-investimento inicial positivo}. Cada elemento de $K_0$  c uma vari ivel
+$K_0$ c o conjunto de \textbf{payoffs terminais ating -veis sem
+investimento inicial positivo}. Cada elemento de $K_0$ c uma vari ivel
 aleat 3ria representando o valor terminal (descontado) de uma
-estrat cgia que n  o exigiu capital inicial.
+estrat cgia que n o exigiu capital inicial.
 \end{defi}
 
 \begin{defi}[Cone $C_0$ e Cone $C$]
 Definimos:
 \begin{align}
-  C_0 &:= K_0 - L_+^0(\Omega, \mathcal{A}_\infty, P)
-        \label{eq:C0} \\
-  C   &:= C_0 \cap L^\infty(\Omega, \mathcal{A}_\infty, P)
-        \label{eq:C}
+ C_0 &:= K_0 - L_+^0(\Omega, \mathcal{A}_\infty, P)
+ \label{eq:C0} \\
+ C &:= C_0 \cap L^\infty(\Omega, \mathcal{A}_\infty, P)
+ \label{eq:C}
 \end{align}
-onde $L_+^0$  c o cone das vari iveis aleat 3rias n  o-negativas
-(possivelmente n  o limitadas) e $L^\infty$  c o espa SSo das vari iveis
+onde $L_+^0$ c o cone das vari iveis aleat 3rias n o-negativas
+(possivelmente n o limitadas) e $L^\infty$ c o espa SSo das vari iveis
 aleat 3rias essencialmente limitadas.
 \end{defi}
 
-\begin{obs}[Interpreta SS  o dos Cones]
+\begin{obs}[Interpreta SS o dos Cones]
 \begin{itemize}
-  \item $K_0$: payoffs que voc a pode atingir com capital inicial zero
-        (ou negativo).  %% o ``card ipio'' de resultados financeiros
-        dispon -veis sem investimento.
-  \item $C_0$: $K_0$ menos vari iveis n  o-negativas. Subtrair algo de
-        $L_+^0$ significa que voc a pode \textbf{descartar} dinheiro
-        (domin  ncia): se voc a pode obter $X$ com capital zero, voc a
-        pode obter qualquer $Y \leq X$ (simplesmente jogando fora a
-        diferen SSa). Esta  c a propriedade de \textbf{free disposal}.
-  \item $C$: a restri SS  o a $L^\infty$ (payoffs limitados). A raz  o
-        t ccnica  c que $L^\infty$  c o dual de $L^1$, e o teorema de
-        separa SS  o de Hahn--Banach (essencial para provar a exist ancia
-        da medida martingal) requer o espa SSo $L^\infty$ com sua
-        topologia natural.
+ \item $K_0$: payoffs que voc a pode atingir com capital inicial zero
+ (ou negativo). %% o ``card ipio'' de resultados financeiros
+ dispon -veis sem investimento.
+ \item $C_0$: $K_0$ menos vari iveis n o-negativas. Subtrair algo de
+ $L_+^0$ significa que voc a pode \textbf{descartar} dinheiro
+ (domin ncia): se voc a pode obter $X$ com capital zero, voc a
+ pode obter qualquer $Y \leq X$ (simplesmente jogando fora a
+ diferen SSa). Esta c a propriedade de \textbf{free disposal}.
+ \item $C$: a restri SS o a $L^\infty$ (payoffs limitados). A raz o
+ t ccnica c que $L^\infty$ c o dual de $L^1$, e o teorema de
+ separa SS o de Hahn--Banach (essencial para provar a exist ancia
+ da medida martingal) requer o espa SSo $L^\infty$ com sua
+ topologia natural.
 \end{itemize}
 \end{obs}
 
-\subsection{Defini SS  o Topol 3gica}
+\subsection{Defini SS o Topol 3gica}
 
-\begin{defi}[Condi SS  o NFLVR --- Delbaen--Schachermayer 1994]
+\begin{defi}[Condi SS o NFLVR --- Delbaen--Schachermayer 1994]
 O mercado satisfaz \textbf{NFLVR} (\textit{No Free Lunch with
 Vanishing Risk}) se
 \begin{equation}\label{eq:NFLVR}
-  \overline{C} \cap L_+^\infty(\Omega, \mathcal{A}_\infty, P) = \{0\},
+ \overline{C} \cap L_+^\infty(\Omega, \mathcal{A}_\infty, P) = \{0\},
 \end{equation}
 onde $\overline{C}$ denota o \textbf{fecho de $C$ na topologia
 forte} (norma) de $L^\infty$.
 \end{defi}
 
-\begin{obs}[Tradu SS  o para Portugu as Claro]
-A condi SS  o NFLVR diz: \textit{N  o existe sequ ancia de payoffs
+\begin{obs}[Tradu SS o para Portugu as Claro]
+A condi SS o NFLVR diz: \textit{N o existe sequ ancia de payoffs
 ating -veis (limitados, com investimento inicial zero ou negativo) que
-convirja uniformemente para um payoff n  o-negativo que seja
+convirja uniformemente para um payoff n o-negativo que seja
 estritamente positivo com probabilidade positiva.} Em outras palavras:
-voc a n  o pode ``aproximar'' uma arbitragem --- se o risco de uma
+voc a n o pode ``aproximar'' uma arbitragem --- se o risco de uma
 sequ ancia de estrat cgias tende a zero (converg ancia em
 $L^\infty$), o payoff limite tamb cm deve ser exatamente zero.
 \end{obs}
 
-A condi SS  o NFLVR decomp ue-se em duas condi SS ues mais simples que s  o
+A condi SS o NFLVR decomp ue-se em duas condi SS ues mais simples que s o
  oteis nas demonstra SS ues:
 
-\begin{prop}[Decomposi SS  o da NFLVR]
-NFLVR  c equivalente    conjun SS  o de:
+\begin{prop}[Decomposi SS o da NFLVR]
+NFLVR c equivalente conjun SS o de:
 \begin{enumerate}[(i)]
-  \item \textbf{NA} (aus ancia de arbitragem): $C \cap L_+^\infty = \{0\}$;
-  \item \textbf{NFL} (\textit{No Free Lunch}):
-        $\overline{C}_{\text{frac}} \cap L_+^\infty = \{0\}$, onde o
-        fecho fraco estrito (relativo    topologia fraca-$\ast$ de
-        $L^\infty$) exclui limites de sequ ancias limitadas.
+ \item \textbf{NA} (aus ancia de arbitragem): $C \cap L_+^\infty = \{0\}$;
+ \item \textbf{NFL} (\textit{No Free Lunch}):
+ $\overline{C}_{\text{frac}} \cap L_+^\infty = \{0\}$, onde o
+ fecho fraco estrito (relativo topologia fraca-$\ast$ de
+ $L^\infty$) exclui limites de sequ ancias limitadas.
 \end{enumerate}
 \end{prop}
 
@@ -527,31 +527,31 @@ NFLVR  c equivalente    conjun SS  o de:
 % ----------------------------------------------------------------------
 
 O \textbf{Primeiro Teorema Fundamental do Apre SSamento de Ativos}
-(FTAP) estabelece a equival ancia entre a condi SS  o NFLVR e a exist ancia
+(FTAP) estabelece a equival ancia entre a condi SS o NFLVR e a exist ancia
 de uma medida de probabilidade equivalente sob a qual os pre SSos
-descontados s  o martingais (em sentido generalizado).
+descontados s o martingais (em sentido generalizado).
 
 \begin{defi}[Medida Martingal Equivalente]
-Uma medida de probabilidade $Q$ em $(\Omega, \mathcal{A}_\infty)$  c
+Uma medida de probabilidade $Q$ em $(\Omega, \mathcal{A}_\infty)$ c
 uma \textbf{medida martingal equivalente} (EMM --- \textit{Equivalent
 Martingale Measure}) se:
 \begin{enumerate}[(i)]
-  \item $Q \sim P$ (equival ancia: $Q$ e $P$ t am os mesmos conjuntos
-        de medida nula);
-  \item O processo de pre SSos descontados $\hat{S}$  c um
-        $\sigma$-\textbf{martingal} sob $Q$: existe uma sequ ancia
-        crescente de tempos de parada $(\tau_n)_{n \in \mathbb{N}}$
-        com $\tau_n \uparrow +\infty$ $Q$-q.c. tal que, para cada $j$,
-        o processo parado $\hat{S}^{j, \tau_n}$  c um $Q$-martingal.
+ \item $Q \sim P$ (equival ancia: $Q$ e $P$ t am os mesmos conjuntos
+ de medida nula);
+ \item O processo de pre SSos descontados $\hat{S}$ c um
+ $\sigma$-\textbf{martingal} sob $Q$: existe uma sequ ancia
+ crescente de tempos de parada $(\tau_n)_{n \in \mathbb{N}}$
+ com $\tau_n \uparrow +\infty$ $Q$-q.c. tal que, para cada $j$,
+ o processo parado $\hat{S}^{j, \tau_n}$ c um $Q$-martingal.
 \end{enumerate}
 \end{defi}
 
 \begin{obs}[$\sigma$-martingal vs. Martingal Local]
-A no SS  o de $\sigma$-martingal  c uma generaliza SS  o t ccnica de
+A no SS o de $\sigma$-martingal c uma generaliza SS o t ccnica de
 martingal local necess iria para cobrir todos os semimartingales. Para
 processos localmente limitados (i.e., processos de It ' sem saltos
 explosivos), $\sigma$-martingal coincide com martingal local. Para
-processos com saltos, a distin SS  o  c relevante. O leitor interessado
+processos com saltos, a distin SS o c relevante. O leitor interessado
 nos detalhes t ccnicos deve consultar Delbaen--Schachermayer (2006,
 Cap.~9)\footnote{Delbaen, F. e Schachermayer, W. \textit{The
 Mathematics of Arbitrage}. Springer Finance, 2006. DOI:
@@ -559,146 +559,146 @@ Mathematics of Arbitrage}. Springer Finance, 2006. DOI:
 definitiva sobre os fundamentos matem iticos da arbitragem. Cobre desde
 o modelo discreto (Dalang--Morton--Willinger) at c o caso cont -nuo com
 semimartingales gerais. O Cap -tulo~9 cont cm a prova completa do FTAP
-via teorema de separa SS  o de Kreps--Yan. Indispens ivel para qualquer
+via teorema de separa SS o de Kreps--Yan. Indispens ivel para qualquer
 estudo s crio de finan SSas quantitativas.}.
 \end{obs}
 
 \begin{teo}[FTAP --- Delbaen--Schachermayer 1994]
 \label{teo:FTAP_DS}
 Para um mercado com pre SSos modelados por um semimartingale $S$
-localmente limitado, as seguintes condi SS ues s  o equivalentes:
+localmente limitado, as seguintes condi SS ues s o equivalentes:
 \begin{enumerate}[(i)]
-  \item O mercado satisfaz \textbf{NFLVR};
-  \item Existe uma \textbf{medida martingal equivalente} $Q$ (EMM)
-        tal que $\hat{S}$  c um $\sigma$-martingal sob $Q$.
+ \item O mercado satisfaz \textbf{NFLVR};
+ \item Existe uma \textbf{medida martingal equivalente} $Q$ (EMM)
+ tal que $\hat{S}$ c um $\sigma$-martingal sob $Q$.
 \end{enumerate}
-Al cm disso, o conjunto de EMMs com densidade limitada  c denso (na
-topologia da varia SS  o total) no conjunto de todas as EMMs.
+Al cm disso, o conjunto de EMMs com densidade limitada c denso (na
+topologia da varia SS o total) no conjunto de todas as EMMs.
 \end{teo}
 
 \begin{proof}[Esbo SSo da Prova --- Ideias Centrais]
-A implica SS  o (ii)~$\Rightarrow$~(i)  c a mais f icil e segue do
+A implica SS o (ii)~$\Rightarrow$~(i) c a mais f icil e segue do
 Teorema de Parada Opcional para $\sigma$-martingais e do Lema de
 Fatou.
 
-A implica SS  o (i)~$\Rightarrow$~(ii)  c profunda e requer:
+A implica SS o (i)~$\Rightarrow$~(ii) c profunda e requer:
 \begin{enumerate}
-  \item NFLVR garante que $C$  c fechado em $L^\infty$ (Lema de
-        Kreps--Yan);
-  \item Pelo Teorema de Separa SS  o de Hahn--Banach, existe um
-        funcional linear cont -nuo (um elemento de $(L^\infty)^*$) que
-        separa $C$ de $L_+^\infty \setminus \{0\}$;
-  \item A representa SS  o de Yosida--Hewitt decomp ue este funcional em
-        parte absolutamente cont -nua (densidade $dQ/dP$) e parte
-        singular;
-  \item A condi SS  o NA elimina a parte singular, produzindo uma
-        densidade estritamente positiva para $Q$;
-  \item A condi SS  o de $\sigma$-martingal segue da propriedade de
-        martingal local da integral estoc istica sob $Q$.
+ \item NFLVR garante que $C$ c fechado em $L^\infty$ (Lema de
+ Kreps--Yan);
+ \item Pelo Teorema de Separa SS o de Hahn--Banach, existe um
+ funcional linear cont -nuo (um elemento de $(L^\infty)^*$) que
+ separa $C$ de $L_+^\infty \setminus \{0\}$;
+ \item A representa SS o de Yosida--Hewitt decomp ue este funcional em
+ parte absolutamente cont -nua (densidade $dQ/dP$) e parte
+ singular;
+ \item A condi SS o NA elimina a parte singular, produzindo uma
+ densidade estritamente positiva para $Q$;
+ \item A condi SS o de $\sigma$-martingal segue da propriedade de
+ martingal local da integral estoc istica sob $Q$.
 \end{enumerate}
 A prova completa ocupa aproximadamente 40 p iginas no artigo original.
 \end{proof}
 
 \begin{coro}[FTAP para Processos de It ' Localmente Limitados]
-Se $S$  c um processo de It ' localmente limitado (sem saltos, drift e
-difus  o localmente limitados), NFLVR  c equivalente    exist ancia de uma
-EMM sob a qual $\hat{S}$  c um martingal local.
+Se $S$ c um processo de It ' localmente limitado (sem saltos, drift e
+difus o localmente limitados), NFLVR c equivalente exist ancia de uma
+EMM sob a qual $\hat{S}$ c um martingal local.
 \end{coro}
 
 % ----------------------------------------------------------------------
 \section{Pricing Kernel / State Price Deflator}
 % ----------------------------------------------------------------------
 
-Uma formula SS  o equivalente --- e particularmente  otil para a GAT ---
+Uma formula SS o equivalente --- e particularmente otil para a GAT ---
 utiliza o conceito de \textbf{deflator de pre SSos de estado}
 (\textit{state price deflator}) ou \textbf{pricing kernel}.
 
 \begin{defi}[State Price Deflator]
 Um processo estoc istico estritamente positivo $\beta = (\beta_t)_{t
-\geq 0}$ com $\beta_0 = 1$  c um \textbf{state price deflator} (SPD)
-se o produto $\beta_t S_t$  c um $P$-martingal local para todo ativo
+\geq 0}$ com $\beta_0 = 1$ c um \textbf{state price deflator} (SPD)
+se o produto $\beta_t S_t$ c um $P$-martingal local para todo ativo
 (incluindo a conta caixa):
 \begin{equation}\label{eq:SPD}
-  \beta_t S_t^j \text{  c um } P\text{-martingal local}, \quad
-  j = 0, 1, \dots, N.
+ \beta_t S_t^j \text{ c um } P\text{-martingal local}, \quad
+ j = 0, 1, \dots, N.
 \end{equation}
-Equivalentemente, $\beta$  c um \textbf{pricing kernel}.
+Equivalentemente, $\beta$ c um \textbf{pricing kernel}.
 \end{defi}
 
-\begin{obs}[Rela SS  o com a EMM]
-Se $Q$  c uma EMM com processo de densidade $Z_t :=
-\mathbb{E}_P[dQ/dP \mid \mathcal{A}_t]$, ent  o
+\begin{obs}[Rela SS o com a EMM]
+Se $Q$ c uma EMM com processo de densidade $Z_t :=
+\mathbb{E}_P[dQ/dP \mid \mathcal{A}_t]$, ent o
 \begin{equation}\label{eq:SPD_from_EMM}
-  \beta_t := \frac{Z_t}{S_t^0}
+ \beta_t := \frac{Z_t}{S_t^0}
 \end{equation}
- c um state price deflator. Reciprocamente, se $\beta$  c um SPD,
-ent  o $Q$ definida por $dQ/dP|_{\mathcal{A}_t} := \beta_t S_t^0$  c uma
-EMM. A correspond ancia  c bijetiva.
+ c um state price deflator. Reciprocamente, se $\beta$ c um SPD,
+ent o $Q$ definida por $dQ/dP|_{\mathcal{A}_t} := \beta_t S_t^0$ c uma
+EMM. A correspond ancia c bijetiva.
 \end{obs}
 
 \begin{teo}[Equival ancia NFLVR $\Leftrightarrow$ Exist ancia de SPD]
 \label{teo:SPD_equivalence}
 Para um mercado com pre SSos modelados por semimartingales localmente
-limitados, as seguintes condi SS ues s  o equivalentes:
+limitados, as seguintes condi SS ues s o equivalentes:
 \begin{enumerate}[(i)]
-  \item O mercado satisfaz \textbf{NFLVR};
-  \item Existe um \textbf{state price deflator} $\beta$ (processo
-        estritamente positivo, $\beta_0 = 1$) tal que
-        $\beta S^j$  c um $\sigma$-martingal para $j = 0, \dots, N$.
+ \item O mercado satisfaz \textbf{NFLVR};
+ \item Existe um \textbf{state price deflator} $\beta$ (processo
+ estritamente positivo, $\beta_0 = 1$) tal que
+ $\beta S^j$ c um $\sigma$-martingal para $j = 0, \dots, N$.
 \end{enumerate}
 \end{teo}
 
 \begin{proof}
 Seja $Q$ uma EMM com processo de densidade $Z$. Defina
-$\beta_t := Z_t / S_t^0$. Como $S_t^0$  c determin -stico (ou quase), e
-$Z$  c um $P$-martingal, $\beta$  c um $P$-semimartingale. Para cada
+$\beta_t := Z_t / S_t^0$. Como $S_t^0$ c determin -stico (ou quase), e
+$Z$ c um $P$-martingal, $\beta$ c um $P$-semimartingale. Para cada
 $j$:
 \[
 \beta_t S_t^j = Z_t \frac{S_t^j}{S_t^0} = Z_t \hat{S}_t^j,
 \]
-que  c um $\sigma$-martingal sob $P$ se, e somente se, $\hat{S}_t^j$  c
+que c um $\sigma$-martingal sob $P$ se, e somente se, $\hat{S}_t^j$ c
 um $\sigma$-martingal sob $Q$ (pelo Teorema de Girsanov
-generalizado). A rec -proca segue revertendo a constru SS  o.
+generalizado). A rec -proca segue revertendo a constru SS o.
 \end{proof}
 
 O SPD desempenha um papel central na GAT porque sua derivada
 estoc istica (no sentido de Stratonovich) est i diretamente relacionada
-   \textbf{conex  o de mercado}. Como veremos no Cap -tulo~7, a taxa
+ \textbf{conex o de mercado}. Como veremos no Cap -tulo~7, a taxa
 curta de cada carteira satisfaz:
 \begin{equation}\label{eq:short_rate_SPD}
-  r_t^x = -\mathcal{D} \log(\beta_t D_t^x),
+ r_t^x = -\mathcal{D} \log(\beta_t D_t^x),
 \end{equation}
-onde $\mathcal{D}$  c a derivada m cdia de Nelson (derivada de
+onde $\mathcal{D}$ c a derivada m cdia de Nelson (derivada de
 Stratonovich).
 
 % ----------------------------------------------------------------------
 \section{Cashflows e Intensidades}
 % ----------------------------------------------------------------------
 
-A Se SS  o~2.2 de Farinelli (2021) introduz a no SS  o de \textbf{cashflows}
-e \textbf{intensidades}, que s  o fundamentais para a constru SS  o dos
+A Se SS o~2.2 de Farinelli (2021) introduz a no SS o de \textbf{cashflows}
+e \textbf{intensidades}, que s o fundamentais para a constru SS o dos
 \textbf{gauges} no Cap -tulo~5.
 
 \begin{defi}[Cashflow]
-Um \textbf{cashflow}  c uma fam -lia de vari iveis aleat 3rias
+Um \textbf{cashflow} c uma fam -lia de vari iveis aleat 3rias
 $(C_t)_{t \geq 0}$ onde $C_t$ representa o pagamento (dividendo,
-cupom, principal) recebido no instante $t$. Um cashflow  c dito
-\textbf{admiss -vel} se  c um processo adaptado c  dl  g com
+cupom, principal) recebido no instante $t$. Um cashflow c dito
+\textbf{admiss -vel} se c um processo adaptado c dl g com
 $\mathbb{E}[\int_0^\infty |C_t|\,dt] < \infty$.
 \end{defi}
 
-Em tempo cont -nuo,  c mais natural trabalhar com a \textbf{intensidade}
-(ou densidade) de cashflow, an iloga    ``velocidade instant  nea'' de
+Em tempo cont -nuo, c mais natural trabalhar com a \textbf{intensidade}
+(ou densidade) de cashflow, an iloga ``velocidade instant nea'' de
 pagamentos.
 
 \begin{defi}[Intensidade de Cashflow]
-Uma \textbf{intensidade de cashflow}  c um processo estoc istico
+Uma \textbf{intensidade de cashflow} c um processo estoc istico
 $\pi = (\pi_t)_{t \geq 0}$ adaptado e localmente integr ivel. O
-cashflow acumulado at c o instante $T$  c:
+cashflow acumulado at c o instante $T$ c:
 \begin{equation}\label{eq:cashflow_intensity}
-  C_T^\pi := \int_0^T \pi_u\,du.
+ C_T^\pi := \int_0^T \pi_u\,du.
 \end{equation}
-Em particular, o pagamento infinitesimal no intervalo $[t, t+dt[$  c
+Em particular, o pagamento infinitesimal no intervalo $[t, t+dt[$ c
 $\pi_t\,dt$.
 \end{defi}
 
@@ -706,23 +706,23 @@ $\pi_t\,dt$.
 Um t -tulo que paga $1$ unidade monet iria no vencimento $T$ tem
 intensidade de cashflow concentrada em $T$:
 \begin{equation}\label{eq:zero_coupon_intensity}
-  \pi_t = \delta_T(t),
+ \pi_t = \delta_T(t),
 \end{equation}
-onde $\delta_T$  c a distribui SS  o Delta de Dirac na data $T$
+onde $\delta_T$ c a distribui SS o Delta de Dirac na data $T$
 (generalizada). Formalmente, $\int_0^\infty f(t)\,\delta_T(t)\,dt =
-f(T)$ para toda fun SS  o $f$ cont -nua. O uso de distribui SS ues  c
+f(T)$ para toda fun SS o $f$ cont -nua. O uso de distribui SS ues c
 justificado no contexto de funcionais lineares cont -nuos sobre espa SSos
 de fun SS ues teste; na GAT, as integrais de gauge envolvem convolu SS ues
 que regularizam naturalmente estas distribui SS ues.
 \end{ex}
 
-\begin{ex}[A SS  o com Dividendos Cont -nuos]
-Uma a SS  o que paga dividendos a uma taxa cont -nua $d_t$ (propor SS  o do
+\begin{ex}[A SS o com Dividendos Cont -nuos]
+Uma a SS o que paga dividendos a uma taxa cont -nua $d_t$ (propor SS o do
 pre SSo) tem intensidade:
 \begin{equation}\label{eq:dividend_intensity}
-  \pi_t = d_t S_t.
+ \pi_t = d_t S_t.
 \end{equation}
-Se os dividendos s  o reinvestidos, a intensidade  c nula e o pre SSo
+Se os dividendos s o reinvestidos, a intensidade c nula e o pre SSo
 $S_t$ j i incorpora o retorno total.
 \end{ex}
 
@@ -730,61 +730,61 @@ $S_t$ j i incorpora o retorno total.
 Um t -tulo com vencimento $T$ que paga cupons anuais de valor $c$ e
 principal $1$ no vencimento tem intensidade:
 \begin{equation}\label{eq:coupon_bond_intensity}
-  \pi_t = \sum_{k=1}^{\lfloor T \rfloor} c\,\delta_{k}(t)
-          + (1 + c)\,\delta_T(t).
+ \pi_t = \sum_{k=1}^{\lfloor T \rfloor} c\,\delta_{k}(t)
+ + (1 + c)\,\delta_T(t).
 \end{equation}
 \end{ex}
 
 \begin{ex}[Perpetuidade]
 Uma perpetuidade que paga $1$ unidade por ano indefinidamente:
 \begin{equation}\label{eq:perpetuity_intensity}
-  \pi_t = 1, \quad \forall t \geq 0.
+ \pi_t = 1, \quad \forall t \geq 0.
 \end{equation}
-Este  c o caso mais simples e serve como exemplo can 'nico na
-constru SS  o de gauges.
+Este c o caso mais simples e serve como exemplo can 'nico na
+constru SS o de gauges.
 \end{ex}
 
 % ----------------------------------------------------------------------
 \section{Valor Presente sob NFLVR}
 % ----------------------------------------------------------------------
 
-Sob a condi SS  o NFLVR (e, portanto, na presen SSa de um pricing kernel
+Sob a condi SS o NFLVR (e, portanto, na presen SSa de um pricing kernel
 $\beta$), o valor presente de qualquer cashflow pode ser expresso
-de forma  onica.
+de forma onica.
 
 \begin{teo}[F 3rmula de Apre SSamento com Pricing Kernel]
 \label{teo:pricing_kernel_formula}
 Suponha que o mercado satisfaz NFLVR e seja $\beta$ um state price
-deflator. O \textbf{valor presente} (pre SSo de n  o-arbitragem) no
-instante $t$ de um cashflow com intensidade $\pi$  c:
+deflator. O \textbf{valor presente} (pre SSo de n o-arbitragem) no
+instante $t$ de um cashflow com intensidade $\pi$ c:
 \begin{equation}\label{eq:present_value}
-  V_t^\pi = \frac{1}{\beta_t}\,
-            \mathbb{E}_P\!\left[
-              \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\;
-              \mathcal{A}_t
-            \right].
+ V_t^\pi = \frac{1}{\beta_t}\,
+ \mathbb{E}_P\!\left[
+ \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\;
+ \mathcal{A}_t
+ \right].
 \end{equation}
 Em particular, o valor presente de um fluxo unit irio perp ctuo
-($\pi_t = 1$)  c:
+($\pi_t = 1$) c:
 \begin{equation}\label{eq:perpetuity_value}
-  D_t := V_t^{\pi=1} = \frac{1}{\beta_t}\,
-        \mathbb{E}_P\!\left[
-          \int_t^\infty \beta_u\,du \;\middle|\;
-          \mathcal{A}_t
-        \right].
+ D_t := V_t^{\pi=1} = \frac{1}{\beta_t}\,
+ \mathbb{E}_P\!\left[
+ \int_t^\infty \beta_u\,du \;\middle|\;
+ \mathcal{A}_t
+ \right].
 \end{equation}
 \end{teo}
 
 \begin{proof}
-Pela defini SS  o de $\beta$, o processo $\beta_t S_t^j$  c um
+Pela defini SS o de $\beta$, o processo $\beta_t S_t^j$ c um
 $P$-martingal local para cada ativo $j$. O valor presente de um
-cashflow  c, por aus ancia de arbitragem, o custo de replic i-lo com uma
-carteira autofinanciada. Pelo Teorema de Representa SS  o de Martingais
+cashflow c, por aus ancia de arbitragem, o custo de replic i-lo com uma
+carteira autofinanciada. Pelo Teorema de Representa SS o de Martingais
 (quando aplic ivel), existe uma estrat cgia $x$ tal que
-$V_t^x = V_t^\pi$. Aplicando a defini SS  o de SPD:
+$V_t^x = V_t^\pi$. Aplicando a defini SS o de SPD:
 \[
 \beta_t V_t^\pi = \mathbb{E}_P\!\left[
-  \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\; \mathcal{A}_t
+ \int_t^\infty \beta_u\,\pi_u\,du \;\middle|\; \mathcal{A}_t
 \right],
 \]
 j i que $\beta_t V_t^\pi$ deve ser um martingal sob $P$ ( c o valor
@@ -792,11 +792,11 @@ descontado pelo SPD de uma carteira autofinanciada). Dividindo por
 $\beta_t$ obt cm-se~\eqref{eq:present_value}.
 \end{proof}
 
-\begin{obs}[Interpreta SS  o Econ 'mica]
+\begin{obs}[Interpreta SS o Econ 'mica]
 A f 3rmula~\eqref{eq:present_value} generaliza o desconto tradicional
 ($e^{-r(T-t)}$) para um ambiente estoc istico com pricing kernel
 vari ivel no tempo e nos estados da natureza. O pricing kernel $\beta$
-atua como uma ``taxa de desconto estoc istica instant  nea'' que
+atua como uma ``taxa de desconto estoc istica instant nea'' que
 incorpora tanto o valor temporal do dinheiro quanto o pre SSo de mercado
 do risco. Em particular, se $\beta_t = e^{-rt}$ (determin -stico),
 recupera-se a f 3rmula cl issica de desconto.
@@ -805,7 +805,7 @@ recupera-se a f 3rmula cl issica de desconto.
 A quantidade $D_t$ definida em~\eqref{eq:perpetuity_value} --- o valor
 presente de uma perpetuidade unit iria --- ser i o \textbf{deflator} no
 sentido da GAT. Ela mede, em unidades monet irias de hoje, quanto vale
-o direito de receber 1 unidade monet iria por ano para sempre. Este  c
+o direito de receber 1 unidade monet iria por ano para sempre. Este c
 o instrumento financeiro mais fundamental, a partir do qual todos os
 outros podem ser constru -dos via transforma SS ues de gauge.
 
@@ -813,40 +813,40 @@ outros podem ser constru -dos via transforma SS ues de gauge.
 \label{prop:SPD_martingale}
 Para qualquer cashflow admiss -vel com intensidade $\pi$, o processo
 \begin{equation}\label{eq:SPD_discounted_value}
-  M_t^\pi := \beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du
+ M_t^\pi := \beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du
 \end{equation}
  c um $P$-martingal (local). Em particular, para uma perpetuidade
 ($\pi_t = 1$):
 \begin{equation}\label{eq:SPD_martingale_perpetuity}
-  M_t := \beta_t D_t + \int_0^t \beta_u\,du
+ M_t := \beta_t D_t + \int_0^t \beta_u\,du
 \end{equation}
- c um $P$-martingal, donde se obt cm a din  mica:
+ c um $P$-martingal, donde se obt cm a din mica:
 \begin{equation}\label{eq:D_dynamics}
-  dD_t = (r_t^0 D_t - 1)\,dt + dM_t^\beta,
+ dD_t = (r_t^0 D_t - 1)\,dt + dM_t^\beta,
 \end{equation}
-onde $M^\beta$  c a parte martingal (sob $P$) do processo $\beta D$.
+onde $M^\beta$ c a parte martingal (sob $P$) do processo $\beta D$.
 \end{prop}
 
 \begin{proof}
-Pela defini SS  o de $V_t^\pi$ em~\eqref{eq:present_value}:
+Pela defini SS o de $V_t^\pi$ em~\eqref{eq:present_value}:
 \[
 \beta_t V_t^\pi = \mathbb{E}_P\!\left[
-  \int_t^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
+ \int_t^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
 \right]
 = \mathbb{E}_P\!\left[
-  \int_0^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
+ \int_0^\infty \beta_u \pi_u\,du \;\middle|\; \mathcal{A}_t
 \right] - \int_0^t \beta_u \pi_u\,du.
 \]
-O primeiro termo  c uma esperan SSa condicional (martingal), e o segundo
- c um processo de varia SS  o finita. Portanto,
-$\beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du$  c a soma de um
-martingal com um termo de varia SS  o finita que cancela exatamente a
-parte de varia SS  o finita da integral, resultando em um martingal.
+O primeiro termo c uma esperan SSa condicional (martingal), e o segundo
+ c um processo de varia SS o finita. Portanto,
+$\beta_t V_t^\pi + \int_0^t \beta_u \pi_u\,du$ c a soma de um
+martingal com um termo de varia SS o finita que cancela exatamente a
+parte de varia SS o finita da integral, resultando em um martingal.
 \end{proof}
 
-Esta proposi SS  o fornece a equa SS  o din  mica que governa a evolu SS  o do
-deflator $D_t$ --- uma equa SS  o que, no contexto da GAT, ser i
-interpretada como a condi SS  o de que a \textbf{conex  o de mercado} tem
+Esta proposi SS o fornece a equa SS o din mica que governa a evolu SS o do
+deflator $D_t$ --- uma equa SS o que, no contexto da GAT, ser i
+interpretada como a condi SS o de que a \textbf{conex o de mercado} tem
 \textbf{curvatura zero}.
 
 % ----------------------------------------------------------------------
@@ -856,49 +856,49 @@ interpretada como a condi SS  o de que a \textbf{conex  o de mercado} tem
 O modelo cl issico de mercado em tempo cont -nuo assenta sobre seis pilares:
 
 \begin{enumerate}
-  \item \textbf{Espa SSo filtrado:} $(\Omega, \mathcal{A}, \mathbb{A}, P)$
-        com condi SS ues usuais --- a base matem itica para a chegada
-        gradual de informa SS  o.
-  \item \textbf{Pre SSos como semimartingales:} $S_t^j$ --- a classe
-        maximal para a qual a integral estoc istica  c bem definida.
-  \item \textbf{Estrat cgias previs -veis e admiss -veis:} $x \in
-        \mathcal{A}$ --- causalidade (n  o-antecipa SS  o) e limita SS  o de
-        perdas (exclus  o de doubling strategies).
-  \item \textbf{Autofinanciamento:} $dV_t = x_t \cdot dS_t$ (It ') ou
-        $dV_t = x_t \circ dS_t$ (Stratonovich) --- a varia SS  o da
-        riqueza vem exclusivamente da varia SS  o dos pre SSos.
-  \item \textbf{NFLVR:} $\overline{C} \cap L_+^\infty = \{0\}$ --- a
-        condi SS  o topol 3gica que exclui n  o apenas arbitragens, mas
-        tamb cm suas aproxima SS ues.
-  \item \textbf{FTAP:} NFLVR $\Leftrightarrow$ exist ancia de EMM
-        $\Leftrightarrow$ exist ancia de state price deflator $\beta$
-        --- o teorema que conecta efici ancia de mercado, medidas de
-        probabilidade e apre SSamento.
+ \item \textbf{Espa SSo filtrado:} $(\Omega, \mathcal{A}, \mathbb{A}, P)$
+ com condi SS ues usuais --- a base matem itica para a chegada
+ gradual de informa SS o.
+ \item \textbf{Pre SSos como semimartingales:} $S_t^j$ --- a classe
+ maximal para a qual a integral estoc istica c bem definida.
+ \item \textbf{Estrat cgias previs -veis e admiss -veis:} $x \in
+ \mathcal{A}$ --- causalidade (n o-antecipa SS o) e limita SS o de
+ perdas (exclus o de doubling strategies).
+ \item \textbf{Autofinanciamento:} $dV_t = x_t \cdot dS_t$ (It ') ou
+ $dV_t = x_t \circ dS_t$ (Stratonovich) --- a varia SS o da
+ riqueza vem exclusivamente da varia SS o dos pre SSos.
+ \item \textbf{NFLVR:} $\overline{C} \cap L_+^\infty = \{0\}$ --- a
+ condi SS o topol 3gica que exclui n o apenas arbitragens, mas
+ tamb cm suas aproxima SS ues.
+ \item \textbf{FTAP:} NFLVR $\Leftrightarrow$ exist ancia de EMM
+ $\Leftrightarrow$ exist ancia de state price deflator $\beta$
+ --- o teorema que conecta efici ancia de mercado, medidas de
+ probabilidade e apre SSamento.
 \end{enumerate}
 
 A partir do pr 3ximo cap -tulo, a GAT reformular i cada um destes pilares
-na linguagem da geometria diferencial. A intui SS  o essencial  c: a
-medida martingal equivalente $Q$ (ou o pricing kernel $\beta$) n  o  c
-apenas uma ferramenta de apre SSamento ---  c uma \textbf{se SS  o de um
-fibrado principal}, e a condi SS  o NFLVR  c a afirma SS  o de que este
-fibrado  c \textbf{plano} (curvatura zero). O que a matem itica
+na linguagem da geometria diferencial. A intui SS o essencial c: a
+medida martingal equivalente $Q$ (ou o pricing kernel $\beta$) n o c
+apenas uma ferramenta de apre SSamento --- c uma \textbf{se SS o de um
+fibrado principal}, e a condi SS o NFLVR c a afirma SS o de que este
+fibrado c \textbf{plano} (curvatura zero). O que a matem itica
 financeira cl issica chama de ``mudan SSa de numer irio'' ou ``escolha de
-conta caixa'', a GAT chama de \textbf{transforma SS  o de gauge}.
+conta caixa'', a GAT chama de \textbf{transforma SS o de gauge}.
 
 \begin{center}
 \fbox{\begin{minipage}{0.88\textwidth}
 \textbf{Mensagem Central do Cap -tulo:} A teoria cl issica de arbitragem
  c completa e autocontida --- mas est i formulada em uma linguagem
 (probabilidade) que \textit{esconde} a estrutura geom ctrica subjacente.
-A GAT n  o contradiz a teoria cl issica; ela a \textbf{revela} como um
+A GAT n o contradiz a teoria cl issica; ela a \textbf{revela} como um
 caso particular ($R \equiv 0$) de uma estrutura muito mais rica, onde
-arbitragem, holonomia e curvatura s  o manifesta SS ues do mesmo fen 'meno
+arbitragem, holonomia e curvatura s o manifesta SS ues do mesmo fen 'meno
 geom ctrico.
 \end{minipage}}
 \end{center}
 
 % ======================================================================
-% REFER SNCIAS DO CAP  TULO (selecao principal)
+% REFER SNCIAS DO CAP TULO (selecao principal)
 % ======================================================================
 \begin{thebibliography}{99}
 

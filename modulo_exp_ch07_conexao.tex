@@ -2,240 +2,240 @@
 % CAPITULO 7 --- Conexao, Transporte Paralelo e Derivadas de Nelson
 % Baseado em: Farinelli, S. (2021). arXiv:0910.1671v10, Secoes 3.4--3.6
 % ======================================================================
-\chapter{Conex  o, Transporte Paralelo e Derivadas de Nelson}
+\chapter{Conex o, Transporte Paralelo e Derivadas de Nelson}
 
 Nos dois cap -tulos anteriores, constru -mos as pe SSas do tabuleiro: os
-\textit{gauges} (Cap -tulo~5) como objetos que codificam a informa SS  o
+\textit{gauges} (Cap -tulo~5) como objetos que codificam a informa SS o
 financeira de um instrumento, e o \textit{fibrado principal do mercado}
-(Cap -tulo~6) como o espa SSo no qual estes objetos vivem.  Falta a pe SSa
-central: a \textbf{conex  o} --- a regra que nos permite ``transportar''
-informa SS  o financeira ao longo de curvas no espa SSo de carteiras e no
+(Cap -tulo~6) como o espa SSo no qual estes objetos vivem. Falta a pe SSa
+central: a \textbf{conex o} --- a regra que nos permite ``transportar''
+informa SS o financeira ao longo de curvas no espa SSo de carteiras e no
 tempo.
 
-Este cap -tulo  c o cora SS  o operacional da GAT.  Definiremos a conex  o de
+Este cap -tulo c o cora SS o operacional da GAT. Definiremos a conex o de
 Ilinski--Farinelli, provaremos que o transporte paralelo corresponde a
-opera SS ues financeiras fundamentais (c  mbio e desconto), e
+opera SS ues financeiras fundamentais (c mbio e desconto), e
 introduziremos a derivada de Nelson --- a ferramenta anal -tica que
 permite formular o autofinanciamento na linguagem geom ctrica.
 
 % ----------------------------------------------------------------------
-\section{O Que  %% uma Conex  o?}
+\section{O Que %% uma Conex o?}
 % ----------------------------------------------------------------------
 
-\subsection{Intui SS  o: Conectando Fibras Vizinhas}
+\subsection{Intui SS o: Conectando Fibras Vizinhas}
 
 Considere o fibrado principal $\mathcal{B}$ sobre a base $M = X \times
-[0,+\infty[$ que constru -mos no Cap -tulo~6.  Cada ponto $p = (x,t) \in
+[0,+\infty[$ que constru -mos no Cap -tulo~6. Cada ponto $p = (x,t) \in
 M$ tem uma fibra $\mathcal{B}_p$ isomorfa ao grupo $G^*$ (as
-transforma SS ues de gauge invert -veis).  Os elementos da fibra s  o
+transforma SS ues de gauge invert -veis). Os elementos da fibra s o
 diferentes representa SS ues do mesmo estado financeiro --- diferentes
 escolhas de num crario, diferentes maneiras de empacotar fluxos de
 caixa.
 
-O problema fundamental  c: \textbf{como comparar elementos em fibras
-vizinhas?}  Se eu tenho um gauge em $(x,t)$ e quero saber qual gauge
+O problema fundamental c: \textbf{como comparar elementos em fibras
+vizinhas?} Se eu tenho um gauge em $(x,t)$ e quero saber qual gauge
 em $(x+\delta x, t+\delta t)$ lhe corresponde, preciso de uma regra.
-Esta regra  c a \textbf{conex  o}.
+Esta regra c a \textbf{conex o}.
 
-\begin{defi}[Conex  o de Ehresmann --- Decomposi SS  o do Espa SSo Tangente]\label{def:ehresmann}
+\begin{defi}[Conex o de Ehresmann --- Decomposi SS o do Espa SSo Tangente]\label{def:ehresmann}
 Seja $\pi: \mathcal{B} \to M$ um fibrado principal com grupo estrutural
-$G$.  Uma \textbf{conex  o} (de Ehresmann) em $\mathcal{B}$  c uma
-distribui SS  o suave de subespa SSos horizontais $H\mathcal{B} \subset
+$G$. Uma \textbf{conex o} (de Ehresmann) em $\mathcal{B}$ c uma
+distribui SS o suave de subespa SSos horizontais $H\mathcal{B} \subset
 T\mathcal{B}$ tal que, para cada $b \in \mathcal{B}$:
 \begin{enumerate}[(i)]
-  \item $T_b\mathcal{B} = V_b\mathcal{B} \oplus H_b\mathcal{B}$
-        (decomposi SS  o em soma direta);
-  \item $H_{b\cdot g}\mathcal{B} = (R_g)_* H_b\mathcal{B}$
-        (equivari  ncia sob a a SS  o    direita de $G$);
-  \item $H_b\mathcal{B}$ depende suavemente de $b$.
+ \item $T_b\mathcal{B} = V_b\mathcal{B} \oplus H_b\mathcal{B}$
+ (decomposi SS o em soma direta);
+ \item $H_{b\cdot g}\mathcal{B} = (R_g)_* H_b\mathcal{B}$
+ (equivari ncia sob a a SS o direita de $G$);
+ \item $H_b\mathcal{B}$ depende suavemente de $b$.
 \end{enumerate}
-Aqui, $V_b\mathcal{B} := \ker(d\pi_b)$  c o \textbf{espa SSo vertical}
-(tangente    fibra) e $H_b\mathcal{B}$  c o \textbf{espa SSo horizontal}
+Aqui, $V_b\mathcal{B} := \ker(d\pi_b)$ c o \textbf{espa SSo vertical}
+(tangente fibra) e $H_b\mathcal{B}$ c o \textbf{espa SSo horizontal}
 (complementar, isomorfo a $T_{\pi(b)}M$ via $d\pi_b$).
 \end{defi}
 
-\begin{obs}[Interpreta SS  o Geom ctrica]
+\begin{obs}[Interpreta SS o Geom ctrica]
 O espa SSo vertical $V_b\mathcal{B}$ cont cm as dire SS ues que permanecem
-na mesma fibra --- transforma SS ues de gauge que n  o alteram o ponto-base
-$(x,t)$.  O espa SSo horizontal $H_b\mathcal{B}$ cont cm as dire SS ues que
+na mesma fibra --- transforma SS ues de gauge que n o alteram o ponto-base
+$(x,t)$. O espa SSo horizontal $H_b\mathcal{B}$ cont cm as dire SS ues que
 nos levam a pontos-base vizinhos --- mudan SSas de carteira ou avan SSo no
-tempo.  A conex  o decide, para cada dire SS  o na base, qual dire SS  o na
-fibra  c considerada ``paralela''.
+tempo. A conex o decide, para cada dire SS o na base, qual dire SS o na
+fibra c considerada ``paralela''.
 \end{obs}
 
-\subsection{Proje SS ues e a Forma de Conex  o}
+\subsection{Proje SS ues e a Forma de Conex o}
 
-A decomposi SS  o $T\mathcal{B} = V\mathcal{B} \oplus H\mathcal{B}$
+A decomposi SS o $T\mathcal{B} = V\mathcal{B} \oplus H\mathcal{B}$
 define dois projetores:
 \begin{equation}\label{eq:projectors}
-  \Pi^v: T\mathcal{B} \to V\mathcal{B}, \qquad
-  \Pi^h: T\mathcal{B} \to H\mathcal{B},
+ \Pi^v: T\mathcal{B} \to V\mathcal{B}, \qquad
+ \Pi^h: T\mathcal{B} \to H\mathcal{B},
 \end{equation}
 com $\Pi^v + \Pi^h = \operatorname{id}$ e $(\Pi^v)^2 = \Pi^v$,
 $(\Pi^h)^2 = \Pi^h$.
 
-No fibrado principal, a estrutura de grupo permite codificar a conex  o
-de forma mais eficiente atrav cs da \textbf{forma de conex  o}: uma
-1-forma $\chi$ na base $M$ com valores na  ilgebra de Lie $\mathfrak{g}$
-do grupo $G$.  Dado um vetor tangente $v \in T_pM$, a forma $\chi_p(v)$
+No fibrado principal, a estrutura de grupo permite codificar a conex o
+de forma mais eficiente atrav cs da \textbf{forma de conex o}: uma
+1-forma $\chi$ na base $M$ com valores na ilgebra de Lie $\mathfrak{g}$
+do grupo $G$. Dado um vetor tangente $v \in T_pM$, a forma $\chi_p(v)$
 prescreve o elemento infinitesimal de $\mathfrak{g}$ pelo qual devemos
 multiplicar o elemento da fibra para permanecermos na horizontal.
 
 % ----------------------------------------------------------------------
-\section{A Conex  o de Mercado (Ilinski--Farinelli)}
+\section{A Conex o de Mercado (Ilinski--Farinelli)}
 % ----------------------------------------------------------------------
 
-\subsection{Motiva SS  o Financeira}
+\subsection{Motiva SS o Financeira}
 
-Queremos que o transporte paralelo tenha uma interpreta SS  o financeira
-transparente.  H i duas dire SS ues fundamentais na base:
+Queremos que o transporte paralelo tenha uma interpreta SS o financeira
+transparente. H i duas dire SS ues fundamentais na base:
 
 \begin{itemize}
-  \item \textbf{Dire SS ues nominais} ($\delta x$, com $\delta t = 0$):
-        mudar de carteira no mesmo instante.  Duas carteiras $x$ e
-        $x + \delta x$ que diferem apenas na composi SS  o de ativos
-        est  o relacionadas por uma \textbf{taxa de c  mbio}: quantas
-        unidades da carteira $x$ equivalem a uma unidade da carteira
-        $x + \delta x$?  A resposta  c $D_t^{x+\delta x} / D_t^x$.
-  \item \textbf{Dire SS  o temporal} ($\delta t$, com $\delta x = 0$):
-        avan SSar no tempo com a mesma carteira.  O valor de uma
-        carteira hoje e amanh   est  o relacionados pelo \textbf{fator
-        de desconto}: $1$ unidade hoje equivale a $e^{\int_t^{t+\delta
-        t} r_u^x du}$ unidades em $t+\delta t$.
+ \item \textbf{Dire SS ues nominais} ($\delta x$, com $\delta t = 0$):
+ mudar de carteira no mesmo instante. Duas carteiras $x$ e
+ $x + \delta x$ que diferem apenas na composi SS o de ativos
+ est o relacionadas por uma \textbf{taxa de c mbio}: quantas
+ unidades da carteira $x$ equivalem a uma unidade da carteira
+ $x + \delta x$? A resposta c $D_t^{x+\delta x} / D_t^x$.
+ \item \textbf{Dire SS o temporal} ($\delta t$, com $\delta x = 0$):
+ avan SSar no tempo com a mesma carteira. O valor de uma
+ carteira hoje e amanh est o relacionados pelo \textbf{fator
+ de desconto}: $1$ unidade hoje equivale a $e^{\int_t^{t+\delta
+ t} r_u^x du}$ unidades em $t+\delta t$.
 \end{itemize}
 
-A conex  o deve capturar ambas as rela SS ues em uma  onica express  o.
+A conex o deve capturar ambas as rela SS ues em uma onica express o.
 
-\subsection{Defini SS  o da Conex  o}
+\subsection{Defini SS o da Conex o}
 
-\begin{defi}[Conex  o de Ilinski--Farinelli]\label{def:market_connection}
-A \textbf{conex  o de mercado} no fibrado $\mathcal{B}$  c definida pela
-prescri SS  o do transporte paralelo ao longo de curvas diferenci iveis.
+\begin{defi}[Conex o de Ilinski--Farinelli]\label{def:market_connection}
+A \textbf{conex o de mercado} no fibrado $\mathcal{B}$ c definida pela
+prescri SS o do transporte paralelo ao longo de curvas diferenci iveis.
 Para um deslocamento infinitesimal $(\delta x, \delta t)$ a partir de
 $(x,t)$, o elemento do grupo $G^*$ que implementa o levantamento
-horizontal  c:
+horizontal c:
 
 \begin{equation}\label{eq:connection_definition}
-  \Gamma\big((x,t),(\delta x, \delta t)\big) \cdot g
-  := g\left(\frac{D_t^{x+\delta x}}{D_t^x} - r_t^x\,\delta t\right).
+ \Gamma\big((x,t),(\delta x, \delta t)\big) \cdot g
+ := g\left(\frac{D_t^{x+\delta x}}{D_t^x} - r_t^x\,\delta t\right).
 \end{equation}
 
-Equivalentemente, a \textbf{forma de conex  o} $\chi$ --- uma 1-forma
-na base $M$ com valores na  ilgebra de Lie $\mathfrak{g} \cong
-\mathbb{R}^{[0,+\infty[}$ ---  c dada por:
+Equivalentemente, a \textbf{forma de conex o} $\chi$ --- uma 1-forma
+na base $M$ com valores na ilgebra de Lie $\mathfrak{g} \cong
+\mathbb{R}^{[0,+\infty[}$ --- c dada por:
 
 \begin{equation}\label{eq:connection_form}
-  \chi(x,t)(\delta x, \delta t)
-  = \left(\frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t\right).
+ \chi(x,t)(\delta x, \delta t)
+ = \left(\frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t\right).
 \end{equation}
 \end{defi}
 
 \begin{obs}[Linearidade em $\delta x$]
-A nota SS  o $D_t^{\delta x}$ merece esclarecimento.  Para uma varia SS  o
+A nota SS o $D_t^{\delta x}$ merece esclarecimento. Para uma varia SS o
 infinitesimal $\delta x = (\delta x^1, \dots, \delta x^N)$, o deflator
-da carteira $\delta x$  c a combina SS  o linear:
+da carteira $\delta x$ c a combina SS o linear:
 \begin{equation}\label{eq:D_delta_x}
-  D_t^{\delta x} := \sum_{j=1}^N D_t^j \cdot \delta x^j,
+ D_t^{\delta x} := \sum_{j=1}^N D_t^j \cdot \delta x^j,
 \end{equation}
-onde $D_t^j$  c o deflator do $j$- csimo ativo (o valor presente de uma
-perpetuidade unit iria associada   quele ativo).  Para a carteira
+onde $D_t^j$ c o deflator do $j$- csimo ativo (o valor presente de uma
+perpetuidade unit iria associada quele ativo). Para a carteira
 $x + \delta x$, temos $D_t^{x+\delta x} = D_t^x + D_t^{\delta x}$, de
 modo que:
 \[
 \frac{D_t^{x+\delta x} - D_t^x}{D_t^x}
 = \frac{D_t^{\delta x}}{D_t^x}.
 \]
-Esta  c precisamente a taxa de varia SS  o relativa do deflator quando
-mudamos de $x$ para $x + \delta x$ --- a \textbf{taxa de c  mbio
+Esta c precisamente a taxa de varia SS o relativa do deflator quando
+mudamos de $x$ para $x + \delta x$ --- a \textbf{taxa de c mbio
 infinitesimal} entre as duas carteiras.
 \end{obs}
 
-\subsection{Express  o em Coordenadas}
+\subsection{Express o em Coordenadas}
 
 Em coordenadas locais $(x^1, \dots, x^N, t)$ na base $M$, a forma de
-conex  o $\chi$ escreve-se como:
+conex o $\chi$ escreve-se como:
 
 \begin{equation}\label{eq:connection_coordinates}
-  \chi(x,t) = \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,dx^j \;-\; r_t^x\,dt.
+ \chi(x,t) = \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,dx^j \;-\; r_t^x\,dt.
 \end{equation}
 
-Verifica SS  o: aplicando a um vetor $(\delta x, \delta t) = (\delta x^1,
+Verifica SS o: aplicando a um vetor $(\delta x, \delta t) = (\delta x^1,
 \dots, \delta x^N, \delta t)$, obtemos:
 \begin{align*}
-  \chi(x,t)(\delta x, \delta t)
-  &= \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,\delta x^j \;-\; r_t^x\,\delta t \\
-  &= \frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t,
+ \chi(x,t)(\delta x, \delta t)
+ &= \frac{1}{D_t^x}\sum_{j=1}^N D_t^j\,\delta x^j \;-\; r_t^x\,\delta t \\
+ &= \frac{D_t^{\delta x}}{D_t^x} - r_t^x\,\delta t,
 \end{align*}
 que coincide com~\eqref{eq:connection_form}.
 
 \begin{obs}[A Taxa Curta da Carteira $x$]
-A quantidade $r_t^x$ que aparece na conex  o  c a \textbf{taxa curta}
-(ou \textit{short rate}) associada    carteira $x$, definida como:
+A quantidade $r_t^x$ que aparece na conex o c a \textbf{taxa curta}
+(ou \textit{short rate}) associada carteira $x$, definida como:
 \begin{equation}\label{eq:short_rate_x}
-  r_t^x := -\left.\frac{\partial}{\partial s}\log P_{t,s}^x\right|_{s=t},
+ r_t^x := -\left.\frac{\partial}{\partial s}\log P_{t,s}^x\right|_{s=t},
 \end{equation}
-onde $P_{t,s}^x$  c a estrutura a termo da carteira $x$.  Em termos do
+onde $P_{t,s}^x$ c a estrutura a termo da carteira $x$. Em termos do
 deflator:
 \begin{equation}\label{eq:short_rate_deflator}
-  r_t^x = -\mathcal{D}\log D_t^x,
+ r_t^x = -\mathcal{D}\log D_t^x,
 \end{equation}
 com $\mathcal{D}$ denotando a derivada m cdia de Nelson (derivada de
-Stratonovich), que ser i formalizada na Se SS  o~7.6.
+Stratonovich), que ser i formalizada na Se SS o~7.6.
 
-Note que $r_t^x$ \textbf{n  o  c linear} em $x$ --- a taxa curta de uma
-combina SS  o de carteiras n  o  c a combina SS  o das taxas curtas.  Esta
-n  o-linearidade  c precisamente a fonte de \textbf{curvatura} (e,
+Note que $r_t^x$ \textbf{n o c linear} em $x$ --- a taxa curta de uma
+combina SS o de carteiras n o c a combina SS o das taxas curtas. Esta
+n o-linearidade c precisamente a fonte de \textbf{curvatura} (e,
 portanto, de \textbf{arbitragem}) na GAT.
 \end{obs}
 
 % ----------------------------------------------------------------------
-\section{A Forma de Conex  o $\chi$ como 1-Forma com Valores em $\mathfrak{g}$}
+\section{A Forma de Conex o $\chi$ como 1-Forma com Valores em $\mathfrak{g}$}
 % ----------------------------------------------------------------------
 
-\subsection{  lgebra de Lie do Grupo de Gauge}
+\subsection{ lgebra de Lie do Grupo de Gauge}
 
-O grupo estrutural  c $G^*$, o grupo Abeliano das transforma SS ues de
+O grupo estrutural c $G^*$, o grupo Abeliano das transforma SS ues de
 gauge invert -veis (intensidades de cashflow com inversa sob
-convolu SS  o).  Por ser Abeliano, sua  ilgebra de Lie $\mathfrak{g}$  c
+convolu SS o). Por ser Abeliano, sua ilgebra de Lie $\mathfrak{g}$ c
 isomorfa ao espa SSo vetorial $\mathbb{R}^{[0,+\infty[}$ (o espa SSo de
 todas as intensidades de cashflow) com o colchete de Lie trivial
 $[\cdot, \cdot] \equiv 0$.
 
-\begin{prop}[Propriedades da Forma de Conex  o]\label{prop:chi_properties}
+\begin{prop}[Propriedades da Forma de Conex o]\label{prop:chi_properties}
 A 1-forma $\chi$ com valores em $\mathfrak{g}$ satisfaz:
 \begin{enumerate}[(i)]
-  \item $\chi$  c \textbf{horizontal}: para qualquer vetor vertical
-        $v \in V_b\mathcal{B}$, $\chi(v) = 0$.
-  \item $\chi$  c \textbf{equivariante}: para $g \in G^*$,
-        $(R_g)^*\chi = \operatorname{Ad}_{g^{-1}} \circ \chi$.
-        Como $G^*$  c Abeliano, $\operatorname{Ad}_g = \operatorname{id}$,
-        logo $(R_g)^*\chi = \chi$ (invari  ncia    direita).
-  \item $\chi$  c \textbf{suave} nos argumentos $(x,t)$.
+ \item $\chi$ c \textbf{horizontal}: para qualquer vetor vertical
+ $v \in V_b\mathcal{B}$, $\chi(v) = 0$.
+ \item $\chi$ c \textbf{equivariante}: para $g \in G^*$,
+ $(R_g)^*\chi = \operatorname{Ad}_{g^{-1}} \circ \chi$.
+ Como $G^*$ c Abeliano, $\operatorname{Ad}_g = \operatorname{id}$,
+ logo $(R_g)^*\chi = \chi$ (invari ncia direita).
+ \item $\chi$ c \textbf{suave} nos argumentos $(x,t)$.
 \end{enumerate}
 \end{prop}
 
-\subsection{Express  o Completa com a Fibra}
+\subsection{Express o Completa com a Fibra}
 
-Quando inclu -mos a coordenada da fibra $g \in G^*$, a forma de conex  o
+Quando inclu -mos a coordenada da fibra $g \in G^*$, a forma de conex o
 $\omega$ no fibrado total $\mathcal{B}$ escreve-se:
 
 \begin{equation}\label{eq:connection_form_full}
-  \omega(x,t,g)(\delta x, \delta t, \delta g)
-  = \delta g \cdot g^{-1} + \operatorname{Ad}_g \chi(x,t)(\delta x, \delta t).
+ \omega(x,t,g)(\delta x, \delta t, \delta g)
+ = \delta g \cdot g^{-1} + \operatorname{Ad}_g \chi(x,t)(\delta x, \delta t).
 \end{equation}
 
-Como $G^*$  c Abeliano, $\operatorname{Ad}_g = \operatorname{id}$, e
-esta express  o simplifica-se para:
+Como $G^*$ c Abeliano, $\operatorname{Ad}_g = \operatorname{id}$, e
+esta express o simplifica-se para:
 
 \begin{equation}\label{eq:connection_form_simple}
-  \omega(x,t,g)(\delta x, \delta t, \delta g)
-  = \delta g \cdot g^{-1} + \chi(x,t)(\delta x, \delta t).
+ \omega(x,t,g)(\delta x, \delta t, \delta g)
+ = \delta g \cdot g^{-1} + \chi(x,t)(\delta x, \delta t).
 \end{equation}
 
-O primeiro termo $\delta g \cdot g^{-1}$  c a \textbf{forma de
+O primeiro termo $\delta g \cdot g^{-1}$ c a \textbf{forma de
 Maurer--Cartan} de $G^*$, que mede varia SS ues puramente verticais
-(dentro da fibra).  O segundo termo $\chi(x,t)(\delta x, \delta t)$  c a
-contribui SS  o horizontal, que depende apenas do ponto-base.
+(dentro da fibra). O segundo termo $\chi(x,t)(\delta x, \delta t)$ c a
+contribui SS o horizontal, que depende apenas do ponto-base.
 
 % ----------------------------------------------------------------------
 \section{Transporte Paralelo ao Longo de Curvas}
@@ -247,142 +247,142 @@ Dada uma curva suave $\gamma: [0,1] \to M$ na base, com
 $\gamma(s) = (x(s), t(s))$, e um ponto inicial $g_0 \in
 \mathcal{B}_{\gamma(0)}$ na fibra sobre $\gamma(0)$, o
 \textbf{levantamento horizontal} $\tilde{\gamma}: [0,1] \to
-\mathcal{B}$  c a  onica curva no fibrado tal que:
+\mathcal{B}$ c a onica curva no fibrado tal que:
 
 \begin{enumerate}[(i)]
-  \item $\pi \circ \tilde{\gamma} = \gamma$ (projeta-se sobre $\gamma$);
-  \item $\tilde{\gamma}(0) = g_0$ (condi SS  o inicial);
-  \item $\tilde{\gamma}'(s) \in H_{\tilde{\gamma}(s)}\mathcal{B}$ para
-        todo $s$ (a curva  c horizontal).
+ \item $\pi \circ \tilde{\gamma} = \gamma$ (projeta-se sobre $\gamma$);
+ \item $\tilde{\gamma}(0) = g_0$ (condi SS o inicial);
+ \item $\tilde{\gamma}'(s) \in H_{\tilde{\gamma}(s)}\mathcal{B}$ para
+ todo $s$ (a curva c horizontal).
 \end{enumerate}
 
-Em termos da forma de conex  o, a condi SS  o de horizontalidade  c:
+Em termos da forma de conex o, a condi SS o de horizontalidade c:
 
 \begin{equation}\label{eq:horizontality_condition}
-  \omega\big(\tilde{\gamma}(s)\big)\big(\tilde{\gamma}'(s)\big) = 0,
-  \quad \forall s \in [0,1].
+ \omega\big(\tilde{\gamma}(s)\big)\big(\tilde{\gamma}'(s)\big) = 0,
+ \quad \forall s \in [0,1].
 \end{equation}
 
-Usando~\eqref{eq:connection_form_simple}, obtemos a equa SS  o diferencial
+Usando~\eqref{eq:connection_form_simple}, obtemos a equa SS o diferencial
 para o levantamento:
 
 \begin{equation}\label{eq:horizontal_lift_ode}
-  \frac{dg}{ds} \cdot g^{-1} + \chi\big(x(s), t(s)\big)\big(x'(s), t'(s)\big) = 0.
+ \frac{dg}{ds} \cdot g^{-1} + \chi\big(x(s), t(s)\big)\big(x'(s), t'(s)\big) = 0.
 \end{equation}
 
-Como $G^*$  c Abeliano e escrevemos a a SS  o como multiplica SS  o, esta
-equa SS  o tem a solu SS  o expl -cita:
+Como $G^*$ c Abeliano e escrevemos a a SS o como multiplica SS o, esta
+equa SS o tem a solu SS o expl -cita:
 
 \begin{equation}\label{eq:parallel_transport_solution}
-  g(s) = g_0 \cdot \exp\left(-\int_0^s
-         \chi\big(x(u), t(u)\big)\big(x'(u), t'(u)\big)\,du\right).
+ g(s) = g_0 \cdot \exp\left(-\int_0^s
+ \chi\big(x(u), t(u)\big)\big(x'(u), t'(u)\big)\,du\right).
 \end{equation}
 
-\subsection{Defini SS  o do Transporte Paralelo}
+\subsection{Defini SS o do Transporte Paralelo}
 
 \begin{defi}[Transporte Paralelo]\label{def:parallel_transport}
-Seja $\gamma: [0,1] \to M$ uma curva suave na base.  O
-\textbf{transporte paralelo} ao longo de $\gamma$  c o isomorfismo
+Seja $\gamma: [0,1] \to M$ uma curva suave na base. O
+\textbf{transporte paralelo} ao longo de $\gamma$ c o isomorfismo
 entre fibras:
 \begin{equation}\label{eq:parallel_transport_map}
-  \Pi_\gamma: \mathcal{B}_{\gamma(0)} \to \mathcal{B}_{\gamma(1)},
-  \quad
-  \Pi_\gamma(g_0) := g_0 \cdot \exp\left(-\int_\gamma \chi\right),
+ \Pi_\gamma: \mathcal{B}_{\gamma(0)} \to \mathcal{B}_{\gamma(1)},
+ \quad
+ \Pi_\gamma(g_0) := g_0 \cdot \exp\left(-\int_\gamma \chi\right),
 \end{equation}
 onde $\int_\gamma \chi$ denota a integral de linha da 1-forma $\chi$
 ao longo de $\gamma$:
 \begin{equation}\label{eq:line_integral_chi}
-  \int_\gamma \chi := \int_0^1
-  \chi\big(\gamma(s)\big)\big(\gamma'(s)\big)\,ds.
+ \int_\gamma \chi := \int_0^1
+ \chi\big(\gamma(s)\big)\big(\gamma'(s)\big)\,ds.
 \end{equation}
 \end{defi}
 
 \begin{obs}[Estrutura de Grupo do Transporte Paralelo]
-O transporte paralelo  c um \textbf{isomorfismo de $G^*$-espa SSos}:
+O transporte paralelo c um \textbf{isomorfismo de $G^*$-espa SSos}:
 $\Pi_\gamma(g \cdot h) = \Pi_\gamma(g) \cdot h$ para todo $h \in
-G^*$ (equivari  ncia).  Al cm disso:
+G^*$ (equivari ncia). Al cm disso:
 \begin{itemize}
-  \item $\Pi_{\gamma^{-1}} = \Pi_\gamma^{-1}$ (reversibilidade);
-  \item $\Pi_{\gamma_2 \ast \gamma_1} = \Pi_{\gamma_2} \circ
-        \Pi_{\gamma_1}$ (composi SS  o de caminhos).
+ \item $\Pi_{\gamma^{-1}} = \Pi_\gamma^{-1}$ (reversibilidade);
+ \item $\Pi_{\gamma_2 \ast \gamma_1} = \Pi_{\gamma_2} \circ
+ \Pi_{\gamma_1}$ (composi SS o de caminhos).
 \end{itemize}
 \end{obs}
 
 % ----------------------------------------------------------------------
-\section{Interpreta SS  o Financeira do Transporte Paralelo}
+\section{Interpreta SS o Financeira do Transporte Paralelo}
 % ----------------------------------------------------------------------
 
-A beleza da constru SS  o de Ilinski--Farinelli reside em que o transporte
+A beleza da constru SS o de Ilinski--Farinelli reside em que o transporte
 paralelo --- um conceito puramente geom ctrico --- admite uma
-interpreta SS  o financeira exata e intuitiva.
+interpreta SS o financeira exata e intuitiva.
 
-\begin{teo}[Interpreta SS  o Financeira do Transporte Paralelo ---
-           Teorema~29 do Artigo]\label{teo:financial_interpretation}
+\begin{teo}[Interpreta SS o Financeira do Transporte Paralelo ---
+ Teorema~29 do Artigo]\label{teo:financial_interpretation}
 Seja $\Pi_\gamma$ o transporte paralelo definido pela
-conex  o~\eqref{eq:connection_definition}.  Ent  o:
+conex o~\eqref{eq:connection_definition}. Ent o:
 
 \begin{enumerate}[(a)]
-  \item \textbf{Ao longo de $x$-linhas ($t$ fixo):}
-        Seja $\gamma(s) = (x_0 + s \cdot \Delta x, t_0)$ uma curva que
-        conecta duas carteiras no mesmo instante.  O transporte
-        paralelo ao longo de $\gamma$ corresponde   
-        \textbf{multiplica SS  o pela taxa de c  mbio} entre as carteiras:
-        \begin{equation}\label{eq:parallel_transport_x}
-          \Pi_\gamma(g_0) = g_0 \cdot \frac{D_{t_0}^{x_0}}{D_{t_0}^{x_0 + \Delta x}}.
-        \end{equation}
-        Em palavras: transportar paralelamente um gauge da carteira
-        $x_0$ para a carteira $x_0 + \Delta x$ equivale a multiplic i-lo
-        pela raz  o dos deflatores --- exatamente o que uma casa de
-        c  mbio faz ao converter moedas.
+ \item \textbf{Ao longo de $x$-linhas ($t$ fixo):}
+ Seja $\gamma(s) = (x_0 + s \cdot \Delta x, t_0)$ uma curva que
+ conecta duas carteiras no mesmo instante. O transporte
+ paralelo ao longo de $\gamma$ corresponde 
+ \textbf{multiplica SS o pela taxa de c mbio} entre as carteiras:
+ \begin{equation}\label{eq:parallel_transport_x}
+ \Pi_\gamma(g_0) = g_0 \cdot \frac{D_{t_0}^{x_0}}{D_{t_0}^{x_0 + \Delta x}}.
+ \end{equation}
+ Em palavras: transportar paralelamente um gauge da carteira
+ $x_0$ para a carteira $x_0 + \Delta x$ equivale a multiplic i-lo
+ pela raz o dos deflatores --- exatamente o que uma casa de
+ c mbio faz ao converter moedas.
 
-  \item \textbf{Ao longo de $t$-linhas ($x$ fixo):}
-        Seja $\gamma(s) = (x_0, t_0 + s)$ uma curva que avan SSa no
-        tempo mantendo a mesma carteira.  O transporte paralelo ao
-        longo de $\gamma$ corresponde    \textbf{divis  o pelo fator de
-        desconto}:
-        \begin{equation}\label{eq:parallel_transport_t}
-          \Pi_\gamma(g_0) = g_0 \cdot \exp\left(\int_{t_0}^{t_0 + \Delta t} r_u^{x_0}\,du\right)^{-1}.
-        \end{equation}
-        Equivalentemente, $\Pi_\gamma(g_0)$  c o valor descontado do
-        gauge $g_0$ --- trazido a valor presente pela taxa curta da
-        carteira $x_0$.
+ \item \textbf{Ao longo de $t$-linhas ($x$ fixo):}
+ Seja $\gamma(s) = (x_0, t_0 + s)$ uma curva que avan SSa no
+ tempo mantendo a mesma carteira. O transporte paralelo ao
+ longo de $\gamma$ corresponde \textbf{divis o pelo fator de
+ desconto}:
+ \begin{equation}\label{eq:parallel_transport_t}
+ \Pi_\gamma(g_0) = g_0 \cdot \exp\left(\int_{t_0}^{t_0 + \Delta t} r_u^{x_0}\,du\right)^{-1}.
+ \end{equation}
+ Equivalentemente, $\Pi_\gamma(g_0)$ c o valor descontado do
+ gauge $g_0$ --- trazido a valor presente pela taxa curta da
+ carteira $x_0$.
 \end{enumerate}
 \end{teo}
 
 \begin{proof}
 Provemos cada caso separadamente.
 
-\textbf{Caso (a) --- $x$-linhas.}  A curva  c $\gamma(s) = (x_0 + s
-\Delta x, t_0)$, com $s \in [0,1]$ e $\Delta x$ fixo.  Temos:
+\textbf{Caso (a) --- $x$-linhas.} A curva c $\gamma(s) = (x_0 + s
+\Delta x, t_0)$, com $s \in [0,1]$ e $\Delta x$ fixo. Temos:
 \begin{align*}
-  \gamma'(s) &= (\Delta x, 0), \\
-  \chi(\gamma(s))(\gamma'(s))
-  &= \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}} - r_{t_0}^{x_0 + s\Delta x} \cdot 0
-   = \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}}.
+ \gamma'(s) &= (\Delta x, 0), \\
+ \chi(\gamma(s))(\gamma'(s))
+ &= \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}} - r_{t_0}^{x_0 + s\Delta x} \cdot 0
+ = \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}}.
 \end{align*}
-A integral de linha  c:
+A integral de linha c:
 \[
 \int_0^1 \frac{D_{t_0}^{\Delta x}}{D_{t_0}^{x_0 + s\Delta x}}\,ds
 = \int_0^1 \frac{d}{ds}\log D_{t_0}^{x_0 + s\Delta x}\,ds
 = \log D_{t_0}^{x_0 + \Delta x} - \log D_{t_0}^{x_0}
 = \log\frac{D_{t_0}^{x_0 + \Delta x}}{D_{t_0}^{x_0}}.
 \]
-Pela defini SS  o de transporte paralelo~\eqref{eq:parallel_transport_map}:
+Pela defini SS o de transporte paralelo~\eqref{eq:parallel_transport_map}:
 \[
 \Pi_\gamma(g_0) = g_0 \cdot \exp\!\left(-\log\frac{D_{t_0}^{x_0 + \Delta x}}{D_{t_0}^{x_0}}\right)
 = g_0 \cdot \frac{D_{t_0}^{x_0}}{D_{t_0}^{x_0 + \Delta x}},
 \]
 confirmando~\eqref{eq:parallel_transport_x}.
 
-\textbf{Caso (b) --- $t$-linhas.}  A curva  c $\gamma(s) = (x_0, t_0 +
-s)$, com $s \in [0, \Delta t]$.  Temos:
+\textbf{Caso (b) --- $t$-linhas.} A curva c $\gamma(s) = (x_0, t_0 +
+s)$, com $s \in [0, \Delta t]$. Temos:
 \begin{align*}
-  \gamma'(s) &= (0, 1), \\
-  \chi(\gamma(s))(\gamma'(s))
-  &= \frac{0}{D_{t_0+s}^{x_0}} - r_{t_0+s}^{x_0} \cdot 1
-   = -\,r_{t_0+s}^{x_0}.
+ \gamma'(s) &= (0, 1), \\
+ \chi(\gamma(s))(\gamma'(s))
+ &= \frac{0}{D_{t_0+s}^{x_0}} - r_{t_0+s}^{x_0} \cdot 1
+ = -\,r_{t_0+s}^{x_0}.
 \end{align*}
-A integral de linha  c:
+A integral de linha c:
 \[
 \int_0^{\Delta t} \bigl(-r_{t_0+s}^{x_0}\bigr)\,ds
 = -\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du.
@@ -392,22 +392,22 @@ Portanto:
 \Pi_\gamma(g_0) = g_0 \cdot \exp\!\left(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du\right)
 = g_0 \cdot \exp\!\left(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du\right)^{-1},
 \]
-confirmando~\eqref{eq:parallel_transport_t}.  O sinal negativo na
+confirmando~\eqref{eq:parallel_transport_t}. O sinal negativo na
 integral reflete o fato de que $1$ unidade hoje vale \textbf{mais} do
-que $1$ unidade no futuro --- o fator de desconto  c o \textbf{inverso}
-do fator de capitaliza SS  o.
+que $1$ unidade no futuro --- o fator de desconto c o \textbf{inverso}
+do fator de capitaliza SS o.
 \end{proof}
 
-\begin{obs}[Unifica SS  o Conceitual]
+\begin{obs}[Unifica SS o Conceitual]
 O Teorema~\ref{teo:financial_interpretation} revela a profunda unidade
 por tr is de duas opera SS ues financeiras aparentemente distintas:
 \begin{itemize}
-  \item \textbf{C  mbio} (converter entre ativos no mesmo instante) e
-  \item \textbf{Desconto} (trazer valores futuros a presente)
+ \item \textbf{C mbio} (converter entre ativos no mesmo instante) e
+ \item \textbf{Desconto} (trazer valores futuros a presente)
 \end{itemize}
-s  o manifesta SS ues do \textbf{mesmo} fen 'meno geom ctrico --- o
+s o manifesta SS ues do \textbf{mesmo} fen 'meno geom ctrico --- o
 transporte paralelo ao longo de diferentes dire SS ues no espa SSo de
-carteiras-tempo.  A conex  o $\chi$ unifica ambas em um  onico objeto
+carteiras-tempo. A conex o $\chi$ unifica ambas em um onico objeto
 matem itico.
 \end{obs}
 
@@ -417,385 +417,385 @@ matem itico.
 
 \subsection{A Derivada M cdia de Nelson}
 
-Para formular a din  mica estoc istica do mercado na linguagem da
-geometria diferencial, precisamos de uma no SS  o de derivada que seja
-compat -vel com a integral de Stratonovich.  Esta  c a \textbf{derivada
+Para formular a din mica estoc istica do mercado na linguagem da
+geometria diferencial, precisamos de uma no SS o de derivada que seja
+compat -vel com a integral de Stratonovich. Esta c a \textbf{derivada
 m cdia de Nelson} (ou derivada estoc istica sim ctrica)\footnote{Nelson, E.
 \textit{Dynamical Theories of Brownian Motion}. Princeton University
 Press, 1967. ISBN: 978-0691079509. \textbf{Resenha:} Obra seminal que
 reformulou o movimento Browniano como um processo estoc istico com
 derivadas m cdia forward e backward, antecipando em d ccadas o c ilculo de
-Malliavin e a mec  nica estoc istica.  A derivada de Nelson  c o an ilogo
+Malliavin e a mec nica estoc istica. A derivada de Nelson c o an ilogo
 estoc istico da derivada usual e satisfaz a regra de Leibniz.}.
 
 \begin{defi}[Derivada M cdia de Nelson]\label{def:nelson_derivative}
-Seja $X = (X_t)_{t \geq 0}$ um processo estoc istico adaptado.  A
+Seja $X = (X_t)_{t \geq 0}$ um processo estoc istico adaptado. A
 \textbf{derivada m cdia de Nelson} (ou \textit{Nelson derivative}) de
-$X$ no instante $t$  c definida como o limite em probabilidade:
+$X$ no instante $t$ c definida como o limite em probabilidade:
 \begin{equation}\label{eq:nelson_def}
-  \mathcal{D}X_t := \lim_{\varepsilon \to 0^+}\,
-  \mathbb{E}\!\left[
-    \frac{X_{t+\varepsilon} - X_{t-\varepsilon}}{2\varepsilon}
-    \;\middle|\;
-    \mathcal{A}_t
-  \right],
+ \mathcal{D}X_t := \lim_{\varepsilon \to 0^+}\,
+ \mathbb{E}\!\left[
+ \frac{X_{t+\varepsilon} - X_{t-\varepsilon}}{2\varepsilon}
+ \;\middle|\;
+ \mathcal{A}_t
+ \right],
 \end{equation}
-sempre que o limite existir.  Dizemos que $X$  c \textbf{$D$-diferenci ivel}
+sempre que o limite existir. Dizemos que $X$ c \textbf{$D$-diferenci ivel}
 no sentido de Nelson se $\mathcal{D}X_t$ existe para todo $t \geq 0$.
 \end{defi}
 
 \begin{obs}[Simetria Temporal]
-A derivada de Nelson  c \textbf{sim ctrica no tempo}: ela utiliza
+A derivada de Nelson c \textbf{sim ctrica no tempo}: ela utiliza
 incrementos tanto para o futuro ($X_{t+\varepsilon}$) quanto para o
-passado ($X_{t-\varepsilon}$).  Esta simetria  c crucial: enquanto a
+passado ($X_{t-\varepsilon}$). Esta simetria c crucial: enquanto a
 derivada de It ' ($\lim_{\varepsilon \to 0} \mathbb{E}[(X_{t+\varepsilon}
 - X_t)/\varepsilon \mid \mathcal{A}_t]$) olha apenas para o futuro, a
-derivada de Nelson olha para ambas as dire SS ues.  O resultado  c que
+derivada de Nelson olha para ambas as dire SS ues. O resultado c que
 \textbf{a derivada de Nelson satisfaz a regra da cadeia usual}:
 \begin{equation}\label{eq:nelson_chain}
-  \mathcal{D}\big(f(X_t)\big) = f'(X_t)\,\mathcal{D}X_t,
+ \mathcal{D}\big(f(X_t)\big) = f'(X_t)\,\mathcal{D}X_t,
 \end{equation}
-para toda $f \in C^1$.  Esta propriedade  c exatamente o que torna a
+para toda $f \in C^1$. Esta propriedade c exatamente o que torna a
 integral de Stratonovich compat -vel com a geometria diferencial.
 \end{obs}
 
-\begin{obs}[Rela SS  o com Stratonovich]
+\begin{obs}[Rela SS o com Stratonovich]
 Para processos de It ' da forma $dX_t = \mu_t\,dt + \sigma_t\,dW_t$,
 a derivada de Nelson coincide com o \textbf{drift de Stratonovich}:
 \begin{equation}\label{eq:nelson_stratonovich}
-  \mathcal{D}X_t = \mu_t,
+ \mathcal{D}X_t = \mu_t,
 \end{equation}
-enquanto o drift de It '  c $\mathbb{E}[dX_t/dt \mid \mathcal{A}_t] =
-\mu_t\,dt$.  A diferen SSa entre as duas no SS ues  c precisamente o termo de
-corre SS  o de It ': $\frac{1}{2}d\langle X, X\rangle_t$, que a derivada de
-Nelson absorve naturalmente pela simetriza SS  o temporal.
+enquanto o drift de It ' c $\mathbb{E}[dX_t/dt \mid \mathcal{A}_t] =
+\mu_t\,dt$. A diferen SSa entre as duas no SS ues c precisamente o termo de
+corre SS o de It ': $\frac{1}{2}d\langle X, X\rangle_t$, que a derivada de
+Nelson absorve naturalmente pela simetriza SS o temporal.
 \end{obs}
 
-\subsection{Covaria SS  o de Nelson}
+\subsection{Covaria SS o de Nelson}
 
-\begin{defi}[Covaria SS  o de Nelson]\label{def:nelson_covariation}
+\begin{defi}[Covaria SS o de Nelson]\label{def:nelson_covariation}
 Para dois processos $D$-diferenci iveis $X$ e $Y$, define-se a
-\textbf{derivada de Nelson da covaria SS  o quadr itica}:
+\textbf{derivada de Nelson da covaria SS o quadr itica}:
 \begin{equation}\label{eq:nelson_covar}
-  \mathcal{D}\langle X, Y\rangle_t
-  := \lim_{\varepsilon \to 0^+}\,
-  \mathbb{E}\!\left[
-    \frac{(X_{t+\varepsilon} - X_{t-\varepsilon})
-          (Y_{t+\varepsilon} - Y_{t-\varepsilon})}
-         {2\varepsilon}
-    \;\middle|\;
-    \mathcal{A}_t
-  \right].
+ \mathcal{D}\langle X, Y\rangle_t
+ := \lim_{\varepsilon \to 0^+}\,
+ \mathbb{E}\!\left[
+ \frac{(X_{t+\varepsilon} - X_{t-\varepsilon})
+ (Y_{t+\varepsilon} - Y_{t-\varepsilon})}
+ {2\varepsilon}
+ \;\middle|\;
+ \mathcal{A}_t
+ \right].
 \end{equation}
-Esta quantidade captura a ``volatilidade instant  nea conjunta'' dos
+Esta quantidade captura a ``volatilidade instant nea conjunta'' dos
 processos $X$ e $Y$.
 \end{defi}
 
 \begin{prop}[Regra de Leibniz para a Derivada de Nelson]
 \label{prop:nelson_leibniz}
-Se $X$ e $Y$ s  o $D$-diferenci iveis, ent  o o produto $XY$ tamb cm o  c e:
+Se $X$ e $Y$ s o $D$-diferenci iveis, ent o o produto $XY$ tamb cm o c e:
 \begin{equation}\label{eq:nelson_leibniz}
-  \mathcal{D}(X_t Y_t) = (\mathcal{D}X_t) Y_t + X_t (\mathcal{D}Y_t)
-                         + \frac{1}{2}\,\mathcal{D}\langle X, Y\rangle_t.
+ \mathcal{D}(X_t Y_t) = (\mathcal{D}X_t) Y_t + X_t (\mathcal{D}Y_t)
+ + \frac{1}{2}\,\mathcal{D}\langle X, Y\rangle_t.
 \end{equation}
-O termo de covaria SS  o $\frac{1}{2}\mathcal{D}\langle X, Y\rangle_t$  c
-o \textbf{termo de It '} --- a corre SS  o de segunda ordem que distingue o
+O termo de covaria SS o $\frac{1}{2}\mathcal{D}\langle X, Y\rangle_t$ c
+o \textbf{termo de It '} --- a corre SS o de segunda ordem que distingue o
 c ilculo estoc istico do c ilculo determin -stico usual.
 \end{prop}
 
 \begin{proof}[Esbo SSo]
-Pela defini SS  o~\eqref{eq:nelson_def}, considere $X_{t\pm\varepsilon} =
+Pela defini SS o~\eqref{eq:nelson_def}, considere $X_{t\pm\varepsilon} =
 X_t \pm \varepsilon\,\mathcal{D}X_t + o(\varepsilon)$ e analogamente
-para $Y$.  Expandindo o produto $(X_{t+\varepsilon} - X_{t-\varepsilon})
+para $Y$. Expandindo o produto $(X_{t+\varepsilon} - X_{t-\varepsilon})
 (Y_{t+\varepsilon} - Y_{t-\varepsilon})$ e tomando a esperan SSa
 condicional, o termo cruzado $\mathcal{D}X_t \cdot \mathcal{D}Y_t \cdot
-\varepsilon^2$ contribui com a covaria SS  o no limite $\varepsilon \to 0$.
+\varepsilon^2$ contribui com a covaria SS o no limite $\varepsilon \to 0$.
 \end{proof}
 
 \subsection{O Modelo de Mercado $D$-Diferenci ivel}
 
 \begin{defi}[Modelo de Mercado $D$-Diferenci ivel ---
-           Defini SS  o~32 do Artigo]\label{def:D_diff_market}
-Um mercado  c dito \textbf{$D$-diferenci ivel} (no sentido de Nelson) se:
+ Defini SS o~32 do Artigo]\label{def:D_diff_market}
+Um mercado c dito \textbf{$D$-diferenci ivel} (no sentido de Nelson) se:
 \begin{enumerate}[(i)]
-  \item Todos os deflatores $D_t^j$ ($j = 1, \dots, N$) e o pricing
-        kernel $\beta_t$ (state price deflator) s  o processos
-        $D$-diferenci iveis;
-  \item A taxa curta $r_t^0 = -\mathcal{D}\log S_t^0$  c
-        $D$-diferenci ivel;
-  \item As estruturas a termo $P_{t,s}^j$ s  o suaves em $s$ e
-        $D$-diferenci iveis em $t$.
+ \item Todos os deflatores $D_t^j$ ($j = 1, \dots, N$) e o pricing
+ kernel $\beta_t$ (state price deflator) s o processos
+ $D$-diferenci iveis;
+ \item A taxa curta $r_t^0 = -\mathcal{D}\log S_t^0$ c
+ $D$-diferenci ivel;
+ \item As estruturas a termo $P_{t,s}^j$ s o suaves em $s$ e
+ $D$-diferenci iveis em $t$.
 \end{enumerate}
 \end{defi}
 
-A condi SS  o de $D$-diferenciabilidade  c bastante geral: inclui todos os
+A condi SS o de $D$-diferenciabilidade c bastante geral: inclui todos os
 processos de It ' (difus ues), processos de salto com intensidade
-diferenci ivel, e combina SS ues de ambos.  Virtualmente todos os modelos
+diferenci ivel, e combina SS ues de ambos. Virtualmente todos os modelos
 de mercado usados na pr itica (Black--Scholes, Heston, Bates, SABR,
-etc.) s  o $D$-diferenci iveis.
+etc.) s o $D$-diferenci iveis.
 
 \subsection{Estrat cgias Fracamente $D$-Diferenci iveis}
 
-Para aplicar o c ilculo de Nelson a estrat cgias de negocia SS  o, precisamos
-de uma no SS  o adequada de diferenciabilidade para processos previs -veis.
+Para aplicar o c ilculo de Nelson a estrat cgias de negocia SS o, precisamos
+de uma no SS o adequada de diferenciabilidade para processos previs -veis.
 
 \begin{defi}[Estrat cgia Fracamente $D$-Diferenci ivel]\label{def:weak_D_strategy}
-Uma estrat cgia previs -vel $x = (x_t)_{t \geq 0}$  c dita
-\textbf{fracamente $D$-diferenci ivel} se, para toda fun SS  o teste suave
+Uma estrat cgia previs -vel $x = (x_t)_{t \geq 0}$ c dita
+\textbf{fracamente $D$-diferenci ivel} se, para toda fun SS o teste suave
 $\varphi$ com suporte compacto, o processo $Y_t^\varphi :=
-\int_0^\infty \varphi(s)\,x_{t+s}\,ds$  c $D$-diferenci ivel.  A
-\textbf{derivada fraca de Nelson} $\mathcal{D}x_t$  c definida pela
-rela SS  o:
+\int_0^\infty \varphi(s)\,x_{t+s}\,ds$ c $D$-diferenci ivel. A
+\textbf{derivada fraca de Nelson} $\mathcal{D}x_t$ c definida pela
+rela SS o:
 \begin{equation}\label{eq:weak_D}
-  \int_0^\infty \varphi(s)\,\mathcal{D}x_{t+s}\,ds
-  := \mathcal{D}\!\left(\int_0^\infty \varphi(s)\,x_{t+s}\,ds\right),
+ \int_0^\infty \varphi(s)\,\mathcal{D}x_{t+s}\,ds
+ := \mathcal{D}\!\left(\int_0^\infty \varphi(s)\,x_{t+s}\,ds\right),
 \end{equation}
 para toda $\varphi \in C_c^\infty(\mathbb{R}_+)$.
 \end{defi}
 
 \begin{obs}[Por que ``fraca''?]
-A diferenciabilidade pontual (trajet 3ria a trajet 3ria)  c uma exig ancia
-demasiado forte para processos estoc isticos.  A no SS  o fraca (no sentido
-das distribui SS ues)  c suficiente para as manipula SS ues anal -ticas que a
-GAT requer e  c satisfeita por todas as estrat cgias de interesse pr itico.
-Em particular, qualquer estrat cgia adaptada com trajet 3rias c  dl  g de
-varia SS  o finita  c fracamente $D$-diferenci ivel.
+A diferenciabilidade pontual (trajet 3ria a trajet 3ria) c uma exig ancia
+demasiado forte para processos estoc isticos. A no SS o fraca (no sentido
+das distribui SS ues) c suficiente para as manipula SS ues anal -ticas que a
+GAT requer e c satisfeita por todas as estrat cgias de interesse pr itico.
+Em particular, qualquer estrat cgia adaptada com trajet 3rias c dl g de
+varia SS o finita c fracamente $D$-diferenci ivel.
 \end{obs}
 
 % ----------------------------------------------------------------------
 \section{Autofinanciamento em Termos de $D$}
 % ----------------------------------------------------------------------
 
-Agora reformulamos a condi SS  o de autofinanciamento usando a derivada de
-Nelson.  Esta reformula SS  o  c o elo que conecta a teoria cl issica
-(Cap -tulo~4) com a formula SS  o geom ctrica da GAT.
+Agora reformulamos a condi SS o de autofinanciamento usando a derivada de
+Nelson. Esta reformula SS o c o elo que conecta a teoria cl issica
+(Cap -tulo~4) com a formula SS o geom ctrica da GAT.
 
 \begin{teo}[Autofinanciamento em Termos de $D$ ---
-           Proposi SS  o~33 do Artigo]\label{teo:self_financing_D}
+ Proposi SS o~33 do Artigo]\label{teo:self_financing_D}
 Seja $x$ uma estrat cgia fracamente $D$-diferenci ivel e $D_t$ o processo
 de deflatores (o valor do instrumento financeiro associado a cada
-ativo).  Ent  o:
+ativo). Ent o:
 
 \begin{enumerate}[(i)]
-  \item \textbf{Primeira forma:}
-        \begin{equation}\label{eq:sf_D_1}
-          \mathcal{D}(x_t \cdot D_t)
-          = x_t \cdot \mathcal{D}D_t - \frac{1}{2}\,
-            \mathcal{D}\langle x, D\rangle_t.
-        \end{equation}
+ \item \textbf{Primeira forma:}
+ \begin{equation}\label{eq:sf_D_1}
+ \mathcal{D}(x_t \cdot D_t)
+ = x_t \cdot \mathcal{D}D_t - \frac{1}{2}\,
+ \mathcal{D}\langle x, D\rangle_t.
+ \end{equation}
 
-  \item \textbf{Segunda forma (simplificada):}
-        \begin{equation}\label{eq:sf_D_2}
-          \mathcal{D}x_t \cdot D_t = -\frac{1}{2}\,
-          \mathcal{D}\langle x, D\rangle_t.
-        \end{equation}
+ \item \textbf{Segunda forma (simplificada):}
+ \begin{equation}\label{eq:sf_D_2}
+ \mathcal{D}x_t \cdot D_t = -\frac{1}{2}\,
+ \mathcal{D}\langle x, D\rangle_t.
+ \end{equation}
 \end{enumerate}
 Em ambas as express ues, $\langle x, D\rangle_t$ denota o processo de
-covaria SS  o quadr itica (parte cont -nua) entre a estrat cgia $x$ e o
-deflator $D$, e $\mathcal{D}\langle x, D\rangle_t$  c sua derivada de
+covaria SS o quadr itica (parte cont -nua) entre a estrat cgia $x$ e o
+deflator $D$, e $\mathcal{D}\langle x, D\rangle_t$ c sua derivada de
 Nelson.
 \end{teo}
 
 \begin{proof}
-A demonstra SS  o utiliza a regra de Leibniz de Nelson
-(Proposi SS  o~\ref{prop:nelson_leibniz}) e a rela SS  o entre It ' e
+A demonstra SS o utiliza a regra de Leibniz de Nelson
+(Proposi SS o~\ref{prop:nelson_leibniz}) e a rela SS o entre It ' e
 Stratonovich.
 
 \textbf{Passo 1:} Pela regra de Leibniz de
 Nelson~\eqref{eq:nelson_leibniz}, aplicada ao produto escalar $x_t
 \cdot D_t = \sum_j x_t^j D_t^j$:
 \begin{align}
-  \mathcal{D}(x_t \cdot D_t)
-  &= (\mathcal{D}x_t) \cdot D_t + x_t \cdot (\mathcal{D}D_t)
-     + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t. \label{eq:pf1}
+ \mathcal{D}(x_t \cdot D_t)
+ &= (\mathcal{D}x_t) \cdot D_t + x_t \cdot (\mathcal{D}D_t)
+ + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t. \label{eq:pf1}
 \end{align}
 
-\textbf{Passo 2:} A condi SS  o de autofinanciamento na formula SS  o de
-Stratonovich (Cap -tulo~4, equa SS  o~\eqref{eq:self_financing_stratonovich} do
-Cap -tulo~4)  c:
+\textbf{Passo 2:} A condi SS o de autofinanciamento na formula SS o de
+Stratonovich (Cap -tulo~4, equa SS o~\eqref{eq:self_financing_stratonovich} do
+Cap -tulo~4) c:
 \[
 dV_t^x = x_t \circ dS_t = x_t \circ d(D_t S_t^0).
 \]
-Em termos do deflator $D_t$, a din  mica de Stratonovich  c governada
-pela derivada de Nelson: $\mathcal{D}D_t$  c o drift de Stratonovich de
-$D_t$.  O autofinanciamento implica que a varia SS  o do valor da carteira
-$(x_t \cdot D_t)S_t^0$ prov cm exclusivamente da varia SS  o de $D_t$
-(ponderada por $x_t$) e da capitaliza SS  o por $S_t^0$.
+Em termos do deflator $D_t$, a din mica de Stratonovich c governada
+pela derivada de Nelson: $\mathcal{D}D_t$ c o drift de Stratonovich de
+$D_t$. O autofinanciamento implica que a varia SS o do valor da carteira
+$(x_t \cdot D_t)S_t^0$ prov cm exclusivamente da varia SS o de $D_t$
+(ponderada por $x_t$) e da capitaliza SS o por $S_t^0$.
 
-\textbf{Passo 3:} A condi SS  o essencial  c que a estrat cgia $x$ n  o
-introduz deriva pr 3pria no valor da carteira --- ou seja, a contribui SS  o
-de $\mathcal{D}x_t$ deve ser exatamente cancelada.  Isto leva a:
+\textbf{Passo 3:} A condi SS o essencial c que a estrat cgia $x$ n o
+introduz deriva pr 3pria no valor da carteira --- ou seja, a contribui SS o
+de $\mathcal{D}x_t$ deve ser exatamente cancelada. Isto leva a:
 \[
 (\mathcal{D}x_t) \cdot D_t + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t = 0,
 \]
-que  c precisamente a segunda forma~\eqref{eq:sf_D_2}.
+que c precisamente a segunda forma~\eqref{eq:sf_D_2}.
 
 Substituindo em~\eqref{eq:pf1}, obtemos:
 \[
 \mathcal{D}(x_t \cdot D_t)
 = -\frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t
-  + x_t \cdot \mathcal{D}D_t
-  + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t
+ + x_t \cdot \mathcal{D}D_t
+ + \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t
 = x_t \cdot \mathcal{D}D_t - \frac{1}{2}\,\mathcal{D}\langle x, D\rangle_t,
 \]
-que  c a primeira forma~\eqref{eq:sf_D_1}.
+que c a primeira forma~\eqref{eq:sf_D_1}.
 \end{proof}
 
-\begin{obs}[Interpreta SS  o Financeira]
-A equa SS  o~\eqref{eq:sf_D_2} tem uma interpreta SS  o not ivel: \textbf{a
-derivada de Nelson da estrat cgia, contra -da com o deflator,  c
-determinada unicamente pela covaria SS  o entre a estrat cgia e o deflator}.
+\begin{obs}[Interpreta SS o Financeira]
+A equa SS o~\eqref{eq:sf_D_2} tem uma interpreta SS o not ivel: \textbf{a
+derivada de Nelson da estrat cgia, contra -da com o deflator, c
+determinada unicamente pela covaria SS o entre a estrat cgia e o deflator}.
 Em outras palavras, a ``velocidade'' com que voc a ajusta sua carteira
-($\mathcal{D}x_t$) n  o  c livre --- ela  c restringida pela condi SS  o de
-que voc a n  o est i injetando nem retirando capital.  A  onica fonte de
-varia SS  o permitida  c a correla SS  o instant  nea entre suas posi SS ues e os
+($\mathcal{D}x_t$) n o c livre --- ela c restringida pela condi SS o de
+que voc a n o est i injetando nem retirando capital. A onica fonte de
+varia SS o permitida c a correla SS o instant nea entre suas posi SS ues e os
 movimentos dos deflatores.
 \end{obs}
 
 \begin{obs}[Por que $\frac{1}{2}$?]
-O fator $1/2$ na equa SS  o~\eqref{eq:sf_D_2}  c a assinatura da
-integral de Stratonovich.  Ele aparece porque a derivada de Nelson
+O fator $1/2$ na equa SS o~\eqref{eq:sf_D_2} c a assinatura da
+integral de Stratonovich. Ele aparece porque a derivada de Nelson
 faz a m cdia sim ctrica entre passado e futuro, enquanto a integral de
-It ' usa apenas o passado.  Na passagem de It ' para Stratonovich, o
-termo de corre SS  o  c exatamente $\frac{1}{2}$ da covaria SS  o quadr itica.
+It ' usa apenas o passado. Na passagem de It ' para Stratonovich, o
+termo de corre SS o c exatamente $\frac{1}{2}$ da covaria SS o quadr itica.
 \end{obs}
 
 % ----------------------------------------------------------------------
-\section{Conex  o com Malaney--Weinstein}
+\section{Conex o com Malaney--Weinstein}
 % ----------------------------------------------------------------------
 
-\subsection{A Conex  o de Malaney--Weinstein}
+\subsection{A Conex o de Malaney--Weinstein}
 
-A ideia de modelar problemas econ 'micos com geometria diferencial n  o
-surgiu com Ilinski ou Farinelli.  Malaney (1996)\footnote{Malaney, P.N.
+A ideia de modelar problemas econ 'micos com geometria diferencial n o
+surgiu com Ilinski ou Farinelli. Malaney (1996)\footnote{Malaney, P.N.
 \textit{The Index Number Problem: A Differential Geometry Approach}.
 Tese de Doutorado, Harvard University, 1996. \textbf{Resenha:} Primeira
-formula SS  o do problema de n omeros- -ndice em linguagem de geometria
-diferencial.  Malaney prop 's que a invari  ncia sob mudan SSa de cesta de
+formula SS o do problema de n omeros- -ndice em linguagem de geometria
+diferencial. Malaney prop 's que a invari ncia sob mudan SSa de cesta de
 bens deveria ser tratada como simetria de gauge.} e Weinstein
 (2006)\footnote{Weinstein, E. \textit{Gauge Theory and Inflation}.
 Tese de Doutorado, Harvard University, 2006. \textbf{Resenha:} Prop 's
-uma teoria de gauge para infla SS  o econ 'mica, tratando  -ndices de pre SSos
-como conex ues em fibrados.  Formalizou matematicamente a intui SS  o de
-que mudan SSas de unidade de conta s  o transforma SS ues de gauge.}
-desenvolveram, em contextos distintos (n omeros- -ndice e infla SS  o), uma
-formula SS  o geom ctrica baseada em:
+uma teoria de gauge para infla SS o econ 'mica, tratando -ndices de pre SSos
+como conex ues em fibrados. Formalizou matematicamente a intui SS o de
+que mudan SSas de unidade de conta s o transforma SS ues de gauge.}
+desenvolveram, em contextos distintos (n omeros- -ndice e infla SS o), uma
+formula SS o geom ctrica baseada em:
 
-\begin{defi}[Conex  o de Malaney--Weinstein]\label{def:MW_connection}
+\begin{defi}[Conex o de Malaney--Weinstein]\label{def:MW_connection}
 Em um fibrado sobre o espa SSo de cestas de bens (ou carteiras), a
-conex  o de Malaney--Weinstein  c definida pela 1-forma:
+conex o de Malaney--Weinstein c definida pela 1-forma:
 \begin{equation}\label{eq:MW_connection}
-  \omega^{\text{MW}}(x)(\delta x)
-  = \frac{\sum_{j} p_j(x)\,\delta x^j}{\sum_{j} p_j(x)\,x^j},
+ \omega^{\text{MW}}(x)(\delta x)
+ = \frac{\sum_{j} p_j(x)\,\delta x^j}{\sum_{j} p_j(x)\,x^j},
 \end{equation}
-onde $p_j(x)$  c o pre SSo do bem $j$ na cesta $x$.  Esta conex  o mede a
-varia SS  o relativa do custo da cesta quando a composi SS  o muda.
+onde $p_j(x)$ c o pre SSo do bem $j$ na cesta $x$. Esta conex o mede a
+varia SS o relativa do custo da cesta quando a composi SS o muda.
 \end{defi}
 
 \subsection{Equival ancia no Caso Estoc istico}
 
 \begin{prop}[Equival ancia das Conex ues no Contexto da GAT]
 \label{prop:MW_equivalence}
-A conex  o de Ilinski--Farinelli~\eqref{eq:connection_definition}
-reduz-se    conex  o de Malaney--Weinstein quando:
+A conex o de Ilinski--Farinelli~\eqref{eq:connection_definition}
+reduz-se conex o de Malaney--Weinstein quando:
 \begin{enumerate}[(i)]
-  \item Restringimo-nos    dire SS  o puramente nominal ($\delta t = 0$);
-  \item Identificamos os pre SSos $p_j$ com os deflatores $D_t^j$;
-  \item O grupo de gauge  c restrito   s transforma SS ues que preservam a
-        normaliza SS  o $P_{t,t} = 1$.
+ \item Restringimo-nos dire SS o puramente nominal ($\delta t = 0$);
+ \item Identificamos os pre SSos $p_j$ com os deflatores $D_t^j$;
+ \item O grupo de gauge c restrito s transforma SS ues que preservam a
+ normaliza SS o $P_{t,t} = 1$.
 \end{enumerate}
-Neste limite, ambas as conex ues descrevem a \textbf{taxa de c  mbio
+Neste limite, ambas as conex ues descrevem a \textbf{taxa de c mbio
 infinitesimal} entre carteiras, e a curvatura de $\omega^{\text{MW}}$
-mede a \textbf{inconsist ancia de  -ndices de pre SSos} --- o an ilogo
+mede a \textbf{inconsist ancia de -ndices de pre SSos} --- o an ilogo
 macroecon 'mico da arbitragem microecon 'mica.
 \end{prop}
 
 \begin{proof}[Esbo SSo]
-Para $\delta t = 0$, a conex  o de Ilinski--Farinelli  c:
+Para $\delta t = 0$, a conex o de Ilinski--Farinelli c:
 \[
 \chi(x,t)(\delta x, 0) = \frac{D_t^{\delta x}}{D_t^x}
 = \frac{\sum_j D_t^j\,\delta x^j}{\sum_j D_t^j\,x^j},
 \]
-que  c exatamente a forma de Malaney--Weinstein com $p_j = D_t^j$.  A
-diferen SSa essencial  c que a GAT adiciona a dimens  o temporal (com o
+que c exatamente a forma de Malaney--Weinstein com $p_j = D_t^j$. A
+diferen SSa essencial c que a GAT adiciona a dimens o temporal (com o
 termo $-r_t^x\,\delta t$) e trabalha com o grupo completo $G^*$ (todas
-as transforma SS ues de gauge sobre a estrutura a termo), n  o apenas as
+as transforma SS ues de gauge sobre a estrutura a termo), n o apenas as
 transforma SS ues que preservam o ponto $t$.
 \end{proof}
 
-\begin{obs}[Generaliza SS  o da GAT]
-A conex  o de Ilinski--Farinelli \textbf{cont cm} a conex  o de
+\begin{obs}[Generaliza SS o da GAT]
+A conex o de Ilinski--Farinelli \textbf{cont cm} a conex o de
 Malaney--Weinstein como caso particular, mas a generaliza em tr as
 dire SS ues cruciais:
 \begin{enumerate}
-  \item \textbf{Dimens  o temporal expl -cita:} o termo $-r_t^x\,dt$
-        introduz a din  mica de desconto, ausente em Malaney--Weinstein;
-  \item \textbf{Estrutura a termo completa:} o grupo $G^*$ age sobre
-        toda a estrutura $P_{t,s}$, n  o apenas sobre pre SSos spot;
-  \item \textbf{Contexto estoc istico:} a derivada de Nelson e o c ilculo
-        de Stratonovich fornecem o arcabou SSo anal -tico para lidar com
-        difus ues e saltos, enquanto Malaney--Weinstein  c puramente
-        determin -stico.
+ \item \textbf{Dimens o temporal expl -cita:} o termo $-r_t^x\,dt$
+ introduz a din mica de desconto, ausente em Malaney--Weinstein;
+ \item \textbf{Estrutura a termo completa:} o grupo $G^*$ age sobre
+ toda a estrutura $P_{t,s}$, n o apenas sobre pre SSos spot;
+ \item \textbf{Contexto estoc istico:} a derivada de Nelson e o c ilculo
+ de Stratonovich fornecem o arcabou SSo anal -tico para lidar com
+ difus ues e saltos, enquanto Malaney--Weinstein c puramente
+ determin -stico.
 \end{enumerate}
- %% precisamente esta generaliza SS  o que permite    GAT capturar a
-arbitragem como curvatura --- a dimens  o temporal e a estrutura a termo
-s  o indispens iveis para que a curvatura tenha significado financeiro.
+ %% precisamente esta generaliza SS o que permite GAT capturar a
+arbitragem como curvatura --- a dimens o temporal e a estrutura a termo
+s o indispens iveis para que a curvatura tenha significado financeiro.
 \end{obs}
 
 % ----------------------------------------------------------------------
 \section{Resumo do Cap -tulo}
 % ----------------------------------------------------------------------
 
-A conex  o de Ilinski--Farinelli  c o objeto central da GAT.  Neste
+A conex o de Ilinski--Farinelli c o objeto central da GAT. Neste
 cap -tulo, estabelecemos:
 
 \begin{enumerate}
-  \item \textbf{Defini SS  o da conex  o:} $\chi(x,t)(\delta x, \delta t)
-        = D_t^{\delta x}/D_t^x - r_t^x\,\delta t$, que unifica as
-        opera SS ues de c  mbio (ao longo de $x$) e desconto (ao longo de
-        $t$) em uma  onica 1-forma com valores na  ilgebra de Lie de
-        $G^*$.
+ \item \textbf{Defini SS o da conex o:} $\chi(x,t)(\delta x, \delta t)
+ = D_t^{\delta x}/D_t^x - r_t^x\,\delta t$, que unifica as
+ opera SS ues de c mbio (ao longo de $x$) e desconto (ao longo de
+ $t$) em uma onica 1-forma com valores na ilgebra de Lie de
+ $G^*$.
 
-  \item \textbf{Forma de conex  o:} em coordenadas,
-        $\chi = (1/D_t^x)\sum_j D_t^j\,dx^j - r_t^x\,dt$.
+ \item \textbf{Forma de conex o:} em coordenadas,
+ $\chi = (1/D_t^x)\sum_j D_t^j\,dx^j - r_t^x\,dt$.
 
-  \item \textbf{Transporte paralelo (Teorema~29):}
-        \begin{itemize}
-          \item Ao longo de $x$-linhas: multiplica SS  o pela taxa de
-                c  mbio $D_{t_0}^{x_0}/D_{t_0}^{x_0 + \Delta x}$.
-          \item Ao longo de $t$-linhas: divis  o pelo fator de desconto
-                $\exp(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du)$.
-        \end{itemize}
+ \item \textbf{Transporte paralelo (Teorema~29):}
+ \begin{itemize}
+ \item Ao longo de $x$-linhas: multiplica SS o pela taxa de
+ c mbio $D_{t_0}^{x_0}/D_{t_0}^{x_0 + \Delta x}$.
+ \item Ao longo de $t$-linhas: divis o pelo fator de desconto
+ $\exp(\int_{t_0}^{t_0+\Delta t} r_u^{x_0}\,du)$.
+ \end{itemize}
 
-  \item \textbf{Derivada de Nelson:} $\mathcal{D}X_t$, a derivada
-        sim ctrica que satisfaz a regra da cadeia e  c compat -vel com
-        Stratonovich --- o elo entre o c ilculo estoc istico e a
-        geometria diferencial.
+ \item \textbf{Derivada de Nelson:} $\mathcal{D}X_t$, a derivada
+ sim ctrica que satisfaz a regra da cadeia e c compat -vel com
+ Stratonovich --- o elo entre o c ilculo estoc istico e a
+ geometria diferencial.
 
-  \item \textbf{Autofinanciamento em $D$ (Proposi SS  o~33):}
-        $\mathcal{D}(x_t \cdot D_t) = x_t \cdot \mathcal{D}D_t
-        - \frac{1}{2}\mathcal{D}\langle x, D\rangle_t$, e a forma
-        simplificada $\mathcal{D}x_t \cdot D_t
-        = -\frac{1}{2}\mathcal{D}\langle x, D\rangle_t$.
+ \item \textbf{Autofinanciamento em $D$ (Proposi SS o~33):}
+ $\mathcal{D}(x_t \cdot D_t) = x_t \cdot \mathcal{D}D_t
+ - \frac{1}{2}\mathcal{D}\langle x, D\rangle_t$, e a forma
+ simplificada $\mathcal{D}x_t \cdot D_t
+ = -\frac{1}{2}\mathcal{D}\langle x, D\rangle_t$.
 
-  \item \textbf{Conex  o com Malaney--Weinstein:} a GAT generaliza a
-        formula SS  o determin -stica original, adicionando a dimens  o
-        temporal e a estrutura a termo.
+ \item \textbf{Conex o com Malaney--Weinstein:} a GAT generaliza a
+ formula SS o determin -stica original, adicionando a dimens o
+ temporal e a estrutura a termo.
 \end{enumerate}
 
-No pr 3ximo cap -tulo, usaremos a conex  o aqui definida para calcular a
+No pr 3ximo cap -tulo, usaremos a conex o aqui definida para calcular a
 \textbf{curvatura} do fibrado do mercado --- e demonstraremos o
 resultado central da GAT: a equival ancia entre curvatura zero e aus ancia
 de arbitragem.
 
 \begin{center}
 \fbox{\begin{minipage}{0.88\textwidth}
-\textbf{Mensagem Central do Cap -tulo:} A conex  o de mercado n  o  c um
-artefato matem itico ---  c a \textbf{codifica SS  o geom ctrica de todas as
-rela SS ues de valor} entre instrumentos financeiros.  Transporte paralelo
-ao longo de $x$  c c  mbio; ao longo de $t$  c desconto.  Quando estas
-duas opera SS ues s  o consistentes entre si (i.e., quando o transporte n  o
-depende do caminho), a curvatura se anula --- e o mercado  c livre de
+\textbf{Mensagem Central do Cap -tulo:} A conex o de mercado n o c um
+artefato matem itico --- c a \textbf{codifica SS o geom ctrica de todas as
+rela SS ues de valor} entre instrumentos financeiros. Transporte paralelo
+ao longo de $x$ c c mbio; ao longo de $t$ c desconto. Quando estas
+duas opera SS ues s o consistentes entre si (i.e., quando o transporte n o
+depende do caminho), a curvatura se anula --- e o mercado c livre de
 arbitragem.
 \end{minipage}}
 \end{center}

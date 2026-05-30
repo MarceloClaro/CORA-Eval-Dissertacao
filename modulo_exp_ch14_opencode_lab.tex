@@ -10,10 +10,10 @@ Este capitulo e \textbf{auto-contido}: voce nao precisa de conhecimento previo
 de IA, agentes ou programacao avancada. Ao final, voce tera:
 
 \begin{enumerate}[nosep]
-  \item O OpenCode Ecosystem instalado e funcionando no seu computador
-  \item Executado seu primeiro experimento GAT com verificacao simbolica
-  \item Compreendido o ciclo SDD+TDD aplicado a modelos financeiros
-  \item Gerado um mini-artigo cientifico sobre arbitragem geometrica
+ \item O OpenCode Ecosystem instalado e funcionando no seu computador
+ \item Executado seu primeiro experimento GAT com verificacao simbolica
+ \item Compreendido o ciclo SDD+TDD aplicado a modelos financeiros
+ \item Gerado um mini-artigo cientifico sobre arbitragem geometrica
 \end{enumerate}
 
 \textbf{Tempo estimado:} 2 horas para instalacao + primeiro experimento.
@@ -122,7 +122,7 @@ def test_curvatura_zero_quando_mu_igual_r():
     r = 0.05
     S = simular_gbm(S0=[100.0, 100.0], mu=mu, sigma=[0.2, 0.2])
     R = calcular_curvatura_aproximada(S, r, dt=1/252)
-    assert R < 0.1, f"Curvatura deveria ser ~0, obtida {R:.4f}"
+   assert R < 0.1, f"Curvatura deveria ser ~0, obtida {R:.4f}"
 
 def test_curvatura_nao_zero_quando_mu_diferente_r():
     """CT-2: Se mu != r para algum ativo, curvatura > 0"""
@@ -130,7 +130,7 @@ def test_curvatura_nao_zero_quando_mu_diferente_r():
     r = 0.05
     S = simular_gbm(S0=[100.0, 100.0], mu=mu, sigma=[0.2, 0.2])
     R = calcular_curvatura_aproximada(S, r, dt=1/252)
-    assert R > 0.01, f"Curvatura deveria ser >0, obtida {R:.4f}"
+   assert R > 0.01, f"Curvatura deveria ser >0, obtida {R:.4f}"
 \end{lstlisting}
 
 \subsection{2.3 Executar o Teste e Verificar}
@@ -149,12 +149,12 @@ python -m pytest test_gat_curvatura.py -v
 Se ambos os testes passarem, verificamos que:
 
 \begin{enumerate}[nosep]
-  \item Quando $\mu_1 = \mu_2 = r$ (todos os retornos esperados igual a taxa
-        livre de risco), a curvatura $R$ e aproximadamente zero — o mercado e
-        ``plano'' e nao ha arbitragem.
-  \item Quando $\mu_2 > r$ mas $\mu_1 = r$, a curvatura $R$ e maior que zero
-        — existe uma ``curvatura'' no mercado, indicando oportunidade de
-        lucro.
+ \item Quando $\mu_1 = \mu_2 = r$ (todos os retornos esperados igual a taxa
+ livre de risco), a curvatura $R$ e aproximadamente zero — o mercado e
+ ``plano'' e nao ha arbitragem.
+ \item Quando $\mu_2 > r$ mas $\mu_1 = r$, a curvatura $R$ e maior que zero
+ — existe uma ``curvatura'' no mercado, indicando oportunidade de
+ lucro.
 \end{enumerate}
 
 \textbf{Limitacao importante (transparencia):} O teste CT-2 mostra $R > 0$
@@ -224,7 +224,7 @@ opencode run /auditar --spec SPEC-GAT-001 --arquivo test_gat_curvatura.py
 opencode run /artigo \
   --tema "Verificacao empirica do Teorema Central da GAT:
            Curvatura zero implica ausencia de arbitragem
-           em mercados simulados com 2 ativos de Ito" \
+          em mercados simulados com 2 ativos de Ito" \
   --spec SPEC-GAT-001 \
   --formato abnt \
   --paginas 8
@@ -244,18 +244,18 @@ opencode run /artigo \
 O artigo gerado contera:
 
 \begin{enumerate}[nosep]
-  \item \textbf{Resumo:} Síntese do experimento e resultados principais
-  \item \textbf{Introducao:} Contexto da GAT, FTAP, motivacao
-  \item \textbf{Metodo:} Descricao do mercado simulado, parametros,
-        calculo de curvatura
-  \item \textbf{Resultados:} Tabelas com $R$ para diferentes
-        configuracoes de $\mu$, graficos
-  \item \textbf{Discussao:} Interpretacao dos resultados, limitacoes
-        (condicao de Novikov, aproximacao numerica)
-  \item \textbf{Conclusao:} Confirmacao do Teorema Central para o caso
-        simulado, ressalvas
-  \item \textbf{Referencias:} Farinelli (2021), Delbaen-Schachermayer
-        (1994, 2006), Black-Scholes (1973)
+ \item \textbf{Resumo:} Síntese do experimento e resultados principais
+ \item \textbf{Introducao:} Contexto da GAT, FTAP, motivacao
+ \item \textbf{Metodo:} Descricao do mercado simulado, parametros,
+ calculo de curvatura
+ \item \textbf{Resultados:} Tabelas com $R$ para diferentes
+ configuracoes de $\mu$, graficos
+ \item \textbf{Discussao:} Interpretacao dos resultados, limitacoes
+ (condicao de Novikov, aproximacao numerica)
+ \item \textbf{Conclusao:} Confirmacao do Teorema Central para o caso
+ simulado, ressalvas
+ \item \textbf{Referencias:} Farinelli (2021), Delbaen-Schachermayer
+ (1994, 2006), Black-Scholes (1973)
 \end{enumerate}
 
 \section{Passo 5: Evoluir o Experimento (Ciclo AutoEvolve)}
@@ -281,17 +281,17 @@ opencode run /evolve --from SPEC-GAT-001
 \textbf{Ciclo de Evolucao do Raciocinio Cientifico}
 
 \begin{enumerate}[nosep]
-  \item \textbf{PLAN:} Formular pergunta cientifica (SPEC: ``$R=0
-        \Leftrightarrow$ NFLVR?'')
-  \item \textbf{TDD-RED:} Escrever teste que falha (hipotese a ser
-        verificada)
-  \item \textbf{TDD-GREEN:} Implementar e fazer o teste passar
-  \item \textbf{AUDITAR:} Submeter ao Cora-Debate V1--V7
-  \item \textbf{DOCUMENTAR:} Gerar artigo com o pipeline MASWOS
-  \item \textbf{REFLECT:} O que aprendemos? O que ainda nao sabemos?
-  \item \textbf{EXTRACT:} Extrair padroes de sucesso e fracasso
-  \item \textbf{EVOLVE:} Gerar nova skill, registrar no historico
-  \item \textbf{REPETIR:} Voltar ao passo 1 com pergunta mais avancada
+ \item \textbf{PLAN:} Formular pergunta cientifica (SPEC: ``$R=0
+ \Leftrightarrow$ NFLVR?'')
+ \item \textbf{TDD-RED:} Escrever teste que falha (hipotese a ser
+ verificada)
+ \item \textbf{TDD-GREEN:} Implementar e fazer o teste passar
+ \item \textbf{AUDITAR:} Submeter ao Cora-Debate V1--V7
+ \item \textbf{DOCUMENTAR:} Gerar artigo com o pipeline MASWOS
+ \item \textbf{REFLECT:} O que aprendemos? O que ainda nao sabemos?
+ \item \textbf{EXTRACT:} Extrair padroes de sucesso e fracasso
+ \item \textbf{EVOLVE:} Gerar nova skill, registrar no historico
+ \item \textbf{REPETIR:} Voltar ao passo 1 com pergunta mais avancada
 \end{enumerate}
 
 Cada ciclo completo leva de 5 a 15 minutos (dependendo da complexidade)
@@ -326,17 +326,17 @@ O colega encontrou erros que o Cora-Debate nao detectou?
 \section{Limitacoes e Transparencia}
 
 \begin{enumerate}[nosep]
-  \item \textbf{Aproximacao numerica:} O calculo de $R$ neste capitulo e
-        uma aproximacao de primeira ordem (diferencas finitas). A curvatura
-        exata requer derivacao simbolica.
-  \item \textbf{Mercado simulado:} Os precos sao gerados por GBM — um modelo
-        que nao captura saltos, agrupamento de volatilidade ou
-        microestrutura de mercado.
-  \item \textbf{Auto-avaliacao:} Os scores do Cora-Debate sao auto-reportados.
-        Nao substituem revisao por pares humana.
-  \item \textbf{Custo computacional:} Para $N > 100$ ativos, o calculo de
-        curvatura torna-se computacionalmente inviavel em hardware domestico.
-  \item \textbf{Reprodutibilidade:} A seed (42) e fixa para garantir
-        reproducao. Alterar a seed produzira resultados numericos diferentes
-        mas qualitativamente equivalentes.
+ \item \textbf{Aproximacao numerica:} O calculo de $R$ neste capitulo e
+ uma aproximacao de primeira ordem (diferencas finitas). A curvatura
+ exata requer derivacao simbolica.
+ \item \textbf{Mercado simulado:} Os precos sao gerados por GBM — um modelo
+ que nao captura saltos, agrupamento de volatilidade ou
+ microestrutura de mercado.
+ \item \textbf{Auto-avaliacao:} Os scores do Cora-Debate sao auto-reportados.
+ Nao substituem revisao por pares humana.
+ \item \textbf{Custo computacional:} Para $N > 100$ ativos, o calculo de
+ curvatura torna-se computacionalmente inviavel em hardware domestico.
+ \item \textbf{Reprodutibilidade:} A seed (42) e fixa para garantir
+ reproducao. Alterar a seed produzira resultados numericos diferentes
+ mas qualitativamente equivalentes.
 \end{enumerate}

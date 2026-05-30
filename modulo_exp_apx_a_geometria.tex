@@ -1,7 +1,7 @@
- >>?\chapter{Revis  o de Geometria Diferencial}
+ >>?\chapter{Revis o de Geometria Diferencial}
 \label{apx:geometria}
 
-Este ap andice apresenta os conceitos fundamentais de geometria diferencial necess irios    compreens  o da Abordagem de Apre SSamento por Transporte Geom ctrico (GAT). O leitor familiarizado com a linguagem de fibrados e formas diferenciais pode consult i-lo como refer ancia pontual; o leitor iniciante encontrar i aqui as defini SS ues essenciais, enunciados dos principais teoremas e nota SS  o empregada ao longo do texto. Seguimos de perto a exposi SS  o cl issica de \citeonline{nakahara2003geometry}, complementada por \citeonline{frankel2011geometry} e \citeonline{bleecker1981gauge}.
+Este ap andice apresenta os conceitos fundamentais de geometria diferencial necess irios compreens o da Abordagem de Apre SSamento por Transporte Geom ctrico (GAT). O leitor familiarizado com a linguagem de fibrados e formas diferenciais pode consult i-lo como refer ancia pontual; o leitor iniciante encontrar i aqui as defini SS ues essenciais, enunciados dos principais teoremas e nota SS o empregada ao longo do texto. Seguimos de perto a exposi SS o cl issica de \citeonline{nakahara2003geometry}, complementada por \citeonline{frankel2011geometry} e \citeonline{bleecker1981gauge}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Variedades Diferenci iveis}
@@ -10,61 +10,61 @@ Este ap andice apresenta os conceitos fundamentais de geometria diferencial nece
 \subsection{Cartas e Atlas}
 
 \begin{defi}[Carta Local]
-Seja $M$ um espa SSo topol 3gico Hausdorff com base enumer ivel. Uma \textbf{carta local} (ou sistema de coordenadas) em $M$  c um par $(U,\varphi)$, em que $U\subset M$  c um aberto e $\varphi:U\to\varphi(U)\subset\R^n$  c um homeomorfismo sobre sua imagem. As fun SS ues $x^i = u^i\circ\varphi:U\to\R$, em que $u^i:\R^n\to\R$ s  o as proje SS ues can 'nicas, denominam-se \textbf{coordenadas locais}.
+Seja $M$ um espa SSo topol 3gico Hausdorff com base enumer ivel. Uma \textbf{carta local} (ou sistema de coordenadas) em $M$ c um par $(U,\varphi)$, em que $U\subset M$ c um aberto e $\varphi:U\to\varphi(U)\subset\R^n$ c um homeomorfismo sobre sua imagem. As fun SS ues $x^i = u^i\circ\varphi:U\to\R$, em que $u^i:\R^n\to\R$ s o as proje SS ues can 'nicas, denominam-se \textbf{coordenadas locais}.
 \end{defi}
 
 \begin{defi}[Atlas]
-Um \textbf{atlas} $\mathcal{A}$ de classe $C^k$ sobre $M$  c uma cole SS  o de cartas $\{(U_\alpha,\varphi_\alpha)\}_{\alpha\in I}$ tal que:
+Um \textbf{atlas} $\mathcal{A}$ de classe $C^k$ sobre $M$ c uma cole SS o de cartas $\{(U_\alpha,\varphi_\alpha)\}_{\alpha\in I}$ tal que:
 \begin{enumerate}
-  \item $\bigcup_{\alpha\in I}U_\alpha = M$ (cobertura);
-  \item Para todo $\alpha,\beta\in I$ com $U_\alpha\cap U_\beta\neq\varnothing$, a \textbf{mudan SSa de coordenadas}
-  \begin{equation}
-    \varphi_\beta\circ\varphi_\alpha^{-1}:\varphi_\alpha(U_\alpha\cap U_\beta)\to\varphi_\beta(U_\alpha\cap U_\beta)
-  \end{equation}
-   c um difeomorfismo de classe $C^k$ entre abertos de $\R^n$.
+ \item $\bigcup_{\alpha\in I}U_\alpha = M$ (cobertura);
+ \item Para todo $\alpha,\beta\in I$ com $U_\alpha\cap U_\beta\neq\varnothing$, a \textbf{mudan SSa de coordenadas}
+ \begin{equation}
+ \varphi_\beta\circ\varphi_\alpha^{-1}:\varphi_\alpha(U_\alpha\cap U_\beta)\to\varphi_\beta(U_\alpha\cap U_\beta)
+ \end{equation}
+ c um difeomorfismo de classe $C^k$ entre abertos de $\R^n$.
 \end{enumerate}
-Duas cartas s  o \textbf{compat -veis} se a uni  o de seus atlas ainda constitui um atlas $C^k$. Um atlas  c \textbf{m iximo} quando cont cm todas as cartas compat -veis com suas cartas.
+Duas cartas s o \textbf{compat -veis} se a uni o de seus atlas ainda constitui um atlas $C^k$. Um atlas c \textbf{m iximo} quando cont cm todas as cartas compat -veis com suas cartas.
 \end{defi}
 
 \begin{defi}[Variedade Diferenci ivel]
-Uma \textbf{variedade diferenci ivel} de dimens  o $n$ e classe $C^k$  c um par $(M,\mathcal{A})$, em que $M$  c um espa SSo topol 3gico Hausdorff com base enumer ivel e $\mathcal{A}$  c um atlas m iximo $C^k$ sobre $M$. Quando $k=\infty$, dizemos que $M$  c uma variedade \textbf{suave}.
+Uma \textbf{variedade diferenci ivel} de dimens o $n$ e classe $C^k$ c um par $(M,\mathcal{A})$, em que $M$ c um espa SSo topol 3gico Hausdorff com base enumer ivel e $\mathcal{A}$ c um atlas m iximo $C^k$ sobre $M$. Quando $k=\infty$, dizemos que $M$ c uma variedade \textbf{suave}.
 \end{defi}
 
 \begin{ex}
-O espa SSo euclidiano $\R^n$ com a carta identidade $(\R^n,\id)$  c uma variedade suave. A esfera $S^n = \{x\in\R^{n+1}:\|x\|=1\}$ admite um atlas com duas cartas estereogr ificas, constituindo uma variedade suave compacta de dimens  o $n$.
+O espa SSo euclidiano $\R^n$ com a carta identidade $(\R^n,\id)$ c uma variedade suave. A esfera $S^n = \{x\in\R^{n+1}:\|x\|=1\}$ admite um atlas com duas cartas estereogr ificas, constituindo uma variedade suave compacta de dimens o $n$.
 \end{ex}
 
 \subsection{Espa SSo Tangente}
 
 \begin{defi}[Vetor Tangente via Deriva SS ues]
-Seja $p\in M$. Uma \textbf{deriva SS  o} em $p$  c um funcional linear $X_p:C^\infty(M)\to\R$ satisfazendo a regra de Leibniz:
+Seja $p\in M$. Uma \textbf{deriva SS o} em $p$ c um funcional linear $X_p:C^\infty(M)\to\R$ satisfazendo a regra de Leibniz:
 \begin{equation}
-  X_p(fg) = X_p(f)\,g(p) + f(p)\,X_p(g),\qquad \forall f,g\in C^\infty(M).
+ X_p(fg) = X_p(f)\,g(p) + f(p)\,X_p(g),\qquad \forall f,g\in C^\infty(M).
 \end{equation}
-O \textbf{espa SSo tangente} $T_pM$  c o conjunto de todas as deriva SS ues em $p$, dotado da estrutura natural de espa SSo vetorial real de dimens  o $n$.
+O \textbf{espa SSo tangente} $T_pM$ c o conjunto de todas as deriva SS ues em $p$, dotado da estrutura natural de espa SSo vetorial real de dimens o $n$.
 \end{defi}
 
 Em coordenadas locais $(U,\varphi)$ com $\varphi=(x^1,\dots,x^n)$, os operadores
 \begin{equation}
-  \left.\frac{\partial}{\partial x^i}\right|_p(f) = \frac{\partial (f\circ\varphi^{-1})}{\partial u^i}\Big|_{\varphi(p)}
+ \left.\frac{\partial}{\partial x^i}\right|_p(f) = \frac{\partial (f\circ\varphi^{-1})}{\partial u^i}\Big|_{\varphi(p)}
 \end{equation}
 formam uma base de $T_pM$, denominada \textbf{base coordenada}. Todo vetor tangente expressa-se unicamente como $X_p = X^i\,\partial/\partial x^i|_p$ (soma de Einstein impl -cita).
 
 \subsection{Campos Vetoriais e Colchete de Lie}
 
 \begin{defi}
-Um \textbf{campo vetorial} $X$ sobre $M$  c uma se SS  o suave do fibrado tangente $TM$, isto  c, uma aplica SS  o $X:M\to TM$ tal que $\pi\circ X = \id_M$. Em coordenadas locais, $X = X^i(x)\,\partial/\partial x^i$.
+Um \textbf{campo vetorial} $X$ sobre $M$ c uma se SS o suave do fibrado tangente $TM$, isto c, uma aplica SS o $X:M\to TM$ tal que $\pi\circ X = \id_M$. Em coordenadas locais, $X = X^i(x)\,\partial/\partial x^i$.
 \end{defi}
 
-O conjunto $\mathfrak{X}(M)$ de todos os campos vetoriais suaves constitui um m 3dulo sobre $C^\infty(M)$ e uma  ilgebra de Lie real com o \textbf{colchete de Lie}:
+O conjunto $\mathfrak{X}(M)$ de todos os campos vetoriais suaves constitui um m 3dulo sobre $C^\infty(M)$ e uma ilgebra de Lie real com o \textbf{colchete de Lie}:
 \begin{equation}
-  [X,Y](f) = X(Y(f)) - Y(X(f)),\qquad f\in C^\infty(M).
+ [X,Y](f) = X(Y(f)) - Y(X(f)),\qquad f\in C^\infty(M).
 \end{equation}
 Em coordenadas, $[X,Y] = (X^j\partial_jY^i - Y^j\partial_jX^i)\,\partial_i$.
 
 O colchete de Lie satisfaz a \textbf{identidade de Jacobi}:
 \begin{equation}
-  [X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0,
+ [X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0,
 \end{equation}
 e constitui o prot 3tipo alg cbrico da curvatura em geometria diferencial.
 
@@ -75,148 +75,148 @@ e constitui o prot 3tipo alg cbrico da curvatura em geometria diferencial.
 \subsection{\texorpdfstring{$1$}{1}-Formas e o Fibrado Cotangente}
 
 \begin{defi}
-O \textbf{espa SSo cotangente} $T_p^*M$  c o dual do espa SSo tangente: $T_p^*M = (T_pM)^*$. Uma \textbf{1-forma diferencial} $\omega$  c uma se SS  o suave do fibrado cotangente $T^*M$, atribuindo a cada $p\in M$ um funcional linear $\omega_p:T_pM\to\R$.
+O \textbf{espa SSo cotangente} $T_p^*M$ c o dual do espa SSo tangente: $T_p^*M = (T_pM)^*$. Uma \textbf{1-forma diferencial} $\omega$ c uma se SS o suave do fibrado cotangente $T^*M$, atribuindo a cada $p\in M$ um funcional linear $\omega_p:T_pM\to\R$.
 \end{defi}
 
-A \textbf{diferencial exterior} de uma fun SS  o $f\in C^\infty(M)$  c a 1-forma $df$ definida por $df(X) = X(f)$. Em coordenadas, $df = (\partial_i f)\,dx^i$, em que $\{dx^i\}$  c a base dual de $\{\partial/\partial x^i\}$, satisfazendo $dx^i(\partial_j) = \delta^i_j$.
+A \textbf{diferencial exterior} de uma fun SS o $f\in C^\infty(M)$ c a 1-forma $df$ definida por $df(X) = X(f)$. Em coordenadas, $df = (\partial_i f)\,dx^i$, em que $\{dx^i\}$ c a base dual de $\{\partial/\partial x^i\}$, satisfazendo $dx^i(\partial_j) = \delta^i_j$.
 
 \subsection{\texorpdfstring{$k$}{k}-Formas e o Produto Exterior}
 
-Seja $\bigwedge^k T_p^*M$ a $k$- csima pot ancia exterior do espa SSo cotangente. Uma \textbf{$k$-forma diferencial} $\omega$  c uma se SS  o do fibrado $\bigwedge^k T^*M$. Localmente,
+Seja $\bigwedge^k T_p^*M$ a $k$- csima pot ancia exterior do espa SSo cotangente. Uma \textbf{$k$-forma diferencial} $\omega$ c uma se SS o do fibrado $\bigwedge^k T^*M$. Localmente,
 \begin{equation}
-  \omega = \frac{1}{k!}\,\omega_{i_1\cdots i_k}\,dx^{i_1}\wedge\cdots\wedge dx^{i_k},
+ \omega = \frac{1}{k!}\,\omega_{i_1\cdots i_k}\,dx^{i_1}\wedge\cdots\wedge dx^{i_k},
 \end{equation}
 com coeficientes $\omega_{i_1\cdots i_k}$ totalmente antissim ctricos.
 
-O \textbf{produto exterior} $\wedge:\Omega^k(M)\times\Omega^\ell(M)\to\Omega^{k+\ell}(M)$  c bilinear, associativo, e satisfaz $\alpha\wedge\beta = (-1)^{k\ell}\beta\wedge\alpha$ para $\alpha\in\Omega^k(M)$, $\beta\in\Omega^\ell(M)$.
+O \textbf{produto exterior} $\wedge:\Omega^k(M)\times\Omega^\ell(M)\to\Omega^{k+\ell}(M)$ c bilinear, associativo, e satisfaz $\alpha\wedge\beta = (-1)^{k\ell}\beta\wedge\alpha$ para $\alpha\in\Omega^k(M)$, $\beta\in\Omega^\ell(M)$.
 
 \subsection{Derivada Exterior}
 
 \begin{defi}
-A \textbf{derivada exterior} $d:\Omega^k(M)\to\Omega^{k+1}(M)$  c a  onica aplica SS  o $\R$-linear satisfazendo:
+A \textbf{derivada exterior} $d:\Omega^k(M)\to\Omega^{k+1}(M)$ c a onica aplica SS o $\R$-linear satisfazendo:
 \begin{enumerate}
-  \item $df$ coincide com a diferencial de fun SS ues para $k=0$;
-  \item $d(d\omega)=0$ para toda forma $\omega$ (nilpot ancia: $d^2=0$);
-  \item $d(\alpha\wedge\beta) = d\alpha\wedge\beta + (-1)^k\alpha\wedge d\beta$ (regra de Leibniz graduada).
+ \item $df$ coincide com a diferencial de fun SS ues para $k=0$;
+ \item $d(d\omega)=0$ para toda forma $\omega$ (nilpot ancia: $d^2=0$);
+ \item $d(\alpha\wedge\beta) = d\alpha\wedge\beta + (-1)^k\alpha\wedge d\beta$ (regra de Leibniz graduada).
 \end{enumerate}
 Em coordenadas, para $\omega = \frac{1}{k!}\omega_{i_1\cdots i_k}dx^{i_1}\wedge\cdots\wedge dx^{i_k}$:
 \begin{equation}
-  d\omega = \frac{1}{k!}\,\partial_j\omega_{i_1\cdots i_k}\,dx^j\wedge dx^{i_1}\wedge\cdots\wedge dx^{i_k}.
+ d\omega = \frac{1}{k!}\,\partial_j\omega_{i_1\cdots i_k}\,dx^j\wedge dx^{i_1}\wedge\cdots\wedge dx^{i_k}.
 \end{equation}
 \end{defi}
 
 \begin{defi}
-Uma forma $\omega$  c \textbf{fechada} se $d\omega=0$, e \textbf{exata} se existe $\eta$ tal que $\omega = d\eta$. Toda forma exata  c fechada, pois $d^2=0$.
+Uma forma $\omega$ c \textbf{fechada} se $d\omega=0$, e \textbf{exata} se existe $\eta$ tal que $\omega = d\eta$. Toda forma exata c fechada, pois $d^2=0$.
 \end{defi}
 
 \subsection{Lema de Poincar c}
 
 \begin{teo}[Lema de Poincar c]
-Seja $U\subset\R^n$ um aberto contr itil (em particular, estrelado). Toda $k$-forma fechada em $U$ ($k\geq 1$)  c exata. Equivalentemente, os grupos de cohomologia de de Rham de $U$ satisfazem $H^k_{\text{dR}}(U)=0$ para $k\geq 1$.
+Seja $U\subset\R^n$ um aberto contr itil (em particular, estrelado). Toda $k$-forma fechada em $U$ ($k\geq 1$) c exata. Equivalentemente, os grupos de cohomologia de de Rham de $U$ satisfazem $H^k_{\text{dR}}(U)=0$ para $k\geq 1$.
 \end{teo}
 
 \begin{proof}[Esbo SSo]
-Define-se o operador de homotopia $K:\Omega^k(U)\to\Omega^{k-1}(U)$ por integra SS  o ao longo de raios:
+Define-se o operador de homotopia $K:\Omega^k(U)\to\Omega^{k-1}(U)$ por integra SS o ao longo de raios:
 \begin{equation}
-  (K\omega)_{i_1\cdots i_{k-1}}(x) = \int_0^1 t^{k-1}\,\omega_{j i_1\cdots i_{k-1}}(tx)\,x^j\,dt,
+ (K\omega)_{i_1\cdots i_{k-1}}(x) = \int_0^1 t^{k-1}\,\omega_{j i_1\cdots i_{k-1}}(tx)\,x^j\,dt,
 \end{equation}
-que satisfaz $Kd + dK = \id$ em $\Omega^k(U)$ para $k\geq 1$. Se $d\omega=0$, ent  o $\omega = d(K\omega)$, donde $\omega$  c exata.
+que satisfaz $Kd + dK = \id$ em $\Omega^k(U)$ para $k\geq 1$. Se $d\omega=0$, ent o $\omega = d(K\omega)$, donde $\omega$ c exata.
 \end{proof}
 
-O Lema de Poincar c  c fundamental na GAT: ele garante que toda 2-forma de curvatura fechada (identidade de Bianchi)  c localmente exata, fornecendo potenciais de conex  o (1-formas de gauge) em vizinhan SSas contr iteis do espa SSo de ativos.
+O Lema de Poincar c c fundamental na GAT: ele garante que toda 2-forma de curvatura fechada (identidade de Bianchi) c localmente exata, fornecendo potenciais de conex o (1-formas de gauge) em vizinhan SSas contr iteis do espa SSo de ativos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Grupos de Lie}
 \label{sec:grupos_lie}
 
-\subsection{Defini SS  o e Exemplos}
+\subsection{Defini SS o e Exemplos}
 
 \begin{defi}
-Um \textbf{grupo de Lie} $G$  c uma variedade suave dotada de uma estrutura de grupo tal que as opera SS ues de multiplica SS  o $\mu:G\times G\to G$, $\mu(g,h)=gh$, e invers  o $\iota:G\to G$, $\iota(g)=g^{-1}$, s  o aplica SS ues suaves.
+Um \textbf{grupo de Lie} $G$ c uma variedade suave dotada de uma estrutura de grupo tal que as opera SS ues de multiplica SS o $\mu:G\times G\to G$, $\mu(g,h)=gh$, e invers o $\iota:G\to G$, $\iota(g)=g^{-1}$, s o aplica SS ues suaves.
 \end{defi}
 
 \begin{ex}
-O grupo linear geral $\GL(n,\R)$  c um grupo de Lie de dimens  o $n^2$. Seus subgrupos fechados --- $\SL(n,\R)$, $\SO(n)$, $\U(n)$, $\SU(n)$ --- s  o igualmente grupos de Lie (teorema de Cartan--von Neumann). Em finan SSas, $\GL(n,\R)$ modela transforma SS ues lineares invert -veis entre cestas de ativos, enquanto $\SO(n)$ preserva a estrutura de correla SS  o (m ctrica de Mahalanobis).
+O grupo linear geral $\GL(n,\R)$ c um grupo de Lie de dimens o $n^2$. Seus subgrupos fechados --- $\SL(n,\R)$, $\SO(n)$, $\U(n)$, $\SU(n)$ --- s o igualmente grupos de Lie (teorema de Cartan--von Neumann). Em finan SSas, $\GL(n,\R)$ modela transforma SS ues lineares invert -veis entre cestas de ativos, enquanto $\SO(n)$ preserva a estrutura de correla SS o (m ctrica de Mahalanobis).
 \end{ex}
 
-\subsection{  lgebra de Lie}
+\subsection{ lgebra de Lie}
 
 \begin{defi}
-A \textbf{ ilgebra de Lie} $\mathfrak{g}$ de um grupo de Lie $G$  c o espa SSo tangente na identidade, $\mathfrak{g}=T_eG$, munido do colchete de Lie induzido pelos campos invariantes    esquerda.
+A \textbf{ ilgebra de Lie} $\mathfrak{g}$ de um grupo de Lie $G$ c o espa SSo tangente na identidade, $\mathfrak{g}=T_eG$, munido do colchete de Lie induzido pelos campos invariantes esquerda.
 \end{defi}
 
-Um campo $X\in\mathfrak{X}(G)$  c \textbf{invariante    esquerda} se $(L_g)_*X = X$ para todo $g\in G$, em que $L_g(h)=gh$. O colchete de dois campos invariantes    esquerda  c invariante    esquerda, conferindo a $\mathfrak{g}$ a estrutura de  ilgebra de Lie.
+Um campo $X\in\mathfrak{X}(G)$ c \textbf{invariante esquerda} se $(L_g)_*X = X$ para todo $g\in G$, em que $L_g(h)=gh$. O colchete de dois campos invariantes esquerda c invariante esquerda, conferindo a $\mathfrak{g}$ a estrutura de ilgebra de Lie.
 
 Em termos matriciais, para $G\subset\GL(n,\R)$, tem-se $\mathfrak{g}\subset\mathfrak{gl}(n,\R)=M_n(\R)$ e $[A,B]=AB-BA$ (comutador de matrizes).
 
-\subsection{Aplica SS  o Exponencial}
+\subsection{Aplica SS o Exponencial}
 
 \begin{defi}
-A \textbf{aplica SS  o exponencial} $\exp:\mathfrak{g}\to G$  c definida por $\exp(A)=\gamma_A(1)$, em que $\gamma_A:\R\to G$  c o subgrupo a 1-par  metro gerado por $A\in\mathfrak{g}$, i.e., a  onica curva satisfazendo $\gamma_A(0)=e$ e $\dot\gamma_A(t) = (L_{\gamma_A(t)})_*A$.
+A \textbf{aplica SS o exponencial} $\exp:\mathfrak{g}\to G$ c definida por $\exp(A)=\gamma_A(1)$, em que $\gamma_A:\R\to G$ c o subgrupo a 1-par metro gerado por $A\in\mathfrak{g}$, i.e., a onica curva satisfazendo $\gamma_A(0)=e$ e $\dot\gamma_A(t) = (L_{\gamma_A(t)})_*A$.
 \end{defi}
 
-Para grupos matriciais, $\exp(A) = \sum_{k=0}^\infty A^k/k!$, a exponencial de matrizes usual. A exponencial  c um difeomorfismo local entre uma vizinhan SSa de $0\in\mathfrak{g}$ e uma vizinhan SSa de $e\in G$, fornecendo a \textbf{carta exponencial} fundamental na GAT para parametrizar instrumentos financeiros como elementos de grupos de Lie.
+Para grupos matriciais, $\exp(A) = \sum_{k=0}^\infty A^k/k!$, a exponencial de matrizes usual. A exponencial c um difeomorfismo local entre uma vizinhan SSa de $0\in\mathfrak{g}$ e uma vizinhan SSa de $e\in G$, fornecendo a \textbf{carta exponencial} fundamental na GAT para parametrizar instrumentos financeiros como elementos de grupos de Lie.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fibrados: Defini SS ues, Conex ues e Curvatura}
 \label{sec:fibrados}
 
-\subsection{Defini SS  o e Se SS ues}
+\subsection{Defini SS o e Se SS ues}
 
 \begin{defi}
-Um \textbf{fibrado} (ou espa SSo fibrado) $\pi:E\to M$ consiste em um espa SSo total $E$, uma base $M$ (variedade), e uma proje SS  o $\pi$ sobrejetora e suave. Para cada $x\in M$, a \textbf{fibra} $E_x=\pi^{-1}(x)$  c uma variedade difeomorfa a uma \textbf{fibra t -pica} $F$. Localmente, $E$  c trivial: existe uma vizinhan SSa $U\subset M$ e um difeomorfismo $\phi:\pi^{-1}(U)\to U\times F$ tal que $\pr_1\circ\phi = \pi$.
+Um \textbf{fibrado} (ou espa SSo fibrado) $\pi:E\to M$ consiste em um espa SSo total $E$, uma base $M$ (variedade), e uma proje SS o $\pi$ sobrejetora e suave. Para cada $x\in M$, a \textbf{fibra} $E_x=\pi^{-1}(x)$ c uma variedade difeomorfa a uma \textbf{fibra t -pica} $F$. Localmente, $E$ c trivial: existe uma vizinhan SSa $U\subset M$ e um difeomorfismo $\phi:\pi^{-1}(U)\to U\times F$ tal que $\pr_1\circ\phi = \pi$.
 \end{defi}
 
 \begin{ex}[Fibrados Relevantes na GAT]
 \begin{itemize}
-  \item \textbf{Fibrado tangente} $TM$: fibra t -pica $\R^n$, base $M$.
-  \item \textbf{Fibrado cotangente} $T^*M$: dual de $TM$.
-  \item \textbf{Fibrado de frames} $FM$: fibra em $x$  c o conjunto de todas as bases de $T_xM$; isomorfo a $\GL(n,\R)$.
-  \item \textbf{Fibrado principal} $P(M,G)$: fibra t -pica  c um grupo de Lie $G$ agindo livremente    direita.
-  \item \textbf{Fibrado associado} $E = P\times_G V$: obtido de um fibrado principal $P$ e uma representa SS  o $\rho:G\to\GL(V)$.
+ \item \textbf{Fibrado tangente} $TM$: fibra t -pica $\R^n$, base $M$.
+ \item \textbf{Fibrado cotangente} $T^*M$: dual de $TM$.
+ \item \textbf{Fibrado de frames} $FM$: fibra em $x$ c o conjunto de todas as bases de $T_xM$; isomorfo a $\GL(n,\R)$.
+ \item \textbf{Fibrado principal} $P(M,G)$: fibra t -pica c um grupo de Lie $G$ agindo livremente direita.
+ \item \textbf{Fibrado associado} $E = P\times_G V$: obtido de um fibrado principal $P$ e uma representa SS o $\rho:G\to\GL(V)$.
 \end{itemize}
 \end{ex}
 
-Uma \textbf{se SS  o} de $\pi:E\to M$  c uma aplica SS  o suave $s:M\to E$ tal que $\pi\circ s = \id_M$. Campos vetoriais s  o se SS ues de $TM$; 1-formas s  o se SS ues de $T^*M$.
+Uma \textbf{se SS o} de $\pi:E\to M$ c uma aplica SS o suave $s:M\to E$ tal que $\pi\circ s = \id_M$. Campos vetoriais s o se SS ues de $TM$; 1-formas s o se SS ues de $T^*M$.
 
 \subsection{Conex ues e Derivada Covariante}
 
 \begin{defi}
-Uma \textbf{conex  o} (ou derivada covariante) em um fibrado vetorial $E\to M$  c um operador $\nabla:\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$, $(X,s)\mapsto\nabla_X s$, $\R$-bilinear e satisfazendo:
+Uma \textbf{conex o} (ou derivada covariante) em um fibrado vetorial $E\to M$ c um operador $\nabla:\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$, $(X,s)\mapsto\nabla_X s$, $\R$-bilinear e satisfazendo:
 \begin{enumerate}
-  \item $\nabla_{fX}s = f\nabla_X s$ ($C^\infty(M)$-linearidade no argumento do campo);
-  \item $\nabla_X(fs) = X(f)s + f\nabla_X s$ (regra de Leibniz no argumento da se SS  o).
+ \item $\nabla_{fX}s = f\nabla_X s$ ($C^\infty(M)$-linearidade no argumento do campo);
+ \item $\nabla_X(fs) = X(f)s + f\nabla_X s$ (regra de Leibniz no argumento da se SS o).
 \end{enumerate}
 \end{defi}
 
-Em uma base local de se SS ues $\{e_a\}$ de $E$ sobre $U\subset M$, a conex  o  c determinada pela \textbf{1-forma de conex  o} $\omega$:
+Em uma base local de se SS ues $\{e_a\}$ de $E$ sobre $U\subset M$, a conex o c determinada pela \textbf{1-forma de conex o} $\omega$:
 \begin{equation}
-  \nabla_X e_a = \omega^b_{\;a}(X)\,e_b,
+ \nabla_X e_a = \omega^b_{\;a}(X)\,e_b,
 \end{equation}
-em que $\omega = (\omega^b_{\;a})$  c uma matriz de 1-formas diferenciais em $U$, denominada forma de conex  o local.
+em que $\omega = (\omega^b_{\;a})$ c uma matriz de 1-formas diferenciais em $U$, denominada forma de conex o local.
 
 \subsection{Curvatura}
 
 \begin{defi}
-A \textbf{curvatura} de uma conex  o $\nabla$  c o operador $R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$ definido por:
+A \textbf{curvatura} de uma conex o $\nabla$ c o operador $R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\Gamma(E)\to\Gamma(E)$ definido por:
 \begin{equation}
-  R(X,Y)s = \nabla_X\nabla_Y s - \nabla_Y\nabla_X s - \nabla_{[X,Y]}s.
+ R(X,Y)s = \nabla_X\nabla_Y s - \nabla_Y\nabla_X s - \nabla_{[X,Y]}s.
 \end{equation}
 \end{defi}
 
-Em termos da forma de conex  o, a curvatura  c representada pela \textbf{2-forma de curvatura} $\Omega$:
+Em termos da forma de conex o, a curvatura c representada pela \textbf{2-forma de curvatura} $\Omega$:
 \begin{equation}
-  \Omega^a_{\;b} = d\omega^a_{\;b} + \omega^a_{\;c}\wedge\omega^c_{\;b}.
+ \Omega^a_{\;b} = d\omega^a_{\;b} + \omega^a_{\;c}\wedge\omega^c_{\;b}.
 \end{equation}
-Esta  c a \textbf{equa SS  o de estrutura de Cartan} (ou equa SS  o de Maurer--Cartan para fibrados principais).
+Esta c a \textbf{equa SS o de estrutura de Cartan} (ou equa SS o de Maurer--Cartan para fibrados principais).
 
 A curvatura satisfaz a \textbf{identidade de Bianchi}:
 \begin{equation}
-  d\Omega + \omega\wedge\Omega - \Omega\wedge\omega = 0,
+ d\Omega + \omega\wedge\Omega - \Omega\wedge\omega = 0,
 \end{equation}
-que na GAT corresponde    condi SS  o de aus ancia de arbitragem (NFLVR): a curvatura do fibrado de pre SSos deve ser uma 2-forma fechada com respeito    derivada covariante, garantindo que a carteira de ativos n  o admite oportunidades de lucro sem risco. Este v -nculo geom ctrico entre curvatura e equil -brio de mercado constitui o cerne da Abordagem de Apre SSamento por Transporte Geom ctrico.
+que na GAT corresponde condi SS o de aus ancia de arbitragem (NFLVR): a curvatura do fibrado de pre SSos deve ser uma 2-forma fechada com respeito derivada covariante, garantindo que a carteira de ativos n o admite oportunidades de lucro sem risco. Este v -nculo geom ctrico entre curvatura e equil -brio de mercado constitui o cerne da Abordagem de Apre SSamento por Transporte Geom ctrico.
 
-Para um tratamento completo da teoria de fibrados e suas aplica SS ues    f -sica e finan SSas, remetemos o leitor a \citeonline{nakahara2003geometry}, \citeonline{kobayashi1963foundations} e \citeonline{bleecker1981gauge}.
+Para um tratamento completo da teoria de fibrados e suas aplica SS ues f -sica e finan SSas, remetemos o leitor a \citeonline{nakahara2003geometry}, \citeonline{kobayashi1963foundations} e \citeonline{bleecker1981gauge}.
 
 \endinput
 

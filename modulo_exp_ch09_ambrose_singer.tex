@@ -9,8 +9,8 @@ O conceito de holonomia captura, em linguagem geom\'etrica, a ideia fundamental 
 Seja \(P(M,G)\) um fibrado principal sobre uma variedade base \(M\) (o espa\c{c}o de estados do mercado) com grupo estrutural \(G\) (o grupo de gauge). Denotamos por \(\chi\) uma conex\~ao sobre \(P\), i.e., uma 1-forma em \(P\) com valores na \'algebra de Lie \(\mathfrak{g}\) satisfazendo:
 
 \begin{enumerate}
-    \item \(\chi(A^*) = A\) para todo \(A \in \mathfrak{g}\), onde \(A^*\) \'e o campo fundamental associado.
-    \item \(R_g^* \chi = \operatorname{Ad}_{g^{-1}} \chi\) para todo \(g \in G\).
+ \item \(\chi(A^*) = A\) para todo \(A \in \mathfrak{g}\), onde \(A^*\) \'e o campo fundamental associado.
+ \item \(R_g^* \chi = \operatorname{Ad}_{g^{-1}} \chi\) para todo \(g \in G\).
 \end{enumerate}
 
 Dada uma curva \(\gamma: [0,1] \to M\) e um ponto \(u \in P_{\gamma(0)}\) na fibra sobre \(\gamma(0)\), o levantamento horizontal de \(\gamma\) com condi\c{c}\~ao inicial \(u\) \'e a \'unica curva \(\tilde{\gamma}: [0,1] \to P\) tal que \(\pi \circ \tilde{\gamma} = \gamma\), \(\tilde{\gamma}(0) = u\), e \(\chi(\dot{\tilde{\gamma}}(t)) = 0\) para todo \(t\).
@@ -20,8 +20,8 @@ Dada uma curva \(\gamma: [0,1] \to M\) e um ponto \(u \in P_{\gamma(0)}\) na fib
 \begin{defi}[Grupo de Holonomia]
 Seja \(u \in P\) um ponto fixado. O \textbf{grupo de holonomia} de \(\chi\) com ponto base \(u\) \'e o subgrupo de \(G\) definido por
 \begin{equation}\label{eq:hol-group}
-    \operatorname{Hol}_u(\chi)
-    = \{\, g \in G \mid \exists\; \gamma \text{ la\c{c}o em } M \text{ baseado em } \pi(u) \text{ tal que } \tilde{\gamma}(1) = u \cdot g \,\}.
+ \operatorname{Hol}_u(\chi)
+ = \{\, g \in G \mid \exists\; \gamma \text{ la\c{c}o em } M \text{ baseado em } \pi(u) \text{ tal que } \tilde{\gamma}(1) = u \cdot g \,\}.
 \end{equation}
 \end{defi}
 
@@ -29,8 +29,8 @@ Em palavras: \(\operatorname{Hol}_u(\chi)\) consiste de todos os elementos de \(
 
 \begin{defi}[Holonomia Local e Restrita]
 \begin{enumerate}
-    \item A \textbf{holonomia restrita} \(\operatorname{Hol}_u^{\,0}(\chi)\) \'e o subgrupo obtido considerando apenas la\c{c}os \textbf{contr\'ateis} (homot\'opicos a um ponto). Este \'e exatamente a componente conexa da identidade de \(\operatorname{Hol}_u(\chi)\).
-    \item A \textbf{holonomia local} \'e a holonomia restrita quando restringimos a aten\c{c}\~ao a vizinhan\c{c}as suficientemente pequenas de um ponto \(x \in M\).
+ \item A \textbf{holonomia restrita} \(\operatorname{Hol}_u^{\,0}(\chi)\) \'e o subgrupo obtido considerando apenas la\c{c}os \textbf{contr\'ateis} (homot\'opicos a um ponto). Este \'e exatamente a componente conexa da identidade de \(\operatorname{Hol}_u(\chi)\).
+ \item A \textbf{holonomia local} \'e a holonomia restrita quando restringimos a aten\c{c}\~ao a vizinhan\c{c}as suficientemente pequenas de um ponto \(x \in M\).
 \end{enumerate}
 \end{defi}
 
@@ -67,11 +67,11 @@ Seja \(\mathfrak{hol}(\chi) = \operatorname{Lie}(\operatorname{Hol}(\chi))\) a \
 A justificativa se desenvolve em tr\^es etapas conceituais:
 
 \begin{enumerate}
-    \item \textbf{Transporte ao longo de \(\gamma \to\) elemento do grupo.} Dado um la\c{c}o \(\gamma\) em \(M\) baseado em \(x_0\), o transporte paralelo ao longo de \(\gamma\) define um isomorfismo da fibra \(P_{x_0}\) sobre si mesma, i.e., um elemento \(g_\gamma \in \operatorname{Hol}_{u}(\chi) \subset G\). Este elemento codifica o efeito acumulado da estrat\'egia de trading que realiza o ciclo \(\gamma\).
+ \item \textbf{Transporte ao longo de \(\gamma \to\) elemento do grupo.} Dado um la\c{c}o \(\gamma\) em \(M\) baseado em \(x_0\), o transporte paralelo ao longo de \(\gamma\) define um isomorfismo da fibra \(P_{x_0}\) sobre si mesma, i.e., um elemento \(g_\gamma \in \operatorname{Hol}_{u}(\chi) \subset G\). Este elemento codifica o efeito acumulado da estrat\'egia de trading que realiza o ciclo \(\gamma\).
 
-    \item \textbf{Curvas homot\'opicas \(\to\) mesma holonomia restrita.} Se dois la\c{c}os \(\gamma_0\) e \(\gamma_1\) s\~ao homot\'opicos (com extremos fixos), seus levantamentos horizontais terminam no mesmo ponto da fibra. Logo, pertencem \`a mesma classe em \(\operatorname{Hol}_u^{\,0}(\chi)\). Isto significa que estrat\'egias de trading que podem ser deformadas continuamente uma na outra -- sem ``atravessar singularidades'' do mercado -- produzem o mesmo resultado financeiro.
+ \item \textbf{Curvas homot\'opicas \(\to\) mesma holonomia restrita.} Se dois la\c{c}os \(\gamma_0\) e \(\gamma_1\) s\~ao homot\'opicos (com extremos fixos), seus levantamentos horizontais terminam no mesmo ponto da fibra. Logo, pertencem \`a mesma classe em \(\operatorname{Hol}_u^{\,0}(\chi)\). Isto significa que estrat\'egias de trading que podem ser deformadas continuamente uma na outra -- sem ``atravessar singularidades'' do mercado -- produzem o mesmo resultado financeiro.
 
-    \item \textbf{\'Algebra de Lie \(\leftrightarrow\) classes infinitesimais.} Elementos da \'algebra de Lie \(\mathfrak{hol}(\chi)\) s\~ao geradores infinitesimais de elementos do grupo. No contexto financeiro, correspondem a estrat\'egias de arbitragem ``instant\^aneas'' ou de primeira ordem, a partir das quais estrat\'egias finitas podem ser reconstru\'idas por integra\c{c}\~ao (exponencia\c{c}\~ao na \'algebra de Lie).
+ \item \textbf{\'Algebra de Lie \(\leftrightarrow\) classes infinitesimais.} Elementos da \'algebra de Lie \(\mathfrak{hol}(\chi)\) s\~ao geradores infinitesimais de elementos do grupo. No contexto financeiro, correspondem a estrat\'egias de arbitragem ``instant\^aneas'' ou de primeira ordem, a partir das quais estrat\'egias finitas podem ser reconstru\'idas por integra\c{c}\~ao (exponencia\c{c}\~ao na \'algebra de Lie).
 \end{enumerate}
 
 \begin{prop}[Invari\^ancia sob Homotopia]
@@ -90,14 +90,14 @@ O Teorema de Ambrose--Singer (Ambrose \& Singer, 1953) \'e o resultado estrutura
 
 Seja \(\Omega\) a 2-forma de curvatura da conex\~ao \(\chi\), definida pela equa\c{c}\~ao de estrutura de Cartan:
 \begin{equation}\label{eq:cartan-structure}
-    \Omega = d\chi + \frac{1}{2}[\chi, \chi].
+ \Omega = d\chi + \frac{1}{2}[\chi, \chi].
 \end{equation}
 Equivalentemente, \(\Omega(X,Y) = d\chi(X,Y) + [\chi(X), \chi(Y)]\) para campos vetoriais \(X,Y\) em \(P\).
 
 \begin{teo}[Ambrose--Singer, 1953]\label{teo:ambrose-singer}
 Seja \(P(M,G)\) um fibrado principal com conex\~ao \(\chi\) e curvatura \(\Omega\). Para todo \(u \in P\), a \'algebra de Lie \(\mathfrak{hol}_u(\chi)\) do grupo de holonomia \(\operatorname{Hol}_u(\chi)\) \'e o subespa\c{c}o de \(\mathfrak{g}\) gerado por todos os elementos da forma
 \begin{equation}\label{eq:as-generators}
-    \Omega_v(X,Y) \in \mathfrak{g},
+ \Omega_v(X,Y) \in \mathfrak{g},
 \end{equation}
 onde \(v \in P(u)\) pertence ao fibrado de holonomia de \(u\) e \(X,Y \in T_v P\) s\~ao vetores horizontais arbitr\'arios.
 \end{teo}
@@ -113,13 +113,13 @@ Em termos mais operacionais: a \'algebra de Lie da holonomia \'e gerada por todo
 A demonstra\c{c}\~ao completa encontra-se em Ambrose \& Singer (1953) e Kobayashi--Nomizu (1963, Cap. II, Teorema 8.1). Apresentamos aqui um esbo\c{c}o estruturado em quatro passos.
 
 \begin{enumerate}
-    \item \textbf{Fibrado de Holonomia.} Constr\'oi-se o subconjunto \(P(u) \subset P\) dos pontos que podem ser alcan\c{c}ados a partir de \(u\) por curvas horizontais. Demonstra-se que \(P(u)\) \'e um fibrado principal reduzido sobre \(M\) com grupo estrutural \(\operatorname{Hol}_u(\chi)\). A conex\~ao \(\chi\) restringe-se a uma conex\~ao em \(P(u)\).
+ \item \textbf{Fibrado de Holonomia.} Constr\'oi-se o subconjunto \(P(u) \subset P\) dos pontos que podem ser alcan\c{c}ados a partir de \(u\) por curvas horizontais. Demonstra-se que \(P(u)\) \'e um fibrado principal reduzido sobre \(M\) com grupo estrutural \(\operatorname{Hol}_u(\chi)\). A conex\~ao \(\chi\) restringe-se a uma conex\~ao em \(P(u)\).
 
-    \item \textbf{Teorema de Redu\c{c}\~ao.} Pelo teorema de redu\c{c}\~ao de Cartan, uma conex\~ao em \(P\) reduz-se a um subfibrado \(Q \subset P\) se, e somente se, sua curvatura \(\Omega\) toma valores na \'algebra de Lie do grupo estrutural de \(Q\) quando avaliada em vetores tangentes a \(Q\). Aplicado a \(P(u)\), isto implica que \(\Omega_v(X,Y) \in \mathfrak{hol}_u(\chi)\) para todos \(v \in P(u)\) e \(X,Y\) horizontais.
+ \item \textbf{Teorema de Redu\c{c}\~ao.} Pelo teorema de redu\c{c}\~ao de Cartan, uma conex\~ao em \(P\) reduz-se a um subfibrado \(Q \subset P\) se, e somente se, sua curvatura \(\Omega\) toma valores na \'algebra de Lie do grupo estrutural de \(Q\) quando avaliada em vetores tangentes a \(Q\). Aplicado a \(P(u)\), isto implica que \(\Omega_v(X,Y) \in \mathfrak{hol}_u(\chi)\) para todos \(v \in P(u)\) e \(X,Y\) horizontais.
 
-    \item \textbf{A \'Algebra de Lie da Holonomia.} Seja \(\mathfrak{m}_u \subset \mathfrak{g}\) o subespa\c{c}o gerado por \(\{\Omega_v(X,Y) \mid v \in P(u),\; X,Y \text{ horizontais}\}\). Pelo passo anterior, \(\mathfrak{m}_u \subseteq \mathfrak{hol}_u(\chi)\). A inclus\~ao rec\'iproca \(\mathfrak{hol}_u(\chi) \subseteq \mathfrak{m}_u\) \'e a parte n\~ao trivial da demonstra\c{c}\~ao.
+ \item \textbf{A \'Algebra de Lie da Holonomia.} Seja \(\mathfrak{m}_u \subset \mathfrak{g}\) o subespa\c{c}o gerado por \(\{\Omega_v(X,Y) \mid v \in P(u),\; X,Y \text{ horizontais}\}\). Pelo passo anterior, \(\mathfrak{m}_u \subseteq \mathfrak{hol}_u(\chi)\). A inclus\~ao rec\'iproca \(\mathfrak{hol}_u(\chi) \subseteq \mathfrak{m}_u\) \'e a parte n\~ao trivial da demonstra\c{c}\~ao.
 
-    \item \textbf{Inclus\~ao Rec\'iproca via a Equa\c{c}\~ao de Estrutura.} Considere a distribui\c{c}\~ao \(\Delta\) em \(P(u)\) gerada pelos campos horizontais e pelos campos fundamentais correspondentes a \(\mathfrak{m}_u\). Usando a equa\c{c}\~ao de estrutura de Cartan~\eqref{eq:cartan-structure} e a identidade de Bianchi \(D\Omega = 0\), demonstra-se que \(\Delta\) \'e involutiva e, pelo teorema de Frobenius, integr\'avel. A variedade integral m\'axima contendo \(u\) define uma redu\c{c}\~ao adicional do fibrado cujo grupo estrutural tem \'algebra de Lie \(\mathfrak{m}_u\). Como \(P(u)\) \'e a redu\c{c}\~ao m\'inima (j\'a que \(\operatorname{Hol}_u(\chi)\) \'e o menor grupo ao qual a conex\~ao se reduz), conclui-se que \(\mathfrak{hol}_u(\chi) \subseteq \mathfrak{m}_u\).
+ \item \textbf{Inclus\~ao Rec\'iproca via a Equa\c{c}\~ao de Estrutura.} Considere a distribui\c{c}\~ao \(\Delta\) em \(P(u)\) gerada pelos campos horizontais e pelos campos fundamentais correspondentes a \(\mathfrak{m}_u\). Usando a equa\c{c}\~ao de estrutura de Cartan~\eqref{eq:cartan-structure} e a identidade de Bianchi \(D\Omega = 0\), demonstra-se que \(\Delta\) \'e involutiva e, pelo teorema de Frobenius, integr\'avel. A variedade integral m\'axima contendo \(u\) define uma redu\c{c}\~ao adicional do fibrado cujo grupo estrutural tem \'algebra de Lie \(\mathfrak{m}_u\). Como \(P(u)\) \'e a redu\c{c}\~ao m\'inima (j\'a que \(\operatorname{Hol}_u(\chi)\) \'e o menor grupo ao qual a conex\~ao se reduz), conclui-se que \(\mathfrak{hol}_u(\chi) \subseteq \mathfrak{m}_u\).
 \end{enumerate}
 
 \section{Consequ\^encia Financeira do Teorema de Ambrose--Singer}
@@ -131,8 +131,8 @@ O Teorema de Ambrose--Singer fornece a base matem\'atica para a afirma\c{c}\~ao 
 \begin{teo}[Crit\'erio de Exist\^encia de Arbitragem]\label{teo:criterio-arbitragem}
 Seja \(\chi\) uma conex\~ao de gauge sobre o fibrado de precifica\c{c}\~ao \(P(M,G)\) com curvatura \(\Omega\). Ent\~ao:
 \begin{enumerate}
-    \item Se \(\Omega \equiv 0\) (conex\~ao plana), ent\~ao \(\operatorname{Hol}(\chi)\) \'e trivial e \textbf{n\~ao existem} estrat\'egias de arbitragem.
-    \item Se \(\Omega \not\equiv 0\), ent\~ao \(\operatorname{Hol}(\chi)\) \'e n\~ao trivial e \textbf{existe pelo menos uma} estrat\'egia de arbitragem com ganho n\~ao nulo.
+ \item Se \(\Omega \equiv 0\) (conex\~ao plana), ent\~ao \(\operatorname{Hol}(\chi)\) \'e trivial e \textbf{n\~ao existem} estrat\'egias de arbitragem.
+ \item Se \(\Omega \not\equiv 0\), ent\~ao \(\operatorname{Hol}(\chi)\) \'e n\~ao trivial e \textbf{existe pelo menos uma} estrat\'egia de arbitragem com ganho n\~ao nulo.
 \end{enumerate}
 \end{teo}
 
@@ -145,7 +145,7 @@ Seja \(\chi\) uma conex\~ao de gauge sobre o fibrado de precifica\c{c}\~ao \(P(M
 \begin{prop}[Dimens\~ao e N\'umero de Estrat\'egias Independentes]
 A dimens\~ao da \'algebra de Lie \(\mathfrak{hol}(\chi)\) (como espa\c{c}o vetorial real) \'e igual ao n\'umero m\'aximo de estrat\'egias de arbitragem linearmente independentes que o mercado admite:
 \begin{equation}\label{eq:dim-arbitragem}
-    \dim_{\mathbb{R}} \mathfrak{hol}(\chi) = N_{\text{arb}}.
+ \dim_{\mathbb{R}} \mathfrak{hol}(\chi) = N_{\text{arb}}.
 \end{equation}
 Em particular, \(\dim \mathfrak{hol}(\chi) \leq \dim \mathfrak{g}\).
 \end{prop}
@@ -156,10 +156,10 @@ A cadeia de implica\c{c}\~oes que estrutura toda a teoria pode ser resumida no s
 
 \[
 \begin{array}{ccccc}
-    \Omega \neq 0 & \xrightarrow{\text{Ambrose--Singer}} & \mathfrak{hol}(\chi) \neq \{0\} & \xrightarrow{\text{Exponencial}} & \operatorname{Hol}(\chi) \neq \{e\} \\[4pt]
-    \text{Curvatura} & & \text{Geradores infinitesimais} & & \text{Holonomia finita} \\[4pt]
-    & & \downarrow & & \downarrow \\[4pt]
-    & & \multicolumn{3}{c}{\text{Estrat\'egias de Arbitragem}}
+ \Omega \neq 0 & \xrightarrow{\text{Ambrose--Singer}} & \mathfrak{hol}(\chi) \neq \{0\} & \xrightarrow{\text{Exponencial}} & \operatorname{Hol}(\chi) \neq \{e\} \\[4pt]
+ \text{Curvatura} & & \text{Geradores infinitesimais} & & \text{Holonomia finita} \\[4pt]
+ & & \downarrow & & \downarrow \\[4pt]
+ & & \multicolumn{3}{c}{\text{Estrat\'egias de Arbitragem}}
 \end{array}
 \]
 
@@ -178,7 +178,7 @@ Cada elemento n\~ao nulo \(A \in \mathfrak{hol}(\chi)\) define uma \textbf{dire\
 \begin{prop}[Decomposi\c{c}\~ao Espectral das Estrat\'egias]
 Seja \(\{T_1, \dots, T_k\}\) uma base da \'algebra de Lie \(\mathfrak{hol}(\chi)\), com \(k = \dim \mathfrak{hol}(\chi)\). Ent\~ao toda estrat\'egia de arbitragem infinitesimal pode ser expressa como combina\c{c}\~ao linear
 \begin{equation}\label{eq:linear-comb}
-    A = \sum_{i=1}^{k} \alpha_i \, T_i, \qquad \alpha_i \in \mathbb{R},
+ A = \sum_{i=1}^{k} \alpha_i \, T_i, \qquad \alpha_i \in \mathbb{R},
 \end{equation}
 e cada coeficiente \(\alpha_i\) representa a \textbf{aloca\c{c}\~ao} na \(i\)-\'esima estrat\'egia de arbitragem independente.
 \end{prop}
@@ -190,14 +190,14 @@ A natureza da \'algebra de Lie \(\mathfrak{hol}(\chi)\) determina propriedades q
 \begin{center}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{Propriedade de \(\mathfrak{hol}(\chi)\)} & \textbf{Classifica SS  o} & \textbf{Interpreta SS  o Financeira} \\
+\textbf{Propriedade de \(\mathfrak{hol}(\chi)\)} & \textbf{Classifica SS o} & \textbf{Interpreta SS o Financeira} \\
 \midrule
-\(\mathfrak{hol} = \{0\}\)                    & Mercado sem arbitragem       & Todos os pre SSos s  o justos; vale a Lei do Pre SSo  snico \\
-\(\mathfrak{hol}\) abeliana                    & Arbitragem comutativa        & Estrat cgias independentes; ordem de execu SS  o irrelevante \\
-\(\mathfrak{hol}\) nilpotente                  & Arbitragem hier irquica       & Ganhos decrescentes com repeti SS  o; satura SS  o do mercado \\
-\(\mathfrak{hol}\) simples                     & Arbitragem indecompon -vel    & N  o h i subestrat cgias isol iveis; risco sist amico \\
-\(\mathfrak{hol}\) semissimples                & Arbitragem decomposta        & Carteira de estrat cgias ortogonais entre si \\
-\(\dim \mathfrak{hol} = \dim \mathfrak{g}\)    & Mercado saturado             & N omero m iximo de dire SS ues de arbitragem explor iveis \\
+\(\mathfrak{hol} = \{0\}\) & Mercado sem arbitragem & Todos os pre SSos s o justos; vale a Lei do Pre SSo snico \\
+\(\mathfrak{hol}\) abeliana & Arbitragem comutativa & Estrat cgias independentes; ordem de execu SS o irrelevante \\
+\(\mathfrak{hol}\) nilpotente & Arbitragem hier irquica & Ganhos decrescentes com repeti SS o; satura SS o do mercado \\
+\(\mathfrak{hol}\) simples & Arbitragem indecompon -vel & N o h i subestrat cgias isol iveis; risco sist amico \\
+\(\mathfrak{hol}\) semissimples & Arbitragem decomposta & Carteira de estrat cgias ortogonais entre si \\
+\(\dim \mathfrak{hol} = \dim \mathfrak{g}\) & Mercado saturado & N omero m iximo de dire SS ues de arbitragem explor iveis \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -218,7 +218,7 @@ O \textbf{\'indice} \(\iota(\mathfrak{hol}) = \dim \mathfrak{hol} - \operatornam
 
 Considere um mercado com \(n\) ativos de risco cujos pre\c{c}os seguem processos de It\^o sob a medida f\'isica \(\mathbb{P}\):
 \begin{equation}\label{eq:ito-prices}
-    \frac{dS_t^{\,j}}{S_t^{\,j}} = \mu_t^{\,j} \, dt + \sum_{\alpha=1}^{d} \sigma_t^{\,j\alpha} \, dW_t^{\,\alpha}, \qquad j = 1, \dots, n,
+ \frac{dS_t^{\,j}}{S_t^{\,j}} = \mu_t^{\,j} \, dt + \sum_{\alpha=1}^{d} \sigma_t^{\,j\alpha} \, dW_t^{\,\alpha}, \qquad j = 1, \dots, n,
 \end{equation}
 onde \(W_t = (W_t^1, \dots, W_t^d)\) \'e um movimento browniano \(d\)-dimensional, \(\mu_t = (\mu_t^1, \dots, \mu_t^n)\) \'e o vetor de retornos esperados (drifts), e \(\sigma_t = (\sigma_t^{\,j\alpha})\) \'e a matriz de volatilidades \(n \times d\).
 
@@ -228,7 +228,7 @@ A taxa livre de risco \'e denotada por \(r_t\). O grupo de gauge natural \'e \(G
 
 A conex\~ao de gauge \(\chi\) \'e definida como a 1-forma que ``corrige'' o drift observado \(\mu_t\) para o drift neutro ao risco \(r_t \mathbf{1}\):
 \begin{equation}\label{eq:pricing-connection}
-    \chi_t = (\mu_t - r_t \mathbf{1}) \, dt.
+ \chi_t = (\mu_t - r_t \mathbf{1}) \, dt.
 \end{equation}
 Aqui, \(\mathbf{1} = (1, \dots, 1)^\top \in \mathbb{R}^n\) e \(\chi_t\) toma valores na \'algebra de Lie \(\mathfrak{g} \cong \mathbb{R}^n\).
 
@@ -238,12 +238,12 @@ A condi\c{c}\~ao de aus\^encia de arbitragem (na formula\c{c}\~ao geom\'etrica) 
 
 Como o grupo \(G = \mathbb{R}^n\) \'e abeliano, o colchete de Lie \'e identicamente nulo, e a equa\c{c}\~ao de estrutura de Cartan~\eqref{eq:cartan-structure} simplifica-se para:
 \begin{equation}\label{eq:curvature-abelian}
-    \Omega = d\chi.
+ \Omega = d\chi.
 \end{equation}
 
 Em coordenadas locais, a curvatura \'e a 2-forma diferencial de \(\chi\). No contexto estoc\'astico, devemos considerar a formula\c{c}\~ao de Stratonovich para que o c\'alculo diferencial exterior seja v\'alido. A convers\~ao de It\^o para Stratonovich introduz um termo de corre\c{c}\~ao:
 \begin{equation}\label{eq:ito-strat}
-    \chi_t^{\text{Strat}} = \chi_t^{\text{It\^o}} - \frac{1}{2} d\langle \chi, W \rangle_t.
+ \chi_t^{\text{Strat}} = \chi_t^{\text{It\^o}} - \frac{1}{2} d\langle \chi, W \rangle_t.
 \end{equation}
 
 Para o nosso caso, com \(\chi_t = (\mu_t - r_t \mathbf{1})\,dt\), n\~ao h\'a termo estoc\'astico em \(\chi\) (a conex\~ao \'e puramente um termo de drift), portanto as formula\c{c}\~oes de It\^o e Stratonovich coincidem para \(\chi\).
@@ -252,12 +252,12 @@ Para o nosso caso, com \(\chi_t = (\mu_t - r_t \mathbf{1})\,dt\), n\~ao h\'a ter
 
 A curvatura \(\Omega = d\chi\) \'e obtida pela diferencial exterior da 1-forma \(\chi\). Em um contexto mais geral, se permitirmos que \(\mu_t\) e \(r_t\) dependam dos pre\c{c}os (e n\~ao apenas do tempo), a curvatura torna-se:
 \begin{equation}\label{eq:curvature-market}
-    \Omega_t = \sum_{j=1}^{n} \frac{\partial}{\partial S^j} (\mu_t - r_t \mathbf{1}) \wedge dS_t^{\,j}.
+ \Omega_t = \sum_{j=1}^{n} \frac{\partial}{\partial S^j} (\mu_t - r_t \mathbf{1}) \wedge dS_t^{\,j}.
 \end{equation}
 
 Para o caso simplificado em que \(\mu_t\) e \(r_t\) s\~ao fun\c{c}\~oes apenas do tempo (determin\'isticos), temos:
 \begin{equation}\label{eq:curvature-deterministic}
-    \Omega_t = 0 \quad \Longleftrightarrow \quad \frac{\partial \mu_t^{\,j}}{\partial S^k} = 0 \;\; \forall j,k.
+ \Omega_t = 0 \quad \Longleftrightarrow \quad \frac{\partial \mu_t^{\,j}}{\partial S^k} = 0 \;\; \forall j,k.
 \end{equation}
 
 \subsection{Interpreta\c{c}\~ao Financeira da Curvatura}
@@ -265,9 +265,9 @@ Para o caso simplificado em que \(\mu_t\) e \(r_t\) s\~ao fun\c{c}\~oes apenas d
 \begin{prop}[Condi\c{c}\~ao de Mercado sem Arbitragem Geom\'etrica]\label{prop:no-arbitrage-condition}
 Em um mercado modelado pela Equa\c{c}\~ao~\eqref{eq:ito-prices} com conex\~ao de precifica\c{c}\~ao~\eqref{eq:pricing-connection}, as seguintes condi\c{c}\~oes s\~ao equivalentes:
 \begin{enumerate}
-    \item \(\Omega \equiv 0\) (curvatura nula).
-    \item Existe um processo \(\lambda_t\) (pre\c{c}o de mercado do risco) tal que \(\mu_t^{\,j} - r_t = \sum_{\alpha=1}^{d} \sigma_t^{\,j\alpha} \lambda_t^{\,\alpha}\) para todo \(j\).
-    \item Existe uma medida martingale equivalente \(\mathbb{Q}\) sob a qual os pre\c{c}os descontados s\~ao martingales.
+ \item \(\Omega \equiv 0\) (curvatura nula).
+ \item Existe um processo \(\lambda_t\) (pre\c{c}o de mercado do risco) tal que \(\mu_t^{\,j} - r_t = \sum_{\alpha=1}^{d} \sigma_t^{\,j\alpha} \lambda_t^{\,\alpha}\) para todo \(j\).
+ \item Existe uma medida martingale equivalente \(\mathbb{Q}\) sob a qual os pre\c{c}os descontados s\~ao martingales.
 \end{enumerate}
 \end{prop}
 
@@ -294,11 +294,11 @@ O vetor de excesso de retorno \'e:
 \]
 
 \begin{itemize}
-    \item \textbf{Caso 1: Mercado completo e sem arbitragem.} Se existe \(\lambda\) tal que \(\mu - r\mathbf{1} = \sigma \lambda\), ent\~ao \(\lambda = \frac{0{,}05}{0{,}20} = \frac{0{,}02}{0{,}15} = 0{,}25\)? N\~ao: \(\frac{0{,}05}{0{,}20} = 0{,}25\) e \(\frac{0{,}02}{0{,}15} \approx 0{,}133\). Os pre\c{c}os de mercado do risco diferem -- logo h\'a oportunidade de arbitragem.
+ \item \textbf{Caso 1: Mercado completo e sem arbitragem.} Se existe \(\lambda\) tal que \(\mu - r\mathbf{1} = \sigma \lambda\), ent\~ao \(\lambda = \frac{0{,}05}{0{,}20} = \frac{0{,}02}{0{,}15} = 0{,}25\)? N\~ao: \(\frac{0{,}05}{0{,}20} = 0{,}25\) e \(\frac{0{,}02}{0{,}15} \approx 0{,}133\). Os pre\c{c}os de mercado do risco diferem -- logo h\'a oportunidade de arbitragem.
 
-    \item \textbf{Curvatura n\~ao nula.} A conex\~ao \(\chi = (\mu - r\mathbf{1})dt\) tem curvatura \(\Omega = d\chi\). Se \(\mu\) \'e constante, \(d\mu = 0\) e \(\Omega = 0\). No entanto, se \(\mu = \mu(S)\) depende dos pre\c{c}os, a curvatura \'e n\~ao nula e a holonomia \'e n\~ao trivial.
+ \item \textbf{Curvatura n\~ao nula.} A conex\~ao \(\chi = (\mu - r\mathbf{1})dt\) tem curvatura \(\Omega = d\chi\). Se \(\mu\) \'e constante, \(d\mu = 0\) e \(\Omega = 0\). No entanto, se \(\mu = \mu(S)\) depende dos pre\c{c}os, a curvatura \'e n\~ao nula e a holonomia \'e n\~ao trivial.
 
-    \item \textbf{Estrat\'egia de arbitragem.} Comprar o ativo com maior \'indice de Sharpe \(\frac{\mu^j - r}{\sigma^j}\) e vender o de menor \'indice, em propor\c{c}\~oes que anulem o risco total. O ganho \'e codificado pela holonomia ao longo do ciclo de trading.
+ \item \textbf{Estrat\'egia de arbitragem.} Comprar o ativo com maior \'indice de Sharpe \(\frac{\mu^j - r}{\sigma^j}\) e vender o de menor \'indice, em propor\c{c}\~oes que anulem o risco total. O ganho \'e codificado pela holonomia ao longo do ciclo de trading.
 \end{itemize}
 
 \section{Resumo: Dicion\'ario Geometria \(\leftrightarrow\) Finan\c{c}as}
@@ -316,11 +316,11 @@ Variedade base \(M\) & Espa SSo de estados do mercado (pre SSos, volatilidades) 
 \addlinespace
 Grupo estrutural \(G\) & Grupo de transforma SS ues de gauge (mudan SSas de num craire, medidas) \\
 \addlinespace
-Conex  o \(\chi\) & Estrutura de precifica SS  o (drifts ajustados ao risco) \\
+Conex o \(\chi\) & Estrutura de precifica SS o (drifts ajustados ao risco) \\
 \addlinespace
 Curvatura \(\Omega = d\chi + \frac{1}{2}[\chi,\chi]\) & Intensidade local das oportunidades de arbitragem \\
 \addlinespace
-Transporte paralelo horizontal & Evolu SS  o ``neutra ao risco'' de uma carteira \\
+Transporte paralelo horizontal & Evolu SS o ``neutra ao risco'' de uma carteira \\
 \addlinespace
 La SSo \(\gamma\) em \(M\) & Ciclo fechado de trading \\
 \addlinespace
@@ -330,7 +330,7 @@ Grupo de holonomia \(\operatorname{Hol}(\chi)\) & Conjunto de todos os resultado
 \addlinespace
 Holonomia restrita \(\operatorname{Hol}^0(\chi)\) & Resultados de ciclos de trading continuamente deform iveis entre si \\
 \addlinespace
-  lgebra de Lie \(\mathfrak{hol}(\chi)\) & Geradores infinitesimais das estrat cgias de arbitragem \\
+ lgebra de Lie \(\mathfrak{hol}(\chi)\) & Geradores infinitesimais das estrat cgias de arbitragem \\
 \addlinespace
 Base de \(\mathfrak{hol}(\chi)\) & Conjunto maximal de estrat cgias de arbitragem independentes \\
 \addlinespace
@@ -338,11 +338,11 @@ Base de \(\mathfrak{hol}(\chi)\) & Conjunto maximal de estrat cgias de arbitrage
 \addlinespace
 Teorema de Ambrose--Singer & A curvatura gera todas as estrat cgias de arbitragem (infinitesimais) \\
 \addlinespace
-\(\Omega \equiv 0\) (conex  o plana) & Aus ancia de arbitragem (vale o FTAP) \\
+\(\Omega \equiv 0\) (conex o plana) & Aus ancia de arbitragem (vale o FTAP) \\
 \addlinespace
-\(\Omega \not\equiv 0\) & Exist ancia de pelo menos uma estrat cgia de arbitragem n  o trivial \\
+\(\Omega \not\equiv 0\) & Exist ancia de pelo menos uma estrat cgia de arbitragem n o trivial \\
 \addlinespace
-Equa SS  o de estrutura de Cartan & Rela SS  o entre precifica SS  o (drift) e arbitragem (curvatura) \\
+Equa SS o de estrutura de Cartan & Rela SS o entre precifica SS o (drift) e arbitragem (curvatura) \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -350,13 +350,13 @@ Equa SS  o de estrutura de Cartan & Rela SS  o entre precifica SS  o (drift) e a
 \subsection*{Refer\^encias do Cap\'itulo}
 
 \begin{itemize}
-    \item \textsc{Ambrose, W.; Singer, I. M.} A theorem on holonomy. \emph{Transactions of the American Mathematical Society}, v.~75, n.~3, p.~428--443, 1953. DOI: \texttt{10.2307/1990721}.
-    \item \textsc{Kobayashi, S.; Nomizu, K.} \emph{Foundations of Differential Geometry}. Volumes I (1963) e II (1969). Interscience Publishers (John Wiley \& Sons), New York.
-    \item \textsc{Besse, A. L.} \emph{Einstein Manifolds}. Springer-Verlag, 1987. (Cap\'itulo 10: Holonomy Groups.)
-    \item \textsc{Joyce, D. D.} \emph{Riemannian Holonomy Groups and Calibrated Geometry}. Oxford University Press, 2007.
-    \item \textsc{Delbaen, F.; Schachermayer, W.} \emph{The Mathematics of Arbitrage}. Springer Finance, 2006.
-    \item \textsc{Ilinski, K.} \emph{Physics of Finance: Gauge Modelling in Non-Equilibrium Pricing}. John Wiley \& Sons, 2001.
-    \item \textsc{Young, K.} Foreign exchange market as a lattice gauge theory. \emph{American Journal of Physics}, v.~67, n.~10, p.~862--868, 1999.
+ \item \textsc{Ambrose, W.; Singer, I. M.} A theorem on holonomy. \emph{Transactions of the American Mathematical Society}, v.~75, n.~3, p.~428--443, 1953. DOI: \texttt{10.2307/1990721}.
+ \item \textsc{Kobayashi, S.; Nomizu, K.} \emph{Foundations of Differential Geometry}. Volumes I (1963) e II (1969). Interscience Publishers (John Wiley \& Sons), New York.
+ \item \textsc{Besse, A. L.} \emph{Einstein Manifolds}. Springer-Verlag, 1987. (Cap\'itulo 10: Holonomy Groups.)
+ \item \textsc{Joyce, D. D.} \emph{Riemannian Holonomy Groups and Calibrated Geometry}. Oxford University Press, 2007.
+ \item \textsc{Delbaen, F.; Schachermayer, W.} \emph{The Mathematics of Arbitrage}. Springer Finance, 2006.
+ \item \textsc{Ilinski, K.} \emph{Physics of Finance: Gauge Modelling in Non-Equilibrium Pricing}. John Wiley \& Sons, 2001.
+ \item \textsc{Young, K.} Foreign exchange market as a lattice gauge theory. \emph{American Journal of Physics}, v.~67, n.~10, p.~862--868, 1999.
 \end{itemize}
 
 
