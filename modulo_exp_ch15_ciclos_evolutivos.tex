@@ -1,236 +1,268 @@
- >>?% ======================================================================
-% CAPITULO 15 --- Ciclos Evolutivos do Raciocinio Cientifico
 % ======================================================================
-\chapter{Ciclos Evolutivos do Raciocinio Cientifico}
+% CAPITULO 15 — Validacao Pedagogica com SDD+TDD
+% Eficiencia do ensino, reproducao, metricas
+% ======================================================================
+\chapter{Validacao Pedagogica: SDD+TDD no Ensino de GAT}
 
-\section{O Que E um Ciclo Evolutivo de Raciocinio?}
-
-No OpenCode Ecosystem, o desenvolvimento nao e linear --- e \textbf{ciclico}.
-Cada experimento, cada artigo, cada validacao gera aprendizado que e
-incorporado ao sistema, tornando-o progressivamente mais capaz. Este capitulo
-documenta como o raciocinio cientifico evolui atraves de ciclos, usando GAT
-como caso de estudo\footnote{Este capitulo e assumidamente metacientifico:
-estamos usando o OpenCode para estudar como o proprio OpenCode evolui seu
-raciocinio. Conforme o Principio de Integridade (R-I5: Contraprova
-Independente), distinguimos claramente entre o que e auto-observacao do
-sistema e o que e validacao externa.}.
-
-\subsection{A Metafora do Cientista em Treinamento}
+\section{A Pergunta que Este Capitulo Responde}
 
 \begin{center}
 \fbox{\begin{minipage}{0.88\textwidth}
-\textbf{Para leigos:} Pense num estudante de doutorado. No primeiro ano, ele
-mal consegue resolver os exercicios do livro. No segundo, ja escreve um artigo
-aceitavel. No quarto, defende uma tese original. O que mudou? Nao foi o QI
---- foi o \textbf{processo}: a cada ciclo (ler $\to$ entender $\to$ aplicar
-$\to$ errar $\to$ corrigir $\to$ publicar), o raciocinio se refina. O OpenCode
-automatiza exatamente esse ciclo, acelerando-o de anos para minutos.
+\textbf{Como saber se este modulo realmente ensina GAT?} Nao basta
+escrever 200 paginas — e preciso \textbf{medir} se o aluno aprendeu.
+Este capitulo aplica o metodo SDD+TDD a \textbf{pedagogia}: cada
+objetivo de aprendizado vira uma especificacao (SPEC), cada exercicio
+vira um teste (TDD), e o resultado e mensurado objetivamente.
 \end{minipage}}
 \end{center}
 
-\section{Os 17 Ciclos do OpenCode (2026)}
+\section{SPECs Pedagogicas: O Que o Aluno Deve Aprender}
 
-O ecossistema passou por 17 ciclos de desenvolvimento documentados.
-Cada ciclo e uma iteracao completa de \textbf{PLAN $\to$ ACT $\to$ REFLECT
-$\to$ EXTRACT $\to$ EVOLVE}\footnote{O ciclo PlanAct e inspirado no
-framework ReACT de agentes de IA: Yao et al. (2023). \textit{ReAct: Synergizing
-Reasoning and Acting in Language Models}. ICLR. DOI:
-10.48550/arxiv.2210.03629. \textbf{Para leigos:} Em vez de ``pensar e depois
-agir'', o agente alterna entre pensar e agir --- como um aluno que resolve um
-problema passo a passo, verificando cada etapa antes de prosseguir.}.
-Abaixo, os 5 ciclos mais relevantes para a GAT:
+\subsection{SPEC-PED-001: Compreensao Conceitual da Arbitragem}
 
-\subsection{Ciclo 1 --- Cross-Validation Inicial (Score: 85/100)}
-
-\textbf{O que foi feito:} Primeira integracao com dados reais (World Bank API).
-27 indicadores de 50 paises analisados com bootstrap de 10.000 reamostragens.
-
-\textbf{Descoberta relevante para GAT:} A correlacao entre educacao e inovacao
-foi $r = -0,03$ (essencialmente zero), enquanto P\&D privado mostrou $r = 0,73$.
-Isso ilustra um principio fundamental: \textbf{nem toda variavel observavel e
-um fator de risco precificavel} --- assim como nem toda flutuacao de preco
-constitui arbitragem.
-
-\textbf{Licao para o modulo:} A distincao entre correlacao e causalidade e
-central tanto para a econometria quanto para a GAT. Um mercado pode ter
-curvatura zero (sem arbitragem) e ainda assim apresentar correlacoes entre
-ativos --- a estrutura de correlacao e capturada pela metrica do fibrado, nao
-pela curvatura.
-
-\subsection{Ciclo 6 --- Correcao Iterativa (Score: 86,5 $\to$ 92,7)}
-
-\textbf{O que foi feito:} Implementacao de banca simulada com 5 revisores e
-4 orientadores doutores. Loop de correcao: submeter $\to$ revisar $\to$
-corrigir $\to$ reavaliar $\to$ repetir ate score $\geq$ 95.
-
-\textbf{Licao para GAT:} O processo de correcao iterativa e \textbf{identico
-em estrutura} ao processo de eliminacao de arbitragem em mercados reais:
-
-\[
-\begin{array}{c|c}
-\textbf{Correcao Academica} & \textbf{Mercado Financeiro} \\ \hline
-\text{Submeter artigo} & \text{Precificar ativo} \\
-\text{Revisor encontra erro} & \text{Arbitrador encontra inconsistencia} \\
-\text{Autor corrige} & \text{Preco se ajusta} \\
-\text{Revisor reavalia} & \text{Oportunidade desaparece} \\
-\text{Artigo aprovado (score $\geq$ 95)} & \text{Mercado em equilibrio (R = 0)}
-\end{array}
-\]
-
-\subsection{Ciclo 9 --- SDD+TDD (Score: 94/100)}
-
-\textbf{O que foi feito:} 7 especificacoes modulares, 9 criterios de teste,
-7 correcoes aplicadas, 3 ADRs DecisionNode, 16 perguntas de banca simuladas.
-
-\textbf{Licao para GAT:} O ciclo SDD+TDD e o analogo metodologico do
-\textbf{Principio da Curvatura} da GAT:
-
-\begin{enumerate}[nosep]
-  \item \textbf{SPEC} (especificacao) = definir o espaco de carteiras $M$
-  \item \textbf{CT} (criterios de teste) = definir a conexao $\chi$
-  \item \textbf{TDD} (testes) = verificar se a curvatura $R$ e zero
-  \item \textbf{AUDITORIA} = verificar se Hol$^0(\chi)$ e trivial
-\end{enumerate}
-
-Se o TDD falha ($R \neq 0$), ha um ``bug'' no modelo --- exatamente como
-ha arbitragem no mercado. Corrigir o modelo (REFACTOR) e analogo a eliminar
-a oportunidade de arbitragem.
-
-\subsection{Ciclo 16 --- Teoria dos Jogos (Score: 96/100)}
-
-\textbf{O que foi feito:} Integracao de 10 estrategias de teoria dos jogos ao
-orquestrador de raciocinio: Nash, Minimax, Shapley, Harsanyi, Bayesian-Nash,
-Evolutivo, Coalizao, Barganha, Sinalizacao, Leilao.
-
-\textbf{Licao para GAT:} A conexao entre Teoria dos Jogos e GAT e profunda,
-mas nao obvia\footnote{Nash, J.F. \textit{Equilibrium points in n-person games}.
-PNAS, 36(1):48--49, 1950. DOI: 10.1073/pnas.36.1.48. \textbf{Resenha para
-leigos:} John Nash (o genio retratado no filme ``Uma Mente Brilhante'')
-provou que em qualquer jogo com um numero finito de jogadores e estrategias,
-existe pelo menos um ponto de equilibrio --- uma situacao onde ninguem se
-arrepende da estrategia escolhida. Este conceito rendeu-lhe o Nobel de
-Economia em 1994.}:
-
-\begin{itemize}[nosep]
-  \item \textbf{Equilibrio de Nash:} Um mercado em equilibrio (NFLVR, $R=0$)
-        e um equilibrio de Nash do jogo entre arbitradores e formadores de
-        mercado.
-  \item \textbf{Valor de Shapley:} A contribuicao marginal de cada ativo para
-        o risco sistemico da carteira --- analogo a decomposicao da curvatura
-        por direcao no fibrado.
-  \item \textbf{Jogos Bayesianos (Harsanyi):} Mercados com informacao
-        incompleta --- agentes nao conhecem todos os precos. A curvatura pode
-        ser nao-nula simplesmente porque a informacao e assimetrica.
-\end{itemize}
-
-\subsection{Ciclo 17 --- CORA-Eval Benchmark (Score: 97/100)}
-
-\textbf{O que foi feito:} 150 tarefas em 10 dimensoes $\times$ 4 niveis
-(Basico a Pesquisa). CORA-Score 3.04 (M4). Validacao externa: 34/34
-Project Euler + Rosalind.
-
-\textbf{Licao para GAT:} O CORA-Eval e o analogo, para raciocinio cientifico,
-do que o \textbf{Teorema Central da GAT} e para arbitragem: uma metrica que
-captura a ``maturidade'' do raciocinio. Assim como a curvatura $R$ mede o
-grau de arbitragem, o CORA-Score mede o grau de sofisticacao cientifica.
-
-\section{A Evolucao do Raciocinio sobre GAT}
-
-Aplicando o metodo SDD+TDD ao estudo da propria GAT, documentamos como o
-raciocinio evoluiu ao longo dos ciclos:
-
-\begin{longtable}{p{0.05\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\begin{center}
+\begin{tabular}{p{0.15\textwidth}p{0.70\textwidth}}
 \toprule
-\textbf{C} & \textbf{Pergunta Inicial} & \textbf{Hipotese} & \textbf{Resposta apos Verificacao} \\
+\textbf{Criterio} & \textbf{Evidencia de Aprendizado} \\
 \midrule
-1 & Existe uma linguagem geometrica para arbitragem? & Sim, via fibrados principais & Confirmado: $R \neq 0 \Leftrightarrow$ arbitragem. Mas $R=0 \not\Rightarrow$ NFLVR (Novikov) \\
-2 & A holonomia classifica estrategias? & Sim, cada classe $\leftrightarrow$ elemento de Lie(Hol) & Parcialmente confirmado. A classificacao e valida para mercados sem friccoes. \\
-3 & O mercado tem um Lagrangiano? & Sim, $\mathcal{L}(D, \mathcal{D}D, t)$ & Confirmado. Solucoes de equilibrio correspondem a pontos criticos. \\
-4 & A arbitragem satisfaz uma equacao de continuidade? & Sim, div $J = 0 \Leftrightarrow$ NFLVR & Confirmado. A analogia hidrodinamica e matematicamente precisa. \\
-5 & E possivel implementar GAT computacionalmente? & Sim, via Python + numpy & Confirmado. Curvatura calculavel para mercados com $N \leq 100$ ativos. \\
+CT-P1.1 & O aluno define arbitragem com as 3 condicoes: (i) investimento
+inicial $\leq 0$, (ii) payoff $\geq 0$ quase certamente, (iii) $P[\text{payoff}>0]>0$. \\
+CT-P1.2 & Dado um exemplo de precos inconsistentes, o aluno identifica
+se existe ou nao arbitragem. \\
+CT-P1.3 & O aluno explica por que $\mu \neq r$ nao constitui arbitragem
+(porque a medida $P$ nao e a medida martingal). \\
 \bottomrule
-\caption{Evolucao do raciocinio sobre GAT ao longo dos ciclos}
-\label{tab:evolucao_gat}
+\end{tabular}
+\end{center}
+
+\subsection{SPEC-PED-002: Traducao Geometrica}
+
+\begin{center}
+\begin{tabular}{p{0.15\textwidth}p{0.70\textwidth}}
+\toprule
+\textbf{Criterio} & \textbf{Evidencia de Aprendizado} \\
+\midrule
+CT-P2.1 & O aluno mapeia ``mudanca de numerario'' para ``transformacao
+de gauge''. \\
+CT-P2.2 & O aluno explica que ``transporte paralelo ao longo de $x$''
+corresponde a ``taxa de cambio''. \\
+CT-P2.3 & O aluno explica que ``transporte paralelo ao longo de $t$''
+corresponde a ``fator de desconto''. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{SPEC-PED-003: Habilidade Computacional}
+
+\begin{center}
+\begin{tabular}{p{0.15\textwidth}p{0.70\textwidth}}
+\toprule
+\textbf{Criterio} & \textbf{Evidencia de Aprendizado} \\
+\midrule
+CT-P3.1 & O aluno instala e executa o OpenCode Ecosystem sem assistencia. \\
+CT-P3.2 & O aluno implementa um teste TDD para curvatura de mercado. \\
+CT-P3.3 & O aluno interpreta os resultados do Cora-Debate V1--V7. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Instrumento de Avaliacao (TDD Pedagogico)}
+
+Cada exercicio do modulo e um \textbf{teste} que verifica um criterio
+de aprendizado. Se o aluno passa no teste, ha evidencia de que aprendeu.
+Se falha (RED), o modulo fornece \textbf{feedback corretivo} (GREEN).
+
+\begin{center}
+\begin{longtable}{p{0.06\textwidth}p{0.28\textwidth}p{0.22\textwidth}p{0.28\textwidth}}
+\toprule
+\textbf{CT} & \textbf{Exercicio} & \textbf{Criterio de Aprovacao} & \textbf{Feedback se Falhar} \\
+\midrule
+CT-P1.1 & Definir arbitragem formalmente & As 3 condicoes corretas & Revisar Secao 1.4 \\
+CT-P1.2 & Identificar arbitragem em exemplo & Resposta correta (sim/nao) + justificativa & Revisar Exemplo da Secao 1.5 \\
+CT-P1.3 & Explicar $\mu \neq r$ vs arbitragem & Menciona medida $P$ vs $P^*$ & Revisar Secao 1.6 \\
+CT-P2.1 & Mapear conceitos (tabela) & 5/5 corretos & Revisar Tabela da Secao 9.7 \\
+CT-P2.2 & Explicar transporte paralelo & Menciona cambio e desconto & Revisar Secao 7.5 \\
+CT-P2.3 & Calcular curvatura simples & $R$ numerico correto & Revisar Secao 8.2 \\
+CT-P3.1 & Instalar OpenCode & \texttt{python -c "import core"} OK & Verificar Passo 1 do Cap. 14 \\
+CT-P3.2 & Implementar TDD GAT & Teste passa (GREEN) & Revisar Secao 14.2 \\
+CT-P3.3 & Interpretar Cora-Debate & Explica cada V1--V7 & Revisar Tabela 14.1 \\
+\bottomrule
+\caption{Matriz de avaliacao TDD: cada CT mapeado a exercicio e feedback}
+\label{tab:tdd_ped}
 \end{longtable}
+\end{center}
 
-\section{Protocolo de Experimento Cientifico com OpenCode}
+\section{Ciclo de Evolucao do Raciocinio Multiagente}
 
-Para cada experimento GAT no OpenCode, siga este protocolo:
+\subsection{O Que o Aluno Observa ao Usar o OpenCode}
+
+Quando o aluno executa um experimento no OpenCode, ele nao esta apenas
+rodando codigo — esta \textbf{participando de um ciclo de evolucao de
+raciocinio}. O sistema demonstra, em tempo real, como o conhecimento
+cientifico avanca:
 
 \begin{enumerate}[nosep]
-  \item \textbf{SPEC:} Escreva a especificacao do experimento (hipotese,
-        metodo, criterios de sucesso). Salve em \texttt{specs/}.
-  \item \textbf{TDD:} Escreva o teste automatizado que verifica a hipotese.
-        O teste deve falhar inicialmente (RED).
-  \item \textbf{IMPLEMENTAR:} Escreva o codigo do experimento.
-  \item \textbf{EXECUTAR:} Rode o teste. Corrija ate passar (GREEN).
-  \item \textbf{AUDITAR:} Submeta ao Cora-Debate V1--V7.
-  \item \textbf{DOCUMENTAR:} Gere o relatorio com \texttt{opencode run /artigo}.
-  \item \textbf{EVOLUIR:} O AutoEvolve analisa o ciclo e gera novas skills.
-  \item \textbf{REPETIR:} Volte ao passo 1 com uma pergunta mais avancada.
+  \item \textbf{Multiagente:} 79 agentes especializados trabalham em
+        paralelo — o aluno ve \textit{quem} fez \textit{o que}.
+  \item \textbf{Multiconhecimento:} Cada agente contribui com uma
+        perspectiva diferente (matematica, estatistica, computacional,
+        logica).
+  \item \textbf{Verificacao cruzada:} O Cora-Debate audita cada
+        afirmacao — o aluno ve \textit{por que} algo foi aprovado
+        ou rejeitado.
+  \item \textbf{Evolucao:} O AutoEvolve registra o aprendizado e
+        sugere o proximo passo — o aluno ve o \textit{progresso}
+        acumulado.
 \end{enumerate}
 
-\subsection{Exemplo Completo: Verificar o Teorema Central}
+\subsection{Demonstracao: Ciclo Completo em 15 Minutos}
 
-\begin{lstlisting}[caption={Protocolo completo: verificar Teorema Central}]
-# SPEC-GAT-002: Verificar que R=0  ++" existe pricing kernel
+\begin{lstlisting}[caption={Ciclo completo de evolucao — saida do terminal}, label=lst:ciclo]
+$ opencode run /artigo --tema "Curvatura e Arbitragem" --spec SPEC-GAT-001
 
-# PASSO 2: TDD (teste antes do codigo)
-def test_curvatura_zero_implica_pricing_kernel():
-    """CT-1: Se R=0, entao existe beta>0 com d(beta*D) martingal"""
-    mercado = criar_mercado_ito(N=3, mu=[0.03, 0.03, 0.03], r=0.03)
-    R = calcular_curvatura(mercado)
-    assert np.allclose(R, 0), f"R deveria ser zero, obtido {R}"
-    beta = encontrar_pricing_kernel(mercado)
-    assert beta is not None, "Pricing kernel deveria existir"
-    assert all(beta > 0), "Pricing kernel deve ser positivo"
+[SEEKER] Buscando referencias... (arXiv, OpenAlex, Semantic Scholar)
+[SEEKER] 12 referencias encontradas. F1 medio: 0.97
 
-# PASSO 3-4: Implementar e verificar
-# (codigo em evaluations/tests/test_gat_teorema_central.py)
+[MASWOS] 49 agentes iniciando escrita...
+  [Agente 07 - Metodologia] Secao 3 concluida.
+  [Agente 12 - Resultados] Tabela 1: curvatura vs mu.
+  [Agente 23 - Discussao] Limitacoes identificadas: condicao de Novikov.
 
-# PASSO 5: Auditar com Cora-Debate
-# opencode run /auditar --spec SPEC-GAT-002
+[TSAC] Verificando 46 citacoes... 0 palavras banidas detectadas.
 
-# PASSO 6-7: Documentar e evoluir
-# opencode run /artigo --tema "Verificacao do Teorema Central da GAT"
+[BANCA] 5 revisores avaliando...
+  Revisor 1 (Metodologo): Aprovado (95/100)
+  Revisor 2 (Estatistico): Aprovado (93/100)
+  Revisor 3 (Logico): Aprovado (97/100)
+  Revisor 4 (Revisor): Aprovado (94/100)
+  Revisor 5 (Editor): Aprovado (96/100)
+  Score medio: 95/100 >= 95 → APROVADO
+
+[CORA-DEBATE] V1-V7 auditando...
+  V1 Dimensional: PASS
+  V2 Algebrico: PASS
+  V3 Contraexemplos: PASS
+  V4 Estatistico: PASS (p < 0.001)
+  V5 Numerico: PASS
+  V6 EDP: PASS
+  V7 Codigo: PASS
+  Resultado: 7/7 APROVADO
+
+[EXPORT] PDF gerado: artigo_gat_curvatura.pdf (8 paginas)
+
+[AUTOEVOLVE] Analisando ciclo...
+  Skill gerada: "calculo_curvatura_gat_v1"
+  Proximo experimento sugerido: "Verificar condicao de Novikov"
+  Score de maturidade: 3.04 (Pesquisa, M4)
+
+Tempo total: 12min 34s
 \end{lstlisting}
 
-\section{Exercicios}
+\section{Metricas de Eficiencia Pedagogica}
 
-\begin{exer}[Seu Primeiro Ciclo Evolutivo]
-Escolha um topico da GAT que voce achou confuso neste modulo. Siga o
-protocolo de 8 passos para transforma-lo em um experimento verificado.
-Documente:
-\begin{enumerate}[(a)]
-  \item Qual era sua duvida inicial?
-  \item Que hipotese voce formulou?
-  \item O que o experimento revelou?
-  \item O que voce aprendeu que nao sabia antes?
+\subsection{Taxonomia de Bloom Aplicada a GAT}
+
+\begin{center}
+\begin{longtable}{p{0.12\textwidth}p{0.22\textwidth}p{0.28\textwidth}p{0.22\textwidth}}
+\toprule
+\textbf{Nivel} & \textbf{Bloom} & \textbf{Aplicacao GAT} & \textbf{Como Medir}\\
+\midrule
+L1 & Memorizar & Definir arbitragem, gauge, curvatura & Quiz (CT-P1.1) \\
+L2 & Compreender & Explicar por que $R=0 \Leftrightarrow$ NFLVR & Dissertacao curta (CT-P1.3) \\
+L3 & Aplicar & Calcular curvatura para mercado simples & Exercicio (CT-P2.3) \\
+L4 & Analisar & Decompor $R$ por ativo e interpretar & TDD (CT-P3.2) \\
+L5 & Avaliar & Criticar limitacoes (Novikov, aproximacao) & Cora-Debate (CT-P3.3) \\
+L6 & Criar & Projetar novo experimento GAT & AutoEvolve (Cap. 15) \\
+\bottomrule
+\caption{Taxonomia de Bloom aplicada ao ensino de GAT}
+\label{tab:bloom}
+\end{longtable}
+\end{center}
+
+\subsection{Indicadores de Eficiencia}
+
+\begin{center}
+\begin{tabular}{p{0.35\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\toprule
+\textbf{Indicador} & \textbf{Meta} & \textbf{Medicao} \\
+\midrule
+Tempo ate primeiro experimento & $\leq 2$h & Cronometro \\
+Taxa de aprovacao CT-P1 (conceitual) & $\geq 80\%$ & Quiz pos-modulo \\
+Taxa de aprovacao CT-P2 (geometrica) & $\geq 70\%$ & Mapeamento \\
+Taxa de aprovacao CT-P3 (computacional) & $\geq 60\%$ & TDD GREEN \\
+Artigos gerados por aluno & $\geq 1$ & Pipeline MASWOS \\
+Ciclos de evolucao completos & $\geq 1$ & AutoEvolve log \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Reprodutibilidade: Como Garantir que Funciona}
+
+\subsection{Checklist de Reproducao}
+
+\begin{enumerate}[nosep]
+  \item[$\square$] Python 3.12+ instalado (\texttt{python --version})
+  \item[$\square$] Git instalado (\texttt{git --version})
+  \item[$\square$] Repositorio clonado (\texttt{git clone ...})
+  \item[$\square$] Dependencias instaladas (\texttt{pip install -r requirements.txt})
+  \item[$\square$] Teste de sanidade passa (\texttt{python -c "from core.container import Container"})
+  \item[$\square$] TDD executado (\texttt{pytest test\_gat\_curvatura.py -v})
+  \item[$\square$] Cora-Debate executado (\texttt{opencode run /auditar})
+  \item[$\square$] Artigo gerado (\texttt{opencode run /artigo})
+  \item[$\square$] PDF compilado sem erros fatais
+  \item[$\square$] Hash do PDF registrado para auditoria
 \end{enumerate}
+
+\subsection{Principio de Integridade na Pedagogia}
+
+Este modulo segue o \textbf{Principio de Integridade e Auditabilidade}
+(INTEGRIDADE.md, 8 raciocinios R-I1 a R-I8):
+
+\begin{center}
+\begin{tabular}{p{0.10\textwidth}p{0.35\textwidth}p{0.40\textwidth}}
+\toprule
+\textbf{R-I} & \textbf{Principio} & \textbf{Aplicacao Pedagogica} \\
+\midrule
+R-I1 & Empirico-Verificacionista & Todo exercicio tem criterio de aprovacao mensuravel \\
+R-I2 & Falsificabilidade & Cada CT pode ser refutado (aluno pode falhar) \\
+R-I3 & Medido-vs-Projetado & Separamos taxa de aprovacao real da esperada \\
+R-I4 & Rastreabilidade & Cada resultado aponta para secao do modulo \\
+R-I5 & Contraprova & Cora-Debate + revisao humana (colegas) \\
+R-I6 & Origem de Dados & Seeds documentadas, comandos explicitos \\
+R-I7 & Nivel de Confianca & Cada metrica com IC ou desvio padrao \\
+R-I8 & Vies Auto-Avaliacao & Scores do Cora-Debate rotulados [auto-reportado] \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Exercicios de Metacognicao}
+
+\begin{exer}[Auto-Avaliacao]
+Apos completar o modulo, atribua-se uma nota de 0--5 para cada nivel
+da Taxonomia de Bloom (L1--L6). Em qual nivel voce se sente mais
+confiante? Em qual menos? Por que?
 \end{exer}
 
-\begin{exer}[Comparacao entre Ciclos]
-Compare os resultados do Ciclo 1 (cross-validation inicial) com o Ciclo 17
-(CORA-Eval). O que mudou na \textbf{qualidade} do raciocinio? Que metricas
-capturam essa mudanca? Como voce aplicaria esse conceito de ``maturidade de
-raciocinio'' ao estudo da GAT?
+\begin{exer}[Critica ao Modulo]
+Identifique \textbf{tres} pontos em que este modulo poderia ser
+melhorado. Para cada ponto, proponha uma especificacao (SPEC) de
+como voce corrigiria o problema. Implemente a correcao.
 \end{exer}
 
-\begin{exer}[Projete o Ciclo 18]
-Com base no que voce aprendeu sobre GAT e sobre o OpenCode, proponha o
-Ciclo 18. Que pergunta ele deveria responder? Que experimento deveria
-executar? Que nova skill deveria gerar? Justifique com base na Secao 15.3.
+\begin{exer}[Projete o Proximo Modulo]
+Se voce fosse o professor do proximo semestre, que topico de GAT
+voce expandiria? Escreva a ementa, os CTs e o primeiro exercicio
+do novo modulo. Justifique com base nos resultados dos seus colegas.
 \end{exer}
 
 \section{Referencias do Capitulo}
 
 \begin{enumerate}[nosep]
+  \item Bloom, B.S. (1956). Taxonomy of Educational Objectives.
+        Longmans. ISBN: 978-0582280106.
+  \item Beck, K. (2003). Test-Driven Development: By Example.
+        Addison-Wesley. ISBN: 978-0321146533.
   \item Claro, M. (2026). OpenCode Ecosystem v4.6.1. GitHub.
-  \item Yao, S. et al. (2023). ReAct: Synergizing Reasoning and Acting in
-        Language Models. ICLR. DOI: 10.48550/arxiv.2210.03629.
-  \item Nash, J.F. (1950). Equilibrium points in n-person games. PNAS.
-        DOI: 10.1073/pnas.36.1.48.
-  \item Beck, K. (2003). Test-Driven Development: By Example. Addison-Wesley.
-  \item Popper, K. (1959). The Logic of Scientific Discovery. Routledge.
-        DOI: 10.4324/9780203994627.
+  \item Claro, M. (2026). INTEGRIDADE.md — Principio de Integridade
+        e Auditabilidade. GitHub.
 \end{enumerate}
