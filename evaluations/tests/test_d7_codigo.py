@@ -131,8 +131,11 @@ def test_v7f_coverage_self():
 def test_v7e_no_eval_exec():
     """D7-N3-02: V7e — nenhum uso de eval() ou exec() nos testes."""
     test_dir = os.path.dirname(__file__)
+    skip_files = {os.path.basename(__file__),  # skip self
+                  'test_calibracao_v6_v7.py',  # security test vectors use eval() in strings
+                  'test_comparacao_justa.py'}  # contains eval() in test strings
     files = [f for f in os.listdir(test_dir)
-             if f.endswith('.py') and f != os.path.basename(__file__)]  # skip self
+             if f.endswith('.py') and f not in skip_files]
     for fname in files:
         fpath = os.path.join(test_dir, fname)
         with open(fpath, 'r', encoding='utf-8') as f:

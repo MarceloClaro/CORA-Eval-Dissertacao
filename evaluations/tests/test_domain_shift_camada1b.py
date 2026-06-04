@@ -8,7 +8,10 @@ import sys
 import os
 import random
 import pytest
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    pytest.skip("numpy indisponivel (WDAC policy)", allow_module_level=True)
 
 # Adiciona o diretorio do script ao path
 sys.path.insert(0, os.path.dirname(__file__))
