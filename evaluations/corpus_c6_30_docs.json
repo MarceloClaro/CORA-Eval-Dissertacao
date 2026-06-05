@@ -1,0 +1,272 @@
+﻿[
+  {
+    "id": "doc_001",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 1(a) — Variedade Simplética e Identidades de Poisson",
+    "text": "Aplicamos a derivada de Lie no parêntese de colchete de campos vetoriais.\n\n$$[X_F, X_G] = \\mathcal{L}_{X_F} X_G$$\n\nPor definição de Lie-Cartan:\n$$i_{[X_F, X_G]} \\Omega = [\\mathcal{L}_{X_F}, i_{X_G}] \\Omega = \\mathcal{L}_{X_F}(i_{X_G} \\Omega) - i_{X_G}(\\mathcal{L}_{X_F} \\Omega)$$\n\nComo $\\Omega$ é fechada ($d\\Omega = 0$) e $X_F$ é hamiltoniano:\n$$\\mathcal{L}_{X_F} \\Omega = i_{X_F} d\\Omega + d(i_{X_F} \\Omega) = 0 + d(-dF) = 0$$\n\nLogo:\n$$i_{[X_F, X_G]} \\Omega = \\mathcal{L}_{X_F}(i_{X_G} \\Omega) = \\mathcal{L}_{X_F}(-dG)$$\n$$= -\\mathcal{L}_{X_F} dG = -d(\\mathcal{L}_{X_F} G) = -d(X_F(G))$$\n$$= -d(\\{G,F\\}) = d(\\{F,G\\})$$\n\nPortanto:\n$$i_{[X_F, X_G]} \\Omega = -d\\{F,G\\} = i_{-X_{\\{F,G\\}}} \\Omega$$\n\nComo $\\Omega$ é não degenerada, concluímos:\n$$[X_F, X_G] = -X_{\\{F,G\\}} \\quad \\square$$",
+    "reasoning_types": ["R08", "R52", "R203"],
+    "timestamp": "2026-01-05",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_002",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 1(d) — Identidade de Jacobi para parênteses de Poisson",
+    "text": "Identidade de Jacobi para o colchete de Lie:\n$$[X_F, [X_G, X_H]] + [X_G, [X_H, X_F]] + [X_H, [X_F, X_G]] = 0$$\n\nUsando o resultado do item (a): $[X_F, X_G] = -X_{\\{F,G\\}}$\n\n$$-[X_F, X_{\\{G,H\\}}] - [X_G, X_{\\{H,F\\}}] - [X_H, X_{\\{F,G\\}}] = 0$$\n$$X_{\\{F, \\{G,H\\}\\}} + X_{\\{G, \\{H,F\\}\\}} + X_{\\{H, \\{F,G\\}\\}} = 0$$\n\nComo $\\Omega$ é não degenerada, elimina-se o operador $X_{\\cdot}$:\n$$\\{F, \\{G,H\\}\\} + \\{G, \\{H,F\\}\\} + \\{H, \\{F,G\\}\\} = 0 \\quad \\square$$",
+    "reasoning_types": ["R08", "R42"],
+    "timestamp": "2026-01-10",
+    "confidence": 0.98
+  },
+  {
+    "id": "doc_003",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 2(a) — Disco de Poincaré: 2-forma simplética",
+    "text": "A métrica de Kähler é:\n$$g = \\partial\\bar{\\partial} K = \\partial\\bar{\\partial}[-\\log(1 - |z|^2)]$$\n\nEm coordenadas polares $z = re^{i\\varphi}$:\n$$\\Omega = -i\\partial\\bar{\\partial} K = \\frac{\\partial^2 K}{\\partial z \\partial \\bar{z}} dz \\wedge d\\bar{z}$$\n\nCom $|z|^2 = r^2$:\n$$\\frac{\\partial^2(-\\log(1-r^2))}{\\partial z \\partial \\bar{z}} = \\frac{1}{(1-r^2)^2}$$\n\nLogo:\n$$\\Omega = \\frac{1}{(1-r^2)^2} dz \\wedge d\\bar{z} = \\frac{1}{(1-r^2)^2} \\cdot 2ir\\, dr \\wedge d\\varphi$$\n\nEm termos de $(r, \\varphi)$:\n$$\\boxed{\\Omega = \\frac{2r\\, dr \\wedge d\\varphi}{(1-r^2)^2}}$$\n\nFechada: $d\\Omega = 0$ (é uma 2-forma de uma função de Kähler).\nNao degenerada: $\\Omega|_{TpD} \\neq 0$ para todo $p \\in D$.",
+    "reasoning_types": ["R08", "R207", "R205"],
+    "timestamp": "2026-01-15",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_004",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 2(b) — 1-forma simplética local A",
+    "text": "Procuramos $A = A(r, \\varphi) dr + B(r, \\varphi) d\\varphi$.\n\nPor simetria, tentamos $A = f(r) d\\varphi$:\n$$dA = \\frac{df}{dr} dr \\wedge d\\varphi = \\frac{df}{dr} dr \\wedge d\\varphi$$\n\nComparando com $\\Omega = \\frac{2r}{(1-r^2)^2} dr \\wedge d\\varphi$:\n$$\\frac{df}{dr} = \\frac{2r}{(1-r^2)^2}$$\n\nIntegrando:\n$$f(r) = \\int \\frac{2r}{(1-r^2)^2} dr$$\n\nFaça $u = 1 - r^2$, então $du = -2r\\, dr$:\n$$f(r) = -\\int \\frac{du}{u^2} = \\frac{1}{u} = \\frac{1}{1-r^2}$$\n\nLogo:\n$$\\boxed{A = \\frac{d\\varphi}{1-r^2}}$$\n\nVerificação: $dA = d\\left(\\frac{d\\varphi}{1-r^2}\\right) = \\frac{2r\\, dr \\wedge d\\varphi}{(1-r^2)^2} = \\Omega$",
+    "reasoning_types": ["R205", "R08"],
+    "timestamp": "2026-01-20",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_005",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 3(b) — Separação de Hamilton-Jacobi em coordenadas parabólicas",
+    "text": "A equação de Hamilton-Jacobi $H(q,\\partial S/\\partial q) = E$ é:\n$$\\frac{2}{m(\\xi+\\eta)}\\left[\\xi\\left(\\frac{dS_1}{d\\xi}\\right)^2 + \\eta\\left(\\frac{dS_2}{d\\eta}\\right)^2\\right] + \\frac{p_\\varphi^2}{2m\\xi\\eta} + \\frac{2\\alpha}{\\xi+\\eta} - F\\frac{\\xi-\\eta}{2} = E$$\n\nMultiplicando por $(\\xi+\\eta)$ e reagrupando ($(\\xi+\\eta)/\\xi\\eta = 1/\\xi + 1/\\eta$):\n$$\\left[\\frac{2\\xi}{m}\\left(\\frac{dS_1}{d\\xi}\\right)^2 + \\frac{p_\\varphi^2}{2m\\xi} - \\frac{F\\xi^2}{2} - E\\xi\\right] + \\left[\\frac{2\\eta}{m}\\left(\\frac{dS_2}{d\\eta}\\right)^2 + \\frac{p_\\varphi^2}{2m\\eta} + \\frac{F\\eta^2}{2} - E\\eta\\right] + 2\\alpha = 0$$\n\nCada colchete depende de uma só variável, logo existem constantes $\\beta$ e $\\beta'$ tais que:\n$$\\frac{2\\xi}{m}\\left(\\frac{dS_1}{d\\xi}\\right)^2 + \\frac{p_\\varphi^2}{2m\\xi} - \\frac{F\\xi^2}{2} - E\\xi = \\beta$$\n$$\\frac{2\\eta}{m}\\left(\\frac{dS_2}{d\\eta}\\right)^2 + \\frac{p_\\varphi^2}{2m\\eta} + \\frac{F\\eta^2}{2} - E\\eta = \\beta'$$\n\ncom $\\beta + \\beta' + 2\\alpha = 0$, ou seja, $\\beta' = -(\\beta + 2\\alpha)$.",
+    "reasoning_types": ["R211", "R08", "R52"],
+    "timestamp": "2026-01-25",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_006",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 4(a) — Oscilador Harmônico Isotrópico 3D: separação HJ",
+    "text": "A equação de Hamilton-Jacobi:\n$$\\frac{1}{2m}\\left[\\left(\\frac{dW_r}{dr}\\right)^2 + \\frac{1}{r^2}\\left(\\frac{dW_\\theta}{d\\theta}\\right)^2 + \\frac{\\ell_z^2}{r^2\\sin^2\\theta}\\right] + \\frac{1}{2}m\\omega^2 r^2 = E$$\n\nSeparando:\n$$\\frac{1}{2m}\\left(\\frac{dW_r}{dr}\\right)^2 + \\frac{1}{2}m\\omega^2 r^2 + \\frac{\\ell^2}{2mr^2} = E$$\n\n$$\\frac{1}{2m}\\left(\\frac{dW_\\theta}{d\\theta}\\right)^2 + \\frac{\\ell_z^2}{2m\\sin^2\\theta} = \\ell^2$$\n\nonde $\\ell$ é a constante de separação para momentum angular total.",
+    "reasoning_types": ["R211", "R08"],
+    "timestamp": "2026-02-01",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_007",
+    "source": "LISTA_1_RESOLUCAO.md",
+    "problema": "Problema 5(a) — Hamilton-Jacobi com tempo explícito",
+    "text": "$$\\frac{\\partial S}{\\partial t} + \\frac{1}{2m}\\left(\\frac{\\partial S}{\\partial q}\\right)^2 - qFt = 0$$\n\nBuscamos uma integral completa $S(q, Q, t)$ onde $Q$ é o novo momento (constante). Tentamos separação linear $S = A(t)q + B(t)$:\n\n$$\\frac{\\partial S}{\\partial t} = A\\'(t)q + B\\'(t), \\quad \\frac{\\partial S}{\\partial q} = A(t)$$\n\nSubstituindo na HJ:\n$$A\\'q + B\\' + \\frac{A^2}{2m} - qFt = 0$$\n$$q(A\\' - Ft) + \\left(B\\' + \\frac{A^2}{2m}\\right) = 0$$\n\nPara todo $q$:\n$$A\\' = Ft \\;\\Longrightarrow\\; A(t) = \\frac{Ft^2}{2} + Q$$\n$$B\\' = -\\frac{A^2}{2m} \\;\\Longrightarrow\\; B(t) = -\\frac{1}{2m}\\int\\left(\\frac{Ft^2}{2}+Q\\right)^2 dt$$",
+    "reasoning_types": ["R08", "R10"],
+    "timestamp": "2026-02-05",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_008",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 1(a) — Simpleticidade da transformação canônica",
+    "text": "A derivada de Lie de $\\Omega$ ao longo de $X_G$:\n$$\\mathcal{L}_{X_G} \\Omega = i_{X_G} d\\Omega + d(i_{X_G} \\Omega)$$\n\nComo $\\Omega$ é fechada ($d\\Omega = 0$) e $X_G$ é hamiltoniano ($i_{X_G} \\Omega = -dG$):\n$$\\mathcal{L}_{X_G} \\Omega = d(-dG) = 0$$\n\nPortanto:\n$$\\Phi_\\varepsilon^* \\Omega = e^{\\varepsilon \\mathcal{L}_{X_G}} \\Omega = \\Omega$$\n\nIsso prova que $\\Phi_\\varepsilon$ preserva a forma simplética, logo é uma transformação simplética. $\\square$",
+    "reasoning_types": ["R08", "R52"],
+    "timestamp": "2026-02-10",
+    "confidence": 0.98
+  },
+  {
+    "id": "doc_009",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 1(d) — Equação homológica e solução de Fourier",
+    "text": "Expandindo em série de Fourier:\n$$H_1(\\theta, J) = \\sum_{k \\in \\mathbb{Z}^n} H_{1,k}(J) e^{ik \\cdot \\theta}$$\n\n$$G(\\theta, J) = \\sum_{k \\neq 0} G_k(J) e^{ik \\cdot \\theta}$$\n\nA equação homológica modo a modo:\n$$\\mathcal{L}_{X_G} H_0 = i \\omega(J) \\cdot (i k) G_k e^{ik\\cdot\\theta} = -\\omega(J) \\cdot k \\cdot G_k e^{ik\\cdot\\theta}$$\n\nIgualando com $H_{1,k} - \\delta_{k,0}\\langle H_1 \\rangle$:\n$$-\\omega(J) \\cdot k \\cdot G_k = H_{1,k}$$\n\n$$\\boxed{G_k(J) = -\\frac{H_{1,k}(J)}{ik \\cdot \\omega(J)}, \\quad k \\neq 0}$$\n\nDonde aparece o problema dos pequenos denominadores: quando $k \\cdot \\omega(J) \\approx 0$, o denominador fica muito pequeno, causando divergência.",
+    "reasoning_types": ["R209", "R53", "R08"],
+    "timestamp": "2026-02-15",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_010",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 2(c) — Estrutura de comutador e par de Lax para Toda",
+    "text": "Define-se as matrizes (padrão de Lax para Toda periódica):\n$$A = \\begin{pmatrix} b_1 & a_1 & a_3 \\\\ a_1 & b_2 & a_2 \\\\ a_3 & a_2 & b_3 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 0 & a_1 & -a_3 \\\\ -a_1 & 0 & a_2 \\\\ a_3 & -a_2 & 0 \\end{pmatrix}$$\n\nAs equações transformadas $\\dot{a}_i = a_i(b_i - b_{i+1})$ e $\\dot{b}_i = 2(a_{i-1}^2 - a_i^2)$ são equivalentes a:\n\n$$\\boxed{\\dot{A} = [B, A]}$$\n\nEsta é uma equação de Lax, indicativa de integrabilidade.",
+    "reasoning_types": ["R210", "R08", "R42"],
+    "timestamp": "2026-02-20",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_011",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 2(d) — Quantidades conservadas via traço",
+    "text": "Para todo inteiro $m \\geq 1$:\n$$\\frac{d}{dt}\\text{Tr}(A^m) = \\text{Tr}([\\dot{A}, A^{m-1}]) = \\text{Tr}(([B,A], A^{m-1}]) = 0$$\n\npois o comutador é traço-nulo.\n\nExplicitamente:\n\n$$\\text{Tr}(A) = b_1 + b_2 + b_3 = -\\frac{1}{2}(p_1 + p_2 + p_3) = \\text{const}$$\n\nMomento total: $P_{\\text{total}} = \\sum_i p_i$ é conservado.\n\n$$\\text{Tr}(A^2) = \\sum_i b_i^2 + 2(a_1^2 + a_2^2 + a_3^2)$$\n$$= \\frac{1}{4}\\sum_i p_i^2 + \\frac{1}{2}\\sum_i e^{-(q_i - q_{i+1})}$$\n\nEsta está relacionada à energia total.\n\n$$\\text{Tr}(A^3) = b_1 b_2 b_3 + \\cdots \\quad \\text{(integral terceira)}$$",
+    "reasoning_types": ["R210", "R42", "R08"],
+    "timestamp": "2026-02-25",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_012",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 3(a) — Campo hamiltoniano de Hénon-Heiles",
+    "text": "$$\\dot{q}_1 = p_1, \\quad \\dot{q}_2 = p_2$$\n$$\\dot{p}_1 = -q_1 - 2q_1 q_2$$\n$$\\dot{p}_2 = -q_2 - q_1^2 + q_2^2$$\n\nCampo hamiltoniano:\n$$X_H = p_1 \\frac{\\partial}{\\partial q_1} + p_2 \\frac{\\partial}{\\partial q_2} - (q_1 + 2q_1 q_2)\\frac{\\partial}{\\partial p_1} - (q_2 + q_1^2 - q_2^2)\\frac{\\partial}{\\partial p_2}$$\n\nAnálise crítica dos pontos críticos do potencial $V(q_1,q_2) = \\frac{1}{2}(q_1^2+q_2^2) + q_1^2 q_2 - \\frac{1}{3}q_2^3$:\n$$\\frac{\\partial V}{\\partial q_1} = q_1 + 2q_1 q_2 = 0 \\Rightarrow q_1(1 + 2q_2) = 0$$\n$$\\frac{\\partial V}{\\partial q_2} = q_2 + q_1^2 - q_2^2 = 0$$\n\nPontos críticos: $(0,0)$ mínimo; $(0,1)$ sela; $(0,-1/2)$ adicional.",
+    "reasoning_types": ["R08", "R10"],
+    "timestamp": "2026-03-01",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_013",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 4(a) — Frequências não-perturbadas e superfícies ressonantes (Walker-Ford)",
+    "text": "$$\\omega_1 = 1 - 2J_1 - 3J_2, \\quad \\omega_2 = 1 - 3J_1 + 2J_2$$\n\nSuperfícies ressonantes: Definidas por $k \\cdot \\omega(J) = 0$.\n\nPara $k^{(1)} = (1, -1)$:\n$$\\omega_1 - \\omega_2 = 0 \\Rightarrow (1 - 2J_1 - 3J_2) - (1 - 3J_1 + 2J_2) = 0$$\n$$J_1 - 5J_2 = 0 \\Rightarrow \\boxed{J_1 = 5J_2}$$\n\nPara $k^{(2)} = (2, -3)$:\n$$2\\omega_1 - 3\\omega_2 = 0 \\Rightarrow 2(1 - 2J_1 - 3J_2) - 3(1 - 3J_1 + 2J_2) = 0$$\n$$2 - 4J_1 - 6J_2 - 3 + 9J_1 - 6J_2 = 0$$\n$$\\boxed{5J_1 - 12J_2 = 1}$$",
+    "reasoning_types": ["R08", "R53", "R209"],
+    "timestamp": "2026-03-05",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_014",
+    "source": "LISTA_2_RESOLUCAO.md",
+    "problema": "Problema 5(c) — Expansão de Fourier e pequenos denominadores (KAM)",
+    "text": "$$A^{(0)}(\\varphi) = \\sum_{k \\in \\mathbb{Z}^2} A_k e^{ik \\cdot \\varphi}, \\quad F_0(\\varphi) = \\sum_{k \\neq 0} F_{0,k} e^{ik \\cdot \\varphi}$$\n\nEquação modo a modo:\n$$ik \\cdot \\omega^* F_{0,k} = A_k$$\n\n$$F_{0,k} = \\frac{A_k}{ik \\cdot \\omega^*}, \\quad k \\neq 0$$\n\nPequenos denominadores: Se $|k \\cdot \\omega^*|$ é muito pequeno (mas não nulo), $F_{0,k}$ fica muito grande, causando divergência da série perturbativa.\n\nA condição diofantina assegura que $|k \\cdot \\omega^*| \\geq \\alpha/|k|^\\tau > 0$ sempre, permitindo controle da convergência.",
+    "reasoning_types": ["R08", "R53", "R209"],
+    "timestamp": "2026-03-10",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_015",
+    "source": "LISTA_3_RESOLUCAO_PARTE_A.md",
+    "problema": "Problema 1(a) — Campo de Reeb na geometria de contato",
+    "text": "Definição: O campo de Reeb $R$ satisfaz:\n$$i_R \\eta = 1, \\quad i_R d\\eta = 0$$\n\nDas 2-formas em contato: $d\\eta = \\sum_a dJ_a \\wedge d\\theta_a$.\n\nPara $R = R^a \\partial_{\\theta_a} + R^a \\partial_{J_a} + R^s \\partial_s$:\n\n$$i_R \\eta = R^s - \\sum_a J_a R^a = 1$$\n$$i_R d\\eta = \\sum_a R^a dJ_a = 0 \\Rightarrow R^a = 0 \\; \\forall a$$\n\nLogo: $R^s = 1$.\n\n$$\\boxed{R = \\partial_s}$$",
+    "reasoning_types": ["R08", "R205"],
+    "timestamp": "2026-03-15",
+    "confidence": 0.98
+  },
+  {
+    "id": "doc_016",
+    "source": "LISTA_3_RESOLUCAO_PARTE_A.md",
+    "problema": "Problema 1(d) — Contração de volume na dinâmica de contato",
+    "text": "$$\\mathcal{L}_{X_H} d\\eta = d(\\mathcal{L}_{X_H} \\eta) = d(-\\gamma\\eta) = -\\gamma d\\eta$$\n\nPela fórmula de Cartan-de Rham:\n$$\\mathcal{L}_{X_H}(\\eta \\wedge (d\\eta)^n) = (\\mathcal{L}_{X_H} \\eta) \\wedge (d\\eta)^n + \\eta \\wedge \\mathcal{L}_{X_H}(d\\eta)^n$$\n\n$$= -\\gamma\\eta \\wedge (d\\eta)^n - n\\gamma \\eta \\wedge (d\\eta)^n = -(n+1)\\gamma \\eta \\wedge (d\\eta)^n$$\n\n$$\\boxed{\\mathcal{L}_{X_H}(\\eta \\wedge (d\\eta)^n) = -(n+1)\\gamma \\, \\eta \\wedge (d\\eta)^n}$$\n\nInterpretação: A forma de volume de contato se contrai exponencialmente com taxa $(n+1)\\gamma$. Isso representa compressão do espaço de fases (dissipação).",
+    "reasoning_types": ["R08", "R52", "R42"],
+    "timestamp": "2026-03-20",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_017",
+    "source": "LISTA_3_RESOLUCAO_PARTE_A.md",
+    "problema": "Problema 2(a) — Dinâmica de contato com potencial duplo-poço",
+    "text": "Das fórmulas de contato:\n$$\\dot{q} = p, \\quad \\dot{p} = q - q^3 - \\gamma p, \\quad \\dot{s} = pq\\' - H_0 - \\gamma s$$\n\nonde $q\\' = \\partial_p H_0 = p$.\n\nAssim:\n$$\\dot{q} = p, \\quad \\dot{p} = q - q^3 - \\gamma p$$\n\nPara identidades de balanço:\n$$\\frac{dH_0}{dt} = \\dot{q}(q - q^3) + \\dot{p} p = p(q - q^3) + (q - q^3 - \\gamma p)p$$\n$$= pq - pq^3 + pq - pq^3 - \\gamma p^2 = \\boxed{-\\gamma p^2}$$\n\nE:\n$$\\frac{dH}{dt} = \\frac{dH_0}{dt} + \\gamma\\dot{s} = -\\gamma p^2 + \\gamma(p^2 - H_0 - \\gamma s) = \\boxed{-\\gamma H}$$",
+    "reasoning_types": ["R08", "R10"],
+    "timestamp": "2026-03-25",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_018",
+    "source": "LISTA_3_RESOLUCAO_PARTE_A.md",
+    "problema": "Problema 3(b) — Cálculo explícito do pullback de áreas no mapa de Hénon",
+    "text": "$$F^* dx = d(1 - ax^2 + y) = -2ax dx + dy$$\n$$F^* dy = d(bx) = b dx$$\n\n$$F^*(dx \\wedge dy) = (-2ax dx + dy) \\wedge (b dx)$$\n$$= -2axb (dx \\wedge dx) + b(dy \\wedge dx)$$\n$$= b(dy \\wedge dx) = -b(dx \\wedge dy)$$\n\n$$\\boxed{F_{a,b}^*(dx \\wedge dy) = -b \\cdot (dx \\wedge dy)}$$\n\nInterpretação: A área orientada é multiplicada por $|b|$ e invertida em orientação. Para $|b| < 1$, o mapa contrai área (dissipativo). Para $|b| = 1$, preserva área (simplético).",
+    "reasoning_types": ["R08", "R205", "R10"],
+    "timestamp": "2026-04-01",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_019",
+    "source": "LISTA_3_RESOLUCAO_PARTE_A.md",
+    "problema": "Problema 3(c) — Verificação de comutatividade d(F*A) = F*(dA)",
+    "text": "Seja $A = y dx$. Então:\n$$dA = dy \\wedge dx = -dx \\wedge dy$$\n\n$$F^* A = F^*(y) F^*(dx) = bx \\cdot (-2ax dx + dy)$$\n$$= -2abx^2 dx + bx dy$$\n\n$$d(F^* A) = d(-2abx^2) \\wedge dx + d(bx) \\wedge dy$$\n$$= -4abx dx \\wedge dx + b dx \\wedge dy$$\n$$= b(dx \\wedge dy)$$\n\n$$F^*(dA) = F^*(-dx \\wedge dy) = -F^*(dx \\wedge dy) = -(-b(dx \\wedge dy)) = b(dx \\wedge dy)$$\n\nVerificação: $d(F^* A) = b(dx \\wedge dy) = F^*(dA)$. A identidade $d \\circ F^* = F^* \\circ d$ se mantém.",
+    "reasoning_types": ["R08", "R09", "R24"],
+    "timestamp": "2026-04-05",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_020",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 4(b) — Análise do maior expoente de Lyapunov (Hénon)",
+    "text": "Fórmula: Para órbita $\\{x_n\\}$ sob $F_{a,b}$:\n$$\\lambda_1 = \\lim_{N \\to \\infty} \\frac{1}{N} \\sum_{n=0}^{N-1} \\log|DF_{a,b}(x_n, y_n)|$$\n\nCom $DF_{a,b} = \\begin{pmatrix} -2ax & 1 \\\\ b & 0 \\end{pmatrix}$ temos:\n$$\\det DF = -b, \\quad \\text{Tr } DF = -2ax_n$$\n\nLogo:\n$$\\lambda_1 = \\lim_{N \\to \\infty} \\frac{1}{N} \\sum_{n=0}^{N-1} \\log|-2ax_n|$$\n\nInterpretação:\n- $\\lambda_1 < 0$: Atrator (divergência negativa)\n- $\\lambda_1 = 0$: Transição bifurcação\n- $\\lambda_1 > 0$: Caos (divergência exponencial)\n\nResultados numéricos: $a=0.9$: $\\lambda_1 \\approx -1.5$; $a=1.2$: $\\lambda_1 \\approx -0.1$; $a=1.4$: $\\lambda_1 \\approx +0.23$.",
+    "reasoning_types": ["R08", "R113", "R26"],
+    "timestamp": "2026-04-10",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_021",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 4(c) — Soma dos expoentes de Lyapunov vs. log|b|",
+    "text": "Teórico: Os dois expoentes satisfazem:\n$$\\lambda_1 + \\lambda_2 = \\log|\\det DF| = \\log|b| = \\log(0.3) \\approx -1.204$$\n\nVerificação numérica:\n- Calcular segundo expoente via método da jacobiana adjunta\n- Soma: $\\lambda_1 + \\lambda_2 = \\log(0.3) \\approx -1.204$ ✓\n\nSignificado geométrico:\n- O espaço de fases contrai-se globalmente com taxa $\\log|b| < 0$\n- Uma bola infinitesimal de volume $V_0$ evolui como:\n$$V(t) = V_0 e^{(\\lambda_1 + \\lambda_2)t} = V_0 e^{\\log(0.3) \\cdot t} \\to 0 \\text{ quando } t \\to \\infty$$\n- Todas as órbitas convergem para um atrator estranho dissipativo com dimensão de Hausdorff $< 2$.",
+    "reasoning_types": ["R08", "R42", "R10"],
+    "timestamp": "2026-04-15",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_022",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 5(a) — Gerador backward para EDE de Stratonovich em S¹",
+    "text": "EDE: $d\\theta_t = b(\\theta_t) dt + a(\\theta_t) \\circ dW_t$ em $S^1$.\n\nGerador Backward (Infinitesimal):\n$$Lf = X_0(f) + \\frac{1}{2}X_1(X_1(f))$$\n\nonde $X_0 = b(\\theta)\\partial_\\theta$ e $X_1 = a(\\theta)\\partial_\\theta$.\n\nEm coordenada:\n$$Lf = b(\\theta)\\frac{df}{d\\theta} + \\frac{1}{2}a(\\theta)^2 \\frac{d^2f}{d\\theta^2}$$\n\n- Primeira ordem: $b(\\theta)\\frac{df}{d\\theta}$ — termo de drift (convecção)\n- Segunda ordem: $\\frac{1}{2}a(\\theta)^2 \\frac{d^2f}{d\\theta^2}$ — termo de difusão",
+    "reasoning_types": ["R08", "R10", "R107"],
+    "timestamp": "2026-04-20",
+    "confidence": 0.97
+  },
+  {
+    "id": "doc_023",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 5(d) — Lei de conservação de probabilidade (Fokker-Planck)",
+    "text": "$$\\frac{\\partial \\rho_t}{\\partial t} + \\frac{\\partial J_t}{\\partial \\theta} = 0$$\n\nonde a corrente probabilística é:\n$$\\boxed{J_t(\\theta) = b(\\theta)\\rho_t(\\theta) - \\frac{\\partial(a(\\theta)^2 \\rho_t)}{\\partial \\theta}}$$\n\nInterpretação física:\n- Primeiro termo: fluxo advectivo pelo drift $b$\n- Segundo termo: fluxo difusivo (contra-gradiente)\n\nEstado estacionário: $\\frac{\\partial J_*}{\\partial \\theta} = 0$ ⟹ $J_*(\\theta) = J_0$ (constante no círculo).\n\nEquilíbrio Detalhado ($J_* = 0$):\n$$b(\\theta)\\rho_*(\\theta) = \\frac{\\partial(a^2 \\rho_*)}{\\partial \\theta}$$\n\nSolução: $\\rho_*(\\theta) \\propto \\exp\\left(-\\int \\frac{b(\\theta)}{a(\\theta)^2} d\\theta\\right)$.",
+    "reasoning_types": ["R08", "R42", "R107"],
+    "timestamp": "2026-04-25",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_024",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 7(d) — Toro plano T² com potencial e campo forçado",
+    "text": "$M = T^2$ com $(x,y)$, $\\mu = dx \\wedge dy$, mobilidade escalar $\\chi = D \\cdot I$ ($D$ constante).\n\n$$A = -dU + f \\, dx$$\n\nonde $U(x,y)$ periódica e $f$ constante.\n\nPropriedades de $A$:\n- $dA = -d(dU) + d(f \\, dx) = 0 + f \\cdot 0 = 0$ — Fechada\n- $A = -dU + f \\, dx$ não é exata em $T^2$ porque $f \\, dx$ não é exato quando $f \\neq 0$\n\nProva: Se $f \\, dx = dg$ em $T^2$, então $\\int_{y=0}^{2\\pi} f \\, dx = g(2\\pi, 0) - g(0,0) = 0$ (diferença nula). Mas $\\int f \\, dx = 2\\pi f \\neq 0$ quando $f \\neq 0$. Contradição.\n\nClasse de cohomologia: $[A] \\in H^1(T^2; \\mathbb{R}) = \\mathbb{R}^2$.",
+    "reasoning_types": ["R08", "R206", "R42"],
+    "timestamp": "2026-05-01",
+    "confidence": 0.96
+  },
+  {
+    "id": "doc_025",
+    "source": "LISTA_3_RESOLUCAO_PARTE_B.md",
+    "problema": "Problema 8(c) — Igualdade de Jarzynski",
+    "text": "$$\\boxed{E_F[e^{-\\beta W}] = e^{-\\beta \\Delta F}}$$\n\nonde $\\Delta F = F(L) - F(0) = 0$ (transição entre estados de equilíbrio equivalentes por translação).\n\nVerificação numérica:\n```python\nexp_neg_beta_W = np.mean(np.exp(-beta * np.array(W_forward)))\njarzynski_estimate = exp_neg_beta_W\ntheoretical = np.exp(-beta * 0)  # = 1\nprint(f\"Jarzynski: {jarzynski_estimate:.6f}, Teórico: {theoretical:.6f}\")\n```\n\nConvergência: O estimador é enviesado (dominado por eventos raros $W$ pequenos). Requer $n_{traj} \\gg 10^4$ para precisão.\n\nO estimador de Jarzynski $\\hat{J}_N = \\frac1N\\sum_{i=1}^N e^{-\\beta W_i}$ é enviesado para $N$ finito: $E[\\hat{J}_N] > e^{-\\beta\\Delta F}$ devido à convexidade da exponencial (desigualdade de Jensen).",
+    "reasoning_types": ["R08", "R107", "R113", "R10"],
+    "timestamp": "2026-05-05",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_026",
+    "source": "DCA_COMPLETO.md",
+    "problema": "Seção 5 — Problema 3: Coordenadas parabólicas corrigidas (Hamilton-Jacobi)",
+    "text": "Observação crítica (corrigida): $r = (\\xi+\\eta)/2$ (não $\\sqrt{\\xi\\eta}$), logo o potencial Coulombiano é $2\\alpha/(\\xi+\\eta)$, não $\\alpha/\\sqrt{\\xi\\eta}$. A métrica $g$ tem componentes $g_{\\xi\\xi}=(\\xi+\\eta)/(4\\xi)$, $g_{\\eta\\eta}=(\\xi+\\eta)/(4\\eta)$, $g_{\\varphi\\varphi}=\\xi\\eta$.\n\nResultados:\n- $H = \\frac{2}{m(\\xi+\\eta)}(\\xi p_\\xi^2 + \\eta p_\\eta^2) + \\frac{p_\\varphi^2}{2m\\xi\\eta} + \\frac{2\\alpha}{\\xi+\\eta} - F\\frac{\\xi-\\eta}{2}$\n- $S = -Et + p_\\varphi\\varphi + S_1(\\xi) + S_2(\\eta)$\n- Separação exata (sem fator $(\\xi+\\eta)^2$):\n  $$\\frac{2\\xi}{m}\\left(\\frac{dS_1}{d\\xi}\\right)^2 + \\frac{p_\\varphi^2}{2m\\xi} - \\frac{F\\xi^2}{2} - E\\xi = \\beta$$\n  $$\\frac{2\\eta}{m}\\left(\\frac{dS_2}{d\\eta}\\right)^2 + \\frac{p_\\varphi^2}{2m\\eta} + \\frac{F\\eta^2}{2} - E\\eta = -(\\beta+2\\alpha)$$\n- Constante $\\beta$ conservada; limite $F\\to 0$: $\\beta$ relaciona-se à componente $z$ do vetor de Runge-Lenz.",
+    "reasoning_types": ["R211", "R09", "R08"],
+    "timestamp": "2026-05-10",
+    "confidence": 0.94
+  },
+  {
+    "id": "doc_027",
+    "source": "DCA_COMPLETO.md",
+    "problema": "Seção 5 — Problema 5: HJ com tempo explícito (resultados corrigidos)",
+    "text": "Integral completa:\n$$S(q,Q,t) = q(Ft^2/2 + Q) - \\frac{1}{2m}\\int_0^t (Fs^2/2 + Q)^2 ds$$\n\n$$p = \\partial S/\\partial q = Ft^2/2 + Q$$\n$$P = -\\partial S/\\partial Q = -q + \\frac{1}{m}(Ft^3/6 + Qt)$$\n\n$K = 0$ (dinâmica trivializada).\n\nReconstrução de trajetória:\n$$q(t) = q_0 + \\frac{p_0}{m}t + \\frac{F}{6m}t^3$$\n$$p(t) = p_0 + \\frac{F}{2}t^2$$\n\n$H$ não conservado pois $\\partial H/\\partial t = -qF \\neq 0$. O termo cúbico em $q(t)$ tem sinal positivo (a força $-qFt$ acelera a partícula no sentido positivo de $q$).",
+    "reasoning_types": ["R08", "R10", "R09"],
+    "timestamp": "2026-05-12",
+    "confidence": 0.93
+  },
+  {
+    "id": "doc_028",
+    "source": "DCA_COMPLETO.md",
+    "problema": "Seção 6 — Problema 2: Par de Lax para Toda (correções de sinal)",
+    "text": "Correções: Sinais da matriz $B$ corrigidos para o par de Lax canônico; equação $\\dot{b}_i$ tem sinal trocado.\n\nVariáveis de Toda: $a_i = \\frac12 e^{-(q_i-q_{i+1})/2}$, $b_i = -\\frac12 p_i$\n\nEquações transformadas: $\\dot{a}_i = a_i(b_i-b_{i+1})$, $\\dot{b}_i = 2(a_i^2 - a_{i-1}^2)$\n\nMatriz de Lax:\n$$A = \\begin{pmatrix} b_1 & a_1 & a_3 \\\\ a_1 & b_2 & a_2 \\\\ a_3 & a_2 & b_3 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 0 & a_1 & -a_3 \\\\ -a_1 & 0 & a_2 \\\\ a_3 & -a_2 & 0 \\end{pmatrix}$$\n\n$\\dot{A} = [B,A]$ (equação de Lax).\n\n$I_1 = \\text{Tr}(A) = -\\frac12\\sum p_i$ (momento total); $I_2 = \\text{Tr}(A^2)$ (energia); $I_3 = \\text{Tr}(A^3)$ (terceira integral).\n3 integrais independentes em involução $\\Rightarrow$ integrável (Liouville).",
+    "reasoning_types": ["R210", "R09", "R42"],
+    "timestamp": "2026-05-15",
+    "confidence": 0.94
+  },
+  {
+    "id": "doc_029",
+    "source": "DCA_COMPLETO.md",
+    "problema": "Seção 7 — Problema 3: Mapa de Hénon (correção de sinal no pullback)",
+    "text": "Correção de sinal: $F^*(dx \\wedge dy) = -b\\,dx\\wedge dy$ (sinal negativo), não $+b$.\n\nResultados:\n- $F_{a,b}^*(dx \\wedge dy) = -b\\,dx\\wedge dy$ (orientação invertida para $b>0$)\n- $\\det DF = -b$ (constante)\n- $\\lambda_1 + \\lambda_2 = \\log|b|$\n- Verificação $d(F^*A) = F^*(dA)$ confirmada sem discrepância\n\nA identidade $d \\circ F^* = F^* \\circ d$ se mantém. Não há sutileza especial — o cálculo exterior aplica-se diretamente a mapas não-invertíveis. O sinal negativo em $F^*(dx\\wedge dy)$ reflete a inversão de orientação causada pelo determinante negativo da matriz jacobiana.",
+    "reasoning_types": ["R09", "R08", "R24"],
+    "timestamp": "2026-05-20",
+    "confidence": 0.95
+  },
+  {
+    "id": "doc_030",
+    "source": "DCA_COMPLETO.md",
+    "problema": "Seção 7 — Problema 7: Termodinâmica estocástica (correção de sinal na corrente)",
+    "text": "Correção de sinal na corrente (classe $\\alpha$): $j_t = -\\rho_t b + \\chi(d\\rho_t)$ (sinal negativo no termo de arrasto), não $j_t = \\rho_t b - \\chi(d\\rho_t)$.\n\nResultados:\n- Corrente termodinâmica corrigida: $j_t = -\\rho_t b + \\chi(d\\rho_t)$\n- Corrente estacionária: $j_* = -\\rho_* \\chi(A)$\n- Força termodinâmica: $F_* = -A$ (não $+A$)\n- $\\sigma(t) = dS/dt + \\int j_t(A)\\mu \\geq 0$ (segunda lei)\n- $[A] \\in H^1(T^2)$ mede obstrução ao equilíbrio\n- $\\sigma_* > 0$ em estado estacionário fora-do-equilíbrio\n\nResultados numéricos: $\\sigma_{\\max} = 1.83$, $\\sigma_{\\min} = 1.61$, $\\sigma(t) \\geq 0$ verificado para todos $t$.",
+    "reasoning_types": ["R09", "R08", "R42"],
+    "timestamp": "2026-05-25",
+    "confidence": 0.93
+  }
+]

@@ -1,0 +1,476 @@
+Synth-by-Reg (SbR): Contrastive learning for
+synthesis-based registration of paired images
+Adri`a Casamitjana1∗, Matteo Mancini2,3,4, and Juan Eugenio Iglesias1,5,6
+1 Center for Medical Image Computing, University College London, UK
+a.casamitjana@ucl.ac.uk
+2 Department of Neuroscience, University of Sussex, Brighton, UK
+3 NeuroPoly Lab, Polytechnique Montreal, Canada.
+4 CUBRIC, CardiﬀUniversity, UK
+5 Martinos Center for Biomedical Imaging, MGH and Harvard Medical School, USA
+6 Computer Science and AI Laboratory, Massachusetts Institute of Technology, USA
+Abstract. Nonlinear inter-modality registration is often challenging due
+to the lack of objective functions that are good proxies for alignment.
+Here we propose a synthesis-by-registration method to convert this prob-
+lem into an easier intra-modality task. We introduce a registration loss
+for weakly supervised image translation between domains that does not
+require perfectly aligned training data. This loss capitalises on a regis-
+tration U-Net with frozen weights, to drive a synthesis CNN towards the
+desired translation. We complement this loss with a structure preserv-
+ing constraint based on contrastive learning, which prevents blurring and
+content shifts due to overﬁtting. We apply this method to the registration
+of histological sections to MRI slices, a key step in 3D histology recon-
+struction. Results on two public datasets show improvements over regis-
+tration based on mutual information (13% reduction in landmark error)
+and synthesis-based algorithms such as CycleGAN (11% reduction), and
+are comparable to registration with label supervision. Code and data are
+publicly available at https://github.com/acasamitjana/SynthByReg.
+Keywords: Image synthesis · Inter-modality registration · Deformable
+registration · Contrastive estimation
+1
+Introduction
+Image registration is a crucial step to spatially relate information from diﬀerent
+medical images. Unpaired registration aligns images of diﬀerent subjects into
+a common space to perform subsequent analysis (e.g., population studies [13],
+voxel-based morphometry [4], or multi-atlas segmentation [30,18]). On the other
+hand, paired registration aligns diﬀerent images from the same anatomy and
+ﬁnds application in image guided intervention (e.g., MR-CT in the prostate [15]);
+patient follow-up (e.g., pre- and post-operative scans [20]); or longitudinal [29]
+and multimodal studies (e.g., 3D histology reconstruction with MRI [27]).
+Registration is often cast as an optimisation problem where a source image
+is deformed towards a target image such that it maximises a similarity met-
+ric of choice. Classical registration methods solve this problem independently
+arXiv:2107.14449v3  [cs.CV]  27 Jan 2023
+2
+A. Casamitjana et al.
+for every pair of images with standard iterative optimisers [32]. Modern learn-
+ing approaches predict a deformation directly from a pair of images using a
+convolutional neural network (CNN). Supervised learning methods use ground
+truth deformation ﬁelds in training, either synthetic [31] or derived from man-
+ual segmentations [7]. These have been superseded by unsupervised methods, in
+which CNNs are trained to optimise metrics like those used in classical registra-
+tion, e.g., sum of squared diﬀerences (SSD) or local normalised cross-correlation
+(LNCC) [6,34], without wasting capacity in regions without salient features.
+Widespread similarity functions like SSD or LNCC are well suited for intra-
+modality registration problems. However, the diﬃculty of designing accurate
+similarity functions across modalities hampers inter-modality registration. Mu-
+tual information (MI) is often used [21] but with unsatisfactory results in the
+nonlinear case, due to the excessive ﬂexibility of the model [17]. Other metrics
+used in inter-modality registration are the Modality-Independent Neighbourhood
+Descriptor (MIND, [14], based on local patch similarities) or adversarial losses
+measuring whether two images are well aligned or not [12]. MIND is sensitive to
+initial alignment, bias ﬁeld or rotations depending on the neighbourhood size,
+while adversarial losses are prone to missing local correspondences.
+An alternative to inter-modality registrationis to convert the problem into
+an intra-modality task using a registration-by-synthesis framework: image-to-
+image (I2I) translation is ﬁrst used to synthesise new source images with the
+target contrast, and then intra-modality registration (which is more accurate) is
+performed in the target domain. With accurate image synthesis, the errors intro-
+duced by the translation are outweighed by the improvement in registration [17].
+In unsupervised synthesis, cycle-consistent generative adversarial networks (Cy-
+cleGAN) can be used [33,36], but they lack structural consistency across views
+and may generate artefacts due to overﬁtting (e.g., ﬂip contrast or even deform
+images). To mitigate this issue, additional losses between the original and syn-
+thetic images have been proposed, e.g., segmentation losses [16] or inter-modality
+similarities between the original and synthetic scans (e.g., MIND [37] or MI [35]).
+Beyond CycleGAN, other approaches have attempted to enforce geometry
+consistency between the original and synthetic images via speciﬁc architectures
+or training schemes. An I2I translation model that explicitly learns to disen-
+tangle domain-invariant (i.e., content) from domain speciﬁc features (i.e., ap-
+pearance) was proposed in [28]; the latent content features can then be used
+to train a registration network. More recently, a novel training scheme that
+forces the translation and registration steps to be commutative (thus discourag-
+ing deformation at synthesis) has been presented [2]. Nonetheless, GAN-based
+approaches are challenging to train, with well-known problems (e.g., vanishing
+gradients, instability [3]) and an increasing number of losses and hyperparame-
+ters. In this work, we turn the registration-by-synthesis framework around into a
+synthesis-by-registration (SbR) approach, where a registration network trained
+on the target domain (and frozen weights) is used in the loss for training an
+I2I network. This allows us to greatly simplify the objective function and avoid
+potentially unstable adversarial training. Moreover, we use contrastive learning
+Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration
+3
+Registered source (ST(!(x)))
+Registration loss
+Loss
+Data flow
+Trainable weights
+Frozen weights
+R
+G
+Lreg
+Lgeo
+Lgeo
+Target (T) MRI
+Source (S) histology
+Translated source (ST)
+Input
+Output
+Deformation
+field (!)
+Translated source (ST)
+Fig. 1. Overview of proposed pipeline, using histology and MRI as source and target
+contrasts, respectively.
+at the patch level to ensure geometric consistency. The SbR model outputs both
+the translated image and the deformation ﬁeld. The contribution of this work
+is threefold: (i) we develop a novel registration loss for paired I2I translation;
+(ii) we adapt the contrastive PatchNCE loss [26] for image registration as a
+geometry-preserving constraint; and (iii) we combine (i) and (ii) into an un-
+supervised SbR framework for inter-modality registration that does not require
+multiple encoders / decoders and therefore has low GPU memory requirements.
+2
+Methods
+2.1
+Overview
+Let us consider two misaligned 2D images of the same anatomy (e.g., a histolog-
+ical section and a corresponding MRI plane): the source S(x) and target T(x);
+x represents spatial location. We further assume the availability of an intra-
+modality registration CNN R with weights θR, which predicts a deformation
+ﬁeld Φ from two images of the target modality: Φ = R(T, T ′; θR), such that
+T(x) ≈T ′(Φ(x)). We also deﬁne an I2I translation CNN G (with weights θG)
+from contrast S to T that regresses the image intensities: ST = G(S; θG), such
+that ST resembles the anatomy in S, had it been acquired with modality T. The
+crucial observation is that, if ST is well synthesised, and Φ = R(T, ST ; θR), then
+T(x) ≈ST (Φ(x)). Speciﬁcally, we propose the following loss (Figure 1):
+L(θG) = Lreg(S, T; θG, θR) + λgeoLgeo(S, T; θG, θR),
+(1)
+where Lreg is a “registration loss” measuring the similarity of T and (the de-
+formed) ST , Lgeo is a geometric consistency loss that ensures that the contents
+of S and ST are aligned, and λgeo is a relative weight. A key implicit assumption
+of this framework is that, because the images are paired, there exists a spatial
+4
+A. Casamitjana et al.
+transform Φ that aligns S and T well, such that the synthesis does not need to
+shift or blur boundaries to minimise the error; the geometric consistency loss
+further discourages such mistakes. Crucially, the loss in Eq. 1 does not depend
+on θR: the registration CNN is trained on the target domain and its weights are
+frozen, such that gradients will backpropagate through these layers to improve
+the synthesis. This asymmetric scheme enables us to avoid using a distribution
+matching loss (e.g., CycleGAN) that may produce hallucination artefacts [9].
+2.2
+Intra-modality registration network
+One of the key points in SbR is the diﬀerentiable registration method used to
+train the image synthesis model. We use a U-Net [8] model (as in [10]) that learns
+a diﬀeomorphic mapping between images from the same modality. The model
+is trained on pairs of images from the target domain and outputs a stationary
+velocity ﬁeld (SVF), ψ, at half the input resolution. Then, a scaling and squaring
+approach is used to integrate ψ into a half-resolution deformation ﬁeld, which is
+linearly upsampled to obtain the ﬁnal deformation Φ(x). Training uses LNCC as
+image similarity term, and the norm of the gradient of the SVF as regulariser:
+LR(T, T ′; θR) =
+1
+|Ω|
+X
+x∈Ω
+LNCC[T(x), T ′(Φ(x; θR))]+2λR∥∇ψ(x; θR)∥2, (2)
+where Ωis the discrete image domain, and λR is a relative weight. Since the goal
+is to learn registration of images with approximately the same anatomy, we train
+the CNN with pairs of images that are similar to each other – speciﬁcally, within
+3 neighbours in the image stack. In order to prevent overﬁtting, which may be
+problematic due to the relatively limited number of combinations of pairs, we
+use random spatial transformations for data augmentation at each iteration in
+the source and target images, including small random similarity transforms and
+smooth nonlinear deformations. Once this CNN has been trained, its weights θR
+are frozen during training of the rest of layers in our framework.
+2.3
+Image-to-Image translation using a registration loss
+The modality translation is performed by a generator network, G, with a simi-
+lar architecture to [26] and trained using a combination of two losses: Lreg and
+Lgeo. The ﬁrst component Lreg is the registration loss between the target and
+the translated, deformed source. In Section 2.2 above, we used the LNCC metric,
+which is known to work well in learning-based, intra-modality registration regis-
+tration of most modalities, and can handle bias ﬁeld in MRI [6]. However, in I2I
+we need to explicitly penalise absolute intensity diﬀerences, since encouraging
+local correlation is not enough to optimise the synthesis. For this purpose, we use
+the ℓ1-norm, which has been widely used in the synthesis literature, and which
+is more robust than ℓ2 against violations of the assumption that the anatomy is
+perfectly paired in the source and target images. The registration loss is:
+Lreg(S, T; θG, θR) =
+1
+|Ω|
+X
+x∈Ω
+∥T(x) −ST (Φ(x; θR); θG)∥1.
+(3)
+Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration
+5
+The second component of the loss Lgeo seeks to enforce geometric consistency
+in the synthesis and is based on noise contrastive estimation (PatchNCE [26]).
+The idea behind PatchNCE is to maximise a lower bound on the MI between
+the pre- and post-synthesis images at the patch level. For this purpose, we deﬁne
+a “query” image q (e.g., ST ) and a “reference” image r (e.g., S), from which
+we extract patch descriptors from the stack of features computed by the encod-
+ing branch of the I2I CNN, G. These descriptors are the output of L layers of
+interest, including: the input image, the downsampling convolutional layers and
+the ﬁrst and last ResNet blocks. Speciﬁcally, we extract sets of features fl at
+the layers of interest l = 1, . . . , L and N random locations xl,n per layer, i.e.,
+{fl(xl,n)}l=1,...,L;n=1,...,N (in practice, a tissue mask is used when drawing xl,n
+in order not to sample the background). Each of these fl encodes diﬀerent im-
+age features (with diﬀerent number of channels), from diﬀerent neighbourhoods
+(patches), and at diﬀerent resolution levels.
+Given these descriptors, the contrastive loss builds on the principle that
+f q
+l (xl,n) (for the query) and f r
+l (xl,n′) (for the reference) should be similar for
+n = n′ and dissimilar for n ̸= n′. Rather than using the descriptors f directly,
+we follow in [26] and run them through two-layer perceptrons (which are dif-
+ferent for the descriptors in every layer l, since they have diﬀerent resolutions),
+followed by unit-norm normalisation layers. This yields a new representation
+{zl,n}l=1,...,L;n=1,...,N, with:
+zl,n = Ql(fl(xl,n); θz),
+(4)
+where θz groups the parameters of these representation layers. Given z, the
+contrastive PatchNCE loss is given by a softmax function of cosine similarities:
+LPatchNCE(q, r; θz, τ) = −1
+N
+N
+X
+n=1
+L
+X
+l=1
+log
+ 
+exp(zq
+l,n · zr
+l,n/τ)
+PN
+n′=1 exp(zq
+l,n · zr
+l,n′/τ)
+!
+,
+(5)
+where τ is a temperature parameter and (·) is the dot product. It can be shown
+that the lower bound on the MI becomes tighter with increasing N [25].
+In practice, we use two PatchNCE losses: one between the source and trans-
+lated images; and another between the registered and target images:
+Lgeo(S, T; θG, θR, θz, τ) =LPatchNCE(ST (x; θG), S(x); θz, τ)
++LPatchNCE(ST (Φ(x; θR); θG), T(x); θz, τ).
+(6)
+Combining the registration and geometric consistency losses in Equations 3 and 6
+yields the ﬁnal loss for our meta-architecture:
+L(θG, θz) = 1
+|Ω|
+X
+x∈Ω
+∥T(x) −ST (Φ(x; θR); θG)∥1
++λgeoLPatchNCE(ST (x; θG), S(x); θz, τ)
++λgeoLPatchNCE(ST (Φ(x; θR); θG), T(x); θz, τ),
+(7)
+which we optimise with respect to θG and θz – since τ is a ﬁxed hyperparameter
+and θR is frozen, as explained above.
+6
+A. Casamitjana et al.
+3
+Experiments and results
+3.1
+Data
+We validate the presented methodology in the context of 3D histology reconstruc-
+tion via registration to a reference MRI volume. We use two publicly available
+datasets with histological sections and an ex vivo 3D MRI of the same sub-
+ject. A 3D similarity transform between the stack of histological sections and
+the MRI volume was used to align images from both domains [24]. The MRI
+volume was then resampled into the space of histological stack, which yields
+a set of paired images to register: histological sections and corresponding MRI
+resampled planes. The two datasets are:
+– Allen Human Brain Atlas [11]: this dataset includes 93 sections with
+manual delineations of hundreds of brain structures, which we grouped into
+four coarse tissue classes: cerebral white matter (WM), cerebral grey matter
+(GM), cerebellar white matter (WMc), and cerebellar grey matter (GMc).
+An ex vivo MRI is available, which was segmented into the same four tis-
+sue classes with SPM [5]. In addition, J.E.I. manually annotated 13.8 ± 4.4
+pairs of matching landmarks in the histological sections and corresponding
+resampled MRI planes, uniformly distributed across all spatial locations.
+– BigBrain Initiative [1]: we considered one every 20 sections, i.e., one sec-
+tion every 0.4 mm (344 sections in total). As in the previous dataset, an ex
+vivo MRI is available and J.E.I. manually annotated 11.6 ± 1.7 landmark
+pairs in the histological sections and corresponding MRI planes. No segmen-
+tations are available for this dataset.
+3.2
+Experimental setup
+In our experiments, we register each histological section to the corresponding
+(resampled) MRI slice. For quantitative evaluation, we report the average root-
+mean-squared landmark error (both datasets) and the Dice score on brain tissue
+classes (only for the Allen dataset).
+Our proposed method, SbR, was trained with the following hyper-parameters:
+λgeo = 0.02, τ = 0.05 and λR = 1, which were set from a subset of the Allen
+dataset and used elsewhere. We also tested three other conﬁgurations of our
+method: an ablated version without the structure preserving constraint, i.e.,
+λgeo = 0 (SbR-N); ﬁne-tuning the result of SbR by unfreezing the registra-
+tion parameters (SbR-R); and an extension (SbR-G) that includes an LSGAN
+loss [22] with a PatchGAN discriminator [19] to discriminate between synthe-
+sised and target images (ST and T). SbR-G enables us to assess the potential
+beneﬁts of adding a distribution matching loss in training.
+In addition, we compare our method against a number of other methods,
+to test diﬀerences against: standard registration metrics, other synthesis-based
+approaches without speciﬁc geometric constraints, and supervision with labels
+and Dice scores. Speciﬁcally, the competing methods are: (i) Linear, the initial
+Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration
+7
+(b) BigBrain
+(c) Allen Human Brain Atlas
+(a) Allen Human Brain Atlas
+Fig. 2. Landmark mean squared error on the Allen human brain atlas dataset (a) and
+the BigBrain dataset (b). Dice score coeﬃcient for the Allen dataset is shown in (c).
+aﬃne registration with NiftyReg [24]; (ii) NMI, unsupervised training using
+normalised mutual information (NMI) with 20 bins on the image intensities;
+(iii) NMIw, weakly supervised training using NMI and an additional Dice
+loss [23] on the segmentations; (iv) cGAN, a CycleGAN [38] approach com-
+bined with our registration loss; and (v) RoT, the state-of-the-art method pre-
+sented in [2] that consists of alternating the registration and translation steps.
+All learning-based methods above (including ours) use the same architecture for
+registration, and also the same nonlinear spatial augmentation scheme (sampling
+9 × 9 × 2 from zero-mean Gaussians and upsampling to full resolution)
+3.3
+Results
+The quantitative results are summarised in Figure 2. The landmark errors show
+that our proposed method (SbR) outperforms all baseline approaches: 11%, 9 %
+and 7% error reduction with respect cGAN, RoT and NMIw in the Allen dataset
+and 23% and 33 % with respect cGAN and RoT in the BigBrain dataset; all im-
+provements are statistically signiﬁcant (p < 0.001) using a Wilcoxon signed-rank
+test. Interestingly, SbR is able to align tissue masks as well as NMIw, even though
+segmentations were not used in the training phase. The naive approach (SbR-N)
+suﬀers from synthetic artefacts in the generator, which degrades the results -
+thus highlighting the importance of including structure preserving constraints in
+the model. The other two extensions of the model, SbR-G and SbR-R, achieve
+similar performance to the initial conﬁguration, without yielding any statistically
+signiﬁcant additional beneﬁts.
+8
+A. Casamitjana et al.
+ 
+ 
+ 
+ 
+ 
+(A)
+(B)
+Fig. 3. Image examples from (a) the Allen human brain atlas, and (b) the BigBrain
+project, with the deformed and rectangular grid overlaid on the source and target
+spaces, respectively.
+Histology initial
+MRI reference
+Histology aligned
+Fig. 4. Section 170 from BigBrain, with cortical boundaries manually traced on the
+target domain (MRI) and overlaid on the histology, before and after registration.
+In Figure 3, we show an example of the synthesised and registered images
+using SbR for each dataset. The method displays robustness against common
+artefacts, such as: cracks, missing tissue and inhomogeneous staining (in histol-
+ogy), or intensity inhomogeneity (in MRI). Our method is able to accurately
+register convoluted structures such as the cortex, as seen in Figure 4
+4
+Discussion and conclusion
+We have presented Synth-by-Reg, a synthesis-by-registration framework for inter-
+modality registration, which we have validated on a histology-to-MRI registra-
+tion task. The method uses a single I2I translation network trained with a robust
+registration loss (based on the ℓ1-norm) and a geometric consistency term (based
+on contrastive learning). In histology-MRI registration, Synth-by-Reg enables us
+to avoid using a CycleGAN approach, which often falters in presence of histolog-
+ical artefacts – since it needs to learn to simulate them and subsequently recover
+Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration
+9
+from them. Future work will focus on adapting our method to the unpaired
+scenario, as well as to other imaging modalities. We believe that synthesis-by-
+registration can be a very useful alternative in diﬃcult inter-modality registra-
+tion problems when weakly paired data are available, e.g., MRI and histology.
+References
+1. Amunts, K., Lepage, C., Borgeat, L., Mohlberg, H., Dickscheid, T., Rousseau,
+M.´E., Bludau, S., Bazin, P.L., Lewis, L.B., et al.: BigBrain: an ultrahigh-resolution
+3D human brain model. Science 340(6139), 1472–1475 (2013)
+2. Arar, M., Ginger, Y., Danon, D., Bermano, A.H., Cohen-Or, D.: Unsupervised
+multi-modal image registration via geometry preserving image-to-image transla-
+tion. In: CVPR. pp. 13410–13419. IEEE (2020)
+3. Arjovsky, M., Bottou, L.: Towards principled methods for training generative ad-
+versarial networks. arXiv preprint arXiv:1701.04862 (2017)
+4. Ashburner, J., Friston, K.: Voxel-based morphometry-the methods. Neuroimage
+11(6), 805–821 (2000)
+5. Ashburner, J., Friston, K.: Uniﬁed segmentation. Neuroimage 26, 839–851 (2005)
+6. Balakrishnan, G., Zhao, A., Sabuncu, M.R., Guttag, J., Dalca, A.V.: Voxelmorph:
+a learning framework for deformable medical image registration. IEEE transactions
+on medical imaging 38(8), 1788–1800 (2019)
+7. Cao, X., Yang, J., Zhang, J., Nie, D., Kim, M., Wang, Q., Shen, D.: Deformable
+image registration based on similarity-steered CNN regression. In: MICCAI. pp.
+300–308. Springer (2017)
+8. C¸i¸cek, ¨O., Abdulkadir, A., Lienkamp, S.S., Brox, T., Ronneberger, O.: 3D U-Net:
+learning dense volumetric segmentation from sparse annotation. In: MICCAI. pp.
+424–432. Springer (2016)
+9. Cohen, J.P., Luck, M., Honari, S.: Distribution matching losses can hallucinate
+features in medical image translation. In: MICCAI. pp. 529–536. Springer (2018)
+10. Dalca, A.V., Balakrishnan, G., Guttag, J., Sabuncu, M.R.: Unsupervised learning
+for fast probabilistic diﬀeomorphic registration. In: International Conference on
+MICCAI. pp. 729–738. Springer (2018)
+11. Ding, S.L., Royall, J.J., Sunkin, S.M., Ng, L., Facer, B.A., Lesnar, P., Guillozet-
+Bongaarts, A., McMurray, B., et al.: Comprehensive cellular-resolution atlas of the
+adult human brain. Journal of Comparative Neurology 524(16), 3127–3481 (2016)
+12. Fan, J., Cao, X., Wang, Q., Yap, P.T., Shen, D.: Adversarial learning for mono-or
+multi-modal registration. Medical image analysis 58, 101545 (2019)
+13. Fonov, V., Evans, A.C., Botteron, K., Almli, C.R., McKinstry, R.C., Collins, D.L.:
+Unbiased average age-appropriate atlases for pediatric studies. NeuroImage 54(1),
+313–327 (2011)
+14. Heinrich, M.P., Jenkinson, M., Bhushan, M., Matin, T., Gleeson, F.V., Brady, M.,
+Schnabel, J.A.: MIND: Modality independent neighbourhood descriptor for multi-
+modal deformable registration. Medical image analysis 16(7), 1423–1435 (2012)
+15. Hu, Y., Ahmed, H.U., Taylor, Z., Allen, C., Emberton, M., Hawkes, D., Barratt,
+D.: MR to ultrasound registration for image-guided prostate interventions. Medical
+image analysis 16(3), 687–703 (2012)
+16. Huo, Y., Xu, Z., Bao, S., Assad, A., Abramson, R.G., Landman, B.A.: Adversarial
+synthesis learning enables segmentation without target modality ground truth. In:
+ISBI. pp. 1217–1220. IEEE (2018)
+10
+A. Casamitjana et al.
+17. Iglesias, J.E., Konukoglu, E., Zikic, D., Glocker, B., Van Leemput, K., Fischl, B.:
+Is synthesizing mri contrast useful for inter-modality analysis? In: MICCAI. pp.
+631–638. Springer (2013)
+18. Iglesias, J.E., Sabuncu, M.R.: Multi-atlas segmentation of biomedical images: a
+survey. Medical image analysis 24(1), 205–219 (2015)
+19. Isola, P., Zhu, J.Y., Zhou, T., Efros, A.A.: Image-to-image translation with condi-
+tional adversarial networks. In: CVPR. pp. 1125–1134. IEEE (2017)
+20. Kwon, D., Niethammer, M., Akbari, H., Bilello, M., Davatzikos, C., Pohl, K.M.:
+PORTR: Pre-operative and post-recurrence brain tumor registration. IEEE trans-
+actions on medical imaging 33(3), 651–667 (2013)
+21. Maes, F., Vandermeulen, D., Suetens, P.: Medical image registration using mutual
+information. Proceedings of the IEEE 91(10), 1699–1722 (2003)
+22. Mao, X., Li, Q., Xie, H., Lau, R.Y., Wang, Z., Paul Smolley, S.: Least squares
+generative adversarial networks. In: CVPR. pp. 2794–2802. IEEE (2017)
+23. Milletari, F., Navab, N., Ahmadi, S.A.: V-net: Fully convolutional neural networks
+for volumetric medical image segmentation. In: 3DV Conf. pp. 565–571 (2016)
+24. Modat, M., Ridgway, G.R., Taylor, Z.A., Lehmann, M., Barnes, J., Hawkes, D.J.,
+Fox, N.C., Ourselin, S.: Fast free-form deformation using graphics processing units.
+Computer methods and programs in biomedicine 98(3), 278–284 (2010)
+25. Oord, A.v.d., Li, Y., Vinyals, O.: Representation learning with contrastive predic-
+tive coding. arXiv preprint arXiv:1807.03748 (2018)
+26. Park, T., Efros, A.A., Zhang, R., Zhu, J.Y.: Contrastive learning for unpaired
+image-to-image translation. In: ECCV. pp. 319–345. Springer (2020)
+27. Pichat, J., Iglesias, J.E., Yousry, T., Ourselin, S., Modat, M.: A survey of methods
+for 3D histology reconstruction. Medical image analysis 46, 73–105 (2018)
+28. Qin, C., Shi, B., Liao, R., Mansi, T., Rueckert, D., Kamen, A.: Unsupervised
+deformable registration for multi-modal images via disentangled representations.
+In: IPMI. pp. 249–261. Springer (2019)
+29. Reuter, M., Schmansky, N.J., Rosas, H.D., Fischl, B.: Within-subject template es-
+timation for unbiased longitudinal image analysis. Neuroimage 61, 1402–18 (2012)
+30. Rohlﬁng, T., Brandt, R., Menzel, R., Maurer Jr, C.R.: Evaluation of atlas selec-
+tion strategies for atlas-based image segmentation with application to confocal
+microscopy images of bee brains. NeuroImage 21(4), 1428–1442 (2004)
+31. Sokooti, H., De Vos, B., Berendsen, F., Lelieveldt, B.P., Iˇsgum, I., Staring, M.:
+Nonrigid image registration using multi-scale 3D convolutional neural networks.
+In: MICCAI. pp. 232–239. Springer (2017)
+32. Sotiras, A., Davatzikos, C., Paragios, N.: Deformable medical image registration:
+A survey. IEEE transactions on medical imaging 32(7), 1153–1190 (2013)
+33. Tanner, C., Ozdemir, F., Profanter, R., Vishnevsky, V., Konukoglu, E., Goksel, O.:
+Generative adversarial networks for MR-CT deformable image registration. arXiv
+preprint arXiv:1807.07349 (2018)
+34. de Vos, B.D., Berendsen, F.F., Viergever, M.A., Staring, M., Iˇsgum, I.: End-to-end
+unsupervised deformable image registration with a convolutional neural network.
+In: International Workshop DLMIA, pp. 204–212. Springer (2017)
+35. Wang, C., Yang, G., Papanastasiou, G., Tsaftaris, S.A., Newby, D.E., Gray, C.,
+et al.: DiCyc: GAN-based deformation invariant cross-domain information fusion
+for medical image synthesis. Information Fusion 67, 147–160 (2021)
+36. Wei, D., Ahmad, S., Huo, J., Peng, W., Ge, Y., Xue, Z., Yap, P.T., Li, W., Shen, D.,
+Wang, Q.: Synthesis and inpainting-based MR-CT registration for image-guided
+thermal ablation of liver tumors. In: MICCAI. pp. 512–520. Springer (2019)
+Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration
+11
+37. Xu, Z., Luo, J., Yan, J., Pulya, R., Li, X., Wells, W., Jagadeesan, J.: Adversar-
+ial uni-and multi-modal stream networks for multimodal image registration. In:
+MICCAI. pp. 222–232. Springer (2020)
+38. Zhu, J.Y., Park, T., Isola, P., Efros, A.A.: Unpaired image-to-image translation
+using cycle-consistent adversarial networks. In: CVPR. pp. 2223–2232. IEEE (2017)

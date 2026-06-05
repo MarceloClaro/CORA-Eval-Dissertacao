@@ -710,7 +710,8 @@ def gerar_relatorio_completo(corpus: List[Documento]) -> Dict:
 
 def main():
     import sys
-    sys.stdout.reconfigure(encoding='utf-8')
+    # Note: reconfigure() not needed for UTF-8 output on Windows
+    # sys.stdout.reconfigure(encoding='utf-8')
     
     print("=" * 70)
     print("  DOMAIN SHIFT AUDIT -- SPEC-008 Camada 1B")

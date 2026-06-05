@@ -1,0 +1,1654 @@
+DRAFT VERSION JUNE 20, 2021
+Preprint typeset using LATEX style emulateapj v. 5/2/11
+NO FLARES FROM GAMMA-RAY BURST AFTERGLOW BLAST WAVES ENCOUNTERING SUDDEN
+CIRCUMBURST DENSITY CHANGE
+ILANA GAT1, HENDRIK VAN EERTEN1, ANDREW MACFADYEN1
+1 Center for Cosmology and Particle Physics, Physics Department, New York University, New York, NY 10003
+Draft version June 20, 2021
+ABSTRACT
+Afterglows of gamma-ray bursts are observed to produce light curves with the ﬂux following power law
+evolution in time. However, recent observations reveal bright ﬂares at times on the order of minutes to days.
+One proposed explanation for these ﬂares is the interaction of a relativistic blast wave with a circumburst
+density transition. In this paper, we model this type of interaction computationally in one and two dimensions,
+using a relativistic hydrodynamics code with adaptive mesh reﬁnement called RAM, and analytically in one
+dimension. We simulate a blast wave traveling in a stellar wind environment that encounters a sudden change
+in density, followed by a homogeneous medium, and compute the observed radiation using a synchrotron
+model. We show that ﬂares are not observable for an encounter with a sudden density increase, such as a
+wind termination shock, nor for an encounter with a sudden density decrease. Furthermore, by extending our
+analysis to two dimensions, we are able to resolve the spreading, collimation, and edge effects of the blast wave
+as it encounters the change in circumburst medium. In all cases considered in this paper, we ﬁnd that a ﬂare
+will not be observed for any of the density changes studied.
+1. INTRODUCTION
+Since the discovery of gamma-ray bursts (GRBs), there
+has been increasing interest in their properties and behav-
+ioral characteristics. Currently, GRBs are thought to be the
+result of either a massive star collapsing (Woosley 1993; Mac-
+Fadyen & Woosley 1999) or compact binary systems merging
+(Eichler et al. 1989), launching a collimated relativistic blast
+wave into the circumburst medium. The blast wave sweeps
+up, shocks, and accelerates the circumburst electrons as the
+circumburst medium slows the blast wave itself. The shock-
+accelerated electrons produce synchrotron radiation as they
+interact with small scale magnetic ﬁelds behind the shock
+front (e.g., Paczynski & Rhoads 1993; Katz 1994; Sari et al.
+1996; Wijers et al. 1997; Wijers & Galama 1999; Panaitescu
+& Kumar 2002). This radiation creates an afterglow signal
+that can be observed for days at X-ray and optical frequencies
+and for even longer time scales at radio frequencies.
+Much research has been done to understand the blast wave
+that causes the observed afterglow signal, and the evolution of
+the ultra-relativistic early time and non-relativistic late time
+phases of the blast wave are known: they can be described
+by the self-similar Blandford-McKee (BM: Blandford & Mc-
+Kee 1976) and the Sedov-Von Neumann-Taylor (ST: Sedov
+1959; von Neumann 1961; Taylor 1950) solutions respec-
+tively. Such analytical solutions describe the radial outﬂow of
+a collimated blast wave at early times, as well as the spherical
+outﬂow of the blast wave at late times. Yet there are currently
+no exact analytical solutions for the intermediate phases of
+the evolution, although there are approximations (e.g., Pe’er
+2012; Huang et al. 1999 for the spherical case), describing
+the dynamics of the deceleration and spreading of the blast
+wave. The spreading of the blast wave as it decollimates has
+been treated analytically (Rhoads 1999; Granot & Piran 2012)
+and recently modeled computationally (Zhang & MacFadyen
+2009; Wygoda et al. 2011; van Eerten & MacFadyen 2012;
+van Eerten et al. 2012; De Colle et al. 2012).
+Along with studying the evolution of the blast wave itself,
+much research has been devoted to studying the shape of the
+emitted light curve. The general model of the afterglow light
+curve is a smooth curve with the slope being a function of the
+density of the surrounding medium as well as the power-law
+slope of the distribution of the accelerated electron population
+at the shock front. Recent observations, though, have shown
+this model is not always sufﬁcient. Flares in X-ray afterglows
+were ﬁrst detected with BeppoSAX (Frontera et al. 2000) and
+once Swift was launched in 2004, it became clear that after-
+glow ﬂares (Burrows et al. 2005; Nousek et al. 2006; O’Brien
+et al. 2006) as well as optical variability in the early stages of
+the burst (Stanek et al. 2007) were a common occurrence.
+To explain the causes of these ﬂares, researchers have be-
+gan to study the interaction of a blast wave with complex
+structures such as wind termination shocks (Dai & Lu 2002;
+Ramirez-Ruiz et al. 2005; Pe’er & Wijers 2006; Eldridge
+et al. 2006; Nakar & Granot 2007), clumps (Ramirez-Ruiz
+et al. 2005), magnetic shocks (Yost et al. 2003), collisions
+with nearby star environments (Mimica & Giannios 2011),
+and massive shells (Mesler et al. 2012). Others have specu-
+lated the ﬂares could be caused by slower ejecta catching up
+with the blast wave, reenergizing it at later times (e.g., Rees
+& Meszaros 1998; Kumar & Piran 2000; Sari & Mészáros
+2000), from delayed magnetic dissipation (Giannios 2006),
+or from magnetic regulation of the accretion ﬂow (Proga &
+Zhang 2006). Alternatively, it has been theorized that ﬂaring
+is a result of late time engine activity (Falcone et al. 2007;
+Perna & MacFadyen 2010; Margutti et al. 2011) which, for
+example, is from multiple shells being ejected (Maxham &
+Zhang 2009; Vlasis et al. 2011), mass inﬂux (Metzger et al.
+2008; Lee et al. 2009), or fragmentation in the collapsing stel-
+lar core (King et al. 2005) or accretion disk (Perna et al. 2006;
+Masada et al. 2007). There are many hypotheses of the cause
+of the rebrightening in the light curve (see also Ioka et al.
+2005), and in this paper, we discuss the hypothesis of a tran-
+sition in circumburst medium from a stellar wind to a homo-
+geneous medium (e.g., an interstellar medium (ISM)), includ-
+ing wind termination shocks as well as sudden lower density
+regions. These types of density changes have been numeri-
+arXiv:1304.3415v2  [astro-ph.HE]  19 Jul 2013
+2
+cally studied in much detail and are from the formation of a
+wind reverse shock (e.g., van Marle et al. 2006; Eldridge et al.
+2006).
+Pe’er and Wijers (PW: Pe’er & Wijers 2006) theorized that
+the ﬂares were the result of the blast wave radiation interfer-
+ing with the reverse shock of the stellar wind, causing a tran-
+sition period in the light curve. However, Nakar and Granot
+(NG: Nakar & Granot 2007) were unable to reproduce PW’s
+results using one dimensional simulations and argued that the
+ﬂares are not caused by a wind termination shock nor a den-
+sity jump in a uniform external medium. NG concluded that
+the origin of the ﬂares in afterglow light curves has still yet to
+be discovered. van Eerten et al. (2009) reconciled this discrep-
+ancy by explaining NG was correct in stating a wind termina-
+tion shock does not cause rebrightening, although the results
+of PW correctly follow from their model assumptions. Mesler
+et al. (2012) revisited this idea of a wind termination shock but
+instead of one shock, added higher density shells that can re-
+alistically be expected to occur, and claimed that ﬂares were
+observed as the blast wave encountered these higher density
+shells.
+In this paper, we address a number of circumburst medium
+interaction scenarios not previously explored. We also extend
+the analysis from one dimension to two dimensions to under-
+stand the effects of spreading of a collimated ﬂow at the shock
+front which was not previously considered. Speciﬁcally, we
+address the following questions in our analysis using high res-
+olution hydrodynamic simulations in one and two dimensions.
+• When a collimated blast wave traveling in a stellar wind
+environment encounters a wind termination shock, how
+does the size of the density jump affect the dynamics
+and resulting light curve?
+• What happens when there is a density drop instead of
+a jump? Does the blast wave speed up, and in turn,
+recollimate? Will this cause a rebrightening or ﬂare in
+the light curve?
+• When the blast wave encounters an extreme density in-
+crease, does it immediately spread outward from this
+high energy collision and cause ﬂares in the light curve?
+Does this sideways spreading depend on the size of the
+density jump?
+To answer these questions, we use a numerical relativistic
+hydrodynamics (RHD) code with adaptive mesh reﬁnement
+called RAM (Zhang & MacFadyen 2006, 2009) for our numer-
+ical simulations. We use the radiation calculation methodol-
+ogy explained in van Eerten et al. (2010a,b) to calculate syn-
+chrotron afterglow light curves and spectra. In Section 2 we
+discuss the dynamics of the simulations which is followed by
+Section 3 discussing the resulting light curves. We summarize
+and conclude our ﬁndings in Section 4. Details of the resolu-
+tion of our simulations are explained in Appendix A, and we
+discuss the specialized case of a spike in circumburst medium
+in Appendix B.
+2. DYNAMICS OF BLAST WAVE ENCOUNTERS
+A key aspect in understanding the role of the circumburst
+medium in the ﬂux emitted from a blast wave is the dynamics
+of the blast wave in that medium. In this section, we discuss
+those dynamics.
+2.1. Initial Conditions
+The initial conditions for an adiabatic blast wave (“jet”)
+formed by a GRB are described by the BM solution in spher-
+ical coordinates. For this paper, we use a conic section trun-
+cated at a certain opening angle for the initial setup, instead
+of the full spherical solution for, at early times, spreading has
+not yet occurred. Using the initial conditions for a jet ﬂow-
+ing in the radial direction with an opening angle, θ0, and a jet
+energy, Ejet, we obtain the isotropic equivalent energy, Eiso.
+Ejet = Eiso(1−cosθ0) ≈Eisoθ2
+0/2
+(1)
+The initial radius, time, and dynamics of the interaction of
+the jet with the circumburst medium are calculated using the
+BM self similar solution. For this paper, we represent the
+circumburst medium interior to the density change using a
+power-law density proﬁle which is described as:
+ρext = ρre f
+ r
+Rre f
+−k
+(2)
+where ρre f is the circumburst density at a reference radius,
+Rre f , and k = 2 or 0 to represent the stellar wind or ISM envi-
+ronment respectively. An ISM is a region of constant density,
+and throughout this paper we use “ISM” and “homogeneous
+medium” interchangeably. The isotropic energy of the system
+is given by (BM):
+Eiso = 8πρextγ2t3c5
+17−4k
+(3)
+where γ is the ﬂuid Lorentz factor just behind the shock, and
+Γ =
+√
+2γ is the Lorentz factor of the shock itself. Substituting
+Equation 2 into Equation 3, and using the approximation that
+at ultra-relativistic speeds, R0 ≈cT0, the initial radius of the
+shock is:
+R0 =
+ 
+(17−4k)Eiso
+8πρ0Rk
+re f c2γ2
+0
+! 1
+3−k
+.
+(4)
+Using these expressions, we can solve for the initial time of
+the simulation.
+T0 = R0
+c
+
+1+
+1
+2(4−k)Γ2
+0
+
+(5)
+As the jet propagates into the circumburst medium de-
+scribed by Equation 2, the Lorentz factor and radius of the
+shock over time are well known–the radius will follow a sim-
+ilar solution to Equation 5. The subscript of “FS” is used to
+denote the front of the shock, or the forward shock:
+RFS = cT
+
+1−
+1
+2(4−k)Γ2
+
+.
+(6)
+The Lorentz factor evolves as
+Γ = Γ0
+ T
+T0
+−3−k
+2
+.
+(7)
+The initial conditions at T0 of our numerical simulations use
+the full BM proﬁle, but for simplicity in our analytical so-
+lution, we assume the blast wave is a homogeneous shell of
+constant density within the shell, and the back of the shell
+being at a radius of Rback:
+Rback = RFS
+
+1−
+1
+2(3−k)Γ2
+FS
+
+.
+(8)
+3
+FIG. 1.— Diagram of the density proﬁle formed from a blast wave in a
+stellar wind encountering a ISM. The ﬂuid in region 1 is the ISM into which
+the blast wave is traveling. Region 2 contains all of the mass swept up after
+the encounter with the density change. The ﬂuid in regions 3 and 4 is the
+swept up mass prior to the encounter, meaning that after the encounter, the
+amount of mass contained in regions 3 and 4 is constant. The ﬂuid in region
+3 is that which has been shocked by the reverse shock, and the ﬂuid in region
+4 is the unshocked material that is unaware of the encounter.
+Equation 8 is derived to the leading order of 1/γ2 using the
+approximation that the total swept up mass is contained within
+the shell.
+To simulate the encounter with a change in external
+medium, we model the external density proﬁle as a piecewise
+function:
+ρext =
+
+ρwind
+γ > γenc
+ρISM
+γ ≤γenc
+(9)
+where γenc is the ﬂuid Lorentz factor at which the encounter
+with the new environment occurs. The dynamics before the
+encounter are described by the equations above, but the dy-
+namics during the encounter and after the encounter are much
+different. The simulation does not necessarily return to a BM
+self similar solution for a relativistic blast wave in a homoge-
+neous medium, for the BM solution is a slow attractor and a
+perturbation in the simulation, such as a density change, can
+cause large deviations from the BM solution (Gruzinov 2000).
+Also, after the encounter, the blast wave may no longer be rel-
+ativistic which prevents the blast wave from evolving toward
+the BM solution in a homogeneous medium, and a solution
+similar to ST is expected instead.
+2.2. Analytical Solution
+To analytically model the dynamics of a blast wave in a stel-
+lar wind environment encountering a density change followed
+by a homogeneous medium, we extend the derivations done
+in PW and NG. With our extensions, the analytical solution is
+applicable for a wide range of density jumps as well as density
+drops.
+For simplicity, we model the shocks of the blast wave as
+simple homogeneous shells. During the encounter, the shock
+breaks up in to three different regions–regions 2, 3, and 4 of
+Figure 1. To get the full analytical solution of the simula-
+tion, the pressures, densities, Lorentz factors, and radii of the
+three regions (regions 2, 3, and 4, which are referenced by
+subscripts from here forward in this paper) are needed.
+Across the contact discontinuity, the pressure and ﬂuid
+Lorentz factors are equal, meaning p2 = p3, and γ2 = γ3 = ΓCD.
+Before the reverse shock passes the “back” of the shock, the
+ﬂuid in region 4 has no knowledge of the encounter, meaning
+the density, pressure, and Lorentz factor are calculated as if
+no encounter has occurred. The rest of the ﬂuid has experi-
+enced the encounter, and to calculate the values analytically, a
+convenient factor to deﬁne is that of NG Equation 3, ψ, which
+can be derived from conservation of mass.
+ψ2 ≡
+γ4(Tenc)
+γ2(Tenc)
+2
+=
+3a−4
+p
+12/a(a−1)−1
+(10)
+a =
+ρISM
+ρwind(R = Renc)
+(11)
+Using this factor, the Lorentz factor of the ﬂuid behind the
+forward shock is described by a modiﬁed version of Equation
+6 from NG:
+γ2 = γenc
+"
+ψ2 +
+17−4k
+17
+
+a
+  T
+Tenc
+3
+−1
+!#−1/2
+(12)
+where Equation 12 differs from NG Equation 6 in that γ2 ∝
+γenc as opposed to γ2 ∝γ4 of NG Equation 6.
+To calculate the radius of the forward shock to the leading
+order of 1/γ2
+2, we integrate the velocity of the forward shock:
+RFS(T) =Renc +c
+Z T
+Tenc
+βFSdt
+∼=Renc +cTenca17−4k
+68γ2enc
+ T
+Tenc
+−3
+4 −T 4
+4T 4enc
+
++cTenc
+ T
+Tenc
+−1
+
+1−ψ2
+4γ2enc
+
+.
+(13)
+The radius of the contact discontinuity is calculated in the
+same fashion as Equation 13, except with βFS replaced by
+βCD.
+The pressure in regions 2 and 3 are identical, and are found
+using the strong shock jump conditions.
+p2 = p3 = 2
+3ρISMΓ2
+FSc2
+(14)
+One important aspect to note is that the reverse shock is not
+necessarily strong or relativistic in the frame of the ﬂuid in
+region 4: if the forward shock is relativistic, the reverse shock
+is not (see PW for details). However, if the blast wave en-
+counters a strong density jump causing the forward shock to
+become non-relativistic, the reverse shock can form with rel-
+ativistic speeds. Since we cannot assume a relativistic reverse
+shock, we use the full shock jump conditions yielding the fol-
+lowing equation for the density in region 3:
+ρ3 = 4p3¯γ3ρ4
+3p4 + p2
+,
+(15)
+where ¯γ3 is the Lorentz factor of the ﬂuid in region 3 from the
+frame of the unshocked ﬂuid in region 4:
+¯γ3 = 1
+2
+γ4
+γ3
++ γ3
+γ4
+
+.
+(16)
+Lastly, we need to calculate the velocity and radius of the re-
+verse shock. We use conservation of mass to obtain the veloc-
+ity of the reverse shock:
+βRS = ρ3γ3β3 −ρ4γ4β4
+ρ3γ3 −ρ4γ4
+.
+(17)
+To calculate the radius of the reverse shock, we use conser-
+vation of mass as well. The total mass in regions 3 and 4 is
+4
+constant after the encounter, meaning the integral over these
+regions equals the swept up mass prior to the encounter.
+Z RRS
+Rback
+r2ρ′
+4 dr +
+Z RCD
+RRS
+r2ρ′
+3 dr =
+Z Renc
+0
+r2ρwind(r)dr
+(18)
+Equation 18 is important because we know the densities in
+regions 3 and 4, we have calculated Rback from Equation 8,
+we know RCD from Equation 13 but with βFS replaced by βCD,
+and we know the total mass swept up prior to the encounter
+(the right hand side of Equation 18). This leaves us with an
+equation for the radius of the reverse shock:
+R3
+RS(ρ′
+4 −ρ′
+3) =
+3
+3−kR3
+encρwind(Renc)+R3
+backρ′
+4 −R3
+CDρ′
+3.
+(19)
+Equations 18 and 19 contain ρ′, which is the density of the
+ﬂuid in the lab frame, ρ′ = γρ, whereas ρ, without a prime, is
+the co-moving density.
+Solving for RRS in Equation 19 is only applicable when the
+reverse shock has not yet passed the back of the shock. Once
+the reverse shock passes the back of the shock, Equation 18
+no longer applies, and the new integral to solve is:
+Z RCD
+Rback
+r2ρ′
+3 dr =
+Z Renc
+0
+r2ρwind(r)dr
+R3
+back = R3
+CD −
+3
+3−kR3
+enc
+ρwind(Renc)
+ρ′
+3
+(20)
+where we now solve for Rback instead of RRS, and Rback is no
+longer calculated from Equation 8 because region 4 has been
+shocked by the reverse shock and has knowledge of the en-
+counter. The blast wave continues on with these two regions
+of Equation 20–one containing the newly swept up mass in
+region 2, and one containing the mass swept up prior to the
+encounter–resulting in the blast wave never completely re-
+turning to the BM solution of a blast wave in an ISM.
+In the following section, Section 2.3, we compare our ana-
+lytical solution with the numerical results for various types of
+encounters.
+2.3. Numerical Results
+Our numerical simulations demonstrate the resulting dy-
+namics of an afterglow blast wave in a stellar wind environ-
+ment encountering a sudden change in density and an ISM
+environment. We use the relativistic adaptive mesh (RAM)
+parallel RHD code (Zhang & MacFadyen 2006, 2009) with
+a second-order weighted scheme. We simulate two differ-
+ent size jumps (“walls”), of factors 4 and 100, and one drop,
+of factor
+1
+100. We use these speciﬁc initial conditions to nu-
+merically simulate a wide range of encounters thought to po-
+tentially cause light curve ﬂares. However, as we explain in
+Section 3, none of these scenarios result in ﬂares on the time
+scale of 0.1 to 10 days. Before delving into the resulting light
+curves, we ﬁrst explain the dynamics and numerical results.
+We set up six simulations all of which have a starting time
+and radius equivalent to the ﬂuid Lorentz factor behind the
+front of the shock, γ = 15. This starting Lorentz factor was
+chosen to ensure γ > 1
+θ0 , where θ0 = 0.1 rad (typical for after-
+glow jets, Frail et al. 2001) for our simulations and is the half
+opening angle of the jet.
+• Simulation no encounter:
+ρext = ρ0
+
+r
+Rref
+−2
+• Simulation γ5a4:
+ρext =
+
+
+
+
+
+ρ0
+
+r
+Rref
+−2
+γ > 5
+4ρ0
+
+Rγ=5
+Rref
+−2
+γ ≤5
+• Simulation γ5a100:
+ρext =
+
+
+
+
+
+ρ0
+
+r
+Rref
+−2
+γ > 5
+100ρ0
+
+Rγ=5
+Rref
+−2
+γ ≤5
+• Simulation γ10a4:
+ρext =
+
+
+
+
+
+ρ0
+
+r
+Rref
+−2
+γ > 10
+4ρ0
+
+Rγ=10
+Rref
+−2
+γ ≤10
+• Simulation γ10a100:
+ρext =
+
+
+
+
+
+ρ0
+
+r
+Rref
+−2
+γ > 10
+100ρ0
+
+Rγ=10
+Rref
+−2
+γ ≤10
+• Simulation γ5a 1
+100:
+ρext =
+
+
+
+
+
+ρ0
+
+r
+Rref
+−2
+γ > 5
+0.01ρ0
+
+Rγ=5
+Rref
+−2
+γ ≤5
+We ﬁrst ran all six simulations in one dimension, and then
+ran three simulations in two dimensions, choosing to run those
+which would be most informative to answering the questions
+outlined in the Introduction.
+Figure 2 shows the analytical solution of the density of sim-
+ulation γ5a4, in one dimension plotted against the numerical
+result of simulation γ5a4 in one dimension, showing the cor-
+respondence of our analytical model with our numerical re-
+sults of the shock formation at the encounter. Our analyti-
+cal model assumes homogeneous shells with constant density
+between the shocks which is why the analytical solution in
+Figure 2 has a clearly marked “back” of the shock, whereas
+the numerical simulation uses the full BM proﬁle and has no
+exact “back” of the shock. The small discrepancy between
+the analytical and numerical RFS shown in Figure 2 is roughly
+∆RFS = 9.6 × 1015 cm. Our analytical solution is accurate
+to the order of 1/γ2 = 0.0855 at the time shown in Figure 2
+and ∆RFS
+cT
+= 3.893×10−4 ≪1/γ2, meaning that the analytical
+model conforms to the numerical results to the required ac-
+curacy. Also, it is apparent from Figure 2 that the densities
+within each region are not constant, but actually have a posi-
+tive slope. This is a known discrepancy between the assumed
+homogeneous shells and the full BM solution, and leads to a
+slight over-prediction of the ﬂux during the encounter by the
+analytical solution (van Eerten et al. 2009).
+Figures 3 and 4 show our analytical solutions plotted with
+the simulation results of the Lorentz factors behind the for-
+ward shocks as they evolve. The small deviations towards the
+beginning of the simulations (at smaller radii) in these ﬁgures
+are from lack of resolution. The resolution required to resolve
+the blast wave at these early times is very high. However, for
+the simulations with encounters at γ2 = 5, the discrepancy dis-
+appears well before the encounter. For the simulations with
+the encounter at γ2 = 10, the lack of resolution does affect
+5
+FIG. 2.— Figure of the shocks formed during the encounter for simulation
+γ5a4 in 1D (wind termination shock at γenc = 5, and a density increase of
+factor 4). The simulation is plotted in blue, the dashed black line shows the
+analytical solution for this simulation, and the green dashed line represents
+simulation no encounter in 1D (no circumburst environment change) at the
+same time as simulation γ5a4 is depicted.
+FIG. 3.— Lorentz factor of the ﬂuid behind the forward shock plotted over
+radius for the analytical solution as well as the numerical simulation for sim-
+ulation γ5a4 (wind termination shock at γenc = 5, and a density increase of
+factor 4) and γ10a4 (wind termination shock at γenc = 10, and a density in-
+crease of factor 4) in 1D.
+the convergence of the numerical and analytical results, but
+qualitatively, the results are the same. The resolutions of our
+simulations are discussed further in Appendix A. The devia-
+tions at large radii (at very late time) in Figures 3 and 4 are
+from the Lorentz factor of the forward shock becoming non-
+relativistic, and our analytical model having accuracy of order
+1/γ2.
+From the examples shown in Figures 2 through 4, it is ap-
+parent that our analytical solution accurately predicts the dy-
+namics of a one dimensional blast wave in a stellar wind en-
+countering a change in density, be it a jump or drop, followed
+by an ISM environment. Also, it is important to note that
+when the post encounter forward shock remains relativistic,
+the ﬂuid Lorentz factor at which the encounter occurs does
+not qualitatively change the post-encounter dynamics in one
+FIG. 4.— Lorentz factor of the ﬂuid behind the forward shock plotted over
+radius for the analytical solution and the numerical simulation for simulation
+γ5a 1
+100 in 1D (density decrease of factor 100 at γenc = 5).
+dimension, as seen in Figure 3. The post-encounter dynamics
+are simply scaled to a reﬂect the larger encounter Lorentz fac-
+tor. This is also clear from the analytical model, since neither
+the change in Lorentz factor at the encounter nor the pre- and
+post-encounter slopes depend on Lorentz factor.
+The one dimensional simulations show that the dynamics
+follow the analytical predictions that the Lorentz factor of the
+forward shock drops immediately as it encounters a higher
+density region, and the amount by which it drops is propor-
+tional to the change in density at the encounter. This is shown
+in Figure 5 for simulations γ5a4, γ5a 1
+100, and γ10a100. Fig-
+ure 5 depicts the Lorentz factor in the color coding, with the
+complete radial ﬂuid proﬁle along the central axis of the blast
+wave (plotted in the horizontal) over time (plotted in the ver-
+tical). This ﬁgure shows the evolution of the forward shock
+over time before and after the encounter as well as the for-
+mation of the reverse shock at the encounter and its post-
+encounter evolution. Figure 5 clearly illustrates the varying
+behaviors of the forward and reverse shocks for the various
+simulations. Simulations γ5a100 and γ10a4 show similar be-
+havior. The left column in Figure 5 shows the Lorentz fac-
+tor over time and radius for simulations γ5a4 and γ10a100 in
+1D. If the blast wave encounters a drop in density, the Lorentz
+factor of the blast wave will increase (i.e., the blast wave will
+speed up), again, in proportion to the size of the drop, which
+is seen in the top right panel in Figure 5.
+The effects of the magnitude of density change on the dy-
+namics of the reverse shock are shown in Figure 5. The top
+left panel in Figure 5 depicts the Lorentz factor for the simu-
+lation with a small density increase of factor 4. Shortly after
+the encounter, the reverse shock slowly travels away from the
+forward shock towards the origin, but this is not an immediate
+process like that of a larger density jump shown in the bot-
+tom left panel in Figure 5. For a large density jump, almost
+immediately after the encounter, the reverse shock has a large
+enough Lorentz factor, compared to the Lorentz factor of the
+forward shock, to break away from the forward moving ﬂuid
+and travel backwards towards the origin. This difference in
+reverse shock Lorentz factors of simulation γ5a4 and simu-
+lation γ10a100 is from the forward shock becoming immedi-
+ately non-relativistic after the encounter with a large density
+6
+FIG. 5.— Plot shows in color coding the ﬂuid Lorentz factor, with radial distance on the horizontal axis and time on the vertical axis. For one dimensional
+simulations, the Lorentz factor does not depend on angle, but for the two dimensional simulation, only the Lorentz factor along the axis through the center of the
+blast wave is shown. Top left: simulation γ5a4 in 1D (blast wave in stellar wind that encounters a density jump of factor 4 at γenc = 5). Top right: simulation
+γ5a 1
+100 in 1D (blast wave traveling in a stellar wind environment that encounters a density drop of factor 100 at γenc = 5). Bottom: simulation γ10a100 in 1D
+(left) and an on axis (with the blast wave) slice of the 2D simulation (right, blast wave traveling in a stellar wind environment encountering a density jump of a
+factor of 100 at γenc = 10).
+jump (of factor 100) versus the much smaller decrease in for-
+ward shock Lorentz factor with a smaller density jump (of
+factor 4). As explained in Section 2.2, the amount by which
+the forward shock Lorentz factor drops is proportional to the
+Lorentz factor with which the reverse shock forms. For sim-
+ulation γ5a 1
+100, which has a density decrease of factor 100,
+the reverse shock takes much longer to overcome the forward
+moving ﬂuid and start traveling backwards towards to origin.
+This is seen in the top right panel in Figure 5. The Lorentz
+factor of the forward shock increases, causing the Lorentz fac-
+tor of the reverse shock shortly after the encounter to be very
+small in comparison with the forward shock Lorentz factor.
+A closer look at the bottom left panel in Figure 5 reveals the
+reﬂecting-like behavior of the inner boundary as the reverse
+shock travels towards the origin and is seemingly reﬂected
+back. This behavior is independent of boundary conditions or
+inner boundary position and results from the increase in pres-
+sure caused by the reverse shock traveling toward the origin.
+This increase in pressure creates conditions similar to a ﬁre-
+ball, causing a new blast wave to be formed. This is not seen
+with simulations γ5a4, γ10a4, or γ5a 1
+100 which have smaller
+density jump factors/a density drop, but is seen with simula-
+tion γ5a100 (wind termination shock when γ2 = 5 with a den-
+sity jump of 100) yielding the conclusion that even at slower
+speeds, the strong, large density jump still slows the forward
+shock enough to cause a strong reverse shock to form and in
+turn, cause the conditions similar to a ﬁreball. From here for-
+ward in this paper, we will refer to this newly formed blast
+wave caused by the strong reverse shock as the “secondary
+blast wave” for simplicity and clarity.
+The formation of the secondary blast wave is also seen in
+our two dimensional model of simulation γ10a100. How-
+ever, the ﬂuid instabilities that follow the encounter with the
+wind termination shock in two dimensions slow the secondary
+blast wave causing it to never encounter the wind termination
+shock, and in turn, the continuous reﬂecting back and forth
+is never realized. This is shown in the bottom right panel in
+Figure 5, which displays the ﬂuid Lorentz factor over time
+and radius of a one dimensional slice of the two dimensional
+simulation γ10a100 along the axis of the jet.
+7
+In order to study the effect of the density change on the post
+encounter blast wave collimation, we ran simulations γ5a4,
+γ10a100, and γ5a 1
+100 in two dimensions. Figure 6 shows the
+results of our two dimensional simulations. We ﬁnd that when
+the blast wave encounters a sudden density increase that is
+not very large (of factor 4, like that of simulations γ5a4 and
+γ10a4), the fastest, most energetic ﬂuid will puncture the wall
+and continue through to the new medium (top left panel in
+Figure 6). This behavior results in the blast wave recollimat-
+ing after the encounter as only the ﬂuid with the highest pres-
+sure can pass through to the new region and open a pathway
+for the rest of the blast wave to continue through to the new
+environment. This is most clearly depicted in the top right
+panel in Figure 6, which shows the percentage of energy en-
+closed at various angles over time for simulation γ5a4 in two
+dimensions. Before the encounter, the blast wave spreads out,
+which is seen as the angles encompassing certain percentages
+of energy increase over time at times less then Tenc in the top
+right panel in Figure 6. At the time of the encounter, the most
+energetic ﬂuid passes through to the new environment and rec-
+ollimates, which compresses a large percentage of the blast
+wave energy into a smaller angle. This accounts for the de-
+crease in angle encompassing roughly half of the total energy
+after the encounter in the top right panel in Figure 6. Also,
+if there were no encounter, the angle encompassing roughly
+80% of the total energy would continue to increase as it did
+prior to the encounter in the top right panel in Figure 6, but in-
+stead, the angle stays relatively constant. This is because the
+ﬂuid of higher energy (depicted with colors of yellow through
+red in the top left panel in Figure 6) no longer spreads side-
+ways but tries to travel through the wall to the new medium.
+The only part of the blast wave that continues to spread side-
+ways is the lowest energy ﬂuid (shown in green and light blue
+in the top left panel in Figure 6), which results in the continual
+increase of the angle encompassing 100% of the total energy
+of the blast wave for simulation γ5a4 in 2D (shown in the top
+right panel in Figure 6) after the encounter.
+The dynamics of a blast wave encountering a large density
+increase (on the order of 100, like that of simulations γ5a100
+and γ10a100) are different than that of a smaller density in-
+crease. The most energetic ﬂuid punctures the wall and con-
+tinues on to the next medium, similar to the most energetic
+ﬂuid encountering a smaller density increase, but instead of
+opening up a pathway for the rest of the blast wave to move
+through, a strong reverse shock is formed. This strong reverse
+shock shocks and spreads the ﬂuid that has not yet passed
+through to the new medium, forming vortices that are trapped
+within the stellar wind environment and never pass through
+to the ISM. The middle left panel in Figure 6 and Figure 7
+illustrate these dynamics showing the speciﬁc energy of sim-
+ulation γ10a100 in two dimensions at two times after the en-
+counter. The middle left panel in Figure 6 depicts the blast
+wave a short time after the encounter showing that the most
+energetic ﬂuid has passed through to the ISM, and the reverse
+shock is traveling back through the ﬂuid in the stellar wind,
+shocking and spreading the ﬂuid. At the much later time of
+Figure 7, the highest energy ﬂuid that passed through to the
+ISM has began to expand as it assimilates to the new medium.
+Also, the reverse shock has now passed through the ﬂuid be-
+hind the density jump, caused the formation of vortices, and
+created the condition for the secondary blast wave to form.
+The remains of secondary blast wave can be seen in Figure 7
+by the vortices near the horizontal axis at radii around 2×1018
+cm.
+The middle right panel in Figure 6 shows the percentages
+of energy encompassed in various angles, depicting that the
+highest concentration of energy is contained within the angle
+holding the ﬂuid that passes through the density jump, and a
+very minimal amount of energy is contained within the vor-
+tices that have been formed in the stellar wind region. The
+chaotic behavior of the region in purple and pink in the mid-
+dle right panel in Figure 6 is from those vortices as well.
+Lastly, the dynamics of the simulation with the sudden den-
+sity drop do not show a recollimation with the increase in
+Lorentz factor. The ﬂuid speeds up and as it does, it spreads
+at a rate slightly faster than in the stellar wind environment.
+This is shown in the bottom row of Figure 6.
+With the understanding of the dynamics of the blast wave
+encountering a sudden change in density, the next section dis-
+cusses the resulting light curves.
+3. LIGHT CURVES
+We calculate the GRB afterglow light curves using the
+radiation calculation methodology from van Eerten et al.
+(2010a,b) at an X-ray frequency of 5×1017 Hz (except where
+otherwise speciﬁed), similar to the frequency detected by
+Swift. The time at which the ﬂux from the local emission of
+the afterglow is observed is denoted as the “observer time,” or
+tobs, and is calculated by:
+tobs = te −rcosθ
+c
+(21)
+where te is the emission time (i.e., the lab frame time of the
+emitting ﬂuid element), r is the radius of the local ﬂuid ele-
+ment at te, and θ is the angle between the direction to the ﬂuid
+element and the direction to the observer. For an emission
+time, te, the ﬂuid at the front of the shock will be observed
+ﬁrst, and can be represented as:
+Tobs ∼= te −R
+c
+(22)
+where Tobs denotes the earliest time any ﬂux from the blast
+wave at the time, te, is observed. On our ﬁgures, we label the
+ﬁrst time the encounter can be observed as Tobs,enc.
+For our light curves, we use values of ϵB = 0.01, ϵe = 0.1,
+and p = 2.5, where ϵB and ϵe are the fractions of internal en-
+ergy that contribute to the magnetic ﬁeld at the shock front
+and to accelerating electrons respectively, and p expresses the
+energy distribution index of the shock-accelerated particles
+(and is not to be confused with pressure). We also do not
+consider electron cooling in our light curves shown here, but
+have found that this does not qualitatively change our results.
+We expect the pre-jet break light curves to follow the tempo-
+ral behavior of t(1−3p)/4 in the stellar wind environment, and
+t3(1−p)/4 in the ISM (e.g., Granot & Sari 2002).
+It has been claimed that blast waves encountering wind ter-
+mination shocks generate ﬂares or rebrightenings which can
+be seen at early times and are caused from either the reverse
+shock forming at the encounter (PW) or the blast wave transi-
+tioning to the new medium (Eldridge et al. 2006; Mesler et al.
+2012). As discussed below, from our analytical and numeri-
+cal analysis,we ﬁnd that a GRB jet encountering a change in
+circumburst medium does not cause a ﬂare of the kind seen
+by Swift. Neither the reverse shock at the encounter, nor the
+blast wave’s transition to the new medium at the encounter
+will cause an observable ﬂare.
+8
+FIG. 6.— Figures of the two dimensional dynamics. Left column: plots of the logarithm of speciﬁc energy at a time after the encounter. The blast wave is
+aligned with the horizontal axis. Right column: ﬁgures showing the angle enclosing various percentages of the blast wave energy over time. The horizontal line
+denotes the time of the encounter. Top row: simulation γ5a4 in 2D (blast wave traveling in a stellar wind environment encountering a wind termination shock
+at γenc = 5 and a density increase of factor 4). Middle row: simulation γ10a100 in 2D (blast wave traveling in a stellar wind environment encountering a wind
+termination shock at γenc = 10 and a density increase of factor 100). Bottom row: simulation γ5a 1
+100 in 2D (blast wave traveling in a stellar wind environment
+encountering a wind termination shock at γenc = 5 and a density decrease of factor 100).
+9
+FIG. 7.— Figure of the speciﬁc energy of the 2D simulation γ10a100 (blast
+wave traveling in a stellar wind environment encountering a wind termination
+shock at γenc = 10 and a density increase of factor 100) shown at a later time
+than the middle left panel in Figure 6. The blast wave in this ﬁgure is aligned
+with the horizontal axis.
+3.1. No Flares during the Observed Time Scale
+Figure 8 depicts that there are no observable ﬂares in the
+ﬂux emitted from a blast wave encountering a small jump,
+large jump, or large drop. This ﬁgure shows the light curves
+calculated from the one dimensional simulation and analytical
+model as well as the light curves calculated from the two di-
+mensional numerical simulations for on and off-axis observer
+angles. For all cases studied in this paper, there were no ob-
+servable ﬂares.
+The simulations demonstrate that a blast wave encountering
+a wind termination shock of a small increase in density (of
+factor 4) does not result in any disruption in the ﬂux observed
+at early times. In fact, for a jump of factor 4 (simulations γ5a4
+and γ10a4), the light curve gradually transitions to the slope
+expected in the new environment, conﬁrming the results from
+the spherical cases of NG and van Eerten et al. (2009). This is
+seen with the on-axis light curves of the one and two dimen-
+sional simulations (top left panel in Figure 8) and with the
+light curves for a wide range of observer angles of the two di-
+mensional simulation γ5a4 (top right panel in Figure 8). The
+encounter is ﬁrst observable at roughly 46 days for the simu-
+lations with γenc = 5, and for our simulations of γenc = 10, the
+ﬁrst time the encounter is observed, Tobs,enc ≈3 days. These
+times are much later than any ﬂares observed from Swift and
+follow from our choice for γenc, which was selected for nu-
+merical reasons. However, the time at which the encounter is
+observed is inversely proportional to Γ4
+enc:
+Tobs,enc = T0Γ2
+0
+4Γ4enc
+.
+(23)
+This scaling is calculated using Equations 6 and 7, and noting
+that at (and before) the encounter k = 2. It follows that mod-
+eling encounters at larger Lorentz factors, of say γenc = 25,
+which corresponds to Tobs,enc ≈0.07 days, would result in the
+observed encounter being in the range of times ﬂares are ob-
+served (see e.g., Zhang et al. 2006). Nevertheless, from the
+top right panel in Figure 9, it is apparent that the light curves
+for blast waves encountering changes in external density pro-
+ﬁles at varying Lorentz factors scale for one dimensional dy-
+namics. Thus the light curve behavior at the time of the en-
+counter for our numerical simulations of γenc = 5 and 10 are
+indicative of the behavior of encounters at larger Lorentz fac-
+tors. To ensure that this is accurate, we analytically model en-
+counters at γenc = 25, and discuss the light curves from those
+dynamics throughout this section. The light curves calculated
+from our analytical model use the same linear radiative trans-
+fer algorithm as the light curves calculated from the numerical
+simulations.
+For simulation γ5a 1
+100, the ﬂux observed follows the same
+qualitative results as simulation γ5a4 at early times–the ob-
+served ﬂux transitions smoothly to the slope of the ﬂux ob-
+served solely in the ISM environment after the encounter.
+Even though the blast wave’s velocity increases after the en-
+counter (Figures 4 and top right in 5), a ﬂare during the en-
+counter is not observed. Instead, the ﬂux drops more steeply
+as it evolves towards its lower post-encounter base level. This
+is shown in the two ﬁgures in the bottom row in Figure 8
+where the ﬁgure on the bottom left depicts the ﬂux observed
+on axis with the blast wave using the one and two dimensional
+simulations along with the analytical solution, and the latter
+displays the ﬂux observed at various observer angles for the
+two dimensional simulation.
+It is apparent from the light curves of simulations γ5a4 and
+γ5a 1
+100, that as the magnitude of the ﬂux of a blast wave in the
+ISM environment lowers, there is no rebrightening. Next, we
+discuss the light curves of simulation γ10a100, which are of a
+blast wave encountering an ISM environment of much higher
+density.
+With the magnitude of the ﬂux of a blast wave traveling
+solely in the ISM environment being much higher than the
+magnitude of the ﬂux from a blast wave in the wind (because
+the magnitude is a function of the density in that region), one
+might ﬁrst assume a ﬂare must be observed as the ﬂux from
+the blast wave at the encounter evolves to the new slope and
+magnitude. However, this is not correct–there is still no re-
+brightening at the time of the encounter. This is shown in the
+middle row of Figure 8. The right middle panel in Figure 8
+shows the light curves for the 2D simulation γ10a100 plotted
+against the light curves for the 2D simulation no encounter
+for various observer angles. This ﬁgure illustrates the devia-
+tion of the light curve from the blast wave encountering the
+density jump from the light curve of no encounter at all. The
+magnitude of the ﬂux decreases as the blast wave travels into
+the new medium resulting in no ﬂaring activity. The off axis
+light curve calculated at θobs = 0.2 radians in the right panel
+in the middle row of Figure 8 shows a bump at around 100
+days. Although the ﬂux does not increase at this point, it does
+deviate from the expected slope. This bump in the light curve
+is observable at a wide range of frequencies, from the optical
+to the X-ray, and exhibits similar behavior at all frequencies
+at which it is observed. The bump could be considered a re-
+brightening, however, it is only seen at observer angles larger
+than the jet opening angle, and it is unlikely that the prompt
+emission will be observed at this angle due to the extreme
+beaming needed of the gamma radiation.
+Figure 9 depicts the transition of the light curve as the blast
+wave changes environments as well as the overall scaling of
+the light curves. The top left panel in Figure 9 shows analyt-
+ical light curves for a blast wave traveling in a stellar wind
+environment with γenc = 25 for two scenarios: a density jump
+of factor 100 (the solid blue line) and a density drop of factor
+10000 (the dashed blue line). These light curves are plotted
+against the light curve for a blast wave traveling solely in the
+10
+FIG. 8.— Figures showing light curves calculated from simulations all with the jet half-opening angle of θ0 = 0.1. Left column: light curves for the simulations
+in one and two dimensions as well as the light curves calculated from the analytical model in one dimension. The conic and spherical one dimensional dynamics
+represent the assumption of assuming either spherical or conic outﬂow, respectively, when calculating the light curve. Right column: light curves calculated from
+the two dimensional simulations for various observer angles. Top row: light curves for simulation γ5a4 (blast wave encountering a density jump of factor 4 at an
+observer time of roughly 46 days). Middle row: light curves for simulation γ10a100 (blast wave encountering a density jump of factor 100 at an observer time of
+roughly 3 days). Right plot also shows the light curves for simulation no encounter at various observer angles. Bottom row: light curves for simulation γ5a 1
+100
+(blast wave encountering a density drop of factor 100 at an observer time of roughly 46 days)
+11
+stellar wind environment (green line), a blast wave traveling
+solely in the homogeneous medium corresponding to the den-
+sity jump of factor 100 (red solid line), and a blast wave trav-
+eling solely in the homogeneous medium corresponding to the
+density drop of factor 10000 (dashed red line). As seen in this
+ﬁgure, the observed ﬂux after the encounter slowly transitions
+to the slope of the ﬂux observed from the ISM environment,
+resulting in no sudden increase in ﬂux. The ﬂux does not im-
+mediately jump up to the new magnitude because the blast
+wave has been slowed by the encounter and is not energetic
+enough to cause a rebrightening. For the case of a drop–the
+ﬂux observed from a blast wave in the new ISM environment
+is at a lower magnitude than the ﬂux observed from a blast
+wave in the wind environment. This results in the ﬂux ob-
+served from the blast wave encountering the new environment
+to decrease, instead of increase, after the encounter to evolve
+in the new environment.
+In addition, this ﬁgure shows an interesting feature, that can
+also be seen in Figure 8, of a shallowing of the light curve.
+The light curve transitions from the slope of a blast wave in a
+stellar wind to the less steep slope of a blast wave in an ISM.
+This late-time shallowing of the light curve is not the turnover
+of a steep decay into a plateau of the canonical light curve, but
+a different transition at later times. This is an observed feature
+of GRB afterglows (e.g., Evans et al. 2009; Li et al. 2012;
+Zaninoni et al. 2013) and a change in circumburst medium is
+one of the few ways for the light curve of the blast wave to
+transition to a new slope.
+From the light curves of simulations γ5a4, γ10a100, and
+γ5a 1
+100, as well as the light curves from the simulations not
+shown here (γ5a100 and γ10a4), we conclude that there is
+no rebrightening at times on the order of minutes to days for
+a blast wave encountering a change in circumburst medium.
+The simulations show that when the magnitude of the ﬂux
+observed in the ISM is lower than the ﬂux observed in the
+stellar wind environment at the time of the encounter (top left
+panel in Figure 9) the blast wave conforms to the new slope
+and there is no rebrightening. When the magnitude of the ﬂux
+observed from a blast wave in an ISM environment is higher
+than the magnitude of the ﬂux observed from a blast wave
+in the stellar wind environment, the blast wave still smoothly
+transitions to the new environment. In all cases, though, the
+ﬂux observed from the blast wave after the encounter is lower
+than the ﬂux observed from a blast wave that has only traveled
+in the ISM.
+To test whether the light curves for our simulations are an
+accurate depiction of a blast wave encountering a circumburst
+density change, or if they only represent the light curves for
+encounters at ﬂuid Lorentz factors of γ ≤10, with changes
+in density of factors ≤100 and with θ0 = 0.1, we analytically
+solve for the light curves of various blast wave encounters for
+various encounter Lorentz factors, γenc, density change fac-
+tors, and jet half opening angles, θ0. The top right panel in
+Figure 9 shows light curves for one dimensional analytical
+models of blast waves traveling in a stellar wind environment
+that encounter a density change of factor 10 followed by a ho-
+mogeneous medium with the encounters happening at vary-
+ing Lorentz factors. When the factor by which the density
+changes is kept ﬁxed, the shape of the light curve remains in-
+dependent of the actual time of the encounter and light curves
+for different encounter times can simply be shifted to match,
+as can be seen from the ﬁgure.
+The bottom left panel in Figure 9 shows the light curves for
+blast waves traveling in the stellar wind environment that en-
+counter a density change of varying magnitudes at γenc = 25.
+We show here density changes ranging from 10−8 to roughly
+correspond with the density drops used in Mesler et al. (2012),
+to 103. For larger density jumps, the blast wave quickly be-
+comes non-relativistic, causing our analytical model to be-
+come less accurate. Lastly, the bottom right panel in Fig-
+ure 9 shows light curves for blast waves traveling in a stel-
+lar wind environment that encounter a density jump of factor
+10 at γenc = 25 for various jet half opening angles, θ0. The
+only light curve in this ﬁgure that has some resemblance of a
+ﬂare is that of the blue line, which has an opening angle very
+close to γenc ∼1/θ0, meaning that for any ﬂare to possibly oc-
+cur around the time of the encounter, γenc = 1/θ0. This is the
+setup of our simulations γ10a4 and γ10a100: γenc = 10, and
+θ0 = 0.1, and no ﬂare is observed in one or two dimensions.
+From this analysis, we conclude that for a blast wave trav-
+eling in a stellar wind environment that encounters a sudden
+change in circumburst environment, there is no observable re-
+brightening regardless of the size of the jump, drop, or ﬂuid
+Lorentz factor at the time of the encounter that we have stud-
+ied. There is a bump in the light curve at the observation angle
+of θobs = 0.2 radians for the light curve of simulation γ10a100
+in 2D, but θobs > θ0 and thus this is not a likely indication of
+an observable ﬂare. We do not see a ﬂare from the forward
+shock, nor do we see a ﬂare caused by the reverse shock at
+times corresponding to the afterglow ﬂares seen by Swift.
+We study a single spherically symmetric change in the cir-
+cumburst environment. However, the actual environment may
+have a more complicated structure with instabilities (e.g., van
+Marle & Keppens 2012) or thin circumburst shells (Mesler
+et al. 2012). A study of asymmetric structures (i.e., density
+clumps) around the progenitor would require three dimen-
+sional simulations and is beyond the scope of this paper. We
+do look at the interaction with circumburst shells, and our re-
+sults are discussed further in Appendix B. In this case too, we
+have been unable to reproduce the ﬂares reported by Mesler
+et al. (2012).
+3.2. Very Late Time Rebrightening
+The simulations of a density jump did show ﬂares at times
+long after the encounter occurred (at times much later than
+plotted in Figure 8). At such late times (on the order of 104
+days), these ﬂares are beyond X-ray observations, but may be
+of interest at radio frequencies. There are two contributors to
+these ﬂares–the ﬁreball conditions created from the strong re-
+verse shock that causes a secondary blast wave to form, shown
+in the bottom row of Figure 5, and the encounter of the re-
+ceding jet with the wind termination shock. We discuss the
+contribution of the secondary blast wave ﬁrst, followed by a
+discussion of the receding jet.
+Figure 10 shows the very late time ﬂare observed from the
+one and two dimensional simulations of simulation γ10a100.
+Comparing the time at which the ﬂare begins for simulation
+γ10a100 in 1D and 2D, shown in Figure 10, with the time
+and radius of the secondary blast wave shown in the bottom
+left panel in Figure 5, it is apparent that the secondary blast
+wave is a cause of the rebrightening. This is conﬁrmed by
+the left panel in Figure 10, which shows the light curve calcu-
+lated for simulation γ10a100 in 1D using the entire blast wave
+(blue line), against the light curve observed from the parts of
+the blast wave at radii larger than the encounter radius (green
+line). The left panel in Figure 10 clearly illustrates that the
+12
+FIG. 9.— Figures showing the transitions of light curves as the blast wave travels through an encounter with a density change. All ﬁgures are of light curves
+calculated from the one dimensional analytical model, and all except for the bottom right assume spherical outﬂow. Top left: blue light curves are of blast wave
+traveling in a stellar wind environment encountering a density jump of factor 100 (solid blue line) and a density drop of factor 10000 (dashed blue line) followed
+by a homogeneous medium. These are plotted against the light curve for a blast wave traveling solely in a stellar wind environment (green line) and the light
+curves for blast waves traveling solely in the homogeneous medium of the jump (red solid line) and of the drop (dashed solid line). Top right: light curves for
+blast waves traveling in a stellar wind encountering a density jump of factor 10 followed by a homogeneous medium with the encounters at various times. Bottom
+left: light curves for blast waves traveling in a stellar wind environment encountering a density change of various magnitudes at a time corresponding to γenc = 25.
+Bottom right: light curves for blast waves traveling in a stellar wind environment encountering a density jump of factor 10 when γenc = 25 for various opening
+angles.
+ﬂare is caused by the ﬂuid inside the encounter radius at late
+times, and the most energetic ﬂuid in the 1D simulation that is
+at radius smaller than Renc at late times is the secondary blast
+wave.
+The left panel in Figure 10, although explaining the ﬂare
+for the one dimensional case of simulation γ10a100, does not
+explain the small ﬂares seen in the one dimensional conical
+outﬂow for simulation γ5a4 nor the ﬂares for the two dimen-
+sional simulations γ5a4 and γ10a100.
+To fully understand the cause of this late time ﬂare, we must
+emphasize that it is seen at a wide range of observer angles
+and frequencies (right panel in Figure 10) at the same observer
+time, and is observable at the same time as the ﬂare from the
+secondary blast wave. The secondary blast wave cannot be the
+cause of the ﬂare for the 2D simulation because it is quickly
+slowed by the surrounding material (seen in the bottom right
+panel in Figure 5), and is also not a characteristic of simula-
+tion γ5a4 in one or two dimensions. Moreover, the ﬂare ob-
+served in simulation γ5a4 is observable in the 2D light curves
+and the 1D light curve that assumed conical outﬂow, but not
+in the 1D light curve assuming spherical outﬂow.
+The cause of the late time ﬂare is the receding jet that en-
+counters the sudden density jump (but not from a density
+drop). The reason this event seemingly occur at the same
+time as the secondary blast wave is because the sum of the
+distance traveled by the reverse shock and the ﬂux from the
+secondary blast wave is the same as the distance traveled by
+the ﬂux observed from the receding jet encountering the den-
+sity jump. In short, the density jump results in a sudden in-
+crease in ﬂux traveling in the opposite direction of the blast
+wave itself, meaning a spike in the light curve will not be
+observed at the time of the encounter because the light from
+the encounter is traveling away from the observer. This is
+conﬁrmed by the green lines in the right panel of Figure 10,
+which shows that the light curve observed only from the for-
+ward jet does not result in a very late time ﬂare whereas the
+light curve observed from both the forward and the receding
+jet does have a ﬂare. We obtain the same results when an-
+13
+FIG. 10.— Figures showing the late time ﬂare of simulation γ10a100 (γenc = 10, observed at roughly 3 days, with a jump of 100 and the jet half-opening angle
+of θ0 = 0.1). Left: light curve of the one dimensional simulation γ10a100 including the entire evolution (blue line) and including only the ﬂuid at radii larger
+than Renc (green line). Right: light curves for the 2D simulation γ10a100 at three frequencies: radio, ν = 4.86×109 Hz, visible, ν = 4.56×1014 Hz, and X-ray,
+ν = 5 × 1017 Hz. These light curves were calculated on axis with the blast wave, θobs = 0.0 radians. The blue dashed line shows the light curve calculated at a
+radio frequency using only the forward jet (and not including the receding jet).
+alyzing simulation γ10a100 at different frequencies, and by
+analyzing the very late time ﬂare of simulation γ5a4 in 2D
+(and 1D conical outﬂow). The reason for the differing behav-
+ior of the green line with the red and blue lines of the right
+panel of Figure 10 is that the radio frequency corresponds to
+a different spectral regime than the visible and X-ray frequen-
+cies at early times. The radio frequency at early times is be-
+low the synchrotron peak critical frequency, νm, meaning the
+light curve scales with t0 in the wind scenario (e.g., Granot
+& Sari 2002). This early time radio light curve behavior is
+showing a different spectral regime with νm passing through
+the observed band at the turnover.
+The receding jet, or counter jet, has been known to be ob-
+servable at very late times (Granot & Loeb 2003; Li & Song
+2004; Zhang & MacFadyen 2009; Wang et al. 2009), with
+its magnitude being a function of the density structure into
+which the forward and receding jets are traveling (Wang et al.
+2009). What differentiates the ﬂares from the receding jet
+shown in this paper and the visibility of the receding jet in
+previous work is that this ﬂare is from the encounter of the
+receding jet with the sudden higher density region, as op-
+posed to the counter jet being observable as it becomes non-
+relativistic and isotropic (Li & Song 2004) or as it travels into
+a differing circumburst medium than for the forward jet, or as
+both the forward and receding jet travel into a highly dense
+medium (Wang et al. 2009). In addition, the ﬂare in this paper
+is observable at a wide range of observer angles, in contrast
+to the prediction that the receding jet is only observed at op-
+timal angles (Granot & Loeb 2003). The very late time ﬂare
+observed in this work is from the sudden decrease in Lorentz
+factor of the jets at the encounter, causing a ﬂare to be ob-
+served as opposed to observing the receding jet itself.
+From our simulations, the only ﬂare calculated is that at
+much later times and much lower magnitudes in ﬂux than
+those observed by Swift. The only possible ﬂare on the time
+scale of observed ﬂares we are able to observe with a sudden
+change in circumburst medium is the small bump in the light
+curve seen at around 30 days at θobs = 0.2 radians in the mid-
+dle right panel in Figure 8, but this occurs only for θobs > θ0
+and thus is unlikely to be observed.
+4. SUMMARY AND CONCLUSIONS
+We have shown numerically and analytically that a blast
+wave evolving partially in a stellar wind environment that en-
+counters a sudden change in density, either an increase or a
+decrease, followed by a constant density environment for a
+wide range of initial conditions does not cause an observable
+rebrightening. Flares at very late times are a function of the
+size of the density jump–the larger the density jump at the en-
+counter, the stronger the reverse shock, resulting in a brighter
+late time ﬂare. We studied light curves for a wide range of
+frequencies, and although this paper focuses on X-ray light
+curves, we saw similar behaviors for a wide range of frequen-
+cies. These ﬂares potentially might be observable at radio
+frequencies under favorable conditions (Figure 10). This an-
+swers the ﬁrst question listed in Section 1: the size of the den-
+sity jump does affect the dynamics and resulting light curve
+and may cause a faint very late time ﬂare at radio frequencies
+for large jumps, but there are no observable ﬂares at X-ray
+frequencies.
+We found that for a blast wave traveling in a stellar wind
+environment encountering an ISM environment, the resulting
+ﬂux observed will gradually transition from one environment
+to the next. As seen in Figure 9, if the ﬂux observed from a
+blast wave traveling solely in the ISM is lower than the ﬂux
+observed with a blast wave traveling solely in the wind envi-
+ronment at the time of the encounter, the ﬂux observed from
+the blast wave will simply dim and follow the same light curve
+slope of the ISM. If the ﬂux observed from a blast wave trav-
+eling solely in the ISM is higher than the ﬂux observed from a
+blast wave traveling solely in a wind environment at the time
+of the encounter, the observed ﬂux from the blast wave will
+not suddenly increase, but stay relatively steady as it transi-
+tions to the new slope of the ISM. This analysis was mostly
+done for the one dimensional simulations and showed that the
+light curve is affected by the size of the density change, but
+not the Lorentz factor at the encounter. We have explored var-
+ious ratios of γenc/γjet with two dimensional simulations and
+found that this conclusion holds in two dimensions. How-
+ever, strictly speaking the recollimation seen in the two di-
+mensional simulations of density jumps is dependent on the
+14
+Lorentz factor of the ﬂuid at the encounter, and the amount
+by which the blast wave recollimates should be inversely pro-
+portional to the ﬂuid encounter Lorentz factor (i.e., blast wave
+recollimates more for lower ﬂuid encounter Lorentz factors),
+although this is not expected to have an effect on the occur-
+rence of a ﬂare.
+We have studied the two dimensional and one dimensional
+effects of a density drop and have shown that the blast wave
+does increase in speed, but does not recollimate. There is also
+no rebrightening caused by this sudden increase in blast wave
+speed (Figure 8). Our two dimensional studies of a density
+jump have yielded the conclusion that there is some sideways
+spreading from a high energy collision of the blast wave with
+a large jump in circumburst density, and the amount by which
+the blast wave spreads is highly dependent on the size of the
+density jump. There is also a ﬂare at very late times, but this
+is not caused by the sideways spreading. The late time ﬂare is
+caused from the reverse shock of the receding jet (Figure 10).
+This very late time ﬂare only occurs years after the initial ﬂux
+observed from the blast wave, and data from Swift is only
+gathered for days after the ﬁrst ﬂux is observed resulting in
+the conclusion that this is not the ﬂare observed by Swift. In
+addition, these ﬂares range from being 10−4 to 10−10 orders of
+magnitude smaller than the initial ﬂux of the blast wave which
+is below the threshold of Swift.
+We have analytically modeled the light curves of one di-
+mensional simulations, and are able to use the model for on
+axis two dimensional dynamics that do not cause strong re-
+verse shocks as well. From our analytical solutions and our
+numerical models, we have answered the questions listed in
+the Introduction and have concluded that a blast wave travel-
+ing in a stellar wind environment that encounters a change in
+density followed by an ISM environment will not cause ob-
+servable ﬂares.
+Our work conﬁrms earlier studies (NG, van Eerten et al.
+2009) that a wind termination shock will not cause ﬂares in
+light curves and extends this analysis to density drops and
+to two dimensional simulations. We were unable to repro-
+duce the ﬂares seen in PW due to the discrepancy of the ﬂuid
+Lorentz factor during the encounter–the analysis done in PW
+assumed a constant ﬂuid Lorentz factor during the encounter,
+and we have extended this analysis to more accurately model
+the decrease in ﬂuid Lorentz factor at the encounter. We were
+not able to reproduce the ﬂares seen in Mesler et al. (2012)
+and Eldridge et al. (2006). Both of these studies use an ana-
+lytical model for the blast wave based on total swept up mass.
+They do not account for the radial or angular structures of
+the blast wave, such as the differing shock regions shown in
+Figure 1 and the spreading of the shock as it becomes non-
+relativistic. Without accounting for these radial and angular
+structures, their models of the change in Lorentz factor with
+change in mass result in a discrepancy in time scale and ﬂux
+observed between ours and their results. In addition, as the
+blast wave becomes non relativistic, the blast wave spreads
+outwards and its width becomes comparable to the radius of
+the blast wave. Thus, for the the interaction of a blast wave
+with a spike, like that in Mesler et al. (2012), the swept up
+mass model does not allow for capturing features on the same
+or shorter time scale of the blast wave crossing the shell be-
+cause the width of the shell is smaller than the width of the
+blast wave. This is discussed more thoroughly in Appendix B.
+The very late time radio ﬂares from our simulations are
+similar to those seen in simulations of multiple shell mod-
+els (Maxham & Zhang 2009; Vlasis et al. 2011). However,
+the simulations of the multiple shell model are simulated by
+adding energy to the system at late times leading to a different
+light curve slope after the encounter. The very late time radio
+ﬂares seen in this paper were calculated from a simulation in
+which no energy was added, resulting in the ﬂares seen in this
+paper being of different origin than from the multiple shell
+models.
+We conclude that a wind termination shock, or more gen-
+erally, any sudden transition in circumburst density (even ex-
+treme changes), is very unlikely to be the cause of the ﬂares
+observed by Swift because those ﬂares return to the same base-
+line as the light curve prior to the ﬂare (Burrows et al. 2005).
+With the encounter of a change in circumburst environment,
+the only observable ﬂares do not return to the same base-
+line because ﬂux from the receding jet is also being observed.
+Moreover, if the ﬂare occurred at the time of the encounter, the
+light curve would transition to the new slope of the ISM mate-
+rial, not the slope of the stellar wind. This makes it highly un-
+likely that a ﬂare seen at the encounter with the change in cir-
+cumburst environment could be the explanation for the ﬂares
+seen by Swift.
+Through our numerical and analytical analysis of a blast
+wave encountering a circumburst density change that origi-
+nated from the same point, we have concluded that a ﬂare will
+not be observed by Swift, but a change in environment could
+be the explanation for the late-time shallowing observed for
+some GRB afterglows (Evans et al. 2009; Li et al. 2012; Zani-
+noni et al. 2013). It would be of interest to compare our results
+with observational data in future research.
+This research was supported in part by NASA through
+grant NNX10AF62G issued through the Astrophysics Theory
+Program and by the NSF through grant AST-1009863 and
+by the Chandra grant TM3-14005X. Resources supporting
+this work were provided by the NASA High-End Computing
+(HEC) Program through the NASA Advanced Supercom-
+puting (NAS) Division at Ames Research Center.
+The
+software used in this work was in part developed by the
+DOE-supported ASCI/Alliance Center for Astrophysical
+Thermonuclear Flashes at the University of Chicago.
+We
+wish to thank Ehud Nakar for helpful discussions.
+APPENDIX
+GRID SETUP AND RESOLUTION
+To run our simulations, we ﬁrst found the radius and time corresponding to the Lorentz factor at which we wanted the external
+density change to occur, the size of the grid, as well as the needed resolution of the simulation. We use Equations 4 and 5 to set
+up the initial shock location and time respectively with the initial ﬂuid Lorentz factor of 15. Next, we use Equation 6 to ﬁnd the
+location of the Lorentz factor at which the jump occurs, and a form of Equation 7 to calculate the time at which the Lorentz factor
+is equal to that at the jump.
+The grid size needs to be large enough to ensure the simulation would run a satisfactory amount of time after the encounter.
+15
+We choose a maximum observation time, tobs, for the simulation to run, which gives an equation for the maximum radius and
+simulation time:
+tobs = t −R
+c .
+(A1)
+R in Equation A1 is the maximum size of the grid, which we will refer to as rmax, and can be represented as the sum of the
+radius of the encounter, Renc, plus some distance covered, ∆r.
+R = rmax = Renc +∆r
+(A2)
+The variable ∆r in Equation A2 can be found by integrating the velocity over time. We use a much simpliﬁed model for the grid
+setup because we need only a rough approximation. Using this simpliﬁed model, we assume that immediately after the encounter,
+the blast wave returns to a BM self similar solution of a blast wave in a homogeneous environment. This, again, is not an accurate
+assumption, but accurate enough for this purpose.
+Velocity is represented by v = cβ and β =
+q
+1−1
+Γ2 where the subscript of 2 here denotes that this is the Lorentz factor after the
+encounter. Γ2 if found by a similar equation to Equation 7 except with k = 0.
+Γ2 = Γenc
+ t2
+tenc
+ −3
+2
+(A3)
+Using the above equations, we obtain the integral of velocity over time.
+∆r =
+Z t f
+tenc
+"
+1−
+1
+Γ2enc
+ t2
+tenc
+3# 1
+2
+dt.
+(A4)
+To solve Equation A4, we can expand the integrand.
+"
+1−
+1
+Γ2enc
+ t2
+tenc
+3# 1
+2
+= 1−
+1
+2Γ2enc
+ t2
+tenc
+3
+−
+1
+8Γ4enc
+ t2
+tenc
+6
+(A5)
+Using Equation A5 in Equation A4 to ﬁnd ∆r, we derive rmax from Equation A2. Next, we calculate the corresponding
+simulation time at the end of the grid using Equation A1.
+We set the minimum value of the grid to a size that ensures the entire initial shock is shown, rmin = 0.01R0.
+Lastly, to ﬁnd the optimal resolution, we need to be certain that the initial shock is resolved. We use adaptive mesh reﬁnement
+and we specify the number of base blocks, bbr, the number of cells per block, cpb, and the maximum reﬁnement level, ref, for
+the simulation. Equation A6 describes the relationship these values have to the resolution where A is the amount ∆R is reﬁned:
+rmax −rmin
+bbx ×cpb×2ref−1 = ∆R
+A ,
+(A6)
+∆R =
+R0
+12Γ2
+0 , cpb = 8, and the optimal value of A can be tested, as shown in Figure 11. Figure 11 shows that even with a very small
+amount of resolution in the radial direction, the simulation still converges at the time of the encounter–the part of the simulation
+on which we are focusing. The reﬁnement level in the θ direction must also be computed. The simulation only computes from
+0 ≤θ ≤π
+2 , which yields:
+π/2
+bbθ ×cpb×2ref−1 = θ0
+B
+(A7)
+where bbθ is the number of base blocks in the θ direction, θ0 is the jet half opening angle, and B is the number by which we want
+the width of the jet opening to be reﬁned.
+Using the equations in this section, we are able to set up the simulation grid for optimal results.
+CIRCUMSTELLAR SHELLS
+It has been proposed that circumstellar shells could cause ﬂares in light curves (Mesler et al. 2012). We test this speciﬁc
+scenario of the interaction of a blast wave with a narrow shell in which the blast wave becomes non-relativistic. We model this
+scenario as a stellar wind environment followed a large density jump of small width that is terminated by a large density drop
+followed by a homogeneous medium. We model the setup of Mesler et al. (2012) but exclude the wind termination shock for we
+have analyzed the effect of a wind termination shock in this paper and have concluded that will not cause a ﬂare. Although we
+do not model the wind reverse shock in this scenario, the reverse shock acts on the mass ejected by the stellar wind. The Lorentz
+factor at the encounter with the strong density jump, according to the swept up mass approximation, is therefore identical with or
+without accounting for the wind reverse shock. Our stellar wind environment setup is:
+Eiso = 1053 ergs, ˙mwind = 10−5M⊙yr−1, vwind = 103 km/s, and ρre f =
+˙mwind
+4πR2
+re f vwind
+.
+16
+FIG. 11.— Plot of the Lorentz factor over time for simulation γ5a4 (blast wave encountering a density jump of factor 4 at a time and radius corresponding to
+the front of the shock ﬂuid Lorentz factor, γenc = 5) in 1D for various resolutions.
+The blast wave then encounters the spike at γenc = 10, and the density of the spike is 105ρext(Renc), where ρext is that of Equation 2.
+The spike contains the amount of mass Mspike = 0.1M⊙, and is followed by a sudden lower density region of 10−7ρext(Renc). This
+is essentially the same setup as that of Mesler et al. (2012) that resulted in light curve ﬂares in their analysis.
+We numerically simulate this setup with a resolution in time of roughly 30 snapshots during the encounter to ensure the behavior
+of the blast wave within the spike is resolved, and no ﬂare is observed (right panel in Figure 12). The discrepancy between our
+results and that of Mesler et al. (2012) is that Mesler et al. (2012) models only swept up mass and does not account for the
+radial structure of the blast wave. With this approximation, the mass swept up after the encounter instantaneously mixes with the
+mass swept up prior to the encounter (which are actually separated by the contact discontinuity) resulting in an overestimation
+of the total mass radiating with the post-encounter Lorentz factor. In addition to the over-estimation of the mass in the forward
+shock region, this method also overestimates the Lorentz factor during the encounter. To show this, we analytically modeled
+the Lorentz factor evolution as done in Mesler et al. (2012) (who follow Pe’er 2012), and compared it to the numerical results
+for the same setup. This is shown in the left panel in Figure 12. This ﬁgure depicts the overestimation of the Lorentz factor
+from the assumptions of Mesler et al. (2012), and the underestimation of the Lorentz factor in the homogeneous medium. The
+Lorentz factor jumps up immediately after exiting the spike, but there is still no ﬂare from this because initially, only negligible
+mass is radiating with this larger Lorentz factor. The light curve from our numerical simulation is plotted in the right panel in
+Figure 12, and shows a steepening in post-encounter slope but does not show a ﬂare. No ﬂare is observed because the ﬂuid
+behind the contact discontinuity is still traveling at the pre-encounter Lorentz factor immediately after the FS hits spike. The
+FS Lorentz factor immediately drops, resulting in it only minimally contributing to the total ﬂux observed. In the swept up
+mass approximation, the FS Lorentz factor gradually lowers resulting in it still contributing noticeable amounts to the light curve
+immediately after the encounter. This may be the cause of the ﬂares seen in Mesler et al. (2012), however, when calculating the
+emission from a spatially resolved blast wave, while taking light travel times into account from different radii and angles, we ﬁnd
+that no observable ﬂare is produced.
+The light curve shown here is calculated at the X-ray frequency of 5×1017 Hz without the contributions from electron cooling
+or absorption. However, we did calculate light curves with the contributions from electron cooling and absorption, and saw no
+qualitative differences. We also considered light curves for different frequencies such as optical and radio. Light curves calculated
+at optical frequencies exhibited the same behavior as the X-ray light curves. Below the synchrotron self-absorption break a steep
+drop was observed following the onset of the shell encounter and a steep rise when the blast wave emerged from the shell.
+However, the (thin) emitting region of the blast wave in the optically thick regime was not always fully resolved numerically,
+leading to noise in the light curves. Regardless, our conclusions regarding X-ray light curves, which are the main focus of our
+study, remain unaffected.
+We believe that any model where the blast wave itself is not resolved is fundamentally unsuited to describe features occurring
+on time scales ∆R/c. In the non-relativistic case, the relevant light crossing time is of the order of the blast wave radius, R/c,
+due to both the absence of relativistic beaming of the emission and the width of the blast wave ∆R becoming a sizable fraction
+of the radius.
+REFERENCES
+Blandford, R. D., & McKee, C. F. 1976, Physics of Fluids, 19, 1130
+Burrows, D. N., Romano, P., Falcone, A., Kobayashi, S., Zhang, B., Moretti,
+A., O’Brien, P. T., Goad, M. R., Campana, S., Page, K. L., Angelini, L.,
+Barthelmy, S., Beardmore, A. P., Capalbi, M., Chincarini, G., Cummings,
+J., Cusumano, G., Fox, D., Giommi, P., Hill, J. E., Kennea, J. A., Krimm,
+H., Mangano, V., Marshall, F., Mészáros, P., Morris, D. C., Nousek, J. A.,
+Osborne, J. P., Pagani, C., Perri, M., Tagliaferri, G., Wells, A. A.,
+Woosley, S., & Gehrels, N. 2005, Science, 309, 1833
+17
+FIG. 12.— Figures for the setup with a spike in the circumburst density proﬁle. The spike is of width 3.15 × 1014 cm at a radius corresponding to γenc = 10,
+with an initial density jump of factor 105ρext(Renc), followed by a drop of 10−7ρext(Renc). Left: plot of the forward shock velocity in terms of βγ over radius for
+our numerical simulation and the analytical model of Mesler et al. (2012). Right: X-ray light curve calculated from our numerical simulation of this setup.
+Dai, Z. G., & Lu, T. 2002, ApJ, 565, L87
+De Colle, F., Granot, J., Lopez-Camara, D., & Ramirez-Ruiz, E. 2012, ApJ,
+751, 57
+Eichler, D., Livio, M., Piran, T., & Schramm, D. N. 1989,
+nat, 340, 126
+Eldridge, J. J., Genet, F., Daigne, F., & Mochkovitch, R. 2006, MNRAS,
+367, 186
+Evans, P. A., Beardmore, A. P., Page, K. L., Osborne, J. P., O’Brien, P. T.,
+Willingale, R., Starling, R. L. C., Burrows, D. N., Godet, O., Vetere, L.,
+Racusin, J., Goad, M. R., Wiersema, K., Angelini, L., Capalbi, M.,
+Chincarini, G., Gehrels, N., Kennea, J. A., Margutti, R., Morris, D. C.,
+Mountford, C. J., Pagani, C., Perri, M., Romano, P., & Tanvir, N. 2009,
+Monthly Notices of the Royal Astronomical Society, 397, 1177
+Falcone, A. D., Morris, D., Racusin, J., Chincarini, G., Moretti, A., Romano,
+P., Burrows, D. N., Pagani, C., Stroh, M., Grupe, D., Campana, S.,
+Covino, S., Tagliaferri, G., Willingale, R., & Gehrels, N. 2007, ApJ, 671,
+1921
+Frail, D. A., Kulkarni, S. R., Sari, R., Djorgovski, S. G., Bloom, J. S.,
+Galama, T. J., Reichart, D. E., Berger, E., Harrison, F. A., Price, P. A.,
+Yost, S. A., Diercks, A., Goodrich, R. W., & Chaffee, F. 2001, ApJ, 562,
+L55
+Frontera, F., Antonelli, L. A., Amati, L., Montanari, E., Costa, E., Dal
+Fiume, D., Giommi, P., Feroci, M., Gennaro, G., Heise, J., Masetti, N.,
+Muller, J. M., Nicastro, L., Orlandini, M., Palazzi, E., Pian, E., Piro, L.,
+Sofﬁtta, P., Stornelli, M., in ’t Zand, J. J. M., Frail, D. A., Kulkarni, S. R.,
+& Vietri, M. 2000, ApJ, 540, 697
+Giannios, D. 2006, A&A, 455, L5
+Granot, J., & Loeb, A. 2003, ApJ, 593, L81
+Granot, J., & Piran, T. 2012, MNRAS, 421, 570
+Granot, J., & Sari, R. 2002, ApJ, 568, 820
+Gruzinov, A. 2000, ArXiv Astrophysics e-prints:0012364
+Huang, Y. F., Dai, Z. G., & Lu, T. 1999, MNRAS, 309, 513
+Ioka, K., Kobayashi, S., & Zhang, B. 2005, ApJ, 631, 429
+Katz, J. I. 1994, ApJ, 422, 248
+King, A., O’Brien, P. T., Goad, M. R., Osborne, J., Olsson, E., & Page, K.
+2005, ApJ, 630, L113
+Kumar, P., & Piran, T. 2000, ApJ, 532, 286
+Lee, W. H., Ramirez-Ruiz, E., & López-Cámara, D. 2009, ApJ, 699, L93
+Li, L., Liang, E.-W., Tang, Q.-W., Chen, J.-M., Xi, S.-Q., Lü, H.-J., Gao, H.,
+Zhang, B., Zhang, J., Yi, S.-X., Lu, R.-J., Lü, L.-Z., & Wei, J.-Y. 2012,
+ApJ, 758, 27
+Li, Z., & Song, L. M. 2004, ApJ, 614, L17
+MacFadyen, A. I., & Woosley, S. E. 1999, The Astrophysical Journal, 524,
+262
+Margutti, R., Bernardini, G., Barniol Duran, R., Guidorzi, C., Shen, R. F., &
+Chincarini, G. 2011, MNRAS, 410, 1064
+Masada, Y., Kawanaka, N., Sano, T., & Shibata, K. 2007, ApJ, 663, 437
+Maxham, A., & Zhang, B. 2009, ApJ, 707, 1623
+Mesler, R. A., Whalen, D. J., Lloyd-Ronning, N. M., Fryer, C. L., &
+Pihlström, Y. M. 2012, ApJ, 757, 117
+Metzger, B. D., Piro, A. L., & Quataert, E. 2008, MNRAS, 390, 781
+Mimica, P., & Giannios, D. 2011, MNRAS, 418, 583
+Nakar, E., & Granot, J. 2007, MNRAS, 380, 1744
+Nousek, J. A., Kouveliotou, C., Grupe, D., Page, K. L., Granot, J.,
+Ramirez-Ruiz, E., Patel, S. K., Burrows, D. N., Mangano, V., Barthelmy,
+S., Beardmore, A. P., Campana, S., Capalbi, M., Chincarini, G.,
+Cusumano, G., Falcone, A. D., Gehrels, N., Giommi, P., Goad, M. R.,
+Godet, O., Hurkett, C. P., Kennea, J. A., Moretti, A., O’Brien, P. T.,
+Osborne, J. P., Romano, P., Tagliaferri, G., & Wells, A. A. 2006, The
+Astrophysical Journal, 642, 389
+O’Brien, P. T., Willingale, R., Osborne, J., Goad, M. R., Page, K. L.,
+Vaughan, S., Rol, E., Beardmore, A., Godet, O., Hurkett, C. P., Wells, A.,
+Zhang, B., Kobayashi, S., Burrows, D. N., Nousek, J. A., Kennea, J. A.,
+Falcone, A., Grupe, D., Gehrels, N., Barthelmy, S., Cannizzo, J.,
+Cummings, J., Hill, J. E., Krimm, H., Chincarini, G., Tagliaferri, G.,
+Campana, S., Moretti, A., Giommi, P., Perri, M., Mangano, V., &
+LaParola, V. 2006, ApJ, 647, 1213
+Paczynski, B., & Rhoads, J. E. 1993, ApJ, 418, L5
+Panaitescu, A., & Kumar, P. 2002, ApJ, 571, 779
+Pe’er, A. 2012, ApJ, 752, L8
+Pe’er, A., & Wijers, R. A. M. J. 2006, ApJ, 643, 1036
+Perna, R., Armitage, P. J., & Zhang, B. 2006, ApJ, 636, L29
+Perna, R., & MacFadyen, A. 2010, ApJ, 710, L103
+Proga, D., & Zhang, B. 2006, MNRAS, 370, L61
+Ramirez-Ruiz, E., García-Segura, G., Salmonson, J. D., & Pérez-Rendón, B.
+2005, ApJ, 631, 435
+Rees, M. J., & Meszaros, P. 1998, ApJ, 496, L1
+Rhoads, J. E. 1999, ApJ, 525, 737
+Sari, R., & Mészáros, P. 2000, ApJ, 535, L33
+Sari, R., Narayan, R., & Piran, T. 1996, ApJ, 473, 204
+Sedov, L. I. 1959, Similarity and Dimensional Methods in Mechanics (New
+York: Academic Press)
+Stanek, K. Z., Dai, X., Prieto, J. L., An, D., Garnavich, P. M., Calkins,
+M. L., Serven, J., Worthey, G., Hao, H., Dobrzycki, A., Howk, C., &
+Matheson, T. 2007, The Astrophysical Journal Letters, 654, L21
+Taylor, G. 1950, Royal Society of London Proceedings Series A, 201, 159
+van Eerten, H., van der Horst, A., & MacFadyen, A. 2012, ApJ, 749, 44
+van Eerten, H., Zhang, W., & MacFadyen, A. 2010a, ApJ, 722, 235
+van Eerten, H. J., Leventis, K., Meliani, Z., Wijers, R. A. M. J., & Keppens,
+R. 2010b, MNRAS, 403, 300
+van Eerten, H. J., & MacFadyen, A. I. 2012, ApJ, 751, 155
+van Eerten, H. J., Meliani, Z., Wijers, R. A. M. J., & Keppens, R. 2009,
+MNRAS, 398, L63
+van Marle, A. J., & Keppens, R. 2012, A&A, 547, A3
+van Marle, A. J., Langer, N., Achterberg, A., & García-Segura, G. 2006,
+A&A, 460, 105
+Vlasis, A., van Eerten, H. J., Meliani, Z., & Keppens, R. 2011, MNRAS,
+415, 279
+von Neumann, J. 1961, Collected works (Oxford: Pergamon)
+Wang, X., Huang, Y. F., & Kong, S. W. 2009, A&A, 505, 1213
+Wijers, R. A. M. J., & Galama, T. J. 1999, ApJ, 523, 177
+Wijers, R. A. M. J., Rees, M. J., & Meszaros, P. 1997, MNRAS, 288, L51
+Woosley, S. E. 1993, Astrophys.J., 405, 273
+Wygoda, N., Waxman, E., & Frail, D. A. 2011, ApJ, 738, L23
+Yost, S. A., Harrison, F. A., Sari, R., & Frail, D. A. 2003, ApJ, 597, 459
+Zaninoni, E., Grazia Bernardini, M., Margutti, R., Oates, S., & Chincarini,
+G. 2013, ArXiv e-prints 1303.6924
+Zhang, B., Fan, Y. Z., Dyks, J., Kobayashi, S., Mészáros, P., Burrows, D. N.,
+Nousek, J. A., & Gehrels, N. 2006, ApJ, 642, 354
+18
+Zhang, W., & MacFadyen, A. 2009, ApJ, 698, 1261
+Zhang, W., & MacFadyen, A. I. 2006, ApJS, 164, 255

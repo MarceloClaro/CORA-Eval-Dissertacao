@@ -1,0 +1,1517 @@
+Unconstrained Face Sketch Synthesis via Perception-Adaptive Network and
+A New Benchmark
+Lin Niea, Lingbo Liub,∗, Zhengtao Wuc, Wenxiong Kanga
+aSouth China University of Technology, China
+bHong Kong Polytechnic University, Hong Kong
+cSun Yat-Sen University, China
+Abstract
+Face sketch generation has attracted much attention in the ﬁeld of visual computing. However, existing
+methods either are limited to constrained conditions or heavily rely on various preprocessing steps to deal
+with in-the-wild cases. In this paper, we argue that accurately perceiving facial region and facial components
+is crucial for unconstrained sketch synthesis. To this end, we propose a novel Perception-Adaptive Network
+(PANet), which can generate high-quality face sketches under unconstrained conditions in an end-to-end
+scheme. Speciﬁcally, our PANet is composed of: i) a Fully Convolutional Encoder for hierarchical feature
+extraction, ii) a Face-Adaptive Perceiving Decoder for extracting potential facial region and handling face
+variations, and iii) a Component-Adaptive Perceiving Module for facial component aware feature repre-
+sentation learning. To facilitate further researches of unconstrained face sketch synthesis, we introduce a
+new benchmark termed WildSketch, which contains 800 pairs of face photo-sketch with large variations in
+pose, expression, ethnic origin, background, and illumination. Extensive experiments demonstrate that the
+proposed method is capable of achieving state-of-the-art performance under both constrained and uncon-
+strained conditions. Our source codes and the WildSketch benchmark would be resealed on the project page
+http://lingboliu.com/unconstrained_face_sketch.html.
+Keywords:
+Face sketch synthesis, unconstrained scenarios, adaptive perception, new benchmark
+1. Introduction
+Face sketch synthesis, which aims to automati-
+cally generate sketches from face photographs, is
+a crucial task in computer vision [1, 2, 3, 4, 5].
+Due to its broad applications in real-world scenar-
+ios, such as law enforcement [6] and digital enter-
+tainment [7, 8], this problem recently has attracted
+widespread research interests in both academic and
+industry communities [9, 10, 11, 12].
+In the literature, numerous traditional models
+[15, 16, 17, 18] and deep learning models [13, 14, 19,
+20, 21] have been proposed for face sketch synthe-
+sis. However, most previous methods were limited
+to synthesize face sketches under constrained condi-
+tions, i.e., frontal faces with a pure background. As
+shown in the second row of Figure 1, these mod-
+els become ineﬀective when the given faces have
+∗Corresponding author
+a large appearance change and the background is
+cluttered. Recently, some works [22, 23, 24] have
+attempted to deal with some slight facial variations,
+but their models may fail to handle serious varia-
+tions. Despite certain progress, this problem is still
+far from being solved perfectly. Under this circum-
+stance, more robust algorithms are desired to spark
+substantial progress in this ﬁeld.
+For unconstrained face sketch synthesis, it is cru-
+cial to distinguish the potential facial regions from
+cluttered background and handle the individual fa-
+cial components (e.g., hair, eye, nose, and mouth)
+respectively [25, 7]. To this end, many approaches
+[26, 27, 28] heavily rely on various preprocessing,
+such as facial parsing [29, 30] and facial landmark
+localization [31, 32]. For instance, BFCN [25] needs
+to segment human faces from background in ad-
+vance, while CA-GAN [33] has to decompose the
+given faces into diﬀerent components before syn-
+thesizing their sketches.
+Nevertheless, these pre-
+Preprint submitted to Elsevier
+December 3, 2021
+arXiv:2112.01019v1  [cs.CV]  2 Dec 2021
+Image
+Ours
+FCN
+cGAN
+CUHK
+CUFSF
+AR
+XM2VTS
+Figure 1: The ﬁrst row shows the frontal faces with a pure
+background in four existing datasets. The second row visu-
+alizes an unconstrained facial image and the corresponding
+face sketches synthesized by FCN [13], cGAN [14] and our
+method. Note that FCN and cGAN have been ﬁnetuned on
+our WildSketch dataset.
+processing procedures are time-consuming and may
+fail in unconstrained scenarios. This would severely
+degrade the performance of existing methods and
+weaken their ﬂexibility in real-world applications.
+In this paper, we propose a uniﬁed sketch syn-
+thesis framework termed Perception-Adaptive Net-
+work (PANet), which is able to generate high-
+quality face sketches under unconstrained condi-
+tions in an end-to-end scheme.
+Speciﬁcally, our
+PANet incorporates three tailor-designed compo-
+nents to perceive the potential facial region and
+each facial component adaptively.
+First, a Fully
+Convolutional Encoder takes an unconstrained face
+image as input to perform hierarchical feature ex-
+traction. Second, a Face-Adaptive Perceiving De-
+coder learns the oﬀsets of convolution dynamically
+to distinguish the face from the background and
+better capture the facial appearance variations.
+Third, after dividing the feature map of the un-
+aligned face into multiple regions, a Component-
+Adaptive Perceiving Module is applied to dynami-
+cally compute the ﬁlter weights for the potential fa-
+cial component in each local region based on its con-
+tent. Finally, the feature of each region is convolved
+with its corresponding generated weights to opti-
+mally synthesize the sketch patch of the region. It
+is worth noting that our method has two appealing
+properties. i) Thanks to the face-component per-
+ception mechanism, our synthesized face sketches
+can preserve more details and are more consistent
+with human perception, regardless of constrained
+or unconstrained settings. ii) Compared with cur-
+rent methods [33, 28, 27] for unconstrained scenes,
+our PANet has greater applicability and does not
+rely on any preprocessing techniques, e.g., face seg-
+mentation and alignment.
+Moreover, all existing sketch synthesis datasets
+(e.g, CUHK student [2], AR [34], XM2VTS [35],
+and CUFSF [6]) have a serious drawback in sample
+diversity. As shown in Figure 1, these datasets only
+contain the frontal faces with a pure background.
+Although some works [21, 36] have attempted to
+generate sketches under unconstrained conditions,
+there is no medium/large-scale dataset available for
+training and evaluation.
+To facilitate further re-
+searches in this ﬁeld, we introduce a new benchmark
+termed “WildSketch”, which focuses on sketch gen-
+eration in the wild.
+Speciﬁcally, our WildSketch
+dataset has three appealing properties.
+First, it
+contains 800 pairs of face photo-sketch and it is
+four times larger than the popular CUHK and AR
+datasets. Second, the images in WildSketch are col-
+lected from real-world scenarios and these faces ex-
+hibit various poses, expressions, and age, and even
+have severe occlusions. Third, the background in
+our benchmark is more complex and diverse than
+all previous datasets. In summary, the main con-
+tributions of our work are three-fold:
+• We propose a novel Perception-Adaptive Net-
+work with three tailor-designed components,
+which can synthesize high-quality face sketches
+under unconstrained conditions without rely-
+ing on any preprocessing.
+• We construct a new benchmark WildSketch,
+which contains 800 pairs of face photo-sketch
+with huge variations of appearance and back-
+ground. To the best of our knowledge, WildS-
+ketch is the ﬁrst medium-scale benchmark for
+unconstrained face sketch synthesis.
+• Extensive experiments show that our proposed
+method achieves superior performance in com-
+parison to existing state-of-the-art methods of
+face sketch synthesis under both constrained
+and unconstrained conditions.
+The rest of this paper is organized as follows. We
+ﬁrst review some related works of face sketch syn-
+thesis in Section 2. We then introduce the details
+of WildSketch dataset in Section 3 and describe the
+proposed method in Section 4. The performance of
+our approach is compared with numerous state-of-
+the-art methods in Section 5. Finally, we conclude
+the paper in Section 6.
+2
+Clutter Background
+Expression
+Occlusion
+Illumination
+Pose
+Age
+Figure 2: Samples from our WildSketch benchmark. The faces in our dataset are of huge variation in pose, expression, age and
+ethnic origin, while the background is complex and diverse.
+2. Related Works
+Human face analysis [37, 38, 39, 40, 41, 42] is
+an important research topic in computer vision.
+As a classical face-related task, face sketch synthe-
+sis has been extensively studied.
+In literature, a
+large number of traditional approaches have been
+proposed and they can be divided into exemplar-
+based methods [43, 18] and regression-based meth-
+ods [44].
+In the past decade, deep neural net-
+works (DNN) have achieved great success in var-
+ious tasks [45, 46, 47, 48, 49, 50], and many re-
+searchers have also applied DNN for sketch synthe-
+sis [51, 52, 53, 54, 55, 56, 33]. For example, Zhang et
+al. [13] developed an end-to-end fully convolutional
+network to model the mapping between photos and
+sketches. Philip et al. [57] explored the current con-
+ditional generative adversarial network framework
+and applied it to face sketch synthesis. Chen et al.
+[58] proposed a style transfer approach to introduce
+textures and shadings based on a pyramid column
+feature. Zhu et al. [12] combined generative Prob-
+abilistic Graphical Model and discriminative deep
+patch representation to jointly model the parame-
+ter distribution for deep patch representation and
+sketch patch reconstruction. Subsequently, Zhu et
+al. [59] also employed a transformer [60] to capture
+the global structural information of face sketches.
+Yan et al. [36] introduced an identity recognition
+loss to generate identity-preserving sketches, which
+was important for heterogeneous face recognition
+[61, 62, 63, 64].
+Nevertheless, without capturing
+the face variations, these methods are only feasi-
+ble under constrained conditions and usually fail in
+real-world scenarios.
+Recently, some works [22, 23, 65, 66] have at-
+tempted to generate face sketches under some
+slightly unconstrained conditions. However, many
+of them heavily relied on preprocessing to deal with
+certain variations of faces. For instance, pGAN [67]
+required to exclude background from images before
+feeding the clean faces into the network. BFCN [25]
+needed to parse the given image into semantic re-
+gions of the face, hair, and background before the
+synthesis, while CA-GAN [33] further decomposed
+the input photo into multiple ﬁne-grained compo-
+nents (e.g. hair, nose, eye, and mouth). APDraw-
+ings++ [28] also had to detect the bounding box
+of each component before feeding it into the corre-
+sponding local network. To extract the geometric
+feature of faces, CMSG [7] needs to localize 194 fa-
+cial landmarks in advance.
+However, aforementioned preprocessing methods
+may fail in complex scenes, which would greatly re-
+strict the ﬂexibility of these models. In contrast,
+our method directly takes unconstrained images as
+input to synthesize face sketches by incorporating
+deformable convolutions and adaptive convolutions.
+Due to the face-component perception mechanism,
+our method not only can generate high-quality face
+3
+64
+192
+128
+256
+192
+384
+128
+256
+64
+64
+64
+FCE
+FAPD
+CAPM
+32
+SC
+TC
+DC
+AC
+Figure 3: The architecture of the proposed Perception-Adaptive Network for unconstrained face sketch synthesis. Our network
+consists of a Fully Convolutional Encoder, a Face-Adaptive Perceiving Decoder (FAPD), and a Component-Adaptive Perceiving
+Module (CAPM). SC and TC denote a standard convolutional layer and transposed convolutional layer, respectively. DC and
+AC are a deformable convolutional layer and adaptive convolutional layer. A block with the text “c” denotes that its output
+feature has c channels.
+Table 1: Overview of the publicly available datasets for face
+sketch synthesis.
+Dataset
+Total
+Train
+Test
+Setting
+CUHK
+188
+88
+100
+constrained
+AR
+123
+80
+43
+XM2VTS
+295
+100
+195
+CUFSF
+1194
+250
+944
+WildSketch
+800
+400
+400
+unconstrained
+sketches but also can be widely applied in uncon-
+strained scenarios.
+3. WildSketch Dataset
+In this section, we introduce our WildSketch
+benchmark, the ﬁrst dataset for unconstrained face
+sketch synthesis. We ﬁrst collect face photographs
+from two diﬀerent sources. Speciﬁcally, some are
+collected from the FaceScrub dataset [68], which
+contains 530 identities and most of them are West-
+ern celebrities.
+For each identity, we randomly
+choose an image and put it into our benchmark.
+To enlarge the ethnicity coverage, we collect other
+270 images of Asian celebrities from the Internet.
+Then, we invite artists to draw a sketch of each
+image on an electronic drawing book, where the
+face image is displayed on the screen as a reference
+layer1. Finally, our dataset contains 800 pairs of
+highly-aligned face photo-sketch, which is of better
+quality and larger scale than the popular CUHK
+dataset and AR dataset.
+Furthermore, 400 pairs
+1In previous works [2, 34, 35, 6], artists were requested to
+draw the sketches of human faces on paper, thus their sketch
+images and face images were usually unaligned.
+are randomly chosen for training and the rest are
+for testing.
+The overview of our benchmark and
+existing publicly available datasets are summarized
+in Table 1.
+Our WildSketch is much more chal-
+lenging, as there are more variations in pose, age,
+expression, background clutters, and illumination,
+as shown in Figure 2. We do hope that the proposed
+WildSketch benchmark could signiﬁcantly promote
+researches in this ﬁeld.
+4. Method
+As illustrated in Figure 3, we propose a novel
+Perception-Adaptive Network (PANet) for face
+sketch synthesis in the wild. Speciﬁcally, our PANet
+is composed of i) a Fully Convolutional Encoder for
+hierarchical feature extraction, ii) a Face-Adaptive
+Perceiving Decoder for extracting potential facial
+regions and handling face variations, and iii) a
+Component-Adaptive Perceiving Module for facial
+component aware feature representation learning.
+First, the FCE takes an unconstrained image as in-
+put and extracts the hierarchical features with con-
+secutive standard convolutional layers and pooling
+layers. Then, incorporating the deformable convo-
+lutional layers [69], the FAPD dynamically learns
+the oﬀset of convolution and implicitly attends the
+potential face regions to better capture the facial
+appearance variation.
+Third, the CAPM divides
+the feature map of the unaligned face into multi-
+scale regions, each of which may contain a speciﬁc
+facial component. For each region, CAPM dynam-
+ically generates the ﬁlter weights based on its con-
+tent with adaptive convolutional layers [70], and
+then convolve its feature with the computed weights
+to generate a specialized feature for the potential fa-
+cial component in this region. Finally, the ﬁltered
+4
+offset field
+𝑂𝑝
+conv
+𝐹𝑖
+18
+𝐹𝑜
+w
+p
+Figure 4: The architecture of the deformable convolutional
+layer implemented in our method. Its parameter is denoted
+as w and its kernel size is 3 × 3. Fi and Fo are its input and
+output features. p is a location and the 3 × 3 green map Op
+is the oﬀset of p.
+features of all regions are combined to synthesize a
+high-quality sketch.
+4.1. Fully Convolutional Encoder
+Given an image taken in an unconstrained sce-
+nario, previous methods [25, 67] typically need to
+parse the face into multiple semantic regions or re-
+move background with external models.
+In con-
+trast, we directly feed the image into our Fully
+Convolutional Encoder to extract the hierarchical
+features.
+Speciﬁcally, our FCE consists of eight
+standard convolutional layers, each of which is fol-
+lowed by a Relu layer.
+For computational eﬃ-
+ciency, we implement these convolutional layers
+with lightweight ﬁlters. The kernel size of these lay-
+ers is 3 × 3 and their output channel numbers are
+64, 64, 128, 128, 192, 192, 256, and 256 respectively.
+Moreover, after the second, fourth, and sixth convo-
+lutional layers, a pooling layer is inserted to down-
+sample the features and its stride is 2 × 2. Assume
+that the resolution of the input image is H × W,
+then the dimension of the ﬁnal output feature of
+FCE is 256 × H
+8 × W
+8 .
+4.2. Face-Adaptive Perceiving Decoder
+In FAPD, we upsample the output features of
+FCE gradually with transposed convolutional lay-
+ers and reconstruct the sketch image. During the
+decoding process, our FAPD suppresses the clut-
+tered background and focuses on face modeling. To
+this end, our FAPD is designed to decodes the fea-
+tures with deformable convolutional layers, which
+dynamically learn the location oﬀsets of convolu-
+tion. With these oﬀsets, the deformable convolu-
+tion can generalize various transformations for pose
+scale, aspect ratio, and rotation, which can bet-
+ter ﬁt the appearance of human faces in the wild.
+Moreover, we also ﬁnd that the oﬀsets of a fore-
+ground pixel can well cover the whole face (See Fig-
+ure 8) and help our network to better capture the
+face variations.
+The architecture of the deformable convolutional
+layer implemented in our FAPD is shown in Fig-
+ure 4. We denote its input and output features as
+Fi and Fo respectively, and assume they have the
+same dimension. Speciﬁcally, the deformable con-
+volutional layer contains two steps. i) Generate
+Oﬀset: we feed Fi into a standard convolutional
+layer with a kernel size of 3×3 to dynamically com-
+pute an oﬀset ﬁeld O with 18 channels for all pixels.
+For a pixel p, its oﬀsets can be organized as a 3 × 3
+oﬀset map Op.
+ii) Conduct Convolution: we
+convolve the feature Fi with the ﬁlter parameter w
+of deformable convolutional layer under the guid-
+ance of the oﬀset ﬁeld O to generate the output
+feature Fo. We ﬁrst deﬁne a 3 × 3 grid G as
+G = {(−1, −1), (−1, 0), . . . , (0, 1), (1, 1)}
+For the location p on the output feature map Fo,
+we have
+Fo(p) =
+X
+Gk∈G
+w(Gk) · Fi(p + Gk + Op(Gk)),
+(1)
+where Gk enumerates the locations in G.
+As shown in Figure 3 (middle), our decoder con-
+sists of three deformable convolutional layers and
+three transposed convolutional layers with an up-
+sampling rate of 2. After each transposed convolu-
+tional layer, we concatenate the upsampled feature
+and an FCE feature with the same resolution via
+skip connection to maintain the detail of faces. Af-
+ter the third skip connection, we apply a standard
+convolutional layer on top of the concatenated fea-
+ture to reduce its channel number from 128 to 64
+and then put the output feature into the third de-
+formable convolutional layer.
+4.3. Component-Adaptive Perceiving Module
+In this subsection, we aim to handle each fa-
+cial component individually.
+However, it is hard
+to obtain accurate facial components in complex
+scenarios. To this end, we propose a Component-
+Adaptive Perceiving Module to model each poten-
+tial facial component eﬀectively.
+Speciﬁcally, we
+ﬁrst divide the feature map of the face image into
+multiple regions, each of which may contain a fa-
+cial component. Incorporating pyramidal adaptive
+5
+𝑅𝑖
+64
+32
+*
+FC-256 FC-512 FC-18432
+wi
+ 𝑅𝑖
+Figure 5: The architecture of adaptive convolutional layer
+implemented in our method. Ri is the feature with 64 chan-
+nels of the ith region. wi ∈R64×3×3×32 is the generated
+ﬁlters weight for Ri. ˆRi is the ﬁltered feature with 32 chan-
+nels. FC-N is a fully connected layer with N output neurons.
+“*” denotes a convolution operation. In our work, grouped
+FC layers are adopted for reducing the number of parame-
+ters.
+convolution layers, we dynamically generates the ﬁl-
+ter weights for each region based on its content.
+Finally, we convolve the features of each region
+with its individual ﬁlters to optimally generate the
+sketch of the region.
+The details of our CAPM are described below.
+We ﬁrst partition the output feature of FAPD into
+n × n regions and the resolution of each region is
+H
+n × W
+n .
+The feature of ith region is denoted as
+Ri. We then feed Ri into an adaptive convolutional
+layer, which is shown in Figure 5. Speciﬁcally, the
+adaptive convolutional layer contains two steps. i)
+Generate Parameter: we ﬁrst use a 32 × 32 bins
+spatial pooling layer [71] to transform Ri into a
+ﬁxed-size feature with low dimensionality, which fa-
+cilitates reduction of the number of parameters in
+our network. We then feed the pooled feature into
+three grouped fully-connected (FC) layers with 256,
+512, and 18,432 neurons respectively. The output
+of the last FC layer is reshaped to a ﬁlters weight
+wi ∈R64×3×3×32. The weight wi is specialized for
+the potential facial component in the ith region. ii)
+Conduct Convolution: we then convolve the fea-
+ture Ri with the generated ﬁlters wi and generate
+a new specialized feature ˆRi with 32 channels. Fi-
+nally, the output features of n × n regions are reor-
+ganized to a feature with a resolution of H × W.
+However, we notice that simply dividing the fea-
+ture map of FAPD into single-scale regions can not
+perfectly cover the facial components. To alleviate
+this issue, we partition the feature into multi-scale
+regions.
+As shown in the right of Figure 3, our
+CAPM consists of three branches. Speciﬁcally, the
+top branch divides the feature map into 3 × 3 re-
+gions, while the middle and the bottom branches
+Scoot: 48.95    
+FSIM: 70.93
+Scoot: 57.15
+FSIM: 71.75
+Sketch-I
+Sketch-II
+GT
+SSIM: 56.57 
+SSIM: 55.10
+Figure 6: The illustration of the inconsistency between SSIM
+and human perception. In terms of perception, the generated
+sketch-II is much better than sketch-I. However, the SSIM
+score of sketch-II is much worse than that of sketch-I, since
+SSIM favors slightly blurry images.
+Therefore, the SSIM
+metric isn’t adopted in this work.
+divide it into 4 × 4 regions and 5 × 5 regions, re-
+spectively. We also explore the diﬀerent settings of
+CAPM in the experiment.
+The features of these
+multi-scale regions are fed into the adaptive con-
+volutional layer to obtain the specialized features.
+Finally, we concatenate the features of all branches
+and feed them into a convolutional layer with a ker-
+nel size of 1 × 1 to synthesize the ﬁnal face sketch.
+4.4. Implementation Detail
+We implement the proposed method with the Py-
+torch toolbox.
+The ﬁlter weights of all convolu-
+tional layers and fully connected layers are initial-
+ized by a normal distribution with a deviation equal
+to 0.02. The learning rate is set to 2e-4 and the
+batch size is 1. Similar to [67], we train our net-
+works with the combination of Euclidean loss and
+adversarial loss. Our discriminator is the same as
+[72]. Finally, we adopt the Adam [73] to optimize
+the whole network.
+5. Experiment
+In this section, we ﬁrst introduce the evaluation
+metrics for face sketch synthesis. We then compare
+the proposed method with state-of-the-art meth-
+ods under both the constrained and unconstrained
+conditions.
+Finally, we conduct extensive abla-
+tion studies to demonstrate the eﬀectiveness of each
+component of our model.
+5.1. Evaluation Metric
+In previous works, SSIM [74] was widely used to
+measure the similarities between the generated face
+sketches and the ground-truth (GT) sketches. How-
+ever, we observe that SSIM favors slightly blurry
+6
+Table 2: The performance of diﬀerent methods on the un-
+constrained WildSketch dataset. Our method is better
+than or comparable to CA-GAN and GENRE, both of which
+relied on preprocessing techniques. The results of the top two
+performance are highlighted in red and blue, respectively.
+Method
+Scoot↑
+FSIM↑
+FID↓
+LLE
+26.00
+59.99
+109.90
+Fast-RSLCR
+24.53
+59.99
+115.08
+RSLCR
+24.33
+60.03
+106.95
+FCN
+25.59
+58.27
+104.06
+BP-GAN
+25.57
+58.84
+130.50
+SSL
+25.19
+63.75
+106.74
+MDAL
+31.51
+68.79
+49.42
+CycleGAN
+34.84
+66.54
+45.94
+cGAN
+35.11
+67.50
+66.74
+GENRE
+36.40
+69.02
+48.05
+CA-GAN
+37.40
+69.60
+49.38
+Ours
+37.28
+69.50
+38.73
+images and it could be inconsistent with the hu-
+man perception of face sketches [75, 76], as shown
+in Figure 6. In this paper, we evaluate the qual-
+ity of synthesized sketches with three more reason-
+able metrics, i.e., Scoot [77], FSIM [78] and FID
+[79]. Speciﬁcally, Scoot is a robust style similarity
+measure recently proposed for face sketch synthe-
+sis.
+It evaluates the block-level spatial structure
+and co-occurrence texture statistics simultaneously
+to provide consistent scores with human perception.
+FSIM measures the image similarity using the phase
+congruency and the gradient magnitude, and it is
+closely related to the subjective evaluation of hu-
+mans [80]. FID utilizes the deep representation ex-
+tracted by the Inception v3 model [81] to measure
+the Fr´echet distance between two sets of images.
+5.2. Performance on Unconstrained Setting
+In this section, we compare our PANet with
+eleven state-of-the-art methods in uncontrolled
+scenarios, including LLE [82], Fast-RSLCR [83],
+RSLCR [83], FCN [13], BP-GAN [76], SSL [75],
+MDAL [19], CycleGAN [72], cGAN [14], GENRE
+[27], and CA-GAN [33]. These methods are reim-
+plemented with their oﬃcial codes and are opti-
+mized on the WildSketch benchmark. Notice that
+both GENRE and CA-GAN require the parsing
+map of the given face image for sketch synthesis.
+The quantitative results of all methods are sum-
+marized in Table 2 and our PANet achieves a
+Scoot of 37.28% and an FSIM of 69.50%, out-
+performing all other compared methods that also
+don’t use preprocessing techniques. Compared with
+GENRE and CA-GAN, our method can also ob-
+tain very competitive performance, especially on
+the FID indicator. Moreover, we visualize the syn-
+thesized sketches of our PANet and other two clas-
+sical deep models in Figure 7.
+We can observe
+that the synthesized sketches of FCN and cGAN
+are blurry and noisy. In contrast, due to the great
+capability of the Face-Adaptive Perceiving Decoder
+and Component-Adaptive Perceiving Module, our
+PANet is able to generate high-quality face sketches
+with rich structure and texture details, even though
+those faces contain huge variations of pose, expres-
+sion, age, illumination, and cluttered background.
+5.3. Performance on Constrained Setting
+In this subsection, we apply the proposed PANet
+to generate face sketches under constrained condi-
+tions. We conduct extensive experiments on four
+commonly used datasets, including the CUHK stu-
+dent dataset, AR dataset, XM2VTS dataset, and
+CUFSF dataset. The images in these datasets are
+frontal faces with a pure background.
+We follow
+previous works [83, 76] to split the training set and
+testing set. Table 1 shows the number of training
+samples and testing samples on each dataset.
+We perform extensive comparisons against 15
+state-of-the-art methods on these datasets, includ-
+ing FCN [13], SSD [84], RSLCR [83], Bayesian [85],
+DGFL [65], MWF [18], BP-GAN [76], MRF [2],
+RL+Dict [86], SSL [75], CycleGAN [72], cGAN [14],
+MDAL [19], GENRE [27], and CA-GAN [33]. Note
+that [27, 33] are reimplemented with their oﬃcial
+codes. The synthesized sketches of the remaining
+methods are collected from RSLCR2, BP-GAN3 or
+receive them from the oﬃcial authors.
+We mea-
+sure the Scoot, FSIM score and FID of all com-
+pared methods in Table3.
+We can observe that
+the proposed PANet achieves superior performance
+in comparison to almost all compared methods.
+More importantly, our method also outperforms the
+state-of-the-art models CA-GAN and GENRE on
+most evaluation metrics. Furthermore, we visual-
+ize the synthesized sketches of four deep learning-
+based methods in Figure 9. We can observe that
+our PANet is still better than the existing meth-
+ods, especially in some local regions (e.g., jaw and
+mouth), although they have achieved promising re-
+sults.
+2http://www.ihitworld.com/RSLCR.html
+3http://www.ihitworld.com/WNN/Back Projection.zip
+7
+Img
+GT
+Ours
+cGAN
+FCN
+Pose
+Expression
+Illumination
+Age
+Occlusion
+Long Hair
+Without Hair
+CycleGAN
+CA-GAN
+Figure 7: Visualization of the synthesized face sketches of diﬀerent methods under unconstrained conditions. Without relying
+on any preprocessing techniques, our PANet can generate high-quality sketches with rich structure and texture details, even
+though these faces have huge variations of pose, expression, age, illumination, and cluttered background. More quantitative
+results can be found on our project page.
+8
+Table 3: The performance of diﬀerent methods on four constrained face sketch datasets. The proposed method achieves
+the best results on most evaluation metrics. The results of the top two performance are highlighted in red and blue, respectively.
+Method
+CUHK
+AR
+XM2VTS
+CUFSF
+Scoot↑
+FSIM↑
+FID↓
+Scoot↑
+FSIM↑
+FID↓
+Scoot↑
+FSIM↑
+FID↓
+Scoot↑
+FSIM↑
+FID↓
+FCN
+46.20
+70.75
+103.37
+53.79
+72.87
+99.95
+42.90
+67.86
+93.40
+43.78
+66.24
+114.03
+SSD
+46.80
+71.77
+103.40
+55.21
+74.86
+104.11
+42.57
+67.29
+82.00
+46.87
+68.23
+66.27
+RSLCR
+46.80
+72.28
+100.17
+54.29
+74.37
+103.14
+42.00
+67.27
+81.54
+45.31
+66.49
+73.16
+Bayesian
+47.60
+72.44
+79.70
+55.95
+74.86
+83.33
+44.22
+68.31
+59.87
+45.92
+67.54
+60.71
+DGFL
+47.27
+73.32
+88.24
+55.88
+75.44
+86.58
+43.32
+68.46
+61.01
+47.24
+69.56
+52.49
+MWF
+48.86
+73.35
+85.87
+57.87
+75.99
+84.95
+45.93
+69.46
+60.11
+48.81
+70.29
+53.94
+BP-GAN
+48.28
+71.76
+93.79
+57.26
+74.08
+97.81
+43.72
+66.44
+65.84
+49.35
+68.14
+52.04
+MRF
+50.57
+72.44
+77.34
+62.62
+74.97
+75.37
+49.50
+68.44
+71.39
+61.66
+69.56
+63.62
+RL+Dict
+50.88
+73.12
+73.51
+60.26
+74.78
+81.79
+47.93
+70.92
+49.15
+48.37
+69.44
+51.17
+SSL
+51.34
+74.31
+80.88
+58.93
+76.77
+72.52
+45.83
+71.05
+55.77
+50.84
+71.02
+41.34
+CycleGAN
+55.10
+72.49
+81.44
+64.37
+74.06
+81.95
+47.93
+65.72
+66.02
+62.66
+70.23
+26.03
+cGAN
+53.33
+72.96
+92.64
+66.71
+75.49
+74.99
+53.39
+69.93
+55.52
+62.58
+70.59
+27.13
+MDAL
+55.08
+74.12
+82.38
+68.13
+76.71
+57.89
+52.72
+71.17
+46.34
+62.60
+70.76
+36.36
+GENRE
+56.42
+72.27
+72.66
+69.32
+74.84
+74.58
+56.91
+71.20
+42.70
+63.70
+71.77
+36.52
+CA-GAN
+55.93
+73.88
+78.51
+69.18
+77.30
+78.85
+57.22
+73.08
+50.33
+66.38
+72.68
+29.28
+Ours
+56.22
+72.93
+67.17
+69.44
+76.53
+68.30
+57.81
+72.89
+47.09
+66.84
+72.20
+24.19
+Table 4:
+Scoot (%) of diﬀerent variants of the proposed
+PANet that is composed of FCE, FAPD, and CAPM. In
+this table, FAPD-SC refers to a variant of FAPD, which re-
+places the deformable convolutions with standard convolu-
+tions (SC).
+Method
+WildSketch
+CUFSF
+FCE+FAPD-SC
+34.48
+63.07
+FCE+FAPD
+35.74
+63.63
+FCE+FAPD+CAPM
+37.28
+66.84
+5.4. Ablation Studies
+In this subsection, we perform extensive ablation
+studies on the unconstrained WildSketch dataset
+and the largest constrained CUFSF dataset.
+5.4.1. Eﬀectiveness of Face-Adaptive Perceiving
+Decoder
+To verify the eﬀectiveness of FAPD, we imple-
+ment a variant FAPD-SC that removes the adap-
+tive perception by replacing the deformable convo-
+lutions in FAPD with standard convolutions. As
+shown in Table 4, compared with “FCE+FAPD-
+SC”, the model “FCE+FAPD” achieves an im-
+provement of Scoot 1.26% on WildSketch dataset
+and 0.56% on the CUFSF datasets. Meanwhile, we
+visualize the learned oﬀset positions of FAPD in
+Figure 8. For a pixel in the face region, its 729 oﬀ-
+sets4 expand to the whole face and only a few oﬀsets
+4FAPD contains three deformable convolutional layers
+with a 3 × 3 kernel size (9 oﬀsets), thus each pixel has 93 =
+(a)
+(b)
+(c)
+(d)
+Figure 8: (a) and (b) show the learned 93=729 oﬀsets (green
+points) in FAPD for the activation units (blue points) on
+the face and background. (c) and (d) are the synthesized
+sketches of model “FCE+FAPD” and “FCE+FAPD-SC”, re-
+spectively. (Better to zoom in.)
+are out of the face, which can guide our network to
+focus on the face region and better handle the vari-
+ation of the face. For a pixel in the background, it
+enlarges the receptive ﬁeld with oﬀset and receives
+more content from diﬀerent regions, which can fa-
+cilitate our network to distinguish the background
+point. Moreover, the synthesized sketches of model
+“FCE+FAPD” and “FCE+FAPD-SC” are shown
+in Figure 8(c) and 8(d), respectively. We can ob-
+serve that the sketch of the former is much better
+than that of the latter, especially on some facial
+components and cluttered background. Therefore,
+these quantitative and qualitative experiments have
+clearly demonstrated the eﬀectiveness of FAPD.
+729 oﬀsets ﬁnally and some oﬀsets may be overlapped.
+9
+Image
+GT
+Ours
+cGAN
+FCN
+MDAL
+CA-GAN
+Figure 9: Visualization of the synthesized face sketches of diﬀerent methods under constrained conditions. These four rows
+show the results on the CUHK, AR, XM2VTS, and CUFSF, respectively. Compared with previous methods, our PANet can
+generate better face sketches, especially in some local regions. More quantitative results can be found on our project page.
+5.4.2. Exploration of Component-Adaptive Perceiv-
+ing Module
+In this subsection, we ﬁrst verify the eﬀectiveness
+of our CAPM. As shown in Table 4, compared with
+“FCE+FAPD”, our model “FCE+FAPD+CAPM”
+achieves an improvement of Scoot 1.54% on WildS-
+ketch dataset and 3.21% on the CUFSF datasets.
+Furthermore, we analyze the input and output fea-
+tures of CAPM visually. As shown in Figure 10,
+after applying the CAPM, on some regions that
+contain certain facial components (e.g., eye and
+mouth), their features are enhanced, which results
+in better sketch patches. These quantitative and
+qualitative experiments well demonstrate the eﬀec-
+tiveness of the proposed CAPM.
+We then explore diﬀerent settings of CAPM by
+dividing the feature of FAPD into diﬀerent num-
+bers of regions.
+As shown in Table 5, when the
+feature is divided into single-scale regions (such as
+the 3 × 3 regions), the improvement is remarkable
+compared with “FCE+FAPD”, since some facial
+components are well modeled. When combining the
+features of multi-scale regions, the performance can
+be signiﬁcantly improved, since the pyramid adap-
+tive convolutions can well address the face misalign-
+ment problem. In particular, our model achieves a
+state-of-the-art Scoot of 37.28% on WildSketch and
+66.84% on CUFSF, when the CAPM adopts a set-
+ting of “3,4,5”. Under this setting, the CAPM con-
+sists of three branches, and the feature of FAPD is
+divided into 3×3 regions, 4×4 regions, and 5×5 re-
+gions in three branches respectively. When further
+combining the feature of 6 × 6 regions, the perfor-
+mance slightly drops, since the excessively small re-
+gions may fail to cover the whole facial components
+and hence leads to side eﬀects. Therefore, our ﬁnal
+CAPM adopts the setting of “3,4,5”.
+10
+Table 5: Scoot (%) of diﬀerent variants of CAPM on WildS-
+ketch dataset. The setting of “3,4,5” means that the CAPM
+consists of three branches, and the feature of FAPD is di-
+vided into 3 × 3 regions, 4 × 4 regions, and 5 × 5 regions in
+these three branches respectively.
+Method
+WildSketch
+CUFSF
+3
+36.19
+66.01
+4
+36.36
+66.01
+5
+36.21
+66.14
+3,4
+36.86
+66.36
+4,5
+36.84
+66.40
+3,4,5
+37.28
+66.84
+3,4,5,6
+37.11
+66.74
+(a)
+(b)
+(e)
+(c)
+(f)
+(d)
+Figure 10: (a) An unconstrained image; (b) The output fea-
+ture of FAPD; (c) The output feature of the second branch
+(4 × 4 regions) of CAPM; (d) The ground-truth face sketch
+of (a); (e) The synthesized sketch based on (b); (f) The ﬁnal
+sketch. Note that the visualized feature (b) and (c) are the
+channel-wise average of their original features.
+5.5. Limitation
+In this work, we ﬁnd that the contours of many
+synthesized sketches are not sharp and some edges
+are intermittent under the unconstrained setting, as
+shown in Fig. 7. This may be because edge details
+are gradually lost in the encoding stage. Therefore,
+some techniques of contour preservation are desired
+to improve the qualities of unconstrained sketches.
+In future work, we would address this problem from
+two aspects, including contour-aware representa-
+tion learning and contour-aware loss function op-
+timization. For the former, the contours of input
+images are ﬁrst extracted and then incorporated to
+learn contour-preserving features at the decoding
+stage. For the latter, we would apply some contour
+losses [87] to supervise the sketch synthesis of each
+facial component.
+6. Conclusion
+In this paper, we introduce a novel Perception-
+Adaptive Network (PANet) for face sketch synthe-
+sis in the wild. Speciﬁcally, our PANet incorporates
+deformable convolutions and adaptive convolutions
+to eﬀectively perceive facial region and facial com-
+ponents, thereby directly generating high-quality
+sketches of the given unconstrained face images
+without any preprocessing. To promote further re-
+search and evaluation of this task, we also construct
+a new database, which contains 800 pairs of face
+photo-sketch with huge variations of facial appear-
+ance and background. Extensive experiments show
+the superior performance of our proposed method
+under both the constrained and unconstrained con-
+ditions.
+CRediT authorship contribution statement
+Lin Nie: Conceptualization, Writing - original
+draft. Lingbo Liu: Methodology, Writing - review
+& editing.
+Zhengtao Wu: Writing - review &
+editing, Validation. Wenxiong Kang: Writing -
+review & editing.
+Declaration of Competing Interest
+The authors declare that they have no known
+competing ﬁnancial interests or personal relation-
+ships that could have appeared to inﬂuence the
+work reported in this paper.
+References
+[1] Q. Liu, X. Tang, H. Jin, H. Lu, S. Ma, A nonlin-
+ear approach for face sketch synthesis and recognition,
+in: IEEE conference on Computer Vision and Pattern
+Recognition, Vol. 1, 2005, pp. 1005–1010.
+[2] X. Wang, X. Tang, Face photo-sketch synthesis and
+recognition, IEEE Transactions on Pattern Analysis
+and Machine Intelligence 31 (11) (2008) 1955–1967.
+[3] N. Wang, M. Zhu, J. Li, B. Song, Z. Li, Data-driven vs.
+model-driven:
+Fast face sketch synthesis, Neurocom-
+puting 257 (2017) 214–221.
+[4] M. Zhang, N. Wang, Y. Li, X. Gao, Neural probabilistic
+graphical model for face sketch synthesis, IEEE trans-
+actions on neural networks and learning systems 31 (7)
+(2019) 2623–2637.
+[5] H. Bi, Z. Liu, L. Yang, K. Wang, N. Li, Face sketch
+synthesis: a survey, Multimedia Tools and Applications
+80 (12) (2021) 18007–18026.
+11
+[6] W. Zhang, X. Wang, X. Tang, Coupled information-
+theoretic encoding for face photo-sketch recognition,
+in: IEEE conference on Computer Vision and Pattern
+Recognition, 2011, pp. 513–520.
+[7] M. Zhang, J. Li, N. Wang, X. Gao, Compositional
+model-based sketch generator in facial entertainment,
+IEEE Transactions on Cybernetics 48 (3) (2017) 904–
+915.
+[8] M. Zhu, N. Wang, X. Gao, J. Li, Z. Li, Face photo-
+sketch synthesis via knowledge transfer., in: Interna-
+tional Joint Conference on Artiﬁcial Intelligence, 2019,
+pp. 1048–1054.
+[9] C. Peng, N. Wang, J. Li, X. Gao, Universal face photo-
+sketch style transfer via multiview domain transla-
+tion, IEEE Transactions on Image Processing 29 (2020)
+8519–8534.
+[10] Y. Lin, K. Fu, S. Ling, J. Wang, P. Cheng, Toward
+identity preserving face synthesis between sketches and
+photos using deep feature injection, IEEE Transactions
+on Industrial Informatics (2021).
+[11] P. Li, B. Sheng, C. P. Chen, Face sketch synthesis using
+regularized broad learning system, IEEE Transactions
+on Neural Networks and Learning Systems (2021).
+[12] M. Zhu, J. Li, N. Wang, X. Gao, Learning deep patch
+representation for probabilistic graphical model-based
+face sketch synthesis, International Journal of Com-
+puter Vision 129 (6) (2021) 1820–1836.
+[13] L. Zhang, L. Lin, X. Wu, S. Ding, L. Zhang, End-to-
+end photo-sketch generation via fully convolutional rep-
+resentation learning, in: ACM on International Confer-
+ence on Multimedia Retrieval, 2015, pp. 627–634.
+[14] P. Isola, J.-Y. Zhu, T. Zhou, A. A. Efros, Image-
+to-image translation with conditional adversarial net-
+works, in: IEEE conference on Computer Vision and
+Pattern Recognition, 2017, pp. 1125–1134.
+[15] X. Tang, X. Wang, Face sketch synthesis and recogni-
+tion, in: IEEE International Conference on Computer
+Vision, 2003.
+[16] X. Gao, J. Zhong, D. Tao, X. Li, Local face sketch
+synthesis learning, Neurocomputing 71 (10-12) (2008)
+1921–1930.
+[17] B. Xiao, X. Gao, D. Tao, Y. Yuan, J. Li, Photo-sketch
+synthesis and recognition based on subspace learning,
+Neurocomputing 73 (4-6) (2010) 840–852.
+[18] H. Zhou, Z. Kuang, K.-Y. K. Wong, Markov weight
+ﬁelds for face sketch synthesis, in: IEEE conference on
+Computer Vision and Pattern Recognition, 2012, pp.
+1091–1097.
+[19] S. Zhang, R. Ji, J. Hu, X. Lu, X. Li, Face sketch synthe-
+sis by multidomain adversarial learning, IEEE Transac-
+tions on Neural Networks and Learning Systems 30 (5)
+(2018) 1419–1428.
+[20] M. Zhang, N. Wang, X. Gao, Y. Li, Markov random
+neural ﬁelds for face sketch synthesis., in: International
+Joint Conference on Artiﬁcial Intelligence, 2018.
+[21] W. Wan, Y. Yang, H. J. Lee, Generative adversarial
+learning for detail-preserving face sketch synthesis, Neu-
+rocomputing 438 (2021) 107–121.
+[22] S. Zhang, X. Gao, N. Wang, J. Li, M. Zhang, Face
+sketch synthesis via sparse representation-based greedy
+search, IEEE Transactions on Image Processing 24 (8)
+(2015) 2466–2477.
+[23] C. Peng, X. Gao, N. Wang, D. Tao, X. Li, J. Li, Multi-
+ple representations-based face sketch–photo synthesis,
+IEEE Transactions on Neural Networks and Learning
+Systems 27 (11) (2015) 2201–2215.
+[24] Y. Song, J. Zhang, L. Bao, Q. Yang, Fast preprocessing
+for robust face sketch synthesis, in: International Joint
+Conference on Artiﬁcial Intelligence, 2017, pp. 4530–
+4536.
+[25] D.
+Zhang,
+L.
+Lin,
+T.
+Chen,
+X.
+Wu,
+W.
+Tan,
+E. Izquierdo, Content-adaptive sketch portrait genera-
+tion by decompositional representation learning, IEEE
+transactions on Image Processing 26 (1) (2016) 328–
+339.
+[26] R. Yi, Y.-J. Liu, Y.-K. Lai, P. L. Rosin, Apdrawing-
+gan:
+Generating artistic portrait drawings from face
+photos with hierarchical gans, in: IEEE Conference on
+Computer Vision and Pattern Recognition, 2019, pp.
+10743–10752.
+[27] X. Li, F. Gao, F. Huang, High-quality face sketch syn-
+thesis via geometric normalization and regularization,
+in: IEEE International Conference on Multimedia and
+Expo, 2021.
+[28] R. Yi, M. Xia, Y.-J. Liu, Y.-K. Lai, P. L. Rosin, Line
+drawings for face portraits from photos using global and
+local structure based gans, IEEE transactions on pat-
+tern analysis and machine intelligence (2020).
+[29] B. M. Smith, L. Zhang, J. Brandt, Z. Lin, J. Yang,
+Exemplar-based face parsing, in: IEEE conference on
+Computer Vision and Pattern Recognition, 2013, pp.
+3484–3491.
+[30] Y. Liu, H. Shi, H. Shen, Y. Si, X. Wang, T. Mei, A new
+dataset and boundary-attention semantic segmentation
+for face parsing, in: AAAI Conference on Artiﬁcial In-
+telligence, Vol. 34, 2020, pp. 11637–11644.
+[31] L. Liu, G. Li, Y. Xie, Y. Yu, Q. Wang, L. Lin, Facial
+landmark machines: A backbone-branches architecture
+with progressive representation learning, IEEE Trans-
+actions on Multimedia 21 (9) (2019) 2248–2262.
+[32] Z. Deng, H. Liu, Geometry-attentive relational reason-
+ing for robust facial landmark detection, Neurocomput-
+ing 453 (2021) 790–800.
+[33] J. Yu, X. Xu, F. Gao, S. Shi, M. Wang, D. Tao,
+Q. Huang, Toward realistic face photo-sketch synthe-
+sis via composition-aided gans, IEEE transactions on
+cybernetics (2020).
+[34] A. Martinez, R. Benavente, The ar face database: Cvc
+technical report, 24 (1998).
+[35] K. Messer, J. Matas, J. Kittler, J. Luettin, G. Maitre,
+et al., Xm2vtsdb: The extended m2vts database, in: In-
+ternational Conference on Audio and Video-based Bio-
+metric Person Authentication, Vol. 964, 1999, pp. 965–
+966.
+[36] L. Yan, W. Zheng, C. Gou, F.-Y. Wang, Isgan: Identity-
+sensitive generative adversarial network for face photo-
+sketch synthesis, Pattern Recognition (2021) 108077.
+[37] Y. Li, L. Liu, L. Lin, Q. Wang, Face recognition by
+coarse-to-ﬁne landmark regression with application to
+atm surveillance, in: CCF Chinese Conference on Com-
+puter Vision, Springer, 2017, pp. 62–73.
+[38] L. Liu, G. Li, Y. Xie, L. Lin, Y. Yu, Facial landmark
+localization in the wild by backbone-branches represen-
+tation learning, in: IEEE International Conference on
+Multimedia Big Data, IEEE, 2018, pp. 1–8.
+[39] G. Li, X. Zhu, Y. Zeng, Q. Wang, L. Lin, Semantic
+relationships guided representation learning for facial
+action unit recognition, in: AAAI Conference on Arti-
+ﬁcial Intelligence, Vol. 33, 2019, pp. 8594–8601.
+[40] T. Chen, T. Pu, Y. Xie, H. Wu, L. Liu, L. Lin, Cross-
+12
+domain facial expression recognition: A uniﬁed evalu-
+ation benchmark and adversarial graph learning, IEEE
+Transactions on Pattern Analysis and Machine Intelli-
+gence (2021).
+[41] K. Wang, X. Peng, J. Yang, S. Lu, Y. Qiao, Suppress-
+ing uncertainties for large-scale facial expression recog-
+nition, in: IEEE Conference on Computer Vision and
+Pattern Recognition, 2020, pp. 6897–6906.
+[42] X. Yang, X. Jia, D. Gong, D.-M. Yan, Z. Li, W. Liu,
+Larnet: Lie algebra residual network for face recogni-
+tion, in: International Conference on Machine Learning,
+PMLR, 2021, pp. 11738–11750.
+[43] W. Liu, X. Tang, J. Liu, Bayesian tensor inference for
+sketch-based facial photo hallucination., in:
+Interna-
+tional Joint Conference on Artiﬁcial Intelligence, 2007,
+pp. 2141–2146.
+[44] M. Zhu, N. Wang, A simple and fast method for face
+sketch synthesis, in: International Conference on In-
+ternet Multimedia Computing and Service, 2016, pp.
+168–171.
+[45] T. Chen, L. Lin, L. Liu, X. Luo, X. Li, Disc: Deep image
+saliency computing via progressive representation learn-
+ing, IEEE transactions on neural networks and learning
+systems 27 (6) (2016) 1135–1149.
+[46] L. Liu, Z. Qiu, G. Li, S. Liu, W. Ouyang, L. Lin,
+Crowd counting with deep structured scale integration
+network, in: IEEE International Conference on Com-
+puter Vision, 2019, pp. 1774–1783.
+[47] L.
+Liu,
+Z.
+Qiu,
+G.
+Li,
+Q.
+Wang,
+W.
+Ouyang,
+L. Lin, Contextualized spatial–temporal network for
+taxi origin-destination demand prediction, IEEE Trans-
+actions on Intelligent Transportation Systems 20 (10)
+(2019) 3875–3887.
+[48] T. Chen, L. Lin, X. Hui, R. Chen, H. Wu, Knowledge-
+guided multi-label few-shot learning for general image
+recognition, IEEE Transactions on Pattern Analysis
+and Machine Intelligence (2020).
+[49] L. Liu, J. Chen, H. Wu, J. Zhen, G. Li, L. Lin,
+Physical-virtual collaboration modeling for intra-and
+inter-station metro ridership prediction, IEEE Trans-
+actions on Intelligent Transportation Systems (2020).
+[50] L. Liu, J. Chen, H. Wu, G. Li, C. Li, L. Lin, Cross-
+modal collaborative representation learning and a large-
+scale rgbt benchmark for crowd counting, in:
+IEEE
+Conference on Computer Vision and Pattern Recogni-
+tion, 2021, pp. 4823–4833.
+[51] D. Lu, Z. Chen, Q. J. Wu, X. Zhang, Fcn based prepro-
+cessing for exemplar-based face sketch synthesis, Neu-
+rocomputing 365 (2019) 113–124.
+[52] H. Bi, N. Li, H. Guan, D. Lu, L. Yang, A multi-
+scale conditional generative adversarial network for face
+sketch synthesis, in: IEEE international conference on
+image processing, 2019, pp. 3876–3880.
+[53] M. Zhu, J. Li, N. Wang, X. Gao, A deep collaborative
+framework for face photo–sketch synthesis, IEEE trans-
+actions on neural networks and learning systems 30 (10)
+(2019) 3096–3108.
+[54] M. Zhang, N. Wang, Y. Li, X. Gao, Deep latent low-
+rank representation for face sketch synthesis, IEEE
+transactions on neural networks and learning systems
+30 (10) (2019) 3109–3123.
+[55] M. Zhang, N. Wang, Y. Li, X. Gao, Bionic face sketch
+generator, IEEE transactions on cybernetics 50 (6)
+(2019) 2701–2714.
+[56] M. Zhu, J. Li, N. Wang, X. Gao, Knowledge distillation
+for face photo-sketch synthesis, IEEE Transactions on
+Neural Networks and Learning Systems (2020).
+[57] C. Philip, L. H. Jong, Face sketch synthesis using con-
+ditional adversarial networks, in: IEEE International
+Conference on Information and Communication Tech-
+nology Convergence, 2017, pp. 373–378.
+[58] C. Chen, X. Tan, K.-Y. K. Wong, Face sketch synthesis
+with style transfer using pyramid column feature, in:
+IEEE Winter Conference on Applications of Computer
+Vision, 2018, pp. 485–493.
+[59] M. Zhu, C. Liang, N. Wang, X. Wang, Z. Li, X. Gao, A
+sketch-transformer network for face photo-sketch syn-
+thesis, in: International Joint Conference on Artiﬁcial
+Intelligence, 2021.
+[60] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit,
+L. Jones, A. N. Gomez,  L. Kaiser, I. Polosukhin, Atten-
+tion is all you need, in: Advances in neural information
+processing systems, 2017, pp. 5998–6008.
+[61] B. Cao, N. Wang, J. Li, X. Gao, Data augmentation-
+based joint learning for heterogeneous face recognition,
+IEEE transactions on neural networks and learning sys-
+tems 30 (6) (2018) 1731–1743.
+[62] B. Cao, N. Wang, X. Gao, J. Li, Asymmetric joint learn-
+ing for heterogeneous face recognition, in: AAAI Con-
+ference on Artiﬁcial Intelligence, Vol. 32, 2018.
+[63] B. Cao, N. Wang, X. Gao, J. Li, Z. Li, Multi-margin
+based decorrelation learning for heterogeneous face
+recognition, in: International Joint Conference on Ar-
+tiﬁcial Intelligence, 2019.
+[64] D. Liu, X. Gao, N. Wang, C. Peng, J. Li, Iterative
+local re-ranking with attribute guided synthesis for
+face sketch recognition, Pattern Recognition 109 (2021)
+107579.
+[65] M. Zhu, N. Wang, X. Gao, J. Li, Deep graphical fea-
+ture learning for face sketch synthesis, in: International
+Joint Conference on Artiﬁcial Intelligence, 2017, pp.
+3574–3580.
+[66] M. Zhang, Y. Li, N. Wang, Y. Chi, X. Gao, Cascaded
+face sketch synthesis under various illuminations, IEEE
+Transactions on Image Processing 29 (2019) 1507–1521.
+[67] S. Zhang, R. Ji, J. Hu, Y. Gao, C.-W. Lin, Robust
+face sketch synthesis via generative adversarial fusion of
+priors and parametric sigmoid., in: International Joint
+Conference on Artiﬁcial Intelligence, 2018, pp. 1163–
+1169.
+[68] H.-W. Ng, S. Winkler, A data-driven approach to clean-
+ing large face datasets, in: IEEE international confer-
+ence on image processing, 2014, pp. 343–347.
+[69] J. Dai, H. Qi, Y. Xiong, Y. Li, G. Zhang, H. Hu, Y. Wei,
+Deformable convolutional networks, in: IEEE Interna-
+tional Conference on Computer Vision, 2017, pp. 764–
+773.
+[70] D. Kang, D. Dhar, A. Chan, Incorporating side in-
+formation by adaptive convolution, in:
+International
+Conference on Neural Information Processing Systems,
+2017, pp. 3870–3880.
+[71] K. He, X. Zhang, S. Ren, J. Sun, Spatial pyramid pool-
+ing in deep convolutional networks for visual recogni-
+tion, IEEE transactions on pattern analysis and ma-
+chine intelligence 37 (9) (2015) 1904–1916.
+[72] J.-Y. Zhu, T. Park, P. Isola, A. A. Efros, Unpaired
+image-to-image translation using cycle-consistent ad-
+versarial networks, in: IEEE international conference
+on computer vision, 2017, pp. 2223–2232.
+[73] D. P. Kingma, J. Ba, Adam: A method for stochastic
+13
+optimization, arXiv:1412.6980 (2014).
+[74] Z. Wang, A. C. Bovik, H. R. Sheikh, E. P. Simoncelli,
+Image quality assessment: from error visibility to struc-
+tural similarity, IEEE transactions on image processing
+13 (4) (2004) 600–612.
+[75] C. Chen, W. Liu, X. Tan, K.-Y. K. Wong, Semi-
+supervised learning for face sketch synthesis in the wild,
+in: Asian Conference on Computer Vision, 2018, pp.
+216–231.
+[76] N. Wang,
+W. Zha,
+J. Li,
+X. Gao,
+Back projec-
+tion: An eﬀective postprocessing method for gan-based
+face sketch synthesis, Pattern Recognition Letters 107
+(2018) 59–65.
+[77] D.-P. Fan, S. Zhang, Y.-H. Wu, M.-M. Cheng, B. Ren,
+R. Ji, P. L. Rosin, Face sketch synthesis style similar-
+ity:
+A new structure co-occurrence texture measure,
+arXiv:1804.02975 (2018).
+[78] L. Zhang, L. Zhang, X. Mou, D. Zhang, Fsim: A feature
+similarity index for image quality assessment, IEEE
+transactions on Image Processing 20 (8) (2011) 2378–
+2386.
+[79] M. Heusel, H. Ramsauer, T. Unterthiner, B. Nessler,
+S. Hochreiter, Gans trained by a two time-scale update
+rule converge to a local nash equilibrium, Advances in
+neural information processing systems 30 (2017).
+[80] N. Wang, Heterogeneous facial image synthesis and its
+applications, Xidian University (2014).
+[81] C. Szegedy, V. Vanhoucke, S. Ioﬀe, J. Shlens, Z. Wo-
+jna, Rethinking the inception architecture for computer
+vision, in: IEEE conference on computer vision and pat-
+tern recognition, 2016, pp. 2818–2826.
+[82] S. T. Roweis, L. K. Saul, Nonlinear dimensionality re-
+duction by locally linear embedding, science 290 (5500)
+(2000) 2323–2326.
+[83] N. Wang, X. Gao, J. Li, Random sampling for fast face
+sketch synthesis, Pattern Recognition 76 (2018) 215–
+227.
+[84] Y. Song, L. Bao, Q. Yang, M.-H. Yang, Real-time
+exemplar-based face sketch synthesis, in:
+European
+conference on computer vision, Springer, 2014, pp. 800–
+813.
+[85] N. Wang, X. Gao, L. Sun, J. Li, Bayesian face sketch
+synthesis,
+IEEE Transactions on Image Processing
+26 (3) (2017) 1264–1274.
+[86] J. Jiang, Y. Yu, Z. Wang, X. Liu, J. Ma, Graph-
+regularized locality-constrained joint dictionary and
+residual learning for face sketch synthesis, TIP (2019).
+[87] Z. Chen, H. Zhou, X. Xie, J. Lai, Contour loss:
+Boundary-aware learning for salient object segmenta-
+tion, arXiv preprint arXiv:1908.01975 (2019).
+14

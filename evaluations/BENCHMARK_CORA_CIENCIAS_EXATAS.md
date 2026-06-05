@@ -11,23 +11,24 @@
 
 ---
 
-## 1. Dimensões de Capacidade (10 dimensões × Cora V1-V7)
+## 1. Dimensões de Capacidade (11 dimensões × Cora V1-V7)
 
 Cada dimensão é avaliada por benchmarks concretos nos 4 níveis. A pontuação da dimensão
 é a média ponderada das tarefas resolvidas, com pesos proporcionais ao nível.
 
 | # | Dimensão | Verificadores Cora | Peso |
 |---|----------|-------------------|------|
-| D1 | Raciocínio Matemático Formal | V2, V3, V6 | 15% |
-| D2 | Modelagem de Sistemas Físicos | V1, V5, V6 | 12% |
-| D3 | Análise Estatística e Inferência | V4, V5 | 12% |
-| D4 | Química Computacional e Estrutural | V2, V5 | 10% |
-| D5 | Biologia Molecular e Genômica | V4, V5 | 10% |
+| D1 | Raciocínio Matemático Formal | V2, V3, V6 | 14% |
+| D2 | Modelagem de Sistemas Físicos | V1, V5, V6 | 11% |
+| D3 | Análise Estatística e Inferência | V4, V5 | 11% |
+| D4 | Química Computacional e Estrutural | V2, V5 | 9% |
+| D5 | Biologia Molecular e Genômica | V4, V5 | 9% |
 | D6 | Geociências e Modelagem Climática | V4, V5, V6 | 8% |
-| D7 | Verificação de Código Científico | V7 (V7a-V7g) | 10% |
+| D7 | Verificação de Código Científico | V7 (V7a-V7g) | 9% |
 | D8 | Revisão Sistemática de Literatura | V3, V4 | 8% |
-| D9 | Desenho Experimental e Metodologia | V1, V4 | 8% |
+| D9 | Desenho Experimental e Metodologia | V1, V4 | 7% |
 | D10 | Síntese Interdisciplinar | V1-V7 (todos) | 7% |
+| D11 | Raciocínio de Longo Horizonte (DAG) | V1-V7 | 7% |
 
 ---
 
@@ -124,6 +125,17 @@ Cada dimensão é avaliada por benchmarks concretos nos 4 níveis. A pontuação
 | D10-N1-02 | Explicar fenômeno com 2+ disciplinas (ex: fotossíntese = bio+química+física) | Explicação correta multi-domínio | V1-V5 |
 
 **Pontuação N1-D10** = (# tarefas aprovadas / 2) × 0.9
+
+#### D11: Raciocínio de Longo Horizonte (DAG)
+| ID | Tarefa | Critério de Sucesso | V |
+|----|--------|---------------------|---|
+| D11-N1-01 | Propagar expressão booleana em DAG de 2 nós: NOT(AND(A,B)) | Resultado correto para todas as combinações de A,B | V2, V3 |
+| D11-N1-02 | Avaliar árvore aritmética: ((3+5)×2)−4 | Resultado = 12, cada nó verificado | V2, V5 |
+| D11-N1-03 | Executar cadeia de dependência linear: A→B→C | Tarefas executadas na ordem topológica correta | V3 |
+| D11-N1-04 | Avaliar expressão em árvore sintática: (x>0)∧(y<10) | Resultado booleano correto para entradas de teste | V7 |
+| D11-N1-05 | Converter unidades em cadeia: 5 km → m → cm | 500000 cm, cada conversão verificada | V1, V5 |
+
+**Pontuação N1-D11** = (# tarefas aprovadas / 5) × 0.9
 
 ---
 
@@ -228,6 +240,19 @@ Cada dimensão é avaliada por benchmarks concretos nos 4 níveis. A pontuação
 | D10-N2-03 | Resolver problema de físico-química (ex: equação de Arrhenius) | $k=Ae^{-E_a/(RT)}$, cálculo correto com unidades | V1, V5 |
 
 **Pontuação N2-D10** = (# tarefas aprovadas / 3) × 0.9 + 1.0
+
+#### D11: Raciocínio de Longo Horizonte (DAG)
+| ID | Tarefa | Critério de Sucesso | V |
+|----|--------|---------------------|---|
+| D11-N2-01 | Propagar implicação multi-nível: A→B→C→D | A=True ⇒ D=True, nós intermediários consistentes | V2, V3 |
+| D11-N2-02 | Calcular expressão algébrica encadeada: x=3 → y=2x+1 → z=y²−x | z=46, propagação numérica correta | V2, V5 |
+| D11-N2-03 | Alocar 3 tarefas com 2 recursos e precedências em DAG | Alocação factível respeitando todas as dependências | V3, V5 |
+| D11-N2-04 | Simular fluxo condicional: if(A>0) then B=C else B=D | B correto para ambos os caminhos | V7 |
+| D11-N2-05 | Propagar dados por pipeline de 4 estágios: input→process→validate→output | Saída do pipeline igual ao esperado | V5, V7 |
+| D11-N2-06 | Avaliar função majoritária em DAG de 5 entradas | Resultado True se ≥3 entradas True | V2, V3 |
+| D11-N2-07 | Executar operação matricial encadeada: A×B→C→det(C) | Determinante calculado corretamente | V2, V5 |
+
+**Pontuação N2-D11** = (# tarefas aprovadas / 7) × 0.9 + 1.0
 
 ---
 
@@ -334,6 +359,20 @@ Cada dimensão é avaliada por benchmarks concretos nos 4 níveis. A pontuação
 
 **Pontuação N3-D10** = (# tarefas aprovadas / 3) × 0.9 + 2.0
 
+#### D11: Raciocínio de Longo Horizonte (DAG)
+| ID | Tarefa | Critério de Sucesso | V |
+|----|--------|---------------------|---|
+| D11-N3-01 | Verificar SAT de DAG booleano de 8 nós com 3 entradas | Listar atribuições que satisfazem a expressão | V2, V3 |
+| D11-N3-02 | Propagar composição aninhada: f(g(h(x))) com h(x)=x², g(y)=y+1, f(z)=√z | Valor final correto para múltiplas entradas | V2, V5 |
+| D11-N3-03 | Resolver C-SP com 5 tarefas, 3 recursos, 4 precedências | Ordenação topológica respeitando restrições | V3, V5 |
+| D11-N3-04 | Propagar parâmetros por 3 funções: normalizar→transformar→mapear | Saída correta em cada estágio do pipeline | V5, V7 |
+| D11-N3-05 | Executar propagação de erro: nó folha → raiz via derivadas parciais | Erro propagado corretamente pela cadeia | V1, V5 |
+| D11-N3-06 | Avaliar lógica com quantificadores: ∀x(P(x)→Q(x)) ∧ ∃xP(x) ⇒ ∃xQ(x) | Inferência válida, cadeia de propagação correta | V2, V3 |
+| D11-N3-07 | Propagar parâmetros em modelo de 3 equações acopladas | Parâmetros consistentes em todos os nós | V1, V5, V6 |
+| D11-N3-08 | Expandir DAG com feedback em sequência temporal de 4 passos | Expansão temporal correta, consistência mantida | V2, V3 |
+
+**Pontuação N3-D11** = (# tarefas aprovadas / 8) × 0.9 + 2.0
+
 ---
 
 ### N4 — Pesquisa (3.0+)
@@ -437,6 +476,22 @@ Cada dimensão é avaliada por benchmarks concretos nos 4 níveis. A pontuação
 
 **Pontuação N4-D10** = (# tarefas aprovadas / 3) × 1.0 + 3.0
 
+#### D11: Raciocínio de Longo Horizonte (DAG)
+| ID | Tarefa | Critério de Sucesso | V |
+|----|--------|---------------------|---|
+| D11-N4-01 | Verificar prova de 12 passos em DAG de regras de inferência | Todos os nós verificados, cadeia de implicação válida | V2, V3 |
+| D11-N4-02 | Propagar predicados com quantificadores aninhados em DAG de 10 nós | Propagação ∀∃∀ corresponde ao esperado | V2, V3 |
+| D11-N4-03 | Planejar 8 tarefas interdependentes com 4 deadlines | Cronograma factível, precedências e prazos cumpridos | V3, V5 |
+| D11-N4-04 | Rastrear execução simbólica multi-módulo: A→B→C, 3 variáveis simbólicas | Saída simbólica correta, cada nó rastreável | V7 |
+| D11-N4-05 | Propagar estado de sistema acoplado: EDO1→EDO2→EDO3 | Estado final correto, verificar propagação temporal | V1, V5, V6 |
+| D11-N4-06 | Verificar DAG de 15 nós com 3 caminhos alternativos e 2 fusões | Todos os caminhos convergentes produzem mesmo resultado | V2, V3 |
+| D11-N4-07 | Analisar sensibilidade em DAG: perturbar nó fonte, propagar a 5 dependentes | ∂saída/∂entrada correta em cada nó | V1, V5 |
+| D11-N4-08 | Resolver DAG com 6 entidades e 10 restrições de integridade referencial | Todas as restrições satisfeitas, sem violações | V3, V5 |
+| D11-N4-09 | Propagar distribuição de probabilidade por DAG de 8 nós (bayesiana) | Distribuição final correta, cada nó condicionado aos pais | V4, V5 |
+| D11-N4-10 | Verificar DAG de otimização multi-objetivo: 4 objetivos, 6 variáveis, 3 restrições | Pareto-otimalidade verificada, trade-offs propagados | V2, V3, V5 |
+
+**Pontuação N4-D11** = (# tarefas aprovadas / 10) × 1.0 + 3.0
+
 ---
 
 ## 3. Metodologia de Pontuação
@@ -463,12 +518,13 @@ onde $\text{offset}(n)$ é: N1=0, N2=1.0, N3=2.0, N4=3.0.
 | D8 | 0.9 | 1.9 | 2.9 | 4.0 |
 | D9 | 0.9 | 1.9 | 2.9 | 4.0 |
 | D10 | 0.9 | 1.9 | 2.9 | 4.0 |
+| D11 | 0.9 | 1.9 | 2.9 | 4.0 |
 
 ### 3.3 Pontuação Global (CORA-Score)
 
 A pontuação global é a soma ponderada do nível mais alto alcançado em cada dimensão:
 
-$$\text{CORA-Score} = \sum_{d=1}^{10} w_d \times \max_{n \in \{N1,N2,N3,N4\}} S_{d,n}$$
+$$\text{CORA-Score} = \sum_{d=1}^{11} w_d \times \max_{n \in \{N1,N2,N3,N4\}} S_{d,n}$$
 
 onde $w_d$ são os pesos da tabela de dimensões (§1).
 
@@ -605,7 +661,8 @@ com ECE (Expected Calibration Error) ≤ 0.10.
 | D8 — Literatura | 3 | 4 | 4 | 4 | 15 |
 | D9 — Metodologia | 3 | 4 | 4 | 4 | 15 |
 | D10 — Interdisciplinar | 2 | 3 | 3 | 3 | 11 |
-| **Total** | **30** | **40** | **41** | **39** | **150** |
+| D11 — Longo Horizonte (DAG) | 5 | 7 | 8 | 10 | 30 |
+| **Total** | **35** | **47** | **49** | **49** | **180** |
 
 ---
 

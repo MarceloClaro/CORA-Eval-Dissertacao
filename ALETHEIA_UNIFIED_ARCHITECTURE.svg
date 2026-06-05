@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+<defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap');
+    text { font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace; }
+    line.arrow { stroke: #64748b; stroke-width: 2; }
+    line.cyan { stroke: #22d3ee; stroke-width: 2; }
+    line.emerald { stroke: #34d399; stroke-width: 2; }
+    line.violet { stroke: #a78bfa; stroke-width: 2; }
+  </style>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+  </pattern>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+  </marker>
+  <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+  </marker>
+  <marker id="arrow-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+  </marker>
+  <marker id="arrow-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+  </marker>
+</defs>
+
+<!-- Background -->
+<rect width="1400" height="900" fill="#0f172a"/>
+<rect width="1400" height="900" fill="url(#grid)"/>
+
+<!-- Title -->
+<text x="20" y="35" fill="#22d3ee" font-size="18" font-weight="700">Aletheia ↔ CORA-Eval Unified Architecture</text>
+<text x="20" y="55" fill="#94a3b8" font-size="11">Phase 1 (Aletheia) + v4.6.1 (CORA-Eval) Integration</text>
+
+<!-- ═══ ALETHEIA PIPELINE (Left Column) ═══ -->
+
+<!-- Region: Aletheia Pipeline -->
+<rect x="30" y="80" width="380" height="760" rx="12" fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="8,4"/>
+<text x="50" y="105" fill="#22d3ee" font-size="10" font-weight="600">ALETHEIA PIPELINE (Phase 1)</text>
+
+<!-- Input: Problem -->
+<rect x="50" y="120" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="120" width="340" height="60" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="220" y="145" fill="white" font-size="11" font-weight="600" text-anchor="middle">Problem Input</text>
+<text x="220" y="162" fill="#94a3b8" font-size="9" text-anchor="middle">Statement + Domain</text>
+
+<!-- Arrow down -->
+<line x1="220" y1="180" x2="220" y2="210" class="cyan" marker-end="url(#arrow-cyan)"/>
+
+<!-- Agent 1: Architect -->
+<rect x="50" y="210" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="210" width="340" height="70" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+<text x="220" y="235" fill="white" font-size="11" font-weight="600" text-anchor="middle">Architect Agent</text>
+<text x="220" y="252" fill="#94a3b8" font-size="9" text-anchor="middle">ReasoningOrchestrator-v11</text>
+<text x="220" y="267" fill="#94a3b8" font-size="8" text-anchor="middle">7 phases × 68 reasoning types</text>
+
+<!-- Decision: proof-strategy -->
+<rect x="420" y="225" width="100" height="40" rx="4" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="1"/>
+<text x="470" y="247" fill="#fb923c" font-size="8" text-anchor="middle">D1: proof-strategy</text>
+
+<!-- Arrow down -->
+<line x1="220" y1="280" x2="220" y2="310" class="cyan" marker-end="url(#arrow-cyan)"/>
+
+<!-- Agent 2: Verifier -->
+<rect x="50" y="310" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="310" width="340" height="85" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+<text x="220" y="335" fill="white" font-size="11" font-weight="600" text-anchor="middle">Verifier Agent</text>
+<text x="220" y="352" fill="#94a3b8" font-size="9" text-anchor="middle">Cora-Debate V1/V2/V3</text>
+<text x="220" y="367" fill="#94a3b8" font-size="8" text-anchor="middle">V1: Dimensional (10-dim)</text>
+<text x="220" y="380" fill="#94a3b8" font-size="8" text-anchor="middle">V2: Algebraic | V3: Counterexamples</text>
+
+<!-- Decision: verification -->
+<rect x="420" y="335" width="100" height="40" rx="4" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="1"/>
+<text x="470" y="357" fill="#fb923c" font-size="8" text-anchor="middle">D2: verification</text>
+
+<!-- Arrow down -->
+<line x1="220" y1="395" x2="220" y2="425" class="emerald" marker-end="url(#arrow-emerald)"/>
+
+<!-- Agent 3: Auditor -->
+<rect x="50" y="425" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="425" width="340" height="85" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="220" y="450" fill="white" font-size="11" font-weight="600" text-anchor="middle">Auditor Agent</text>
+<text x="220" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">PhD-Level Evaluation</text>
+<text x="220" y="482" fill="#94a3b8" font-size="8" text-anchor="middle">10-dim scoring | Tier A-D</text>
+<text x="220" y="495" fill="#94a3b8" font-size="8" text-anchor="middle">Improvement suggestions</text>
+
+<!-- Decision: audit-tier -->
+<rect x="420" y="450" width="100" height="40" rx="4" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="1"/>
+<text x="470" y="472" fill="#fb923c" font-size="8" text-anchor="middle">D3: audit-tier</text>
+
+<!-- Arrow down -->
+<line x1="220" y1="510" x2="220" y2="540" class="violet" marker-end="url(#arrow-violet)"/>
+
+<!-- Output: Proof Package -->
+<rect x="50" y="540" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="540" width="340" height="70" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+<text x="220" y="565" fill="white" font-size="11" font-weight="600" text-anchor="middle">Proof Package</text>
+<text x="220" y="582" fill="#94a3b8" font-size="9" text-anchor="middle">JSON export + 3 decisions</text>
+<text x="220" y="597" fill="#94a3b8" font-size="8" text-anchor="middle">+DecisionNode audit trail</text>
+
+<!-- Metrics box -->
+<rect x="50" y="630" width="340" height="0" fill="#0f172a"/>
+<rect x="50" y="630" width="340" height="70" rx="6" fill="rgba(251,146,60,0.2)" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="220" y="655" fill="white" font-size="10" font-weight="600" text-anchor="middle">Phase 1 Metrics</text>
+<text x="220" y="672" fill="#94a3b8" font-size="8" text-anchor="middle">10/10 Tier A | Avg 8.31/10</text>
+<text x="220" y="687" fill="#94a3b8" font-size="8" text-anchor="middle">+34% vs V4 baseline</text>
+
+<!-- ═══ CORA-EVAL V4.6.1 (Right Column) ═══ -->
+
+<!-- Region: CORA-Eval -->
+<rect x="560" y="80" width="810" height="760" rx="12" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="8,4"/>
+<text x="580" y="105" fill="#34d399" font-size="10" font-weight="600">CORA-EVAL v4.6.1 (10 Dimensions)</text>
+
+<!-- D1-D5 Row 1 -->
+<rect x="580" y="120" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="580" y="120" width="150" height="70" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+<text x="655" y="142" fill="white" font-size="10" font-weight="600" text-anchor="middle">D1</text>
+<text x="655" y="157" fill="#94a3b8" font-size="8" text-anchor="middle">Matemática</text>
+<text x="655" y="169" fill="#94a3b8" font-size="7" text-anchor="middle">SPEC-009 ✓</text>
+
+<rect x="750" y="120" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="750" y="120" width="150" height="70" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+<text x="825" y="142" fill="white" font-size="10" font-weight="600" text-anchor="middle">D2</text>
+<text x="825" y="157" fill="#94a3b8" font-size="8" text-anchor="middle">Física</text>
+<text x="825" y="169" fill="#94a3b8" font-size="7" text-anchor="middle">SPEC-010 ✓</text>
+
+<rect x="920" y="120" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="920" y="120" width="150" height="70" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+<text x="995" y="142" fill="white" font-size="10" font-weight="600" text-anchor="middle">D3</text>
+<text x="995" y="157" fill="#94a3b8" font-size="8" text-anchor="middle">Estatística</text>
+<text x="995" y="169" fill="#94a3b8" font-size="7" text-anchor="middle">9/9 ✓</text>
+
+<rect x="1090" y="120" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="1090" y="120" width="150" height="70" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+<text x="1165" y="142" fill="white" font-size="10" font-weight="600" text-anchor="middle">D4</text>
+<text x="1165" y="157" fill="#94a3b8" font-size="8" text-anchor="middle">Química</text>
+<text x="1165" y="169" fill="#94a3b8" font-size="7" text-anchor="middle">9/9 ✓</text>
+
+<!-- D5-D10 Row 2 -->
+<rect x="580" y="210" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="580" y="210" width="150" height="70" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+<text x="655" y="232" fill="white" font-size="10" font-weight="600" text-anchor="middle">D5</text>
+<text x="655" y="247" fill="#94a3b8" font-size="8" text-anchor="middle">Biologia</text>
+<text x="655" y="259" fill="#94a3b8" font-size="7" text-anchor="middle">11/11 ✓</text>
+
+<rect x="750" y="210" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="750" y="210" width="150" height="70" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1"/>
+<text x="825" y="232" fill="white" font-size="10" font-weight="600" text-anchor="middle">D6</text>
+<text x="825" y="247" fill="#94a3b8" font-size="8" text-anchor="middle">Geociências</text>
+<text x="825" y="259" fill="#94a3b8" font-size="7" text-anchor="middle">15/15 ✓</text>
+
+<rect x="920" y="210" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="920" y="210" width="150" height="70" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1"/>
+<text x="995" y="232" fill="white" font-size="10" font-weight="600" text-anchor="middle">D7</text>
+<text x="995" y="247" fill="#94a3b8" font-size="8" text-anchor="middle">Código</text>
+<text x="995" y="259" fill="#94a3b8" font-size="7" text-anchor="middle">5/7 ⚠️</text>
+
+<rect x="1090" y="210" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="1090" y="210" width="150" height="70" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+<text x="1165" y="232" fill="white" font-size="10" font-weight="600" text-anchor="middle">D8</text>
+<text x="1165" y="247" fill="#94a3b8" font-size="8" text-anchor="middle">Literatura</text>
+<text x="1165" y="259" fill="#94a3b8" font-size="7" text-anchor="middle">12/12 ✓</text>
+
+<!-- D9, D10 Row 3 -->
+<rect x="580" y="300" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="580" y="300" width="150" height="70" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+<text x="655" y="322" fill="white" font-size="10" font-weight="600" text-anchor="middle">D9</text>
+<text x="655" y="337" fill="#94a3b8" font-size="8" text-anchor="middle">Metodologia</text>
+<text x="655" y="349" fill="#94a3b8" font-size="7" text-anchor="middle">SPEC-011 ✓</text>
+
+<rect x="750" y="300" width="150" height="70" rx="6" fill="#0f172a"/>
+<rect x="750" y="300" width="150" height="70" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+<text x="825" y="322" fill="white" font-size="10" font-weight="600" text-anchor="middle">D10</text>
+<text x="825" y="337" fill="#94a3b8" font-size="8" text-anchor="middle">GAT</text>
+<text x="825" y="349" fill="#94a3b8" font-size="7" text-anchor="middle">10/10 ✓</text>
+
+<!-- CORA-Eval Metrics -->
+<rect x="580" y="390" width="660" height="100" rx="6" fill="#0f172a"/>
+<rect x="580" y="390" width="660" height="100" rx="6" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="1.5"/>
+
+<text x="600" y="415" fill="#60a5fa" font-size="10" font-weight="600">CORA-Eval v4.6.1 Metrics</text>
+
+<text x="600" y="435" fill="#94a3b8" font-size="9">Tests Passed: 154/156 (98.7%) | SPECs: 11 active | Verifiers V1-V7: 95.5% F1</text>
+<text x="600" y="453" fill="#94a3b8" font-size="9">CORA-Score: 3.04 (Research, M4) | External Validation: 34/34 (100%)</text>
+<text x="600" y="471" fill="#94a3b8" font-size="9">Cross-Validation K=10: 2.2% CV | Dimensions w/ tests: 10/10 (100%)</text>
+
+<!-- ═══ INTEGRATION LAYER (Center) ═══ -->
+
+<!-- Integration flows -->
+<line x1="400" y1="195" x2="540" y2="165" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+<text x="460" y="175" fill="#fb923c" font-size="8" font-weight="600">Proof Output</text>
+
+<line x1="400" y1="345" x2="540" y2="255" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+<text x="460" y="300" fill="#fb923c" font-size="8" font-weight="600">V1 Dimensions</text>
+
+<line x1="400" y1="460" x2="540" y2="345" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+<text x="460" y="405" fill="#fb923c" font-size="8" font-weight="600">Audit Results</text>
+
+<!-- Integration box -->
+<rect x="560" y="510" width="810" height="110" rx="6" fill="#0f172a"/>
+<rect x="560" y="510" width="810" height="110" rx="6" fill="rgba(251,146,60,0.15)" stroke="#fbbf24" stroke-width="2"/>
+
+<text x="580" y="535" fill="#fbbf24" font-size="11" font-weight="600">INTEGRATION: Aletheia ↔ CORA-Eval</text>
+<text x="580" y="555" fill="#94a3b8" font-size="9">Phase 1: Aletheia proofs (3 decisions) → CORA-Eval dimensional analysis (D1-D10)</text>
+<text x="580" y="572" fill="#94a3b8" font-size="9">New D11 (Aletheia dimension): hypothesis_clarity, case_analysis, induction_validity</text>
+<text x="580" y="589" fill="#94a3b8" font-size="9">Validation Approach: Cross-reference Aletheia scores ↔ CORA-Eval D1/D2/D9 results</text>
+
+<!-- ═══ DECISION NODE TRACKING ═══ -->
+
+<!-- DecisionNode box -->
+<rect x="560" y="640" width="810" height="180" rx="6" fill="#0f172a"/>
+<rect x="560" y="640" width="810" height="180" rx="6" fill="rgba(136,19,55,0.2)" stroke="#fb7185" stroke-width="1.5"/>
+
+<text x="580" y="665" fill="#fb7185" font-size="11" font-weight="600">DecisionNode Audit Trail</text>
+
+<text x="600" y="690" fill="#94a3b8" font-size="9" font-weight="600">Aletheia Decisions (30 total)</text>
+<text x="620" y="708" fill="#94a3b8" font-size="8">• D1: proof-strategy-{id} (10 proofs)</text>
+<text x="620" y="722" fill="#94a3b8" font-size="8">• D2: verification-{id} (10 proofs, Cora-Debate V1-V3)</text>
+<text x="620" y="736" fill="#94a3b8" font-size="8">• D3: audit-tier-{id} (10 proofs, PhD evaluation)</text>
+
+<text x="600" y="760" fill="#94a3b8" font-size="9" font-weight="600">CORA-Eval Decisions (15+ total)</text>
+<text x="620" y="778" fill="#94a3b8" font-size="8">• SPEC-009/010/011 adoption (3 specs)</text>
+<text x="620" y="792" fill="#94a3b8" font-size="8">• V1-V7 calibration decisions (7 decisions)</text>
+<text x="620" y="806" fill="#94a3b8" font-size="8">• Finding documentation (6 findings)</text>
+
+<!-- ═══ LEGEND ═══ -->
+
+<text x="50" y="820" fill="#22d3ee" font-size="10" font-weight="600">Legend:</text>
+
+<rect x="50" y="830" width="20" height="20" rx="3" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+<text x="80" y="844" fill="#94a3b8" font-size="8">Input/Output</text>
+
+<rect x="200" y="830" width="20" height="20" rx="3" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+<text x="230" y="844" fill="#94a3b8" font-size="8">Processing</text>
+
+<rect x="350" y="830" width="20" height="20" rx="3" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1"/>
+<text x="380" y="844" fill="#94a3b8" font-size="8">Analysis</text>
+
+<rect x="500" y="830" width="20" height="20" rx="3" fill="rgba(251,146,60,0.2)" stroke="#fbbf24" stroke-width="1"/>
+<text x="530" y="844" fill="#94a3b8" font-size="8">Integration</text>
+
+<rect x="680" y="830" width="20" height="20" rx="3" fill="rgba(136,19,55,0.2)" stroke="#fb7185" stroke-width="1"/>
+<text x="710" y="844" fill="#94a3b8" font-size="8">Audit Trail</text>
+
+</svg>

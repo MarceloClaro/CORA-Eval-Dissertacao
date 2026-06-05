@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Consolidado D10→D11 — OpenCode Ecosystem</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --green: #3fb950;
+    --blue: #58a6ff;
+    --orange: #d29922;
+    --purple: #bc8cff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 40px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 2rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text2); margin-bottom: 32px; font-size: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 24px; }
+  .card h2 { font-size: 1.25rem; margin-bottom: 16px; color: var(--blue); }
+  .card h3 { font-size: 1rem; margin-bottom: 12px; color: var(--orange); }
+  .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .stat { flex: 1; min-width: 120px; text-align: center; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 6px; }
+  .stat .val { font-size: 2rem; font-weight: 700; }
+  .stat .lbl { font-size: 0.8rem; color: var(--text2); margin-top: 4px; }
+  .green { color: var(--green); }
+  .blue { color: var(--blue); }
+  .orange { color: var(--orange); }
+  .purple { color: var(--purple); }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--text2); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  .badge-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .badge-orange { background: rgba(210,153,34,0.15); color: var(--orange); }
+  .badge-purple { background: rgba(188,140,255,0.15); color: var(--purple); }
+  .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 8px 0 12px; }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 4px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 6px; color: var(--text2); }
+  li strong { color: var(--text); }
+  .domain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .domain-card { background: rgba(255,255,255,0.03); padding: 16px; text-align: center; border-radius: 6px; }
+  .domain-card .name { font-size: 0.85rem; margin-bottom: 4px; }
+  .domain-card .tasks { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔄 Relatório Consolidado D10 → D11</h1>
+<p class="subtitle">OpenCode Ecosystem — CORA-Eval · 31 de maio de 2026 · UTC-3</p>
+
+<!-- Sumário -->
+<div class="card">
+  <h2>📊 Sumário Executivo</h2>
+  <div class="stat-row">
+    <div class="stat"><div class="val green">150</div><div class="lbl">Testes D11</div></div>
+    <div class="stat"><div class="val green">150/150</div><div class="lbl">Aprovados (100%)</div></div>
+    <div class="stat"><div class="val blue">14</div><div class="lbl">Bugs corrigidos</div></div>
+    <div class="stat"><div class="val purple">5</div><div class="lbl">Domínios</div></div>
+    <div class="stat"><div class="val orange">0.28</div><div class="lbl">CORA-Score (D11)</div></div>
+  </div>
+  <p style="color:var(--text2);font-size:0.9rem;">Pipeline: trace_analyzer (demo OK) → cascade_verifier (demo OK) → pytest (150/150) → CORA-Score baseline (0.28)</p>
+</div>
+
+<!-- Correções -->
+<div class="card">
+  <h2>🔧 Correções Aplicadas (14 bugs)</h2>
+  <table>
+    <tr><th>Categoria</th><th>Qtd</th><th>Detalhes</th></tr>
+    <tr><td><span class="badge badge-purple">Lambda eval</span></td><td>13</td><td>Expressões <code>eval()</code> substituídas por lambdas puras com captura por IIFE <code>(lambda i: lambda *args: ...)(i)</code></td></tr>
+    <tr><td><span class="badge badge-orange">λ i=i, *args</span></td><td>5</td><td>Parâmetro <code>i</code> colidia com <code>dep_vals</code> posicionais — convertido para IIFE</td></tr>
+    <tr><td><span class="badge badge-blue">Dep key mismatch</span></td><td>4</td><td><code>sorted_</code> → <code>sorted</code>, <code>abs_</code> → <code>abs</code>, <code>yield_</code> → <code>yield</code>, <code>den</code> ausente</td></tr>
+    <tr><td><span class="badge badge-blue">Out key missing</span></td><td>1</td><td>C-N4-3 faltava nó <code>out</code> — tarefa duplicada removida</td></tr>
+    <tr><td><span class="badge badge-blue">**kw → *args</span></td><td>1</td><td>M-N4-5 usava <code>**kw</code> mas <code>execute_dag</code> passa args posicionais</td></tr>
+    <tr><td><span class="badge badge-blue">Dep faltante</span></td><td>1</td><td>S-N3-6 lambda pedia <code>den</code> mas dep list só tinha <code>f,v</code></td></tr>
+  </table>
+</div>
+
+<!-- Domínios -->
+<div class="card">
+  <h2>📋 Resultados por Domínio (D11)</h2>
+  <div class="domain-grid">
+    <div class="domain-card"><div class="name">🔷 Lógico</div><div class="tasks">30/30</div></div>
+    <div class="domain-card"><div class="name">🔢 Matemático</div><div class="tasks">30/30</div></div>
+    <div class="domain-card"><div class="name">📋 Planejamento</div><div class="tasks">30/30</div></div>
+    <div class="domain-card"><div class="name">💻 CodeFlow</div><div class="tasks">30/30</div></div>
+    <div class="domain-card"><div class="name">🔬 Científico</div><div class="tasks">30/30</div></div>
+  </div>
+  <table>
+    <tr><th>Nível</th><th>Lógico</th><th>Matemático</th><th>Planejamento</th><th>CodeFlow</th><th>Científico</th><th>Total</th></tr>
+    <tr><td>N1 (Básico)</td><td>5/5</td><td>5/5</td><td>5/5</td><td>5/5</td><td>5/5</td><td>25/25</td></tr>
+    <tr><td>N2 (Graduação)</td><td>7/7</td><td>7/7</td><td>7/7</td><td>7/7</td><td>7/7</td><td>35/35</td></tr>
+    <tr><td>N3 (Pós-Graduação)</td><td>8/8</td><td>8/8</td><td>8/8</td><td>8/8</td><td>8/8</td><td>40/40</td></tr>
+    <tr><td>N4 (Pesquisa)</td><td>10/10</td><td>10/10</td><td>10/10</td><td>10/10</td><td>10/10</td><td>50/50</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>30/30</strong></td><td><strong>30/30</strong></td><td><strong>30/30</strong></td><td><strong>30/30</strong></td><td><strong>30/30</strong></td><td><strong>150/150</strong></td></tr>
+  </table>
+</div>
+
+<!-- CORA-Score -->
+<div class="card">
+  <h2>📈 CORA-Score Baseline</h2>
+  <div class="stat-row">
+    <div class="stat"><div class="val orange">0.28</div><div class="lbl">CORA-Score</div></div>
+    <div class="stat"><div class="val orange">0.28</div><div class="lbl">CORA-V-Score</div></div>
+    <div class="stat"><div class="val orange">Básico</div><div class="lbl">Classificação</div></div>
+    <div class="stat"><div class="val purple">4.00</div><div class="lbl">Score D11 N4</div></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:7%"></div></div>
+  <p style="color:var(--text2);font-size:0.85rem;">Progresso: 0.28/4.00. Apenas D11 pontuado (11 dimensões restantes). Próximo marco: M1 — Fundação (0.9).</p>
+</div>
+
+<!-- Pipeline -->
+<div class="card">
+  <h2>⚙️ Pipeline D10→D11</h2>
+  <h3>trace_analyzer.py (demo)</h3>
+  <ul>
+    <li><strong>50 steps</strong>, 6 categorias de raciocínio</li>
+    <li><strong>MLP accuracy: 0.6</strong> (classificador de categoria)</li>
+    <li><strong>Health: 100/100</strong> — predição SUCCEED com 90% confiança</li>
+    <li>Padrões detectados: Search (17), Task_Analysis (5), Code_Synthesis (6), Debug (10), Synthesis (11), Verify (1)</li>
+  </ul>
+  <h3 style="margin-top:16px">cascade_verifier.py (demo)</h3>
+  <ul>
+    <li><strong>4/5</strong> amostras aprovadas (80%)</li>
+    <li><strong>4 estágios:</strong> regex → flex_regex → LLM → manual</li>
+    <li><strong>Confiança média: 0.88</strong></li>
+    <li>Relatório salvo em <code>cascade_demo_report.json</code></li>
+  </ul>
+  <h3 style="margin-top:16px">pytest D11</h3>
+  <ul>
+    <li><strong>150/150</strong> testes aprovados em <strong>1.74s</strong></li>
+    <li>5 classes: <code>TestLogicDAG</code>, <code>TestMathDAG</code>, <code>TestPlanningDAG</code>, <code>TestCodeFlowDAG</code>, <code>TestScientificDAG</code></li>
+    <li>14 bugs de runtime corrigidos antes da execução bem-sucedida</li>
+  </ul>
+  <h3 style="margin-top:16px">pipeline_coraeval.py (v3.0)</h3>
+  <ul>
+    <li><strong>10 papers</strong> processados (5 D10 + 5 D11 keywords)</li>
+    <li>Limitações: HTTPS/Sci-Hub erros — pode exigir VPN em redes restritas</li>
+    <li>Relatórios salvos em <code>coraeval_report_D10.json</code> e <code>coraeval_report_D11.json</code></li>
+  </ul>
+</div>
+
+<!-- Lições Aprendidas -->
+<div class="card">
+  <h2>📝 Lições Aprendidas</h2>
+  <ol style="color:var(--text2);">
+    <li><strong>IIFE captura i:</strong> <code>(lambda i: lambda *args: ...)(i)</code> resolve colisão entre <code>i</code> de loop e <code>*dep_vals</code> de <code>execute_dag</code></li>
+    <li><strong>*args ≠ **kw:</strong> <code>execute_dag</code> sempre passa valores como args posicionais, nunca keyword — lambdas devem usar <code>*args</code> ou parâmetros nomeados explícitos</li>
+    <li><strong>Dependências = parâmetros:</strong> todo parâmetro da lambda precisa estar na lista de dependências; omissão causa <code>TypeError: missing required positional argument</code></li>
+    <li><strong>Keys importam:</strong> nomes de chaves nos dicts <code>dep</code> e <code>out</code> devem corresponder exatamente — Python aceita <code>"yield"</code> como chave mesmo sendo keyword</li>
+    <li><strong>Não duplicar tarefas:</strong> C-N4-3 tinha versão quebrada (sem <code>out</code>) e redo na mesma lista — remover a quebrada resolveu</li>
+  </ol>
+</div>
+
+</div>
+</body>
+</html>

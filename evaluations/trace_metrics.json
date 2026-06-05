@@ -1,0 +1,35 @@
+{
+  "total_steps": 1,
+  "distribution": {
+    "Setup": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "Planning": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "Solving": {
+      "count": 1,
+      "pct": 100.0
+    },
+    "Verification": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "Stuck": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "Backtracking": {
+      "count": 0,
+      "pct": 0.0
+    }
+  },
+  "transition_matrix": {},
+  "stuck_backtrack_ratio": null,
+  "stuck_backtrack_ratio_raw": Infinity,
+  "plan_solve_ratio": 0.0,
+  "plan_solve_ratio_raw": 0.0,
+  "health_score": 15
+}

@@ -1,0 +1,210 @@
+{
+  "version": "1.0.0",
+  "mode": "demo",
+  "timestamp": "2026-05-31T14:02:01.198526",
+  "samples": [
+    {
+      "question": "Calcule a integral definida ∫₀¹ x² dx",
+      "answer": "0.333",
+      "expected": {
+        "value": 0.3333333333333333,
+        "type": "float",
+        "tolerance": 0.01,
+        "alternatives": [],
+        "dimension": "D1",
+        "task_id": "D1-N3-01"
+      },
+      "is_correct": true,
+      "reasoning": "1/3 = 0.333..., dentro da tolerância 0.01"
+    },
+    {
+      "question": "A função f(x)=x² é contínua em ℝ?",
+      "answer": "verdadeiro",
+      "expected": {
+        "value": true,
+        "type": "boolean",
+        "tolerance": 0.0,
+        "alternatives": [],
+        "dimension": "D1",
+        "task_id": "D1-N1-02"
+      },
+      "is_correct": true,
+      "reasoning": "Polinômios são contínuos em todo ℝ. 'verdadeiro' é equivalente a True."
+    },
+    {
+      "question": "Resolva a equação: 2x + 5 = 13",
+      "answer": "4",
+      "expected": {
+        "value": 4,
+        "type": "integer",
+        "tolerance": 0.0,
+        "alternatives": [],
+        "dimension": "D1",
+        "task_id": "D1-N1-03"
+      },
+      "is_correct": true,
+      "reasoning": "2x + 5 = 13 → 2x = 8 → x = 4"
+    },
+    {
+      "question": "Qual a fórmula da força segundo Newton?",
+      "answer": "F = m * a^2",
+      "expected": {
+        "value": "F = m * a",
+        "type": "expression",
+        "tolerance": 0.0,
+        "alternatives": [],
+        "dimension": "D2",
+        "task_id": "D2-N1-04"
+      },
+      "is_correct": false,
+      "reasoning": "Erro comum: F = m * a (segunda lei), não a²"
+    },
+    {
+      "question": "Calcule a média de [2, 4, 6, 8]",
+      "answer": "5.0",
+      "expected": {
+        "value": 5,
+        "type": "float",
+        "tolerance": 0.001,
+        "alternatives": [],
+        "dimension": "D3",
+        "task_id": "D3-N1-05"
+      },
+      "is_correct": true,
+      "reasoning": "(2+4+6+8)/4 = 20/4 = 5.0"
+    }
+  ],
+  "per_sample_stats": [
+    {
+      "passed": 3,
+      "total": 4,
+      "passed_ratio": 0.75,
+      "avg_confidence": 1.0,
+      "total_time_ms": 0.0,
+      "per_stage": {
+        "regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "flex_regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "llm": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "manual": {
+          "passed": false,
+          "confidence": 1.0
+        }
+      }
+    },
+    {
+      "passed": 3,
+      "total": 4,
+      "passed_ratio": 0.75,
+      "avg_confidence": 1.0,
+      "total_time_ms": 0.0,
+      "per_stage": {
+        "regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "flex_regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "llm": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "manual": {
+          "passed": false,
+          "confidence": 1.0
+        }
+      }
+    },
+    {
+      "passed": 3,
+      "total": 4,
+      "passed_ratio": 0.75,
+      "avg_confidence": 1.0,
+      "total_time_ms": 0.0,
+      "per_stage": {
+        "regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "flex_regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "llm": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "manual": {
+          "passed": false,
+          "confidence": 1.0
+        }
+      }
+    },
+    {
+      "passed": 1,
+      "total": 4,
+      "passed_ratio": 0.25,
+      "avg_confidence": 0.41,
+      "total_time_ms": 1.9,
+      "per_stage": {
+        "regex": {
+          "passed": false,
+          "confidence": 0.0
+        },
+        "flex_regex": {
+          "passed": true,
+          "confidence": 0.7
+        },
+        "llm": {
+          "passed": false,
+          "confidence": 0.53
+        },
+        "manual": {
+          "passed": false,
+          "confidence": 0.41
+        }
+      }
+    },
+    {
+      "passed": 3,
+      "total": 4,
+      "passed_ratio": 0.75,
+      "avg_confidence": 1.0,
+      "total_time_ms": 0.1,
+      "per_stage": {
+        "regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "flex_regex": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "llm": {
+          "passed": true,
+          "confidence": 1.0
+        },
+        "manual": {
+          "passed": false,
+          "confidence": 1.0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "total_samples": 5,
+    "approved": 4,
+    "avg_confidence": 0.88,
+    "avg_time_ms": 0.4
+  }
+}

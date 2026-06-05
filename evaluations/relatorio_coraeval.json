@@ -1,0 +1,212 @@
+[
+  {
+    "doi": "2112.01019v1",
+    "title": "Unconstrained Face Sketch Synthesis via Perception-Adaptive Network and A New Benchmark",
+    "source": "arxiv",
+    "url": "https://arxiv.org/abs/2112.01019v1",
+    "insights": {
+      "doi": "2112.01019v1",
+      "problemas": [
+        "problem from\ntwo aspects, including contour-aware representa-\ntion learning and contour-aware loss function op-\ntimization.",
+        "problem recently has attracted\nwidespread research interests in both academic and\nindustry communities [9, 10, 11, 12].",
+        "Despite certain progress, this problem is still\nfar from being solved perfectly.",
+        "although they have achieved promising re-\nsults.",
+        "bution statement\nLin Nie: Conceptualization, Writing - original\ndraft."
+      ],
+      "metodologias": [
+        "Methodology, Writing - review\n& editing.\nZhengtao Wu: Writing - review &\nediting, Validation",
+        "systems 27 (6) (2016) 1135–1149.\n[46] L",
+        "evaluation\nmetrics for face sketch synthesis. We then compare\nthe proposed method with state-of-the-art meth-\nods under both the constrained and unconstrained\nconditions",
+        "methods in uncontrolled\nscenarios, including LLE [82], Fast-RSLCR [83],\nRSLCR [83], FCN [13], BP-GAN [76], SSL [75],\nMDAL [19], CycleGAN [72], cGAN [14], GENRE\n[27], and CA-GAN [33]. These methods are reim-\nplemented with their oﬃcial codes and are opti-\nmized on the WildSketch benchmark",
+        "benchmark.\nTo enlarge the ethnicity coverage, we collect other\n270 images of Asian celebrities from the Internet"
+      ],
+      "metricas": [
+        "score and fid of all com-\npared methods in table3.",
+        "correlation learning for heterogeneous face\nrecognition, in: international joint conference on ar-\ntiﬁcial intelligence, 2019.",
+        "scores with human perception.",
+        "score of sketch-ii is much worse than that of sketch-i, since\nssim favors slightly blurry images."
+      ],
+      "dominios": [
+        "computer\nvision, 2018, pp.",
+        "computer vision [1, 2, 3, 4, 5].",
+        "computer vision and pattern recognition, 2012, pp.",
+        "statistics simultaneously\nto provide consistent scores with human perception.",
+        "computer vision and\npattern recognition, 2020, pp."
+      ],
+      "tarefas": [
+        "prediction, ieee trans-\nactions on intelligent transportation systems (2020).",
+        "prediction, ieee trans-\nactions on intelligent transportation systems 20 (10)\n(2019) 3875–3887.",
+        "translation using cycle-consistent ad-\nversarial networks, in: ieee international conference\non computer vision, 2017, pp.",
+        "regression-based meth-\nods [44].",
+        "generation via fully convolutional rep-\nresentation learning, in: acm on international confer-\nence on multimedia retrieval, 2015, pp."
+      ]
+    },
+    "pdf": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\downloads\\2112.01019v1.pdf",
+    "txt": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\corpus_md\\2112.01019v1.txt"
+  },
+  {
+    "doi": "1004.4609v1",
+    "title": "Synthesis of Reversible Functions Beyond Gate Count and Quantum Cost",
+    "source": "arxiv",
+    "url": "https://arxiv.org/abs/1004.4609v1",
+    "insights": {
+      "doi": "1004.4609v1",
+      "problemas": [
+        "Although solving the generated SAT instances using a modern SAT solver\ncan produce optimized circuits, the applicability of such an exact method is\nalways limited to relatively small functions due to the exponential search space.",
+        "However, other cost metrics imposed by target tech-\nnologies exist and need to be considered.",
+        "butions, we have impa = 1.",
+        "bution have not been addressed by synthesis approaches so far.",
+        "However, in both cases often only the gate\n3We like to thank the authors of both approaches for making us their tool available."
+      ],
+      "metodologias": [
+        "methods are\nproposed in the following. The former one changes the ordering of the primary\ninputs and outputs according to a global view while the latter one applies a\nlocal view to assign the line ordering",
+        "evaluation, one must conclude that the BDD-based approach leads to the\nbest results. However, if further cost metrics are considered the results become\nvery diﬀerent",
+        "method\n(Best Imprmnts). The last column shows the smallest overhead in terms of\nquantum cost needed to achieve NNC-optimality in comparison to the origi-\nnal circuit (Overhead to achieve NNC optimality)",
+        "algorithms presume that interaction between arbitrary\nqubits is possible with no extra cost, some restrictions exist in real quantum\ntechnologies. As an example, in a Linear Nearest Neighbor (LNN) architecture\nonly adjacent qubits are allowed to interact2",
+        "method proposed in [22]).\nThus,\nsynthesis approaches should keep track of nc, ng, and n if quantum circuits are\nparticularly addressed"
+      ],
+      "metricas": [],
+      "dominios": [
+        "computer.",
+        "computer science, university of bremen, bremen, germany\ne-mail: drechsler@uni-bremen.",
+        "computer engineering department, amirkabir university of technology, tehran, iran\ne-mail: msaeedi@aut.",
+        "physics, 21(3/4):219–253, 1982.",
+        "computer-\naided design, pages 65–68, 2007."
+      ],
+      "tarefas": [
+        "generation in the computing process.",
+        "generation of quantum circuits from\nreversible logic are introduced."
+      ]
+    },
+    "pdf": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\downloads\\1004.4609v1.pdf",
+    "txt": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\corpus_md\\1004.4609v1.txt"
+  },
+  {
+    "doi": "2107.14449v3",
+    "title": "Synth-by-Reg (SbR): Contrastive learning for synthesis-based registration of paired images",
+    "source": "arxiv",
+    "url": "https://arxiv.org/abs/2107.14449v3",
+    "insights": {
+      "doi": "2107.14449v3",
+      "problemas": [
+        "but with unsatisfactory results in the\nnonlinear case, due to the excessive ﬂexibility of the model [17].",
+        "issue classes: cerebral white matter (WM), cerebral grey matter\n(GM), cerebellar white matter (WMc), and cerebellar grey matter (GMc).",
+        "issue, additional losses between the original and syn-\nthetic images have been proposed, e.",
+        "issue mask is used when drawing xl,n\nin order not to sample the background).",
+        "bution of this work\nis threefold: (i) we develop a novel registration loss for paired I2I translation;\n(ii) we adapt the contrastive PatchNCE loss [26] for image registration as a\ngeometry-preserving constraint; and (iii) we combine (i) and (ii) into an un-\nsupervised SbR framework for inter-modality registration that does not require\nmultiple encoders / decoders and therefore has low GPU memory requirements."
+      ],
+      "metodologias": [
+        "method against a number of other methods,\nto test diﬀerences against: standard registration metrics, other synthesis-based\napproaches without speciﬁc geometric constraints, and supervision with labels\nand Dice scores. Speciﬁcally, the competing methods are: (i) Linear, the initial\nSynth-by-Reg (SbR): Contrastive learning for synthesis-based registration\n7\n(b) BigBrain\n(c) Allen Human Brain Atlas\n(a) Allen Human Brain Atlas\nFig",
+        "model\nis trained on pairs of images from the target domain and outputs a stationary\nvelocity ﬁeld (SVF), ψ, at half the input resolution. Then, a scaling and squaring\napproach is used to integrate ψ into a half-resolution deformation ﬁeld, which is\nlinearly upsampled to obtain the ﬁnal deformation Φ(x)",
+        "pipeline, using histology and MRI as source and target\ncontrasts, respectively.\nat the patch level to ensure geometric consistency",
+        "approaches have attempted to enforce geometry\nconsistency between the original and synthetic images via speciﬁc architectures\nor training schemes. An I2I translation model that explicitly learns to disen-\ntangle domain-invariant (i",
+        "approach (SbR-N)\nsuﬀers from synthetic artefacts in the generator, which degrades the results -\nthus highlighting the importance of including structure preserving constraints in\nthe model. The other two extensions of the model, SbR-G and SbR-R, achieve\nsimilar performance to the initial conﬁguration, without yielding any statistically\nsigniﬁcant additional beneﬁts"
+      ],
+      "metricas": [
+        "scores.",
+        "score coeﬃcient for the allen dataset is shown in (c).",
+        "cohen-or, d.",
+        "correlation\n(lncc) [6,34], without wasting capacity in regions without salient features.",
+        "correlation is not enough to optimise the synthesis."
+      ],
+      "dominios": [
+        "computer methods and programs in biomedicine 98(3), 278–284 (2010)\n25.",
+        "neuroscience, university of sussex, brighton, uk\n3 neuropoly lab, polytechnique montreal, canada.",
+        "computer science and ai laboratory, massachusetts institute of technology, usa\nabstract."
+      ],
+      "tarefas": [
+        "translation;\n(ii) we adapt the contrastive patchnce loss [26] for image registration as a\ngeometry-preserving constraint; and (iii) we combine (i) and (ii) into an un-\nsupervised sbr framework for inter-modality registration that does not require\nmultiple encoders / decoders and therefore has low gpu memory requirements.",
+        "translation and registration steps to be commutative (thus discourag-\ning deformation at synthesis) has been presented [2].",
+        "translation model that explicitly learns to disen-\ntangle domain-invariant (i.",
+        "regression.",
+        "translation with condi-\ntional adversarial networks."
+      ]
+    },
+    "pdf": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\downloads\\2107.14449v3.pdf",
+    "txt": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\corpus_md\\2107.14449v3.txt"
+  },
+  {
+    "doi": "2412.16394v1",
+    "title": "GAT-RWOS: Graph Attention-Guided Random Walk Oversampling for Imbalanced Data Classification",
+    "source": "arxiv",
+    "url": "https://arxiv.org/abs/2412.16394v1",
+    "insights": {
+      "doi": "2412.16394v1",
+      "problemas": [
+        "bute to the development\nof more reliable classification systems.",
+        "problem.",
+        "but\noften overgeneralize near decision boundaries and perform\npoorly in high-dimensional spaces.",
+        "bution.",
+        "bution and\ndensity information to reduce noise influence and preserve\ndata distribution."
+      ],
+      "metodologias": [
+        "Algorithm 2 Attention-Guided Interpolation (ATTINTERP)\nRequire: xi, xj: Feature vectors of nodes vi and vj, αij: Attention weight\nbetween vi and vj, C: Set of categorical feature indices, T : Set of\ncontinuous feature indices, λmin: Minimum alpha, λmax: Maximum alpha,\nϵ: Variability\nEnsure: xnew: Interpolated feature vector\n1: λ ←λmin + (λmax −λmin) · αij\n2: λ ←λ + uniform(−ϵ, ϵ)\n3: λ ←max(λmin, min(λ, λmax))\n4: xnew ←0\n5: for k ←1 to len(xi) do\n6:\nif k ∈C then\n7:\nCalculate average similarity per category for feature k and select\ncategory with closest similarity\n8:\nxnew[k] ←selected category\n9:\nelse\n10:\nxnew[k] ←λ · xi[k] + (1 −λ) · xj[k]\n11:\nend if\n12: end for\n13: return xnew\nsimilar category. To introduce variability and avoid overfitting,\na small random perturbation ϵ is added to λ′\ni,i+1, bounded by\nλmin and λmax:\nλ′\ni,i+1 = min(λmax, max(λmin, λ′\ni,i+1 + Uniform(−ϵ, ϵ)))\nThis attention-guided interpolation process is summarized in\nAlgorithm 2",
+        "Evaluation Metrics\nIn imbalanced learning, improving minority class perfor-\nmance while maintaining majority class effectiveness is cru-\ncial. Following [2], we selected four evaluation metrics: bal-\nanced accuracy, F1-Score, ROC AUC Score, and G-Mean",
+        "method;\nSection IV describes the experimental setup; Section V dis-\ncusses the results; and Section VI concludes the study.\nII",
+        "algorithm iteratively\nselects strongly connected minority node pairs (vi, vj) from\nEs. From vi, a biased random walk of length nw is conducted\nusing BIASEDWALK with Mm and parameters p and q",
+        "method combining Graph\nAttention Networks (GATs) and attention-guided random\nwalks. Our approach uses GAT’s attention mechanism to\nguide random walks through informative neighbourhoods of\nminority nodes, generating synthetic samples that expand class\nboundaries while preserving the data distribution"
+      ],
+      "metricas": [
+        "f1 score from 0.",
+        "accuracy, f1-score, roc auc score, and g-mean.",
+        "accuracy computes the average recall of each class:\nacbalanced = 1\n2\n\u0012\ntp\ntp + fn +\ntn\ntn + fp\n\u0013\nthe f1-score, the harmonic mean of precision and recall, is\nparticularly useful for imbalanced classes:\nf1 = 2 × (precision × recall)/(precision + recall)\nthe roc auc score measures the area under the receiver\noperating characteristic curve, indicating the model’s ability\nto discriminate between classes.",
+        "auc and g metrics, which measure the\ndiscriminative power of the classifier and the geometric\nmean of class-wise accuracies, respectively.",
+        "f1 score on validation\ndata."
+      ],
+      "dominios": [
+        "mathematics, vol.",
+        "computer science (including subseries lecture notes\nin artificial intelligence and lecture notes in bioinformatics), vol.",
+        "engineering, vol.",
+        "computer science, ku leuven\nnzaki@uaeu."
+      ],
+      "tarefas": [
+        "classification on graphs via attention and homophily,”\nmathematics, vol.",
+        "classification datasets from the keel\nrepository [19], known for class imbalance issues.",
+        "classification perfor-\nmance.",
+        "classification systems.",
+        "generation hyperparameter optimization framework,” in proceedings\nof the 25th acm sigkdd international conference on knowledge\ndiscovery & data mining, pp."
+      ]
+    },
+    "pdf": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\downloads\\2412.16394v1.pdf",
+    "txt": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\corpus_md\\2412.16394v1.txt"
+  },
+  {
+    "doi": "1304.3415v2",
+    "title": "No flares from Gamma-Ray Burst afterglow blast waves encountering sudden circumburst density change",
+    "source": "arxiv",
+    "url": "https://arxiv.org/abs/1304.3415v2",
+    "insights": {
+      "doi": "1304.3415v2",
+      "problemas": [
+        "but this occurs only for θobs > θ0\nand thus is unlikely to be observed.",
+        "However, Nakar and Granot\n(NG: Nakar & Granot 2007) were unable to reproduce PW’s\nresults using one dimensional simulations and argued that the\nﬂares are not caused by a wind termination shock nor a den-\nsity jump in a uniform external medium.",
+        "although this paper focuses on X-ray light\ncurves, we saw similar behaviors for a wide range of frequen-\ncies.",
+        "but\nhave found that this does not qualitatively change our results.",
+        "although the results\nof PW correctly follow from their model assumptions."
+      ],
+      "metodologias": [
+        "model as well as the light curves calculated from the two di-\nmensional numerical simulations for on and off-axis observer\nangles. For all cases studied in this paper, there were no ob-\nservable ﬂares",
+        "method also overestimates the Lorentz factor during the encounter. To show this, we analytically modeled\nthe Lorentz factor evolution as done in Mesler et al",
+        "model of the afterglow light\ncurve is a smooth curve with the slope being a function of the\ndensity of the surrounding medium as well as the power-law\nslope of the distribution of the accelerated electron population\nat the shock front. Recent observations, though, have shown\nthis model is not always sufﬁcient",
+        "model in one dimension. The conic and spherical one dimensional dynamics\nrepresent the assumption of assuming either spherical or conic outﬂow, respectively, when calculating the light curve",
+        "model this type of interaction computationally in one and two dimensions,\nusing a relativistic hydrodynamics code with adaptive mesh reﬁnement called RAM, and analytically in one\ndimension. We simulate a blast wave traveling in a stellar wind environment that encounters a sudden change\nin density, followed by a homogeneous medium, and compute the observed radiation using a synchrotron\nmodel"
+      ],
+      "metricas": [
+        "accuracy of order\n1/γ2."
+      ],
+      "dominios": [
+        "physics of fluids, 19, 1130\nburrows, d.",
+        "physics e-prints:0012364\nhuang, y.",
+        "physics, physics department, new york university, new york, ny 10003\ndraft version june 20, 2021\nabstract\nafterglows of gamma-ray bursts are observed to produce light curves with the ﬂux following power law\nevolution in time.",
+        "physics theory\nprogram and by the nsf through grant ast-1009863 and\nby the chandra grant tm3-14005x."
+      ],
+      "tarefas": [
+        "predictions that the lorentz factor of the\nforward shock drops immediately as it encounters a higher\ndensity region, and the amount by which it drops is propor-\ntional to the change in density at the encounter.",
+        "prediction of the ﬂux during the encounter by the\nanalytical solution (van eerten et al.",
+        "prediction that the receding jet is only observed at op-\ntimal angles (granot & loeb 2003)."
+      ]
+    },
+    "pdf": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\downloads\\1304.3415v2.pdf",
+    "txt": "C:\\Users\\marce\\OneDrive\\Documentos\\Antiprojeto UFC\\artigo\\evaluations\\corpus_md\\1304.3415v2.txt"
+  }
+]

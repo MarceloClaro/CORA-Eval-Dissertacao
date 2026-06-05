@@ -1,0 +1,1635 @@
+GAT-RWOS: Graph Attention-Guided Random
+Walk Oversampling for Imbalanced Data
+Classification
+Zahiriddin Rustamov
+1,2, Abderrahmane Lakas1, and Nazar Zaki1,*
+1College of Information Technology, United Arab Emirates University, Al Ain, UAE
+2Department of Computer Science, KU Leuven
+nzaki@uaeu.ac.ae
+Abstract—Class imbalance poses a significant challenge in
+machine learning (ML), often leading to biased models favouring
+the majority class. In this paper, we propose GAT-RWOS, a novel
+graph-based oversampling method that combines the strengths
+of Graph Attention Networks (GATs) and random walk-based
+oversampling. GAT-RWOS leverages the attention mechanism
+of GATs to guide the random walk process, focusing on the
+most informative neighbourhoods for each minority node. By
+performing attention-guided random walks and interpolating fea-
+tures along the traversed paths, GAT-RWOS generates synthetic
+minority samples that expand class boundaries while preserving
+the original data distribution. Extensive experiments on a diverse
+set of imbalanced datasets demonstrate the effectiveness of GAT-
+RWOS in improving classification performance, outperforming
+state-of-the-art oversampling techniques. The proposed method
+has the potential to significantly improve the performance of ML
+models on imbalanced datasets and contribute to the development
+of more reliable classification systems. Code is available at
+https://github.com/zahiriddin-rustamov/gat-rwos.
+Index Terms—imbalanced data, oversampling, graph attention
+networks, random walks, machine learning
+I. INTRODUCTION
+Class imbalance is a critical challenge in machine learn-
+ing (ML), where some classes are significantly underrep-
+resented, can skew models toward the majority class and
+neglect critical minority classes, particularly in domains like
+medical diagnosis and fraud detection [1]. Various techniques
+have been proposed to address the class imbalance problem.
+These include data-level methods (e.g., oversampling minor-
+ity, undersampling majority classes), algorithm-level methods
+(e.g., cost-sensitive learning, ensemble methods), and hybrid
+approaches. Among these, oversampling techniques, which
+generate synthetic samples to balance the class distribution,
+have gained attention due to their effectiveness [2].
+However, oversampling techniques like the Synthetic Mi-
+nority Over-sampling Technique (SMOTE) may overgener-
+alize near decision boundaries and are sensitive to noise
+and outliers. Recent graph-based methods [3]–[5] leverage
+data structure to generate better synthetic samples but face
+challenges in mapping augmented graphs back to the original
+feature space, limiting their practicality.
+To overcome these limitations, we propose GAT-RWOS,
+a novel graph-based oversampling method combining Graph
+Attention Networks (GATs) and attention-guided random
+walks. Our approach uses GAT’s attention mechanism to
+guide random walks through informative neighbourhoods of
+minority nodes, generating synthetic samples that expand class
+boundaries while preserving the data distribution. The main
+contributions of this paper are:
+• We propose GAT-RWOS, a novel graph-based oversam-
+pling method that leverages the attention mechanism of
+GATs to guide the random walk process and generate
+high-quality synthetic minority samples.
+• We demonstrate GAT-RWOS’s effectiveness in improving
+classification on imbalanced binary classification tasks,
+outperforming traditional methods like SMOTE.
+The rest of the paper is organized as follows: Section II
+reviews related work; Section III details the proposed method;
+Section IV describes the experimental setup; Section V dis-
+cusses the results; and Section VI concludes the study.
+II. RELATED WORKS
+Traditional
+synthetic
+sample
+generation
+methods
+like
+SMOTE [6] interpolate between minority class samples but
+often overgeneralize near decision boundaries and perform
+poorly in high-dimensional spaces. Kov´acs [2] evaluated
+85 oversampling variants, identifying top methods such as
+Polynom-Fit-SMOTE [7], which uses polynomial fitting to
+fill the minority subspace better; ProWSyn [8], which weights
+minority samples based on proximity to the majority class; and
+SMOTE-IPF [9], combining SMOTE with filtering to remove
+noisy and borderline examples. Lee et al. [10] introduced
+an oversampling technique with rejection to avoid overfitting
+and underfitting, while SMOBD [11] uses distribution and
+density information to reduce noise influence and preserve
+data distribution. Despite improvements over SMOTE, these
+advanced oversamplers do not consistently outperform across
+datasets [2], indicating the need for techniques better suited
+to specific dataset characteristics, high dimensionality, noise,
+and complex distributions.
+arXiv:2412.16394v1  [cs.LG]  20 Dec 2024
+Random walk-based methods generate synthetic samples via
+random walks to expand class boundaries while preserving
+data distribution. Zhang and Li [12] introduced Random Walk
+Oversampling (RWOS), generating samples based on minority
+class mean and variance. Roshanfekr et al. [13] proposed
+UGRWOS, constructing local graphs to maintain proximity
+information and applying RWOS to selected minority sam-
+ples. Sadhukhan et al. [14] presented RWMaU, using random
+walks to identify and undersample majority class samples in
+overlapping regions. These methods better capture minority
+class structures and expand boundaries but need improvement
+in adaptively guiding random walks based on local data
+characteristics and leveraging information from both classes.
+Graph-based methods tackle class imbalance by construct-
+ing graph representations. GraphSMOTE [3] extends SMOTE
+to graph data, generating synthetic minority nodes in embed-
+ding space and training an edge generator. GraphMixup [4]
+performs semantic-level mixup, incorporating self-supervised
+and reinforcement learning techniques. ESA-GCN [15] intro-
+duces hybrid sampling with attention-based edge generation,
+while GATSMOTE [5] uses graph attention and homophily
+principles for brain networks. Despite their potential, these
+methods face challenges in translating the augmented graph
+back to the original feature space, complicating integration
+with standard ML pipelines.
+While advancements have been made, effectively leveraging
+structural information to guide oversampling remains challeng-
+ing. Traditional random walk-based methods ignore the impor-
+tance of different neighborhoods, and graph-based methods
+struggle to map augmented graphs back to feature space. To
+address this, we propose GAT-RWOS, combining the strengths
+of GATs [16] and random walk-based oversampling. GAT-
+RWOS leverages the attention mechanism of GATs to guide
+random walks, focusing on the most informative neighbour-
+hoods for each minority node. By learning attention weights
+that capture neighbour importance, GAT-RWOS adaptively
+steers random walks toward regions likely to generate valuable
+synthetic samples.
+The novelty of GAT-RWOS lies in its ability to adaptively
+guide the oversampling process based on learned attention
+weights, ensuring generated samples are representative and
+effectively expand minority class boundaries. Furthermore,
+operating directly in the feature space allows GAT-RWOS to
+integrate easily into existing ML pipelines without additional
+post-processing.
+III. PROPOSED METHOD
+A. Graph Attention Network (GAT)
+GATs are neural architectures designed for graph-structured
+data, employing attention mechanisms to assign weights to
+neighbouring nodes and focus on the most relevant informa-
+tion. Given a graph G = (V, E) with node features ⃗hi ∈RF ,
+the attention coefficients αij between nodes i and j are
+computed as:
+αij =
+exp
+
+LeakyReLU
+
+a⊤[W⃗hi ∥W⃗hj]
+
+P
+k∈Ni exp
+
+LeakyReLU
+
+a⊤[W⃗hi ∥W⃗hk]
+
+where W ∈RF ′×F is a learnable weight matrix, a is the
+attention mechanism, Ni denotes the neighbors of node i, and
+LeakyReLU is the activation function.
+The output features for each node are obtained by aggre-
+gating features across the node’s neighbours, scaled by the
+computed attention coefficients, and then passed through a
+non-linear activation function:
+⃗h′
+i =
+
+K
+k=1σ
+
+X
+j∈Ni
+αk
+ijW k⃗hj
+
+
+where ∥denotes concatenation, K is the number of attention
+heads, αk
+ij are the attention coefficients for head k, W k are
+head-specific transformation matrices, and σ is a non-linear
+activation function.
+We employ a multi-layer GAT to learn node embeddings
+that capture both structural and attribute information, with
+the final layer producing class probabilities. To address class
+imbalance, we incorporate focal loss [17] and introduce class-
+specific attention weights. The focal loss is defined as:
+Lfocal = −
+X
+i∈Vtrain
+(1 −pi)γ log(pi)
+where pi is the predicted probability of the true class for
+node i, γ adjusts the down-weighting of easy examples, and
+Vtrain are the training nodes. Class-specific attention weights
+are introduced as learnable parameters to further tailor the
+attention mechanism toward minority classes.
+B. Biased Random Walk
+Our biased random walk utilizes the GAT attention matrix
+to guide the walk process, focusing on informative neigh-
+bourhoods for each minority node. Inspired by Node2Vec
+[18], it introduces a flexible procedure to explore diverse
+neighbourhoods. Let Mm ∈RNm×Nm denote the minority
+attention matrix, where Nm is the number of minority nodes,
+and Mm[i, j] represents the attention weight between nodes i
+and j. Starting from a minority node vs, the walk generates a
+path P of length nw, traversing the graph based on attention
+weights and parameters p (return probability) and q (in-out
+probability). The transition probabilities π for each neighbour
+v are calculated as:
+π[v] =
+
+
+
+
+
+Mm[vcurr, v]/p,
+if v = vprev
+Mm[vcurr, v]/q,
+if v /∈P
+Mm[vcurr, v],
+otherwise
+Here, vprev is the previous node in P; p and q control the
+likelihood of revisiting nodes or exploring new ones. The
+probabilities are normalized:
+π[v] =
+π[v]
+P
+u∈N π[u]
+Algorithm 1 Biased Random Walk (BIASEDWALK)
+Require: vs: Starting node, Mm: Minority attention matrix, nw: Number of
+walk steps, p: Return probability, q: In-out probability
+Ensure: P: Random walk path
+1: P ←[vs]
+2: vcurr ←vs
+3: for i ←1 to nw do
+4:
+N ←neighbors of vcurr in Mm
+5:
+if |N| = 0 then
+6:
+break
+7:
+end if
+8:
+vprev ←P[−2] if |P| > 1 else None
+9:
+Initialize transition probabilities π
+10:
+for each v ∈N do
+11:
+π[v] ←Mm[vcurr, v]
+12:
+if v = vprev then
+13:
+π[v] ←π[v]/p
+14:
+else if v /∈P then
+15:
+π[v] ←π[v]/q
+16:
+end if
+17:
+end for
+18:
+Normalize π
+19:
+vnext ←sample a neighbor from N according to π
+20:
+P ←P + [vnext]
+21:
+vcurr ←vnext
+22: end for
+23: return P
+where N is the set of neighbors of vcurr. Next, vnext is sampled
+from N according to π, appended to P, and the process
+repeats until P reaches length nw or no neighbours remain.
+The procedure is detailed in Algorithm 1.
+C. Attention-Guided Interpolation
+The attention-guided interpolation generates synthetic mi-
+nority samples by interpolating features along paths from
+biased random walks, guided by attention weights from the
+GAT that capture the importance of node relationships. Let
+P = [v1, v2, . . . , vn] be a path of minority nodes with feature
+vectors x1, x2, . . . , xn. The attention weights αij between
+nodes vi and vj are derived from the minority attention matrix
+Mm. The adaptive interpolation weights λij are computed as:
+λij =
+αij
+Pn−1
+k=1 αk,k+1
+To emphasize significant attention values, these weights are
+adjusted using an exponential function:
+λ′
+ij =
+exp(λij)
+Pn−1
+k=1 exp(λk,k+1)
+The synthetic feature vector xnew is obtained via weighted
+summation:
+xnew =
+n−1
+X
+i=1
+λ′
+i,i+1 · Interpolate(xi, xi+1, λ′
+i,i+1)
+The Interpolate function handles both categorical and contin-
+uous features:
+xnew[k] =
+(
+BestCategory(xi[k], xi+1[k]),
+if k ∈C
+λ′
+i,i+1xi[k] + (1 −λ′
+i,i+1)xi+1[k],
+if k ∈T
+where C and T are indices of categorical and continuous
+features, respectively, and BestCategory(·) selects the most
+Algorithm 2 Attention-Guided Interpolation (ATTINTERP)
+Require: xi, xj: Feature vectors of nodes vi and vj, αij: Attention weight
+between vi and vj, C: Set of categorical feature indices, T : Set of
+continuous feature indices, λmin: Minimum alpha, λmax: Maximum alpha,
+ϵ: Variability
+Ensure: xnew: Interpolated feature vector
+1: λ ←λmin + (λmax −λmin) · αij
+2: λ ←λ + uniform(−ϵ, ϵ)
+3: λ ←max(λmin, min(λ, λmax))
+4: xnew ←0
+5: for k ←1 to len(xi) do
+6:
+if k ∈C then
+7:
+Calculate average similarity per category for feature k and select
+category with closest similarity
+8:
+xnew[k] ←selected category
+9:
+else
+10:
+xnew[k] ←λ · xi[k] + (1 −λ) · xj[k]
+11:
+end if
+12: end for
+13: return xnew
+similar category. To introduce variability and avoid overfitting,
+a small random perturbation ϵ is added to λ′
+i,i+1, bounded by
+λmin and λmax:
+λ′
+i,i+1 = min(λmax, max(λmin, λ′
+i,i+1 + Uniform(−ϵ, ϵ)))
+This attention-guided interpolation process is summarized in
+Algorithm 2.
+D. GAT-RWOS
+The GAT-RWOS procedure (Algorithm 3) begins by train-
+ing a GAT on graph G (with feature matrix X and labels y)
+to obtain attention weights A. The attention weights from all
+K heads are aggregated into a unified matrix M:
+M = Aggregate(A(1), . . . , A(K))
+where A(k) is the attention matrix from the k-th head. Minor-
+ity nodes Vm are identified, and a minority-specific attention
+matrix Mm is formed. Strong minority connections Es are
+determined by thresholding Mm with α:
+Es = {(vi, vj) | vi, vj ∈Vm, Mm[i, j] > α}
+The required number of synthetic samples ns is calculated
+based on the desired oversampling ratio.
+To generate ns synthetic samples, the algorithm iteratively
+selects strongly connected minority node pairs (vi, vj) from
+Es. From vi, a biased random walk of length nw is conducted
+using BIASEDWALK with Mm and parameters p and q. If
+the resulting path P contains at least two nodes, attention-
+guided adaptive interpolation weights are computed. Consec-
+utive nodes (va, vb) along P are interpolated via ATTINTERP
+to generate new feature vectors xnew, which are added to the
+synthetic sample set Xsyn. This interpolation is repeated ni
+times per path to enhance diversity. The process continues until
+ns synthetic samples are generated, which are then merged
+with the original training set to achieve balance.
+Fig. 1: Methodology Overview of This Study.
+IV. EXPERIMENTAL SETUP
+Our methodology, as shown in Figure 1, begins with collect-
+ing and preprocessing imbalanced datasets to construct graphs
+for GAT training. After training, we extract graph embeddings
+and attention weights, combining them into an attention matrix
+via element-wise operations (e.g., mean). A sample generation
+algorithm performs biased random walks until the minority
+class size matches the majority class. The generated synthetic
+samples are added to the training set, creating a balanced
+dataset for evaluation.
+A. Datasets
+We selected binary classification datasets from the KEEL
+repository [19], known for class imbalance issues. Datasets,
+where ML classifiers achieved balanced accuracy ≥0.8, were
+excluded, as they either had mild imbalance or were too
+simplistic. We focused on challenging datasets with significant
+class imbalances. Table I details the selected datasets, listing
+total instances (N), positive instances (N+), features (f), and
+imbalance ratio (IR = N−/N+).
+B. Data Preparation
+The data preprocessing involved standardizing the target
+class labels so that the positive class is always the minority
+class across all datasets. The datasets were split into 80%
+training, 10% validation, and 10% testing sets. The training
+set was used for GAT training and balancing, the validation
+set for parameter optimization, and the testing set for perfor-
+mance evaluation. All features were retained, with categorical
+variables label encoded and features scaled to [0, 1] to prevent
+scale bias.
+Since our GAT algorithm requires graph inputs, tabular
+datasets were transformed using distance metrics (Manhattan,
+Euclidean, and Cosine) to generate a similarity matrix S of
+size N × N, where N is the number of instances. Each
+element Sij represents the similarity between instances i and
+Algorithm 3 GAT-RWOS
+Require: G: Graph representing the dataset, X: Feature matrix, y: Labels,
+α: Attention weight threshold, ns: Number of synthetic samples, nw:
+Number of random walk steps, ni: Number of interpolations, p: Return
+probability, q: In-out probability
+Ensure: Xsyn: Synthetic minority samples
+1: Train a GAT on G to obtain attention weights A
+2: Create an attention matrix M by aggregating attention weights
+3: Identify minority nodes Vm based on y
+4: Extract the minority attention matrix Mm
+5: Select strong minority connections Es based on α
+6: Calculate the number of synthetic samples ns
+7: Xsyn ←∅
+8: while |Xsyn| < ns do
+9:
+Select a pair of strongly connected minority nodes (vi, vj) from Es
+10:
+P ←BIASEDWALK(vi, Mm, nw, p, q)
+11:
+if |P| < 2 then
+12:
+continue
+13:
+end if
+14:
+Calculate adaptive interpolation weights along P
+15:
+for k ←1 to ni do
+16:
+Select consecutive nodes (va, vb) from P
+17:
+xnew ←ATTINTERP(xa, xb, weight, C, T )
+18:
+Xsyn ←Xsyn ∪xnew
+19:
+end for
+20: end while
+21: return Xsyn
+j. We constructed a graph G from S, using similarities as
+edge weights and applying a similarity threshold τ to filter
+out irrelevant edges.
+C. Machine Learning Models
+To assess the effectiveness of the synthetic samples in
+balancing the training set, we employed various ML models:
+Logistic Regression (LR), Random Forest (RF), k-Nearest
+Neighbors (KNN), Extreme Gradient Boosting (XGB) and
+Naive Bayes (NB). Default hyperparameters from the respec-
+tive libraries were used to ensure consistency and avoid manual
+tuning bias.
+TABLE I: Overview of Datasets Used in This Study.
+Dataset
+N
+N+
+f
+IR
+Dataset
+N
+N+
+f
+IR
+glass1
+214
+76
+9
+1.82
+yeast-2 vs 8
+482
+20
+8
+23.10
+yeast1
+1484
+429
+8
+2.46
+flare-F
+1066
+43
+11
+23.79
+haberman
+306
+81
+3
+2.78
+car-good
+1728
+69
+6
+24.04
+vehicle3
+846
+212
+18
+2.99
+kr-vs-k-zero-one vs draw
+2901
+105
+6
+26.63
+ecoli1
+336
+77
+7
+3.36
+yeast4
+1484
+51
+8
+28.10
+yeast-2 vs 4
+514
+51
+8
+9.08
+winequality-red-4
+1599
+53
+11
+29.17
+yeast-0-3-5-9 vs 7-8
+506
+50
+8
+9.12
+yeast-1-2-8-9 vs 7
+947
+30
+8
+30.57
+yeast-0-2-5-7-9 vs 3-6-8
+1004
+99
+8
+9.14
+yeast5
+1484
+44
+8
+32.73
+yeast-0-5-6-7-9 vs 4
+528
+51
+8
+9.35
+kr-vs-k-three vs eleven
+2935
+81
+6
+35.23
+glass-0-1-6 vs 2
+192
+17
+9
+10.29
+abalone-17 vs 7-8-9-10
+2338
+58
+8
+39.31
+led7digit-0-2-4-5-6-7-8-9 vs 1
+443
+37
+7
+10.97
+yeast6
+1484
+35
+8
+41.40
+glass2
+214
+17
+9
+11.59
+abalone-19 vs 10-11-12-13
+1622
+32
+8
+49.69
+abalone9-18
+731
+42
+8
+16.40
+poker-8-9 vs 5
+2075
+25
+10
+82.00
+glass5
+214
+9
+9
+22.78
+abalone19
+4174
+32
+8
+129.44
+D. Evaluation Metrics
+In imbalanced learning, improving minority class perfor-
+mance while maintaining majority class effectiveness is cru-
+cial. Following [2], we selected four evaluation metrics: bal-
+anced accuracy, F1-Score, ROC AUC Score, and G-Mean.
+Balanced accuracy computes the average recall of each class:
+ACbalanced = 1
+2
+
+TP
+TP + FN +
+TN
+TN + FP
+
+The F1-Score, the harmonic mean of precision and recall, is
+particularly useful for imbalanced classes:
+F1 = 2 × (Precision × Recall)/(Precision + Recall)
+The ROC AUC Score measures the area under the receiver
+operating characteristic curve, indicating the model’s ability
+to discriminate between classes. The G-Mean, assessing the
+balance between class performances, is calculated as:
+G =
+√
+Precision × Recall
+These metrics collectively provide a comprehensive evalua-
+tion of GAT-RWOS’s handling of class imbalances in binary
+classification tasks.
+E. Hyperparameter Tuning
+Given the complexity of our approach, hyperparameter
+tuning was essential. We employed Bayesian optimization
+using the Optuna framework [20] to efficiently navigate the
+parameter space. Parameters tuned included the distance met-
+ric type, similarity threshold (τ), attention threshold (θ), GAT
+parameters (number of input and output heads, hidden units,
+dropout rate), and biased random walk parameters (p, q,
+number of steps). We conducted five optimization trials, each
+limited to 30 minutes, to improve the F1 score on validation
+data.
+F. Hardware and Software Specifications
+The experiments were conducted on a Windows 10 system
+with Python 3.10, with an Intel Core i7-12700 CPU (12 cores,
+20 threads), 128 GB RAM, and an NVIDIA GeForce RTX
+4090 GPU (24 GB VRAM).
+V. RESULTS & DISCUSSION
+We introduce GAT-RWOS, a novel oversampling method
+that combines GATs with random walk-based oversampling
+to address class imbalance. We evaluate its effectiveness on
+various imbalanced datasets, comparing performance against
+the original data and other state-of-the-art oversampling tech-
+niques. Additionally, we visualize how the synthetic samples
+generated by GAT-RWOS are distributed in the feature space
+for selected datasets.
+Table II compares GAT-RWOS performance to the original
+imbalanced data across ACbalanced, F1 score, AUC, and G
+metrics, revealing the following key insights:
+• GAT-RWOS consistently outperforms the original data
+across all datasets and metrics, effectively addressing
+class imbalance and improving classification perfor-
+mance.
+• The performance improvement is significant for datasets
+with high IRs. For example, in the yeast5 dataset (IR:
+32.73), GAT-RWOS raises ACbalanced from 0.743 to 0.99
+and F1 score from 0.5 to 0.727.
+• Even for datasets with low IRs, like glass1 (IR: 1.82),
+GAT-RWOS shows notable gains: ACbalanced increases
+from 0.83 to 0.866, and F1 score from 0.778 to 0.824.
+• The attention-guided random walk effectively generates
+informative synthetic samples, as evidenced by consistent
+improvements in AUC and G metrics, which measure the
+discriminative power of the classifier and the geometric
+mean of class-wise accuracies, respectively.
+• In
+cases
+such
+as
+glass5
+and
+yeast-0-3-5-9_vs_7-8,
+GAT-RWOS
+achieves
+perfect scores of 1.0 across all metrics, fully resolving
+class imbalance and enabling accurate classification.
+• Performance gains are more pronounced with higher IRs,
+indicating that GAT-RWOS is particularly well-suited for
+handling severe class imbalance scenarios.
+The comparative results of GAT-RWOS against other over-
+sampling methods are presented in Table III. Key insights
+include:
+• GAT-RWOS consistently outperforms the other oversam-
+pling methods across various datasets with varying IR.
+TABLE II: Performance Evaluation of Oversampled Data using GAT-RWOS and Original Data.
+Oversampled Data
+Original Data
+Dataset
+IR
+ACbalanced
+F 1
+AUC
+G
+ACbalanced
+F 1
+AUC
+G
+glass1
+1.82
+0.866
+0.824
+0.866
+0.866
+0.830
+0.778
+0.830
+0.829
+yeast1
+2.46
+0.771
+0.674
+0.771
+0.765
+0.680
+0.543
+0.680
+0.659
+haberman
+2.78
+0.766
+0.632
+0.766
+0.766
+0.707
+0.571
+0.707
+0.676
+vehicle3
+2.99
+0.826
+0.778
+0.826
+0.810
+0.786
+0.703
+0.786
+0.768
+ecoli1
+3.36
+0.904
+0.762
+0.904
+0.899
+0.774
+0.667
+0.774
+0.760
+yeast-2 vs 4
+9.08
+0.889
+0.800
+0.889
+0.885
+0.789
+0.667
+0.789
+0.766
+yeast-0-3-5-9 vs 7-8
+9.12
+1.000
+1.000
+1.000
+1.000
+0.867
+0.667
+0.867
+0.865
+yeast-0-2-5-7-9 vs 3-6-8
+9.14
+0.845
+0.778
+0.845
+0.832
+0.800
+0.750
+0.800
+0.775
+yeast-0-5-6-7-9 vs 4
+9.35
+0.969
+0.769
+0.969
+0.968
+0.700
+0.571
+0.700
+0.632
+glass-0-1-6 vs 2
+10.29
+1.000
+1.000
+1.000
+1.000
+0.694
+0.267
+0.694
+0.624
+led7digit-0-2-4-5-6-7-8-9 vs 1
+10.97
+0.863
+0.750
+0.863
+0.855
+0.863
+0.750
+0.863
+0.855
+glass2
+11.59
+1.000
+1.000
+1.000
+1.000
+0.525
+0.167
+0.525
+0.524
+abalone9-18
+16.40
+0.875
+0.857
+0.875
+0.866
+0.750
+0.667
+0.750
+0.707
+glass5
+22.78
+1.000
+1.000
+1.000
+1.000
+0.976
+0.667
+0.976
+0.976
+yeast-2 vs 8
+23.10
+0.750
+0.667
+0.750
+0.707
+0.617
+0.100
+0.617
+0.484
+flare-F
+23.79
+0.865
+0.667
+0.865
+0.858
+0.500
+0.000
+0.500
+0.000
+car-good
+24.04
+0.929
+0.923
+0.929
+0.926
+0.783
+0.667
+0.783
+0.754
+kr-vs-k-zero-one vs draw
+26.63
+0.855
+0.667
+0.855
+0.845
+0.675
+0.421
+0.675
+0.599
+yeast4
+28.10
+0.797
+0.667
+0.797
+0.772
+0.593
+0.250
+0.593
+0.444
+winequality-red-4
+29.17
+0.600
+0.333
+0.600
+0.447
+0.500
+0.000
+0.500
+0.000
+yeast-1-2-8-9 vs 7
+30.57
+0.667
+0.500
+0.667
+0.577
+0.538
+0.066
+0.538
+0.276
+yeast5
+32.73
+0.990
+0.727
+0.990
+0.990
+0.743
+0.500
+0.743
+0.702
+kr-vs-k-three vs eleven
+35.23
+0.872
+0.750
+0.872
+0.863
+0.802
+0.526
+0.802
+0.782
+abalone-17 vs 7-8-9-10
+39.31
+0.833
+0.800
+0.833
+0.816
+0.667
+0.500
+0.667
+0.577
+yeast6
+41.40
+0.875
+0.857
+0.875
+0.866
+0.750
+0.667
+0.750
+0.707
+abalone-19 vs 10-11-12-13
+49.69
+0.660
+0.333
+0.660
+0.574
+0.500
+0.000
+0.500
+0.000
+poker-8-9 vs 5
+82.00
+0.667
+0.500
+0.667
+0.577
+0.667
+0.500
+0.667
+0.577
+abalone19
+129.44
+0.664
+0.333
+0.664
+0.576
+0.500
+0.000
+0.500
+0.000
+Average
+25.62
+0.843
+0.727
+0.843
+0.818
+0.699
+0.451
+0.699
+0.583
+• On
+highly
+imbalanced
+datasets
+(e.g.,
+glass-0-1-6_vs_2 with IR 10.29, glass2 with
+IR 11.59, and glass5 with IR 22.78), GAT-RWOS
+achieves perfect F1-scores of 1.0, significantly surpassing
+other methods and demonstrating its effectiveness in
+extreme class imbalance scenarios.
+• GAT-RWOS shows substantial improvements over the
+baseline RWOS method by incorporating an attention
+mechanism for more targeted oversampling. For instance,
+on abalone9-18 (IR: 16.4), GAT-RWOS achieves an
+F1-score of 0.857 compared to 0.444 for RWOS.
+• Compared to SMOTE and its variants (PF-SMOTE,
+SMOTE-IPF), GAT-RWOS generally achieves higher F1-
+scores and G-means, indicating its more effective genera-
+tion of informative synthetic samples and improved class
+separability.
+• GAT-RWOS also outperforms ProWSyn on most datasets.
+For example, on yeast4 (IR: 28.1), GAT-RWOS
+achieves an F1-score of 0.667 compared to 0.588 for
+ProWSyn.
+• The performance gains of GAT-RWOS are more pro-
+nounced on datasets with higher imbalance ratios, indi-
+cating that the attention mechanism effectively navigates
+complex decision boundaries in highly imbalanced sce-
+narios.
+Overall, these results demonstrate GAT-RWOS’s superiority
+in handling class imbalance, proving the effectiveness of
+attention-guided random walks in generating informative syn-
+thetic samples and improving classification performance.
+Figure 2 illustrates the placement of synthetic minority
+samples generated by various oversampling methods compared
+to the original imbalanced data on the datasets yeast6, car-
+good, and yeast4. The figure highlights the differences in how
+each method generates and places synthetic minority samples:
+• Original Data: Exhibits significant imbalance between
+majority (blue) and minority (red) classes, with minority
+classes underrepresented.
+• SMOTE: Places new samples along paths connecting mi-
+nority samples, potentially overlapping with the majority
+class.
+• PF-SMOTE: Places samples within inner minority re-
+gions, forming a rectangular shape, without considering
+the majority class distribution.
+• ProWSyn: Generates samples within minority boundaries
+without considering majority presence, possibly causing
+overlap.
+• SMOTE-IPF: Similar to SMOTE, places samples along
+paths connecting minority samples, potentially overlap-
+ping with the majority class.
+• RWOS: Generates samples around minority samples
+without considering majority distribution, possibly plac-
+ing samples atop majority samples.
+• GAT-RWOS: Places samples around closely situated mi-
+nority samples, avoiding outliers, and minimizes overlap
+with the majority class.
+Overall, GAT-RWOS stands out by considering local minor-
+ity density and minimizing overlap with the majority class,
+potentially leading to better class separation and improved
+classification performance.
+Original
+Majority
+Minority
+SMOTE
+PF-SMOTE
+ProWSyn
+SMOTE-IPF
+RWOS
+GAT-RWOS
+Fig. 2: Placement of Synthetic Samples by Various Oversampling Methods.
+VI. CONCLUSION
+We introduced GAT-RWOS, a novel oversampling approach
+that combines GATs with random walk-based oversampling.
+By leveraging the attention mechanism of GATs to guide the
+random walk and focus on the most informative neighbour-
+hoods of minority nodes, GAT-RWOS generates high-quality
+synthetic samples that expand class boundaries while preserv-
+ing the original data distribution. Experiments on various im-
+balanced datasets demonstrate that GAT-RWOS effectively im-
+proves classification performance, consistently outperforming
+the original data and state-of-the-art oversampling techniques.
+Despite these promising results, GAT-RWOS has limita-
+tions. Its computational complexity is higher than simpler
+oversampling methods due to the training of the GAT model.
+Additionally, its effectiveness on multi-class imbalanced prob-
+lems remains to be explored.
+Future work includes optimizing GAT-RWOS’s computa-
+tional efficiency, extending it to handle multi-class imbalance.
+Combining GAT-RWOS with instance selection methods to
+remove redundant instances may further enhance the quality
+of synthetic samples. Applying GAT-RWOS to real-world ap-
+plications like fraud detection, medical diagnosis, and anomaly
+detection could validate its practical utility.
+REFERENCES
+[1] J. H. Joloudari, A. Marefat, M. A. Nematollahi, S. S. Oyelere, and
+S. Hussain, “Effective Class-Imbalance Learning Based on SMOTE and
+Convolutional Neural Networks,” Applied Sciences, vol. 13, p. 4006,
+mar 2023.
+[2] G. Kov´acs, “An empirical comparison and evaluation of minority
+oversampling techniques on a large number of imbalanced datasets,”
+Applied Soft Computing, vol. 83, p. 105662, oct 2019.
+[3] T. Zhao, X. Zhang, and S. Wang, “GraphSMOTE: Imbalanced Node
+Classification on Graphs with Graph Neural Networks,” WSDM 2021 -
+Proceedings of the 14th ACM International Conference on Web Search
+and Data Mining, pp. 833–841, 2021.
+[4] L. Wu, H. Lin, Z. Gao, C. Tan, and S. Z. Li, “GraphMixup: Improving
+Class-Imbalanced Node Classification on Graphs by Self-supervised
+Context Prediction,” 2021.
+[5] Y. Liu, Z. Zhang, Y. Liu, and Y. Zhu, “GATSMOTE: Improving Im-
+balanced Node Classification on Graphs via Attention and Homophily,”
+Mathematics, vol. 10, p. 1799, may 2022.
+[6] N. V. Chawla, K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer,
+“SMOTE: Synthetic Minority Over-sampling Technique,” Journal of
+Artificial Intelligence Research, vol. 16, pp. 321–357, jun 2002.
+[7] S. Gazzah and N. E. B. Amara, “New Oversampling Approaches Based
+on Polynomial Fitting for Imbalanced Data Sets,” in 2008 The Eighth
+IAPR International Workshop on Document Analysis Systems, pp. 677–
+684, IEEE, sep 2008.
+[8] S. Barua, M. M. Islam, and K. Murase, “ProWSyn: Proximity Weighted
+Synthetic Oversampling Technique for Imbalanced Data Set Learning,”
+in Lecture Notes in Computer Science (including subseries Lecture Notes
+in Artificial Intelligence and Lecture Notes in Bioinformatics), vol. 7819
+LNAI, pp. 317–328, 2013.
+[9] J. A. S´aez, J. Luengo, J. Stefanowski, and F. Herrera, “SMOTE–IPF:
+Addressing the noisy and borderline examples problem in imbalanced
+classification by a re-sampling method with filtering,” Information
+Sciences, vol. 291, pp. 184–203, jan 2015.
+[10] J. Lee, N.-r. Kim, and J.-H. Lee, “An over-sampling technique with
+rejection for imbalanced class learning,” in Proceedings of the 9th
+International Conference on Ubiquitous Information Management and
+Communication, (New York, NY, USA), pp. 1–6, ACM, jan 2015.
+[11] Q. Cao and S. Wang, “Applying Over-sampling Technique Based on
+Data Density and Cost-sensitive SVM to Imbalanced Learning,” in
+2011 International Conference on Information Management, Innovation
+Management and Industrial Engineering, vol. 2, pp. 543–548, IEEE,
+nov 2011.
+[12] H. Zhang and M. Li, “RWO-Sampling: A random walk over-sampling
+approach to imbalanced data classification,” Information Fusion, vol. 20,
+pp. 99–116, nov 2014.
+[13] S. Roshanfekr, S. Esmaeili, H. Ataeian, and A. Amiri, “UGRWO-
+Sampling for COVID-19 dataset: A modified random walk under-
+sampling approach based on graphs to imbalanced data classification,”
+pp. 1–43, feb 2020.
+[14] P. Sadhukhan, A. Pakrashi, and B. M. Namee, “Random Walk-steered
+Majority Undersampling,” in 2022 IEEE International Conference on
+Systems, Man, and Cybernetics (SMC), vol. 2022-Octob, pp. 530–537,
+IEEE, oct 2022.
+[15] L. Zhang and H. Sun, “ESA-GCN: An Enhanced Graph-Based Node
+Classification Method for Class Imbalance Using ENN-SMOTE Sam-
+pling and an Attention Mechanism,” Applied Sciences, vol. 14, p. 111,
+dec 2023.
+[16] P. Veliˇckovi´c, G. Cucurull, A. Casanova, A. Romero, P. Li`o, and
+Y. Bengio, “Graph Attention Networks,” oct 2017.
+[17] T.-Y. Lin, P. Goyal, R. Girshick, K. He, and P. Doll´ar, “Focal Loss for
+Dense Object Detection,” aug 2017.
+[18] A. Grover and J. Leskovec, “node2vec,” in Proceedings of the 22nd
+ACM SIGKDD International Conference on Knowledge Discovery and
+Data Mining, (New York, NY, USA), pp. 855–864, ACM, aug 2016.
+[19] J. Derrac, S. Garcia, L. Sanchez, and F. Herrera, “Keel data-mining
+software tool: Data set repository, integration of algorithms and experi-
+mental analysis framework,” J. Mult. Valued Logic Soft Comput, vol. 17,
+pp. 255–287, 2015.
+[20] T. Akiba, S. Sano, T. Yanase, T. Ohta, and M. Koyama, “Optuna: A next-
+generation hyperparameter optimization framework,” in Proceedings
+of the 25th ACM SIGKDD International Conference on Knowledge
+Discovery & Data Mining, pp. 2623–2631, ACM.
+TABLE III: Comparison of Various Oversamplers based on F1 and G Metrics.
+Dataset
+IR
+Metric
+SMOTE
+PF-SMOTE
+ProWSyn
+SMOTE-IPF
+RWOS
+GAT-RWOS
+glass1
+1.82
+F 1
+0.778
+0.824
+0.706
+0.778
+0.778
+0.824
+G
+0.829
+0.866
+0.768
+0.829
+0.829
+0.866
+yeast1
+2.46
+F 1
+0.636
+0.561
+0.629
+0.622
+0.625
+0.674
+G
+0.739
+0.674
+0.735
+0.731
+0.718
+0.765
+haberman
+2.78
+F 1
+0.526
+0.571
+0.571
+0.500
+0.500
+0.632
+G
+0.680
+0.676
+0.676
+0.643
+0.599
+0.766
+vehicle3
+2.99
+F 1
+0.634
+0.632
+0.571
+0.737
+0.703
+0.778
+G
+0.743
+0.726
+0.701
+0.797
+0.768
+0.810
+ecoli1
+3.36
+F 1
+0.700
+0.700
+0.700
+0.762
+0.737
+0.762
+G
+0.841
+0.841
+0.841
+0.899
+0.860
+0.899
+yeast-2 vs 4
+9.08
+F 1
+0.571
+0.727
+0.600
+0.615
+0.727
+0.800
+G
+0.846
+0.875
+0.758
+0.856
+0.875
+0.885
+yeast-0-3-5-9 vs 7-8
+9.12
+F 1
+0.667
+0.500
+0.727
+0.800
+0.667
+1.000
+G
+0.865
+0.824
+0.875
+0.885
+0.865
+1.000
+yeast-0-2-5-7-9 vs 3-6-8
+9.14
+F 1
+0.700
+0.750
+0.778
+0.706
+0.737
+0.778
+G
+0.823
+0.775
+0.832
+0.770
+0.827
+0.832
+yeast-0-5-6-7-9 vs 4
+9.35
+F 1
+0.667
+0.714
+0.750
+0.615
+0.667
+0.769
+G
+0.946
+0.957
+0.775
+0.856
+0.946
+0.968
+glass-0-1-6 vs 2
+10.29
+F 1
+0.444
+0.500
+0.667
+0.444
+0.500
+1.000
+G
+0.850
+0.687
+0.707
+0.850
+0.687
+1.000
+led7digit-0-2-4-5-6-7-8-9 vs 1
+10.97
+F 1
+0.667
+0.750
+0.667
+0.750
+0.750
+0.750
+G
+0.845
+0.855
+0.845
+0.855
+0.855
+0.855
+glass2
+11.59
+F 1
+0.667
+0.500
+0.667
+0.667
+0.308
+1.000
+G
+0.707
+0.894
+0.707
+0.707
+0.742
+1.000
+abalone9-18
+16.40
+F 1
+0.545
+0.400
+0.444
+0.429
+0.444
+0.857
+G
+0.841
+0.687
+0.926
+0.822
+0.692
+0.866
+glass5
+22.78
+F 1
+0.667
+0.667
+0.667
+0.667
+0.667
+1.000
+G
+0.976
+0.976
+0.976
+0.976
+0.976
+1.000
+yeast-2 vs 8
+23.10
+F 1
+0.098
+0.182
+0.114
+0.111
+0.089
+0.667
+G
+0.461
+0.786
+0.583
+0.565
+0.357
+0.707
+flare-F
+23.79
+F 1
+0.211
+0.571
+0.167
+0.211
+0.211
+0.667
+G
+0.842
+0.704
+0.734
+0.842
+0.842
+0.858
+car-good
+24.04
+F 1
+0.857
+0.769
+0.833
+0.857
+0.778
+0.923
+G
+0.923
+0.843
+0.845
+0.923
+0.988
+0.926
+kr-vs-k-zero-one vs draw
+26.63
+F 1
+0.500
+0.500
+0.632
+0.478
+0.500
+0.667
+G
+0.602
+0.602
+0.736
+0.956
+0.602
+0.845
+yeast4
+28.10
+F 1
+0.400
+0.273
+0.588
+0.462
+0.294
+0.667
+G
+0.626
+0.736
+0.975
+0.761
+0.913
+0.772
+winequality-red-4
+29.17
+F 1
+0.250
+0.062
+0.143
+0.250
+0.222
+0.333
+G
+0.444
+0.408
+0.436
+0.444
+0.443
+0.447
+yeast-1-2-8-9 vs 7
+30.57
+F 1
+0.222
+0.182
+0.167
+0.400
+0.286
+0.500
+G
+0.878
+0.737
+0.727
+0.574
+0.776
+0.577
+yeast5
+32.73
+F 1
+0.471
+0.471
+0.545
+0.471
+0.600
+0.727
+G
+0.968
+0.968
+0.854
+0.968
+0.857
+0.990
+kr-vs-k-three vs eleven
+35.23
+F 1
+0.526
+0.667
+0.667
+0.625
+0.667
+0.750
+G
+0.782
+0.788
+0.788
+0.786
+0.788
+0.863
+abalone-17 vs 7-8-9-10
+39.31
+F 1
+0.429
+0.667
+0.571
+0.500
+0.500
+0.800
+G
+0.699
+0.707
+0.809
+0.702
+0.702
+0.816
+yeast6
+41.40
+F 1
+0.667
+0.750
+0.667
+0.667
+0.750
+0.857
+G
+0.860
+0.863
+0.860
+0.860
+0.863
+0.866
+abalone-19 vs 10-11-12-13
+49.69
+F 1
+0.190
+0.130
+0.143
+0.190
+0.140
+0.333
+G
+0.775
+0.866
+0.756
+0.775
+0.877
+0.574
+poker-8-9 vs 5
+82.00
+F 1
+0.062
+0.333
+0.065
+0.062
+0.500
+0.500
+G
+0.749
+0.575
+0.759
+0.749
+0.577
+0.577
+abalone19
+129.44
+F 1
+0.065
+0.044
+0.125
+0.250
+0.061
+0.333
+G
+0.889
+0.827
+0.569
+0.575
+0.881
+0.576

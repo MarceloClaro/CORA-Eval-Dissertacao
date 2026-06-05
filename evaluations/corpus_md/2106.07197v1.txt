@@ -1,0 +1,5488 @@
+arXiv:2106.07197v1  [cs.LG]  14 Jun 2021
+DAGs with No Curl: An Efﬁcient DAG Structure Learning Approach
+Yue Yu 1 Tian Gao 2 Naiyu Yin 3 Qiang Ji 3
+Abstract
+Recently directed acyclic graph (DAG) struc-
+ture learning is formulated as a constrained con-
+tinuous optimization problem with continuous
+acyclicity constraints and was solved iteratively
+through subproblem optimization. To further im-
+prove efﬁciency, we propose a novel learning
+framework to model and learn the weighted adja-
+cency matrices in the DAG space directly. Specif-
+ically, we ﬁrst show that the set of weighted
+adjacency matrices of DAGs are equivalent to
+the set of weighted gradients of graph potential
+functions, and one may perform structure learn-
+ing by searching in this equivalent set of DAGs.
+To instantiate this idea, we propose a new algo-
+rithm, DAG-NoCurl, which solves the optimiza-
+tion problem efﬁciently with a two-step proce-
+dure: 1) ﬁrst we ﬁnd an initial cyclic solution to
+the optimization problem, and 2) then we employ
+the Hodge decomposition of graphs and learn an
+acyclic graph by projecting the cyclic graph to
+the gradient of a potential function. Experimen-
+tal studies on benchmark datasets demonstrate
+that our method provides comparable accuracy
+but better efﬁciency than baseline DAG structure
+learning methods on both linear and generalized
+structural equation models, often by more than
+one order of magnitude.
+1. Introduction
+Bayesian Networks (BN) have been widely used in
+various machine learning applications (Ott et al., 2004;
+Spirtes et al., 1999). Efﬁcient structure learning of BN re-
+mains an active area of research. The structure takes the
+form of a directed acyclic graph (DAG) and plays a vital
+part in other machine learning sub-areas such as causal in-
+1Department of Mathematics, Lehigh University, Bethle-
+hem, PA. 2IBM Research, Yorktown Heights, NY. 3Department
+of Electrical, Computer, and Systems Engineering, Rensselaer
+Polytechnic Institute, Troy, NY..
+Correspondence to: Yue Yu
+<yuy214@lehigh.edu>.
+Proceedings of the 38 th International Conference on Machine
+Learning, PMLR 139, 2021. Copyright 2021 by the author(s).
+ference (Pearl, 1988). However, DAG learning is proven
+to be NP-hard (Chickering et al., 2004) and scalability be-
+comes a major issue.
+Conventional DAG learning methods usually use inde-
+pendence tests (Spirtes et al., 2000b; Tsamardinos et al.,
+2006b) or perform score-and-search for discrete vari-
+ables,
+with different scoring functions (Huang et al.,
+2018) or search procedures (Silander and Myllymaki,
+2006; Chickering, 2002; Cussens, 2011). Learning DAG
+structures for continuous variables is often limited to Gaus-
+sian
+models
+(Yuan and Lin,
+2007;
+Foygel and Drton,
+2010;
+Schmidt et al.,
+2007;
+Mohan et al.,
+2012;
+Mohammadi et al., 2015).
+Recently, a fully continu-
+ous optimization formulation is proposed (Zheng et al.,
+2018), which transforms the discrete DAG constraint into
+a continuous equality constraint. This approach enables
+a suite of continuous optimization techniques such as
+gradient descent to be used, and has been extend to a
+more general parameter class with various neural methods
+(Yu et al., 2019; Lachapelle et al., 2019; Zhu and Chen,
+2019; Ng et al., 2019).
+In this work, we take a step further and investigate if
+we could directly optimize in the DAG space, hence re-
+sulting in a structure learning approach without any ex-
+plicit DAG constraint.
+To this end, we propose a con-
+tinuous optimization framework for DAG structure learn-
+ing, which implicitly enforces the acyclicity of the learned
+graph. Varando (2020) and Ng et al. (2020) have studied
+the usage of empirical correlation and covariance matri-
+ces for similar purposes. Different from their works, we
+propose a new graph-exterior-calculus-based framework of
+DAG such that one can directly optimize in the DAG space.
+To solve the resultant unconstrained optimization problem,
+we further propose an efﬁcient algorithm, DAG-NoCurl,
+developed based on the graph Hodge theory (Jiang et al.,
+2011). Hodge theory (Hodge, 1989), along with the related
+Helmholtz-Hodge Decomposition (Bhatia et al., 2012) on
+vector ﬁelds, describes the decomposition of a vector ﬁeld
+into divergence-free and curl-free components. Hodge the-
+ory on graphs (Lim, 2015) shows that a DAG is a sum
+of three components: a curl-free, a divergence-free, and a
+harmonic component, where the curl-free component is an
+acyclic graph and hence motivates the naming of our algo-
+rithm.
+DAGs with No Curl
+DAG-NoCurl relies on the key step of mapping the adja-
+cency weighted matrix of a directed graph onto its curl-
+free component, i.e., an acyclic graph. The main advan-
+tages of the proposed method over conventional structure
+learning algorithms are: 1) the new model provides an
+equivalent representation of DAGs, which can be readily
+combined with many existing structural equation models
+(Zheng et al., 2018; Yu et al., 2019), 2) the new model
+naturally transfers the DAG structure learning problem
+as a continuous optimization framework, which avoids
+the combinatorial search and enables a suite of contin-
+uous optimization techniques; 3) comparing with other
+fully continuous optimization frameworks for DAG learn-
+ing (Lachapelle et al., 2019; Yu et al., 2019; Zheng et al.,
+2020), our framework needs no explicit DAG constraints,
+many iterations, nor expensive post-processing, hence our
+learning approach achieves a substantially better computa-
+tional efﬁciency.
+Contributions. We make several major contributions in
+this work. 1) We propose a new model for DAGs based
+on the graph combinatorial gradient operator. Speciﬁcally,
+we theoretically show that the weighted adjacency matrix
+of a DAG can be represented as the Hadamard product of a
+skew-symmetric matrix and the gradient of a potential func-
+tion on graph vertices, and vice versa. 2) Based on the new
+model, we develop a new continuous optimization frame-
+work for DAG structure learning without any explicit con-
+straint. 3) To solve for the optimization problem efﬁciently,
+we propose a new DAG structure learning algorithm, DAG-
+NoCurl, that learns a weighted adjacency matrix to the orig-
+inal problem efﬁciently without constraints or iterations. 4)
+We demonstrate the effectiveness of the proposed method
+on synthetic and benchmark datasets. While the optimiza-
+tion problem remains nonconvex, the new formulation can
+substantially improve the efﬁciency, often by more than one
+order of magnitude, while preserving the accuracy.
+2. Problem Statement and Motivation
+Let V denote a set of d numbers of random variables,
+X = (X1, · · · , Xd) ∈Rd be an observation on V , and
+D denotes the space of DAGs G = (V, E) on V , we aim
+to learn a DAG G ∈D given n i.i.d. observations of the
+random vector Xi ∈Rd, i = 1, · · · , n. We assume no la-
+tent variables. To model X, we consider a (generalized)
+structural equation model (SEM) deﬁned by a weighted
+adjacency matrix A = [a1| · · · |ad] ∈Rd×d such that
+E(Xj|Xpa(Xj)) = f(aT
+j X), where pa(Xj) denote the par-
+ents of random variable j in V . Therefore [A]ij ̸= 0 indi-
+cates a directed edge from vertex i to vertex j in a directed
+graph GA and zero otherwise. With a slight abuse of no-
+tation, we will treat the weighted adjacency matrix A as a
+(weighted) directed graph GA.
+Given the data matrix X = (X1, · · · , Xn) ∈Rd×n and
+a loss function F(A, X) that measures the goodness of ﬁt
+of X for A, in the structure learning problem we aim to
+ﬁnd the best DAG A∗that minimizes F(A, X). Hence, the
+overall objective can be written as:
+A∗= argmin
+A
+F(A, X)
+subject to
+GA ∈D
+or
+h(A) = 0,
+(1)
+where D is the DAG space and h(A) = 0 is an alternative
+continuous DAG constraint (Zheng et al., 2018; Wei et al.,
+2020). Formally, h(A) = tr(exp(A ◦A)) −d (Zheng et al.,
+2018) or h(A) = tr[(I + A ◦A/d)d] −d (Yu et al., 2019).
+As one may know,
+the DAG space D for d vari-
+ables is super-exponential.
+For structure learning over
+discrete variables, many exact and approximate algo-
+rithms from observational data have been proposed
+(Spirtes et al., 2000a; de Campos et al., 2009; Shimizu,
+2014) with different search strategies, such as dynamic
+programming (Singh and Moore, 2005; Koivisto and Sood,
+2004), A* (Yuan and Malone, 2013), or integer program-
+ming (Jaakkola et al., 2010; Cussens et al., 2016).
+In
+large-scale problems, approximate methods are often
+needed, with additional assumptions such as bounded
+tree-width (Nie et al., 2014).
+Sampling (Madigan et al.,
+1995; Grzegorczyk and Husmeier, 2008; Niinimaki et al.,
+2012; He et al., 2016) and topological order search
+(Friedman and Koller, 2000; Teyssier and Koller, 2012;
+Scanagatta et al., 2015) are also popular.
+In this work we assume that all variables are continu-
+ous, and study the DAG structure learning problem with
+the focus of SEM and smooth loss function F deﬁned
+over A.
+By using an alternative continuous DAG con-
+straint h(A) = 0, the constrained optimization problem
+in Eq (1) becomes fully continuous. An augmented La-
+grangian method is then employed in (Zheng et al., 2018;
+Yu et al., 2019) which solves unconstrained subproblems
+iteratively to impose the continuous DAG constraint explic-
+itly. We investigate whether the explicit DAG constraint
+can be eliminated entirely, and therefore no iteration would
+be required. The key device in accomplishing this is the
+observation that DAG is associated with curl-free functions
+on edges E (please see Deﬁnition A.7 in the supplementary
+material for a formal deﬁnition of curl-free), which moti-
+vates a new representation of DAGs with A = γ(W, p),
+W ∈Rd×d and p ∈Rd, as will be elaborated in the next
+section. The constrained optimization problem (1) can then
+be replaced by the following objective:
+(W ∗, p∗) = argmin
+W,p
+F(γ(W, p), X),
+(2)
+with the optimal DAG A∗= γ(W ∗, p∗). To the best of our
+knowledge, both the equivalence representation of DAGs
+DAGs with No Curl
+and the application of Hodge theory in DAG structure learn-
+ing have never been studied.
+Main Results
+We propose a new equivalent model for
+DAGs, discussed in Theorem 2.1 and in Section 3, and
+show that γ(W, p) = W ◦ReLU(grad(p)) can be used
+in Eq (2), where ReLU is the rectiﬁed linear unit and grad
+is the graph gradient operator.
+Theorem 2.1. An Equivalent DAG Space.
+Consider a
+set of d random variables, given any real vector p ∈Rd
+and any skew-symmetric weight matrix W ∈Rd×d satisfy-
+ing W = −W T , the following (weighted) directed graph
+spaces are equivalent:
+{GW◦ReLU(grad(p))} = D.
+We defer the proof of Theorem 2.1 to Section 3, given to-
+gether by Theorem 3.5 and Theorem 3.7. To solve (2) with
+the new γ function, we further propose a new algorithm
+in Section 4, based on the combinatorial Hodge theory on
+graphs (Lim, 2015; Jiang et al., 2011). As we elaborate de-
+tails below, we ﬁrst brieﬂy introduce a few useful basic
+graph exterior calculus operators (Bang-Jensen and Gutin,
+2008; Jiang et al., 2011), then formulate DAGs into the
+equivalent model. Due to the page limit, we provide ba-
+sic deﬁnitions for important concepts that are used in this
+paper in Appendix A. For a more thorough introduction
+of graph calculus, we refer the interested readers to (Lim,
+2015).
+Notation-wise, we use A0 to denote the ground truth DAG,
+A∗for the global optimal solution in Eq (1), and ˜A for the
+approximated solution from numerical algorithms. The ul-
+timate goal of our DAG structural learning problem is to
+obtain a DAG ˜A which recovers the structure of A0 and
+obtains a comparable score F( ˜A, X) as F(A∗, X).
+3. An Equivalent Model for DAGs
+Let bG = (V, E) be a complete undirected graph where
+V := {1, · · · , d} is the set of vertices and E is the set
+of undirected edges. Note here since bG is a complete graph,
+the set of k-th cliques of bG is equivalent to all (unordered)
+subsets of V with size k. The ordered and unordered pairs
+of vertices are delimited by (i, j) and {i, j}, respectively,
+where i, j denote the i-th and j-th vertices. Real-valued
+functions on graphs can be deﬁned on vertices, edges, tri-
+angles, and so on.
+On vertices, a real-valued function
+f : V
+→R is called a potential function, and we de-
+note the Hilbert space of all potential functions as L2(V ).
+We may also deﬁne real-valued functions on edges E =
+{{i, j}, i, j ∈V } and triangles T = {{i, j, k}, i, j, k ∈
+V }, with the requirement that these functions are alter-
+nating.
+In particular, an alternating function on edges
+Y : V × V →R requires Y (i, j) = −Y (j, i); an alter-
+nating function on triangles Θ : V × V × V →R, requires
+Θ(i, j, k) = −Θ(j, i, k) = −Θ(i, k, j). In the following
+we use L2
+∧(E) and L2
+∧(T ) to denote the Hilbert spaces of
+real-valued alternating functions on edges and triangles, re-
+spectively. Moreover, we note that p ∈L2(V ) corresponds
+to a real vector p = [p(1), · · · , p(d)] ∈Rd, and an alternat-
+ing function Y ∈L2
+∧(E) corresponds to a skew-symmetric
+real matrix Y ∈Rd×d with [Y ]ij = Y (i, j) and Y = −Y T .
+Here we use the same letter to denote a vector/matrix and
+the corresponding function on vertices/edges.
+Next, we introduce graph calculus operators grad, curl,
+and their adjoint operators below.
+Deﬁnition 3.1. (Lim, 2015)
+The gradient (grad : L2(V ) →L2
+∧(E)) is an operator on
+any function p on vertices:
+(grad p)(i, j) = p(j) −p(i),
+∀{i, j} ∈E,
+and grad(p) is called a gradient ﬂow. Its adjoint operator
+(grad∗: L2
+∧(E) →L2(V )) is deﬁned on any alternating
+function Y on edges:
+(grad∗Y )(i) = −
+d
+X
+j=1
+Y (i, j),
+∀i ∈V.
+The divergence operator (div : L2
+∧(E) →L2(V )) is the
+negative operator of grad∗, which is also deﬁned on any
+alternating function Y on edges:
+(div Y )(i) = −(grad∗Y )(i) =
+d
+X
+j=1
+Y (i, j),
+∀i ∈V.
+The curl (curl : L2
+∧(E) →L2
+∧(T )) is an operator for any
+alternating function Y on edges:
+(curl Y )(i, j, k) = Y (i, j) + Y (j, k) + Y (k, i),
+∀{i, j, k} ∈T,
+and its adjoint operator curl∗: L2
+∧(T ) →L2
+∧(E) is for
+any alternating function Θ on triangles:
+(curl∗Θ)(i, j) =
+d
+X
+k=1
+Θ(i, j, k),
+∀{i, j} ∈E.
+The graph Laplacian (△0 : L2(V ) →L2(V )) is an opera-
+tor on any function p on vertices:
+(△0p)(i) = −(div grad p)(i) = d·p(i)−
+d
+X
+j=1
+p(j), ∀i ∈V.
+The graph Helmholtzian (△1 : L2
+∧(E) →L2
+∧(E)) is de-
+ﬁned on any alternating function Y on edges:
+(△1Y )(i, j) = (grad grad∗Y + curl∗curl Y )(i, j)
+∀{i, j} ∈E.
+DAGs with No Curl
+Lemma 3.2. (Jiang et al., 2011) Let p ∈L2(V ) and Θ ∈
+L2
+∧(E), denote D = grad(p) and R = curl∗(Θ), then D
+and R are curl-free and divergence-free, respectively:
+curl(D)(i, j, k) = 0,
+∀{i, j, k} ∈T ;
+div(R)(i) = −grad∗(R)(i) = 0,
+∀i ∈V.
+Given a complete undirected graph bG(V, E) and a function
+Y ∈L2
+∧(E), with ReLU denoting the rectiﬁed linear unit
+function, we can deﬁne a weighted adjacency matrix A =
+ReLU(Y ) ∈Rd×d as:
+ReLU(Y )(i, j) :=
+
+Y (i, j),
+if Y (i, j) > 0;
+0,
+else.
+and further deﬁne a weighted directed graph GReLU(Y )
+from ReLU(Y ) as the following:
+Deﬁnition
+3.3.
+Consider
+a
+complete
+undirected
+graph bG(V, E) and Y
+∈
+L2
+∧(E), a directed graph
+GReLU(Y )(V, EReLU(Y )) is deﬁned such that there is a
+directed edge from vertex i to vertex j in GReLU(Y ) if
+and only if Y (i, j) > 0, i.e., the set of directed edges
+EReLU(Y ) = {(i, j)|Y (i, j) > 0}. Moreover, note that
+ReLU(Y ) is a weighted adjacency matrix of GReLU(Y ).
+Based on the above deﬁnition, we show that curl-free func-
+tions are naturally associated with DAGs:
+Lemma 3.4. Consider a complete undirected graph
+bG(V, E) and a curl-free function Y
+∈
+L2
+∧(E), then
+ReLU(Y )
+∈
+Rd×d is the weighted adjacency matrix
+of a DAG. Moreover, given any skew-symmetric matrix
+W ∈Rd×d, W ◦ReLU(Y ) is also a DAG, where ◦is the
+Hadamard product.
+All proofs can be found in the supplemental material. Since
+the gradient of any potential function (gradient ﬂow) is curl-
+free, with Lemma 3.4 the ﬁrst part of our main theoretical
+results is obtained:
+Theorem 3.5. Consider V as a set of d random vari-
+ables, given any real vector p
+∈
+Rd and any skew-
+symmetric weight matrix W
+∈Rd×d satisfying W
+=
+−W T , W ◦ReLU(grad(p)) is the weighted adjacency ma-
+trix of a DAG, i.e., {GW◦ReLU(grad(p))} ⊂D.
+Here we note that the proof of Theorem 3.5 is immediately
+obtain by taking Y = grad(p) in Lemma 3.4.
+Remark 3.6. The skew-symmetry requirement of W was
+made based on the fact that at least one or both of
+ReLU(grad(p))(i, j) = 0 and ReLU(grad(p))(j, i) = 0
+must hold true for any i, j ∈V . Here we note that W is
+set to be a skew-symmetric matrix instead of a full matrix
+so as to have a smaller degrees of freedom (d(d −1)/2) in
+the optimization problem (11). In fact, one can use a full
+matrix (with degrees of freedom d2) or a symmetric matrix
+(with degrees of freedom d(d + 1)/2) in place.
+Algorithm 1 DAG-NoCurl algorithm
+1: Apre ←solve (4), and threshold Apre.
+2: ˜p ←compute (9) with Apre.
+˜W ←solve with ﬁxed ˜p (11).
+(Full Only) ˜W, ˜p ←solve (3) with current ˜W, ˜p.
+Return ˜A ←˜W ◦ReLU(grad(˜p)), and threshold ˜A.
+We now show that the other direction also holds true:
+Theorem 3.7. Let A ∈Rd×d be the weighted adjacency
+matrix of a DAG with d nodes, denote V as the correspond-
+ing random variables of these d nodes, then there exists a
+skew-symmetric matrix W ∈Rd×d, W = −W T , and a
+real vector p ∈Rd such that A = W ◦ReLU(grad(p)),
+i.e., D ⊂{GW◦ReLU(grad(p))}. Here p is associated with
+the topological order of the DAG, such that p(j) > p(i) if
+there is a directed path from vertex i to j.
+Hence, we have shown that the set of weighted adja-
+cency matrices for DAGs is equivalent to the set of W ◦
+ReLU(grad(p)), as stated in Theorem 2.1. Denoting S :=
+{W|W ∈Rd×d, W = −W T } as the space of all d × d
+skew-symmetric matrices, {W ◦ReLU(grad(p))|W
+∈
+S, p ∈Rd} provides an admissible solution set for DAG
+structural learning problems.
+While we believe our formulation for DAG is general and
+can have many applications where DAGs are used, in this
+paper we apply it to the continuous DAG learning frame-
+work. With a given loss function F(A, X), the DAG struc-
+tural learning problem can then be written as an optimiza-
+tion problem without an explicit constraint:
+(W ∗, p∗) =
+argmin
+W∈S,p∈RdF(W ◦ReLU(grad(p)), X), (3)
+and the optimal solution A∗= W ∗◦ReLU(grad(p∗)).
+The loss function in (3) is generally nonconvex. Therefore,
+we inherit the difﬁculties associated with nonconvex opti-
+mization. As will be discussed in the ablation study in Sec-
+tion 5.2, numerically solving (3) with a random initializa-
+tion of W and p may result in a stationary point which is far
+from the global optimum. Therefore, instead of solving (3)
+directly, we propose a two-step algorithm, DAG-NoCurl, or
+NoCurl for short.
+4. Algorithm: DAG with No Curl
+The proposed DAG-NoCurl has two main steps. In Step
+1, we compute an initial estimate of A∗, Apre ∈Rd×d,
+whose associated graph GApre is not necessarily acyclic.
+In Step 2, we reﬁne the predicted solution by projecting
+Apre into the set of DAGs and obtaining the ﬁnal solution
+˜A = ˜W ◦ReLU(grad(˜p)). The full algorithm is outlined in
+Algorithm 1, and we introduce each step of the algorithm
+DAGs with No Curl
+in more details as follows.
+Step 1: In order to compute an initial solution Apre, we
+solve for the following unconstrained optimization problem
+Apre = argmin
+A
+F(A, X) + λh(A)
+(4)
+where λ > 0 is a constant penalty coefﬁcient, F(A, X) is
+the loss function and h(A) is a proper continuous constraint
+for acyclicity. For example, in NOTEARS (Zheng et al.,
+2018) the authors proposed h(A) = tr[exp(A ◦A)] −d
+and in DAG-GNN (Yu et al., 2019) h(A) = tr[(I + αA ◦
+A)d] −d, α > 0, was employed. Note that when increas-
+ing the penalty parameter λ to inﬁnity and solving (4) it-
+eratively, an acyclic graph A will be obtained and the pro-
+cedure will be equivalent to the classical penalty method
+for constrained optimization problems. However, here we
+solve for (4) with ﬁxed λ, h(Apre) is generally nonzero and
+Apre is likely not a DAG. Therefore further computation is
+required to obtain a DAG. In practice, we ﬁnd that solving
+for (4) at most twice, once with a ﬁxed λ ( denoted by the
+NoCurl-1 cases) or twice with two ﬁxed λs ( denoted by
+the NoCurl-2 cases), gives satisfactory initializations. In
+the NoCurl-2 cases, we ﬁrst solve for (4) with a λ = λ1,
+and then solve for (4) with a larger ﬁxed penalty coefﬁcient
+λ = λ2. To achieve a good balance between the compu-
+tational time and solution accuracy in structural discovery,
+in Section 5.2 we perform a hyperparameter study for both
+one λ and two λ cases. Note that the DAG constraint in the
+ﬁrst step does not need to be strongly enforced; we use the
+constraint coefﬁcient up to λ = 103, which is much smaller
+than up to λ = 1016 used in NOTEARS.
+Step 2:
+From Step 1, the learnt Apre is likely to be cyclic.
+To obtain an acyclic graph solution ˜A, we use the predic-
+tion Apre as an initialization and search for its curl-free
+component by projecting Apre into the admissible solution
+set {W ◦ReLU(grad(p))}. In particular, we design a pro-
+jection procedure based on the following theorem:
+Theorem 4.1 (Hodge Decomposition Theorem (Lim, 2015;
+Bhatia et al., 2012; Jiang et al., 2011)). Consider an undi-
+rected graph bG(V, E), any function Y ∈L2
+∧(E) can be
+decomposed into three orthogonal components:
+Y = grad(φ) + curl∗(Ψ) + H
+(5)
+where φ ∈L2(V ), Ψ ∈L2
+∧(T ), and H ∈L2
+∧(E). More-
+over, H is a harmonic function satisfying △1H
+= 0,
+curl H = 0 and div H = 0.
+Here △1 is the graph
+Helmholtzian operator as deﬁned in Deﬁnition 3.1.
+The Hodge decomposition shows that every alternating
+function on edges Y ∈L2
+∧(E) can be decomposed into two
+orthogonal components: a gradient ﬂow grad(φ), which
+represents the L2-optimal ordering of the vertices, and a
+divergence-freecomponent, curl∗(Ψ)+H, which measures
+the inconsistency of the vertices ordering. Hence we deﬁne
+a L2 projection operator Proj : L2
+∧(E) →grad(L2(V )) as:
+Proj(Y ) = grad(φ),
+(6)
+such that ⟨Proj(Y ), Y −Proj(Y )⟩= 0, where ⟨·, ·⟩is
+the standard L2 inner product on L2
+∧(E):
+⟨Y, Z⟩:=
+P
+i,j Y (i, j)Z(i, j).
+We note that φ is only unique up to a constant potential
+function, i.e., if Proj(Y ) = grad(φ), then Proj(Y ) =
+grad(φ + C) also holds. Adding a constant to φ will yield
+the same ordering of vertices and the same gradient ﬂow
+grad(φ). For the sake of well-posedness, we determine a
+unique solution φ by ﬁxing its value on the last vertex such
+that φ(d) = 0. Taking the divergence of (5) yields:
+div(Y ) = div grad(φ) = −△0φ,
+(7)
+where △0 is the graph Laplacian operator as deﬁned in Def-
+inition 3.1.
+We obtain the following theorem for the solution of φ:
+Theorem 4.2. Consider an undirected complete graph
+bG(V, E) and Y ∈L2
+∧(E), a solution of (6) is given by
+φ = −△†
+0 div(Y ) = −△†
+0
+X
+j
+Y (i, j)
+(8)
+where † indicates the Moore-Penrose pseudo-inverse. Fix-
+ing φ(d) = 0, the matrix representing the graph Laplacian
+△0 is given by
+[△0]ij =
+
+
+
+d −1,
+if i = j and i, j ̸= d,
+−1,
+if i ̸= j and i, j ̸= d,
+0,
+otherwise.
+Note that a key requirement in the above projection oper-
+ator is that Y has to be an alternating function on edges,
+which corresponds to a d × d skew-symmetric matrix.
+However, Apre is generally not skew-symmetric. Fortu-
+nately, any square matrix M can be written uniquely as
+a symmetric and a skew-symmetric components: M =
+Msym + Mskew with Msym =
+1
+2(M + M T ) and Mskew =
+1
+2(M −M T ). Let C(M) denote the connectivity matrix
+(Nievergelt and Hinrichs, 1993) of a directed graph M such
+that [C(M)]ij = 1 only if a directed path exists from ver-
+tex i to vertex j.
+We apply the projection to the skew-
+symmetric component of the connectivity matrix of Apre,
+and we will show this operation preserves the topological
+order of vertices in a DAG.
+Theorem 4.3. Let A ∈Rd×d be the weighted adjacency
+matrix of a DAG with d nodes, then
+p = −△†
+0 div
+1
+2(C(A) −C(A)T )
+
+,
+(9)
+DAGs with No Curl
+preserves the topological order in A such that p(j) > p(i)
+if there is a directed path from vertex i to j. Moreover, we
+have A = W ◦ReLU(grad(p)) with the skew-symmetric
+matrix W deﬁned as
+[W]ij =
+
+
+
+
+
+
+
+
+
+0,
+if p(i) = p(j) or
+A(i, j) = A(j, i) = 0;
+A(i,j)
+p(j)−p(i),
+if A(i, j) ̸= 0 and A(j, i) = 0;
+A(j,i)
+p(j)−p(i),
+if A(i, j) = 0 and A(j, i) ̸= 0.
+(10)
+A detailed proof is provided in Appendix B. To help the
+readers better understand the formulations in Theorems 4.2
+and 4.3, we also provide concrete examples of the pro-
+jection procedure for several sample Apre, including both
+acyclic and non-acyclic ones, in Appendix D.
+Generally, from Theorem 4.3 we can see that ˜p
+=
+−△†
+0 div
+  1
+2(C(Apre) −C(Apre)T )
+
+provides the topo-
+logical order for an acyclic approximation of Apre. Given
+an adjacency matrix A of a DAG, p can be directly com-
+puted from A following formulation (9). Therefore, when
+the learnt Apre from Step 1 is a DAG with the correct topo-
+logical ordering (even though Apre might be different from
+the ground truth A0), Theorem 4.3 ensures the learning of
+an accurate p in Step 2. On the other hand, when Apre is not
+a DAG but contains some correct ordering information, one
+can still apply formulation (9) to learn p which encodes an
+approximated topological ordering of the vertices. Hence,
+learning Apre in Step 1 ensures the learning of p.
+To further reﬁne the solution of W, instead of employing
+(10) directly we optimize ˜W via:
+˜W = argmin
+W∈S
+F(W ◦ReLU(grad(˜p)), X).
+(11)
+To enforce the skew-symmetric property on W we only op-
+timize elements in the upper triangular matrix of W, while
+setting diagonal elements zero and each lower triangular
+element as negative of the corresponding upper triangular
+element, i.e., Wij = −Wji.
+In the full version of DAG-NoCurl, given the separately op-
+timized ˜
+W and ˜p, we then jointly optimize both together us-
+ing Equation 3. As shown in Algorithm 1, our two-step ap-
+proach does not require any iterative procedure to increase
+the penalty coefﬁcient λ. The full version of DAG-NoCurl
+consists of only 3 (if using only one λ) or 4 (if using two
+λs) unconstrained optimization problems.
+Return a DAG Solution: we get a DAG solution by ˜A =
+˜W ◦ReLU(grad(˜p)). By the standard practice of thresh-
+olding in DAG learning problems (see, e.g., Zheng et al.
+(2018)), we employ the same procedure to post-process
+both Apre after Step 1 and ˜A after Step 2. The threshold-
+ing step in NOTEARS is motivated by rounding numerical
+solutions to obtain an exact DAG and remove false discov-
+eries, while our threshold step aims to remove false dis-
+coveries only since our solution is a DAG already. Specif-
+ically, we threshold the edge weights of a learned A as
+follows: given a ﬁxed threshold ǫ > 0, set A(i, j) = 0
+if |A(i, j)| < ǫ.
+In all the numerical tests we use a
+ﬁxed threshold value ǫ = 0.3 as suggested by NOTEARS
+(Zheng et al., 2018).
+Consistency. While our DAG-NoCurl algorithm can use
+any loss function as long as DAGs can be represented by
+an weighted adjacency matrix, we use the same loss as
+NOTEARS. With the same loss and the equivalence of
+the DAG space per Theorem 2.1, the global minimizer
+of the full version of DAG-NoCurl is the same as that of
+NOTEARS in Eq 1. In practice, the solution is only guar-
+anteed to be a stationary point due to the nonconvexity as-
+sociated with the DAG space, which is shared by all other
+algorithms within the framework (Zheng et al., 2018).
+Further Efﬁciency Improvement. We observe that jointly
+optimizing W and p in Eq (3) in Step 2 of Algorithm 1 is
+often not needed in practice, as it may not improve upon the
+solutions from Eq (11). Intuitively, since p indicates the or-
+der of all nodes, it means that the topological order ˜p from
+Step 1 and ˜W from Eq (11) given ˜p are similar solution
+as the ones from Eq (3). We show the numerical evidence
+in the ablation study and other experiments of Section 5.2.
+Hence we use this more efﬁcient version without Eq (3) as
+the DAG-NoCurl algorithm for experiments.
+5. Empirical Evaluations
+We present empirical evaluations to demonstrate the
+effectiveness of the proposed DAG continuous represen-
+tation and learning algorithm.
+Speciﬁcally, we conduct
+experiments on both linear and nonlinear benchmark
+synthetic and real-world datasets, and compare the pro-
+posed method DAG-NoCurl against competitive baselines.
+Here we outline the empirical set-up, with more details
+including all parameter choices provided in the supple-
+mentary material. The code will be publicly released at
+https://github.com/fishmoon1234/DAG-NoCurl.
+Datasets. We ﬁrst test our algorithm in linear synthetic
+datasets.
+We employ similar experimental setups as ex-
+isting works (Zheng et al., 2018). In each experiment, a
+random graph G is generated by using the Erd˝os–R´enyi
+(ER) model or the scale-free (SF) model with k expected
+edges (denoted as ERk or SFk cases) and uniformly ran-
+dom edge weights to obtain a ground-truth weighted matrix
+A0. Given A0, we take n = 1000 i.i.d. samples of X from
+the linear SEM X = (A0)T X+Z, where the noise Z ∈Rd
+is generated from two different noise models: Gaussian and
+Gumbel. To apply the NoCurl algorithm in the linear SEM,
+DAGs with No Curl
+we use the least-square loss F(A, X) =
+1
+2n||X −AT X||2
+F
+and numerically solve unconstrained optimization prob-
+lems with L-BFGS (Liu and Nocedal, 1989), although we
+note that other standard smooth optimization schemes can
+also be employed. We have also tested loss functions with
+a smooth L1 regularization in implementation. However
+results show little improvements. We suspect that using
+the DAG regularization and a standard threshold procedure
+may have similar sparsity effect (Zheng et al., 2018) – a
+similar observation can be found in regression problems
+(Jain et al., 2014).
+We also test nonlinear SEM and real datasets in Section 5.5
+and 5.6. The graphs in the synthetic datasets can be iden-
+tiﬁed exactly in these SEM settings with additive noises
+(Peters et al., 2014) and hence there is no Markov equiva-
+lence.
+Metrics and Baselines. We use Structure Hamming Dis-
+tance (SHD) (Zheng et al., 2018) to show the structure
+learning accuracy. To assess the ability of methods in solv-
+ing the original optimization problem in Eq (1), we also
+report its score difference from the ground truth: ∆F =
+F( ˜A, X) −F(A0, X).
+For each graph-noise type com-
+bination, 100 trials are performed. The exact numerical
+values for mean accuracy, mean CPU time (in seconds),
+and mean score difference along with their perspective
+standard errors of the mean are reported in full in the
+supplementary materials. We compare our method with
+fast greedy equivalent search (FGS) (Ramsey et al., 2017),
+Causal Additive Models (B¨uhlmann et al., 2014), MMPC
+(Tsamardinos et al., 2006a), and NOTEARS (Zheng et al.,
+2018).
+In the supplemental materials, we also compare
+our method with Equal Variance DAG variants (Chen et al.,
+2019) , which is designed to handle data with equal vari-
+ances. For nonlinear datasets, we also compare with sev-
+eral neural methods and generalized score GES (GSGES)
+(Huang et al., 2018).
+5.1. Hyperparameter Study
+We ﬁrst perform a quantitative study on the hyperparame-
+ter λ choices. We use the ER3-Gaussian and ER6-Gaussian
+cases to select hyperparameters. We test many sets of hy-
+perparameters and due to the page limit the full numerical
+results are listed in Table 4 for ER3-Gaussian and Table 5
+for ER6-Gaussian cases in the supplement. It is observed
+that as long as λ ≥10, the accuracy results are all satis-
+factory. Among which, λ = 102 and λ = (10, 103) are
+generally the best values in term of both accuracy and com-
+putational efﬁciency. Hence, we select them as the default
+values and refer them as NoCurl-1 and NoCurl-2, respec-
+tively. For more discussion, please refer to the supplement.
+Table 1. Ablation Study: results (mean ± standard error over 100
+trials) for d = 30 ER6-Gaussian Cases from DAG-NoCurl, where
+bold numbers highlight the best method for each case. Lower is
+better in both time and SHD. Note the usage of color in the table.
+Method
+Time (Sec)
+SHD
+rand init
+6.04 ± 0.26
+84.88 ± 2.65
+rand p
+7.74 ± 0.38
+130.37 ± 1.66
+NoCurl-1s
+1.58 ± 0.10
+37.36 ± 1.34
+NoCurl-2s
+4.69 ± 0.23
+29.88 ± 1.55
+NoCurl-1-
+1.69 ± 0.11
+32.82 ± 1.07
+NoCurl-2-
+4.67 ± 0.23
+26.08 ± 1.07
+NoCurl-1+
+5.32 ± 0.35
+21.44 ± 1.56
+NoCurl-2+
+10.38 ± 0.23
+17.81 ± 1.29
+NoCurl-1
+3.34 ± 0.21
+21.44 ± 1.56
+NoCurl-2
+7.68 ± 0.39
+17.37 ± 1.18
+5.2. Ablation Study
+We conduct an ablation study on our proposed algorithm,
+listed in Algorithm 1, testing how each step would affect
+the ﬁnal result, with ﬁve settings: 1) solving the optimiza-
+tion problem Eq (3) directly with random initialization of
+(W, p) (denoted as “rand init”); 2) NoCurl without Step
+1, by solving for W with a random p then performing one
+additional step to jointly optimize (W, p) with Eq (3) (de-
+noted as “rand p”); 3) NoCurl without Step 2, by repeat-
+edly increasing the threshold of the structure until a DAG
+is obtained (denoted by an additional “s” in the end). We
+use the thresholds starting from 0.3 (anything below pro-
+duces much worse results) and with increments of 0.05 un-
+til h(A) < 10−8; 4) NoCurl with Eq (10) instead of Eq (11)
+to ﬁnd ˜W (denoted as an additional “-” in the end); 5)
+the full version of NoCurl with the step to jointly optimize
+(W, p) by solving Eq (3) after Step 2 (denoted as an addi-
+tional “+” in the end).
+We list the results of d = 30 in ER6-Gaussian in Table 1,
+and full numerical results are shown in Table 4 to 9 in
+the supplement.
+As one can see from Table 1, NoCurl
+with random initializations (“rand init” and “rand p”) per-
+forms subpar, indicating the importance of Step 1 in Algo-
+rithm 1. Results from NoCurl without Step 2 (NoCurl-1s
+and NoCurl-2s) are poorer than the full algorithm (NoCurl-
+1 and NoCurl-2), indicating that optimizing Eq (11) after
+an initialization is important to reﬁne the solution for better
+accuracy. Moreover, results from NoCurl-1- and NoCurl-
+2- also show the important effects of Step 2 of our algo-
+rithm: using Eq (11) to learn ˜W instead of Eq (10) fur-
+ther improves the accuracy. As can be seen from #Missing
+Edge in Table 6 to 9 in the supplement, Step 2 of our al-
+gorithm generally reduces the number of missing edges in
+comparison to NoCurl-·s and NoCurl-·- alternatives. Lastly,
+adding extra optimization steps (NoCurl-1+ and NoCurl-
+2+), which are the full version of DAG-NoCurl, does not
+result much improvements on accuracy or ∆F. This result
+indicates that the efﬁcient version of NoCurl reaches simi-
+DAGs with No Curl
+lar solutions in practice. All discussions above are general
+and consistent for all dataset tested, as shown in Table 4 to
+9 in the supplement.
+5.3. Optimization Objective Results
+We now study the performance of NoCurl in approximately
+solving the optimization problem given by (1), by compar-
+ing the scores from NoCurl solution ˜A with those from
+NOTEARS and the exact global minimizer from the GOB-
+NILP algorithm (Cussens et al., 2016). Since GOBNILP
+involves enumerating all possible parent sets, its experi-
+ments are limited to small DAGs with d = 10 cases. In
+Table 2, we show the relative score ∆F with respect to the
+ground truth graph A0. Surprisingly, although NoCurl pro-
+vides an approximate solution, we can see that the score
+from NoCurl-2 case is very close to the objective val-
+ues of NOTEARS and GOBNILP, and even outperforms
+NOTEARS in the ER6 d = 50 case. When d increases and
+the optimization problem becomes more difﬁcult, NoCurl
+remains competitive and does not deteriorate.
+5.4. Structure Recovery Results
+We now present the comparison with other baselines meth-
+ods by comparing structure recovery accuracy and compu-
+tational efﬁciency of NoCurl with NOTEARS, FGS, CAM,
+and MMPC. In Figure 1, the top row shows the SHD of dif-
+ferent methods while the buttom row shows the CPU time,
+in seconds, of different methods, both in log scales. For the
+detailed results in all graph types, please refer to Table 6 to
+9 in the supplement.
+Consistent with existing observations (Zheng et al., 2018;
+B¨uhlmann et al., 2014), FGS, MMPC, and CAM’s perfor-
+mances suffer when the number of edges gets larger. While
+NOTEARS is signiﬁcantly more accurate than other base-
+lines, NoCurl achieves a similar accuracy as NOTEARS,
+and can sometimes beat NOTEARS, especially on dense
+and large graphs. For instance, when d = 100, in all ERk-
+Gaussian cases the NoCurl-2 achieves the lowest SHD,
+while in SF4-Gumbel cases the NoCurl-1 achieves the low-
+est SHD among all methods.
+When comparing the ef-
+ﬁciency, NoCurl requires a similar runtime as FGS and
+MMPC, which is faster than NOTEARS by more than one
+or two orders of magnitude. Overall, NoCurl substantially
+improves the efﬁciency comparing with NOTEARS, while
+still sustaining the comparable structure discovery accu-
+racy.
+In addition, we also test our method with Equal Variance
+DAG learning algorithm and its variants (EqV-TD and EqV-
+BU) (Chen et al., 2019), with their results shown in Table 6
+to 9 in the supplement. Our method outperforms both EqV
+variants by a signiﬁcant margin.
+5.5. Nonlinear Synthetic Datasets
+We further test the capability of NoCurl with more general
+models and datasets by sampling X from nonlinear SEM
+Xj = f(A, Xpa(j)) + Zj for j = 1, · · · , d with nonlinear
+functions f, following the same setting as Yu et al. (2019).
+For the nonlinear SEM, we combine NoCurl with DAG-
+GNN, where nonlinear SEM is learnt using neural networks
+and the standard machinery of augmented Lagrangian was
+applied to enforce the continuous constraint. We generated
+3 Datasets (denoted as Nonlinear Case 1 to 3), and for the
+exact modeling and implementation details, please refer to
+the supplement.
+For
+nonlinear
+SEM
+datasets,
+we
+compare
+NoCurl
+with DAG-GNN with CAM, MMPC, GSGES, and re-
+cent neural-based methods DAG-GNN (Yu et al., 2019),
+GraN-DAG (Lachapelle et al., 2019) and NOTEARS-MLP
+(Zheng et al., 2020). The results are shown in Table 10
+in the supplement.
+Generally neural-based models out-
+perform heuristic-based methods. Comparing with DAG-
+GNN, NoCurl has similar accuracy performance across dif-
+ferent variable sizes d. NoCurl (along with DAG-GNN) is
+better than NOTEAR-MLP in Nonlinear Case 1 but does
+not perform as well as GraN-DAG. NoCurl achieves the
+best overall performance in Nonlinear Case 2.
+In Non-
+linear Case 3, NoCurl is worse than NOTEARS-MLP but
+much better than GraN-DAG. Regarding the computational
+time, NoCurl achieves about 3 ∼4 times computational ef-
+ﬁciency gain over its base model DAG-GNN on average.
+NoCurl is also more than one order of magnitude faster
+than NOTEARS-MLP and GraN-DAG. Note that NoCurl’s
+performance is limited by the base model, and we choose
+DAG-GNN as the base model to combine with NoCurl be-
+cause other neural methods (such as NOTEARS-MLP and
+GraN-DAG) use a gradient-based adjacency matrix repre-
+sentation, which is different from the weighted A formula-
+tion in NoCurl. It would be an interesting future work to
+extend NoCurl to these frameworks.
+5.6. Real-World Dataset
+We now apply NoCurl+DAG-GNN to a real-world bioin-
+formatics dataset (Sachs et al., 2005) for the discovery of
+a protein signaling network based on expression levels
+of proteins and phospholipids.
+This is a widely used
+dataset for research on graphical models, with experimen-
+tal annotations accepted by the biological research com-
+munity.
+Based on n = 7466 samples of d = 11 cell
+types, 20 edges were estimated in the ground truth graph
+(Sachs et al., 2005). In Table 11 of the supplement, we
+compare our results and baselines against the ground truth
+offered (Sachs et al., 2005). The proposed NoCurl+DAG-
+GNN obtains an SHD of 16 with 18 estimated edges. The
+learnt graph is also plotted in supplementary materials.
+DAGs with No Curl
+Table 2. Comparison on score differences (lower is better) from the ground truth, △F = F( ˜A, X) −F(A0, X).
+d=10
+d=50
+d=100
+d=10
+d=50
+d=100
+Method
+ER3,Gauss
+ER3,Gauss
+ER3,Gauss
+ER6,Gauss
+ER6,Gauss
+ER6,Gauss
+GOBNILP
+−0.03 ± 0.00
+-
+-
+−0.03 ± 0.00
+-
+-
+NOTEARS
+0.03 ± 0.01
+−0.25 ± 0.04
+−1.65 ± 0.08
+0.22 ± 0.40
+1.97 ± 0.26
+2.49 ± 0.37
+NoCurl-1
+0.09 ± 0.02
+0.05 ± 0.05
+−0.82 ± 0.16
+0.54 ± 0.22
+2.31 ± 0.41
+4.30 ± 0.99
+NoCurl-2
+0.06 ± 0.02
+−0.10 ± 0.05
+−1.44 ± 0.09
+0.36 ± 0.07
+1.77 ± 0.38
+2.61 ± 0.93
+10
+30
+50
+100
+10 0
+10 1
+10 2
+SHD
+ER3-Gaussian
+10
+30
+50
+100
+d
+10 -1
+10 1
+10 3
+Time (s)
+10
+30
+50
+100
+10 0
+10 1
+10 2
+ER4-Gaussian
+10
+30
+50
+100
+d
+10 -1
+10 1
+10 3
+10
+30
+50
+100
+10 1
+10 2
+10 3
+ER6-Gaussian
+10
+30
+50
+100
+d
+10 -1
+10 1
+10 3
+10
+30
+50
+10 0
+10 1
+10 2
+SF4-Gumbel
+NOTEARS
+FGS
+CAM
+MMPC
+NoCurl-1
+NoCurl-2
+10
+30
+50
+100
+d
+10 -1
+10 1
+10 3
+Figure 1. Structural discovery results in terms of SHD (lower is better) and computational time in seconds on linear SEM datasets
+(log-scale). Error bars represent standard errors over 100 simulations.
+Comparing with the other methods reporting a similar num-
+ber of nonzero edges, NoCurl has a better performance in
+terms of SHD.
+6. Conclusion
+We proposed a novel theoretically-justiﬁed continuous rep-
+resentation of DAG structures based on graph exterior cal-
+culus operators, and proved that this new formulation can
+represent the adjacency matrices of DAGs without explicit
+acyclicity constraints, which is often the most intricate part
+of the optimization. We proposed a new algorithm, which
+we coin DAG-NoCurl, to approximately solve for the un-
+constrained optimization problem efﬁciently. The key step
+in this approach is based on the Hodge decomposition the-
+orem, which projects a cyclic graph to the gradient of a po-
+tential function and obtains a DAG approximation of the
+graph.
+Empirically the proposed DAG-NoCurl achieves
+comparable accuracy but with substantially better compu-
+tational efﬁciency than their counter parts with constraints
+in all the datasets tested. We believe it is a promising new
+framework for DAG structure learning where both continu-
+ous and discrete optimization approaches can be applied.
+Assumptions made in the paper (e.g., SEMs and smooth
+loss functions) are widely used and studied in the liter-
+ature, including the NOTEARS and many related meth-
+ods.
+We assume smoothness so we could use gradient-
+based optimization methods (such as LBFGS) in our pro-
+posed algorithm (for ease of comparison with baselines).
+In fact, the smoothness assumption of loss functions can
+be further relaxed.
+For instance, the BFGS method is
+proved to converge for continuously differentiable loss
+functions (Li and Fukushima, 2001). Moreover, we note
+that the proposed framework and algorithm is general,
+which enables the employment of other optimization meth-
+ods. For instance, our framework could handle L0 penal-
+ties if one were to use optimization methods such as dy-
+namic programming or equivalent search as suggested by
+Van de Geer and B¨uhlmann (2013).
+Investigation of the
+new DAG space in these DAG learning frameworks would
+be an interesting future work.
+Acknowledgements
+We thank Dr. Jie Chen and Dr. Changhe Yuan for helpful
+discussions. We thank to anonymous reviewers who have
+provide helpful comments. Y. Yu’s research is supported in
+part by the National Science Foundation under award DMS
+1753031. Part of this work is also supported by DARPA
+grant FA8750-17-2-0132.
+References
+Jørgen Bang-Jensen and Gregory Z Gutin. Digraphs: the-
+ory, algorithms and applications. Springer Science &
+DAGs with No Curl
+Business Media, 2008.
+Harsh Bhatia, Gregory Norgard, Valerio Pascucci, and Peer-
+Timo Bremer. The helmholtz-hodge decomposition—a
+survey.
+IEEE Transactions on visualization and com-
+puter graphics, 19(8):1386–1404, 2012.
+Peter B¨uhlmann, Jonas Peters, Jan Ernest, et al.
+Cam:
+Causal additive models, high-dimensional order search
+and penalized regression. The Annals of Statistics, 42(6):
+2526–2556, 2014.
+Wenyu Chen, Mathias Drton, and Y Samuel Wang. On
+causal discovery with an equal-variance assumption.
+Biometrika, 106(4):973–980, 2019.
+David Maxwell Chickering. Optimal structure identiﬁca-
+tion with greedy search. Journal of Machine Learning
+Research, 2002.
+David Maxwell Chickering,
+David Heckerman,
+and
+Christopher Meek. Large-sample learning of Bayesian
+networks is NP-hard. Journal of Machine Learning Re-
+search, 5:1287–1330, 2004.
+James Cussens.
+Bayesian network learning with cutting
+planes. In UAI, 2011.
+James Cussens, David Haws, and Milan Studen`y. Polyhe-
+dral aspects of score equivalence in Bayesian network
+structure learning. Mathematical Programming, pages
+1–40, 2016.
+Cassio P. de Campos, Zhi Zeng, and Qiang Ji.
+Struc-
+ture learning of Bayesian networks using constraints.
+In ICML, pages 113–120, New York, NY, USA, 2009.
+ACM.
+Rina Foygel and Mathias Drton. Extended bayesian infor-
+mation criteria for gaussian graphical models.
+In Ad-
+vances in neural information processing systems, pages
+604–612, 2010.
+Nir Friedman and Daphne Koller. Being bayesian about
+network structure. In Proceedings of the Sixteenth con-
+ference on Uncertainty in artiﬁcial intelligence, pages
+201–210. Morgan Kaufmann Publishers Inc., 2000.
+Marco Grzegorczyk and Dirk Husmeier.
+Improving the
+structure MCMC sampler for Bayesian networks by in-
+troducing a new edge reversal move. Machine Learning,
+71(2-3):265, 2008.
+Ru He, Jin Tian, and Huaiqing Wu. Structure learning in
+Bayesian networks of a moderate size by efﬁcient sam-
+pling.
+Journal of Machine Learning Research, 17(1):
+3483–3536, 2016.
+William Vallance Douglas Hodge. The theory and applica-
+tions of harmonic integrals. CUP Archive, 1989.
+Biwei Huang, Kun Zhang, Yizhu Lin, Bernhard Sch¨olkopf,
+and Clark Glymour.
+Generalized score functions for
+causal discovery.
+In Proceedings of the 24th ACM
+SIGKDD International Conference on Knowledge Dis-
+covery & Data Mining, pages 1551–1560, 2018.
+Tommi Jaakkola, David Sontag, Amir Globerson, and Ma-
+rina Meila. Learning Bayesian network structure using
+LP relaxations. 2010.
+Prateek Jain, Ambuj Tewari, and Purushottam Kar. On it-
+erative hard thresholding methods for high-dimensional
+m-estimation. In Proceedings of the 27th Neural Infor-
+mation Processing Systems - Volume 1, page 685–693,
+2014.
+Xiaoye Jiang, Lek-Heng Lim, Yuan Yao, and Yinyu
+Ye. Statistical ranking and combinatorial hodge theory.
+Mathematical Programming, 127(1):203–244, 2011.
+Diederik P. Kingma and Jimmy Ba. Adam: A method for
+stochastic optimization. In ICLR, 2015.
+Mikko Koivisto and Kismat Sood. Exact Bayesian struc-
+ture discovery in Bayesian networks. Journal of Machine
+Learning Research, 5:549–573, 2004.
+S´ebastien Lachapelle, Philippe Brouillard, Tristan Deleu,
+and Simon Lacoste-Julien. Gradient-based neural dag
+learning. arXiv preprint arXiv:1906.02226, 2019.
+Dong-Hui Li and Masao Fukushima. On the global conver-
+gence of the BFGS method for nonconvex unconstrained
+optimization problems. SIAM Journal on Optimization,
+11(4):1054–1064, 2001.
+Lek-Heng Lim. Hodge laplacians on graphs. arXiv preprint
+arXiv:1507.05379, 2015.
+Dong C Liu and Jorge Nocedal. On the limited memory
+BFGS method for large scale optimization. Mathemati-
+cal programming, 45(1-3):503–528, 1989.
+David Madigan, Jeremy York, and Denis Allard. Bayesian
+graphical models for discrete data. International Statis-
+tical Review/Revue Internationale de Statistique, pages
+215–232, 1995.
+Abdolreza Mohammadi, Ernst C Wit, et al.
+Bayesian
+structure learning in sparse Gaussian graphical models.
+Bayesian Analysis, 10(1):109–138, 2015.
+Karthik Mohan, Mike Chung, Seungyeop Han, Daniela
+Witten, Su-In Lee, and Maryam Fazel. Structured learn-
+ing of Gaussian graphical models. In NIPS, 2012.
+DAGs with No Curl
+Ignavier Ng, Zhuangyan Fang, Shengyu Zhu, Zhitang
+Chen, and Jun Wang.
+Masked gradient-based causal
+structure learning.
+arXiv preprint arXiv:1910.08527,
+2019.
+Ignavier Ng, AmirEmad Ghassami, and Kun Zhang. On
+the Role of Sparsity and DAG Constraints for Learning
+Linear DAGs. In Advances in Neural Information Pro-
+cessing Systems, 2020.
+Siqi Nie, Denis D Mau´a, Cassio P De Campos, and Qiang
+Ji. Advances in learning Bayesian networks of bounded
+treewidth. In NIPS, 2014.
+Jurg Nievergelt and Klaus H. Hinrichs.
+Algorithms and
+Data Structures: With Applications to Graphics and
+Geometry.
+Prentice-Hall, Inc., USA, 1993.
+ISBN
+0134894286.
+Teppo Niinimaki, Pekka Parviainen, and Mikko Koivisto.
+Partial order MCMC for structure discovery in Bayesian
+networks. arXiv preprint arXiv:1202.3753, 2012.
+Sascha Ott, Seiya Imoto, and Satoru Miyano. Finding op-
+timal models for small gene networks. In Paciﬁc sympo-
+sium on biocomputing, 2004.
+Adam Paszke, Sam Gross, Soumith Chintala, Gregory
+Chanan, Edward Yang, Zachary DeVito, Zeming Lin,
+Alban Desmaison, Luca Antiga, and Adam Lerer. Au-
+tomatic differentiation in PyTorch. 2017.
+Judea Pearl. Probabilistic reasoning in intelligent systems:
+networks of plausible inference. Morgan Kaufmann Pub-
+lishers, Inc., 2 edition, 1988.
+Jonas Peters, Joris M Mooij, Dominik Janzing, and Bern-
+hard Sch¨olkopf. Causal discovery with continuous ad-
+ditive noise models. The Journal of Machine Learning
+Research, 15(1):2009–2053, 2014.
+Joseph Ramsey,
+Madelyn Glymour,
+Ruben Sanchez-
+Romero, and Clark Glymour. A million variables and
+more: the fast greedy equivalence search algorithm for
+learning high-dimensional graphical causal models, with
+an application to functional magnetic resonance images.
+International Journal of Data Science and Analytics, 3
+(2):121–129, 2017.
+Karen Sachs, Omar Perez, Dana Peer, Douglas A Lauffen-
+burger, and Garry P Nolan. Causal protein-signaling net-
+works derived from multiparameter single-cell data. Sci-
+ence, 308(5721):523–529, 2005.
+Mauro Scanagatta, Cassio P de Campos, Giorgio Corani,
+and Marco Zaffalon. Learning bayesian networks with
+thousands of variables. In Advances in neural informa-
+tion processing systems, pages 1864–1872, 2015.
+Mark Schmidt, Alexandru Niculescu-Mizil, Kevin Mur-
+phy, et al. Learning graphical model structure using l1-
+regularization paths. In AAAI, volume 7, pages 1278–
+1283, 2007.
+Shohei Shimizu. LiNGAM: Non-Gaussian methods for es-
+timating causal structures. Behaviormetrika, 41(1):65–
+98, 2014.
+Tomi Silander and Petri Myllymaki. A simple approach for
+ﬁnding the globally optimal Bayesian network structure.
+In UAI, 2006.
+Ajit P. Singh and Andrew W. Moore.
+Finding optimal
+Bayesian networks by dynamic programming. Techni-
+cal report, Carnegie Mellon University, 2005.
+Peter Spirtes, Clark N Glymour, and Richard Scheines.
+Computation, Causation, and Discovery. AAAI Press,
+1999.
+Peter Spirtes, Clark Glymour, Richard Scheines, Stuart
+Kauffman, Valerio Aimale, and Frank Wimberly. Con-
+structing Bayesian network models of gene expression
+networks from microarray data, 2000a.
+Peter Spirtes, Clark N Glymour, Richard Scheines, David
+Heckerman, Christopher Meek, Gregory Cooper, and
+Thomas Richardson. Causation, prediction, and search.
+MIT press, 2000b.
+Marc Teyssier and Daphne Koller. Ordering-based search:
+A simple and effective algorithm for learning bayesian
+networks. arXiv preprint arXiv:1207.1429, 2012.
+Ioannis Tsamardinos, Laura E Brown, and Constantin F
+Aliferis. The max-min hill-climbing bayesian network
+structure learning algorithm. Machine learning, 65(1):
+31–78, 2006a.
+Ioannis Tsamardinos, LauraE. Brown, and ConstantinF. Al-
+iferis.
+The max-min hill-climbing Bayesian network
+structure learning algorithm. Machine Learning, 65(1):
+31–78, 2006b.
+Sara Van de Geer and Peter B¨uhlmann. L0-penalized max-
+imum likelihood for sparse directed acyclic graphs. An-
+nals of Statistics, 41(2):536–567, 2013.
+Gherardo Varando.
+Learning dags without imposing
+acyclicity. arXiv preprint arXiv:2006.03005, 2020.
+Dennis Wei, Tian Gao, and Yue Yu. Dags with no fears:
+A closer look at continuous optimization for learning
+bayesian networks.
+arXiv preprint arXiv:2010.09133,
+2020.
+DAGs with No Curl
+Yue Yu, Jie Chen, Tian Gao, and Mo Yu. Dag-gnn: Dag
+structure learning with graph neural networks.
+arXiv
+preprint arXiv:1904.10098, 2019.
+Changhe Yuan and Brandon Malone.
+Learning optimal
+Bayesian networks: A shortest path perspective. 48:23–
+65, 2013.
+Ming Yuan and Yi Lin. Model selection and estimation in
+the gaussian graphical model. Biometrika, 94(1):19–35,
+2007.
+Xun Zheng, Bryon Aragam, Pradeep K Ravikumar, and
+Eric P Xing. Dags with no tears: Continuous optimiza-
+tion for structure learning. In Advances in Neural Infor-
+mation Processing Systems, pages 9472–9483, 2018.
+Xun Zheng, Chen Dan, Bryon Aragam, Pradeep Raviku-
+mar, and Eric P. Xing. Learning sparse nonparametric
+DAGs. In International Conference on Artiﬁcial Intelli-
+gence and Statistics, 2020.
+Shengyu Zhu and Zhitang Chen. Causal discovery with re-
+inforcement learning. arXiv preprint arXiv:1906.04477,
+2019.
+A. Related Concepts
+In this section, we brieﬂy review a few related mathe-
+matical concepts in the paper, which can be found in
+(Bang-Jensen and Gutin, 2008; Jiang et al., 2011). We use
+the same notation from the main paper.
+A.1. Concepts in Linear Algebra
+Deﬁnition A.1 (Symmetric and Skew-Symmetric). A real
+matrix Y
+∈Rd×d is called symmetric if and only if
+[Y ]ij = [Y ]ji for all i, j ∈{1, · · · , n}. Similarly, Y is
+called skew-symmetric if and only if [Y ]ij = −[Y ]ji for all
+i, j ∈{1, · · · , n}.
+A.2. Concepts in Calculus and Graph Calculus
+Deﬁnition A.2 (Hilbert Space). A Hilbert space is a com-
+plete vector space with an inner product deﬁned on the
+space.
+Deﬁnition A.3 (Complete Graph). A complete graph is a
+simple undirected graph in which every pair of distinct ver-
+tices is connected by a unique edge.
+Deﬁnition A.4 (Cliques). For an undirected graph bG =
+(V, E), the set of k−th cliques Kk( bG) is deﬁned by
+{i1, · · · , ik} ∈Kk( bG)
+if and only if all pairs of vertices in {i1, · · · , ik} are in E.
+Therefore, when bG is a complete graph, the k−th cliques of
+bG is equivalent to
+n V
+k
+o
+.
+Deﬁnition A.5 (Alternating Function). For an undirected
+graph bG = (V, E), an alternating function on k−th cliques
+is: f : V × · · · × V →R satisfying
+f(iσ(1), · · · , iσ(k)) = sgn(σ)f(i1, · · · , ik)
+for all {i1, · · · , ik} ∈Kk and σ is any permutation on
+{1, · · · , k}.
+Here sgn(σ) denotes the sign of σ which
+is 1 when the parity of the number of inversions in
+(iσ(1), · · · , iσ(k)) is even, and sgn(σ) = −1 if the par-
+ity of the number of inversions is odd.
+Deﬁnition A.6 (L2 Functions). For an undirected graph
+bG = (V, E), the Hilbert space of all potential functions
+f : V →R is denoted as L2(V ), with the inner product
+taken to be the standard inner product: for f, g ∈L2(V ),
+⟨f, g⟩:=
+d
+X
+i=1
+f(i)g(i).
+For the k−th cliques, we denote the Hilbert space of all al-
+ternating functions on Kk as L2
+∧(Kk), with the inner prod-
+uct deﬁned as: for Θ, Φ ∈L2
+∧(Kk),
+⟨Θ, Φ⟩:=
+X
+{i1,··· ,ik}∈Kk
+Θ(i1, · · · , ik)Φ(i1, · · · , ik).
+DAGs with No Curl
+Deﬁnition A.7 (Curl-Free, Divergence-Free). An edge
+function f ∈L2
+∧(E) is called curl-free if and only if
+curl(f)(i, j, k) = 0,
+∀{i, j, k} ∈T,
+or, equivalently, f ∈ker(curl). Similarly, f ∈L2
+∧(E) is
+called divergence-free if and only if
+div(f)(i) = −grad∗(f)(i) = 0,
+∀i ∈V,
+or, equivalently, f ∈ker(div) = ker(grad∗).
+Deﬁnition A.8 (Harmonic). An edge function f ∈L2
+∧(E)
+is called harmonic if and only if
+△1(f)(i, j) = 0,
+∀{i, j} ∈E,
+or, equivalently, f ∈ker(△1).
+A.3. Concepts in Directed Graphs
+Deﬁnition A.9 (Connectivity Matrix). For a directed
+graph G = (V, E) with d vertices, its connectivity matrix
+C(G) is a d×d matrix such that [C(G)]ij = 1 if there exists
+a directed path from vertex i to vertex j, and [C(G)]ij = 0
+otherwise.
+B. Proof of Lemmas and Theorems
+Here we provide the detailed proof of some critical lemmas
+and theorems in the main paper.
+B.1. Proof of Lemma 3.4
+Lemma 3.4 Consider a complete undirected graph bG(V, E)
+and a curl-free function Y ∈L2
+∧(E), then ReLU(Y ) ∈
+Rd×d is the weighted adjacency matrix of a DAG. More-
+over, given any skew-symmetric matrix W
+∈
+Rd×d,
+W ◦ReLU(Y ) is also a DAG, where ◦is the Hadamard
+product.
+Proof. We prove the lemma by contradiction. Assuming
+that there is a cycle in GReLU(Y ) (the graph with weighted
+adjacency matrix ReLU(Y )) on an (ordered) set of nodes
+(c1, c2, · · · , ck, c1) and denoting ck+1 := c1 just for nota-
+tion simplicity, the curl-free property of Y yields
+k
+X
+i=1
+Y (ci, ci+1) =
+k−1
+X
+i=2
+curl(Y )(c1, ci, ci+1) = 0.
+There exists at least 1 pair of (ci, ci+1) such that
+Y (ci, ci+1) ≤0 and hence (ci, ci+1) /∈EReLU(Y ), which
+contradicts with the assumption that (c1, c2, · · · , ck, c1)
+forms a cycle.
+B.2. Proof of Theorem 3.7
+Theorem 3.7 Let A ∈Rd×d be the weighted adjacency
+matrix of a DAG with d nodes, denote bG(V, E) as the com-
+plete undirected graph on these d nodes, then there exists
+a skew-symmetric matrix W ∈Rd×d and a potential func-
+tion p ∈L2(V ) such that A = W ◦ReLU(grad(p)), i.e.,
+D ⊂{GW◦ReLU(grad(p))}. Here p is associated with the
+topological order of the DAG, such that p(j) > p(i) if there
+is a directed path from vertex i to j.
+Proof. We ﬁrst show that there exists a p ∈L2(V ) such
+that
+(grad(p))(i, j) > 0, when A(i, j) ̸= 0.
+(12)
+Since GA is a DAG, there exists at least one topologi-
+cal (partial) order for its vertices (Bang-Jensen and Gutin,
+2008).
+Taking an topological (partial) order ≺
+=
+(c1, c2, · · · , cd) of all the vertices in GA, p deﬁned as
+p(ci) = i satisﬁes condition (12). We now construct the
+weight matrix W. Since A represents a DAG, for any two
+vertices i and j, at least one or both of A(i, j) = 0 and
+A(j, i) = 0 must hold true. We deﬁne an skew-symmetric
+matrix W as:
+[W]ij =
+
+
+
+
+
+0, if p(i) = p(j) or A(i, j) = A(j, i) = 0;
+A(i,j)
+p(j)−p(i), if A(i, j) ̸= 0 and A(j, i) = 0;
+A(j,i)
+p(j)−p(i), if A(i, j) = 0 and A(j, i) ̸= 0.
+(13)
+Then A = W ◦ReLU(grad(p)), and we have proved the
+conclusion. Moreover, combining Theorem 3.5 and Theo-
+rem 3.7, we note that
+D = {GW◦ReLU(grad(p))},
+which is our main theoretical result.
+B.3. Proof of Theorem 4.3
+Theorem 4.3 Let A ∈Rd×d be the weighted adjacency
+matrix of a DAG with d nodes, then
+p = −△†
+0 div
+1
+2(C(A) −C(A)T )
+
+,
+(14)
+preserves the topological order in A such that p(j) > p(i)
+if there is a directed path from vertex i to j. Moreover, we
+have A = W ◦ReLU(grad(p)) with the skew-symmetric
+matrix W deﬁned as in (13).
+Proof. Taking any two vertices i, j with a directed path
+from i to j, we show that p(j) > p(i). We assume that
+i, j ̸= d without loss of generality, since the proof can be
+trivially extended to the cases of i = d or j = d. Since
+C(A) is the connectivity matrix of A and A is the weighted
+DAGs with No Curl
+adjacency matrix of a DAG, we have the following facts
+hold:
+[C(A)]ii = [C(A)]jj = [C(A)]ji = 0, [C(A)]ij = 1.
+(15)
+Moreover, for any other vertex k, if there exists a directed
+path from j to k, there is also a directed path from i to
+k.
+Therefore, [C(A)]jk = 1 ⇒[C(A)]ik = 1, i.e.,
+[C(A)]ik ≥[C(A)]jk. On the other hand, if there exists
+a directed path from k to i, there is also a directed path
+from k to j. Therefore [C(A)]ki = 1 ⇒[C(A)]kj = 1 and
+[C(A)]kj ≥[C(A)]ki.
+From the deﬁnition of p we note that
+−△0p = div
+1
+2(C(A) −C(A)T )
+
+.
+The i-th and j-th rows of the above system write:
+−dp(i) +
+d
+X
+k=1
+p(k) = 1
+2
+ d
+X
+k=1
+[C(A)]ik −
+d
+X
+k=1
+[C(A)]ki
+!
+,
+−dp(j) +
+d
+X
+k=1
+p(k) = 1
+2
+ d
+X
+k=1
+[C(A)]jk −
+d
+X
+k=1
+[C(A)]kj
+!
+.
+Subtracting the above two equations from each other and
+applying the facts in (15) yield
+d(p(j) −p(i)) =1
+2
+X
+k̸=i,j
+([C(A)]ik + [C(A)]kj −[C(A)]jk
+−[C(A)]ki) + [C(A)]ij −[C(A)]ji ≥1.
+Therefore p(j) > p(i), and A = W ◦ReLU(grad(p)) can
+be similarly proved as in Theorem 3.7.
+C. Complexities
+The computational and space complexities depend on the
+optimization method used. Let K be the time complexity
+to solve one objective. For example, for L-BFGS K =
+O(mn), where n is the number of variables and m is the
+number of steps stored in memory. Our method takes O(K)
+time, compared to O(LK) of NOTEARS where L is the
+number of iteration in the augmented Lagrangian method.
+We share the same space complexity as NOTEARS.
+D. Examples of Graph Projection
+In this section we provide the detailed procedure of graph
+projection described in Theorems 4.2 and 4.3, for four rep-
+resentative graphs as shown in Figure 2. In all examples
+we consider graphs with 4 vertices which are denoted as A,
+B, C and D in Figure 2. In the following calculations we
+assume A as the ﬁrst vertex and D as the last vertex. In
+Figure 2. Representative graphs as examples to demonstrate the
+graph projection procedure.
+each example, for a given graph GApre, we ﬁrst calculate
+its approximated gradient ﬂow component via
+˜p = −△†
+0 div
+1
+2(C(Apre) −C(Apre)T )
+
+,
+then the weights ˜W are computed from (10). We note that
+the matrix for graph Laplacian △0 given by (8) writes:
+[△0] =
+
+
+3
+−1
+−1
+0
+−1
+−3
+−1
+0
+−1
+−1
+−3
+0
+0
+0
+0
+0
+
+.
+Since ˜p(4) = 0 is ﬁxed, we only need to invert the sub-
+matrix of [△0] formed by ignoring its 4-th row and 4-th
+column, and this submatrix is invertible. Hence the calcu-
+lation described in Theorem 4.2 is well-posed.
+Example 1, projection for a connected acyclic graph (a
+tree): We ﬁrst consider a fully connected acyclic graph as
+shown in the ﬁrst plot of Figure 2, with the weighted adja-
+cency matrix:
+Apre =
+
+
+0
+−1
+0
+0
+0
+0
+2
+0
+0
+0
+0
+5
+0
+0
+0
+0
+
+.
+The connectivity matrix of Apre writes
+C(Apre) =
+
+
+0
+1
+1
+1
+0
+0
+1
+1
+0
+0
+0
+1
+0
+0
+0
+0
+
+.
+DAGs with No Curl
+Therefore, the projection result ˜p from (9) and the weights
+˜W from (10) are obtained:
+˜p =
+
+
+−0.75
+−0.5
+−0.25
+0
+
+,
+˜
+W =
+
+
+0
+−4
+0
+0
+4
+0
+8
+0
+0
+−8
+0
+20
+0
+0
+−20
+0
+
+.
+We then have the acyclic approximation of Apre as
+˜A = ˜W ◦ReLU(grad(˜p)) =
+
+
+0
+−1
+0
+0
+0
+0
+2
+0
+0
+0
+0
+5
+0
+0
+0
+0
+
+= Apre.
+Therefore, the projected potential function ˜p fully preserves
+the vertices ordering in this acyclic graph, which is consis-
+tent with Theorem 4.3.
+Example 2, projection for a disconnected acyclic graph
+(a forest): Consider an acyclic graph consisting of two
+trees as shown in the second plot of Figure 2, with the
+weighted adjacency matrix:
+Apre =
+
+
+0
+−1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+5
+0
+0
+0
+0
+
+.
+The connectivity matrix of Apre writes
+C(Apre) =
+
+
+0
+1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+0
+0
+0
+
+.
+Therefore, the projection result ˜p from (9) and the weight
+˜W from (10) are
+˜p =
+
+
+−0.25
+0
+−0.25
+0
+
+,
+˜
+W =
+
+
+0
+−4
+0
+0
+4
+0
+0
+0
+0
+0
+0
+20
+0
+0
+−20
+0
+
+.
+We then have the acyclic approximation of Apre as
+˜A = ˜W ◦ReLU(grad(˜p)) =
+
+
+0
+−1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+5
+0
+0
+0
+0
+
+= Apre.
+The results indicate that the projected potential function
+˜p fully preserves the (partial) ordering in each tree, and
+the projection procedure in Theorem 4.3 maps the acyclic
+graph to itself.
+Example 3, projection for a cyclic graph with cycle
+length 2:
+We now consider a cyclic graph with a cycle
+between the ﬁrst and the second vertex, as shown in the
+third plot of Figure 2, with the weighted adjacency matrix:
+Apre =
+
+
+0
+−1
+0
+0
+2
+0
+0
+0
+0
+0
+0
+5
+−2
+0
+0
+0
+
+.
+The connectivity matrix of Apre writes
+C(Apre) =
+
+
+1
+1
+0
+0
+1
+1
+0
+0
+1
+1
+0
+1
+1
+1
+0
+0
+
+.
+Therefore, the projection result ˜p and the weight ˜W are
+˜p =
+
+
+0.375
+0.375
+−0.25
+0
+
+,
+˜
+W =
+
+
+0
+0
+0
+16
+3
+0
+0
+0
+0
+0
+0
+0
+20
+−16
+3
+0
+−20
+0
+
+.
+We then have the acyclic approximation of Apre as
+˜A = ˜W ◦ReLU(grad(˜p)) =
+
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+5
+−2
+0
+0
+0
+
+̸= Apre.
+It can be seen that when there is a local cycle (between
+nodes A and B in this example), the projection procedurein
+Theorem 4.3 simply removes all edges involved in this cy-
+cle and keeps the ordering of vertices from all other edges.
+Example 4, projection for a cyclic graph with cycle
+length 4: We now consider a cyclic graph as shown in the
+last plot of Figure 2, with the weighted adjacency matrix:
+Apre =
+
+
+0
+−1
+0
+0
+0
+0
+2
+0
+0
+0
+0
+5
+−2
+0
+0
+0
+
+.
+The connectivity matrix of Apre writes
+C(Apre) =
+
+
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
+.
+Therefore, C(Apre) −C(Apre)T ) = 0, and the projection
+results ˜p = (0, 0, 0, 0)T. We then have the acyclic approxi-
+mation of Apre as
+˜W ◦ReLU(grad(˜p)) =
+
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+
+This example illustrates that when there is a cycle with
+length greater than 2, the projection procedure in Theorem
+4.3 removes all edges between any two nodes in this cycle.
+DAGs with No Curl
+E. Detailed Algorithm and Experiment
+Settings
+E.1. Settings on Synthetic Dataset
+In
+the
+following
+we
+brieﬂy
+describe
+the
+empirical
+process
+of
+generating
+synthetic
+datasets.
+The code will
+be publicly
+released
+at
+https://github.com/fishmoon1234/DAG-NoCurl.
+Linear synthetic datasets: In the linear SEM tests, for
+each d ∈{10, 30, 50, 100} and each graph type-noise type
+combination, 100 trials were performed with 1000 samples
+in each dataset. For each trial, a ground truth DAG GA0 is
+randomly sampled following either the Erd˝os–R´enyi (ER)
+or the scale-free (SF) scheme. When (i, j) is a directed
+edge of the ground truth DAG GA0, the weight of this edge
+A0
+ij is sampled from U([−2, −0.5]∪[0.5, 2]). Each sample
+Xi ∈Rd, i = 1, · · · , 1000, is generated following:
+Xi
+j = (a0
+j)T π0(Xi
+j) + Zi
+j
+where Xi
+j is the ith sample of jth variable Xj, a0
+j ∈Rd
+is the jth column of the ground truth weighted adjacency
+matrix A0 = [a0
+1| · · · |a0
+d], π0(Xi
+j) is a random vector of
+size d containing the variable values corresponding to the
+parents of jth variable Xj per A0 in the ith sample, i.e., its
+k-th component [π0(Xi
+j)]k = Xi
+k if Xk is a parent of Xj in
+A0 otherwise [π0(Xi
+j)]k = 0, Zi
+j is either a Gaussian noise
+Zi
+j ∼N(0, 1) or a Gumbel noise Zi
+j ∼Gumbel(0, 1).
+Nonlinear synthetic datasets: In the nonlinear SEM tests,
+5 trials were performed for each case with 5000 samples in
+each dataset. For each trial the ground truth DAG GA0 and
+the weighted adjacency matrix A0 are generated following
+the same way as in the linear SEM tests. Three types of
+datasets were considered:
+• Nonlinear Case 1: For each d ∈{10, 20, 50, 100},
+each sample Xi ∈Rd, i = 1, · · · , 5000, is generated
+following
+Xi
+j = cos((a0
+j)T π0(Xi
+j) + 1) + Zi
+j
+where A0 is the weighted adjacency matrix of a graph
+sampled following the Erd˝os–R´enyi (ER) scheme with
+3d expected edges (denoted as ER3), and the noise
+Zi
+j ∼N(0, 1).
+• Nonlinear Case 2: For each d ∈{10, 20, 50, 100},
+each sample Xi ∈Rd, i = 1, · · · , 5000, is generated
+following
+Xi
+j =2 sin((a0
+j)T π0(Xi
+j) + 0.5)
++ ((a0
+j)T π0(Xi
+j) + 0.5) + Zi
+j
+where A0 is the weighted adjacency matrix of a graph
+sampled following the Erd˝os–R´enyi (ER) scheme with
+3d expected edges (denoted as ER3), and the noise
+Zi
+j ∼N(0, 1).
+• Nonlinear Case 3: For each d ∈{10, 20, 50, 100},
+each sample Xi ∈Rd, i = 1, · · · , 5000, is generated
+following
+Xi
+j = (a0
+j)T cos(π0(Xi
+j) + 1) + Zi
+j
+where A0 is the weighted adjacency matrix of a graph
+sampled following the Scale-free (SF) scheme with 3d
+expected edges (denoted as SF3), and the noise Zi
+j ∼
+N(0, 1).
+Here we note that Nonlinear Case 1 and 2 were adopted
+from (Yu et al., 2019). In Nonlinear Case 3, each sample
+were generated following almost the same scheme as in
+Nonlinear Case 1, but the ground truth graph was gener-
+ated with the SF model. Comparing with the ER graphs
+which have a degree distribution following a Poisson dis-
+tribution, SF graphs have a degree distribution following
+a power law and therefore few nodes have a high degree
+(Lachapelle et al., 2019).
+E.2. Settings for Each Algorithm
+In this section we describe the settings and parameters em-
+ployed in each algorithm.
+E.2.1. LINEAR SEM
+DAG-NoCurl: In linear SEM we use the least-squares loss
+FSEM(A, X) = 1
+2n||X −AT X||2
+F
+(16)
+regardless of the noise type, with the polynomial acyclicity
+penalty from (Yu et al., 2019)
+h(A) = tr[(I + A ◦A/d)d] −d.
+(17)
+We
+consider
+the
+penalty
+parameter
+λ
+in
+DAG-
+NoCurl
+as
+a
+tunable
+hyperparameter,
+with
+the
+range
+of
+{1, 10, 102, 103, 104}.
+We
+use
+the
+run-
+time and the score difference from the ground truth
+∆F
+= FSEM(A, X) −FSEM(A0, X) as the measure
+to choose the best hyperparameters.
+For the detailed
+analysis and discussion, please refer to the Section F on
+hyperparameter study of this supplemental material. To
+solve for the unconstrained smooth minimization problems,
+although a number of efﬁcient numerical algorithms are
+available, we employ the L-BFGS (Liu and Nocedal, 1989)
+algorithm with the stopping tolerance “ftol” (the relative
+score difference between the last two iterations) set as
+10−8.
+The implementation is in Python based on the
+DAGs with No Curl
+original NOTEARS package from (Zheng et al., 2018).
+Unless otherwise stated, we use the threshold 0.3 on Apre
+and ˜A, as suggested in (Zheng et al., 2018).
+NOTEARS: For baseline method NOTEARS, we use the
+NOTEARS package in Python from (Zheng et al., 2018)
+with the least-squares loss (16) and the polynomial acyclic-
+ity penalty (17). For the augmented Lagrangian method in
+NOTEARS, we use default parameters from the package,
+and the default stopping criteria h(A) ≤10−8.
+GOBNILP: For the exact minimizer of the original op-
+timization problem, we use the publicly available package
+Globally Optimal Bayesian Network learning using Integer
+Linear Programming (GOBNILP) (Cussens et al., 2016)1.
+It uses integer linear programming written in C program
+and SCIP optimization solvers to learn BN from complete
+discrete data or from local scores.
+We use GaussianL0
+score with k = 0.0 and did not set a maximal parental
+set size (“palim = None”). We did not change any other
+parameter setting.
+FGS: For baseline method fast greedy equivalent search
+(FGS), we use py-causal package from Carnegie Mellon
+University (Ramsey et al., 2017)2. This method is written
+in highly optimized Java code with a Python interface. We
+use the default parameter settings and did not tune any pa-
+rameter. Instead of returning a DAG, a CPDAG is returned
+by FGS which contains undirected edges. Therefore, in our
+evaluations for FGS, we favorably treat undirected edges
+from FGS as true positives, as long as the ground truth
+graph has a directed edge in place of the undirected edge.
+CAM: For baseline method causal additive models (CAM)
+(B¨uhlmann et al., 2014), we use Causal Discovery toolbox
+in Python3. Only two input parameters, “variablesel” and
+“pruning”, were tuned, which enables preliminary neigh-
+borhood selection and pruning, respectively. We found that
+with the preliminary neighborhood selection applied the
+time consumption of CAM is reduced signiﬁcantly, and the
+pruning step helps reducing the resultant SHD and there-
+fore improves the accuracy. These observations are con-
+sistent with the experiments reported in (B¨uhlmann et al.,
+2014). Therefore, all results reported here are with these
+two parameters turned on.
+MMPC: For baseline method Max-Min Parents and Chil-
+dren (MMPC) (Tsamardinos et al., 2006a), we also use
+Causal Discovery toolbox in Python4, with the default pa-
+rameter settings.
+Eq-TD & Eq-BU: we use the available code form github5
+1https://www.cs.york.ac.uk/aig/sw/gobnilp/
+2https://github.com/bd2kccd/py-causal
+3https://github.com/FenTechSolutions/CausalDiscoveryToolbox
+4https://github.com/FenTechSolutions/CausalDiscoveryToolbox
+5https://github.com/WY-Chen/EqVarDAG
+Algorithm 2 NoCurl algorithm combining with DAG-
+GNN
+1. Step 1: Solve for an initial prediction (Apre, θpre)
+with
+(Apre, θpre) =argmin
+A,θ
+{−LELBO(A, X)
++ λ(tr[(I + A ◦A/d)d] −d)}
+and threshold Apre.
+2. Step 2: Based on Apre, obtain an approximate solu-
+tion of p∗as ˜p with
+˜p = −△†
+0 div
+1
+2(C(Apre) −C(Apre)T )
+
+,
+then solve for ˜W with ﬁxed ˜p via
+( ˜W, ˜θ) = argmin
+W,θ
+−LELBO(W ◦ReLU(grad(˜p)), X)
+In this step, the initial prediction for parameters θpre
+from Step 1 is used as the initial guess of θ.
+3. Obtain the ﬁnal approximation solution ˜A =
+˜W ◦
+ReLU(grad(˜p)) and threshold ˜A.
+and the same named functions as listed. We did not tune
+any hyperparameters.
+E.2.2. NONLINEAR SEM
+DAG-GNN with NoCurl: In nonlinear SEM we combine
+NoCurl with DAG-GNN (Yu et al., 2019). In DAG-GNN,
+a deep generative model is employed to learn the DAG by
+maximizing the evidence lower bound (ELBO):
+LELBO(A, X) = 1
+n
+n
+X
+k=1
+Lk
+ELBO(A, Xk)
+where Lk
+ELBO(A, Xk) = −DKL
+
+q(Y |Xk; A) || p(Y )
+
++ Eq(Y |Xk;A)
+h
+log p(Xk|Y ; A)
+i
+.
+Following the settings in (Yu et al., 2019), Y ∈Rd is a
+latent variable and p(Y ) is the prior modeled with the stan-
+dard multivariate normal p(Y ) = N(0, I). q(Y |X; A) is
+the variational posterior to approximate the actual posterior
+p(Y |X), and DKL denotes the KL-divergence between the
+variational posterior and the actual one. q(Y |X; A) is mod-
+eled with a factored Gaussian with mean MY ∈Rd and
+standard deviation SY ∈Rd, based on a multilayer percep-
+tion (MLP):
+[MY | log SY ] = (I −AT )MLP(X, M 1, M 2)
+DAGs with No Curl
+where M 1 ∈R1×nhid and M 2 ∈Rnhid×1 are parameters
+and nhid is the number of neurons in the hidden layer. Sim-
+ilarly, p(X|Y ; A) is also modeled with a factored Gaussian
+with mean MX ∈Rd and standard deviation SX ∈Rd,
+based on a multilayer perception (MLP):
+[MX| log SX] = MLP((I −AT )−1Y, M 3, M 4)
+where M 3
+∈
+R1×nhid and M 4
+∈
+Rnhid×1 are pa-
+rameters.
+In DAG-GNN, the weighted adjacency ma-
+trix A is optimized together with all the parameters θ =
+(M 1, M 2, M 3, M 4) with the following learning problem:
+(A∗, θ∗) = argmin
+A,θ
+−LELBO(A, X),
+subject to h(A) = tr[(I + A ◦A/d)d] −d = 0.
+(18)
+With the goal of boosting the efﬁciency of DAG-GNN with-
+out losing accuracy, in NoCurl we use the same score func-
+tion from DAG-GNN:
+FELBO(A, X) = −LELBO(A, X)
+and their implementation based on PyTorch (Paszke et al.,
+2017).
+The detailed steps are described in Algorithm
+2.
+Speciﬁcally, we use DAG-GNN’s default number
+of neurons in the hidden layer nhid
+=
+64.
+Each
+unconstrained optimization problem is solved using the
+Adam (Kingma and Ba, 2015), with the default learning
+rate= 3e −3 from DAG-GNN. To guarantee sufﬁcient up-
+dates for the parameters θ, we use epoch number= 400
+in Step 1 and epoch number= 600 while solving for ˜W
+in Step 2. Due to the computation load of neural models,
+we use one ﬁxed λ = 10 as the hyperparameter in NoCurl
+since it is the fastest method while being reasonably accu-
+rate per our hyperparameter study on linear SEM datasets
+(see the hyperparameter study in Section F of this supple-
+mentary material).
+DAG-GNN: We use the available code from github 6 to run
+DAG-GNN. We use the default hidden size 64 for all lay-
+ers and did not tune any other hyperparameters (all default
+values).
+GraN-DAG: We use the available code from github 7.
+Following the suggestion in (Lachapelle et al., 2019), we
+turned on both the preliminary neighborhood selection
+(pns) and the pruning option (cam-pruning), for which
+we have observed a big improvement in SHD. For the rest
+of hyperparameters, we use default values with options
+pns and cam-pruning.
+NOTEARS-MLP: We use the available code from github
+8 to run NOTEARS-MLP. We tune the hidden size to 32
+6https://github.com/fishmoon1234/DAG-GNN
+7https://github.com/kurowasan/GraN-DAG
+8https://github.com/xunzheng/notears
+for all layers (increased from default size 10, for which we
+observe a big improvement in SHD) to improve the accu-
+racy. All other hyperparametersare kept as their default val-
+ues: the augmented Lagrangian method terminates when
+h(A) = tr[(I + A ◦A/d)d] −d ≤10−8 and λ1 and λ2 are
+set as 0.01.
+For CAM and MMPC, we use the same settings as dis-
+cussed in the previous subsection.
+GSGES: We use the available code from github 9. We use
+the default settings for evaluations.
+E.3. Other Experiment Details
+A clear deﬁnition of the speciﬁc measure or statistics
+used to report results: To evaluate the accuracy of re-
+sults from each algorithm, we mainly use the structure ham-
+ming distance (SHD) as a metric, which is the sum of extra,
+missing, and reverse edges in learned graphs. We report
+the computational time (in seconds) of each algorithm, as
+a main metric of their computational efﬁciency. When it
+is available, we also report the score difference from the
+ground truth (denoted as ∆F), the number of extra edges
+(denoted as #Extra E), the number of missing edges (de-
+noted as #Missing E) and the number of reverse edges (de-
+noted as #Reverse E). All metrics are the lower the better.
+A description of results with central tendency (e.g.
+mean) & variation (e.g. error bars): We report mean and
+standard error of the mean for each metric, with a format
+as “mean ± standard error”.
+The average runtime for each result, or estimated en-
+ergy cost: We use CPU and report the run time (in sec-
+onds) for each algorithm. We run all the algorithms up to
+72 hours for each trial.
+A description of the computing infrastructure used: We
+use a local Linux-based computing cluster, and all the
+codes are written in Python and/or PyTorch.
+F. Hyperparameter Study
+In this section we continue the discussion on hyperparame-
+ter study results in Section 5.1 of the main text and conduct
+a hyperparameter study for linear SEMs, with one ﬁxed λ
+or two ﬁxed λ’s in Step 1 of the proposed algorithm. In
+particular, in the one ﬁxed λ cases (denoted as the λ = ·
+cases), we obtain the estimate Apre in Step 1 by solving for
+only one unconstrained optimization problem:
+Apre = argmin
+A
+F(A, X) + λh(A),
+where A ∈Rd×d is initialized as Aij
+= 0, ∀i, j ∈
+{1, · · · , d}.
+In the two ﬁxed λ’s cases (denoted as the
+9https://github.com/Biwei-Huang/Generalized-Score-Funct
+DAGs with No Curl
+λ = (λ1, λ2) cases), we obtain the estimate Apre in Step 1
+by solving for two optimization problems sequentially. We
+ﬁrstly solve:
+Apre,0 = argmin
+A
+F(A, X) + λ1h(A),
+with initial guess Aij = 0, ∀i, j ∈{1, · · · , d}, then use
+Apre,0 as the initial guess to solve
+Apre = argmin
+A
+F(A, X) + λ2h(A)
+for the estimate matrix Apre. Here we explore the hyper-
+parameter λ on ER3-Gaussian and ER6-Gaussian cases, to
+investigate the performances of NoCurl on both relatively
+sparse graphs (ER3) and relatively dense graphs (ER6).
+The results for ER3-Gaussian are provided in Table 4 and
+the results for ER6-Gaussian is in Table 5. For all cases
+we report the structure hamming distance (SHD), the score
+difference from the ground truth (denoted as ∆F), the
+run time (in seconds), the number of extra edges (denoted
+as #Extra E), the number of missing edges (denoted as
+#Missing E) and the number of reverse edges (denoted as
+#Reverse E), while we choose the hyperparameter mainly
+based on the considerations of both a low run time and a
+good resultant score from the predicted graph (low ∆F).
+For cases with one ﬁxed λ, we investigate the hyperparam-
+eter λ ∈[100, 104]. From Tables 4 and 5 it can be ob-
+served that in both ER3-Gaussian and ER6-Gaussian cases,
+comparing with the other values of λ’s, tests with λ = 10
+and λ = 102 generally require short run time and their pre-
+dicted graphs have relatively good scores according to their
+resultant loss values ∆F. λ = 10 is faster and more accu-
+rate in SHD in ER3 than λ = 102 for all d, but λ = 102
+has better (i.e., lower) ∆F loss values. In denser graphs
+(ER6), λ = 102 becomes signiﬁcantly better in both ∆F
+and SHD. As a result, we use λ = 102 as the default hyper-
+parameter value for one ﬁxed λ, which becomes NoCurl-1,
+experiments in the following.
+For cases with with two ﬁxed λ’s, we test the cases with
+λ1, λ2 ∈[100, 104], and list some combinations with re-
+sults in Tables 4 and 5. Speciﬁcally, in most cases λ =
+(10, 103) and λ = (10, 104) are the two combinations with
+the best score values ∆F. Among these two combinations,
+we found that λ = (10, 104) results in slightly lower ∆F
+loss and SHD, but λ = (10, 103) requires a lower run time,
+especially when d is large. Here we choose λ = (10, 103)
+as the default parameters in two ﬁxed λ’s experiments,
+which becomes NoCurl-2.
+From Tables 4 and 5, we also observe that, to achieve the
+optimal loss and accuracy, larger and denser graphs gener-
+ally require a larger value of penalty parameter λ. As a
+future direction, we are investigating the strategy of choos-
+ing λ automatically.
+G. Ablation Study
+In this section we continue the discussion on ablation study
+results in Section 5.2 of the main text and perform an ab-
+lation study, to investigate the effects of each step in our
+proposed algorithm. In particular, results from the follow-
+ing ﬁve settings are listed in Tables 4 and 5:
+• rand init cases: We solve for ( ˜W, ˜p) from the opti-
+mization problem
+( ˜
+W, ˜p) =
+argmin
+W∈S,p∈RdF(W ◦ReLU(grad(p)), X)
+(19)
+directly, with random initialization of (W, p). The re-
+sults are the average from 7 different random initial-
+izations Wij ∼U([0, 1]), pi ∼U([0, 1]) for each set
+of data. With this test we aim to investigate the impor-
+tance of both Step 1 and Step 2.
+• rand p cases: We omit Step 1 and initialize pinit with
+random initializations, then solve for an estimate of
+W from
+W pre = argmin
+W∈S
+F(W ◦ReLU(grad(pinit)), X)
+and ﬁnally jointly optimize ( ˜W, ˜p) from the optimiza-
+tion problem in (19). The results are also the average
+from 7 different random initializations of p following
+pi ∼U([0, 1]) for each set of data. With this test we
+aim to investigate the importance of Step 1.
+•
+λ = 102s and λ = (10, 103)s cases, which are
+NoCurl-1s and Nocurl-2s with “s”: We test if Step
+2 of the algorithm is important.
+In particular, we
+solve Step 1 and then use an incremental threshold-
+ing method to obtain a DAG from the potential cyclic
+graph Apre of Step 1. In these cases, we repeatedly
+increase the threshold of the structure until a DAG is
+obtained. We use the thresholds starting from 0.3 (any-
+thing below produces much worse results) and with
+increments of 0.05 until h(A) < 10−8.
+• λ = 102−and λ = (10, 103)−cases, which are
+NoCurl-1- and Nocurl-2- with “-”: Instead of solv-
+ing for ˜
+W from the optimization problem
+˜W = argmin
+W∈S
+F(W ◦ReLU(grad(˜p)), X),
+(20)
+we estimate W directly from Apre with the formula-
+tion (13) above. When Apre is a DAG, the formulation
+(13) will fully recover Apre. Otherwise, when there
+is a cycle in GApre, this formulation will remove all
+edges between any two nodes in this cycle. With this
+study we aim to check the importance of the second
+part of Step 2, i.e., solving for ˜W from (20).
+DAGs with No Curl
+• λ = 102+ and λ = (10, 103)+ cases, which are
+NoCurl-1+ and Nocurl-2+ with “+”: After Step 1
+and Step 2 of our algorithm, We add one additional
+post-processing step to jointly optimize ( ˜
+W , ˜p) from
+the optimization problem in (19), so as to guaran-
+tee that the solution is a stationary point of the opti-
+mization problem (19). This study aims to investigate
+how far our approximated solution is from a stationary
+point.
+As one can see from Tables 4 and 5, NoCurl with random
+initializations (“rand init”) performs subpar, indicating the
+importance of Step 1 of our algorithm. Among the two
+random initialization cases, the “rand p” cases have a even
+worse accuracy, especially on the number of reserved edges,
+which indicates that a good estimate of the topological or-
+dering in p plays a critical role in the algorithm. Results
+from threshold s cases show that they are not as good as
+the full algorithm, indicating that Step 2 is also critical
+to the performance of our method. Moreover, we list all
+threshold s cases from other empirical settings in Table
+6 to 9 of Section I, to show that poor results are consis-
+tent across different settings. In addition, by comparing the
+λ = 102 case with λ = 102−case and the λ = (10, 103)
+case with λ = (10, 103)−case, we found that although the
+λ = 102−and λ = (10, 103)−cases are less likely to pre-
+dict a wrong extra edge, but their predicted graphs tend to
+miss a relatively large number of edges and therefore have
+a large SHD. When there is a cycle in GApre, the formula-
+tion (13) will remove all edges between any two nodes in
+this cycle. On the other hand, the numbers of missing edges
+from the λ = 102 and λ = (10, 103) cases are much lower,
+which indicates that the algorithm has successfully recov-
+ered some of the lost edges when solving for ˜
+W from (20).
+Lastly, by comparing the λ = 102 cases with λ = 102+
+cases and the λ = (10, 103) cases with λ = (10, 103)+
+cases, we observe that adding extra optimization steps after
+Step 2 does not result much improvements on accuracy or
+∆F. This result indicates that the estimated solution ( ˜W, ˜p)
+from our algorithm is often very close to a stationary point
+of (19).
+H. Optimization Objective Results
+In this section we continue the discussion on optimization
+objective results in Section 5.3 of the main text, by dis-
+playing the additional results for optimization objective re-
+sults ∆F = F( ˜A, X) −F(A0, X) for different graph-type
+and noise-type combinations in Table 3. As one may see,
+the two ﬁxed λ case can achieve close objective values
+to NOTEARS, while in the denser graph case (ER6) the
+λ = (10, 103) case even outperforms NOTEARS when
+d = 30 and d = 50. This result is encouraging but also
+surprising since the problem is often more difﬁcult as the
+graph becomes larger and denser, and our algorithm only
+provides an approximated solution. We suspect one ma-
+jor reason could be the optimization difﬁculty in larger and
+dense graphs, which could easily be stuck at one of many
+more stationary points. We leave it to future work to inves-
+tigate these problems further.
+I. Detailed Results for Structure Recovery
+In this section we provide the detailed numerical results
+of linear synthetic datasets for different algorithms, as a
+continuation of the discussion in Section 5.4 of the main
+text and as the supplementary results of the structure dis-
+covery in terms of SHD and the run time plotted in Fig-
+ure 1 of the main text. The full results for ER3-Gaussian,
+ER4-Gaussian, ER6-Gaussian and SF4-Gumbel cases are
+provided in Tables 6, 7, 8 and 9, respectively. Besides
+SHD, we further list ∆F, the number of extra edges, miss-
+ing edges and reverse edges as additional algorithm evalu-
+ation metric. From these tables we can see that the most
+accurate structure discovery results in terms of SHD are
+either from NOTEARS or NoCurl, while the other three al-
+gorithms (FGS, CAM and MMPC) rapidly deteriorates as
+the number of edges increase. Among the total 16 cases
+with different combinations of d ∈{10, 30, 50, 100} and
+graph/noise-types, NoCurl-2 outperforms NOTEARS (as
+well as all other algorithms) with a lower SHD in most (12
+out of 16) cases. We further observe that the low SHD from
+NoCurl comes from the fact that this algorithm tends to
+miss much fewer numbers of edges comparing with other
+algorithms especially in large and dense graphs, possibly
+because Step 2 in NoCurl has successfully recovered some
+lost edges, as we have observed and discussed in the Abla-
+tion Study section G above. When comparing the computa-
+tional time, NoCurl is faster than NOTEARS by one or two
+orders of magnitude.
+J. Detailed Results for Nonlinear Synthetic
+Datasets
+In this section we provide additional results and discussions
+for the experiments on nonlinear SEM datasets in Section
+5.5 of the main text, with the details of dataset generation
+and algorithm settings provided in Section E.2.2 above. Ta-
+ble 10 shows the full results of the various methods in
+nonlinear synthetic datasets. We note that some d = 100
+results for NOTEARS-MLP, GraN-DAG, and GSGES are
+missing since these algorithms could not ﬁnish within 72
+hours on at least one trial.10 Moreover, we also observe that
+10Although GraN-DAG without the pruning phase ﬁnishes
+within 72 hours in Nonlinear Case 1 and Nonlinear Case 3, the
+results are with a very large SHD (762 ± 345 in Nonlinear Case
+1 and 1606 ± 421 in Nonlinear Case 3), since the pruning step
+generally has the effect of greatly reducing the SHD, as reported
+DAGs with No Curl
+Table 3. Comparison of different algorithms on score differences from the ground truth, △F = F( ˜A, X) −F(A0, X). For each
+algorithm we show results as mean ± standard error over 100 trials.
+λ = 102
+λ = (10, 103)
+NOTEARS
+GOBNILP
+ER3-Gaussian, d = 10
+0.09 ± 0.20
+0.06 ± 0.20
+0.03 ± 0.12
+−0.03 ± 0.00
+ER4-Gaussian, d = 10
+0.14 ± 0.03
+0.13 ± 0.34
+0.08 ± 0.21
+−0.03 ± 0.01
+ER6-Gaussian, d = 10
+0.54 ± 0.22
+0.36 ± 0.75
+0.22 ± 0.40
+−0.03 ± 0.01
+SF4-Gumbel, d = 10
+−0.59 ± 0.01
+−0.59 ± 0.14
+−0.71 ± 0.08
+−1.73 ± 0.07
+ER3-Gaussian, d = 30
+0.33 ± 0.19
+0.07 ± 0.04
+−0.06 ± 0.02
+N/A
+ER4-Gaussian, d = 30
+0.31 ± 0.05
+0.40 ± 0.19
+0.25 ± 0.11
+N/A
+ER6-Gaussian, d = 30
+1.78 ± 0.38
+0.97 ± 0.16
+1.02 ± 0.18
+N/A
+SF4-Gumbel, d = 30
+−3.30 ± 0.04
+−3.31 ± 0.02
+−3.55 ± 0.02
+N/A
+ER3-Gaussian, d = 50
+0.05 ± 0.05
+−0.10 ± 0.05
+−0.25 ± 0.04
+N/A
+ER4-Gaussian, d = 50
+0.40 ± 0.13
+0.42 ± 0.21
+0.19 ± 0.09
+N/A
+ER6-Gaussian, d = 50
+2.31 ± 0.41
+1.77 ± 0.38
+1.97 ± 0.26
+N/A
+SF4-Gumbel, d = 50
+−6.74 ± 0.03
+−6.74 ± 0.03
+−7.08 ± 0.02
+N/A
+ER3-Gaussian, d = 100
+−0.82 ± 0.16
+−1.44 ± 0.95
+−1.65 ± 0.78
+N/A
+ER4-Gaussian, d = 100
+−0.28 ± 0.26
+−0.32 ± 2.76
+−0.64 ± 1.35
+N/A
+ER6-Gaussian, d = 100
+4.30 ± 0.99
+2.61 ± 9.32
+2.49 ± 3.67
+N/A
+SF4-Gumbel, d = 100
+−17.29 ± 0.05
+−17.19 ± 0.58
+−17.53 ± 0.49
+N/A
+the run time for MMPC vary drastically, potentially due to
+the conditioned variable set size. When its size is large, ex-
+haustive search becomes prohibitively expensive. CAM is
+the most accurate non-neural-networkmethods followed by
+GSGES. However, GSGES’s running time get prohibitive
+with large dimensions.
+As one can see, in the Nonlinear Case 1 datasets, GraN-
+DAG and CAM perform the best among all the methods but
+become the worst in Nonlinear Case 3 datasets among ﬁn-
+ished methods. NOTEARS-MLP performs the best in Non-
+linear Case 3 but does not do as well in Nonlinear Case 1
+and 2 and have trouble handling larger graphs. DAG-GNN
+and NoCurl does the best in Nonlinear Case 2 cases in com-
+parison and are able to beat NOTEARS-MLP in Nonlin-
+ear Case 1 when d is larger. It shows there is no univer-
+sal best nonlinear DAG learner. Moreover, NoCurl with
+DAG-GNN as the base model performs as well as DAG-
+GNN and takes about 3 to 4 times faster, which indicate
+that NoCurl has successfully boost the efﬁciency of DAG-
+GNN without deteriorate its accuracy. NoCurl is also more
+than one order of magnitude of faster than GraN-DAG and
+NOTEARS-MLP in many testing cases.
+As discussed in the main text, it should be interesting to
+extend NoCurl to use NOTEARS-MLP and GraN-DAG as
+base models by considering gradient-based adjacency ma-
+trix.
+K. Learnt Protein Network
+We
+now
+consider
+a
+real-world
+bioinformatics
+dataset (Sachs et al., 2005) for the discovery of a pro-
+in (Lachapelle et al., 2019).
+Figure 3. Learned protein signaling network.
+tein signaling network based on expression levels of
+proteins and phospholipids. This is a widely used dataset
+for research on graphical models, with experimental anno-
+tations accepted by the biological research community. In
+Table 11, we compare our results and 6 baseline methods
+against the ground truth offered in (Sachs et al., 2005). On
+this dataset, DAG-NoCurl successfully learns the existence
+of 14 out of 20 ground-truth edges, and predicts the
+directions of 8 edges correctly (the learnt graph is plotted
+in Appendix Figure 3).
+DAGs with No Curl
+Table 4. Hyperparameter and Ablation Study: results (mean ± standard error over 100 trials) for ER3-Gaussian Cases from DAG-NoCurl,
+where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+λ = 1
+0.08 ± 0.00
+0.98 ± 0.23
+4.12 ± 0.30
+1.89 ± 0.17
+1.50 ± 0.14
+0.73 ± 0.09
+10
+λ = 10
+0.07 ± 0.00
+0.22 ± 0.07
+1.50 ± 0.22
+0.72 ± 0.13
+0.31 ± 0.08
+0.47 ± 0.06
+10
+λ = 102
+0.11 ± 0.00
+0.09 ± 0.02
+2.18 ± 0.28
+1.24 ± 0.18
+0.26 ± 0.06
+0.68 ± 0.08
+10
+λ = 103
+0.38 ± 0.01
+0.16 ± 0.03
+3.14 ± 0.37
+1.90 ± 0.25
+0.39 ± 0.08
+0.85 ± 0.09
+10
+λ = 104
+0.85 ± 0.02
+0.28 ± 0.04
+4.11 ± 0.42
+2.43 ± 0.28
+0.54 ± 0.09
+1.14 ± 0.10
+10
+λ = (10, 102)
+0.23 ± 0.01
+0.08 ± 0.02
+1.24 ± 0.20
+0.65 ± 0.13
+0.19 ± 0.05
+0.40 ± 0.06
+10
+λ = (10, 103)
+0.47 ± 0.01
+0.06 ± 0.02
+1.08 ± 0.18
+0.54 ± 0.12
+0.09 ± 0.03
+0.45 ± 0.06
+10
+λ = (10, 104)
+0.85 ± 0.02
+0.08 ± 0.02
+1.43 ± 0.23
+0.83 ± 0.17
+0.08 ± 0.03
+0.52 ± 0.07
+10
+λ = (102, 103)
+0.44 ± 0.01
+0.07 ± 0.02
+2.09 ± 0.27
+1.20 ± 0.18
+0.25 ± 0.06
+0.64 ± 0.08
+10
+rand init
+0.19 ± 0.01
+5.97 ± 1.63
+9.73 ± 0.54
+4.59 ± 0.31
+2.78 ± 0.26
+2.35 ± 0.12
+10
+rand p
+0.32 ± 0.03
+11.59 ± 2.46
+14.88 ± 0.57
+6.48 ± 0.33
+5.06 ± 0.30
+3.34 ± 0.15
+10
+λ = 102s
+0.09 ± 0.00
+1.45 ± 0.02
+3.11 ± 0.31
+1.60 ± 0.18
+0.95 ± 0.11
+0.56 ± 0.08
+10
+λ = (10, 103)s
+0.43 ± 0.01
+0.53 ± 0.02
+1.27 ± 0.20
+0.66 ± 0.14
+0.20 ± 0.05
+0.41 ± 0.06
+10
+λ = 102-
+0.11 ± 0.00
+19.95 ± 0.43
+3.62 ± 0.27
+0.64 ± 0.11
+2.93 ± 0.19
+0.05 ± 0.03
+10
+λ = (10, 103)-
+0.32 ± 0.01
+18.30 ± 0.42
+2.09 ± 0.17
+0.30 ± 0.08
+1.79 ± 0.13
+0.00 ± 0.00
+10
+λ = 102+
+0.29 ± 0.01
+0.10 ± 0.02
+2.15 ± 0.27
+1.22 ± 0.18
+0.25 ± 0.06
+0.68 ± 0.08
+10
+λ = (10, 103)+
+0.71 ± 0.01
+0.06 ± 0.02
+1.08 ± 0.18
+0.54 ± 0.12
+0.09 ± 0.03
+0.45 ± 0.06
+30
+λ = 1
+0.54 ± 0.03
+2.55 ± 0.37
+13.64 ± 0.77
+8.34 ± 0.55
+2.83 ± 0.19
+2.47 ± 0.15
+30
+λ = 10
+0.59 ± 0.03
+0.50 ± 0.18
+6.46 ± 0.50
+4.14 ± 0.38
+0.62 ± 0.09
+1.70 ± 0.12
+30
+λ = 102
+1.19 ± 0.04
+0.33 ± 0.19
+7.18 ± 0.61
+5.05 ± 0.49
+0.40 ± 0.07
+1.73 ± 0.12
+30
+λ = 103
+1.29 ± 0.03
+0.23 ± 0.05
+10.13 ± 0.72
+7.33 ± 0.57
+0.41 ± 0.07
+2.39 ± 0.15
+30
+λ = 104
+4.88 ± 0.19
+0.23 ± 0.04
+11.67 ± 0.78
+8.36 ± 0.60
+0.49 ± 0.09
+2.82 ± 0.16
+30
+λ = (10, 102)
+0.64 ± 0.02
+0.15 ± 0.05
+5.41 ± 0.49
+3.56 ± 0.37
+0.42 ± 0.08
+1.43 ± 0.12
+30
+λ = (10, 103)
+2.38 ± 0.06
+0.07 ± 0.04
+5.20 ± 0.49
+3.63 ± 0.39
+0.27 ± 0.05
+1.30 ± 0.10
+30
+λ = (10, 104)
+4.56 ± 0.10
+0.00 ± 0.02
+4.92 ± 0.45
+3.38 ± 0.38
+0.14 ± 0.04
+1.40 ± 0.09
+30
+λ = (102, 103)
+2.50 ± 0.06
+0.05 ± 0.03
+6.61 ± 0.63
+4.77 ± 0.51
+0.24 ± 0.05
+1.60 ± 0.12
+30
+rand init
+2.39 ± 0.14
+8.83 ± 3.09
+30.96 ± 1.37
+20.35 ± 1.01
+6.05 ± 0.43
+4.56 ± 0.20
+30
+rand p
+3.40 ± 0.23
+48.63 ± 8.46
+59.57 ± 1.51
+34.03 ± 1.04
+16.71 ± 0.59
+8.83 ± 0.23
+30
+λ = 102s
+0.29 ± 0.01
+17.27 ± 0.20
+13.39 ± 0.66
+8.50 ± 0.53
+3.89 ± 0.20
+1.00 ± 0.10
+30
+λ = (10, 103)s
+1.54 ± 0.04
+10.98 ± 0.19
+8.18 ± 0.61
+5.26 ± 0.47
+2.12 ± 0.16
+0.80 ± 0.08
+30
+λ = 102-
+0.34 ± 0.01
+104.65 ± 1.09
+12.09 ± 0.47
+1.94 ± 0.22
+10.00 ± 0.32
+0.15 ± 0.04
+30
+λ = (10, 103)-
+1.22 ± 0.03
+95.39 ± 1.04
+8.01 ± 0.38
+1.34 ± 0.17
+6.60 ± 0.28
+0.07 ± 0.03
+30
+λ = 102+
+1.77 ± 0.02
+0.32 ± 0.19
+7.10 ± 0.61
+5.00 ± 0.49
+0.38 ± 0.07
+1.72 ± 0.12
+30
+λ = (10, 103)+
+3.25 ± 0.04
+0.07 ± 0.04
+5.21 ± 0.49
+3.64 ± 0.39
+0.28 ± 0.05
+1.29 ± 0.10
+50
+λ = 1
+2.73 ± 0.14
+4.56 ± 0.93
+25.16 ± 1.23
+16.19 ± 0.97
+4.33 ± 0.25
+4.64 ± 0.21
+50
+λ = 10
+2.00 ± 0.10
+0.38 ± 0.09
+13.14 ± 0.98
+9.16 ± 0.79
+0.85 ± 0.10
+3.13 ± 0.19
+50
+λ = 102
+2.32 ± 0.09
+0.05 ± 0.05
+13.51 ± 1.00
+9.78 ± 0.82
+0.65 ± 0.10
+3.08 ± 0.18
+50
+λ = 103
+4.16 ± 0.14
+0.03 ± 0.05
+16.01 ± 1.18
+11.60 ± 0.96
+0.83 ± 0.12
+3.58 ± 0.18
+50
+λ = 104
+8.40 ± 0.26
+0.03 ± 0.05
+18.95 ± 1.08
+13.83 ± 0.88
+0.67 ± 0.10
+4.45 ± 0.19
+50
+λ = (10, 102)
+4.36 ± 0.19
+-0.01 ± 0.05
+9.95 ± 0.79
+7.11 ± 0.66
+0.60 ± 0.07
+2.24 ± 0.14
+50
+λ = (10, 103)
+6.48 ± 0.16
+-0.10 ± 0.05
+8.92 ± 0.70
+6.35 ± 0.57
+0.41 ± 0.08
+2.16 ± 0.14
+50
+λ = (10, 104)
+8.73 ± 0.20
+-0.16 ± 0.06
+9.21 ± 0.69
+6.65 ± 0.60
+0.21 ± 0.05
+2.35 ± 0.14
+50
+λ = (102, 103)
+5.20 ± 0.16
+-0.01 ± 0.06
+11.98 ± 0.96
+8.69 ± 0.78
+0.49 ± 0.09
+2.80 ± 0.17
+50
+rand init
+8.48 ± 0.56
+12.03 ± 0.65
+72.31 ± 2.55
+52.15 ± 2.08
+14.26 ± 0.71
+5.91 ± 0.27
+50
+rand p
+11.77 ± 0.60
+78.54 ± 9.59
+112.86 ± 2.38
+68.74 ± 1.72
+29.64 ± 0.85
+14.48 ± 0.30
+50
+λ = 102s
+1.37 ± 0.06
+48.15 ± 1.02
+25.53 ± 1.08
+16.85 ± 0.81
+7.02 ± 0.32
+1.66 ± 0.12
+50
+λ = (10, 103)s
+4.30 ± 0.10
+24.66 ± 0.40
+15.77 ± 0.71
+10.77 ± 0.57
+3.80 ± 0.19
+1.20 ± 0.10
+50
+λ = 102-
+2.04 ± 0.08
+272.99 ± 4.79
+20.45 ± 0.69
+2.97 ± 0.28
+17.31 ± 0.48
+0.17 ± 0.04
+50
+λ = (10, 103)-
+4.65 ± 0.11
+252.60 ± 4.65
+13.53 ± 0.47
+2.19 ± 0.19
+11.25 ± 0.37
+0.09 ± 0.03
+50
+λ = 102+
+3.13 ± 0.06
+0.05 ± 0.05
+13.63 ± 1.01
+9.87 ± 0.82
+0.66 ± 0.10
+3.10 ± 0.18
+50
+λ = (10, 103)+
+9.36 ± 0.10
+-0.11 ± 0.05
+8.88 ± 0.70
+6.33 ± 0.57
+0.39 ± 0.08
+2.16 ± 0.15
+100
+λ = 1
+8.05 ± 0.40
+6.36 ± 0.62
+54.27 ± 1.87
+36.22 ± 1.49
+8.69 ± 0.31
+9.36 ± 0.28
+100
+λ = 10
+16.02 ± 0.75
+0.50 ± 0.27
+29.14 ± 1.44
+20.79 ± 1.17
+1.91 ± 0.16
+6.44 ± 0.26
+100
+λ = 102
+18.20 ± 0.81
+-0.82 ± 0.16
+31.99 ± 1.66
+24.09 ± 1.32
+1.30 ± 0.16
+6.60 ± 0.30
+100
+λ = 103
+32.59 ± 0.90
+-1.05 ± 0.12
+37.99 ± 1.74
+28.91 ± 1.46
+1.25 ± 0.15
+7.83 ± 0.29
+100
+λ = 104
+56.89 ± 1.48
+-1.04 ± 0.16
+43.16 ± 1.72
+32.92 ± 1.44
+0.98 ± 0.12
+9.26 ± 0.29
+100
+λ = (10, 102)
+12.48 ± 0.54
+-0.92 ± 0.12
+23.48 ± 1.37
+17.36 ± 1.14
+0.99 ± 0.10
+5.13 ± 0.23
+100
+λ = (10, 103)
+26.02 ± 0.76
+-1.44 ± 0.09
+19.16 ± 1.10
+14.30 ± 0.89
+0.62 ± 0.09
+4.24 ± 0.23
+100
+λ = (10, 104)
+62.12 ± 1.69
+-1.52 ± 0.10
+19.66 ± 1.24
+14.70 ± 1.03
+0.38 ± 0.09
+4.58 ± 0.23
+100
+λ = (102, 103)
+26.69 ± 0.76
+-1.20 ± 0.15
+27.81 ± 1.49
+21.08 ± 1.21
+0.98 ± 0.14
+5.75 ± 0.27
+100
+rand init
+35.48 ± 1.67
+25.53 ± 1.82
+171.88 ± 4.79
+129.30 ± 3.80
+32.63 ± 1.45
+9.94 ± 0.41
+100
+rand p
+49.62 ± 1.77
+151.17 ± 19.44
+247.30 ± 4.09
+159.63 ± 3.25
+59.22 ± 1.16
+28.45 ± 0.41
+100
+λ = 102s
+6.55 ± 0.30
+100.83 ± 0.84
+57.03 ± 1.49
+38.63 ± 1.20
+14.85 ± 0.38
+3.55 ± 0.20
+100
+λ = (10, 103)s
+21.11 ± 0.56
+66.03 ± 0.66
+35.75 ± 1.17
+25.47 ± 0.95
+7.96 ± 0.29
+2.32 ± 0.15
+100
+λ = 102-
+7.65 ± 0.36
+480.18 ± 4.61
+45.27 ± 1.00
+7.37 ± 0.41
+37.48 ± 0.68
+0.42 ± 0.06
+100
+λ = (10, 103)-
+19.40 ± 0.51
+440.55 ± 4.42
+29.21 ± 0.74
+4.52 ± 0.29
+24.53 ± 0.57
+0.16 ± 0.04
+100
+λ = 102+
+44.8 ± 0.44
+-0.84 ± 0.16
+31.88 ± 1.66
+24.00 ± 1.32
+1.29 ± 0.16
+6.59 ± 0.30
+100
+λ = (10, 103)+
+57.9 ± 0.50
+-1.43 ± 0.10
+19.30 ± 1.14
+14.42 ± 0.92
+0.60 ± 0.09
+4.28 ± 0.23
+DAGs with No Curl
+Table 5. Hyperparameter and Ablation Study: results (mean ± standard error over 100 trials) for ER6-Gaussian Cases from DAG-NoCurl,
+where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+λ = 1
+0.33 ± 0.02
+2.49 ± 0.27
+7.08 ± 0.43
+2.57 ± 0.23
+3.27 ± 0.22
+1.24 ± 0.09
+10
+λ = 10
+0.37 ± 0.02
+0.83 ± 0.14
+3.46 ± 0.33
+1.18 ± 0.14
+1.36 ± 0.16
+0.92 ± 0.09
+10
+λ = 102
+0.34 ± 0.02
+0.54 ± 0.22
+3.54 ± 0.37
+1.37 ± 0.18
+1.30 ± 0.17
+0.87 ± 0.08
+10
+λ = 103
+0.56 ± 0.02
+0.48 ± 0.05
+5.74 ± 0.46
+2.58 ± 0.26
+1.64 ± 0.18
+1.52 ± 0.11
+10
+λ = 104
+1.16 ± 0.03
+0.75 ± 0.08
+6.98 ± 0.51
+3.15 ± 0.28
+2.07 ± 0.20
+1.76 ± 0.12
+10
+λ = (10, 102)
+0.62 ± 0.03
+0.76 ± 0.21
+3.10 ± 0.32
+0.99 ± 0.13
+1.24 ± 0.16
+0.87 ± 0.09
+10
+λ = (10, 103)
+0.75 ± 0.03
+0.36 ± 0.07
+3.07 ± 0.30
+0.97 ± 0.13
+1.02 ± 0.14
+1.08 ± 0.09
+10
+λ = (10, 104)
+1.25 ± 0.04
+0.49 ± 0.09
+2.97 ± 0.32
+0.99 ± 0.13
+0.88 ± 0.14
+1.10 ± 0.10
+10
+λ = (102, 103)
+0.72 ± 0.03
+0.37 ± 0.17
+3.29 ± 0.35
+1.31 ± 0.18
+1.01 ± 0.15
+0.97 ± 0.09
+10
+rand init
+0.37 ± 0.03
+78.00 ± 40.34
+17.09 ± 0.62
+5.63 ± 0.26
+8.20 ± 0.53
+3.25 ± 0.15
+10
+rand p
+0.66 ± 0.06
+128.79 ± 47.97
+24.82 ± 0.47
+6.10 ± 0.22
+13.84 ± 0.41
+4.88 ± 0.20
+10
+λ = 102s
+0.37 ± 0.03
+8.23 ± 0.15
+4.79 ± 0.37
+1.78 ± 0.18
+2.32 ± 0.23
+0.69 ± 0.08
+10
+λ = (10, 103)s
+0.92 ± 0.03
+5.55 ± 0.32
+3.27 ± 0.35
+1.10 ± 0.16
+1.19 ± 0.17
+0.98 ± 0.09
+10
+λ = 102-
+0.21 ± 0.01
+339.60 ± 10.48
+7.28 ± 0.42
+0.75 ± 0.11
+6.52 ± 0.35
+0.01 ± 0.01
+10
+λ = (10, 103)-
+0.69 ± 0.03
+332.83 ± 10.62
+5.19 ± 0.39
+0.53 ± 0.09
+4.64 ± 0.33
+0.02 ± 0.01
+10
+λ = 102+
+0.53 ± 0.02
+0.54 ± 0.22
+3.54 ± 0.37
+1.37 ± 0.18
+1.30 ± 0.17
+0.87 ± 0.08
+10
+λ = (10, 103)+
+1.45 ± 0.04
+0.36 ± 0.07
+3.07 ± 0.30
+0.97 ± 0.13
+1.02 ± 0.14
+1.08 ± 0.09
+30
+λ = 1
+2.63 ± 0.17
+16.64 ± 3.57
+46.90 ± 1.76
+32.35 ± 1.34
+8.46 ± 0.46
+6.09 ± 0.22
+30
+λ = 10
+3.26 ± 0.19
+4.22 ± 0.68
+27.34 ± 1.91
+19.59 ± 1.49
+3.53 ± 0.36
+4.22 ± 0.20
+30
+λ = 102
+3.34 ± 0.21
+1.78 ± 0.38
+21.44 ± 1.56
+15.98 ± 1.16
+2.41 ± 0.33
+3.05 ± 0.19
+30
+λ = 103
+2.71 ± 0.13
+1.42 ± 0.32
+24.23 ± 1.81
+18.38 ± 1.38
+2.61 ± 0.34
+3.24 ± 0.18
+30
+λ = 104
+6.56 ± 0.20
+1.25 ± 0.31
+30.03 ± 1.73
+23.19 ± 1.35
+2.78 ± 0.28
+4.06 ± 0.20
+30
+λ = (10, 102)
+5.03 ± 0.29
+2.09 ± 0.57
+19.99 ± 1.50
+14.77 ± 1.18
+2.21 ± 0.27
+3.01 ± 0.19
+30
+λ = (10, 103)
+7.68 ± 0.39
+0.97 ± 0.16
+17.37 ± 1.18
+12.93 ± 0.92
+1.71 ± 0.19
+2.73 ± 0.16
+30
+λ = (10, 104)
+8.73 ± 0.29
+0.98 ± 0.20
+17.39 ± 1.44
+12.79 ± 1.11
+1.71 ± 0.26
+2.89 ± 0.18
+30
+λ = (102, 103)
+3.96 ± 0.21
+1.23 ± 0.34
+20.19 ± 1.71
+15.29 ± 1.32
+2.08 ± 0.30
+2.82 ± 0.19
+30
+rand init
+6.04 ± 0.26
+41.38 ± 21.75
+84.88 ± 2.65
+59.53 ± 1.94
+18.03 ± 0.85
+7.32 ± 0.21
+30
+rand p
+7.74 ± 0.38
+871.38 ± 198.66
+130.37 ± 1.66
+70.36 ± 1.26
+49.65 ± 1.00
+10.36 ± 0.28
+30
+λ = 102s
+1.58 ± 0.10
+824.91 ± 15.39
+37.36 ± 1.34
+24.83 ± 0.94
+11.04 ± 0.47
+1.49 ± 0.14
+30
+λ = (10, 103)s
+4.69 ± 0.23
+667.06 ± 17.54
+29.88 ± 1.55
+20.25 ± 1.12
+8.01 ± 0.46
+1.62 ± 0.13
+30
+λ = 102-
+1.69 ± 0.11
+4908.93 ± 96.30
+32.82 ± 1.07
+5.11 ± 0.40
+27.51 ± 0.77
+0.20 ± 0.05
+30
+λ = (10, 103)-
+4.67 ± 0.23
+4610.52 ± 95.17
+26.08 ± 1.07
+5.42 ± 0.47
+20.51 ± 0.70
+0.15 ± 0.04
+30
+λ = 102+
+5.32 ± 0.35
+1.78 ± 0.38
+21.44 ± 1.56
+15.98 ± 1.16
+2.41 ± 0.33
+3.05 ± 0.19
+30
+λ = (10, 103)+
+10.38 ± 0.23
+1.02 ± 0.22
+17.81 ± 1.29
+13.37 ± 1.04
+1.74 ± 0.18
+2.70 ± 0.16
+50
+λ = 1
+14.74 ± 0.85
+54.63 ± 16.95
+95.58 ± 3.36
+70.11 ± 2.52
+15.54 ± 0.91
+9.93 ± 0.28
+50
+λ = 10
+15.22 ± 0.90
+6.71 ± 0.81
+55.14 ± 2.88
+42.10 ± 2.40
+5.57 ± 0.43
+7.47 ± 0.23
+50
+λ = 102
+12.05 ± 0.77
+2.31 ± 0.41
+40.32 ± 2.40
+32.10 ± 2.00
+2.83 ± 0.24
+5.39 ± 0.26
+50
+λ = 103
+10.13 ± 0.56
+1.98 ± 0.73
+40.61 ± 2.96
+32.65 ± 2.34
+2.93 ± 0.49
+5.03 ± 0.27
+50
+λ = 104
+19.66 ± 0.62
+1.01 ± 0.38
+43.44 ± 2.79
+34.93 ± 2.26
+2.95 ± 0.44
+5.56 ± 0.22
+50
+λ = (10, 102)
+29.23 ± 1.75
+3.10 ± 0.50
+35.92 ± 2.16
+28.07 ± 1.88
+2.75 ± 0.23
+5.10 ± 0.19
+50
+λ = (10, 103)
+31.74 ± 1.71
+1.77 ± 0.38
+33.67 ± 2.53
+26.69 ± 2.08
+2.45 ± 0.35
+4.53 ± 0.22
+50
+λ = (10, 104)
+24.14 ± 0.85
+1.15 ± 0.27
+32.27 ± 2.44
+25.43 ± 2.02
+2.06 ± 0.34
+4.78 ± 0.22
+50
+λ = (102, 103)
+15.50 ± 0.84
+2.16 ± 0.63
+34.87 ± 2.56
+28.06 ± 2.05
+2.50 ± 0.38
+4.31 ± 0.26
+50
+rand init
+17.37 ± 0.34
+47.87 ± 27.87
+156.03 ± 5.19
+118.60 ± 4.16
+26.79 ± 1.15
+10.64 ± 0.26
+50
+rand p
+24.40 ± 1.03
+1497.50 ± 407.17
+255.90 ± 3.06
+155.04 ± 2.35
+85.71 ± 1.51
+15.14 ± 0.33
+50
+λ = 102s
+8.45 ± 0.55
+2957.04 ± 69.41
+69.24 ± 2.00
+48.31 ± 1.57
+19.01 ± 0.54
+1.92 ± 0.15
+50
+λ = (10, 103)s
+12.51 ± 0.68
+2114.01 ± 51.61
+56.68 ± 1.95
+40.93 ± 1.55
+13.62 ± 0.52
+2.13 ± 0.14
+50
+λ = 102-
+5.39 ± 0.34
+16135.01 ± 389.36
+56.18 ± 1.46
+8.10 ± 0.58
+47.85 ± 1.05
+0.23 ± 0.05
+50
+λ = (10, 103)-
+13.94 ± 0.76
+15500.46 ± 378.96
+44.66 ± 1.37
+8.97 ± 0.57
+35.54 ± 0.95
+0.15 ± 0.04
+50
+λ = 102+
+18.03 ± 0.78
+2.31 ± 0.41
+40.31 ± 2.39
+32.10 ± 2.00
+2.82 ± 0.24
+5.39 ± 0.26
+50
+λ = (10, 103)+
+44.13 ± 0.81
+1.78 ± 0.46
+33.41 ± 2.63
+26.40 ± 2.15
+2.56 ± 0.41
+4.45 ± 0.21
+100
+λ = 1
+52.40 ± 1.68
+67.18 ± 6.59
+215.70 ± 6.90
+165.76 ± 5.56
+30.96 ± 1.38
+18.98 ± 0.40
+100
+λ = 10
+62.17 ± 2.19
+20.28 ± 4.99
+122.05 ± 4.26
+96.67 ± 3.62
+10.23 ± 0.56
+15.15 ± 0.35
+100
+λ = 102
+41.29 ± 1.56
+4.30 ± 0.99
+89.93 ± 3.49
+74.34 ± 3.04
+4.64 ± 0.34
+10.95 ± 0.33
+100
+λ = 103
+60.88 ± 2.30
+1.98 ± 0.86
+92.12 ± 4.32
+77.68 ± 3.69
+4.21 ± 0.48
+10.23 ± 0.32
+100
+λ = 104
+94.68 ± 1.99
+-0.03 ± 0.22
+92.36 ± 3.36
+78.60 ± 2.97
+3.28 ± 0.30
+10.48 ± 0.27
+100
+λ = (10, 102)
+152.84 ± 6.00
+4.68 ± 0.77
+84.02 ± 3.58
+68.57 ± 3.10
+4.91 ± 0.39
+10.54 ± 0.33
+100
+λ = (10, 103)
+84.24 ± 3.26
+2.61 ± 0.93
+72.30 ± 3.80
+60.12 ± 3.49
+3.58 ± 0.30
+8.60 ± 0.27
+100
+λ = (10, 104)
+135.50 ± 3.39
+0.88 ± 0.32
+66.13 ± 2.85
+54.66 ± 2.53
+2.92 ± 0.27
+8.55 ± 0.26
+100
+λ = (102, 103)
+146.64 ± 5.87
+2.64 ± 1.08
+85.73 ± 5.71
+72.07 ± 4.72
+4.66 ± 0.83
+9.00 ± 0.33
+100
+rand init
+51.32 ± 0.31
+49.17 ± 6.88
+445.43 ± 16.00
+367.63 ± 14.03
+61.00 ± 2.32
+16.80 ± 0.37
+100
+rand p
+67.64 ± 2.14
+3895.88 ± 1085.90
+608.89 ± 6.27
+409.29 ± 5.61
+173.17 ± 2.24
+26.43 ± 0.47
+100
+λ = 102s
+43.98 ± 2.11
+6319.57 ± 103.73
+138.70 ± 2.61
+97.83 ± 2.14
+37.22 ± 0.69
+3.65 ± 0.16
+100
+λ = (10, 103)s
+106.88 ± 4.64
+5285.84 ± 124.45
+108.05 ± 2.74
+78.33 ± 2.27
+26.03 ± 0.60
+3.69 ± 0.19
+100
+λ = 102-
+32.56 ± 1.53
+31457.27 ± 604.87
+110.61 ± 1.75
+14.13 ± 0.66
+96.12 ± 1.36
+0.36 ± 0.07
+100
+λ = (10, 103)-
+121.89 ± 5.33
+30154.20 ± 608.15
+83.21 ± 1.61
+13.67 ± 0.75
+69.26 ± 1.12
+0.28 ± 0.06
+100
+λ = 102+
+84.24 ± 3.38
+4.04 ± 0.93
+89.64 ± 3.47
+74.27 ± 3.04
+4.41 ± 0.34
+10.96 ± 0.31
+100
+λ = (10, 103)+
+107.87 ± 3.07
+2.60 ± 0.93
+72.35 ± 3.81
+60.17 ± 3.49
+3.58 ± 0.30
+8.60 ± 0.27
+DAGs with No Curl
+Table 6. Comparison of Different Algorithms on Linear Synthetic Datasets: results (mean ± standard error over 100 trials) for ER3-
+Gaussian Cases, where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+NOTEARS
+1.71 ± 0.07
+0.03 ± 0.01
+1.11 ± 0.21
+0.55 ± 0.14
+0.15 ± 0.05
+0.41 ± 0.06
+10
+FGS
+0.65 ± 0.07
+–
+6.34 ± 0.55
+2.85 ± 0.37
+0.98 ± 0.13
+2.51 ± 0.18
+10
+CAM
+8.46 ± 0.16
+–
+12.34 ± 0.61
+5.05 ± 0.34
+1.77 ± 0.17
+5.52 ± 0.23
+10
+MMPC
+0.89 ± 0.03
+–
+15.36 ± 0.36
+0.68 ± 0.09
+3.78 ± 0.30
+10.90 ± 0.15
+10
+Eq+BU
+0.57 ± 0.01
+–
+2.92 ± 0.21
+2.91 ± 0.21
+0.01 ± 0.01
+0.00 ± 0.00
+10
+Eq+TD
+0.58 ± 0.02
+–
+3.21 ± 0.23
+3.20 ± 0.23
+0.01 ± 0.01
+0.00 ± 0.00
+10
+NoCurl-1s
+0.09 ± 0.00
+1.45 ± 0.02
+3.11 ± 0.31
+1.60 ± 0.18
+0.95 ± 0.11
+0.56 ± 0.08
+10
+NoCurl-2s
+0.43 ± 0.01
+0.53 ± 0.02
+1.27 ± 0.20
+0.66 ± 0.14
+0.20 ± 0.05
+0.41 ± 0.06
+10
+NoCurl-1
+0.11 ± 0.00
+0.09 ± 0.02
+2.18 ± 0.28
+1.24 ± 0.18
+0.26 ± 0.06
+0.68 ± 0.08
+10
+NoCurl-2
+0.47 ± 0.01
+0.06 ± 0.02
+1.08 ± 0.18
+0.54 ± 0.12
+0.09 ± 0.03
+0.45 ± 0.06
+30
+NOTEARS
+37.25 ± 1.67
+-0.06 ± 0.02
+4.42 ± 0.48
+2.85 ± 0.36
+0.47 ± 0.11
+1.10 ± 0.10
+30
+FGS
+0.96 ± 0.04
+–
+15.16 ± 1.33
+8.53 ± 1.05
+1.98 ± 0.23
+4.65 ± 0.24
+30
+CAM
+45.87 ± 0.94
+–
+36.27 ± 1.17
+18.23 ± 0.70
+4.34 ± 0.31
+13.70 ± 0.37
+30
+MMPC
+1.74 ± 0.05
+–
+46.67 ± 0.68
+2.62 ± 0.18
+11.72 ± 0.60
+32.33 ± 0.34
+30
+Eq+BU
+2.12 ± 0.01
+–
+14.14 ± 0.75
+14.12 ± 0.75
+0.02 ± 0.01
+0.00 ± 0.00
+30
+Eq+TD
+2.07 ± 0.01
+–
+15.45 ± 0.82
+15.43 ± 0.81
+0.02 ± 0.01
+0.00 ± 0.00
+30
+NoCurl-1s
+0.29 ± 0.01
+17.27 ± 0.20
+13.39 ± 0.66
+8.50 ± 0.53
+3.89 ± 0.20
+1.00 ± 0.10
+30
+NoCurl-2s
+1.54 ± 0.04
+10.98 ± 0.19
+8.18 ± 0.61
+5.26 ± 0.47
+2.12 ± 0.16
+0.80 ± 0.08
+30
+NoCurl-1
+1.19 ± 0.04
+0.33 ± 0.19
+7.18 ± 0.61
+5.05 ± 0.49
+0.40 ± 0.07
+1.73 ± 0.12
+30
+NoCurl-2
+2.38 ± 0.06
+0.07 ± 0.04
+5.20 ± 0.49
+3.63 ± 0.39
+0.27 ± 0.05
+1.30 ± 0.10
+50
+NOTEARS
+253.96 ± 9.49
+-0.25 ± 0.04
+8.39 ± 0.70
+5.56 ± 0.53
+1.24 ± 0.18
+1.59 ± 0.13
+50
+FGS
+1.42 ± 0.06
+–
+26.90 ± 2.14
+16.21 ± 1.85
+3.48 ± 0.30
+7.21 ± 0.26
+50
+CAM
+75.11 ± 0.73
+–
+59.03 ± 1.58
+29.31 ± 0.97
+7.71 ± 0.39
+22.01 ± 0.47
+50
+MMPC
+3.88 ± 0.11
+–
+78.82 ± 0.86
+4.32 ± 0.23
+19.39 ± 0.68
+55.11 ± 0.50
+50
+Eq+BU
+4.59 ± 0.05
+–
+27.06 ± 1.12
+26.99 ± 1.12
+0.07 ± 0.04
+0.00 ± 0.00
+50
+Eq+TD
+4.29 ± 0.05
+–
+29.39 ± 1.24
+29.33 ± 1.23
+0.06 ± 0.04
+0.00 ± 0.00
+50
+NoCurl-1s
+1.37 ± 0.06
+48.15 ± 1.02
+25.53 ± 1.08
+16.85 ± 0.81
+7.02 ± 0.32
+1.66 ± 0.12
+50
+NoCurl-2s
+4.30 ± 0.10
+24.66 ± 0.40
+15.77 ± 0.71
+10.77 ± 0.57
+3.80 ± 0.19
+1.20 ± 0.10
+50
+NoCurl-1
+2.32 ± 0.09
+0.05 ± 0.05
+13.51 ± 1.00
+9.78 ± 0.82
+0.65 ± 0.10
+3.08 ± 0.18
+50
+NoCurl-2
+6.48 ± 0.16
+-0.10 ± 0.05
+8.92 ± 0.70
+6.35 ± 0.57
+0.41 ± 0.08
+2.16 ± 0.14
+100
+NOTEARS
+659.35 ± 10.91
+-1.65 ± 0.08
+22.26 ± 1.58
+16.28 ± 1.22
+3.77 ± 0.35
+2.21 ± 0.14
+100
+FGS
+2.36 ± 0.09
+–
+34.12 ± 2.04
+16.16 ± 1.69
+5.54 ± 0.38
+12.42 ± 0.37
+100
+CAM
+197.76 ± 1.89
+–
+104.99 ± 2.00
+51.07 ± 1.24
+12.21 ± 0.55
+41.71 ± 0.68
+100
+MMPC
+6.38 ± 0.16
+–
+159.40 ± 1.19
+10.00 ± 0.38
+32.39 ± 1.19
+117.01 ± 0.84
+100
+Eq+BU
+15.31 ± 0.14
+–
+52.94 ± 2.28
+52.84 ± 2.27
+0.10 ± 0.05
+0.00 ± 0.00
+100
+Eq+TD
+13.02 ± 0.10
+–
+58.34 ± 2.51
+58.24 ± 2.50
+0.10 ± 0.05
+0.00 ± 0.00
+100
+NoCurl-1s
+6.55 ± 0.30
+100.83 ± 0.84
+57.03 ± 1.49
+38.63 ± 1.20
+14.85 ± 0.38
+3.55 ± 0.20
+100
+NoCurl-2s
+21.11 ± 0.56
+66.03 ± 0.66
+35.75 ± 1.17
+25.47 ± 0.95
+7.96 ± 0.29
+2.32 ± 0.15
+100
+NoCurl-1
+18.20 ± 0.81
+-0.82 ± 0.16
+31.99 ± 1.66
+24.09 ± 1.32
+1.30 ± 0.16
+6.60 ± 0.30
+100
+NoCurl-2
+26.02 ± 0.76
+-1.44 ± 0.09
+19.16 ± 1.10
+14.30 ± 0.89
+0.62 ± 0.09
+4.24 ± 0.23
+DAGs with No Curl
+Table 7. Comparison of Different Algorithms on Linear Synthetic Datasets: results (mean ± standard error over 100 trials) for ER4-
+Gaussian Cases, where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+NOTEARS
+3.35 ± 0.13
+0.08 ± 0.02
+1.88 ± 0.26
+0.89 ± 0.15
+0.35 ± 0.07
+0.64 ± 0.08
+10
+FGS
+0.80 ± 0.08
+–
+13.14 ± 0.69
+6.88 ± 0.43
+2.56 ± 0.20
+3.70 ± 0.24
+10
+CAM
+12.10 ± 0.17
+–
+19.06 ± 0.64
+7.51 ± 0.31
+4.35 ± 0.27
+7.20 ± 0.28
+10
+MMPC
+1.14 ± 0.04
+–
+21.13 ± 0.39
+1.45 ± 0.12
+9.16 ± 0.41
+10.52 ± 0.19
+10
+Eq+BU
+0.55 ± 0.01
+–
+4.73 ± 0.24
+4.58 ± 0.23
+0.15 ± 0.06
+0.00 ± 0.00
+10
+Eq+TD
+0.55 ± 0.01
+–
+4.81 ± 0.25
+4.67 ± 0.23
+0.14 ± 0.05
+0.00 ± 0.00
+10
+NoCurl-1s
+0.10 ± 0.00
+4.44 ± 0.09
+4.01 ± 0.36
+2.02 ± 0.21
+1.50 ± 0.16
+0.49 ± 0.07
+10
+NoCurl-2s
+0.56 ± 0.02
+2.03 ± 0.07
+2.39 ± 0.29
+1.11 ± 0.16
+0.57 ± 0.14
+0.71 ± 0.08
+10
+NoCurl-1
+0.25 ± 0.01
+0.14 ± 0.03
+2.51 ± 0.32
+1.39 ± 0.19
+0.45 ± 0.09
+0.67 ± 0.08
+10
+NoCurl-2
+0.43 ± 0.01
+0.13 ± 0.03
+2.22 ± 0.27
+1.12 ± 0.17
+0.33 ± 0.06
+0.77 ± 0.08
+30
+NOTEARS
+94.21 ± 5.25
+0.25 ± 0.11
+8.81 ± 1.08
+6.11 ± 0.78
+1.50 ± 0.28
+1.20 ± 0.11
+30
+FGS
+1.71 ± 0.10
+–
+50.37 ± 3.27
+37.87 ± 2.75
+5.50 ± 0.42
+7.00 ± 0.31
+30
+CAM
+61.92 ± 0.78
+–
+56.80 ± 1.69
+29.98 ± 0.95
+11.96 ± 0.61
+14.86 ± 0.39
+30
+MMPC
+1.58 ± 0.05
+–
+63.70 ± 0.80
+4.19 ± 0.21
+27.61 ± 1.00
+31.90 ± 0.47
+30
+Eq+BU
+2.42 ± 0.04
+–
+31.06 ± 1.33
+30.79 ± 1.31
+0.27 ± 0.08
+0.00 ± 0.00
+30
+Eq+TD
+2.36 ± 0.04
+–
+33.48 ± 1.46
+33.16 ± 1.43
+0.32 ± 0.08
+0.00 ± 0.00
+30
+NoCurl-1s
+0.59 ± 0.03
+58.05 ± 1.08
+20.27 ± 0.81
+13.17 ± 0.61
+6.09 ± 0.27
+1.01 ± 0.09
+30
+NoCurl-2s
+1.92 ± 0.06
+37.25 ± 0.68
+13.16 ± 0.87
+8.67 ± 0.65
+3.75 ± 0.25
+0.74 ± 0.08
+30
+NoCurl-1
+1.18 ± 0.06
+0.31 ± 0.05
+10.84 ± 0.72
+7.97 ± 0.56
+0.75 ± 0.09
+2.12 ± 0.13
+30
+NoCurl-2
+3.39 ± 0.11
+0.40 ± 0.19
+7.91 ± 0.83
+5.69 ± 0.68
+0.71 ± 0.12
+1.51 ± 0.12
+50
+NOTEARS
+209.49 ± 6.13
+0.19 ± 0.09
+19.98 ± 1.46
+14.73 ± 1.12
+3.45 ± 0.37
+1.80 ± 0.14
+50
+FGS
+3.41 ± 0.20
+–
+71.11 ± 4.15
+54.36 ± 3.63
+7.81 ± 0.44
+8.94 ± 0.38
+50
+CAM
+117.45 ± 1.92
+–
+91.13 ± 2.01
+47.89 ± 1.23
+18.91 ± 0.73
+24.33 ± 0.49
+50
+MMPC
+3.84 ± 0.15
+–
+106.73 ± 1.07
+6.07 ± 0.28
+44.99 ± 1.20
+55.67 ± 0.58
+50
+Eq+BU
+4.25 ± 0.03
+–
+64.18 ± 2.29
+63.68 ± 2.26
+0.50 ± 0.12
+0.00 ± 0.00
+50
+Eq+TD
+3.98 ± 0.03
+–
+69.71 ± 2.40
+69.21 ± 2.37
+0.50 ± 0.12
+0.00 ± 0.00
+50
+NoCurl-1s
+3.33 ± 0.17
+164.65 ± 2.42
+37.82 ± 1.19
+25.68 ± 0.94
+10.38 ± 0.36
+1.76 ± 0.14
+50
+NoCurl-2s
+5.80 ± 0.19
+110.84 ± 1.86
+26.26 ± 1.13
+18.35 ± 0.89
+6.55 ± 0.29
+1.36 ± 0.12
+50
+NoCurl-1
+4.13 ± 0.20
+0.40 ± 0.13
+19.76 ± 1.22
+15.01 ± 1.01
+1.02 ± 0.12
+3.73 ± 0.19
+50
+NoCurl-2
+7.55 ± 0.25
+0.42 ± 0.21
+15.24 ± 1.27
+11.66 ± 1.04
+0.81 ± 0.13
+2.77 ± 0.20
+100
+NOTEARS
+1265.47 ± 15.70
+-0.64 ± 0.14
+49.07 ± 2.55
+37.86 ± 2.07
+8.27 ± 0.49
+2.94 ± 0.18
+100
+FGS
+10.17 ± 0.65
+–
+93.24 ± 5.63
+66.74 ± 4.67
+12.98 ± 0.83
+13.52 ± 0.46
+100
+CAM
+258.39 ± 1.83
+–
+159.91 ± 3.10
+81.10 ± 1.83
+34.55 ± 1.23
+44.26 ± 0.72
+100
+MMPC
+14.10 ± 0.56
+–
+213.12 ± 1.49
+12.00 ± 0.39
+83.00 ± 1.84
+118.12 ± 1.14
+100
+Eq+BU
+15.21 ± 0.19
+–
+138.38 ± 5.52
+137.61 ± 5.47
+0.77 ± 0.14
+0.00 ± 0.00
+100
+Eq+TD
+12.69 ± 0.15
+–
+150.08 ± 6.03
+149.31 ± 5.97
+0.77 ± 0.13
+0.00 ± 0.00
+100
+NoCurl-1s
+12.90 ± 0.69
+492.97 ± 7.35
+82.46 ± 1.45
+58.14 ± 1.25
+21.13 ± 0.43
+3.19 ± 0.17
+100
+NoCurl-2s
+30.94 ± 1.13
+348.21 ± 5.30
+60.64 ± 1.79
+43.99 ± 1.51
+13.80 ± 0.42
+2.85 ± 0.18
+100
+NoCurl-1
+26.43 ± 1.46
+-0.28 ± 0.26
+44.43 ± 1.80
+34.83 ± 1.50
+1.74 ± 0.17
+7.86 ± 0.28
+100
+NoCurl-2
+43.99 ± 1.77
+-0.32 ± 0.28
+37.11 ± 1.71
+29.28 ± 1.48
+1.57 ± 0.16
+6.26 ± 0.23
+DAGs with No Curl
+Table 8. Comparison of Different Algorithms on Linear Synthetic Datasets: results (mean ± standard error over 100 trials) for ER6-
+Gaussian Cases, where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+NOTEARS
+3.20 ± 0.20
+0.22 ± 0.04
+3.21 ± 0.31
+1.11 ± 0.14
+1.00 ± 0.14
+1.10 ± 0.09
+10
+FGS
+0.58 ± 0.02
+–
+19.77 ± 0.58
+8.19 ± 0.28
+5.42 ± 0.21
+6.16 ± 0.35
+10
+CAM
+10.46 ± 0.17
+–
+26.41 ± 0.46
+6.07 ± 0.24
+11.17 ± 0.30
+9.17 ± 0.31
+10
+MMPC
+1.14 ± 0.04
+–
+21.13 ± 0.39
+1.45 ± 0.12
+9.16 ± 0.41
+10.52 ± 0.19
+10
+Eq+BU
+0.56 ± 0.01
+–
+6.18 ± 0.31
+4.79 ± 0.21
+1.39 ± 0.22
+0.00 ± 0.00
+10
+Eq+TD
+0.57 ± 0.01
+–
+6.22 ± 0.30
+4.85 ± 0.20
+1.37 ± 0.23
+0.00 ± 0.00
+10
+NoCurl-1s
+0.37 ± 0.03
+8.23 ± 0.15
+4.79 ± 0.37
+1.78 ± 0.18
+2.32 ± 0.23
+0.69 ± 0.08
+10
+NoCurl-2s
+0.92 ± 0.03
+5.55 ± 0.32
+3.27 ± 0.35
+1.10 ± 0.16
+1.19 ± 0.17
+0.98 ± 0.09
+10
+NoCurl-1
+0.34 ± 0.02
+0.54 ± 0.22
+3.54 ± 0.37
+1.37 ± 0.18
+1.30 ± 0.17
+0.87 ± 0.08
+10
+NoCurl-2
+0.75 ± 0.03
+0.36 ± 0.07
+3.07 ± 0.30
+0.97 ± 0.13
+1.02 ± 0.14
+1.08 ± 0.09
+30
+NOTEARS
+102.46 ± 4.68
+1.02 ± 0.18
+20.85 ± 2.09
+15.15 ± 1.58
+3.75 ± 0.49
+1.95 ± 0.14
+30
+FGS
+5.44 ± 0.21
+–
+132.42 ± 3.71
+105.01 ± 3.06
+14.64 ± 0.52
+12.77 ± 0.53
+30
+CAM
+64.53 ± 0.75
+–
+105.49 ± 1.86
+50.80 ± 1.08
+35.69 ± 0.90
+19.00 ± 0.45
+30
+MMPC
+1.58 ± 0.05
+–
+63.70 ± 0.80
+4.19 ± 0.21
+27.61 ± 1.00
+31.90 ± 0.47
+30
+Eq+BU
+2.12 ± 0.03
+–
+68.38 ± 1.66
+63.70 ± 1.40
+4.68 ± 0.57
+0.00 ± 0.00
+30
+Eq+TD
+2.08 ± 0.02
+–
+70.82 ± 1.67
+66.04 ± 1.40
+4.78 ± 0.57
+0.00 ± 0.00
+30
+NoCurl-1s
+1.58 ± 0.10
+824.91 ± 15.39
+37.36 ± 1.34
+24.83 ± 0.94
+11.04 ± 0.47
+1.49 ± 0.14
+30
+NoCurl-2s
+4.69 ± 0.23
+667.06 ± 17.54
+29.88 ± 1.55
+20.25 ± 1.12
+8.01 ± 0.46
+1.62 ± 0.13
+30
+NoCurl-1
+3.34 ± 0.21
+1.78 ± 0.38
+21.44 ± 1.56
+15.98 ± 1.16
+2.41 ± 0.33
+3.05 ± 0.19
+30
+NoCurl-2
+7.68 ± 0.39
+0.97 ± 0.16
+17.37 ± 1.18
+12.93 ± 0.92
+1.71 ± 0.19
+2.73 ± 0.16
+50
+NOTEARS
+340.03 ± 6.99
+1.97 ± 0.26
+52.40 ± 3.24
+40.53 ± 2.62
+9.25 ± 0.67
+2.62 ± 0.16
+50
+FGS
+20.31 ± 1.00
+–
+235.85 ± 7.94
+195.75 ± 6.77
+23.79 ± 1.00
+16.31 ± 0.56
+50
+CAM
+129.50 ± 1.18
+–
+176.25 ± 2.94
+89.77 ± 1.73
+59.87 ± 1.27
+26.61 ± 0.53
+50
+MMPC
+3.84 ± 0.15
+–
+106.73 ± 1.07
+6.07 ± 0.28
+44.99 ± 1.20
+55.67 ± 0.58
+50
+Eq+BU
+3.97 ± 0.03
+–
+153.43 ± 3.76
+145.16 ± 3.27
+8.27 ± 0.93
+0.00 ± 0.00
+50
+Eq+TD
+3.84 ± 0.02
+–
+161.11 ± 4.00
+152.68 ± 3.52
+8.43 ± 0.97
+0.00 ± 0.00
+50
+NoCurl-1s
+8.45 ± 0.55
+2957.04 ± 69.41
+69.24 ± 2.00
+48.31 ± 1.57
+19.01 ± 0.54
+1.92 ± 0.15
+50
+NoCurl-2s
+12.51 ± 0.68
+2114.01 ± 51.61
+56.68 ± 1.95
+40.93 ± 1.55
+13.62 ± 0.52
+2.13 ± 0.14
+50
+NoCurl-1
+12.05 ± 0.77
+2.31 ± 0.41
+40.32 ± 2.40
+32.10 ± 2.00
+2.83 ± 0.24
+5.39 ± 0.26
+50
+NoCurl-2
+31.74 ± 1.71
+1.77 ± 0.38
+33.67 ± 2.53
+26.69 ± 2.08
+2.45 ± 0.35
+4.53 ± 0.22
+100
+NOTEARS
+2146.90 ± 31.22
+2.49 ± 0.37
+116.52 ± 4.39
+92.10 ± 3.66
+20.54 ± 0.84
+3.88 ± 0.21
+100
+FGS
+105.57 ± 5.35
+–
+421.53 ± 15.01
+356.15 ± 13.33
+43.64 ± 1.59
+21.74 ± 0.62
+100
+CAM
+290.21 ± 3.76
+–
+310.54 ± 4.54
+156.83 ± 2.66
+110.55 ± 2.03
+43.16 ± 0.69
+100
+MMPC
+14.10 ± 0.56
+–
+213.12 ± 1.49
+12.00 ± 0.39
+83.00 ± 1.84
+118.12 ± 1.14
+100
+Eq+BU
+13.15 ± 0.15
+–
+378.33 ± 8.50
+365.13 ± 7.81
+13.20 ± 1.20
+0.00 ± 0.00
+100
+Eq+TD
+11.37 ± 0.11
+–
+397.65 ± 8.66
+383.96 ± 7.92
+13.69 ± 1.20
+0.00 ± 0.00
+100
+NoCurl-1s
+43.98 ± 2.11
+6319.57 ± 103.73
+138.70 ± 2.61
+97.83 ± 2.14
+37.22 ± 0.69
+3.65 ± 0.16
+100
+NoCurl-2s
+106.88 ± 4.64
+5285.84 ± 124.45
+108.05 ± 2.74
+78.33 ± 2.27
+26.03 ± 0.60
+3.69 ± 0.19
+100
+NoCurl-1
+41.29 ± 1.56
+4.30 ± 0.99
+89.93 ± 3.49
+74.34 ± 3.04
+4.64 ± 0.34
+10.95 ± 0.33
+100
+NoCurl-2
+84.24 ± 3.26
+2.61 ± 0.93
+72.30 ± 3.80
+60.12 ± 3.49
+3.58 ± 0.30
+8.60 ± 0.27
+DAGs with No Curl
+Table 9. Comparison of Different Algorithms on Linear Synthetic Datasets: results (mean ± standard error over 100 trials) for SF4-
+Gumbel Cases, where bold numbers highlight the best method for each case.
+d
+Method
+Time
+∆F
+SHD
+#Extra E
+#Missing E
+#Reverse E
+10
+NOTEAR
+5.26 ± 0.17
+-0.71 ± 0.01
+1.10 ± 0.22
+0.80 ± 0.15
+0.12 ± 0.05
+0.18 ± 0.04
+10
+FGS
+0.47 ± 0.02
+–
+5.30 ± 0.57
+3.13 ± 0.44
+0.99 ± 0.12
+1.18 ± 0.11
+10
+CAM
+11.76 ± 0.20
+–
+17.70 ± 0.73
+9.22 ± 0.49
+1.67 ± 0.13
+6.81 ± 0.27
+10
+MMPC
+0.52 ± 0.02
+–
+14.93 ± 0.18
+0.88 ± 0.11
+3.06 ± 0.17
+10.99 ± 0.13
+10
+Eq+BU
+0.67 ± 0.01
+–
+1.24 ± 0.13
+1.24 ± 0.13
+0.00 ± 0.00
+0.00 ± 0.00
+10
+Eq+TD
+0.55 ± 0.02
+–
+1.28 ± 0.13
+1.27 ± 0.13
+0.01 ± 0.01
+0.00 ± 0.00
+10
+NoCurl-1s
+0.06 ± 0.00
+0.09 ± 0.01
+0.94 ± 0.17
+0.67 ± 0.13
+0.16 ± 0.04
+0.11 ± 0.03
+10
+NoCurl-2s
+0.18 ± 0.00
+-0.11 ± 0.00
+0.97 ± 0.17
+0.73 ± 0.13
+0.03 ± 0.02
+0.21 ± 0.05
+10
+NoCurl-1
+0.14 ± 0.00
+-0.58 ± 0.01
+0.93 ± 0.20
+0.69 ± 0.15
+0.08 ± 0.04
+0.16 ± 0.04
+10
+NoCurl-2
+0.35 ± 0.01
+-0.59 ± 0.01
+1.08 ± 0.22
+0.86 ± 0.19
+0.04 ± 0.02
+0.18 ± 0.04
+30
+NOTEARS
+82.37 ± 1.57
+-3.55 ± 0.02
+2.68 ± 0.51
+2.13 ± 0.43
+0.11 ± 0.05
+0.44 ± 0.07
+30
+FGS
+1.01 ± 0.03
+–
+22.81 ± 1.70
+12.18 ± 1.38
+7.68 ± 0.46
+2.95 ± 0.19
+30
+CAM
+62.27 ± 0.91
+–
+62.80 ± 1.29
+28.46 ± 0.96
+13.71 ± 0.32
+20.63 ± 0.42
+30
+MMPC
+13.58 ± 3.40
+–
+54.24 ± 0.39
+4.14 ± 0.23
+18.61 ± 0.42
+31.49 ± 0.34
+30
+Eq+BU
+2.74 ± 0.05
+–
+9.46 ± 0.49
+9.42 ± 0.49
+0.04 ± 0.02
+0.00 ± 0.00
+30
+Eq+TD
+3.00 ± 0.03
+–
+9.91 ± 0.52
+9.86 ± 0.52
+0.05 ± 0.02
+0.00 ± 0.00
+30
+NoCurl-1s
+0.29 ± 0.01
+5.57 ± 0.08
+5.76 ± 0.59
+4.85 ± 0.52
+0.67 ± 0.10
+0.24 ± 0.05
+30
+NoCurl-2s
+1.13 ± 0.02
+2.28 ± 0.07
+5.26 ± 0.75
+4.35 ± 0.65
+0.37 ± 0.10
+0.54 ± 0.07
+30
+NoCurl-1
+0.76 ± 0.02
+-3.30 ± 0.04
+2.57 ± 0.43
+2.04 ± 0.37
+0.12 ± 0.04
+0.41 ± 0.05
+30
+NoCurl-2
+1.84 ± 0.05
+-3.31 ± 0.02
+4.42 ± 0.70
+3.60 ± 0.62
+0.09 ± 0.03
+0.73 ± 0.09
+50
+NOTEARS
+150.33 ± 1.98
+-7.08 ± 0.02
+3.94 ± 0.77
+3.22 ± 0.70
+0.18 ± 0.07
+0.54 ± 0.07
+50
+FGS
+2.35 ± 0.10
+–
+43.47 ± 2.77
+19.25 ± 2.12
+19.00 ± 0.95
+5.22 ± 0.29
+50
+CAM
+110.65 ± 1.42
+–
+103.32 ± 1.55
+39.74 ± 1.10
+30.54 ± 0.69
+33.04 ± 0.52
+50
+MMPC
+417.94 ± 349.20
+–
+96.70 ± 0.56
+8.91 ± 0.38
+38.39 ± 0.83
+49.40 ± 0.69
+50
+Eq+BU
+5.49 ± 0.05
+–
+23.64 ± 1.03
+23.30 ± 1.02
+0.33 ± 0.12
+0.01 ± 0.01
+50
+Eq+TD
+5.75 ± 0.04
+–
+24.52 ± 1.08
+24.18 ± 1.07
+0.34 ± 0.12
+0.00 ± 0.00
+50
+NoCurl-1s
+0.99 ± 0.05
+24.11 ± 0.37
+14.98 ± 1.13
+12.82 ± 1.01
+1.72 ± 0.15
+0.44 ± 0.08
+50
+NoCurl-2s
+5.94 ± 0.15
+10.42 ± 0.21
+13.73 ± 1.36
+11.78 ± 1.24
+0.56 ± 0.08
+1.39 ± 0.12
+50
+NoCurl-1
+3.45 ± 0.13
+-6.74 ± 0.03
+4.06 ± 0.64
+3.16 ± 0.56
+0.14 ± 0.03
+0.76 ± 0.09
+50
+NoCurl-2
+5.64 ± 0.14
+-6.74 ± 0.03
+8.38 ± 1.17
+7.05 ± 1.08
+0.18 ± 0.05
+1.15 ± 0.10
+100
+NOTEARS
+1113.10 ± 9.71
+-17.53 ± 0.05
+11.98 ± 2.18
+10.40 ± 2.04
+0.43 ± 0.11
+1.15 ± 0.12
+100
+FGS
+8.04 ± 0.54
+–
+91.32 ± 3.48
+30.09 ± 2.59
+52.39 ± 1.54
+8.84 ± 0.34
+100
+CAM
+240.04 ± 2.91
+–
+211.33 ± 2.25
+74.66 ± 1.60
+76.12 ± 0.90
+60.55 ± 0.82
+100
+MMPC
+40.22 ± 14.80
+–
+217.00 ± 0.82
+32.41 ± 0.73
+88.73 ± 1.12
+95.86 ± 1.04
+100
+Eq+BU
+21.50 ± 0.29
+–
+62.96 ± 2.20
+61.33 ± 2.27
+1.62 ± 0.30
+0.01 ± 0.01
+100
+Eq+TD
+17.46 ± 0.10
+–
+65.60 ± 2.27
+63.98 ± 2.34
+1.62 ± 0.30
+0.00 ± 0.00
+100
+NoCurl-1s
+6.87 ± 0.33
+97.63 ± 1.31
+38.66 ± 2.28
+35.02 ± 2.09
+3.03 ± 0.25
+0.61 ± 0.09
+100
+NoCurl-2s
+23.98 ± 0.87
+55.31 ± 1.21
+30.14 ± 2.42
+26.66 ± 2.23
+1.78 ± 0.20
+1.70 ± 0.15
+100
+NoCurl-1
+27.64 ± 0.82
+-17.29 ± 0.05
+8.68 ± 1.09
+7.06 ± 1.01
+0.19 ± 0.04
+1.43 ± 0.13
+100
+NoCurl-2
+49.83 ± 1.20
+-17.19 ± 0.06
+16.84 ± 1.66
+14.78 ± 1.58
+0.17 ± 0.05
+1.89 ± 0.14
+DAGs with No Curl
+Table 10. Comparison of Different Algorithms on Nonlinear Synthetic datasets: results (mean ± standard error over 5 trails) on SHD
+and Run Time (in seconds), where bold numbers highlight the best method for each case.
+Nonlinear Case 1: SHD
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+3.0 ± 1.2
+3.2 ± 1.7
+4.6 ± 0.6
+21.4 ± 0.4
+9.0 ± 3.9
+7.4 ± 2.8
+7.4 ± 3.2
+20
+3.8 ± 2.3
+5.0 ± 1.8
+12.6 ± 1.5
+46.4 ± 0.7
+12.6 ± 3.8
+8.8 ± 3.1
+8.6 ± 3.5
+50
+29.0 ± 6.5
+9.6 ± 1.6
+12.0 ± 1.4
+110.6 ± 2.7
+28.0 ± 3.7
+26.4 ± 10.5
+23.2 ± 9.8
+100
+> 72h
+> 72h
+34.2 ± 4.0
+251.2 ± 6.1
+> 72h
+58.6 ± 15.9
+54.0 ± 13.8
+Nonlinear Case 2: SHD
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+0.4 ± 0.4
+4.2 ± 2.4
+7.0 ± 0.5
+15.8 ± 0.3
+7.8 ± 4.7
+2.0 ± 1.5
+5.6 ± 3.1
+20
+2.2 ± 1.0
+8.0 ± 3.1
+24.6 ± 1.0
+37.0 ± 0.3
+21.2 ± 11.8
+5.0 ± 2.3
+2.0 ± 0.8
+50
+20.8 ± 4.7
+17.6 ± 5.8
+41.4 ± 1.2
+83.6 ± 0.4
+54.6 ± 10.2
+12.4 ± 4.6
+9.0 ± 3.4
+100
+> 72h
+26.0 ± 6.7
+78.0 ± 2.4
+179.0 ± 1.5
+> 72h
+21.4 ± 2.3
+18.6 ± 3.0
+Nonlinear Case 3: SHD
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+2.6 ± 1.2
+8.8 ± 2.9
+0.2 ± 0.0
+15.8 ± 0.1
+4.2 ± 0.8
+2.4 ± 0.8
+3.0 ± 0.6
+20
+6.0 ± 2.5
+36.0 ± 11.1
+13.6 ± 1.0
+37.2 ± 0.3
+18.8 ± 4.7
+9.0 ± 1.4
+10.4 ± 1.6
+50
+14.8 ± 0.4
+60.8 ± 8.0
+55.2 ± 2.1
+> 72h
+57.4 ± 5.2
+27.6 ± 3.7
+26.6 ± 1.8
+100
+45.4 ± 2.7
+> 72h
+73.0 ± 0.5
+> 72h
+> 72h
+62.6 ± 6.6
+60.8 ± 3.8
+Nonlinear Case 1: Run Time
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+2.3e3 ± 4.5e2
+7.2e2 ± 5.2e1
+3.9e1 ± 0.8
+1.5 ± 0.1
+6.3e2 ± 6.5e1
+6.3e1 ± 1.4e2
+3.8e2 ± 3.3e1
+20
+9.1e3 ± 15.3e4
+1.5e3 ± 7.6e1
+8.9e1 ± 1.2
+2.1 ± 0.1
+1.9e3 ± 3.2e2
+1.1e3 ± 2.0e2
+4.9e2 ± 2.9e1
+50
+6.0e4 ± 3.0e4
+5.3e3 ± 4.2e2
+2.5e2 ± 1.9
+1.3e1 ± 1.4
+1.7e4 ± 1.1e3
+2.2e3 ± 2.1e2
+9.1e2 ± 8.5e1
+100
+> 72h
+> 72h
+6.1e2 ± 4.7
+1.0e2 ± 7.6
+> 72h
+4.7e3 ± 4.9e2
+1.6e3 ± 7.4e1
+Nonlinear Case 2: Run Time
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+3.2e3 ± 9.4e2
+5.9e2 ± 7.8e1
+3.5e1 ± 1.2
+0.7 ± 0.0
+6.7e2 ± 3.8e1
+9.5e2 ± 5.4e1
+3.1e2 ± 1.3e1
+20
+2.0e4 ± 1.5e3
+1.3e3 ± 5.3e2
+1.0e2 ± 2.3
+1.1 ± 0.0
+1.9e3 ± 1.9e2
+1.2e3 ± 7.2e1
+3.9e2 ± 1.3e1
+50
+1.8e5 ± 5.4e4
+5.3e3 ± 1.5e3
+2.9e2 ± 4.6
+4.8 ± 0.2
+1.2e4 ± 1.4e3
+2.9e3 ± 2.6e2
+8.5e2 ± 4.1e1
+100
+> 72h
+1.6e4 ± 7.2e2
+6.1e2 ± 2.7
+1.1e1 ± 0.4
+> 72h
+5.7e3 ± 5.3e2
+1.3e3 ± 6.6e1
+Nonlinear Case 3: Run Time
+d
+NOTEARS-MLP
+GraN-DAG
+CAM
+MMPC
+GSGES
+DAG-GNN
+DAG-GNN + NoCurl
+10
+1.1e3 ± 6.3e2
+1.3e3 ± 2.1e2
+5.1e1 ± 0.7
+0.7 ± 0.0
+3.3e2 ± 1.4e1
+1.5e2 ± 1.9e1
+3.6e2 ± 3.2e1
+20
+1.2e4 ± 1.0e4
+2.2e3 ± 4.4e2
+1.4e2 ± 3.4
+4.5e1 ± 6.7
+1.6e3 ± 1.7e2
+1.3e3 ± 1.3e2
+4.2e2 ± 4.1e1
+50
+7.8e3 ± 1.1e3
+2.0e4 ± 2.2e3
+3.8e2 ± 7.3
+> 72h
+1.1e4 ± 7.3e2
+2.7e3 ± 3.2e2
+9.9e2 ± 5.2e1
+100
+3.2e4 ± 6.2e3
+> 72h
+7.9e2 ± 5.5
+> 72h
+> 72h
+4.7e3 ± 3.5e2
+1.3e3 ± 3.1e1
+Table 11. Accuracy Results on Protein Signaling Network, where bold number highlights the best method.
+Method
+FGS
+NOTEARS
+NOTEARS-MLP
+DAG-GNN
+GraN-DAG
+CAM
+DAG-GNN+NoCurl
+# Edges
+17
+16
+13
+18
+-
+-
+18
+SHD
+22
+22
+16
+19
+13∗
+12∗
+16
+CAM and GraN-DAG results adopted from (Lachapelle et al., 2019), without the number of edges reported.

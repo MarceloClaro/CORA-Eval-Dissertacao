@@ -1,0 +1,2443 @@
+Preprint
+H1:
+BOOTSTRAPPING
+LLMS
+TO
+REASON
+OVER
+LONGER HORIZONS VIA REINFORCEMENT LEARNING
+Sumeet Ramesh Motwani1∗Alesia Ivanova1∗Ziyang Cai2
+Philip Torr1
+Riashat Islam3
+Shital Shah3
+Christian Schroeder de Witt1†
+Charles London1†
+1University of Oxford
+2Princeton University
+3Microsoft AI Frontiers
+alesia.ivanova@st-hildas.ox.ac.uk, charles.london@cs.ox.ac.uk
+ABSTRACT
+Large language models excel at short-horizon reasoning tasks, but performance
+drops as reasoning horizon lengths increase.
+Existing approaches to combat
+this rely on inference-time scaffolding or costly step-level supervision, neither
+of which scales easily. In this work, we introduce a scalable method to bootstrap
+long-horizon reasoning capabilities using only existing, abundant short-horizon
+data. Our approach synthetically composes simple problems into complex, multi-
+step dependency chains of arbitrary length. We train models on this data using
+outcome-only rewards under a curriculum that automatically increases in com-
+plexity, allowing RL training to be scaled much further without saturating. Empir-
+ically, our method generalizes remarkably well: curriculum training on composed
+6th-grade level math problems (GSM8K) boosts accuracy on longer, competition-
+level benchmarks (GSM-Symbolic, MATH-500, AIME) by up to 2.06×. It also
+transfers significantly to diverse out-of-distribution ReasoningGym domains and
+long-context benchmarks, indicating broader generalization.
+Importantly, our
+long-horizon improvements are significantly higher than baselines even at high
+pass@k, showing that models can learn new reasoning paths under RL. Theoreti-
+cally, we show that curriculum RL with outcome rewards achieves an exponential
+improvement in sample complexity over full-horizon training, providing training
+signal comparable to dense supervision. h1 therefore introduces an efficient path
+towards scaling RL for long-horizon problems using only existing data.
+1
+INTRODUCTION
+Large language models (LLMs) have improved remarkably across many domains, but they often
+struggle with long-horizon reasoning (LHR). This involves correctly carrying out a deep multi-step
+reasoning process where goals must be decomposed into intermediate steps and executed success-
+fully in a chain of thought (CoT). LHR tasks consist of a sequence of dependent problems where a
+large context must be managed and errors can compound across the horizon (Li et al., 2024; Malek
+et al., 2025; Zhou et al., 2025a; Sinha et al., 2025). For many problems of interest, such as perform-
+ing research-level mathematics, debugging complex code, and assisting with scientific discovery, an
+LLM must be able to correctly solve intermediate steps, carry forward results, and determine what
+state is important to track and use. Broadly, any task of importance requires solving several chal-
+lenging interdependent components, which motivates the development of training methods directly
+aimed at improving model capabilities on such long sequences of problems.
+Reinforcement learning (RL) has shown substantial benefits in improving the reasoning capabili-
+ties of LLMs (OpenAI-o1 et al., 2025; DeepSeek-AI et al., 2025). However, RL depends on the
+availability of verifiable training data and is currently limited in terms of the complexity and long-
+horizon reasoning paths afforded by such data. The lack of increasing levels of problem difficulty
+and diversity in RL datasets leads to improvements saturating after a very limited number of train-
+ing steps (Cui et al., 2025; Wu et al., 2025). Obtaining long-horizon training data is expensive and
+sample inefficient to directly train on (as we show in Section 4 and Section 6). Moreover, existing
+∗Indicates joint-first authorship. † indicates joint advisory.
+1
+arXiv:2510.07312v2  [cs.LG]  15 Oct 2025
+Preprint
+Figure 1: Our method h1 involves composing existing short-horizon reasoning problems into longer
+sequences. We then apply a stage-wise curriculum on this composed data to scale online RL training.
+We observe significantly improved long-horizon reasoning capabilities and OOD improvements.
+approaches (Zhang et al., 2025a; Liu et al., 2025b) do not adequately address the problem of improv-
+ing long-horizon performance when only single step short-horizon data is abundant (as is the case
+in real-world scenarios). This raises a natural question: Can we improve long-horizon reasoning
+capabilities by scaling reinforcement learning using only existing short-horizon training data?
+In this work, we show that the answer is yes. We introduce a method for chained problem construc-
+tion, which composes short-horizon problems (e.g. GSM8K questions (Cobbe et al., 2021)) into
+arbitrarily long chains of dependent reasoning steps. This provides scalable synthetic long-horizon
+data, with explicit control over the horizon length and complexity without the need for new annota-
+tions. We then train language models on this data using reinforcement learning with outcome-only
+rewards, coupled with a curriculum over horizons. Obtaining useful data that is of just the right
+complexity for models to learn from has always been a major bottleneck (Li et al., 2025). We show
+how existing tasks can be grouped adaptively into increasingly harder problems that provide use-
+ful training signal and prevent RL improvements from quickly saturating (Cui et al., 2025). Our
+approach requires neither step-level labels nor auxiliary models (as in PRMs), and avoids inference-
+time search, instead directly training the model to internalize useful long-horizon reasoning paths.
+Our results in Sections 4 and 5 show that not only does this synthetic curriculum generalize to long
+in-domain multi-step problems, but it also transfers to harder benchmarks with longer problems such
+as MATH-500 and AIME that implicitly require LHR. We also observe significant generalization
+on diverse out-of-distribution ReasoningGym domains (Stojanovski et al., 2025) and long-context
+benchmarks. Importantly, we show that long-horizon reasoning depends on more than just improv-
+ing single step accuracy, and in Section 3 we present our method that directly targets the capabilities
+needed for better generalizable performance. We evaluate our long-horizon trained models versus
+other strong baselines up to pass@128 and show that while improvements obtained from RLVR on
+standard data are bounded by the base model’s capabilities (Yue et al., 2025), our method always
+performs significantly better. These improvements reflect new skills acquired through curriculum-
+based training on compositional tasks, supported by both empirical evidence and theory (Section 6).
+Finally, in Section 7, we further analyze compute–data tradeoffs, showing how scaling compute can
+substitute for scarce long-horizon data in real-world scenarios.
+Our main contributions are:
+1. A general method for constructing long-horizon reasoning data by chaining existing short-
+horizon problems with no additional human or teacher-model annotations.
+2. A reinforcement learning framework with curriculum learning and outcome-only rewards
+that significantly improves long-horizon performance and teaches new reasoning paths not
+elicited otherwise, at pass@1 and even very high pass@k.
+3. Empirical evidence of transfer to significantly harder out-of-distribution benchmarks
+(MATH-500, AIME, GSM Symbolic, ReasoningGym, LongBench-v2, Hash-hop) while
+training on composed GSM8K data, outperforming other RL training baselines.
+4. Theoretical analysis of the sample complexity of curriculum learning, demonstrating that it
+achieves an exponential improvement over full-horizon training, similar to dense rewards.
+2
+Preprint
+2
+RELATED WORK
+LLM Reasoning and RL.
+Initial reasoning literature (Zelikman et al., 2022) bootstrapped perfor-
+mance using model generated reasoning traces. More recently, (OpenAI-o1 et al., 2025; DeepSeek-
+AI et al., 2025) demonstrated substantial improvements in reasoning capabilities via RL training.
+These advances have enabled effective scaling of inference-time compute (Snell et al., 2024; Brown
+et al., 2024; Muennighoff et al., 2025). However, as reasoning chains grow longer, models exhibit
+several limitations, often struggling with simple multi-step problems (Malek et al., 2025; Shojaee
+et al., 2025; Song et al., 2025). Moreover, RL-based approaches face their own challenges: diversity
+degradation during training (Song et al., 2025), questions about whether models truly acquire new
+capabilities versus better sampling existing ones (Yue et al., 2025), and maintaining stability over
+long horizons (Xiang et al., 2025). Recent efforts toward addressing these challenges include Setlur
+et al. (2025), which improves in-context exploration via an RL curricula with steps such as verifica-
+tion and refinement and work on adaptive difficulty scheduling (Shi et al., 2025; Wang et al., 2025b;
+Parashar et al., 2025; Liu et al., 2025b). Our work systematically composes existing short-horizon
+problems into chains of increasing length, producing new data to scale an RL curriculum to train
+models to internalize LHR capabilities that they otherwise lack. This enables reliable multi-step
+problem solving and improvements on significantly harder (unseen) settings, providing a foundation
+for training long-horizon agents (Zhou et al., 2025b; Kwa et al., 2025). Yuan et al. (2025) appears
+concurrently and also looks into new skill learning during RL with compositional data.
+Length Generalization.
+Length generalization is concerned with extrapolating to longer sequence
+lengths than those seen during training (Dubois et al., 2019; Hupkes et al., 2020; Newman et al.,
+2020; Anil et al., 2022). Length generalization settings mostly focus on small scale tasks (Sabbaghi
+et al., 2024; Zhou et al., 2024) but do not address RL training of reasoning models. A close example
+(Lee et al., 2025) uses curriculum construction and SFT to train small transformers on progressively
+harder algorithmic tasks. In this work, we not only show progressive length generalization gains
+through curriculum based RL, but also cross-task generalization on much harder tasks.
+Long Context Models.
+Another related thread is extending LLM context length to handle very
+large inputs. Recent models feature context windows of tens or hundreds of thousands of tokens
+(Liu et al., 2025a) and benchmarks like LongBench-v2 (Bai et al., 2025) evaluate performance on
+extremely long inputs such as documents and code. Frontier models with state-of-the-art context
+windows still suffer performance degradation when required to infer against distant pieces of infor-
+mation or a series of dependent tasks (Li et al., 2024; Malek et al., 2025; Zhou et al., 2025a). These
+works show that simply having larger context windows does not guarantee that models can perform
+deep, dependent reasoning over several steps. Our work aims to address this gap by focusing on
+training for improved long-horizon output generation rather than just long-context input handling.
+3
+METHOD
+Long-horizon reasoning (LHR) refers to the capability of reliably carrying out a stateful reasoning
+process over multiple dependent steps in a CoT to solve long-horizon tasks.
+What counts as a long-horizon task?
+We use two notions. Explicit-horizon tasks have a known
+number of dependent sub-problems h and we construct them by chaining atomic problems (used
+for training and in-domain evaluation). Implicit-horizon tasks require multiple dependent reasoning
+steps but do not come with an explicit decomposition (e.g., MATH-500, AIME); they have a latent
+horizon h⋆that is not annotated. Our training targets explicit horizons for controllable generation,
+and shows a strong transfer to implicit-horizon benchmarks. Consistent with Sinha et al. (2025),
+single-turn tasks can be considered long-horizon if they consist of a large number of interdependent
+and difficult problems (with many dependent state updates) to solve over a long output. Opera-
+tionally, a task can be considered long for a model when the number of dependent state updates
+(steps) exceeds what it can accurately solve in its CoT or compress into parameters, and our train-
+ing method expands this range. This differs from generic “multi-step” settings where steps may be
+shallow, order-agnostic, or independent.
+3
+Preprint
+Our goal is to bootstrap long-horizon reasoning (LHR) using only existing short-horizon data. We
+(i) compose atomic problems into longer chains of problems with dependent steps to synthesize LHR
+data, (ii) scale RL training with outcome-only GRPO following a curriclum learning approach, and
+(iii) evaluate both in-domain (explicit chains) and on harder out-of-domain tasks that implicitly re-
+quire many reasoning steps. Here, we describe what we mean by long-horizon reasoning, formalize
+our data construction process, and provide a description of our RL training objective.
+Atomic tasks and serial composition.
+We begin with atomic tasks fj: short, self-contained prob-
+lems (e.g., single GSM8K questions) with verifiable answers that the base model solves with non-
+trivial accuracy. Each task takes an input xj and produces an answer yj.
+To form long-horizon examples, we chain h atomic tasks so later sub-problems depend on earlier
+results. A lightweight adapter ϕj maps yj to the next input:
+yj = fj(xj),
+xj+1 = ϕj(yj),
+j = 1, . . . , h −1,
+yielding the final answer
+yh = fh(ϕh(· · · ϕ1(f1(x1)))).
+Adapters may be identity or simple deterministic transforms such as scaling (addition/subtraction)
+or unit conversion (described further in Appendix A). Each chain of length h is rendered as a single
+prompt listing the h sub-problems in order. This ends up as one sequence of composed sub-problems
+where each sub-problem’s input depends on solutions to the previous sub-problems. Correctly solv-
+ing the entire problem therefore requires solving each sub-problem correctly while managing state,
+which can be supervised using only the final answer yh (outcome-only RL). We apply basic well-
+posedness checks (type consistency, unit compatibility, de-duplication) and present an example.
+Example explicit-horizon problem
+Problem: Compute the final value through the following chain:
+(i) Weng earns $12 an hour for babysitting. Yesterday, she babysat for 50 minutes. How
+much did she earn?
+(Answer #1)
+(ii) Betty is saving money for a new wallet which costs {10 × Answer #1} but has only
+half of the money needed. Her parents give her $15, and her grandparents give her twice as
+much. How much more money does Betty need to buy the wallet?
+(Answer #2)
+(iii) James writes a { Answer #2}-page letter to 2 different friends twice a week. How many
+pages does he write a year?
+(Answer #3)
+Final answer: Answer #3
+This construction exposes models to dependency chains that require carrying, transforming, and
+reusing intermediate values, while keeping supervision outcome-only. We vary chain length h to
+implement the stagewise curriculum described later in this section. In Appendix A, we analyze our
+composition method through computational graphs to explain its effectiveness during training.
+Why horizons are hard: beyond multiplicative errors.
+In explicit-horizon tasks, let h be
+the number of dependent sub-problems whose intermediate values are reused downstream. An
+independent-errors view gives P(final correct) = ph, suggesting that raising atomic step accuracy
+p suffices. We believe this is overly optimistic, and instead hypothesize that there exist specific
+horizon-dependent skills (such as intermediate value tracking and state management) that cannot
+be learned solely by training on atomic problems. We therefore model long-horizon accuracy via
+atomic reliability p and horizon-dependent reliability σj. This matches what we see in Section 4.
+Abstractly, σj represents skills that are necessary to achieve high accuracy at horizon j, beyond what
+is needed at horizons < j. Writing sj for the probability that the reasoning state remains correct
+after step j, we would have
+sj = p σj sj−1,
+s0 = 1,
+so if σj decays with horizon length, accuracy can collapse even when p ≈1. This explains the
+weakness of naive outcome-only training at horizon h: when σj ≪1, few rollouts earn reward,
+gradients have low signal-to-noise ratio, and samples scale exponentially in h. Curriculum training
+4
+Preprint
+Algorithm 1 h1: Stagewise curriculum RL over explicit-horizons
+Require: Pretrained model M0; atomic task bank A; adapters {ϕj}; max horizon H; per-stage sample and
+step counts nh, sh
+1: for h = 1 to H do
+▷stagewise curriculum over explicit horizons
+2:
+Dh ←∅
+3:
+for i = 1 to nh do
+▷construct horizon-h chains
+4:
+sample (f1:h, x1) from A;
+y1 ←f1(x1)
+5:
+for j = 1 to h −1 do
+6:
+xj+1 ←ϕj(yj); yj+1 ←fj+1(xj+1)
+7:
+p ←FORMATPROMPT((fj, xj)h
+j=1)
+▷format prompt from the task sequence
+8:
+Dh ←Dh ∪{(p, yh)}
+9:
+Mh ←TRAINWITHDRGRPO(Mh−1, Dh, sh)
+10: return MH
+mitigates this by starting with short chains where sj is large, yielding high-SNR updates; early
+stages raise p, while later stages improve their respective σj. Empirically (Section 4), we validate
+that performance depends on capabilities beyond p, and our approach improves both p and σj,
+delivering large gains on explicit-horizon tasks and generalizing to harder implicit-horizon tasks
+(Section 5); Section 6 develops the theoretical implications showing the exponential to polynomial
+time speedup offered by RL curriculum training and comparing it with dense supervision.
+Scaling RL with a curriculum over horizons.
+Let Dh be the dataset of synthesized chains of
+explicit horizon h. Our curriculum is stagewise:
+for h = 1, 2, . . . , Hmax :
+run Dr. GRPO (Liu et al., 2025c) on Dh for sh optimization steps.
+We initialize from πθ0 and carry the parameters forward between stages. Algorithm 1 describes
+the entire training process. By focusing optimization on a single horizon per stage, the model first
+acquires reliable short-horizon primitives (increasing p), then learns to reuse and compose them
+under longer dependencies (increasing σj for j > 1). We contrast the curriculum with three baseline
+horizon-sampling policies:
+1. Only-L1: q(ℓ) = I[ℓ= 1]. If direct problem-solving were sufficient, this would match
+curriculum; empirically it does not.
+2. Uniform-Mix: q(ℓ) ∝I[1 ≤ℓ≤Hmax], i.e., randomly pick from the LHR dataset.
+3. Only-Long: q(ℓ) = I[ℓ= Hmax], i.e., train solely on the hardest chains. This suffers from
+extreme sparsity and unstable gradients.
+Generally, RL with verifiable rewards (RLVR) requires the creation of a clean labeled dataset. What
+models can learn from is potentially limited by the complexity expressed in these problems. We
+see this bound due to a fixed RL dataset both empirically (Section 3) and theoretically (Section 6),
+which leads to performance quickly saturating during training. Our goal with a synthetic curriculum
+is to optimally utilize limited existing data for scaling RL. At each stage, tasks can be composed to
+be right at the edge of what a model can solve, making RLVR more scalable (see Tables 1 and 2).
+Training and evaluations.
+We use the Qwen-2.5-3B Instruct model (Qwen et al., 2025) for our
+core experiments. Improving an Instruct model with RL is generally considered more difficult (Wang
+et al., 2025a) and gains signify performance improvements beyond just instruction tuning (which
+cannot be directly inferred for improvements on base models (Shao et al., 2025)). Therefore, we aim
+to show all improvements on Instruct models for the purpose of robustness. Our explicit-horizon
+training and evaluations are done on composed GSM8K questions (Cobbe et al., 2021), and our
+implicit-horizon evaluations are on AIME 2024, AIME 2025, MMLU Pro Math (Wang et al., 2024),
+GSM Symbolic (Mirzadeh et al., 2025), and MATH-500 (Hendrycks et al., 2021).
+4
+IN-DOMAIN RESULTS AND THE IMPORTANCE OF CURRICULUM
+We evaluate our curriculum-based RL training method using explicit-horizon GSM8K problems
+and demonstrate that (1) curriculum learning is essential for long-horizon reasoning, (2) LHR per-
+5
+Preprint
+Horizon 2
+Horizon 3
+Horizon 4
+Horizon 5
+Horizon 6
+(Generalization)
+Problem Horizon Length
+0
+10
+20
+30
+40
+50
+60
+70
+Accuracy (%)
+35.1%
+20.1%
+6.7%
+3.5%
+39.4%
+18.4%
+3.0%
+2.1%
+0.2%
+58.5%
+36.4%
+18.8%
+9.8%
+3.5%
++1.7×
++1.8×
++2.8×
++2.9×
+Curriculum RL Training on Compositional Data Significantly Improves Long­Horizon Reasoning
+Model Training Method
+Instruct Baseline
+Standard RL (Horizon=1)
+H1 Curriculum RL (Horizon 5)
+Figure 2: Curriculum RL training on compositional data offers significant in-domain long horizon
+reasoning gains (up to 2.9×). This prevents RL training from saturating and uses no new data.
+formance depends on capabilities beyond single step accuracy, and (3) our method teaches gen-
+uinely new capabilities that are otherwise absent in the model. We use Qwen-2.5-3B Instruct
+for our experiments, with GRPO over a curriculum of chained GSM8K problems with horizons
+h ∈{1, 2, 3, 4, 5}. Each stage trains for 200 steps with 200 samples per horizon. We compute the
+following baselines: Only-L1 (standard RL on h=1), Only-Long (h=5), and Uniform-Mix (uni-
+form over h ∈[1, 5]). In Appendix D, we provide results on Qwen-2.5-7B Instruct using composed
+MATH and Llama-3.2-3B Instruct using composed GSM8K data, both showing improvements.
+In-domain results.
+In Table 1, our in-domain results on composed LHR GSM8K problems from
+the test set show that the curriculum-based approach yields substantial monotonic improvements in
+accuracy as the training horizon increases. At h=2 the instruct model achieves 35.06%, which in-
+creases to only 39.42% with RL on standard GSM8K problems but jumps to 56.22% when training
+up to a horizon of 2 and 58.51% when trained up to a horizon of 5. Similarly, at h=3 the instruct
+model achieves 20.07%, which lifts to 37.76% with a curriculum up to h=3. For longer horizons
+(harder problems), the effect of curriculum is even more visible, increasing accuracy by about 3× at
+h=4 (6.70% →18.77%) and h=5 (3.57% →9.82%). We present these improvements in Figure
+2. In Table 1, the Only-L1 baseline improves h=1 but shows no improvements on longer horizons.
+Similarly, Uniform-Mix even at an equal training compute baseline shows no improvements. Only-
+Long also leads to no long-horizon improvements due to the lack of useful training signal at longer
+lengths discussed in Section 3. Furthermore, Cui et al. (2025) show that the entropy of a policy
+undergoing RL training collapses quickly, which causes improvements from RL to saturate quickly.
+While this is true for our baselines, our curriculum training repeatedly introduces new levels of diffi-
+culty (exploration), which allows scaling RL for up to 5× more steps to keep improving capabilities.
+We leave a deeper investigation into the scaling properties of our method to future work.
+Curriculum RL bootstraps long-horizon reasoning
+Training up to horizon h extends usable learning signal on h + 1 and shifts probability
+mass into the long-sequence tail monotonically. For example, training to h=3 lifts h=4 from
+6.70% to 15.55%; training to h=4 lifts h=5 from 3.57% to 9.23%. This provides enough
+training signal for the next stage, allowing curriculum learning to be extremely effective. We
+examine this theoretically in Section 6.
+Why single-step accuracy is not enough.
+In Section 3, we claim that LHR depends on more than
+just single step accuracy. Prior to RL training, single-step accuracy of the model is 82.79%. If errors
+were independent, we would expect 68.54% at h=2 and 56.75% at h=3 by multiplicative com-
+pounding, yet we observe 35.06% and 20.07% (Table 1). Even after RL training (Only-L1) for 200
+6
+Preprint
+Accuracy on GSM8K Problems of Horizon L-n
+Model / setting
+L-1
+L-2
+L-3
+L-4
+L-5
+L-6
+L-7
+L-8
+Instruct model
+82.79
+35.06
+20.07
+6.70
+3.57
+0.00
+0.79
+0.00
+Equal compute training baselines
+Only-L1
+86.80
+37.14
+21.43
+6.70
+3.87
+0.25
+0.00
+0.00
+Uniform-Mix
+82.80
+12.66
+2.04
+0.54
+0.00
+0.00
+0.00
+0.00
+Only-Long
+82.71
+43.36
+20.41
+3.22
+1.49
+0.25
+0.25
+0.00
+Curriculum training (trained up to Len-n)
+RLVR
+83.24
+39.42
+18.37
+2.95
+2.08
+0.25
+0.79
+0.00
+Len-2
+85.92
+56.22
+28.57
+12.06
+6.25
+1.26
+0.79
+0.49
+Len-3
+84.91
+56.22
+37.76
+15.55
+8.63
+3.27
+3.17
+0.25
+Len-4
+85.48
+57.05
+40.14
+18.23
+9.23
+3.53
+3.17
+1.72
+Len-5 (h1)
+85.97
+(+3.8%)
+58.51
+(+66.9%)
+36.39
+(+81.3%)
+18.77
+(+180.1%)
+9.82
+(+175.1%)
+3.53
+(++)
+3.17
+(+301.3%)
+2.22
+(++)
+Table 1: GSM8K accuracy by horizon length. Curriculum-based RL training significantly improves
+in-domain performance compared to the Instruct model and all other equal compute baselines.
+steps, (despite a slight increase at h=1) performance drops to 39.42% at h=2 and 18.37% at h=3
+rather than 69.28% and 57.67% expected under the independent error assumption. Our results show
+that simply improving per-step accuracy p (Sinha et al., 2025) may not yield compounding LHR
+improvements, and long-horizon specific training is needed to improve long-horizon performance
+(which in turn improves atomic-task reliability p).
+Learning new capabilities with RL.
+We now discuss the second part of our claim in Section
+3. LHR depends on additional horizon-dependent capabilities σj that can be improved using RL
+training over a curriculum. (Yue et al., 2025) show an important result that RLVR on LLMs only
+improves the sample efficiency of reasoning capabilities already present in the base model, and no
+new capabilities are learnt. They observe that at a high pass@k (such as 128), capabilities of these
+RL trained models originate from and are bounded by the base model (with the pass@k performance
+quickly converging). Therefore, when an RL trained model is not bounded by the base/instruct
+model at high pass@k, one can empirically demonstrate that new skills are learnt.
+LHR Training can teach new capabilities
+We demonstrate for the first time that Curriculum RL can teach new capabilities that go
+significantly beyond the base model even at pass@128. Our curriculum based training on
+compositional synthetic data is therefore crucial.
+Our explicit-horizon training and testing setting allows us to isolate out capability improvements
+that can go beyond the base model with only RL. Importantly, proving one of the central claims in
+our paper, we evaluate our final model on unseen longer horizons (h = 6, 7, and 8) up to a very high
+sampling budget (pass@128). Our results in Figure 3 show that while RL on standard GSM8K is
+bounded by the instruct model’s capabilities (and converges very quickly), our long horizon trained
+models perform significantly better even at high k = 128. The difference in performance between
+models trained on only h = 1 (which leads to almost no LHR improvements) and curriculum trained
+models validates the separation between p and σj discussed in Section 3. This shows our method
+unlocks correct reasoning paths that were previously inaccessible to the model, providing genuinely
+new LHR capabilities σj. Compared to common RLVR training paradigms studied in (Yue et al.,
+2025), we are therefore able to show that our RL method can indeed teach new reasoning skills.
+In this section, we show significant improvements on explicit-horizon in-domain tasks and that our
+model learns new reasoning capabilities with our curriculum based training. Our explicit-horizon
+GSM8K setting, while very useful in allowing us to isolate these capabilities and understand the
+differences in all training methods, is still relatively artificial. In Section 5, we therefore test our
+GSM8K trained LHR models on significantly harder (unseen) problems that are implicitly longer.
+7
+Preprint
+21
+22
+23
+24
+25
+26
+27
+k (number of samples)
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+Pass@k Accuracy
+Length 6
+21
+22
+23
+24
+25
+26
+27
+k (number of samples)
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+Length 7
+21
+22
+23
+24
+25
+26
+27
+k (number of samples)
+0.00
+0.05
+0.10
+0.15
+0.20
+Length 8
+Long Horizon Trained Models Show Significant Improvements Even At High Pass@k
+LHR Models Trained up to Length X
+Random
+Instruct
+Length 1 (Standard RLVR)
+Length 2
+Length 3
+Length 4
+Length 5
+Figure 3: Our curriculum based RL training using composed synthetic data outperforms RLVR on
+standard data from the same set even at pass@128, teaching new capabilities that did not previ-
+ously exist in the base model. LHR requires going beyond improving single-step performance.
+5
+GENERALIZATION TO HARDER BENCHMARKS
+Having established that our curriculum-based training imparts new, in-domain capabilities, we now
+investigate whether these learned skills generalize to challenging, out-of-domain benchmarks that
+implicitly require long-horizon reasoning. Our results (Figure 4) demonstrate that the skills acquired
+from solving synthetically chained problems transfer remarkably well to harder problems.
+Instruct Model
+Standard RL (L=1)
+Curriculum (L=5)
+0
+10
+20
+30
+40
+50
+60
+Accuracy (%)
+43.08%
+47.60%
+52.00%
++1.2×
+Reasoning Math: GSM­Symbolic P2
+Instruct Model
+Standard RL (L=1)
+Curriculum (L=5)
+0.0
+2.5
+5.0
+7.5
+10.0
+12.5
+15.0
+17.5
+5.10%
+6.88%
+10.52%
++2.1×
+Olympiad Math: AIME 2024
+Instruct Model
+Standard RL (L=1)
+Curriculum (L=5)
+0
+10
+20
+30
+40
+35.00%
+35.30%
+37.90%
++1.1×
+Long­Context: LongBench­v2
+Instruct Model
+Standard RL (L=1)
+Curriculum (L=5)
+0
+5
+10
+15
+20
+25
+15.98%
+14.76%
+18.73%
++1.2×
+Ultra­Long­Context: Hash­hop
+Curriculum RL on Easy Composed Data Generalizes to Harder Domains
+Models trained only on composed GSM8K problems show strong performance on unseen benchmarks
+Figure 4: Long-horizon training on GSM8K generalizes to significantly harder tasks. Performance
+on AIME 2024 improves by 2.1× and ultra-long-context capabilities improve by 1.2×.
+Transfer to Olympiad level math.
+In Table 2, we evaluate our GSM8K long horizon trained
+models on MATH-500, GSM-Symbolic P1, GSM-Symbolic P2, MMLU Pro Math, and AIME.
+These tasks can be categorized as implicit-horizon and benefit significantly from LHR training on
+much easier explicit-horizon tasks. For instance, performance on GSM-Symbolic P1 goes from
+67.06 →73.28, P2: 43.08 →52.00), and strikingly AIME 2024 from 5.10 →10.52, a 2.06×
+increase. These improvements show a transfer of the capabilities targeted in Section 4.
+Generalization to Olympiad Level Problems
+Training on composed 6th grade problems with our RL curriculum generalizes to signifi-
+cantly harder benchmarks. Notably, we achieve a 2.06× improvement on AIME 2024.
+LHR training allows us to bootstrap capabilities from significantly easier tasks to gains on much
+harder ones without using any extra labels or supervision. We see a scaling trend, where continued
+RL training on longer explicit-horizons leads to improvements on harder implicit-horizon tasks.
+Bootstrapping composed LHR data can allow more RL compute to be spend on the same dataset.
+8
+Preprint
+Generalization to Significantly Harder Math Problems
+Model/setting
+MATH-500
+Symbolic P1
+Symbolic P2
+MMLU-Pro
+AIME 2025
+AIME 2024
+Instruct model
+64.20
+67.06
+43.08
+58.47
+1.77
+5.10
+Standard RLVR on GSM8K
+GSM8K RLVR
+66.20
+71.40
+47.60
+60.62
+2.71
+6.88
+Curriculum RL on Composed GSM8K Problems
+Len-2 GSM8K
+67.00
+72.86
+50.80
+59.73
+1.25
+7.19
+Len-3 GSM8K
+66.80
+70.70
+49.48
+61.21
+1.67
+5.73
+Len-4 GSM8K
+68.40
+72.22
+51.92
+60.91
+2.60
+10.00
+Len-5 GSM8K
+69.20
+(+7.8%)
+73.28
+(+9.3%)
+52.00
+(+20.7%)
+61.21
+(+4.7%)
+3.02
+(+70.6%)
+10.52
+(+106.3%)
+Table 2: Performance on harder math benchmarks improves significantly with GSM8K RL curricu-
+lum training stages. Bootstrapping simple existing data can be used for scaling RL. AIME avg@32.
+Transfer to long-context benchmarks.
+We now evaluate our GSM8K LHR models on OOD
+long-context benchmarks to see if the state tracking capabilities (σj) from Section 3 improve. We
+test two main long-context benchmarks: LongBench-v2 (Bai et al., 2025) and Hash-hop (Magic,
+2024). LongBench-v2 measures understanding and reasoning over QA documents, long-dialogue,
+repositories, etc. (with 8k–2M words). Hash-hop tests ultra-long-context storage, retrieval, and
+multi-hop variable tracing by making models follow shuffled chains of random hash →hash pairs.
+Tables 3 and 7 summarize our results, with a 35.00% →37.90% improvement on LongBench-v2
+and a 15.98% →18.73% improvement on Hash-hop, both completely unrelated to GSM8K.
+Transfer to non-mathematical reasoning benchmarks.
+We also test our long-horizon trained
+models on ReasoningGym (Stojanovski et al., 2025) domains to evaluate whether the horizon-
+dependent reliability improvements generalize to non-mathematical but verifiable reasoning tasks.
+ReasoningGym consists of a diverse set of reasoning environments that allow us to evaluate cross-
+domain transfer and skill generalization. Specifically, we test across logic (propositional logic),
+graphs (largest island), algorithmic problems (sentence reordering and matrix manipulation), arith-
+metic (decimal arithmetic), and geometry. These problems require working memory, graph traversal,
+multi-step rule following, and correct final answers. On ReasoningGym, long-horizon training on
+composed GSM8K significantly outperforms both the Instruct model and RLVR trained on nor-
+mal GSM8K. h1 generalizes from 22.90% →47.10% on propositional logic, 15.00% →22.50%
+on graph problems (largest island), 9.60% →18.80% on algorithmic sentence reordering, and
+2.70% →4.20% on algorithmic matrix manipulation.
+Performance on geometry drops from
+3.70% →2.60% and on games (game of life) from 76.20% →74.90%. Overall, skills learnt
+from long-horizon training generalize well to out-of-distribution reasoning problems. See Table 3.
+Generalization to ReasoningGym domains
+Long-Context Benchmarks
+Model / setting
+Propositional
+logic
+Graphs
+(largest island)
+Algorithmic
+(sentence reorder)
+Algorithmic
+(matrix)
+LongBench-
+v2
+Hash-
+hop
+Instruct
+22.90
+15.00
+9.60
+2.70
+35.00
+15.98
+Standard RLVR
+12.40
+17.00
+9.80
+3.90
+35.30
+14.76
+Long-horizon RL
+47.10
+22.50
+18.80
+4.20
+37.90
+18.73
+Table 3: Long-horizon training on composed GSM8K problems generalizes remarkably well to
+OOD ReasoningGym domains and Long-Context Benchmarks, outperforming length-1 (standard)
+RLVR and the Instruct model. We use default ReasoningGym configurations for our evaluations.
+Analysis.
+This transfer patterns aligns with our pass@k capability improvement results from Sec-
+tion 4 and our theoretical framing. Tasks requiring sequential dependent reasoning, such as AIME
+or GSM-Symbolic problems, benefit from improved long-horizon reasoning capabilities that were
+learned on much simpler composed tasks. Crucially, improvements in aspects such as state-tracking
+are also observable from our long-context evals. Our results indicate that a curriculum of simple
+explicit-horizon tasks can bootstrap advanced reasoning, providing a scalable path where compos-
+9
+Preprint
+ing problems at the edge of what can be solved would push capabilities further without new annota-
+tions. Importantly, our method replicates on other model families (using the Llama-3.2-3B Instruct
+model) and additional results are presented in Appendix D.
+6
+THEORETICAL ANALYSIS
+Intuitively, under our long-horizon skill model in Section 3, attempting to train directly on long-
+horizon data with outcome rewards results in vanishing gradient signal, as very few rollouts achieve
+any reward. Curriculum training overcomes this by initially training at short horizons, where this
+signal is stronger. Raising the success rate in achieving a reward at horizon j also raises the success
+rate for horizons > j, and so when we come to train at j + 1, the signal is no longer vanishing.
+In the analysis below, we prove that this is the case in our simplified long-horizon skills model,
+and demonstrate an exponential decrease (in the horizon length H) in the sample complexity for
+curriculum training vs direct outcome reward-only horizon H training, along with an equivalence
+between curriculum training and training at horizon H with dense, per-step rewards.
+Setup.
+We study a simplified model of long-horizon correctness over H steps. Let Cj ∈{0, 1}
+indicate correctness at step j and write C<j := Q
+ℓ<j Cℓ. As in Section 3, we factor stepwise
+correctness as
+qj := Pr(Cj=1 | C<j=1) = p(θ0) σj(θj) ∈(0, 1),
+where p(θ0) ∈(0, 1] is atomic reliability and σj(θj) ∈[0, 1] is horizon–dependent reliability with
+σ1 ≡1. Parameters are separated by depth: a shared atomic block θ0 and disjoint depth blocks θj.
+This models our assumption that training strictly below depth j cannot alter σj (but does alter sj).
+The probability the first i steps are all correct is si := Qi
+j=1 qj.
+Rewards, objective, and estimator.
+For a chosen training horizon h ∈{1, . . . , H}, the verifier
+pays terminal reward Rh(y) = I{C≤h = 1}, so the objective is Jh(θ) = E[Rh] = sh. We use
+REINFORCE (Williams, 1992) with an unbiased advantage estimator with constant baseline equal
+to the same-horizon mean µh = sh (the form approximated by GRPO (Shao et al., 2024)):
+∇θkJh(θ) = E
+
+(Rh −µh) ∇θk log πθ(y)
+
+,
+¯gk =
+1
+N
+N
+X
+i=1
+(Rh(yi) −µh) ∇θk log πθ(yi).
+since µh is constant, E[¯gk] = ∇θkJh.
+Expected improvement
+We follow Zhang et al. (2025b) in analyzing the expected improvement in
+our policy πθ when taking the gradient update step θ+
+k = θk +η¯gk. If Jh is L-smooth in θk (holding
+other parameters fixed), the standard SGD argument (cf. Duchi, 2018; Bubeck, 2015) yields
+E
+
+Jh(θ+) −Jh(θ)
+
+≥∥∇θkJh(θ)∥2
+2L
+|
+{z
+}
+:= ∆(0)
+k,h
+·
+1
+1 + 1/SNR(θk) ,
+(1)
+with SNR(θk) := ∥E¯gk∥2/E∥¯gk −E¯gk∥2. For completeness, we give a proof in Appendix B. To
+attain a fraction β ∈(0, 1) of the noiseless gain ∆(0)
+k,h it suffices that
+SNR(θk) ≥
+β
+1 −β .
+(2)
+Thus, SNR directly governs the batch size needed for a meaningful step. For terminal-only rewards
+and our parameter separation, the scaling of the SNR with batch size and success probability (proved
+in Appendix B.3) is
+SNR(θk) = Θ
+ N sh
+
+,
+because sh is the probability mass on informative trajectories.
+10
+Preprint
+Direct full-horizon training (h = H).
+When trained only at the full horizon, the end-to-end
+success sH is exponentially small in H at initialization (under qj ∈[δ, 1 −δ]), so the estimator’s
+signal-to-noise ratio scales like SNR = Θ(N αH) for some α ∈(0, 1). To achieve a constant
+fraction of the noiseless improvement one therefore needs a batch size exponential in the horizon
+length H, while the noiseless gain itself decays exponentially (see proofs in App. B.4):
+N = Θ(α−H),
+∆(0)
+k,H = Θ
+ α2H ∥∇θkqk∥2
+.
+Curriculum over depths.
+We fix a target end-to-end success level c ∈(0, 1) that we want the
+final policy to achieve at horizon H (e.g. a deployment or evaluation threshold). A curriculum is a
+schedule that trains at increasing depths h = 1, 2, . . . , H, advancing from depth k to k+1 only when
+the depth-k step is mastered. Concretely, we use the promotion rule qk ≥1 −ε, where ε is chosen
+so that (1 −ε)H ≥c; equivalently ε ∼(−ln c)/H. This guarantees that if each depth meets the
+promotion criterion, then sH = QH
+j=1 qj ≥c at the end of the curriculum. During training at depth
+k we assume earlier depths have already been learned (and that forgetting is unlikely to occur as each
+prior task is a subtask of the latter ones), giving a depth-independent lower bound sk−1 ∈[c, 1] on
+the probability of reaching step k. Near the promotion point qk = 1 −ε the estimator’s SNR scales
+as SNRk(θk) ≍N ε; thus maintaining a constant fraction of the noiseless improvement requires
+only a batch linear in H, while the noiseless gain is horizon-independent (details in App. B.4):
+N = Θ
+1
+ε
+
+= Θ(H),
+∆(0)
+k,k = Θ
+ ∥∇θkqk∥2
+.
+Provided ∥∇θkqk∥2 does not decay faster than polynomially as qk →1 −ε, curriculum training
+yields overall polynomial sample complexity in H.
+Relation to dense rewards.
+Replace the terminal signal with per-step rewards R′
+t = I{C≤t = 1}
+and use the reward-to-go estimator at depth k,
+gk =
+ Gk −bk
+
+∇θk log πθ(y),
+Gk :=
+h
+X
+t=k
+R′
+t,
+bk := E[Gk].
+The dense reward SNR (SNRdense(θk)) is given in App. B.5, and depends on the ratio between
+the variance and mean squared of Gk. Under our assumption that qj ∈[δ, 1 −δ] at initialization,
+this ratio grows as Θ(1) with constants depending only on δ. Consequently, the SNR scaling is
+controlled by the success probability sk−1. This leads to the SNR being large for short horizons,
+and small for long horizons at initialization. We therefore see a gradually increasing frontier horizon
+k, the point at which sk−1 ≥c (for fixed c ∈(0, 1)). At this frontier SNRdense(θk) = Θ(N ε), the
+same as curriculum training at horizon h, and we see the same scaling in the required batch size and
+noiseless improvement:
+N = Θ
+1
+ε
+
+= Θ(H),
+∆(0)
+k,dense = Θ
+ ∥∇θkqk∥2
+.
+This improvement in sample complexity with dense rewards corresponds with results from similar
+work on reward shaping (Laud, 2004; Laud & DeJong, 2003; Gupta et al., 2022).
+Key Insight
+With terminal-only rewards, the signal-to-noise ratio scales with the success rate, making di-
+rect full-horizon training exponentially inefficient in the horizon length. Curriculum learning
+or dense rewards solve this by progressively raising the success rate at increasing horizons,
+reducing the sample complexity required to make meaningful policy improvements from
+exponential to polynomial.
+7
+DESIGNING A COST-EFFICIENT CURRICULUM
+In most real-world scenarios, there is an abundance of short-horizon data, and long-horizon data is
+expensive to obtain (Kwa et al., 2025; Sinha et al., 2025). In this section, we ask whether long-
+11
+Preprint
+horizon performance can be obtained from training data distributions that are “cheaper” than a uni-
+form one. Namely, whether we can train on more short data and less long data and still achieve the
+same performance. We also evaluate how much this changes the training compute required.
+0
+200
+Samples
+100
+100
+100
+100
+Uniform Distribution
+0
+200
+150
+115
+85
+50
+Setting 1 Distribution
+0
+200
+175
+100
+75
+50
+Setting 2 Distribution
+L1
+L2
+L3
+L4
+0
+200
+200
+125
+50
+25
+Setting 3 Distribution
+Length 1
+Length 2
+Length 3
+Length 4
+0
+20
+40
+60
+80
+100
+Accuracy (%)
+83.5
+56.2
+37.8
+16.6
+83.5
+54.1
+33.7
+15.0
+83.2
+57.9
+38.4
+16.1
+83.2
+56.0
+33.7
+15.5
+Final Model Accuracy
+Uniform
+Setting 1
+Setting 2
+Setting 3
+Uniform
+Setting 1
+Setting 2
+Setting 3
+0
+100000
+200000
+300000
+400000
+500000
+600000
+Total Tokens Seen
+415.9k
+532.6k
+515.1k
+550.7k
+Total Training Cost (Tokens)
+Certain Low Cost Data Distributions Can Achieve Similar Performance If Training Compute Increases
+Figure 5: Left: Sample count distributions for four settings. Middle: Comparing accuracy at each
+stage across sample count settings. Under mild skew towards shorter samples like Setting 1 and 2,
+the model can perform as well as the uniform sample baseline. Right: Comparing the training com-
+pute across settings. The settings skewed towards shorter samples have more training cost in terms
+of training tokens seen. Overall, low-cost data distributions can achieve near-optimal performance.
+Our experiments follow the same curriculum RL method described in Sections 3 and 4. During
+training, we train up to saturation for each stage, spending as much training compute as needed until
+there are no further improvements in accuracy. We track the total number of tokens seen by the
+model during training. We create four different curricula with the same total number of samples,
+and different proportions of short- and long-horizon data (Figure 5, Left).
+The results in Figure 5 (Middle, Right) show that high long-horizon performance can be achieved
+even in data-constrained scenarios with training data distributions skewed towards shorter exam-
+ples, but the trade-off is that more training compute needs to be spent overall. Understanding this
+trade-off is crucial for creating cost-effective datasets geared towards long-horizon reasoning tasks.
+Therefore, to further study this, we simplify our experimental setup to a SFT setting on a simpler
+task (multiplication), and scale up the search space for comprehensive evaluations. In Appendix C
+we provide results that detailed show, for a target accuracy, a similar trade-off exists between (1)
+training cost and (2) training compute budget. As long as more training compute is spent (discussed
+in Appendix C), high performance can be achieved under settings with limited long-horizon data.
+8
+DISCUSSION
+In this paper, we introduce a new method for improving long-horizon reasoning in large language
+models. Our method leverages existing short-horizon data by composing new, multi-step problems
+through a chaining process. This approach allows us to scale reinforcement learning training via
+a curriculum, yielding substantial performance gains on multi-step reasoning tasks. An important
+result of our work is that the skills learned through this curriculum transfer to new, challenging
+reasoning and long-context tasks. Furthermore, our results show that the trained model learns gen-
+uinely new reasoning capabilities, rather than just refining existing ones. We also demonstrate that
+comparable performance can be achieved even when there is abundant short-horizon data but limited
+long-horizon data, thus providing a scalable and data-efficient path for improving frontier models.
+While the goal of our paper is to introduce an early method for improving long-horizon reasoning,
+we see two promising directions for extensions. One is incorporating new sources of atomic skills
+beyond GSM8K. The other is creating new chaining methods that expands the serial dependency
+structure in our current method. We believe these two paths would offer useful extensions to the
+framework we introduce in this paper and further improve long-horizon reasoning capabilities. Our
+codebase is open source and available at https://github.com/AlesyaIvanova/h1.
+12
+Preprint
+ACKNOWLEDGMENTS
+We would like to thank Shashwat Goel, Dimitris Papailiopoulos, Andrew Zhao, Harkirat Behl,
+Ameya Prabhu, Vibhav Vineet, Manan Tomar, Akshit Sinha, Dulhan Jayalath, Satwik Bhattamishra,
+Andis Draguns, Bhavya Kailkhura, Brian Bartoldson, Aleks Petrov, Ronald Clark, Fabio Pizzati,
+Vaibhav Balloli, and Alex Pondaven for their time and insightful discussions.
+REFERENCES
+Cem Anil, Yuhuai Wu, Anders Andreassen, Aitor Lewkowycz, Vedant Misra, Vinay Ramasesh, Am-
+brose Slone, Guy Gur-Ari, Ethan Dyer, and Behnam Neyshabur. Exploring length generalization
+in large language models. Advances in Neural Information Processing Systems, 35:38546–38556,
+2022.
+Yushi Bai, Shangqing Tu, Jiajie Zhang, Hao Peng, Xiaozhi Wang, Xin Lv, Shulin Cao, Jiazheng Xu,
+Lei Hou, Yuxiao Dong, Jie Tang, and Juanzi Li. Longbench v2: Towards deeper understanding
+and reasoning on realistic long-context multitasks, 2025. URL https://arxiv.org/abs/
+2412.15204.
+Bradley Brown, Jordan Juravsky, Ryan Ehrlich, Ronald Clark, Quoc V. Le, Christopher R´e, and
+Azalia Mirhoseini. Large language monkeys: Scaling inference compute with repeated sampling,
+2024. URL https://arxiv.org/abs/2407.21787.
+William Brown. Verifiers: Environments for llm reinforcement learning. https://github.
+com/willccbb/verifiers, 2025. Commit 07b8a3a accessed 05/07/2025.
+S´ebastien Bubeck. Convex optimization: Algorithms and complexity. Found. Trends Mach. Learn.,
+8(3–4):231–357, November 2015. ISSN 1935-8237. doi: 10.1561/2200000050. URL https:
+//doi.org/10.1561/2200000050.
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser,
+Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, and John
+Schulman. Training verifiers to solve math word problems, 2021. URL https://arxiv.
+org/abs/2110.14168.
+Ganqu Cui, Yuchen Zhang, Jiacheng Chen, Lifan Yuan, Zhi Wang, Yuxin Zuo, Haozhan Li, Yuchen
+Fan, Huayu Chen, Weize Chen, Zhiyuan Liu, Hao Peng, Lei Bai, Wanli Ouyang, Yu Cheng,
+Bowen Zhou, and Ning Ding. The entropy mechanism of reinforcement learning for reasoning
+language models, 2025. URL https://arxiv.org/abs/2505.22617.
+DeepSeek-AI, Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu,
+Qihao Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, Xiaokang Zhang, Xingkai Yu, Yu Wu, Z. F. Wu,
+Zhibin Gou, Zhihong Shao, Zhuoshu Li, Ziyi Gao, Aixin Liu, Bing Xue, and Bingxuan Wang.
+Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning, 2025. URL
+https://arxiv.org/abs/2501.12948.
+Yann Dubois, Gautier Dagan, Dieuwke Hupkes, and Elia Bruni. Location attention for extrapolation
+to longer sequences. arXiv preprint arXiv:1911.03872, 2019.
+John C. Duchi. Introductory lectures on stochastic optimization. IAS/Park City Mathematics Series,
+2018. URL https://api.semanticscholar.org/CorpusID:4793094.
+Abhishek Gupta, Aldo Pacchiano, Yuexiang Zhai, Sham M. Kakade, and Sergey Levine. Unpacking
+reward shaping: understanding the benefits of reward engineering on sample complexity.
+In
+Proceedings of the 36th International Conference on Neural Information Processing Systems,
+NIPS ’22, Red Hook, NY, USA, 2022. Curran Associates Inc. ISBN 9781713871088.
+Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul Arora, Steven Basart, Eric Tang, Dawn Song,
+and Jacob Steinhardt. Measuring mathematical problem solving with the math dataset, 2021.
+URL https://arxiv.org/abs/2103.03874.
+13
+Preprint
+Dieuwke Hupkes, Verna Dankers, Mathijs Mul, and Elia Bruni. Compositionality decomposed:
+How do neural networks generalise?
+Journal of Artificial Intelligence Research, 67:757–795,
+2020.
+Thomas Kwa, Ben West, Joel Becker, Amy Deng, Katharyn Garcia, Max Hasin, Sami Jawhar,
+Megan Kinniment, Nate Rush, Sydney Von Arx, Ryan Bloom, Thomas Broadley, Haoxing Du,
+Brian Goodrich, Nikola Jurkovic, Luke Harold Miles, Seraphina Nix, Tao Lin, Neev Parikh, David
+Rein, Lucas Jun Koba Sato, Hjalmar Wijk, Daniel M. Ziegler, Elizabeth Barnes, and Lawrence
+Chan. Measuring ai ability to complete long tasks, 2025. URL https://arxiv.org/abs/
+2503.14499.
+Adam Daniel Laud. Theory and application of reward shaping in reinforcement learning. PhD
+thesis, USA, 2004. AAI3130966.
+Adam Daniel Laud and Gerald DeJong. The influence of reward on the speed of reinforcement
+learning: an analysis of shaping. In Proceedings of the Twentieth International Conference on In-
+ternational Conference on Machine Learning, ICML’03, pp. 440–447. AAAI Press, 2003. ISBN
+1577351894.
+Nayoung Lee, Ziyang Cai, Avi Schwarzschild, Kangwook Lee, and Dimitris Papailiopoulos. Self-
+improving transformers overcome easy-to-hard and length generalization challenges, 2025. URL
+https://arxiv.org/abs/2502.01612.
+Jeffrey Li, Alex Fang, Georgios Smyrnis, Maor Ivgi, Matt Jordan, Samir Gadre, Hritik Bansal,
+Etash Guha, Sedrick Keh, Kushal Arora, Saurabh Garg, Rui Xin, Niklas Muennighoff, Reinhard
+Heckel, Jean Mercat, Mayee Chen, Suchin Gururangan, Mitchell Wortsman, Alon Albalak, Lud-
+wig Schmidt, and Vaishaal Shankar. Datacomp-lm: In search of the next generation of training
+sets for language models, 2025. URL https://arxiv.org/abs/2406.11794.
+Tianle Li, Ge Zhang, Quy Duc Do, Xiang Yue, and Wenhu Chen. Long-context llms struggle with
+long in-context learning, 2024. URL https://arxiv.org/abs/2404.02060.
+Jiaheng Liu, Dawei Zhu, Zhiqi Bai, Yancheng He, Huanxuan Liao, Haoran Que, Zekun Wang,
+Chenchen Zhang, Ge Zhang, Jiebin Zhang, Yuanxing Zhang, Zhuo Chen, Hangyu Guo, Shilong
+Li, Ziqiang Liu, Yong Shan, Yifan Song, Jiayi Tian, Wenhao Wu, Zhejian Zhou, Ruijie Zhu,
+Junlan Feng, Yang Gao, Shizhu He, Zhoujun Li, Tianyu Liu, Fanyu Meng, Wenbo Su, Yingshui
+Tan, Zili Wang, Jian Yang, Wei Ye, Bo Zheng, Wangchunshu Zhou, Wenhao Huang, Sujian Li,
+and Zhaoxiang Zhang. A comprehensive survey on long context language modeling, 2025a. URL
+https://arxiv.org/abs/2503.17407.
+Mingjie Liu, Shizhe Diao, Ximing Lu, Jian Hu, Xin Dong, Yejin Choi, Jan Kautz, and Yi Dong.
+Prorl: Prolonged reinforcement learning expands reasoning boundaries in large language models,
+2025b. URL https://arxiv.org/abs/2505.24864.
+Zichen Liu, Changyu Chen, Wenjun Li, Penghui Qi, Tianyu Pang, Chao Du, Wee Sun Lee, and
+Min Lin. Understanding r1-zero-like training: A critical perspective, 2025c. URL https:
+//arxiv.org/abs/2503.20783.
+Magic.
+Hashhop:
+Long context evaluation.
+https://github.com/magicproduct/
+hash-hop, 2024.
+Alan Malek, Jiawei Ge, Nevena Lazic, Chi Jin, Andr´as Gy¨orgy, and Csaba Szepesv´ari. Frontier llms
+still struggle with simple reasoning tasks, 2025. URL https://arxiv.org/abs/2507.
+07313.
+Iman Mirzadeh, Keivan Alizadeh, Hooman Shahrokhi, Oncel Tuzel, Samy Bengio, and Mehrdad
+Farajtabar. Gsm-symbolic: Understanding the limitations of mathematical reasoning in large
+language models, 2025. URL https://arxiv.org/abs/2410.05229.
+Niklas Muennighoff, Zitong Yang, Weijia Shi, Xiang Lisa Li, Li Fei-Fei, Hannaneh Hajishirzi, Luke
+Zettlemoyer, Percy Liang, Emmanuel Cand`es, and Tatsunori Hashimoto. s1: Simple test-time
+scaling, 2025. URL https://arxiv.org/abs/2501.19393.
+14
+Preprint
+Benjamin Newman, John Hewitt, Percy Liang, and Christopher D Manning. The eos decision and
+length extrapolation. arXiv preprint arXiv:2010.07174, 2020.
+OpenAI-o1, Ahmed El-Kishky, Daniel Selsam, Francis Song, Giambattista Parascandolo, Hongyu
+Ren, Hunter Lightman, Hyung Won Chung, Ilge Akkaya, Ilya Sutskever, Jason Wei,
+and OpenAI Team.
+Openai o1 contributions, 2025.
+URL https://openai.com/
+openai-o1-contributions/. Web page.
+Shubham Parashar, Shurui Gui, Xiner Li, Hongyi Ling, Sushil Vemuri, Blake Olson, Eric Li,
+Yu Zhang, James Caverlee, Dileep Kalathil, and Shuiwang Ji. Curriculum reinforcement learning
+from easy to hard tasks improves llm reasoning, 2025. URL https://arxiv.org/abs/
+2506.06632.
+Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan
+Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang,
+Jianxin Yang, and Jiaxi Yang. Qwen2.5 technical report, 2025. URL https://arxiv.org/
+abs/2412.15115.
+David Rein, Betty Li Hou, Asa Cooper Stickland, Jackson Petty, Richard Yuanzhe Pang, Julien Di-
+rani, Julian Michael, and Samuel R Bowman. Gpqa: A graduate-level google-proof q&a bench-
+mark. In First Conference on Language Modeling, 2024.
+Mahdi Sabbaghi, George Pappas, Hamed Hassani, and Surbhi Goel. Explicitly encoding structural
+symmetry is key to length generalization in arithmetic tasks. arXiv preprint arXiv:2406.01895,
+2024.
+Amrith Setlur, Matthew Y. R. Yang, Charlie Snell, Jeremy Greer, Ian Wu, Virginia Smith, Max Sim-
+chowitz, and Aviral Kumar. e3: Learning to explore enables extrapolation of test-time compute
+for llms, 2025. URL https://arxiv.org/abs/2506.09026.
+Rulin Shao, Shuyue Stella Li, Rui Xin, Scott Geng, Yiping Wang, Sewoong Oh, Simon Shaolei Du,
+Nathan Lambert, Sewon Min, Ranjay Krishna, Yulia Tsvetkov, Hannaneh Hajishirzi, Pang Wei
+Koh, and Luke Zettlemoyer. Spurious rewards: Rethinking training signals in rlvr, 2025. URL
+https://arxiv.org/abs/2506.10947.
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang,
+Mingchuan Zhang, Y. K. Li, Y. Wu, and Daya Guo. Deepseekmath: Pushing the limits of mathe-
+matical reasoning in open language models, 2024. URL https://arxiv.org/abs/2402.
+03300.
+Taiwei Shi, Yiyang Wu, Linxin Song, Tianyi Zhou, and Jieyu Zhao. Efficient reinforcement fine-
+tuning via adaptive curriculum learning, 2025.
+URL https://arxiv.org/abs/2504.
+05520.
+Parshin Shojaee, Iman Mirzadeh, Keivan Alizadeh, Maxwell Horton, Samy Bengio, and Mehrdad
+Farajtabar. The illusion of thinking: Understanding the strengths and limitations of reasoning
+models via the lens of problem complexity, 2025. URL https://arxiv.org/abs/2506.
+06941.
+Akshit Sinha, Arvindh Arun, Shashwat Goel, Steffen Staab, and Jonas Geiping. The illusion of
+diminishing returns: Measuring long horizon execution in llms, 2025. URL https://arxiv.
+org/abs/2509.09677.
+Charlie Snell, Jaehoon Lee, Kelvin Xu, and Aviral Kumar. Scaling llm test-time compute optimally
+can be more effective than scaling model parameters, 2024. URL https://arxiv.org/
+abs/2408.03314.
+Yuda Song, Julia Kempe, and Remi Munos. Outcome-based exploration for llm reasoning, 2025.
+URL https://arxiv.org/abs/2509.06941.
+Zafir Stojanovski, Oliver Stanley, Joe Sharratt, Richard Jones, Abdulhakeem Adefioye, Jean Kad-
+dour, and Andreas K¨opf. Reasoning gym: Reasoning environments for reinforcement learning
+with verifiable rewards, 2025. URL https://arxiv.org/abs/2505.24760.
+15
+Preprint
+Richard S. Sutton, David McAllester, Satinder Singh, and Yishay Mansour. Policy gradient methods
+for reinforcement learning with function approximation. In Proceedings of the 13th International
+Conference on Neural Information Processing Systems, NIPS’99, pp. 1057–1063, Cambridge,
+MA, USA, 1999. MIT Press.
+Yiping Wang, Qing Yang, Zhiyuan Zeng, Liliang Ren, Liyuan Liu, Baolin Peng, Hao Cheng, Xuehai
+He, Kuan Wang, Jianfeng Gao, Weizhu Chen, Shuohang Wang, Simon Shaolei Du, and Yelong
+Shen. Reinforcement learning for reasoning in large language models with one training example,
+2025a. URL https://arxiv.org/abs/2504.20571.
+Yubo Wang, Xueguang Ma, Ge Zhang, Yuansheng Ni, Abhranil Chandra, Shiguang Guo, Weiming
+Ren, Aaran Arulraj, Xuan He, Ziyan Jiang, et al. Mmlu-pro: A more robust and challenging
+multi-task language understanding benchmark. arXiv preprint arXiv:2406.01574, 2024.
+Zixuan Wang, Eshaan Nichani, Alberto Bietti, Alex Damian, Daniel Hsu, Jason D. Lee, and Denny
+Wu. Learning compositional functions with transformers from easy-to-hard data, 2025b. URL
+https://arxiv.org/abs/2505.23683.
+Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforce-
+ment learning. Mach. Learn., 8(3–4):229–256, May 1992. ISSN 0885-6125. doi: 10.1007/
+BF00992696. URL https://doi.org/10.1007/BF00992696.
+Fang Wu, Weihao Xuan, Ximing Lu, Zaid Harchaoui, and Yejin Choi. The invisible leash: Why rlvr
+may not escape its origin, 2025. URL https://arxiv.org/abs/2507.14843.
+Violet Xiang, Charlie Snell, Kanishk Gandhi, Alon Albalak, Anikait Singh, Chase Blagden, Duy
+Phung, Rafael Rafailov, Nathan Lile, Dakota Mahan, Louis Castricato, Jan-Philipp Franken, Nick
+Haber, and Chelsea Finn. Towards system 2 reasoning in llms: Learning how to think with meta
+chain-of-thought, 2025. URL https://arxiv.org/abs/2501.04682.
+Lifan Yuan, Weize Chen, Yuchen Zhang, Ganqu Cui, Hanbin Wang, Ziming You, Ning Ding,
+Zhiyuan Liu, Maosong Sun, and Hao Peng. From f(x) and g(x) to f(g(x)): Llms learn new
+skills in rl by composing old ones, 2025. URL https://arxiv.org/abs/2509.25123.
+Yang Yue, Zhiqi Chen, Rui Lu, Andrew Zhao, Zhaokai Wang, Yang Yue, Shiji Song, and Gao
+Huang. Does reinforcement learning really incentivize reasoning capacity in llms beyond the
+base model?, 2025. URL https://arxiv.org/abs/2504.13837.
+Eric Zelikman, Yuhuai Wu, Jesse Mu, and Noah D. Goodman. Star: Bootstrapping reasoning with
+reasoning, 2022. URL https://arxiv.org/abs/2203.14465.
+Kaiyan Zhang, Yuxin Zuo, Bingxiang He, Youbang Sun, Runze Liu, Che Jiang, Yuchen Fan, Kai
+Tian, Guoli Jia, Pengfei Li, Yu Fu, Xingtai Lv, Yuchen Zhang, and Sihang Zeng.
+A survey
+of reinforcement learning for large reasoning models, 2025a. URL https://arxiv.org/
+abs/2509.08827.
+Ruiqi Zhang, Daman Arora, Song Mei, and Andrea Zanette. SPEED-RL: Faster training of reason-
+ing models via online curriculum learning. In 2nd AI for Math Workshop @ ICML 2025, 2025b.
+URL https://openreview.net/forum?id=WQLQI6of9T.
+Yang Zhou, Hongyi Liu, Zhuoming Chen, Yuandong Tian, and Beidi Chen. Gsm-infinite: How
+do your llms behave over infinitely increasing context length and reasoning complexity?, 2025a.
+URL https://arxiv.org/abs/2502.05252.
+Yongchao Zhou, Uri Alon, Xinyun Chen, Xuezhi Wang, Rishabh Agarwal, and Denny Zhou. Trans-
+formers can achieve length generalization but not robustly. arXiv preprint arXiv:2402.09371,
+2024.
+Zijian Zhou, Ao Qu, Zhaoxuan Wu, Sunghwan Kim, Alok Prakash, Daniela Rus, Jinhua Zhao,
+Bryan Kian Hsiang Low, and Paul Pu Liang. Mem1: Learning to synergize memory and reasoning
+for efficient long-horizon agents, 2025b. URL https://arxiv.org/abs/2506.15841.
+16
+Preprint
+A
+COMPOSITIONS AND COMPUTATIONAL GRAPHS.
+As discussed in Section 3, we compose atomic tasks into chains of length h to construct explicit-
+horizon problems. An atomic task, defined in natural language, takes an input xj and has a corre-
+sponding ground-truth answer yj. These are individual GSM8K problems in our case. Let yj be
+the answer to sub-problem j. A lightweight adapter ϕj transforms yj into parameters for the next
+sub-problem:
+yj = fj(xj),
+xj+1 = ϕj(yj),
+j = 1, . . . , h −1.
+The final answer is then arrived at by serially composing sub-problems and adapters, such that
+yh = fh(ϕh(· · · ϕ1(f1(x1)))).
+We start from atomic tasks fj, which we consider to be short, self-contained problems (e.g., single
+GSM8K questions) with a uniquely verifiable answer that the base model solves with non-trivial
+accuracy. An atomic task, defined in natural language, takes an input xj and has a corresponding
+ground-truth answer yj. To create long-horizon examples, we build chains of h atomic tasks so that
+later sub-problems depend on earlier results.
+Two practical ways we form dependencies.
+1. Fixed-template (transformation) chaining. We keep a fixed bank of atomic problems
+with fixed parameters and fixed ground-truth answers. To introduce dependency, we rewrite
+a parameter symbolically in terms of a previous answer so that its numeric value is un-
+changed. Thus the downstream question text now references an earlier result (asking for
+some transformation on it), but its correct answer remains the same as in the original prob-
+lem.
+2. Substitution (recompute) chaining. We substitute a function of a previous answer directly
+into the next problem’s parameter(s) and recompute that problem’s ground-truth. Here
+both the instance and its correct answer change. We anticipate that verifiable problems
+in domains such as chemistry, physics, computer science, etc. would need substitution
+chaining for meaningful compositions.
+We use substitution chaining for composing GSM8K problems in Section 4 and transformation
+chaining for composing MATH problems in Appendix D.
+Adapters can be identity or simple deterministic transforms (e.g., scaling, unit conversion, affine
+transformation). Each chain of length h is rendered as a single prompt listing the h sub-problems in
+order. The model is instructed to solve them sequentially but is supervised only on the final answer
+yh (outcome-based verifiable rewards for reinforcement learning).*
+We can now analyze our method from the perspective of computational graphs (Zhou et al., 2025a).
+Each verifiable problem, such as in GSM8K dataset, forms a single-sink directional acyclic graph
+where each node represents an operator consuming the value from previous nodes and producing
+the value for the next node(s) or as an output of the graph as shown in Figure 6. The height of
+the graph then can represent the number of steps that must be planned and accurately carried out
+(executed) while the width of the graph represents the state that must be maintained at each step
+and accurately manipulated. This framing can extend to the composed problems themselves. The
+sequential composition method presented in our paper forms a simple yet efficient technique that
+enables models to learn through a curriculum consisting of problems that consist of an increasingly
+large number of steps. We do note that the definition of what counts as a step is currently vague and
+dependent on the problem itself. Future work will investigate using more general DAGs to bootstrap
+an RL curriculum and concretely define what counts as a step for the sake of long-horizon tasks.
+We generated the computational graphs for all of the problems in GSM8k and AIME24 datasets
+to examine the patterns of computation and compositions for these problems. While the graphs for
+these two datasets are not equivalent as they use different operators, they give some insights into why
+our method is able to show generalization across different datasets. For GSM8k problems, we found
+the computational graphs have average width and height of 4.1 and 4.0 respectively, while AIME
+graphs have average width and height of 6.6 and 7.1 respectively. We then compare the statistics
+*We apply standard well-posedness filters: type checks, numeric range clipping, and de-duplication.
+17
+Preprint
+Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A
+large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that
+day?
+Input
+name =
+large count
+value = 2
+(pizzas)
+Input
+name =
+large slices per
+value = 16
+(slices/pizza)
+Input
+name =
+small count
+value = 2
+(pizzas)
+Input
+name =
+small slices per
+value = 8
+(slices/pizza)
+large total
+Op: Mul
+(units:
+slices)
+small total
+Op: Mul
+(units:
+slices)
+total slices
+Op: Add
+(units:
+slices)
+2 × 16 = 32
+2 × 8 = 16
+32 + 16 = 48
+Legend
+Inputs
+Ops (Mul/Add)
+Thick box: Output
+Figure 6: Question and computational graph for a GSM8K problem (final answer: 48).
+for the graphs of AIME problems solved before and after our procedure as shown in Table 4. We
+observe that our method enables models to solve significantly deeper computational graphs, which
+we speculate generalizes to harder problems such as AIME.
+Table 4: AIME24 solved problems comparison. N+E denotes Nodes + Edges.
+N+E
+Width
+Height
+Baseline: Instruct-model solved problems
+47.25
+8
+6.75
+Ours: Additional newly solved problems
+54.3
+4.7
+10.3
+B
+THEORETICAL ANALYSIS
+B.1
+SETUP AND NOTATION
+We study the simplified model of long-horizon skills from Section 3 to analyse curriculum benefits
+for LHR. Consider a finite-horizon episodic problem with maximum horizon H. At each step j ∈
+{1, . . . , H} there is a binary correctness indicator Cj ∈{0, 1}, where Cj = 1 iff step j is correct.
+Write C<j := Q
+ℓ<j Cℓand C≤j := Q
+ℓ≤j Cℓ. The policy πθ (language model) generates a response
+y = (y1, . . . , yH) autoregressively by
+yk ∼πθ(· | x, y≤k),
+k = 1, . . . , H,
+and we suppress explicit dependence on x below. A verifier Ri(y) ∈{0, 1} pays 1 iff y≤i is correct,
+i.e. Ri(y) = I{C≤i = 1}.
+18
+Preprint
+As in Section 3, let p(θ0) ∈(0, 1] denote atomic task reliability and let σj(θj) ∈[0, 1] denote
+context-length–dependent reliability with σ1 ≡1. We assume disjoint depth parameters θj for
+j ≥1 and a shared atomic block θ0, reflecting that training strictly below depth j cannot improve
+the skill captured by σj. Define
+qj := p(θ0) σj(θj) = P(Cj = 1 | C<j = 1),
+qj ∈(0, 1),
+and
+si :=
+iY
+j=1
+qj = P(C≤i = 1).
+We assume that at initialization qj ∈[δ, 1 −δ] for some constant δ ∈(0, 1/2).
+For a chosen training horizon h, the objective is
+Jh(θ) := Ey∼πθ[Rh(y)] = sh,
+and for h = H we write J(θ) = JH(θ).
+We use REINFORCE (Williams, 1992) with an unbiased advantage estimator with constant baseline
+equal to the same-horizon mean µh = sh (the form approximated by GRPO (Shao et al., 2024)).
+For a parameter block θk,
+∇θkJh(θ) = E
+
+(Rh −µh) ∇θk log πθ(y)
+
+,
+¯gk =
+1
+N
+N
+X
+i=1
+(Rh(yi) −µh) ∇θk log πθ(yi).
+Because µh is constant, E[¯gk] = ∇θkJh(θ).
+B.2
+PER-UPDATE IMPROVEMENT AND BATCH SIZE
+We follow (Zhang et al., 2025b) in analysing the expected improvement of our policy when taking
+updates θ+
+k = θk +η¯gk. Under the assumption that Jh is L-smooth in θk, taking this update (holding
+all θj̸=k fixed) results in expected improvement (cf. Duchi, 2018; Bubeck, 2015)
+E
+
+Jh(θ+) −Jh(θ)
+
+≥η ∥∇θkJh(θ)∥2
+1 −Lη
+2
+
+1 +
+1
+SNR(θk)
+ 
+,
+(3)
+where
+SNRh(θk) :=
+∥E¯gk∥2
+E∥¯gk −E¯gk∥2 .
+Proof.
+Without loss of generality, view Jh as a function of θk only. Given Jh is L-smooth in θk,
+applying the descent lemma to −Jh gives, for any u,
+Jh(θk + u) ≥Jh(θk) + ⟨∇θkJh(θ), u⟩−L
+2 ∥u∥2.
+With u = η¯gk, and taking expectation over the randomness in ¯gk, we obtain
+E
+
+Jh(θ+) −Jh(θ)
+
+≥η
+
+∇θkJh(θ), E¯gk
+
+−
+Lη2
+2 E∥¯gk∥2.
+Decomposing E∥¯gk∥2 = E∥¯gk −E¯gk∥2 + ∥E¯gk∥2 and recalling that E[¯gk] = ∇θkJh(θ) yields
+E
+
+Jh(θ+) −Jh(θ)
+
+≥η ∥∇θkJh(θ)∥2 −
+Lη2
+2
+
+E∥¯gk −E¯gk∥2 + ∥∇θkJh(θ)∥2
+,
+and simple rearrangement results in the form in equation 3.
+□
+Optimising over η yields
+E
+
+Jh(θ+) −Jh(θ)
+
+≥∥∇θkJh(θ)∥2
+2L
+|
+{z
+}
+:= ∆(0)
+k,h
+·
+1
+1 + 1/SNR(θk) .
+(4)
+19
+Preprint
+To achieve a fraction β ∈(0, 1) of the noiseless gain ∆(0)
+k,h it suffices that
+SNRh(θk) ≥
+β
+1 −β .
+(5)
+Therefore, the quantities ∆(0)
+k,h and SNRh(θk) determine how much we can improve our policy by,
+and how many samples N will be required to do so.
+B.3
+SIGNAL-TO-NOISE RATIO
+Fix a training horizon h ≥k. Abbreviate
+s := sk−1,
+q := qk,
+T :=
+h
+Y
+j=k+1
+qj,
+so sh = s q T and T = 1 if h = k. Because θk only affects qk,
+E[¯gk] = ∇θksh = s T ∇θkqk.
+For the variance, note that
+∇θk log πθ(Ck | C<k=1) =
+Ck
+q −1 −Ck
+1 −q
+
+∇θkqk = Ck −q
+q(1 −q) ∇θkqk,
+and ∇θk log πθ(y) vanishes unless C<k = 1. A direct enumeration over (C<k, Ck, Ck+1:h) with
+the constant baseline µh = s q T gives the conditional second moment
+E
+
+(Rh −µh)2 ∥∇θk log πθ(y)∥2  C<k = 1
+
+= T ∥∇θkqk∥2
+(1 −q) + s q T (s q −2(1 −q))
+q(1 −q)
+
+.
+(6)
+We therefore obtain
+E
+¯gk −E¯gk
+2 =
+s
+N T ∥∇θkqk∥2
+(1 −q) + s q T (s q −3(1 −q))
+q(1 −q)
+
+.
+(7)
+The exact SNR is then
+SNRh(θk) =
+N s T q(1 −q)
+(1 −q) + s q T (s q −3(1 −q)).
+(8)
+In the long-horizon regime T ≪1, the denominator is (1 −q) (1 + O(T)), so
+SNRh(θk) = N s q T
+
+1 + O
+
+T
+1−q
+
+= Θ(N s q T) = Θ(N sh).
+(9)
+B.4
+REGIMES AND CONSEQUENCES
+Single-step only (train only at h = 1).
+When training only at i = 1, the required batch size
+and per-update noiseless improvement clearly do not depend on H. Training at h = 1 changes
+p(θ0) but cannot change σj for j ≥2, so even p →1 leaves the long-horizon ceiling at QH
+j=2 σj.
+Nevertheless, for any target success probability c ∈(0, 1), improving p increases the largest h with
+sh ≥c; if σj are fixed, then
+h =
+ln c −Ph
+j=2 ln σj
+ln p
+.
+Direct full horizon (train only at h = H).
+As qj ∈[δ, 1 −δ] at initialisation, sH = Θ(αH) for
+some α ∈(0, 1), and by equation 9
+SNRH(θk) = Θ(N sH) = Θ(N αH)
+(k ≥1).
+20
+Preprint
+To keep a constant fraction of the noiseless gain one must therefore take
+N = Θ(α−H) ,
+while the noiseless improvement for θk is
+∆(0)
+k,H = ∥∇θkJH∥2
+2L
+= (sk−1Tk+1:H)2
+2L
+∥∇θkqk∥2 = Θ
+ α2H ∥∇θkqk∥2
+.
+The required batch size to achieve a constant fraction of the noiseless improvement is exponential,
+while the noiseless improvement decays exponentially, making training directly at large H effec-
+tively impossible. In fact, direct training at horizon H is worse than single-step training, as the
+signal is too small to effectively raise p
+ SNRH(θ0) = Θ(N H αH)
+
+.
+Curriculum over depths (train at h = k and advance when qk ≥1 −ε).
+Given a target
+success probability sH ≥c ∈(0, 1), we can ensure that curriculum training achieves this by only
+progressing the horizon k when qk ≥1−ε, such that (1−ε)H ≥c, and therefore ϵ ∼(−ln c)/H. If
+we assume that the earlier stages have been learned so sk−1 ≥(1−ε)k−1 ≥c, then from equation 8
+we have that,
+SNRk(θk) = Θ
+
+N qk(1 −qk)
+(2qk −1)2
+
+.
+The SNR is minimised near the target qk = 1 −ε, where qk(1−qk)
+(2qk−1)2 ≍ε. To realise a fixed fraction
+of ∆(0)
+k,k it suffices, by equation 5, to take
+N = Θ
+1
+ε
+
+= Θ(H).
+At h = k, ∇θkJk = sk−1 ∇θkqk, so the noiseless gain is
+∆(0)
+k,k = ∥∇θkJk∥2
+2L
+= s2
+k−1
+2L ∥∇θkqk∥2 = Θ
+ ∥∇θkqk∥2
+,
+independent of H. Provided ∥∇θkqk∥2 does not decay faster than polynomially as qk →1 −ε,
+curriculum yields polynomial sample complexity in H.
+Uniform mixture over lengths.
+Sample I ∼Unif{1:H} and run the depth-I estimator; for pa-
+rameters θi, the per-iteration SNR obtained for its update averages to
+EI[SNRI(θi)] = Θ
+ 
+N
+H si−1 qi
+H−i
+X
+t=0
+Ti+1:i+t
+!
+.
+Frontier phase. We say horizon i is at the frontier when earlier skills are sufficiently reliable while
+deeper ones are not yet learnt, namely
+si−1 ≥c
+for some fixed c ∈(0, 1)
+and
+H−i
+X
+t=0
+Ti+1:i+t = Θ(1).
+During this frontier phase,
+EI[SNRI(θi)] = Θ
+N
+H si−1 qi
+
+.
+Whenever we sample a batch with I = i, we obtain the same noiseless improvement and batch size
+scaling as curriculum training, with
+N = Θ
+1
+ϵ
+
+= Θ(H),
+∆(0)
+i,i = Θ
+ ∥∇θiqi∥2
+.
+Whenever we sample I ̸= i, we see negligible change as samples with h < i cannot improve qi, and
+samples with h > i have per-iteration gain that scales with s3
+h−1.
+EI[∆h per iter] = Θ
+N
+H s3
+h−1 ∥∇θiqh∥2
+
+.
+Therefore, it takes ∼H times longer to train with uniform sampling than with curriculum, due to
+only a fraction 1/H of the updates being “useful” at each frontier i ∈{1, · · · , H}.
+21
+Preprint
+B.5
+DENSE REWARDS
+We now analyse the reward-to-go estimator (Williams, 1992; Sutton et al., 1999) with dense rewards.
+For a fixed training horizon h ≥k, define
+Rt(y) := I{C≤t = 1},
+Gk(y) :=
+h
+X
+t=k
+Rt(y),
+so Gk is the return-to-go from step k. As before, write
+s := sk−1 =
+Y
+j<k
+qj,
+q := qk,
+Tk+1:k+t :=
+k+t
+Y
+j=k+1
+qj.
+On reach (C<k = 1), Ck ∼Bernoulli(q) and the tail process after k yields
+Q∗
+k := 1 +
+h−k
+X
+t=1
+Tk+1:k+t,
+Σk := 1 +
+h−k
+X
+t=1
+(2t + 1) Tk+1:k+t,
+Vk := Σk −(Q∗
+k)2,
+so that, given Ck = 1, E[Gk | C<k = 1, Ck = 1] = Q∗
+k and Var(Gk | C<k = 1, Ck = 1) = Vk.
+The unconditional mean return-to-go at step k is
+bk := E[Gk] =
+h
+X
+t=k
+st = s q Q∗
+k.
+(10)
+We use the unbiased reward-to-go REINFORCE block with the constant baseline bk:
+gk =
+ Gk −bk
+
+∇θk log πθ(y),
+¯gk =
+1
+N
+N
+X
+i=1
+g(i)
+k .
+Since only step k depends on θk and C<k = 1 is required for a contribution,
+∇θk log πθ(y) = ∇θk log πθ(Ck | C<k=1) =
+Ck
+q −1 −Ck
+1 −q
+
+∇θkqk = Ck −q
+q(1 −q) ∇θkqk.
+Mean.
+Using E[(Gk −bk) | C<k = 1] = E[Gk | C<k = 1] −bk = q Q∗
+k −bk and E[Ck −q |
+C<k = 1] = 0, the cross term vanishes and
+E¯gk = Egk = E
+
+Gk ∇θk log πθ(y)
+
+= s ∇θkqk
+q(1 −q) E[Ck(Ck −q) Gk | C<k=1]
+= s ∇θkqk
+q(1 −q) (1 −q) q Q∗
+k = s Q∗
+k ∇θkqk.
+(11)
+Second moment and variance.
+Condition on reach (C<k=1). Writing C := Ck and Y for the
+tail variable so that Gk = C Y on reach,
+∥gk∥2 = ∥∇θkqk∥2
+q2(1 −q)2 (C −q)2 (C Y −bk)2.
+Taking expectation over C ∈{0, 1} and using E
+
+(Y −bk)2 | C=1
+
+= Vk + (Q∗
+k −bk)2, we obtain
+the conditional second moment
+E
+
+∥gk∥2  C<k=1
+
+= ∥∇θkqk∥2
+ b2
+k
+1 −q + Vk + (Q∗
+k −bk)2
+q
+
+.
+(12)
+Unconditioning multiplies by s (probability of reach), and substituting bk = s q Q∗
+k from equation 10
+yields
+E∥gk∥2 = s ∥∇θkqk∥2
+"
+Vk
+q + (Q∗
+k)2
+1
+q −3s + s2q + s2q2
+1 −q
+ #
+.
+(13)
+Subtracting ∥Egk∥2 = s2(Q∗
+k)2∥∇θkqk∥2 from equation 13 gives the unconditional variance of the
+single-trajectory block:
+E∥gk −Egk∥2 = s ∥∇θkqk∥2
+"
+Vk
+q + (Q∗
+k)2
+1
+q −3s + s2q + s2q2
+1 −q
+ #
+.
+(14)
+For the batch average ¯gk this variance scales as 1/N.
+22
+Preprint
+Signal-to-noise ratio.
+Combining equation 11 and equation 14 and accounting for the 1/N factor,
+SNRdense(θk) =
+N s (Q∗
+k)2
+Vk
+q + (Q∗
+k)2
+1
+q −3s + s2q + s2q2
+1 −q
+
+(15)
+=
+N s q (1 −q)
+Σk
+(Q∗
+k)2 (1 −q) + sq(sq −3(1 −q))
+.
+(16)
+This form is the same as that in the terminal rewards only case, except with the ratio (Q∗
+k)2/Σk
+replacing T.
+Regular tails.
+Under our initialization assumption that qj ∈[δ, 1 −δ] with fixed δ ∈(0, 1/2), for
+all t ≥1, δt ≤Tk+1:k+t ≤(1 −δ)t, and so
+1 + δ ≤Q∗
+k ≤1
+δ ,
+1 + 3δ ≤Σk ≤1 +
+X
+t≥1
+(2t + 1)(1 −δ)t = 1 + (1 −δ)(2 + δ)
+δ2
+.
+This gives
+(1 + δ)2
+1 + (1−δ)(2+δ)
+δ2
+≤(Q∗
+k)2
+Σk
+≤
+1/δ2
+1 + 3δ
+= Θ(1).
+Therefore, before the tail has been trained, the SNR for θk scales as
+SNRdense(θk) =
+N s q (1 −q)
+(1 −q) + sq(sq −3(1 −q)),
+the same as in the curriculum case.
+Training.
+We should see similar frontier behaviour as we see in the uniform mixture case, as the
+SNR scales with the success probability si. Again, we say horizon i is at the frontier if si−1 ≥
+c
+for some fixed c ∈(0, 1). To make qi ≥1 −ε (so that si ≥c) we require
+N = Θ
+1
+ε
+
+= Θ(H),
+while the noiseless improvement is
+∆(0)
+k,dense = Θ
+ ∥∇θkqk∥2
+.
+Hence, we have the same scaling and sample complexity as in curriculum learning. The wall clock
+time may be slightly lower as we do not prevent training at longer lengths ≥i before si−1 ≥1 −ε.
+C
+DECREASING SAMPLE COMPLEXITY FOR LONGER TRAINING DATA
+In Section 7, we train with the sample distributions mentioned in Table 5 up to saturation. From the
+explicit-horizon accuracies on our test set, we can see that the performance obtained from a uniform
+distribution of n-horizon data can be matched with a more cost efficient skewed distribution as long
+as more compute is spent. However, this is a small search space that primarily shows such a property
+could exist. Here, we provide a more rigorous set of experiments to support this finding.
+To support Section 7 better, we scale up the search space by first simplifying our experimental
+setting. In particular, we consider training a 135M-parameter GPT-2 model on integer multiplication
+23
+Preprint
+Sample Distribution
+Training Steps
+Accuracy per Length Bin (%)
+Training Tokens
+(L1/L2/L3/L4)
+(L1/L2/L3/L4)
+Setting
+L1
+L2
+L3
+L4
+Baseline: Uniform Data Distribution
+Baseline
+100 / 100 / 100 / 100
+100 / 110 / 120 / 150
+83.55
+56.22
+37.75
+16.62
+415 940.00
+Skewed Data Distributions (Constant Sample Count)
+Setting 1
+150 / 115 / 85 / 50
+150 / 180 / 250 / 100
+83.47
+54.14
+33.67
+15.01
+532 610.00
+Setting 2
+175 / 100 / 75 / 50
+175 / 220 / 240 / 70
+83.24
+57.88
+38.43
+16.08
+515 110.00
+Setting 3
+200 / 125 / 50 / 25
+200 / 230 / 220 / 100
+83.24
+56.02
+33.67
+15.54
+550 730.00
+Table 5: Performance trade-offs for training with skewed sample distributions. By increasing the
+training budget, performance on most length bins can be recovered (Uniform distribution vs Set-
+tings 1, 2, and 3) even with a cost-efficient dataset skewed heavily towards shorter examples.
+problems through SFT. We generate the multiplication problems by sampling two operands, and
+writing out the chain of computations. We define length as the sum of number of digits of both
+operands, analogous to the number of chained GSM8K problems in our primary setting. Then we
+can separate the training dataset into bins grouped by distinct lengths. We vary the length distribution
+of training dataset by varying the samples in each length bins. Finally we associate a cost to each
+data length, which represents the cost of generating the data. This metric mirrors the real-world
+concern that longer data is harder to collect.
+C.1
+TRADE-OFF BETWEEN DATA COST AND COMPUTE
+Figure 7: Right: We parameterize different training distributions using a single cost scalar plotted
+against FLOP budget. Left: Sweeping different choices of training budget and distribution costs.
+Using the multiplication task, we study the trade-off between (1) skewedness towards shorter lengths
+in the training distribution and (2) total training budget. Figure 7 sweeps over many choices of bud-
+get and cost. A first observation is that for the same target accuracy, a training run can either have a
+lower cost data distribution and use more budget, or vise versa. Figure 7 also shows other relation-
+ships. For example, at each training budget there appears to be a set of optimal data distributions. To
+achieve the same performance with a cheaper distribution than the optimal ones requires increasing
+the training budget. For distributions with a lot more long samples beyond the optimal point, the
+rate of learning seems to decrease. We believe this is because as we shift more weight to longer
+examples, the multiplication becomes harder to learn overall. This motivates us to investigate what
+the most cost efficient (optimal) set of distributions is for a given training budget.
+24
+Preprint
+Figure 8: Left: Training trails with 3 length bin data distribution, plotted over the probability sim-
+plex. The blue gradient is the cost of the distribution, as defined in C.1. Each point on the simplex
+is a training run with the specific data distribution. We start from the uniform distribution (middle
+point) and send 8 rays to the cheaper half of the simplex boundary (we did not explore the more
+expensive half). Then we bisect each ray to find the feasibility boundary along it. Overall, there is a
+convex feasible region that forms close to the simplex boundaries, and we are able to find cost effi-
+cient data distributions. Right: Examples of different 3-bin training distributions during the search.
+C.2
+SEARCHING FOR THE MINIMUM COST DISTRIBUTION UNDER THE SAME BUDGET
+By principally testing different data mixtures above, we show that a curriculum can achieve optimal
+performance even when using limited long-horizon samples. Here, we investigate what the set of
+low cost distributions looks like at a fixed training budget. We create 3 length bins, which evenly
+divide the sample lengths in our dataset. We keep a fixed FLOP budget and vary the data mixture
+based on the length bins to find the distributions with the least average cost that still achieve high
+performance after training. We visualize this search procedure in Figure 8, which shows a distinct
+feasible region for the 3-bin probability distribution where training runs are successful.
+D
+ADDITIONAL EXPERIMENTAL DETAILS.
+In Section 4, we trained the Qwen-2.5-3B Instruct model (Qwen et al., 2025) using the hyperpa-
+rameters outlined in Table 6. Training was conducted for 200 optimization steps for each horizon
+length in our curriculum, where each step processed a single sample, for a total of 200 samples per
+horizon. We utilized the Dr. GRPO algorithm (Liu et al., 2025c), which builds on top of the Group-
+Relative Policy Optimization (GRPO) training objective (Shao et al., 2024) by removing the length
+and variance normalization terms. For each problem length, we evaluated the model every 50 steps
+and selected the best checkpoint based on validation performance. This checkpoint was then used
+as the initialization for training on the subsequent, longer-horizon problem length.
+The max completion length was dynamically adjusted based on the number of sub-problems to
+accommodate the increasing reasoning horizon. Specifically, we used a maximum completion length
+of 768 for 1-subproblem tasks, 1024 for 2-subproblem tasks, 1280 for 3-subproblem tasks, and 1536
+for both 4- and 5-subproblem tasks. Dynamically increasing the completion length allows the model
+enough token space to solve the problem while also constraining it to the maximum length required
+to complete the task. We implemented GRPO training using the Verifiers library (Brown, 2025).
+25
+Preprint
+Parameter
+Qwen 2.5 3B
+Instruct
+Qwen 2.5 7B
+Instruct
+Llama 3.2 3B
+Instruct
+Training Steps per Horizon
+200
+200
+200
+Samples per Horizon
+200
+200
+200
+Number of Generations per Prompt
+16
+16
+16
+Learning Rate
+5 × 10−6
+2 × 10−6
+5 × 10−6
+Learning Rate Scheduler
+Cosine
+Cosine
+Cosine
+Warmup Steps
+30
+30
+20
+Max Gradient Norm
+0.1
+0.1
+0.1
+Loss Type
+Dr. GRPO
+Dr. GRPO
+Dr. GRPO
+Table 6: Hyperparameters used for the curriculum-based RL training stages across different models.
+System prompt for RL training
+Respond in the following format, with only the numerical answer between the <answer>
+tags:
+<reasoning>
+. ..
+</reasoning>
+<answer>
+. ..
+</answer>
+The same hyperparameters were applied to our baselines in Table 1. For these baselines, we trained
+up to an equal amount of compute as our main experiments and selected the best checkpoint from
+each run based on validation performance.
+To evaluate our model’s generalization capabilities, we performed a series of zero-shot evaluations
+(sampling temperature 0.1) on a variety of benchmarks, including AIME 2024, AIME 2025, MMLU
+Pro Math (Wang et al., 2024), GSM Symbolic (Mirzadeh et al., 2025), MATH-500 (Hendrycks
+et al., 2021), LongBench-v2(Bai et al., 2025), Hash-hop(Magic, 2024), and GPQA(Rein et al., 2024)
+(Tables 2, 7). For the Hash-hop benchmark, we computed the average accuracy across multiple
+settings, including context lengths of 10k, 20k, and 30k characters, and 1, 2, 3, and 4 hops.
+Generalization to Long Context Benchmarks
+Model / setting
+LongBench-v2
+Hash-hop
+GPQA
+Instruct model
+35.00
+15.98
+25.00
+Standard RLVR on GSM8K
+GSM8K RLVR
+35.30
+14.76
+26.56
+Curriculum RL on Composed GSM8K Problems
+Len-2 GSM8K
+36.20
+16.17
+25.22
+Len-3 GSM8K
+37.10
+17.62
+26.12
+Len-4 GSM8K
+36.20
+18.98
+26.34
+Len-5 GSM8K
+37.90
+(+8.3%)
+18.73
+(+17.4%)
+27.23
+(+8.9%)
+Table 7: Performance on long context benchmarks improves significantly with GSM8K RL curricu-
+lum training stages. Training on increasing complexity of GSM8K leads to strong out-of-domain
+generalization with better state tracking and context management capabilities.
+Besides harder math benchmarks, our curriculum-based training generalizes to benchmarks that re-
+quire long-context and complex reasoning, even though our models were only trained on composed
+mathematical problems. The results on LongBench-v2, Hash-hop, and GPQA show a consistent im-
+provement in performance as the training horizon increases, demonstrating that our method imparts
+26
+Preprint
+transferable skills such as state-tracking and the ability to reason over long sequences. For example,
+performance on LongBench-v2 increases from 35.00% (untrained) to 37.90% after training up to a
+5-subproblem horizon. These results are presented in Table 7.
+In order to strengthen our results and demonstrate the generality of our method, we apply it to two
+additional models: Qwen-2.5-7B Instruct and Llama-3.2-3B Instruct. The training hyperparameters
+for all models are detailed in Table 6.
+For the Qwen-2.5-7B Instruct model, we construct chained problems from a more challenging
+source, the MATH dataset. We connect subproblems with integer-valued answers by applying sim-
+ple operations (e.g., addition or subtraction) to generate the numerical input for the next problem.
+Our training shows a strong, consistent performance lift, with mean accuracy on multi-step problems
+rising from 45.50% to 50.65% (Table 8). This improvement transfers to out-of-domain benchmarks,
+validating the method’s ability to generalize beyond the specific training domain.
+Accuracy on MATH Problems
+Accuracy on Harder Problems
+Model / setting
+Len-1
+Len-2
+Len-3
+Len-4
+Mean
+Symbolic P2
+LongBench v2
+Instruct model
+74.00
+52.60
+29.40
+26.00
+45.50
+61.36
+33.60
+Standard RLVR on MATH
+MATH RLVR
+76.20
+53.80
+32.00
+29.00
+47.75
+64.96
+34.50
+Curriculum RL on Composed MATH Problems
+Len-2 MATH
+77.00
+56.20
+34.40
+27.66
+48.82
+65.60
+34.50
+Len-3 MATH
+76.20
+56.00
+35.40
+28.86
+49.12
+65.32
+34.50
+Len-4 MATH
+76.80
+(+4.1%)
+56.60
+(+7.6%)
+37.80
+(+28.6%)
+31.40
+(+20.8%)
+50.65
+(+11.3%)
+64.88
+(+6.9%)
+35.30
+(+5.1%)
+Table 8: Long Horizon MATH Training on Qwen-2.5-7B Instruct. Curriculum stages lead to
+improvements in in-domain performance and generalization metrics. We believe these results will
+improve further with better hyperparameter tuning and more training compute. Currently, this result
+aims to show that our method can indeed transfer to larger models and harder training datasets.
+To show the applicability of our method to another model family, we use the Llama-3.2-3B Instruct
+model with the same chained GSM8K problems as our primary experiments in Section 4. The results
+for this model are presented in Table 9. We show that our method can be successfully applied to
+a different model family, confirming that our curriculum learning based RL training on composed
+synthetic data can lead to robust and generalized long-horizon reasoning capabilities.
+Accuracy on GSM8K Problems
+Accuracy on Harder Problems
+Model / setting
+Len-1
+Len-2
+Len-3
+Len-4
+Mean
+Symbolic P1
+AIME Mean
+Instruct model
+78.00
+11.83
+4.42
+1.34
+23.90
+54.84
+2.09
+Curriculum RL on Composed GSM8K Problems
+Len-1 GSM8K
+79.00
+13.28
+7.14
+2.14
+25.39
+55.16
+2.87
+Len-2 GSM8K
+80.20
+35.06
+15.99
+6.43
+34.42
+57.52
+2.92
+Len-3 GSM8K
+80.60
+(+3.3%)
+35.27
+(+198.1%)
+17.35
+(+292.5%)
+6.70
+(+400.0%)
+34.98
+(+46.4%)
+57.75
+(+5.3%)
+3.18
+(+52.2%)
+Table 9: Long Horizon GSM8K Training on Llama-3.2-3B Instruct. Curriculum RL leads to
+significant improvements in in-domain performance and general long-horizon capabilities.
+27
+Preprint
+E
+QUALITATIVE EXAMPLE
+LHR Trained Qwen-2.5-3B on Explicit-Horizon Problems
+Long-Horizon Question
+Solve the following math problem step by step:
+Step 1: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and
+bakes muffins for her friends every day with four. She sells the remainder at the farmers’
+market daily for $2 per fresh duck egg. How much in dollars does she make every day at the
+farmers’ market?
+Step 2: Take your final answer from Step 1 and substitute it for W in the following problem:
+Ella earned $W for 3 hours of dog walking. If she continues to walk dogs at the same rate,
+how much would she earn after 12 hours?
+Write out the updated version of the problem with the number from Step 1 in place of W.
+Step 3: Solve the updated problem from Step 2 step by step.
+Step 4: Take your final answer from Step 3 and substitute it for U in the following problem:
+Peter purchased U popsicles at $0.25 each. He also purchased 4 ice cream bars at $0.50
+each. How much did he pay in total in dollars?
+Write out the updated version of the problem with the number from Step 3 in place of U.
+Step 5: Solve the updated problem from Step 4 step by step.
+Step 6: Take your final answer from Step 5 and substitute it for Y in the following problem:
+Fred was preparing for a party to be held in four days. So, he made Y gallons of root beer
+on the first day and put them in the refrigerator cooler. But later that evening, his children
+discovered the delicious nectar and robbed the cooler, drinking 4 of those gallons of root
+beer. On the second day, his wife Barbie also discovered the root beer and accidentally
+spilled 7 gallons. On the third day, Fred’s friend Ronnie visited Fred’s house and helped
+himself to the root beer, further reducing the amount remaining by 5 gallons. On the fourth
+day, 3 people showed up for the party. If Fred and the others shared the remaining root beer
+equally, how much was available for each to drink during the party?
+Write out the updated version of the problem with the number from Step 5 in place of Y.
+Step 7: Solve the updated problem from Step 6 step by step.
+Step 8: Take your final answer from Step 7 and substitute it for Z in the following problem:
+Craig has 2 twenty dollar bills. He buys six squirt guns for $2 each. He also buys Z packs
+of water balloons for $3 each. How much money does he have left?
+Write out the updated version of the problem with the number from Step 7 in place of Z.
+Step 9: Solve the updated problem from Step 8 step by step. In the end, provide only the
+final numerical answer.
+Ground truth answer: 25
+Untrained model response
+<reasoning>
+Janet’s ducks lay 16 eggs per day. She eats 3 eggs for breakfast and uses 4 eggs to make
+muffins. The remaining eggs are sold at the farmers’ market. The number of eggs sold is
+calculated as follows:
+16 −3 −4 = 9
+Since she sells each egg for $2, her daily earnings at the farmers’ market are:
+9 × 2 = 18
+So, Janet makes $18 every day at the farmers’ market. This value is substituted for W in the
+next problem.
+Ella earned $18 for 3 hours of dog walking. If she continues to walk dogs at the same rate,
+her hourly rate is:
+18
+3 = 6
+Ella’s hourly rate is $6. This value is substituted for W in the updated problem.
+28
+Preprint
+Ella earns $6 per hour. If she continues to walk dogs at the same rate, how much would she
+earn after 12 hours?
+6 × 12 = 72
+So, Ella would earn $72 after 12 hours. This value is substituted for U in the next problem.
+Peter purchased $72 at $0.25 each. He also purchased 4 ice cream bars at $0.50 each. The
+total cost is calculated as follows:
+72 × 0.25 + 4 × 0.50 = 18 + 2 = 20
+So, Peter paid $20 in total. This value is substituted for U in the next problem.
+Peter paid $20. If he purchased 20 packs of root beer, how much was available for each to
+drink during the party?
+20
+4 = 5
+So, 5 gallons of root beer were available for each to drink during the party. This value is
+substituted for Y in the next problem.
+Fred made 5 gallons of root beer. On the second day, his wife spilled 7 gallons, on the third
+day, his friend Ronnie helped himself to 5 gallons, and on the fourth day, 3 people showed
+up for the party. The remaining root beer is calculated as follows:
+5 −7 −5 −3 = −10
+Since the remaining amount is negative, it means Fred ran out of root beer and did not have
+any left for the party. This value is substituted for Y in the next problem.
+Fred did not have any root beer left. If he purchased 0 gallons of root beer, how much money
+does he have left after buying 2 twenty dollar bills?
+2 × 20 = 40
+So, Fred spent $40 on the 2 twenty dollar bills. This value is substituted for Y in the next
+problem.
+Craig has $40. He buys 6 squirt guns for $2 each and 3 packs of water balloons for $3 each.
+The total cost is calculated as follows:
+6 × 2 + 3 × 3 = 12 + 9 = 21
+So, Craig spent $21 on the squirt guns and water balloons. The amount of money he has left
+is:
+40 −21 = 19
+So, Craig has $19 left. This value is substituted for Z in the next problem.
+Craig has $19 left. If he buys Z packs of water balloons for $3 each, how much money does
+he have left?
+19 −3 × 3 = 19 −9 = 10
+So, Craig has $10 left. This value is substituted for Z in the next problem.
+Craig has $10 left. If he buys 10 packs of water balloons for $3 each, how much money does
+he have left?
+10 −10 × 3 = 10 −30 = −20
+Since the remaining amount is negative, it means Craig does not have enough money to buy
+10 packs of water balloons. The final numerical answer is -20.
+</reasoning>
+<answer>
+29
+Preprint
+-20
+</answer>
+Analysis (Errors in the untrained model’s response)
+State-tracking errors
+1. Step 6→7 (after “Peter paid $20”): Took shortcut 20/4 = 5 and then reused
+Y = 5 as the starting gallons for Fred (“Fred made 5 gallons...”). Correct carry-
+over for Step 6 is Y = 20.
+2. Step 8→9 (Craig stage): From “Craig has $19 left.” it set Z = 19 but computed
+19 −3 × 3 instead of 19 −3Z. Next line used Z = 10, showing inconsistent
+substitution.
+Problem-logic errors
+1. Step 6 / start of Step 7: Treated $20 as gallons and skipped events, doing 20/4
+instead of 20 −4 −7 −5 = 4 then 4/4 = 1.
+2. Step 7: Subtracted people as gallons, computing 5 −7 −5 −3 instead of dividing
+the remaining gallons among 4 people.
+LHR model response
+<reasoning>
+1. First, we need to calculate how many eggs Janet sells each day.
+- Janet’s ducks lay 16 eggs per day.
+- She eats 3 eggs for breakfast.
+- She bakes muffins with 4 eggs.
+So, the number of eggs she sells each day is:
+16 −3 −4 = 9 eggs
+Janet sells the eggs at $2 per egg. Therefore, the amount she makes every day at
+the farmers’ market is:
+9 × 2 = $18
+2. Substitute the final answer from Step 1 (18) into the problem:
+Ella earned $18 for 3 hours of dog walking. If she continues to walk dogs at the
+same rate, how much would she earn after 12 hours?
+3. Ella’s rate of earning is $18 for 3 hours. Therefore, her hourly rate is:
+18
+3 = $6 per hour
+To find out how much she would earn after 12 hours, we calculate:
+6 × 12 = $72
+4. Substitute the final answer from Step 3 (72) into the problem:
+Peter purchased 72 popsicles at $0.25 each. He also purchased 4 ice cream bars at
+$0.50 each. How much did he pay in total in dollars?
+5. The cost of the popsicles is:
+72 × 0.25 = $18
+The cost of the ice cream bars is:
+4 × 0.50 = $2
+The total cost is:
+18 + 2 = $20
+30
+Preprint
+6. Substitute the final answer from Step 5 (20) into the problem:
+Fred was preparing for a party to be held in four days. So, he made 20 gallons
+of root beer on the first day and put them in the refrigerator cooler. But later that
+evening, his children discovered the delicious nectar and robbed the cooler, drink-
+ing 4 of those gallons of root beer. On the second day, his wife Barbie also discov-
+ered the root beer and accidentally spilled 7 gallons. On the third day, Fred’s friend
+Ronnie visited Fred’s house and helped himself to the root beer, further reducing
+the amount remaining by 5 gallons. On the fourth day, 3 people showed up for the
+party. If Fred and the others shared the remaining root beer equally, how much was
+available for each to drink during the party?
+7. The amount of root beer remaining after each event is:
+20 −4 −7 −5 = 4 gallons
+Fred and 3 others (including himself) share the remaining 4 gallons equally. There-
+fore, each person gets:
+4
+4 = 1 gallon
+8. Substitute the final answer from Step 7 (1) into the problem:
+Craig has 2 twenty dollar bills. He buys six squirt guns for $2 each. He also buys
+Z packs of water balloons for $3 each. How much money does he have left?
+9. The cost of the squirt guns is:
+6 × 2 = $12
+The cost of the water balloons is:
+Z × 3
+The total cost is:
+12 + 3Z
+Craig has 2 * 20 = $40. After spending, the remaining money is:
+40 −(12 + 3Z)
+Substitute the final answer from Step 7 (1) for Z:
+40 −(12 + 3 × 1) = 40 −15 = $25
+Final numerical answer: 25
+</reasoning>
+<answer>
+25
+</answer>
+31

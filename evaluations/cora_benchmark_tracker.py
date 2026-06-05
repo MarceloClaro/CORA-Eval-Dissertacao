@@ -33,16 +33,17 @@ SCRIPT_DIR = Path(__file__).parent.resolve()
 SCORES_FILE = SCRIPT_DIR / "cora_scores.json"
 
 WEIGHTS = {
-    "D1": 0.15,  # Matemática
-    "D2": 0.12,  # Física
-    "D3": 0.12,  # Estatística
-    "D4": 0.10,  # Química
-    "D5": 0.10,  # Biologia
+    "D1": 0.14,  # Matemática
+    "D2": 0.11,  # Física
+    "D3": 0.11,  # Estatística
+    "D4": 0.09,  # Química
+    "D5": 0.09,  # Biologia
     "D6": 0.08,  # Geociências
-    "D7": 0.10,  # Código Científico
+    "D7": 0.09,  # Código Científico
     "D8": 0.08,  # Literatura
-    "D9": 0.08,  # Metodologia
+    "D9": 0.07,  # Metodologia
     "D10": 0.07, # Interdisciplinar
+    "D11": 0.07, # Long-Horizon Reasoning (DAG)
 }
 
 DIMENSION_NAMES = {
@@ -56,6 +57,7 @@ DIMENSION_NAMES = {
     "D8": "Revisão Sistemática de Literatura",
     "D9": "Desenho Experimental e Metodologia",
     "D10": "Síntese Interdisciplinar",
+    "D11": "Raciocínio Long-Horizon (DAG)",
 }
 
 LEVELS = {
@@ -79,6 +81,7 @@ TASK_TOTALS = {
     "D8": {"N1": 3, "N2": 4, "N3": 4, "N4": 4},
     "D9": {"N1": 3, "N2": 4, "N3": 4, "N4": 4},
     "D10": {"N1": 2, "N2": 3, "N3": 3, "N4": 3},
+    "D11": {"N1": 5, "N2": 7, "N3": 8, "N4": 10},
 }
 
 

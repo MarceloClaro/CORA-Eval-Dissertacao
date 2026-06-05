@@ -1,0 +1,38 @@
+{
+  "doi": "1801.05075v2",
+  "problemas": [
+    "However, because of the dispar-\nity between the sense-making process in humans and the\ncomputational feature learning of machine learning models,\npeople require model transparency to be able to understand\nand trust machine learning models.",
+    "yet lacks the guidance of human correctness and goodness\nscores that show which improvements would be most sig-\nniﬁcant.",
+    "but gen-\nerally not the background scenery.",
+    "However, subjective measures typically lack preci-\nsion and may include user bias.",
+    "Limitations and Future Work\nA limitation of creating\nthis human-attention benchmark is the annotation cost for\nmulti-level human explanation masks."
+  ],
+  "metodologias": [
+    "systems.\nIn Proceedings of the 2019\nCHI Conference on Human Factors in Computing Systems,\n1–14",
+    "evaluations\nfor model saliency map, Choe et al. (2020) present an eval-\nuation protocol to include a hyperparameter search for the\nτ threshold for generating objects’ “binary mask” from the\nsaliency score map",
+    "evaluation\nscores from the user rating scores. To test for the statistical\nsigniﬁcance of observed differences, we ﬁrst normalize user\nratings across participants by subtracting each participant’s\nFigure 3: Examples of heat-map overlay of saliency maps\nusing (Top) Grad-cam and (Bottom) LIME techniques used\nin the user study for human judgment",
+    "methods for\nthe evaluation of machine learning explanations?\nDifferent approaches have been proposed for evaluating\ninterpretable models and XAI systems at different stages\nof system design (Doshi-Velez and Kim 2017). In machine\nlearning research, various computational methods are used\nto measure the ﬁdelity of interpretability techniques with\nrespect to the underlying black-box model (Adebayo et al",
+    "models. They test multiple game-inspired, atten-\ntion annotation methods to ask participants to sharpen re-\ngions of a blurred image to answer a question"
+  ],
+  "metricas": [
+    "mae) between model saliency score\nmap and the ground truth mask.",
+    "scores for samples with\nhigh fp and high fn explanation mae error.",
+    "scores from lime and\ngrad-cam explanations.",
+    "score based on two ground truth baselines and human\njudgment rating.",
+    "scores are statis-\ntically signiﬁcantly (r = 0."
+  ],
+  "dominios": [
+    "computer vision and image understanding\n163:90–100.",
+    "computer, ball,\nbook, phone), outdoor objects (car, ship, airplane, house).",
+    "computer interaction 3(cscw):1–23.",
+    "linguistics, 271.",
+    "linguistics;\nproceedings of the main conference, 260–267."
+  ],
+  "tarefas": [
+    "regression models, we ﬁnd the\nslope of w = −0.",
+    "qaraawi et al.",
+    "qa-hat, our benchmark assembles anno-\ntations from multiple unique participants to generate accu-\nrate and generalizable human-attention maps.",
+    "regression slopes shows a signiﬁcant differ-\nence (p < 0.",
+    "qa-hat\nbaseline for evaluating saliency maps in visual question and\nanswering models."
+  ]
+}

@@ -50,4 +50,10 @@ Score 86/100 → 100/100 (R15, Consolidacao)
 
 ---
 
-**Evolution Insights Index** · 2026-06-04 · OpenCode Ecosystem v4.7.1
+**Evolution Insights Index** · 2026-06-04 · OpenCode Ecosystem v5.0.0
+
+## Documento Relacionado
+
+| Documento | Descricao |
+|-----------|-----------|
+| `../../../docs/RELATORIO_ECOSYSTEM_v5.0.0.md` | Relatorio consolidado v5.0.0: saude 100/100, 344 testes, CORA 3.04, SWOT+TDD 100/100 |
